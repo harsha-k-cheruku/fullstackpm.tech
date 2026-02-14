@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option A — Bold Editorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0D10;
+      --card: #12151B;
+      --text: #F5F7FA;
+      --muted: #A8B0BD;
+      --border: #1F2530;
+      --accent: #5DAEFF;
+      --accent-2: #89F7FE;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(93,174,255,0.15), transparent 60%), var(--bg);
+      color: var(--text);
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 64px 24px 96px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .hero h1 { font-size: 56px; line-height: 1.05; margin: 16px 0; }
+    .hero p { font-size: 20px; color: var(--muted); max-width: 620px; }
+    .cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #0B0D10; padding: 12px 20px; border-radius: 12px; font-weight: 600; border: none; }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); padding: 12px 20px; border-radius: 12px; background: transparent; }
+    .grid { margin-top: 56px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+    .card h3 { margin: 12px 0 8px; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.5; }
+    .meta { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="badge">FULL STACK AI PM · ENGINEERING MIND</div>
+      <h1>Design obsessed. Results driven. Built for the next decade of AI products.</h1>
+      <p>Portfolio with proof: projects, experiments, and playbooks that turn AI ideas into shipped outcomes.</p>
+      <div class="cta">
+        <button class="btn-primary">View Projects</button>
+        <button class="btn-outline">Read the Manifesto</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="meta">FEATURED · GENAI</div>
+        <h3>PM Interview Coach</h3>
+        <p>AI simulations for product interviews with feedback loops and scoring frameworks.</p>
+      </div>
+      <div class="card">
+        <div class="meta">MARKETPLACE</div>
+        <h3>Seller Intelligence Suite</h3>
+        <p>Decision dashboards for 370K+ marketplace businesses across onboarding and growth.</p>
+      </div>
+      <div class="card">
+        <div class="meta">PORTFOLIO</div>
+        <h3>fullstackpm.tech</h3>
+        <p>A live product case study that ships as fast as the ideas behind it.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

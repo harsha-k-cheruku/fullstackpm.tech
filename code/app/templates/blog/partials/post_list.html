@@ -1,0 +1,58 @@
+<!-- app/templates/blog/partials/post_list.html -->
+{% for post in posts %}
+<article class="pb-6 mb-6 border-b" style="border-color: var(--color-border);">
+  <h2 class="text-h3 mb-2">
+    <a href="/blog/{{ post.slug }}"
+       class="transition-colors"
+       style="color: var(--color-text-primary);"
+       onmouseover="this.style.color='var(--color-accent)'"
+       onmouseout="this.style.color='var(--color-text-primary)'">
+      {{ post.title }}
+    </a>
+  </h2>
+  <p class="text-small mb-3" style="color: var(--color-text-tertiary);">
+    {{ post.date.strftime('%b %d, %Y') }} &middot; {{ post.reading_time }}
+  </p>
+  <p class="text-body mb-4 line-clamp-2" style="color: var(--color-text-secondary);">
+    {{ post.excerpt }}
+  </p>
+  <div class="flex flex-wrap gap-2">
+    {% for tag in post.tags %}
+    <span class="text-xs rounded-md px-2 py-1 font-medium"
+          style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+      {{ tag }}
+    </span>
+    {% endfor %}
+  </div>
+</article>
+{% endfor %}
+
+{% if not posts %}
+<div class="text-center py-12">
+  <p class="text-body" style="color: var(--color-text-tertiary);">No posts found.</p>
+</div>
+{% endif %}
+
+{% if has_older %}
+<div id="load-more-wrapper">
+  <div class="text-center mt-4">
+    <button hx-get="/api/blog/posts?page={{ page + 1 }}"
+            hx-target="#load-more-wrapper"
+            hx-swap="outerHTML"
+            hx-indicator="#load-more-spinner"
+            class="inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold transition-colors"
+            style="color: var(--color-text-primary); border-color: var(--color-border);"
+            onmouseover="this.style.borderColor='var(--color-border-hover)'"
+            onmouseout="this.style.borderColor='var(--color-border)'"
+            aria-label="Load more posts">
+      Load More
+      <span id="load-more-spinner" class="htmx-indicator">
+        <svg class="animate-spin h-4 w-4" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harsha Cheruku — Full Stack AI Product Manager</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Design System - AI PM Bootcamp Style */
+    :root {
+      /* Primary Colors - Blue */
+      --blue-900: #001a3d;
+      --blue-800: #002952;
+      --blue-700: #003866;
+      --blue-600: #00477a;
+      --blue-500: #00568e;
+      --blue-400: #0065a2;
+      --blue-300: #0074b6;
+      --blue-200: #3399cc;
+      --blue-100: #66b3dd;
+      --blue-50:  #e6f4fb;
+
+      /* Emerald */
+      --emerald-900: #064e3b;
+      --emerald-500: #10b981;
+      --emerald-100: #d1fae5;
+      --emerald-50:  #ecfdf5;
+
+      /* Neutral - Slate */
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50:  #f8fafc;
+
+      /* Typography */
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.563rem;
+      --text-3xl:  1.953rem;
+      --text-4xl:  2.441rem;
+      --text-5xl:  3.052rem;
+
+      /* Font Weights */
+      --font-normal:  400;
+      --font-medium:  500;
+      --font-semibold: 600;
+      --font-bold:    700;
+      --font-extrabold: 800;
+
+      /* Spacing */
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.5;
+      color: var(--slate-700);
+      background: white;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* Navigation */
+    .navbar {
+      background: white;
+      border-bottom: 1px solid var(--slate-200);
+      padding: var(--space-4) 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: var(--text-lg);
+      font-weight: var(--font-bold);
+      color: var(--slate-900);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-6);
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--slate-700);
+      font-weight: var(--font-medium);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .nav-link:hover {
+      color: var(--blue-500);
+    }
+
+    .nav-link.active {
+      color: var(--blue-500);
+      border-bottom: 2px solid var(--blue-500);
+      padding-bottom: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--blue-50) 0%, white 100%);
+      padding: var(--space-24) 0;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: var(--text-5xl);
+      font-weight: var(--font-bold);
+      color: var(--slate-900);
+      margin-bottom: var(--space-4);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-xl);
+      color: var(--slate-600);
+      max-width: 42rem;
+      margin: 0 auto var(--space-8);
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-social-proof {
+      font-size: var(--text-sm);
+      color: var(--slate-600);
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .rating {
+      color: var(--slate-700);
+      font-weight: var(--font-medium);
+    }
+
+    .separator {
+      color: var(--slate-400);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: var(--space-3) var(--space-6);
+      border-radius: 0.5rem;
+      font-weight: var(--font-semibold);
+      font-size: var(--text-base);
+      border: none;
+      cursor: pointer;
+      transition: all 150ms ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--blue-500);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-600);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 86, 142, 0.2);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--blue-500);
+      border: 2px solid var(--blue-500);
+    }
+
+    .btn-secondary:hover {
+      background: var(--blue-50);
+    }
+
+    .btn-lg {
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--text-lg);
+    }
+
+    /* Section */
+    section {
+      padding: var(--space-16) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+
+    .section-title {
+      font-size: var(--text-4xl);
+      font-weight: var(--font-bold);
+      color: var(--slate-900);
+      margin-bottom: var(--space-3);
+    }
+
+    .section-subtitle {
+      font-size: var(--text-lg);
+      color: var(--slate-600);
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+    }
+
+    /* Card */
+    .card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      padding: var(--space-8);
+      transition: box-shadow 150ms ease, transform 150ms ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 3rem;
+      height: 3rem;
+      background: var(--blue-100);
+      color: var(--blue-600);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-4);
+      font-size: var(--text-2xl);
+      font-weight: var(--font-bold);
+    }
+
+    .card-title {
+      font-size: var(--text-xl);
+      font-weight: var(--font-semibold);
+      color: var(--slate-900);
+      margin-bottom: var(--space-2);
+    }
+
+    .card-description {
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: var(--space-4);
+    }
+
+    .card-link {
+      color: var(--blue-500);
+      font-weight: var(--font-medium);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .card-link:hover {
+      color: var(--blue-600);
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: var(--text-xs);
+      font-weight: var(--font-semibold);
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--emerald-100);
+      color: var(--emerald-900);
+    }
+
+    /* Stats Section */
+    .stats {
+      background: var(--slate-50);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-8);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: var(--text-4xl);
+      font-weight: var(--font-extrabold);
+      color: var(--blue-600);
+      margin-bottom: var(--space-2);
+    }
+
+    .stat-label {
+      font-size: var(--text-base);
+      color: var(--slate-600);
+      font-weight: var(--font-medium);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--slate-900);
+      color: var(--slate-400);
+      padding: var(--space-12) 0;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: var(--text-sm);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--space-6);
+      justify-content: center;
+      list-style: none;
+      margin-top: var(--space-6);
+    }
+
+    .footer-link {
+      color: var(--slate-400);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: var(--text-3xl);
+      }
+
+      .hero-subtitle {
+        font-size: var(--text-base);
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .section-title {
+        font-size: var(--text-3xl);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="/" class="nav-brand">fullstackpm.tech</a>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link active">Home</a></li>
+        <li><a href="/projects" class="nav-link">Projects</a></li>
+        <li><a href="/blog" class="nav-link">Blog</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        Building Products.<br>Leading Teams.<br>Shipping Code.
+      </h1>
+      <p class="hero-subtitle">
+        I'm Harsha Cheruku, a Full Stack AI Product Manager. Former Amazon, Walmart.
+        I build AI-powered tools and write about product strategy, marketplace analytics, and technical execution.
+      </p>
+      <div class="hero-cta">
+        <a href="/projects" class="btn btn-primary btn-lg">View Projects</a>
+        <a href="/blog" class="btn btn-secondary btn-lg">Read Articles</a>
+      </div>
+      <div class="hero-social-proof">
+        <span class="rating">⭐ 4.9/5 on LinkedIn</span>
+        <span class="separator">•</span>
+        <span>300M+ Revenue Impact</span>
+        <span class="separator">•</span>
+        <span>15 Years Experience</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          AI-powered tools, data analytics dashboards, and real product work showcasing technical execution.
+        </p>
+      </div>
+
+      <div class="grid">
+        <!-- Project 1 -->
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div>
+            <span class="badge">Live</span>
+          </div>
+          <h3 class="card-title">PM Interview Coach</h3>
+          <p class="card-description">
+            AI-powered interview practice tool with Claude API evaluation.
+            Practice PM questions, get structured feedback, track progress.
+          </p>
+          <a href="/projects/pm-interview-coach" class="card-link">
+            View Project →
+          </a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <div>
+            <span class="badge">In Progress</span>
+          </div>
+          <h3 class="card-title">Marketplace Analytics Dashboard</h3>
+          <p class="card-description">
+            Interactive seller performance analytics with Python + Pandas.
+            Revenue trends, category analysis, cohort segmentation.
+          </p>
+          <a href="/projects/marketplace-dashboard" class="card-link">
+            View Project →
+          </a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <div>
+            <span class="badge">Planned</span>
+          </div>
+          <h3 class="card-title">AI PM Toolkit</h3>
+          <p class="card-description">
+            Generate product specs, roadmaps, and user stories with AI.
+            Structured prompts, Markdown export, template library.
+          </p>
+          <a href="/projects/ai-pm-toolkit" class="card-link">
+            View Project →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-number">$300M+</div>
+          <div class="stat-label">Revenue Impact</div>
+        </div>
+        <div>
+          <div class="stat-number">8</div>
+          <div class="stat-label">Shipped Projects</div>
+        </div>
+        <div>
+          <div class="stat-number">4</div>
+          <div class="stat-label">Fortune 100 Companies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Writing -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Recent Writing</h2>
+        <p class="section-subtitle">
+          Product strategy, AI workflows, and lessons from building in public.
+        </p>
+      </div>
+
+      <div class="grid">
+        <!-- Article 1 -->
+        <div class="card">
+          <h3 class="card-title">What Is a Full Stack PM?</h3>
+          <p class="card-description">
+            Why the best PMs in 2026 write code, understand systems, and ship products themselves.
+            The end of product management as we knew it.
+          </p>
+          <a href="/blog/what-is-a-fullstack-pm" class="card-link">
+            Read More →
+          </a>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="card">
+          <h3 class="card-title">Why I'm Building in Public</h3>
+          <p class="card-description">
+            Sharing my journey from SDE to PM to builder.
+            How public accountability accelerates learning and attracts opportunities.
+          </p>
+          <a href="/blog/why-building-in-public" class="card-link">
+            Read More →
+          </a>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="card">
+          <h3 class="card-title">The PM Interview Framework</h3>
+          <p class="card-description">
+            A structured approach to product design, strategy, and execution interviews.
+            CIRCLES, STAR, and data-driven decision frameworks.
+          </p>
+          <a href="/blog/pm-interview-framework" class="card-link">
+            Read More →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="footer-text">
+        © 2026 Harsha Cheruku. Built with FastAPI, Tailwind, and HTMX.
+      </p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/hcheruku" class="footer-link">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/hcheruku" class="footer-link">LinkedIn</a></li>
+        <li><a href="/feed.xml" class="footer-link">RSS</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

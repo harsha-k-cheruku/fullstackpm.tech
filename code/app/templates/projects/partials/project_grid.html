@@ -1,0 +1,19 @@
+<!-- app/templates/projects/partials/project_grid.html -->
+{% for project in projects %}
+  {% include "partials/project_card.html" %}
+{% endfor %}
+{% if not projects %}
+<div class="col-span-full text-center py-12">
+  <p class="text-body" style="color: var(--color-text-tertiary);">No projects match this filter.</p>
+  <button hx-get="/api/projects/filter?status=all"
+          hx-target="#project-grid"
+          hx-swap="innerHTML"
+          class="mt-4 text-small font-medium transition-colors"
+          style="color: var(--color-accent);"
+          onmouseover="this.style.color='var(--color-accent-hover)'"
+          onmouseout="this.style.color='var(--color-accent)'"
+          aria-label="Show all projects">
+    Show all projects
+  </button>
+</div>
+{% endif %}

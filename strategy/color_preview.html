@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fullstackpm.tech — Your Color Palette Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, system-ui, sans-serif; padding: 2rem; background: #f7f7f7; color: #000000; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.1rem; margin: 2.5rem 0 1rem; color: #555555; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.5rem; }
+    p.subtitle { color: #777777; margin-bottom: 2rem; font-size: 0.9rem; }
+    .palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .swatch {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e0e0e0;
+      background: white;
+    }
+    .swatch-color {
+      height: 80px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.5rem;
+    }
+    .swatch-color span {
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(0,0,0,0.3);
+      color: white;
+    }
+    .swatch-info { padding: 0.75rem; }
+    .swatch-name { font-weight: 600; font-size: 0.85rem; }
+    .swatch-token { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: #999; margin-top: 0.15rem; }
+    .swatch-usage { font-size: 0.75rem; color: #777; margin-top: 0.25rem; }
+
+    .mode-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+    .mode-box { border-radius: 16px; padding: 2rem; }
+    .mode-box h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .mode-box .mode-label { font-size: 0.75rem; margin-bottom: 1.25rem; }
+    .mode-box .nav-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; }
+    .mode-box .nav-bar .logo { font-weight: 700; font-size: 0.85rem; }
+    .mode-box .nav-bar .nav-links { display: flex; gap: 1rem; font-size: 0.75rem; }
+    .mode-box .card { border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+    .mode-box .card h4 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .mode-box .card p { font-size: 0.8rem; margin-bottom: 0.75rem; line-height: 1.5; }
+    .mode-box .badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
+    .mode-box .badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 500;
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .mode-box .btn {
+      display: inline-block; padding: 0.5rem 1rem; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 500; text-decoration: none; margin-right: 0.5rem;
+    }
+    .mode-box .hero-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .mode-box .hero-headline { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .mode-box .hero-sub { font-size: 0.8rem; margin-bottom: 1rem; line-height: 1.5; }
+    .mode-box .footer-text { font-size: 0.7rem; margin-top: 1rem; }
+
+    .semantic-row { display: flex; gap: 1rem; margin: 1rem 0; flex-wrap: wrap; }
+    .semantic-badge { padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 500; }
+
+    .note { background: #fff; border: 1px solid #e0e0e0; border-left: 4px solid #2e8ece; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.85rem; color: #333; }
+    .note strong { color: #000; }
+
+    @media (max-width: 768px) { .mode-preview { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<h1>fullstackpm.tech — Your Color Palette</h1>
+<p class="subtitle">Your chosen colors mapped to the design system. Review and approve.</p>
+
+<!-- ==================== YOUR CORE COLORS ==================== -->
+<h2>Your 7 Colors</h2>
+<div class="palette">
+  <div class="swatch">
+    <div class="swatch-color" style="background: #000000;"><span style="background: rgba(255,255,255,0.2);">#000000</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Black</div>
+      <div class="swatch-usage">Text, headings, dark mode background</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #FFFFFF;"><span>#FFFFFF</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">White</div>
+      <div class="swatch-usage">Page background, text on dark</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #F7F7F7;"><span>#F7F7F7</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Off-White</div>
+      <div class="swatch-usage">Cards, secondary backgrounds</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #2E8ECE;"><span>#2E8ECE</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Blue (Accent)</div>
+      <div class="swatch-usage">CTAs, links, active states</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #27AE60;"><span>#27AE60</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Green (Success)</div>
+      <div class="swatch-usage">"Ship It", Live, Healthy</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #E74C3C;"><span>#E74C3C</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Red (Danger)</div>
+      <div class="swatch-usage">"Kill It", Errors, Critical</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #F1C40F;"><span>#F1C40F</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Yellow (Warning)</div>
+      <div class="swatch-usage">"Keep Testing", In Progress</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DERIVED: LIGHT MODE ==================== -->
+<h2>Full Token Map — Light Mode</h2>
+<p class="subtitle">Your 7 colors expanded into a complete system with derived shades for borders, secondary text, hover states, etc.</p>
+<div class="palette">
+  <div class="swatch">
+    <div class="swatch-color" style="background: #FFFFFF;"><span>#FFFFFF</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">bg-primary</div>
+      <div class="swatch-token">--color-bg-primary</div>
+      <div class="swatch-usage">Page background</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #F7F7F7;"><span>#F7F7F7</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">bg-secondary</div>
+      <div class="swatch-token">--color-bg-secondary</div>
+      <div class="swatch-usage">Cards, sections</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #EEEEEE;"><span>#EEEEEE</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">bg-tertiary</div>
+      <div class="swatch-token">--color-bg-tertiary</div>
+      <div class="swatch-usage">Hover, code blocks, tags</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #000000;"><span style="background: rgba(255,255,255,0.2);">#000000</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">text-primary</div>
+      <div class="swatch-token">--color-text-primary</div>
+      <div class="swatch-usage">Headings, body text</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #555555;"><span>#555555</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">text-secondary</div>
+      <div class="swatch-token">--color-text-secondary</div>
+      <div class="swatch-usage">Subtext, descriptions</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #999999;"><span>#999999</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">text-tertiary</div>
+      <div class="swatch-token">--color-text-tertiary</div>
+      <div class="swatch-usage">Placeholders, timestamps</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #E0E0E0;"><span>#E0E0E0</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">border</div>
+      <div class="swatch-token">--color-border</div>
+      <div class="swatch-usage">Card borders, dividers</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #CCCCCC;"><span>#CCCCCC</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">border-hover</div>
+      <div class="swatch-token">--color-border-hover</div>
+      <div class="swatch-usage">Border on hover</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DERIVED: DARK MODE ==================== -->
+<h2>Full Token Map — Dark Mode</h2>
+<div class="palette">
+  <div class="swatch">
+    <div class="swatch-color" style="background: #000000;"><span style="background: rgba(255,255,255,0.2);">#000000</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">bg-primary</div>
+      <div class="swatch-token">--color-bg-primary</div>
+      <div class="swatch-usage">Page background</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #111111;"><span>#111111</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">bg-secondary</div>
+      <div class="swatch-token">--color-bg-secondary</div>
+      <div class="swatch-usage">Cards, sections</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #1A1A1A;"><span>#1A1A1A</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">bg-tertiary</div>
+      <div class="swatch-token">--color-bg-tertiary</div>
+      <div class="swatch-usage">Hover, code blocks, tags</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #FFFFFF;"><span style="background: rgba(0,0,0,0.3);">#FFFFFF</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">text-primary</div>
+      <div class="swatch-token">--color-text-primary</div>
+      <div class="swatch-usage">Headings, body text</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #AAAAAA;"><span>#AAAAAA</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">text-secondary</div>
+      <div class="swatch-token">--color-text-secondary</div>
+      <div class="swatch-usage">Subtext, descriptions</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #666666;"><span>#666666</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">text-tertiary</div>
+      <div class="swatch-token">--color-text-tertiary</div>
+      <div class="swatch-usage">Placeholders, timestamps</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #222222;"><span>#222222</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">border</div>
+      <div class="swatch-token">--color-border</div>
+      <div class="swatch-usage">Card borders, dividers</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #333333;"><span>#333333</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">border-hover</div>
+      <div class="swatch-token">--color-border-hover</div>
+      <div class="swatch-usage">Border on hover</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ACCENT SYSTEM ==================== -->
+<h2>Accent Color System (Blue #2E8ECE)</h2>
+<div class="palette">
+  <div class="swatch">
+    <div class="swatch-color" style="background: #2E8ECE;"><span>#2E8ECE</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">accent</div>
+      <div class="swatch-usage">CTAs, links, active nav</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #2577AD;"><span>#2577AD</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">accent-hover</div>
+      <div class="swatch-usage">Hover on buttons/links</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #E8F4FB;"><span>#E8F4FB</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">accent-light</div>
+      <div class="swatch-usage">Accent bg (light mode)</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #1A3A52;"><span>#1A3A52</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">accent-dark</div>
+      <div class="swatch-usage">Accent bg (dark mode)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SEMANTIC SYSTEM ==================== -->
+<h2>Semantic Colors + Badges</h2>
+<div class="palette">
+  <div class="swatch">
+    <div class="swatch-color" style="background: #27AE60;"><span>#27AE60</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Success / Green</div>
+      <div class="swatch-usage">"Ship It", Live, Healthy</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #F1C40F;"><span>#F1C40F</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Warning / Yellow</div>
+      <div class="swatch-usage">"Keep Testing", In Progress</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #E74C3C;"><span>#E74C3C</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Danger / Red</div>
+      <div class="swatch-usage">"Kill It", Errors, Critical</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color" style="background: #2E8ECE;"><span>#2E8ECE</span></div>
+    <div class="swatch-info">
+      <div class="swatch-name">Info / Blue</div>
+      <div class="swatch-usage">Informational, Case Study</div>
+    </div>
+  </div>
+</div>
+
+<h2>Badges — Light Mode</h2>
+<div class="semantic-row">
+  <span class="semantic-badge" style="background: #D5F5E3; color: #1E8449;">Live</span>
+  <span class="semantic-badge" style="background: #FEF9E7; color: #9A7D0A;">In Progress</span>
+  <span class="semantic-badge" style="background: #FADBD8; color: #B03A2E;">Critical</span>
+  <span class="semantic-badge" style="background: #E8F4FB; color: #1A6B9C;">Case Study</span>
+  <span class="semantic-badge" style="background: #EEEEEE; color: #555555;">Planned</span>
+</div>
+
+<h2>Badges — Dark Mode</h2>
+<div class="semantic-row" style="background: #000000; padding: 1rem; border-radius: 12px;">
+  <span class="semantic-badge" style="background: #0B3D20; color: #58D68D;">Live</span>
+  <span class="semantic-badge" style="background: #4A3F00; color: #F4D03F;">In Progress</span>
+  <span class="semantic-badge" style="background: #4A1A15; color: #F1948A;">Critical</span>
+  <span class="semantic-badge" style="background: #1A3A52; color: #7EC8E3;">Case Study</span>
+  <span class="semantic-badge" style="background: #1A1A1A; color: #AAAAAA;">Planned</span>
+</div>
+
+<!-- ==================== FULL PAGE PREVIEWS ==================== -->
+<h2>Full Page Preview — Light Mode</h2>
+<div class="mode-box" style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 16px; margin-bottom: 2rem;">
+
+  <!-- Nav -->
+  <div class="nav-bar" style="background: #FFFFFF; border-bottom: 1px solid #E0E0E0;">
+    <div class="logo" style="color: #000000;">fullstackpm.tech</div>
+    <div class="nav-links">
+      <span style="color: #000000; border-bottom: 2px solid #2E8ECE; padding-bottom: 2px;">Home</span>
+      <span style="color: #555555;">Projects</span>
+      <span style="color: #555555;">Blog</span>
+      <span style="color: #555555;">About</span>
+      <span style="color: #555555;">Contact</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div style="padding: 2.5rem 1.5rem 1.5rem;">
+    <div class="hero-name" style="color: #000000;">Harsha Cheruku</div>
+    <div class="hero-headline" style="color: #2E8ECE;">Engineering Mind. Design Obsession.</div>
+    <div class="hero-sub" style="color: #555555; max-width: 500px;">Product leader with 16 years at Amazon, Walmart, and Verizon — now building AI-powered tools that prove the best PMs don't just manage products, they craft them.</div>
+    <div>
+      <a class="btn" style="background: #2E8ECE; color: white;">See My Projects</a>
+      <a class="btn" style="background: transparent; color: #555555; border: 1px solid #E0E0E0;">Read My Story</a>
+    </div>
+  </div>
+
+  <!-- Project Cards -->
+  <div style="padding: 0 1.5rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+    <div class="card" style="background: #F7F7F7; border: 1px solid #E0E0E0;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <h4 style="color: #000000;">Marketplace Dashboard</h4>
+        <span class="badge" style="background: #D5F5E3; color: #1E8449; font-size: 0.6rem;">Live</span>
+      </div>
+      <p style="color: #555555;">Analytics with synthetic 3P marketplace data</p>
+      <div class="badge-row">
+        <span class="badge" style="background: #EEEEEE; color: #555555;">FastAPI</span>
+        <span class="badge" style="background: #EEEEEE; color: #555555;">Pandas</span>
+        <span class="badge" style="background: #EEEEEE; color: #555555;">Chart.js</span>
+      </div>
+    </div>
+    <div class="card" style="background: #F7F7F7; border: 1px solid #E0E0E0;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <h4 style="color: #000000;">PM Interview Coach</h4>
+        <span class="badge" style="background: #FEF9E7; color: #9A7D0A; font-size: 0.6rem;">In Progress</span>
+      </div>
+      <p style="color: #555555;">AI-powered interview practice with feedback</p>
+      <div class="badge-row">
+        <span class="badge" style="background: #EEEEEE; color: #555555;">Claude API</span>
+        <span class="badge" style="background: #EEEEEE; color: #555555;">SQLite</span>
+      </div>
+    </div>
+    <div class="card" style="background: #F7F7F7; border: 1px solid #E0E0E0;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <h4 style="color: #000000;">A/B Test Analyzer</h4>
+        <span class="badge" style="background: #EEEEEE; color: #555555; font-size: 0.6rem;">Planned</span>
+      </div>
+      <p style="color: #555555;">Frequentist + Bayesian test analysis</p>
+      <div class="badge-row">
+        <span class="badge" style="background: #EEEEEE; color: #555555;">SciPy</span>
+        <span class="badge" style="background: #EEEEEE; color: #555555;">Chart.js</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="border-top: 1px solid #E0E0E0; padding: 1rem 1.5rem;">
+    <span class="footer-text" style="color: #999999;">Built with FastAPI + HTMX  ·  GitHub  ·  LinkedIn  ·  RSS</span>
+  </div>
+</div>
+
+<!-- ==================== DARK MODE PREVIEW ==================== -->
+<h2>Full Page Preview — Dark Mode</h2>
+<div class="mode-box" style="background: #000000; border: 1px solid #222222; border-radius: 16px; margin-bottom: 2rem;">
+
+  <!-- Nav -->
+  <div class="nav-bar" style="background: #000000; border-bottom: 1px solid #222222;">
+    <div class="logo" style="color: #FFFFFF;">fullstackpm.tech</div>
+    <div class="nav-links">
+      <span style="color: #FFFFFF; border-bottom: 2px solid #2E8ECE; padding-bottom: 2px;">Home</span>
+      <span style="color: #AAAAAA;">Projects</span>
+      <span style="color: #AAAAAA;">Blog</span>
+      <span style="color: #AAAAAA;">About</span>
+      <span style="color: #AAAAAA;">Contact</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div style="padding: 2.5rem 1.5rem 1.5rem;">
+    <div class="hero-name" style="color: #FFFFFF;">Harsha Cheruku</div>
+    <div class="hero-headline" style="color: #2E8ECE;">Engineering Mind. Design Obsession.</div>
+    <div class="hero-sub" style="color: #AAAAAA; max-width: 500px;">Product leader with 16 years at Amazon, Walmart, and Verizon — now building AI-powered tools that prove the best PMs don't just manage products, they craft them.</div>
+    <div>
+      <a class="btn" style="background: #2E8ECE; color: white;">See My Projects</a>
+      <a class="btn" style="background: transparent; color: #AAAAAA; border: 1px solid #222222;">Read My Story</a>
+    </div>
+  </div>
+
+  <!-- Project Cards -->
+  <div style="padding: 0 1.5rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+    <div class="card" style="background: #111111; border: 1px solid #222222;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <h4 style="color: #FFFFFF;">Marketplace Dashboard</h4>
+        <span class="badge" style="background: #0B3D20; color: #58D68D; font-size: 0.6rem;">Live</span>
+      </div>
+      <p style="color: #AAAAAA;">Analytics with synthetic 3P marketplace data</p>
+      <div class="badge-row">
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA;">FastAPI</span>
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA;">Pandas</span>
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA;">Chart.js</span>
+      </div>
+    </div>
+    <div class="card" style="background: #111111; border: 1px solid #222222;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <h4 style="color: #FFFFFF;">PM Interview Coach</h4>
+        <span class="badge" style="background: #4A3F00; color: #F4D03F; font-size: 0.6rem;">In Progress</span>
+      </div>
+      <p style="color: #AAAAAA;">AI-powered interview practice with feedback</p>
+      <div class="badge-row">
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA;">Claude API</span>
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA;">SQLite</span>
+      </div>
+    </div>
+    <div class="card" style="background: #111111; border: 1px solid #222222;">
+      <div style="display: flex; justify-content: space-between; align-items: start;">
+        <h4 style="color: #FFFFFF;">A/B Test Analyzer</h4>
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA; font-size: 0.6rem;">Planned</span>
+      </div>
+      <p style="color: #AAAAAA;">Frequentist + Bayesian test analysis</p>
+      <div class="badge-row">
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA;">SciPy</span>
+        <span class="badge" style="background: #1A1A1A; color: #AAAAAA;">Chart.js</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="border-top: 1px solid #222222; padding: 1rem 1.5rem;">
+    <span class="footer-text" style="color: #666666;">Built with FastAPI + HTMX  ·  GitHub  ·  LinkedIn  ·  RSS</span>
+  </div>
+</div>
+
+<!-- ==================== SOFTENED BLACK OPTION ==================== -->
+<h2>Optional: Softened Black vs Pure Black</h2>
+<div class="note">
+  <strong>Your call:</strong> Pure black (#000000) on pure white (#FFFFFF) gives maximum contrast (21:1 ratio). Some find this slightly harsh for long-form reading. Below is a comparison — pure black vs. a slightly softened #111111 for body text. Both are WCAG AAA compliant.
+</div>
+<div class="mode-preview">
+  <div class="mode-box" style="background: #FFFFFF; border: 1px solid #E0E0E0;">
+    <h3 style="color: #000000;">Pure Black Text (#000000)</h3>
+    <p style="color: #000000; font-size: 0.9rem; line-height: 1.7; margin-top: 0.75rem;">
+      Product Managers who want to become Full Stack PMs lack a clear roadmap. PMs don't know which technical skills matter most. SDEs don't know which product skills to develop first. Both groups need practical, experience-based guidance — not generic career advice.
+    </p>
+  </div>
+  <div class="mode-box" style="background: #FFFFFF; border: 1px solid #E0E0E0;">
+    <h3 style="color: #111111;">Softened Black Text (#111111)</h3>
+    <p style="color: #111111; font-size: 0.9rem; line-height: 1.7; margin-top: 0.75rem;">
+      Product Managers who want to become Full Stack PMs lack a clear roadmap. PMs don't know which technical skills matter most. SDEs don't know which product skills to develop first. Both groups need practical, experience-based guidance — not generic career advice.
+    </p>
+  </div>
+</div>
+
+<!-- ==================== TYPOGRAPHY PREVIEW ==================== -->
+<h2>Typography Preview (Inter + JetBrains Mono)</h2>
+<div style="background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 16px; padding: 2rem; margin: 1rem 0;">
+  <div style="font-size: 2.25rem; font-weight: 700; color: #000000; letter-spacing: -0.02em; margin-bottom: 0.5rem;">Heading 1 — Page Title</div>
+  <div style="font-size: 1.75rem; font-weight: 600; color: #000000; margin-bottom: 0.5rem;">Heading 2 — Section Title</div>
+  <div style="font-size: 1.375rem; font-weight: 600; color: #000000; margin-bottom: 0.5rem;">Heading 3 — Subsection</div>
+  <div style="font-size: 1.125rem; font-weight: 600; color: #000000; margin-bottom: 1rem;">Heading 4 — Card Title</div>
+  <p style="color: #000000; font-size: 1rem; line-height: 1.6; margin-bottom: 0.75rem;">Body text looks like this. Clean and readable at 16px with 1.6 line height. This is what most of the site content uses — project descriptions, blog paragraphs, about page narrative.</p>
+  <p style="color: #555555; font-size: 1rem; line-height: 1.6; margin-bottom: 0.75rem;">Secondary text in #555555 for descriptions and subtext that doesn't need full emphasis.</p>
+  <p style="color: #999999; font-size: 0.875rem; line-height: 1.5;">Tertiary text in #999999 at 14px — timestamps, metadata, captions, "5 min read".</p>
+  <p style="margin-top: 1rem;">
+    <a style="color: #2E8ECE; text-decoration: none; border-bottom: 1px solid #2E8ECE;">Links look like this</a>
+    <span style="color: #555555;"> — blue accent with underline on hover.</span>
+  </p>
+  <p style="margin-top: 0.75rem;">
+    <code style="background: #EEEEEE; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #000000;">inline_code</code>
+    <span style="color: #555555;"> uses JetBrains Mono on a light gray background.</span>
+  </p>
+</div>
+
+</body>
+</html>

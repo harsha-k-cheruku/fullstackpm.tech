@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="flex flex-col items-center justify-center py-24 text-center">
+  <p class="text-display mb-4" style="color: var(--color-text-tertiary);">404</p>
+  <h1 class="text-h2 mb-2" style="color: var(--color-text-primary);">Page not found</h1>
+  <p class="text-body mb-8" style="color: var(--color-text-secondary);">
+    The page you're looking for doesn't exist or has been moved.
+  </p>
+  <a href="/"
+     class="inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+     style="background-color: var(--color-accent);"
+     onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+     onmouseout="this.style.backgroundColor='var(--color-accent)'">
+    Back to Home
+  </a>
+</section>
+
+{% endblock %}

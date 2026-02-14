@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Option C  Serif + Mono</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F7F4EF;
+      --card: #FFFFFF;
+      --text: #1F1E1C;
+      --muted: #6B6862;
+      --accent: #D97706;
+      --border: #E5E2DB;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Libre Baskerville", serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .container { max-width: 1040px; margin: 0 auto; padding: 72px 24px 96px; }
+    .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted); }
+    .hero h1 { font-size: 46px; line-height: 1.2; margin: 16px 0; }
+    .hero p { font-size: 18px; color: var(--muted); max-width: 620px; }
+    .cta { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { font-family: "IBM Plex Mono", monospace; border-radius: 999px; padding: 12px 20px; border: 1px solid var(--border); background: var(--accent); color: #fff; }
+    .btn-outline { background: transparent; color: var(--text); }
+    .grid { margin-top: 48px; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    .meta { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent); }
+    .card h3 { margin: 12px 0 8px; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="eyebrow">FULL STACK PM</div>
+      <h1>Strategy, craft, and the quiet discipline of building the right thing.</h1>
+      <p>Case studies, essays, and tooling experiments for AI-first product leadership.</p>
+      <div class="cta">
+        <button class="btn">See the Work</button>
+        <button class="btn btn-outline">About the Journey</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="meta">CASE STUDY</div>
+        <h3>Marketplace Seller Growth</h3>
+        <p>Reframing onboarding to reduce time-to-first-sale and improve retention.</p>
+      </div>
+      <div class="card">
+        <div class="meta">AI PRODUCT</div>
+        <h3>Interview Practice Studio</h3>
+        <p>Structured feedback loops for PM candidates using AI evaluation.</p>
+      </div>
+      <div class="card">
+        <div class="meta">WRITING</div>
+        <h3>Building in Public</h3>
+        <p>Why sharing the messy middle creates better products and teams.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

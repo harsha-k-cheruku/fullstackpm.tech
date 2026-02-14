@@ -1,0 +1,79 @@
+<!-- app/templates/projects/gallery.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="flex items-center gap-3 mb-4">
+    <!-- Heroicon: rocket-launch -->
+    <svg class="h-6 w-6" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+    </svg>
+    <h1 class="text-h1" style="color: var(--color-text-primary);">Projects</h1>
+  </div>
+  <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">
+    Things I've built to demonstrate product + technical skills.
+  </p>
+
+  <!-- Filter UI -->
+  <div class="mb-8 flex flex-wrap items-center gap-3">
+    <span class="text-small font-medium" style="color: var(--color-text-tertiary);">Filter by status:</span>
+    <button hx-get="/api/projects/filter?status=all"
+            hx-target="#project-grid"
+            hx-swap="innerHTML"
+            hx-indicator="#filter-spinner"
+            class="rounded-full px-4 py-1.5 text-sm font-medium transition-all"
+            style="background-color: var(--color-accent); color: white;">
+      All
+    </button>
+    <button hx-get="/api/projects/filter?status=live"
+            hx-target="#project-grid"
+            hx-swap="innerHTML"
+            hx-indicator="#filter-spinner"
+            class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
+            style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
+            onmouseover="this.style.backgroundColor='var(--color-bg-secondary)'"
+            onmouseout="this.style.backgroundColor='var(--color-bg-tertiary)'">
+      Live
+    </button>
+    <button hx-get="/api/projects/filter?status=in progress"
+            hx-target="#project-grid"
+            hx-swap="innerHTML"
+            hx-indicator="#filter-spinner"
+            class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
+            style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
+            onmouseover="this.style.backgroundColor='var(--color-bg-secondary)'"
+            onmouseout="this.style.backgroundColor='var(--color-bg-tertiary)'">
+      In Progress
+    </button>
+    <button hx-get="/api/projects/filter?status=planned"
+            hx-target="#project-grid"
+            hx-swap="innerHTML"
+            hx-indicator="#filter-spinner"
+            class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
+            style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
+            onmouseover="this.style.backgroundColor='var(--color-bg-secondary)'"
+            onmouseout="this.style.backgroundColor='var(--color-bg-tertiary)'">
+      Planned
+    </button>
+    <span id="filter-spinner" class="htmx-indicator">
+      <svg class="animate-spin h-4 w-4" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+    </span>
+  </div>
+
+  {% if projects %}
+  <div id="project-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {% include "projects/partials/project_grid.html" %}
+  </div>
+  {% else %}
+  <div class="rounded-xl border p-8 text-center"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <p class="text-body" style="color: var(--color-text-secondary);">
+      No projects yet. Check back soon for new builds and case studies.
+    </p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

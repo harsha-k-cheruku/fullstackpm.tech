@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="max-w-4xl">
+    <h1 class="text-h1 mb-6" style="color: var(--color-text-primary);">Resume</h1>
+    <p class="text-body-lg" style="color: var(--color-text-secondary);">
+      Product leader focused on AI-powered marketplaces, advertising platforms, and data-driven growth. I build cross-functional momentum from strategy to execution.
+    </p>
+  </div>
+</section>
+
+<section class="pb-16">
+  <div class="flex items-center gap-3 mb-8">
+    <svg class="h-6 w-6" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 6V5.25A2.25 2.25 0 0 1 9.75 3h4.5A2.25 2.25 0 0 1 16.5 5.25V6m-9 0h9m-9 0H6.75A2.25 2.25 0 0 0 4.5 8.25v9A2.25 2.25 0 0 0 6.75 19.5h10.5A2.25 2.25 0 0 0 19.5 17.25v-9A2.25 2.25 0 0 0 17.25 6H16.5m-9 0v.75A.75.75 0 0 0 8.25 7.5h7.5a.75.75 0 0 0 .75-.75V6" />
+    </svg>
+    <h2 class="text-h2" style="color: var(--color-text-primary);">Experience</h2>
+  </div>
+
+  {% set experiences = [
+    {
+      "company": "Walmart Global Tech",
+      "title": "Sr. Product Manager, Marketplace",
+      "dates": "Oct 2024 – Present",
+      "location": "Sunnyvale, CA",
+      "bullets": [
+        "Building AI-powered seller tools for Walmart Marketplace (370K+ businesses)",
+        "Leading cross-functional team across Engineering, Design, Data Science, and Legal",
+        "Driving GenAI adoption for seller onboarding and product listing optimization",
+        "Defining OKRs and success metrics for seller growth initiatives"
+      ],
+      "skills": ["Product Strategy", "Marketplace", "GenAI", "A/B Testing", "SQL"],
+      "is_current": true
+    },
+    {
+      "company": "Amazon",
+      "title": "Product Manager, Advertising",
+      "dates": "Aug 2022 – Apr 2024",
+      "location": "Seattle, WA",
+      "bullets": [
+        "Launched self-service DSP campaigns reaching 22M+ customers",
+        "Built ML-powered audience targeting reducing CPA by 18%",
+        "Owned $300M+ annual advertising revenue pipeline",
+        "Partnered with analytics and finance to improve forecasting and ROI measurement"
+      ],
+      "skills": ["Advertising", "ML/AI", "Audience Targeting", "Revenue Growth"],
+      "is_current": false
+    },
+    {
+      "company": "Delphi Consulting (Amazon contract)",
+      "title": "Sr. PM Consultant, Ads",
+      "dates": "Jun 2021 – Aug 2022",
+      "location": "Seattle, WA",
+      "bullets": [
+        "Led Amazon Marketing Cloud analytics platform for enterprise advertisers",
+        "Designed cross-channel attribution models",
+        "Translated advertiser requirements into analytics workflows and product releases"
+      ],
+      "skills": ["Analytics", "Attribution", "Enterprise SaaS"],
+      "is_current": false
+    },
+    {
+      "company": "Verizon",
+      "title": "Product Manager, Digital Commerce",
+      "dates": "Jun 2018 – Jun 2021",
+      "location": "Basking Ridge, NJ",
+      "bullets": [
+        "Managed B2B e-commerce platform serving Fortune 500 clients",
+        "Led platform migration from monolith to microservices",
+        "Increased conversion rate by 24% through UX optimization",
+        "Ran backlog prioritization, sprint planning, and acceptance criteria across teams"
+      ],
+      "skills": ["E-commerce", "B2B", "Microservices", "UX"],
+      "is_current": false
+    },
+    {
+      "company": "VF Corporation",
+      "title": "Product Analyst",
+      "dates": "May 2016 – May 2018",
+      "location": "Greensboro, NC",
+      "bullets": [
+        "Built analytics dashboards for supply chain optimization",
+        "Led data migration for ERP consolidation across 30+ brands",
+        "Enabled inventory and merchandising teams with self-serve reporting"
+      ],
+      "skills": ["Analytics", "Supply Chain", "ERP", "Tableau"],
+      "is_current": false
+    },
+    {
+      "company": "Wipro Technologies",
+      "title": "Software Development Engineer",
+      "dates": "Aug 2008 – Jun 2014",
+      "location": "Bengaluru, India",
+      "bullets": [
+        "Full-stack development on enterprise Java/J2EE applications",
+        "Technical lead for 5-person engineering team",
+        "Owned release quality and performance tuning for core systems"
+      ],
+      "skills": ["Java", "J2EE", "Oracle DB", "Full-Stack Development"],
+      "is_current": false
+    }
+  ] %}
+
+  <div class="relative">
+    <div class="hidden sm:block absolute left-3 top-0 h-full w-[2px]" style="background-color: var(--color-border);"></div>
+    <div class="space-y-10">
+      {% for role in experiences %}
+      <article class="relative border-l-2 pl-4 sm:border-l-0 sm:pl-10" style="border-color: var(--color-accent);">
+        <div class="hidden sm:flex absolute left-3 top-1.5 h-2 w-2 -translate-x-1/2 rounded-full"
+             style="background-color: {{ 'var(--color-accent)' if role.is_current else 'var(--color-border)' }};"></div>
+        <div class="mb-2">
+          <h3 class="text-h3" style="color: var(--color-text-primary);">{{ role.company }}</h3>
+          <p class="text-h4" style="color: var(--color-accent);">{{ role.title }}</p>
+          <p class="text-small" style="color: var(--color-text-tertiary);">{{ role.dates }} · {{ role.location }}</p>
+        </div>
+        <ul class="mb-4 list-disc pl-5" style="color: var(--color-text-secondary);">
+          {% for bullet in role.bullets %}
+          <li class="text-body">{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        <div class="flex flex-wrap gap-2">
+          {% for skill in role.skills %}
+          <span class="text-xs rounded-full px-3 py-1 font-medium"
+                style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+            {{ skill }}
+          </span>
+          {% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="pb-16">
+  <div class="flex items-center gap-3 mb-8">
+    <svg class="h-6 w-6" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.035-.259a3.375 3.375 0 0 0 2.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423L16.5 15.75l.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+    </svg>
+    <h2 class="text-h2" style="color: var(--color-text-primary);">Skills</h2>
+  </div>
+
+  {% set skill_groups = [
+    {"title": "Product", "skills": ["Strategy", "Roadmap", "GTM", "Pricing", "Marketplace", "A/B Testing"]},
+    {"title": "Technical", "skills": ["Python", "SQL", "R", "FastAPI", "AWS", "Tableau", "Looker"]},
+    {"title": "AI", "skills": ["Claude API", "OpenAI", "Prompt Engineering", "GenAI", "HeyGen", "MidJourney"]},
+    {"title": "Leadership", "skills": ["Cross-functional", "Coaching", "Stakeholder Management", "P&L"]}
+  ] %}
+
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    {% for group in skill_groups %}
+    <div class="rounded-xl border p-6"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+      <h3 class="text-h4 mb-4" style="color: var(--color-text-primary);">{{ group.title }}</h3>
+      <div class="flex flex-wrap gap-2">
+        {% for skill in group.skills %}
+        <span class="text-xs rounded-full px-3 py-1 font-medium"
+              style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+          {{ skill }}
+        </span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="pb-16">
+  <div class="flex items-center gap-3 mb-8">
+    <svg class="h-6 w-6" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 0 0 7.5 4.189 60.39 60.39 0 0 0 7.5-4.189M4.26 10.147a1.5 1.5 0 0 1-.11-2.427 60.28 60.28 0 0 1 7.5-4.189 60.43 60.43 0 0 1 7.5 4.189 1.5 1.5 0 0 1-.11 2.427 60.54 60.54 0 0 1-7.5 4.189 60.24 60.24 0 0 1-7.5-4.189ZM6 12.75v5.25A2.25 2.25 0 0 0 8.25 20.25h7.5A2.25 2.25 0 0 0 18 18v-5.25m-12 0a60.51 60.51 0 0 0 6 2.631m6-2.631a60.51 60.51 0 0 1-6 2.631m0 0a60.51 60.51 0 0 0 6 2.631m-6-2.631v5.25" />
+    </svg>
+    <h2 class="text-h2" style="color: var(--color-text-primary);">Education & Certifications</h2>
+  </div>
+
+  <div class="flex flex-wrap gap-3">
+    {% for badge in ["Duke MBA", "MIT Data Science", "Columbia Executive Programs", "JNTU CS", "AWS Cloud Practitioner"] %}
+    <span class="text-sm rounded-full px-4 py-2 font-medium"
+          style="background-color: var(--color-accent-light); color: var(--color-accent);">
+      {{ badge }}
+    </span>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="pb-20">
+  <div class="flex justify-center">
+    <a href="/static/resume.pdf"
+       class="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-body font-semibold text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2"
+       style="background-color: var(--color-accent);"
+       onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+       onmouseout="this.style.backgroundColor='var(--color-accent)'"
+       download>
+      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0 3.75-3.75M12 15l-3.75-3.75M3.75 19.5h16.5" />
+      </svg>
+      Download Resume
+    </a>
+  </div>
+</section>
+{% endblock %}

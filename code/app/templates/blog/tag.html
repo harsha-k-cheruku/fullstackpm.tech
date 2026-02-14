@@ -1,0 +1,89 @@
+<!-- app/templates/blog/tag.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="flex items-center gap-3 mb-3">
+    <!-- Heroicon: tag -->
+    <svg class="h-6 w-6" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l7.182 7.182a2.25 2.25 0 0 0 3.182 0l4.318-4.318a2.25 2.25 0 0 0 0-3.182L11.159 3.659A2.25 2.25 0 0 0 9.568 3Z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+    </svg>
+    <h1 class="text-h1" style="color: var(--color-text-primary);">Posts tagged: {{ tag }}</h1>
+  </div>
+  <a href="/blog"
+     class="text-small font-medium transition-colors"
+     style="color: var(--color-accent);"
+     onmouseover="this.style.color='var(--color-accent-hover)'"
+     onmouseout="this.style.color='var(--color-accent)'">
+    Back to Blog
+  </a>
+
+  {% if posts %}
+  <div class="mt-10 space-y-6">
+    {% for post in posts %}
+    <article class="border-b pb-6" style="border-color: var(--color-border);">
+      <h2 class="text-h3 mb-2">
+        <a href="/blog/{{ post.slug }}"
+           class="transition-colors"
+           style="color: var(--color-text-primary);"
+           onmouseover="this.style.color='var(--color-accent)'"
+           onmouseout="this.style.color='var(--color-text-primary)'">
+          {{ post.title }}
+        </a>
+      </h2>
+      <p class="text-small mb-3" style="color: var(--color-text-tertiary);">
+        {{ post.date.strftime('%b %d, %Y') }} &middot; {{ post.reading_time }}
+      </p>
+      <p class="text-body mb-4 line-clamp-2" style="color: var(--color-text-secondary);">
+        {{ post.excerpt }}
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {% for tag in post.tags %}
+        <a href="/blog/tag/{{ tag }}"
+           class="text-xs rounded-full px-3 py-1 font-medium transition-colors"
+           style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
+           onmouseover="this.style.color='var(--color-text-primary)'"
+           onmouseout="this.style.color='var(--color-text-secondary)'">
+          {{ tag }}
+        </a>
+        {% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <div class="mt-8 flex items-center justify-between">
+    <div>
+      {% if has_newer %}
+      <a href="/blog/tag/{{ tag }}?page={{ page - 1 }}"
+         class="text-small font-medium transition-colors"
+         style="color: var(--color-accent);"
+         onmouseover="this.style.color='var(--color-accent-hover)'"
+         onmouseout="this.style.color='var(--color-accent)'">
+        &laquo; Newer
+      </a>
+      {% endif %}
+    </div>
+    <div>
+      {% if has_older %}
+      <a href="/blog/tag/{{ tag }}?page={{ page + 1 }}"
+         class="text-small font-medium transition-colors"
+         style="color: var(--color-accent);"
+         onmouseover="this.style.color='var(--color-accent-hover)'"
+         onmouseout="this.style.color='var(--color-accent)'">
+        Older &raquo;
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div class="mt-10 rounded-xl border p-8 text-center"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <p class="text-body" style="color: var(--color-text-secondary);">
+      No posts found for this tag yet.
+    </p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}
