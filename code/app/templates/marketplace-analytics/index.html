@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Marketplace Analytics — fullstackpm.tech{% endblock %}
+
+{% block content %}
+<section class="py-12">
+  <div class="mb-8">
+    <p class="text-small uppercase tracking-[0.2em]" style="color: var(--color-text-tertiary);">Tools</p>
+    <h1 class="text-h2 mt-2">Marketplace Analytics</h1>
+    <p class="text-body mt-2 max-w-2xl" style="color: var(--color-text-secondary);">
+      Track revenue trends, category performance, and cohort health in one clean dashboard.
+    </p>
+  </div>
+
+  {% include "marketplace-analytics/partials/filters.html" %}
+
+  <div id="dashboard-content" class="mt-6">
+    {% include "marketplace-analytics/partials/dashboard.html" %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="/static/js/charts.js"></script>
+{% endblock %}

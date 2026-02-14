@@ -1,0 +1,18 @@
+<div class="mt-6 rounded-xl border p-4" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+  <div class="flex items-center justify-between">
+    <div>
+      <h2 class="text-h4">Revenue Trends</h2>
+      <p class="text-small" style="color: var(--color-text-tertiary);">Last 12 weeks</p>
+    </div>
+    <span class="text-xs" style="color: var(--color-text-tertiary);">{{ date_range }} day window</span>
+  </div>
+  {% set labels = snapshot.trends | map(attribute='label') | list %}
+  {% set values = snapshot.trends | map(attribute='revenue') | list %}
+  <div class="mt-4">
+    <canvas id="revenue-chart"
+            data-chart="revenue"
+            data-labels='{{ labels | tojson }}'
+            data-values='{{ values | tojson }}'
+            height="120"></canvas>
+  </div>
+</div>

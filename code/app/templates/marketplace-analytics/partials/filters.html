@@ -1,0 +1,42 @@
+<form id="marketplace-filters"
+      class="flex flex-col gap-4 rounded-xl border p-4 md:flex-row md:items-end"
+      style="border-color: var(--color-border); background-color: var(--color-bg-secondary);"
+      hx-get="/tools/marketplace-analytics/partials/dashboard"
+      hx-target="#dashboard-content"
+      hx-swap="innerHTML"
+      hx-trigger="change">
+  <div class="flex-1">
+    <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Date Range</label>
+    <select name="date_range" class="mt-2 w-full rounded-lg border px-3 py-2 text-sm"
+            style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+      {% for option in [30, 90, 365] %}
+      <option value="{{ option }}" {% if date_range == option %}selected{% endif %}>
+        Last {{ option }} days
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="flex-1">
+    <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Category</label>
+    <select name="category" class="mt-2 w-full rounded-lg border px-3 py-2 text-sm"
+            style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+      <option value="all" {% if category == "all" %}selected{% endif %}>All categories</option>
+      {% for option in snapshot.available_categories %}
+      <option value="{{ option }}" {% if category == option %}selected{% endif %}>{{ option }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <input type="hidden" name="sort_by" id="sort-by" value="{{ sort_by }}">
+  <input type="hidden" name="sort_dir" id="sort-dir" value="{{ sort_dir }}">
+  <div class="flex items-center gap-3">
+    <a id="export-link"
+       href="/tools/marketplace-analytics/export?date_range={{ date_range }}&category={{ category }}&sort_by={{ sort_by }}&sort_dir={{ sort_dir }}"
+       class="rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+       style="border-color: var(--color-border); color: var(--color-text-primary);"
+       onmouseover="this.style.borderColor='var(--color-accent)'; this.style.color='var(--color-accent)'"
+       onmouseout="this.style.borderColor='var(--color-border)'; this.style.color='var(--color-text-primary)'">
+      Export CSV
+    </a>
+    <span class="text-xs" style="color: var(--color-text-tertiary);">Auto-updates</span>
+  </div>
+</form>

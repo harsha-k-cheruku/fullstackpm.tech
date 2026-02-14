@@ -1,0 +1,10 @@
+<div id="dashboard-content-inner"
+     data-sort-by="{{ sort_by }}"
+     data-sort-dir="{{ sort_dir }}"
+     data-date-range="{{ date_range }}"
+     data-category="{{ category }}">
+  {% include "marketplace-analytics/partials/overview_cards.html" %}
+  {% include "marketplace-analytics/partials/revenue_chart.html" %}
+  {% include "marketplace-analytics/partials/category_table.html" %}
+  {% include "marketplace-analytics/partials/cohort_table.html" %}
+</div>

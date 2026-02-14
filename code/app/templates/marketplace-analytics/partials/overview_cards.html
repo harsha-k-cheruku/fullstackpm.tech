@@ -1,0 +1,28 @@
+<div class="grid gap-4 md:grid-cols-4">
+  <div class="rounded-xl border p-4" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Total Revenue</p>
+    <p class="text-h3 mt-2">${{ "%.0f" | format(snapshot.overview.total_revenue) }}</p>
+    <p class="text-xs mt-1" style="color: var(--color-text-tertiary);">
+      {% if snapshot.overview.revenue_delta_pct is not none %}
+        {{ "%.1f" | format(snapshot.overview.revenue_delta_pct) }}% vs prior period
+      {% else %}
+        No prior data
+      {% endif %}
+    </p>
+  </div>
+  <div class="rounded-xl border p-4" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Active Listings</p>
+    <p class="text-h3 mt-2">{{ snapshot.overview.active_listings }}</p>
+    <p class="text-xs mt-1" style="color: var(--color-text-tertiary);">Filtered inventory</p>
+  </div>
+  <div class="rounded-xl border p-4" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Average Rating</p>
+    <p class="text-h3 mt-2">{{ "%.2f" | format(snapshot.overview.average_rating) }}</p>
+    <p class="text-xs mt-1" style="color: var(--color-text-tertiary);">Across listings</p>
+  </div>
+  <div class="rounded-xl border p-4" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Satisfaction</p>
+    <p class="text-h3 mt-2">{{ snapshot.overview.satisfaction_score }}</p>
+    <p class="text-xs mt-1" style="color: var(--color-text-tertiary);">NPS-style index</p>
+  </div>
+</div>

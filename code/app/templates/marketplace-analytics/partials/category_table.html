@@ -1,0 +1,52 @@
+<div class="mt-6 rounded-xl border p-4" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+  <div class="flex items-center justify-between">
+    <div>
+      <h2 class="text-h4">Category Performance</h2>
+      <p class="text-small" style="color: var(--color-text-tertiary);">Sorted by {{ sort_by }}</p>
+    </div>
+  </div>
+  {% macro sort_link(label, key) %}
+    {% set next_dir = 'asc' if sort_by == key and sort_dir == 'desc' else 'desc' %}
+    <button class="flex items-center gap-1 text-left text-xs font-semibold uppercase tracking-[0.12em]"
+            hx-get="/tools/marketplace-analytics/partials/dashboard"
+            hx-target="#dashboard-content"
+            hx-swap="innerHTML"
+            hx-include="#marketplace-filters"
+            hx-vals='{"sort_by": "{{ key }}", "sort_dir": "{{ next_dir }}"}'>
+      {{ label }}
+      {% if sort_by == key %}
+        <span>{% if sort_dir == 'desc' %}↓{% else %}↑{% endif %}</span>
+      {% endif %}
+    </button>
+  {% endmacro %}
+  <div class="mt-4 overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead style="background-color: var(--color-bg-secondary);">
+        <tr>
+          <th class="px-3 py-2 text-left">{{ sort_link('Category', 'category') }}</th>
+          <th class="px-3 py-2 text-left">{{ sort_link('Listings', 'listings') }}</th>
+          <th class="px-3 py-2 text-left">{{ sort_link('Revenue', 'revenue') }}</th>
+          <th class="px-3 py-2 text-left">{{ sort_link('Avg Price', 'price') }}</th>
+          <th class="px-3 py-2 text-left">{{ sort_link('Avg Rating', 'rating') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in snapshot.categories %}
+        <tr class="border-t" style="border-color: var(--color-border);">
+          <td class="px-3 py-2">{{ row.category }}</td>
+          <td class="px-3 py-2">{{ row.listings }}</td>
+          <td class="px-3 py-2">${{ "%.0f" | format(row.revenue) }}</td>
+          <td class="px-3 py-2">${{ "%.2f" | format(row.avg_price) }}</td>
+          <td class="px-3 py-2">{{ "%.2f" | format(row.avg_rating) }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="5" class="px-3 py-6 text-center text-sm" style="color: var(--color-text-tertiary);">
+            No category data for this filter.
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
