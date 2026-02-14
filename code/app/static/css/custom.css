@@ -194,7 +194,13 @@
 }
 
 .prose li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.prose ol li,
+.prose ul li {
+  display: list-item;
 }
 
 .prose blockquote {
@@ -255,6 +261,35 @@
 
 .prose tr:nth-child(even) {
   background-color: var(--color-bg-secondary);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+.prose del,
+.prose s {
+  text-decoration: line-through;
+  color: var(--color-text-tertiary);
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose ul ul,
+.prose ol ol,
+.prose ul ol,
+.prose ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
 
 /* Line clamp utility */

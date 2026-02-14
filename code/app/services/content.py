@@ -121,7 +121,19 @@ class ContentService:
         return sorted(projects, key=lambda item: (item.display_order, item.title.lower()))
 
     def _render_markdown(self, content: str) -> str:
-        return markdown.markdown(content, extensions=["fenced_code", "codehilite"])
+        """Render markdown to HTML with extended formatting support."""
+        return markdown.markdown(
+            content,
+            extensions=[
+                "extra",           # Includes: tables, strikethrough, attr_list, fenced_code, etc.
+                "codehilite",      # Syntax highlighting for code blocks
+                "toc",             # Table of contents support
+                "smarty",          # Smart typography (quotes, dashes, etc.)
+            ],
+            extension_configs={
+                "codehilite": {"use_pygments": False},  # Fallback if pygments not available
+            },
+        )
 
     def _calculate_reading_time(self, content: str) -> str:
         words = len(re.findall(r"\w+", content))
