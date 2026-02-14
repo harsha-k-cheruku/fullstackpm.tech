@@ -2,11 +2,11 @@
 title: "fullstackpm.tech"
 description: "Portfolio site showcasing AI PM projects, writing, and career highlights."
 tech_stack: [FastAPI, Jinja2, Tailwind CSS, HTMX, Markdown]
-status: "in_progress"
+status: "shipped"
 featured: true
 display_order: 1
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
-live_url: ""
+live_url: "https://www.fullstackpm.tech"
 ---
 ## Problem
 Product work often disappears into decks and internal documents. I wanted a portfolio that demonstrates product thinking through shipped artifacts: written analysis, interactive project case studies, and working prototypes. The goal was to create a site that feels like a product — not just a profile.
