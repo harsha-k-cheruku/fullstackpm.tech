@@ -32,6 +32,7 @@ async def projects(request: Request) -> HTMLResponse:
             title="Projects  fullstackpm.tech",
             current_page="/projects",
             projects=project_list,
+            active_filter="all",
         ),
     )
 
@@ -58,23 +59,24 @@ async def project_detail(request: Request, slug: str) -> HTMLResponse:
     )
 
 
-# HTMX Endpoints  
+# HTMX Endpoints
 @router.get("/api/projects/filter", response_class=HTMLResponse)
 async def projects_filter_htmx(request: Request, status: str = "all") -> HTMLResponse:
     """HTMX endpoint for filtering projects by status."""
     content_service = request.app.state.content_service
     project_list = content_service.get_projects()
-    
+
     # Filter by status if not "all"
     if status != "all":
         # Normalize status: replace underscores and spaces, then compare
         normalized_filter = status.lower().replace("_", "").replace(" ", "")
         project_list = [p for p in project_list if p.status.lower().replace("_", "").replace(" ", "") == normalized_filter]
-    
+
     return templates.TemplateResponse(
         "projects/partials/project_grid.html",
         _ctx(
             request,
             projects=project_list,
+            active_filter=status,
         ),
     )

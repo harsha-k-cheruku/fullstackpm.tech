@@ -22,37 +22,39 @@
             hx-swap="innerHTML"
             hx-indicator="#filter-spinner"
             class="rounded-full px-4 py-1.5 text-sm font-medium transition-all"
-            style="background-color: var(--color-accent); color: white;">
+            style="background-color: {% if active_filter == 'all' %}var(--color-accent){% else %}var(--color-bg-tertiary){% endif %}; color: {% if active_filter == 'all' %}white{% else %}var(--color-text-secondary){% endif %};"
+            onmouseover="{% if active_filter != 'all' %}this.style.backgroundColor='var(--color-bg-secondary)'{% endif %}"
+            onmouseout="{% if active_filter != 'all' %}this.style.backgroundColor='var(--color-bg-tertiary)'{% endif %}">
       All
     </button>
     <button hx-get="/api/projects/filter?status=live"
             hx-target="#project-grid"
             hx-swap="innerHTML"
             hx-indicator="#filter-spinner"
-            class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
-            style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
-            onmouseover="this.style.backgroundColor='var(--color-bg-secondary)'"
-            onmouseout="this.style.backgroundColor='var(--color-bg-tertiary)'">
+            class="rounded-full px-4 py-1.5 text-sm font-medium transition-all"
+            style="background-color: {% if active_filter == 'live' %}var(--color-accent){% else %}var(--color-bg-tertiary){% endif %}; color: {% if active_filter == 'live' %}white{% else %}var(--color-text-secondary){% endif %};"
+            onmouseover="{% if active_filter != 'live' %}this.style.backgroundColor='var(--color-bg-secondary)'{% endif %}"
+            onmouseout="{% if active_filter != 'live' %}this.style.backgroundColor='var(--color-bg-tertiary)'{% endif %}">
       Live
     </button>
     <button hx-get="/api/projects/filter?status=in progress"
             hx-target="#project-grid"
             hx-swap="innerHTML"
             hx-indicator="#filter-spinner"
-            class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
-            style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
-            onmouseover="this.style.backgroundColor='var(--color-bg-secondary)'"
-            onmouseout="this.style.backgroundColor='var(--color-bg-tertiary)'">
+            class="rounded-full px-4 py-1.5 text-sm font-medium transition-all"
+            style="background-color: {% if active_filter == 'in progress' %}var(--color-accent){% else %}var(--color-bg-tertiary){% endif %}; color: {% if active_filter == 'in progress' %}white{% else %}var(--color-text-secondary){% endif %};"
+            onmouseover="{% if active_filter != 'in progress' %}this.style.backgroundColor='var(--color-bg-secondary)'{% endif %}"
+            onmouseout="{% if active_filter != 'in progress' %}this.style.backgroundColor='var(--color-bg-tertiary)'{% endif %}">
       In Progress
     </button>
     <button hx-get="/api/projects/filter?status=planned"
             hx-target="#project-grid"
             hx-swap="innerHTML"
             hx-indicator="#filter-spinner"
-            class="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
-            style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
-            onmouseover="this.style.backgroundColor='var(--color-bg-secondary)'"
-            onmouseout="this.style.backgroundColor='var(--color-bg-tertiary)'">
+            class="rounded-full px-4 py-1.5 text-sm font-medium transition-all"
+            style="background-color: {% if active_filter == 'planned' %}var(--color-accent){% else %}var(--color-bg-tertiary){% endif %}; color: {% if active_filter == 'planned' %}white{% else %}var(--color-text-secondary){% endif %};"
+            onmouseover="{% if active_filter != 'planned' %}this.style.backgroundColor='var(--color-bg-secondary)'{% endif %}"
+            onmouseout="{% if active_filter != 'planned' %}this.style.backgroundColor='var(--color-bg-tertiary)'{% endif %}">
       Planned
     </button>
     <span id="filter-spinner" class="htmx-indicator">
@@ -76,4 +78,29 @@
   </div>
   {% endif %}
 </section>
+
+<script>
+document.addEventListener('htmx:afterSettle', function(evt) {
+  if (evt.detail.xhr && evt.detail.xhr.responseURL.includes('/api/projects/filter')) {
+    // Get the status parameter from the request URL
+    const url = new URL(evt.detail.xhr.responseURL);
+    const activeStatus = url.searchParams.get('status') || 'all';
+
+    // Update all filter buttons
+    document.querySelectorAll('button[hx-get*="/api/projects/filter"]').forEach(btn => {
+      const btnStatus = btn.getAttribute('hx-get').match(/status=([^&]*)/)[1];
+
+      if (btnStatus === activeStatus) {
+        // Active button
+        btn.style.backgroundColor = 'var(--color-accent)';
+        btn.style.color = 'white';
+      } else {
+        // Inactive button
+        btn.style.backgroundColor = 'var(--color-bg-tertiary)';
+        btn.style.color = 'var(--color-text-secondary)';
+      }
+    });
+  }
+});
+</script>
 {% endblock %}

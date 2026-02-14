@@ -2,7 +2,7 @@
 title: "PM Interview Coach"
 description: "AI-powered practice tool using real PM frameworks and ChatGPT evaluation."
 tech_stack: [FastAPI, OpenAI ChatGPT, HTMX, Tailwind CSS, SQLite]
-status: "shipping"
+status: "live"
 featured: true
 display_order: 2
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"

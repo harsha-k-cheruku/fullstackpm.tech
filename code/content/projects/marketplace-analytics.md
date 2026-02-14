@@ -2,7 +2,7 @@
 title: "Marketplace Analytics Dashboard"
 description: "Interactive seller performance analytics with revenue trends, category analysis, and cohort insights."
 tech_stack: [FastAPI, Python, Pandas, Chart.js, HTMX, SQLite]
-status: "shipping"
+status: "live"
 featured: true
 display_order: 3
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"

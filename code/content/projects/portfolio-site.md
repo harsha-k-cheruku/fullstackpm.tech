@@ -2,7 +2,7 @@
 title: "fullstackpm.tech"
 description: "Portfolio site showcasing AI PM projects, writing, and career highlights."
 tech_stack: [FastAPI, Jinja2, Tailwind CSS, HTMX, Markdown]
-status: "shipped"
+status: "live"
 featured: true
 display_order: 1
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
