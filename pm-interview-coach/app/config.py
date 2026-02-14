@@ -16,10 +16,10 @@ class Settings(BaseSettings):
     # Database
     database_url: str = "sqlite+aiosqlite:///./pm_interview_coach.db"
 
-    # Anthropic API
-    anthropic_api_key: str = ""
-    anthropic_model: str = "claude-3-5-sonnet-20241022"
-    anthropic_max_tokens: int = 2000
+    # OpenAI API (ChatGPT free tier)
+    openai_api_key: str = ""
+    openai_model: str = "gpt-4o-mini"
+    openai_max_tokens: int = 2000
 
     # Server
     host: str = "0.0.0.0"

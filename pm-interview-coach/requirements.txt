@@ -15,8 +15,8 @@ pydantic==2.6.1
 pydantic-settings==2.1.0
 python-dotenv==1.0.1
 
-# AI API
-anthropic==0.18.1
+# AI API (OpenAI ChatGPT)
+openai==1.30.0
 
 # Templating
 jinja2==3.1.3

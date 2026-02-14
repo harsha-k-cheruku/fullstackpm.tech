@@ -6,7 +6,7 @@ import logging
 from dataclasses import dataclass
 from typing import List
 
-from anthropic import AsyncAnthropic
+from openai import AsyncOpenAI
 from pydantic import BaseModel, Field, ValidationError
 
 from app.config import settings
@@ -49,30 +49,32 @@ class EvaluationResult:
 
 
 class EvaluationError(RuntimeError):
-    """Raised when the evaluator cannot parse or validate Claude output."""
+    """Raised when the evaluator cannot parse or validate model output."""
 
 
 async def evaluate_answer(
     category: str, question: str, answer: str, time_spent_sec: int | None = None
 ) -> EvaluationResult:
-    """Evaluate a response using Anthropic Claude and return structured results."""
-    client = AsyncAnthropic(api_key=settings.anthropic_api_key)
+    """Evaluate a response using OpenAI ChatGPT and return structured results."""
+    client = AsyncOpenAI(api_key=settings.openai_api_key)
     system_prompt = _build_system_prompt(category)
     user_prompt = _build_user_prompt(question, answer, time_spent_sec)
 
     try:
-        response = await client.messages.create(
-            model=settings.anthropic_model,
-            max_tokens=settings.anthropic_max_tokens,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_prompt}],
+        response = await client.chat.completions.create(
+            model=settings.openai_model,
+            max_tokens=settings.openai_max_tokens,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
         )
-        raw_text = response.content[0].text
+        raw_text = response.choices[0].message.content
         payload = json.loads(raw_text)
         parsed = EvaluationSchema(**payload)
     except (ValidationError, json.JSONDecodeError, Exception) as exc:
         logger.error("Evaluation failed", exc_info=True)
-        raise EvaluationError("Claude response invalid") from exc
+        raise EvaluationError("Model response invalid") from exc
 
     return EvaluationResult(
         overall_score=parsed.overall_score,
@@ -90,10 +92,20 @@ async def evaluate_answer(
 def _build_system_prompt(category: str) -> str:
     frameworks = CATEGORY_FRAMEWORKS.get(category, "General PM frameworks")
     return (
-        "You are an expert PM interviewer. "
+        "You are an expert PM interviewer evaluating candidate responses. "
         f"Category: {category}. "
-        f"Evaluate with frameworks: {frameworks}. "
-        "Return JSON only and follow the exact schema."
+        f"Evaluate using these frameworks: {frameworks}. "
+        "IMPORTANT: Return ONLY valid JSON (no markdown, no code blocks) matching this schema:\n"
+        "{\n"
+        "  \"overall_score\": <1-10 number>,\n"
+        "  \"framework_score\": <1-10 number>,\n"
+        "  \"structure_score\": <1-10 number>,\n"
+        "  \"completeness_score\": <1-10 number>,\n"
+        "  \"strengths\": [<list of string strengths>],\n"
+        "  \"improvements\": [<list of string improvements>],\n"
+        "  \"suggested_framework\": \"<framework name or null>\",\n"
+        "  \"example_point\": \"<specific example or null>\"\n"
+        "}"
     )
 
 

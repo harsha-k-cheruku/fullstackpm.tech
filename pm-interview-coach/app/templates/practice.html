@@ -4,7 +4,10 @@
 {% block content %}
 <section class="page-section">
   <div class="max-w-3xl mx-auto">
-    <h1 class="text-h1 mb-6" style="color: var(--color-text-primary);">Practice</h1>
+    <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">Practice</h1>
+    <p class="text-small mb-6" style="color: var(--color-text-tertiary); font-style: italic;">
+      🤖 Your responses are evaluated by AI (ChatGPT) — no API key needed.
+    </p>
 
     <form id="practice-form"
           hx-post="/api/practice/submit"
