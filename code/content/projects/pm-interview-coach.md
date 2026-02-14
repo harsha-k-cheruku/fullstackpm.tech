@@ -8,18 +8,54 @@ display_order: 2
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
 live_url: ""
 ---
-## The Problem
-PM interview prep is fragmented and often optimized for memorization instead of real practice. Candidates rarely get structured feedback on their reasoning, prioritization, or trade-offs, which leaves gaps that show up in live interviews.
+## What
 
-## The Approach
-Build an AI-powered coach that simulates realistic PM interviews using Claude. The product should mirror how interviewers evaluate answers: clear framing, structured prioritization, and measurable impact.
+An AI-powered interview practice platform that gives you realistic PM questions and immediate, structured feedback on your responses.
 
-## The Solution
-The web app lets users pick a question type (product design, estimation, strategy, behavioral), receive a realistic prompt, and submit a response. The system scores the answer against frameworks like CIRCLES, RICE, and HEART, highlighting strengths, gaps, and suggested improvements. Users can iterate quickly and track their progress over time. No API key needed — the tool handles all AI evaluation server-side using ChatGPT.
+**You get:**
+- Real PM interview questions across 4 categories (Product Design, Strategy, Execution, Analytical)
+- Instant AI evaluation on 4 dimensions: overall score, framework usage, structure, completeness
+- Specific strengths and gaps highlighted in every answer
+- Progress tracking to see improvement over time
+- No API key required — everything runs server-side
 
-## Technical Details
-- **FastAPI** backend serving prompt sessions and feedback results
-- **OpenAI ChatGPT** for AI-powered evaluation (no user API key needed)
-- **SQLite** for storing interview sessions and scoring history
-- **Tailwind CSS** for a clean, responsive UI
-- **HTMX** for real-time feedback streaming
+## Why
+
+PM interview prep has a fundamental problem: **feedback lag.**
+
+You practice in a vacuum, memorize frameworks, and hope they stick. Then you hit the real interview and realize there's a gap between understanding CIRCLES and *using* CIRCLES under pressure.
+
+I built this because:
+- **Candidates need iteration, not just memorization.** Real learning happens when you answer, get feedback, adjust, and try again.
+- **Interviewers look for reasoning, not perfection.** The tool evaluates how you think, not whether you're "right."
+- **The best interview prep feels like the real thing.** Realistic questions, structured evaluation, honest feedback.
+
+This tool bridges that gap. It's the coach who gives you feedback at 2am when no actual interviewer is available.
+
+## How
+
+**The flow is simple:**
+
+1. **Pick a category** — Product Design, Strategy, Execution, or Analytical
+2. **Read your question** — Realistic PM scenarios (e.g., "Design a feature to help users discover restaurants")
+3. **Answer out loud** — Structure your thinking like you would in a real interview
+4. **Get scored** — AI evaluates on frameworks, structure, and completeness
+5. **See feedback** — Strengths, improvements, and suggested frameworks
+6. **Practice again** — Pick another question and iterate
+
+**Under the hood:**
+- Questions are curated to reflect real PM interviews (not trick questions)
+- OpenAI ChatGPT evaluates answers against PM frameworks (CIRCLES, RICE, HEART, STAR, etc.)
+- Each evaluation is stored so you can track progress over time
+- The AI gives specific, actionable feedback (not vague praise or criticism)
+
+**Why no API key?**
+All AI evaluation runs server-side. You don't need to set up OpenAI or worry about costs. Just practice.
+
+## Technical Stack
+
+- **Backend:** FastAPI (Python) — async, fast, built for real-time feedback
+- **AI Engine:** OpenAI ChatGPT (gpt-4o-mini) — evaluates answers against frameworks
+- **Database:** SQLite — stores your sessions and scores
+- **Frontend:** HTMX + Tailwind CSS — interactive without JavaScript bloat
+- **Deployment:** Render — single command deploy, auto-scales

@@ -155,11 +155,27 @@
 /* Prose styling for rendered markdown */
 .prose h2 {
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-accent);
   color: var(--color-text-primary);
+}
+
+/* What/Why/How sections get special styling */
+.prose h2:nth-of-type(1),
+.prose h2:nth-of-type(2),
+.prose h2:nth-of-type(3) {
+  background: linear-gradient(135deg, var(--color-blue-50) 0%, var(--color-bg-primary) 100%);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+  padding-left: 1.5rem;
+  width: calc(100% + 3rem);
 }
 
 .prose h3 {

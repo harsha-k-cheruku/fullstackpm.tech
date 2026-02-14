@@ -8,20 +8,70 @@ display_order: 1
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
 live_url: "https://www.fullstackpm.tech"
 ---
-## Problem
-Product work often disappears into decks and internal documents. I wanted a portfolio that demonstrates product thinking through shipped artifacts: written analysis, interactive project case studies, and working prototypes. The goal was to create a site that feels like a product — not just a profile.
+## What
 
-## Approach
-I designed a FastAPI-first architecture so content could live in markdown while the UX still feels handcrafted. The layout emphasizes narrative and clarity: a homepage that positions the product thesis, project cards that show outcomes, and a resume timeline that communicates progression. Everything stays lightweight and fast to iterate.
+A full-stack portfolio that demonstrates product thinking through shipped artifacts.
 
-## Solution
-The site delivers a cohesive personal brand for a Full Stack AI PM. Projects are rendered from markdown with YAML frontmatter, enabling rapid iteration without a CMS. The UI uses a consistent tokenized design system, ensuring light/dark mode compatibility and strong accessibility defaults. The architecture supports future growth: RSS, blog filtering, and HTMX-powered updates.
+**What you'll find here:**
+- **Projects** — Interactive tools and products I've built (like this Interview Coach)
+- **Writing** — Deep dives on product strategy, Full Stack PM philosophy, deployment
+- **Resume** — Career progression from SDE → PM → Builder (16+ years)
+- **Book** — "Memoirs of a Mediocre Manager" — satire on tech leadership
+- **Comments** — Real conversations on blog posts with other builders
 
-## Technical Details
-- **Backend:** FastAPI with Jinja2 templates
-- **Content:** Markdown + YAML frontmatter parsed at startup
-- **Styling:** Tailwind CSS CDN with design tokens
-- **Interactivity:** HTMX for partial updates
-- **Deployment:** Render with a lightweight Procfile setup
+This isn't a static resume site. It's a working demonstration of product execution.
 
-Next up: refine project detail templates, add blog pagination, and ship the first interactive project demo.
+## Why
+
+Most PM portfolios are portfolios of opinions: decks, case studies, strategic frameworks.
+
+But opinions are cheap. Shipped products aren't.
+
+I built this because:
+- **Show, don't tell.** Anyone can write about product thinking. Fewer actually ship things.
+- **Demonstrate Full Stack capability.** A PM who understands tech, can prototype, and deploys their own work is rare.
+- **Practice what you preach.** If I write about fast iteration, the site should prove I can ship quickly.
+- **Build in public.** Every project here is real, with real constraints, real tradeoffs, and real learnings.
+
+This site is the answer to: *"What can a Full Stack PM actually build?"*
+
+## How
+
+**The architecture is deliberately simple:**
+
+1. **Content as code** — Blog posts and projects live in markdown files, version-controlled on GitHub
+2. **Fast rendering** — All content loads into memory at startup, so pages are instant
+3. **Design system first** — One set of CSS variables, one set of typography rules, works in light and dark mode
+4. **Progressive enhancement** — HTMX for interactivity without JavaScript frameworks
+5. **Database for user content** — Comments and interview coach sessions stored in SQLite
+
+**The build process:**
+- Write markdown files locally
+- Push to GitHub
+- Render auto-deploys (no manual steps)
+- Site updates within 1 minute
+
+**Key features:**
+- **Blog with tags** — Filter articles by topic (product, engineering, strategy)
+- **RSS feed** — Subscribe to updates
+- **Sitemap + SEO** — Discoverable by search engines
+- **Dark mode** — CSS variables, no JavaScript
+- **Comments** — Real discussions on blog posts
+- **Interview Coach** — Integrated PM interview practice tool
+- **Mobile responsive** — Works on all devices
+
+## Technical Stack
+
+- **Backend:** FastAPI (Python) — lightweight, async, auto-documentation
+- **Templates:** Jinja2 — server-side rendering, SEO-friendly
+- **Styling:** Tailwind CSS + custom design tokens — fast, maintainable, accessible
+- **Content:** Markdown + YAML — version controlled, easy to edit
+- **Database:** SQLite — comments and interview sessions
+- **Interactivity:** HTMX — real-time updates without frontend bloat
+- **Deployment:** Render — single Procfile, auto-deploys on push
+
+**Why this stack?**
+- Fast to prototype and ship
+- No build pipelines or JavaScript bundling
+- Content lives in Git (your version control system)
+- Scales from 1 user to 1M users with minimal changes
