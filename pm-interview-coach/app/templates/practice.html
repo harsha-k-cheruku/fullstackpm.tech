@@ -1,0 +1,77 @@
+<!-- pm-interview-coach/app/templates/practice.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-h1 mb-6" style="color: var(--color-text-primary);">Practice</h1>
+
+    <form id="practice-form"
+          hx-post="/api/practice/submit"
+          hx-target="#feedback-panel"
+          hx-swap="outerHTML"
+          hx-indicator="#submit-spinner">
+      <input type="hidden" name="session_id" value="{{ session_id }}">
+      {% include "partials/question_card.html" %}
+
+      <div class="mt-6">
+        <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Your Answer</label>
+        <textarea id="answer-text"
+                  name="answer_text"
+                  rows="6"
+                  class="mt-2 w-full rounded-xl border px-4 py-3 text-body"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                  placeholder="Write a structured response..."
+                  data-auto-resize
+                  required></textarea>
+      </div>
+
+      <div class="mt-4 flex flex-wrap items-center gap-4">
+        <div>
+          <label class="text-xs font-semibold" style="color: var(--color-text-tertiary);">Timer</label>
+          <select id="timer-select"
+                  class="mt-1 rounded-lg border px-3 py-2 text-sm"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">
+            <option value="">No timer</option>
+            <option value="300">5 minutes</option>
+            <option value="600">10 minutes</option>
+            <option value="900">15 minutes</option>
+          </select>
+        </div>
+        <input type="hidden" name="time_spent_sec" id="time-spent" value="">
+      </div>
+
+      <div class="mt-6 flex items-center gap-3">
+        <button id="submit-btn"
+                type="submit"
+                class="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+                style="background-color: var(--color-accent);"
+                onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+                onmouseout="this.style.backgroundColor='var(--color-accent)'">
+          Submit Answer
+          <span id="submit-spinner" class="htmx-indicator">
+            <svg class="h-4 w-4 animate-spin" style="color: white;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+          </span>
+        </button>
+        <button type="button"
+                hx-get="/partials/question-card/{{ question.id }}"
+                hx-target="#question-card"
+                hx-swap="outerHTML"
+                class="rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+                style="border-color: var(--color-border); color: var(--color-text-primary);"
+                onmouseover="this.style.borderColor='var(--color-border-hover)'"
+                onmouseout="this.style.borderColor='var(--color-border)'">
+          Next Question
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-8">
+      {% include "partials/feedback.html" %}
+    </div>
+  </div>
+</section>
+{% endblock %}

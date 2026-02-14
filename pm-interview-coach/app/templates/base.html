@@ -1,0 +1,20 @@
+<!-- pm-interview-coach/app/templates/base.html -->
+{% extends "portfolio/base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/app.css">
+{% endblock %}
+
+{% block body %}
+  {% include "partials/nav.html" %}
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  {% include "partials/footer.html" %}
+{% endblock %}

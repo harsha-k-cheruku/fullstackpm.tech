@@ -1,0 +1,44 @@
+<!-- pm-interview-coach/app/templates/progress.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section">
+  <div class="mb-8">
+    <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">Progress Dashboard</h1>
+    <p class="text-body" style="color: var(--color-text-secondary);">
+      Track your improvement over time.
+    </p>
+  </div>
+
+  <div id="stats-cards"
+       hx-get="/partials/stats-cards"
+       hx-trigger="load"
+       hx-swap="innerHTML">
+    {% include "partials/stats_cards.html" %}
+  </div>
+
+  <div class="mt-10 grid gap-6 lg:grid-cols-2">
+    <div class="rounded-xl border p-6"
+         style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <h2 class="text-h3 mb-4" style="color: var(--color-text-primary);">Score Trend</h2>
+      <canvas id="trendChart" height="180"></canvas>
+    </div>
+    <div class="rounded-xl border p-6"
+         style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <h2 class="text-h3 mb-4" style="color: var(--color-text-primary);">Category Breakdown</h2>
+      <canvas id="categoryChart" height="180"></canvas>
+    </div>
+  </div>
+
+  <div class="mt-6 rounded-xl border p-6"
+       style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+    <h2 class="text-h3 mb-4" style="color: var(--color-text-primary);">Practice Heatmap</h2>
+    <canvas id="heatmapChart" height="120"></canvas>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}

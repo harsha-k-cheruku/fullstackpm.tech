@@ -1,0 +1,41 @@
+<!-- pm-interview-coach/app/templates/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section">
+  <div class="text-center mb-10">
+    <h1 class="text-h1 mb-3" style="color: var(--color-text-primary);">PM Interview Coach</h1>
+    <p class="text-body-lg" style="color: var(--color-text-secondary);">
+      Practice product interview questions and get structured AI feedback.
+    </p>
+  </div>
+
+  <div class="flex justify-center mb-8">
+    <a href="/practice/random"
+       class="inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+       style="background-color: var(--color-accent);"
+       onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+       onmouseout="this.style.backgroundColor='var(--color-accent)'">
+      Surprise Me
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {% for item in categories %}
+    <a href="/practice/{{ item.category }}"
+       class="rounded-xl border p-6 transition-colors"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+       onmouseover="this.style.borderColor='var(--color-border-hover)'"
+       onmouseout="this.style.borderColor='var(--color-border)'">
+      <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">{{ item.label }}</h2>
+      <p class="text-small" style="color: var(--color-text-tertiary);">
+        {{ item.count }} questions
+      </p>
+      <p class="text-body mt-4" style="color: var(--color-text-secondary);">
+        Avg score: {{ "%.1f" | format(item.avg_score) }}
+      </p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

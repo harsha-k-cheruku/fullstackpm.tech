@@ -1,0 +1,20 @@
+<!-- pm-interview-coach/app/templates/partials/question_card.html -->
+<div id="question-card" class="rounded-xl border p-6"
+     style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  {% if question %}
+  <input type="hidden" name="question_id" value="{{ question.id }}">
+  <div class="flex flex-wrap items-center gap-3 mb-4">
+    <span class="text-xs rounded-full px-3 py-1 font-medium"
+          style="background-color: var(--color-accent-light); color: var(--color-accent);">
+      {{ question.category.replace('_', ' ').title() }}
+    </span>
+    <span class="text-xs rounded-full px-3 py-1 font-medium"
+          style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+      {{ question.difficulty.title() }}
+    </span>
+  </div>
+  <p class="text-h3" style="color: var(--color-text-primary);">{{ question.question_text }}</p>
+  {% else %}
+  <p class="text-body" style="color: var(--color-text-secondary);">No question available.</p>
+  {% endif %}
+</div>

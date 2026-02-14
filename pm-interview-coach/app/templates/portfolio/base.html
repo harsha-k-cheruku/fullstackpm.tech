@@ -1,0 +1,68 @@
+<!-- pm-interview-coach/app/templates/portfolio/base.html -->
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ title | default("PM Interview Coach") }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ meta_description | default("AI-powered PM interview practice") }}{% endblock %}">
+  <meta name="author" content="Harsha Cheruku">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}{{ title | default("PM Interview Coach") }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ meta_description | default("AI-powered PM interview practice") }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.url.path }}">
+
+  <!-- Fonts: Geist Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Design System Tokens -->
+  <link rel="stylesheet" href="/static/css/custom.css">
+
+  <!-- Dark mode: apply before paint to prevent flash -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  {% block head %}{% endblock %}
+</head>
+<body class="min-h-screen font-sans antialiased"
+      style="background-color: var(--color-bg-primary); color: var(--color-text-primary);">
+  {% block body %}{% endblock %}
+
+  <!-- HTMX (CDN) -->
+  <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwCXuE+cDVtAu2B3crQxD" crossorigin="anonymous"></script>
+
+  <!-- Site JS -->
+  <script src="/static/js/main.js"></script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

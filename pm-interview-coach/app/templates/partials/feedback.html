@@ -1,0 +1,80 @@
+<!-- pm-interview-coach/app/templates/partials/feedback.html -->
+<div id="feedback-panel" class="rounded-xl border p-6"
+     style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  {% if error_message %}
+  <p class="text-body" style="color: var(--color-danger);">{{ error_message }}</p>
+  {% endif %}
+
+  {% if evaluation %}
+  <div class="flex items-center gap-4 mb-6">
+    <div class="rounded-full px-4 py-2 text-h3"
+         style="background-color: var(--color-accent-light); color: var(--color-accent);">
+      {{ "%.1f" | format(evaluation.overall_score) }}
+    </div>
+    <p class="text-body" style="color: var(--color-text-secondary);">Overall Score</p>
+  </div>
+
+  <div class="mb-6 rounded-lg border p-4"
+       style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <p class="text-small" style="color: var(--color-text-tertiary);">Radar chart coming soon</p>
+    <div class="mt-2 h-24 rounded-md" style="background-color: var(--color-bg-tertiary);"></div>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <div>
+      <h3 class="text-h4 mb-2" style="color: var(--color-text-primary);">Strengths</h3>
+      <ul class="space-y-2">
+        {% for item in evaluation.strengths %}
+        <li class="text-small rounded-lg px-3 py-2"
+            style="background-color: var(--color-success-bg); color: var(--color-success);">
+          {{ item }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-h4 mb-2" style="color: var(--color-text-primary);">Improvements</h3>
+      <ul class="space-y-2">
+        {% for item in evaluation.improvements %}
+        <li class="text-small rounded-lg px-3 py-2"
+            style="background-color: var(--color-warning-bg); color: var(--color-warning);">
+          {{ item }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {% if evaluation.suggested_framework %}
+  <div class="mt-6 rounded-lg border p-4"
+       style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <p class="text-small" style="color: var(--color-text-tertiary);">Suggested Framework</p>
+    <p class="text-body" style="color: var(--color-text-primary);">
+      {{ evaluation.suggested_framework }}
+    </p>
+    {% if evaluation.example_point %}
+    <p class="text-small mt-2" style="color: var(--color-text-secondary);">
+      {{ evaluation.example_point }}
+    </p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="mt-6">
+    <button type="button"
+            hx-post="/partials/feedback"
+            hx-target="#feedback-panel"
+            hx-swap="outerHTML"
+            class="rounded-lg border px-4 py-2 text-sm font-semibold transition-colors"
+            style="border-color: var(--color-border); color: var(--color-text-primary);"
+            onmouseover="this.style.borderColor='var(--color-border-hover)'"
+            onmouseout="this.style.borderColor='var(--color-border)'">
+      Try Again
+    </button>
+  </div>
+  {% else %}
+  <p class="text-body" style="color: var(--color-text-secondary);">
+    Submit an answer to see structured feedback.
+  </p>
+  {% endif %}
+</div>

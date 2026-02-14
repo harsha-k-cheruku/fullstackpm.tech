@@ -1,0 +1,32 @@
+<!-- pm-interview-coach/app/templates/partials/footer.html -->
+<footer class="mt-16 border-t py-8"
+        style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  <div class="container flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+    <div>
+      <p class="text-small font-semibold" style="color: var(--color-text-primary);">PM Interview Coach</p>
+      <p class="text-xs" style="color: var(--color-text-tertiary);">
+        AI-powered interview practice with structured scoring and feedback.
+      </p>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="{{ config.github_url | default('#') }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="text-xs font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         onmouseover="this.style.color='var(--color-accent)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        GitHub
+      </a>
+      <a href="{{ config.linkedin_url | default('#') }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="text-xs font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         onmouseover="this.style.color='var(--color-accent)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</footer>

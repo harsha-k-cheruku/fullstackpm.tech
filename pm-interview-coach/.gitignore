@@ -1,0 +1,23 @@
+# PM Interview Coach — Git ignore
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Environments
+.venv/
+.env
+
+# Database
+*.db
+
+# OS
+.DS_Store
+
+# Logs
+*.log

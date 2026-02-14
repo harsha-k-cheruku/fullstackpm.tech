@@ -1,0 +1,17 @@
+/* pm-interview-coach/app/static/css/app.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.page-section {
+  padding: 3rem 0;
+}
+
+@media (min-width: 1024px) {
+  .page-section {
+    padding: 4rem 0;
+  }
+}

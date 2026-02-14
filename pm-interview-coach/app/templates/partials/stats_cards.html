@@ -1,0 +1,25 @@
+<!-- pm-interview-coach/app/templates/partials/stats_cards.html -->
+<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+  <div class="rounded-xl border p-4"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <p class="text-xs" style="color: var(--color-text-tertiary);">Total Practiced</p>
+    <p class="text-h3" style="color: var(--color-text-primary);">{{ overview.total_practiced }}</p>
+  </div>
+  <div class="rounded-xl border p-4"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <p class="text-xs" style="color: var(--color-text-tertiary);">Average Score</p>
+    <p class="text-h3" style="color: var(--color-text-primary);">{{ "%.1f" | format(overview.avg_score) }}</p>
+  </div>
+  <div class="rounded-xl border p-4"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <p class="text-xs" style="color: var(--color-text-tertiary);">Practice Streak</p>
+    <p class="text-h3" style="color: var(--color-text-primary);">{{ overview.streak }} days</p>
+  </div>
+  <div class="rounded-xl border p-4"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <p class="text-xs" style="color: var(--color-text-tertiary);">Weakest Category</p>
+    <p class="text-h3" style="color: var(--color-text-primary);">
+      {{ overview.weakest_category.replace('_', ' ').title() if overview.weakest_category else 'N/A' }}
+    </p>
+  </div>
+</div>

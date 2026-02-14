@@ -1,0 +1,89 @@
+<!-- pm-interview-coach/app/templates/history.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section">
+  <div class="mb-8">
+    <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">Practice History</h1>
+    <p class="text-body" style="color: var(--color-text-secondary);">
+      Review your recent attempts and filter by category or score.
+    </p>
+  </div>
+
+  <div class="rounded-xl border p-4 mb-6"
+       style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <div class="grid gap-4 md:grid-cols-3">
+      <div>
+        <label class="text-xs font-semibold" style="color: var(--color-text-tertiary);">Category</label>
+        <select id="category-filter"
+                name="category"
+                class="mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+                style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                hx-get="/partials/history-table"
+                hx-trigger="change"
+                hx-target="#history-table-body"
+                hx-swap="outerHTML"
+                hx-include="#score-min, #score-max">
+          <option value="">All Categories</option>
+          {% for item in categories %}
+          <option value="{{ item }}" {% if selected_category == item %}selected{% endif %}>
+            {{ item.replace('_', ' ').title() }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-semibold" style="color: var(--color-text-tertiary);">Min Score</label>
+        <select id="score-min"
+                name="min_score"
+                class="mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+                style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                hx-get="/partials/history-table"
+                hx-trigger="change"
+                hx-target="#history-table-body"
+                hx-swap="outerHTML"
+                hx-include="#category-filter, #score-max">
+          <option value="">Any</option>
+          {% for value in [3, 5, 7, 9] %}
+          <option value="{{ value }}" {% if min_score == value %}selected{% endif %}>{{ value }}+</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-semibold" style="color: var(--color-text-tertiary);">Max Score</label>
+        <select id="score-max"
+                name="max_score"
+                class="mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+                style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                hx-get="/partials/history-table"
+                hx-trigger="change"
+                hx-target="#history-table-body"
+                hx-swap="outerHTML"
+                hx-include="#category-filter, #score-min">
+          <option value="">Any</option>
+          {% for value in [3, 5, 7, 9] %}
+          <option value="{{ value }}" {% if max_score == value %}selected{% endif %}>Up to {{ value }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-xl border"
+       style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <table class="w-full text-left">
+      <thead class="text-xs uppercase"
+             style="background-color: var(--color-bg-tertiary); color: var(--color-text-tertiary);">
+        <tr>
+          <th class="px-4 py-3">Date</th>
+          <th class="px-4 py-3">Category</th>
+          <th class="px-4 py-3">Question</th>
+          <th class="px-4 py-3">Score</th>
+          <th class="px-4 py-3">Time</th>
+        </tr>
+      </thead>
+      {% include "partials/history_table.html" %}
+    </table>
+  </div>
+</section>
+{% endblock %}

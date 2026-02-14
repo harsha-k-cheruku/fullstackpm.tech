@@ -1,0 +1,30 @@
+<!-- pm-interview-coach/app/templates/partials/history_table.html -->
+<tbody id="history-table-body">
+  {% if attempts %}
+    {% for attempt in attempts %}
+    <tr class="border-b" style="border-color: var(--color-border);">
+      <td class="px-4 py-3 text-sm" style="color: var(--color-text-tertiary);">
+        {{ attempt.date.strftime('%b %d, %Y') }}
+      </td>
+      <td class="px-4 py-3 text-sm" style="color: var(--color-text-primary);">
+        {{ attempt.category.replace('_', ' ').title() }}
+      </td>
+      <td class="px-4 py-3 text-sm" style="color: var(--color-text-secondary);">
+        {{ attempt.question_text | truncate(80) }}
+      </td>
+      <td class="px-4 py-3 text-sm" style="color: var(--color-text-primary);">
+        {{ "%.1f" | format(attempt.score) if attempt.score is not none else "—" }}
+      </td>
+      <td class="px-4 py-3 text-sm" style="color: var(--color-text-secondary);">
+        {{ attempt.time_spent_sec if attempt.time_spent_sec else "—" }}
+      </td>
+    </tr>
+    {% endfor %}
+  {% else %}
+    <tr>
+      <td class="px-4 py-6 text-sm" colspan="5" style="color: var(--color-text-tertiary);">
+        No practice attempts yet.
+      </td>
+    </tr>
+  {% endif %}
+</tbody>

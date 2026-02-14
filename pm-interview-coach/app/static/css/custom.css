@@ -1,0 +1,97 @@
+/* pm-interview-coach/app/static/css/custom.css */
+
+:root {
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8FAFC;
+  --color-bg-tertiary: #F1F5F9;
+  --color-text-primary: #000000;
+  --color-text-secondary: #1D1D1F;
+  --color-text-tertiary: #48484A;
+  --color-border: #E2E8F0;
+  --color-border-hover: #CBD5E1;
+  --color-accent: #2E8ECE;
+  --color-accent-hover: #2577AD;
+  --color-accent-light: #E8F4FB;
+  --color-accent-dark: #1A3A52;
+  --color-success: #27AE60;
+  --color-success-bg: #D5F5E3;
+  --color-warning: #F1C40F;
+  --color-warning-bg: #FEF9E7;
+  --color-danger: #E74C3C;
+  --color-danger-bg: #FADBD8;
+  --color-info: #2E8ECE;
+}
+
+.dark {
+  --color-bg-primary: #030712;
+  --color-bg-secondary: #0F172A;
+  --color-bg-tertiary: #1E293B;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-border: #1E293B;
+  --color-border-hover: #334155;
+  --color-accent-light: #172554;
+  --color-success-bg: #052E16;
+  --color-warning-bg: #422006;
+  --color-danger-bg: #450A0A;
+}
+
+.text-display {
+  font-size: 3.5rem;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.text-h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.text-h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-h3 {
+  font-size: 1.375rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.text-h4 {
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+.text-small {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  letter-spacing: -0.006em;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.003em;
+}

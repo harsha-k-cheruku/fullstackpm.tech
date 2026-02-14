@@ -1,0 +1,35 @@
+<!-- pm-interview-coach/app/templates/partials/nav.html -->
+<nav aria-label="Main navigation"
+     class="sticky top-0 z-50 border-b"
+     style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+  <div class="container flex h-16 items-center justify-between">
+    <a href="/"
+       class="text-lg font-semibold transition-colors"
+       style="color: var(--color-text-primary);"
+       onmouseover="this.style.color='var(--color-accent)'"
+       onmouseout="this.style.color='var(--color-text-primary)'">
+      PM Interview Coach
+    </a>
+
+    <div class="flex items-center gap-1">
+      {% set nav_links = [
+        ("Home", "/"),
+        ("History", "/history"),
+        ("Progress", "/progress"),
+      ] %}
+      {% for label, href in nav_links %}
+      <a href="{{ href }}"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: {{ 'var(--color-text-primary)' if current_page == href else 'var(--color-text-secondary)' }};"
+         {% if current_page == href %}aria-current="page"{% endif %}
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='{{ 'var(--color-text-primary)' if current_page == href else 'var(--color-text-secondary)' }}'">
+        {{ label }}
+        {% if current_page == href %}
+        <span class="absolute bottom-0 left-3 right-3 h-0.5" style="background-color: var(--color-accent);"></span>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>
