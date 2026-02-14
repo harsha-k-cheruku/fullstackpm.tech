@@ -244,23 +244,42 @@
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1.5rem;
+  margin: 2rem 0 1.5rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose thead {
+  background-color: var(--color-bg-secondary);
 }
 
 .prose th,
 .prose td {
   border: 1px solid var(--color-border);
-  padding: 0.5rem 0.75rem;
+  padding: 1rem 0.875rem;
   text-align: left;
+  line-height: 1.6;
 }
 
 .prose th {
   background-color: var(--color-bg-secondary);
   font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+}
+
+.prose td {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
 }
 
 .prose tr:nth-child(even) {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-tertiary);
+}
+
+.prose tr:hover {
+  background-color: var(--color-bg-tertiary);
 }
 
 .prose hr {
