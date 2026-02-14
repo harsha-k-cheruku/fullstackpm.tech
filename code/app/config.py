@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     templates_dir: Path = base_dir / "app" / "templates"
     static_dir: Path = base_dir / "app" / "static"
 
+    # Database
+    database_url: str = "sqlite:///./fullstackpm.db"
+
     # Site metadata
     site_title: str = "fullstackpm.tech"
     site_description: str = "Portfolio of Harsha Cheruku — Full Stack AI Product Manager"

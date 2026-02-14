@@ -4,8 +4,11 @@ from datetime import datetime
 from fastapi import APIRouter, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from sqlalchemy.orm import Session
 
 from app.config import settings
+from app.database import SessionLocal
+from app.models.comment import Comment
 
 router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
@@ -33,7 +36,7 @@ async def blog_list(request: Request, page: int = Query(1, ge=1)) -> HTMLRespons
         "blog/list.html",
         _ctx(
             request,
-            title="Blog  fullstackpm.tech",
+            title="Blog  fullstackpm.tech",
             current_page="/blog",
             posts=posts,
             tags=tags,
@@ -55,13 +58,24 @@ async def blog_detail(request: Request, slug: str) -> HTMLResponse:
             status_code=404,
         )
 
+    # Fetch comments from database
+    db = SessionLocal()
+    comments = (
+        db.query(Comment)
+        .filter(Comment.blog_post_slug == slug)
+        .order_by(Comment.created_at.desc())
+        .all()
+    )
+    db.close()
+
     return templates.TemplateResponse(
         "blog/detail.html",
         _ctx(
             request,
-            title=f"{post.title}  Blog",
+            title=f"{post.title}  Blog",
             current_page="/blog",
             post=post,
+            comments=comments,
         ),
     )
 
@@ -78,7 +92,7 @@ async def blog_tag(request: Request, tag: str, page: int = Query(1, ge=1)) -> HT
         "blog/tag.html",
         _ctx(
             request,
-            title=f"{tag}  Blog",
+            title=f"{tag}  Blog",
             current_page="/blog",
             posts=posts,
             tags=tags,

@@ -1,0 +1,70 @@
+<!-- app/templates/partials/comments.html -->
+<section class="mt-12 pt-8 border-t" style="border-color: var(--color-border);">
+  <h3 class="text-h3 mb-6" style="color: var(--color-text-primary);">Comments</h3>
+
+  <!-- Comment Form -->
+  <div class="mb-8 rounded-lg p-6" style="background-color: var(--color-bg-secondary);">
+    <form id="comment-form"
+          hx-post="/api/comments/{{ post.slug }}"
+          hx-target="#comments-list"
+          hx-swap="afterbegin"
+          hx-on="htmx:afterRequest: if(event.detail.xhr.status === 200) this.reset()">
+      <div class="mb-4">
+        <label class="text-small font-semibold block mb-2" style="color: var(--color-text-primary);">Name</label>
+        <input type="text"
+               name="author_name"
+               class="w-full rounded-lg border px-4 py-2.5"
+               style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+               placeholder="Your name"
+               required>
+      </div>
+
+      <div class="mb-4">
+        <label class="text-small font-semibold block mb-2" style="color: var(--color-text-primary);">Email</label>
+        <input type="email"
+               name="author_email"
+               class="w-full rounded-lg border px-4 py-2.5"
+               style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+               placeholder="your@email.com"
+               required>
+      </div>
+
+      <div class="mb-4">
+        <label class="text-small font-semibold block mb-2" style="color: var(--color-text-primary);">Comment</label>
+        <textarea name="content"
+                  rows="4"
+                  class="w-full rounded-lg border px-4 py-2.5"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                  placeholder="Share your thoughts..."
+                  required></textarea>
+      </div>
+
+      <button type="submit"
+              class="inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+              style="background-color: var(--color-accent);"
+              onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+              onmouseout="this.style.backgroundColor='var(--color-accent)'">
+        Post Comment
+      </button>
+    </form>
+  </div>
+
+  <!-- Comments List -->
+  <div id="comments-list" class="space-y-4">
+    {% for comment in comments %}
+    <div class="rounded-lg p-4" style="background-color: var(--color-bg-tertiary);">
+      <div class="flex items-center justify-between mb-2">
+        <p class="font-semibold" style="color: var(--color-text-primary);">{{ comment.author_name }}</p>
+        <p class="text-xs" style="color: var(--color-text-tertiary);">
+          {% if comment.created_at %}
+            {{ comment.created_at.strftime('%b %d, %Y at %I:%M %p') }}
+          {% endif %}
+        </p>
+      </div>
+      <p class="text-body" style="color: var(--color-text-secondary); white-space: pre-wrap;">{{ comment.content }}</p>
+    </div>
+    {% else %}
+    <p class="text-body text-center py-8" style="color: var(--color-text-tertiary);">No comments yet. Be the first to share your thoughts!</p>
+    {% endfor %}
+  </div>
+</section>

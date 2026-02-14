@@ -8,12 +8,17 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
-from app.routers import blog, pages, projects, seo
+from app.database import init_db
+from app.routers import blog, comments, pages, projects, seo
 from app.services.content import ContentService
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Initialize database
+    init_db()
+
+    # Load content
     content_service = ContentService(settings.content_dir)
     content_service.load()
     app.state.content_service = content_service
@@ -32,6 +37,7 @@ app.mount("/static", StaticFiles(directory=str(settings.static_dir)), name="stat
 app.include_router(pages.router)
 app.include_router(projects.router)
 app.include_router(blog.router)
+app.include_router(comments.router)
 app.include_router(seo.router)
 
 # Templates

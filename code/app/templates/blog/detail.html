@@ -38,6 +38,11 @@
       {{ post.html_content | safe }}
     </div>
 
+    <!-- Comments Section -->
+    <div class="max-w-3xl mx-auto">
+      {% include "partials/comments.html" %}
+    </div>
+
     <div class="mt-10">
       <a href="/blog"
          class="inline-flex items-center gap-2 text-small font-medium transition-colors"
