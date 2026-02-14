@@ -6,8 +6,6 @@ excerpt: "The complete journey of building a portfolio website from scratch: arc
 author: "Harsha Cheruku"
 ---
 
-# How I Built fullstackpm.tech
-
 You know that feeling when you have an idea at 11 PM and can't stop thinking about it? That's how this started.
 
 I wanted to build something different from the typical PM portfolio site. Not just links to my resume. Not just a blog. But actual, functioning products that people could interact with. Tools that solve real problems. A demonstration of what a Full Stack PM actually means in 2026.
