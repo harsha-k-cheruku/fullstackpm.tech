@@ -1,105 +1,74 @@
 # BUILD: Marketplace Analytics Dashboard
 
-## Overview
+## Project Overview
 
-Build an interactive analytics dashboard for marketplace sellers to view performance metrics, trends, and insights. This is a Full Stack PM project that demonstrates data visualization, real-time updates, and product decision-making.
+Build an interactive analytics dashboard for marketplace sellers. The dashboard surfaces revenue trends, category performance, and cohort insights with clean filters, summary cards, and exportable data.
 
-**Scope:** ~3-5 days of development
-**Team:** 1 engineer (you) + PM vision (me)
-**Complexity:** Medium
-
----
-
-## The Problem
-
-Marketplace sellers have data, but it's scattered:
-- Revenue trends hidden in spreadsheets
-- Category performance unclear
-- Cohort analysis requires manual work
-- No quick way to spot problems or opportunities
-
-This tool solves that by giving sellers a single dashboard to understand their business.
+**Audience:** Marketplace sellers + product ops
+**Outcome:** Faster decisions, clearer performance signals, less spreadsheet chaos
+**Timeline:** ~5 phases (see below)
 
 ---
 
-## What to Build
+## Problem Statement & Goals
 
-### Page: `/tools/marketplace-analytics`
+**Problem:** Sellers have fragmented metrics across exports and dashboards. Trends, cohort health, and category performance are hard to see quickly.
 
-**Landing/Dashboard View:**
-- Overview cards (top metrics)
-- Charts for key trends
-- Filters by date range and category
-- Export functionality
+**Goals:**
+- Centralize the core seller performance metrics
+- Provide at-a-glance insights (cards + charts)
+- Enable fast filtering and export
+- Keep UI simple, fast, and consistent with the design system
 
-### Features
+---
 
-#### 1. Overview Section
-Cards showing:
-- **Total Revenue** (current month vs last month % change)
-- **Active Listings** (count with trend)
-- **Average Rating** (1-5 stars)
-- **Customer Satisfaction** (NPS score)
+## Feature Breakdown
 
-#### 2. Revenue Trends
-- Line chart: Revenue by week (last 12 weeks)
-- Breakdown by: All Categories OR filter to 1 category
+### 1) Overview Cards
+- Total Revenue (period + % delta)
+- Active Listings
+- Average Rating
+- Customer Satisfaction (NPS-style score)
+
+### 2) Revenue Trends
+- Line chart by week (last 12 weeks)
+- Optional category filter
 - Show average revenue per listing
 
-#### 3. Category Performance
-- Table showing:
-  - Category name
-  - # of listings
-  - Total revenue
-  - Avg price per item
-  - Avg rating
-- Sortable by any column
+### 3) Category Performance
+- Table with: category, listings, revenue, avg price, avg rating
+- Sortable columns
 - Highlight top/bottom performers
 
-#### 4. Cohort Analysis (Optional but nice)
-- Cohorts by: Sign-up month
-- Table: Cohort | Month 1 Revenue | Month 2 Revenue | Retention
-- Identifies best-performing seller cohorts
+### 4) Cohort Analysis
+- Cohorts by signup month
+- Table for Month 1/2 revenue + retention
+- Quick visibility into best cohorts
 
-#### 5. Filters & Export
-- Date range picker (last 30/90/365 days)
-- Category filter (dropdown)
-- Export to CSV button
-
----
-
-## Technical Stack
-
-**Frontend:**
-- Tailwind CSS for styling
-- HTMX for interactive filtering
-- Chart.js or Plotly for visualizations (lightweight)
-- No React/Vue
-
-**Backend:**
-- FastAPI (existing)
-- Pandas for data aggregation
-- SQLite (existing)
-
-**Data:**
-- Use mock/sample data for MVP
-- OR if you want real data: generate synthetic seller data in a script
+### 5) Filters + Export
+- Date range (30/90/365)
+- Category dropdown
+- Export filtered data to CSV
 
 ---
 
-## Architecture
+## Technical Architecture
 
-### New Files to Create
+**Backend:** FastAPI routes + service layer for aggregation
+**Frontend:** Jinja2 templates + Tailwind + HTMX partials
+**Charts:** Chart.js (CDN)
+**Data:** Mock dataset (structured, deterministic)
 
+**Core files:**
 ```
 code/app/
 ├── routers/
-│   └── marketplace.py          # Routes for dashboard
+│   └── marketplace.py
 ├── services/
-│   └── analytics.py            # Data aggregation logic
+│   └── analytics.py
 ├── templates/
 │   └── marketplace-analytics/
-│       ├── index.html          # Dashboard page
+│       ├── index.html
 │       └── partials/
 │           ├── overview_cards.html
 │           ├── revenue_chart.html
@@ -107,119 +76,98 @@ code/app/
 │           └── filters.html
 └── static/
     └── js/
-        └── charts.js           # Chart initialization
+        └── charts.js
 ```
-
-### Sample Data Structure
-
-Create sample data for 10-20 sellers with:
-- Listings (id, seller_id, category, price, rating, created_at)
-- Sales (id, listing_id, amount, timestamp)
-- Categories (id, name)
-
-**OR** Use the existing portfolio database and create a simple analytics schema.
 
 ---
 
-## Step-by-Step Build Plan
+## Step-by-Step Build Plan (5 Phases)
 
-### Phase 1: Setup & Data (Day 1)
-1. Create `marketplace.py` router
-2. Create `analytics.py` service for data aggregation
-3. Generate mock data (or use script to create sample data)
-4. Create base template structure
+### Phase 1: Data + Wiring
+- Add router + service skeleton
+- Seed mock data schema
+- Build template scaffold
 
-### Phase 2: Dashboard UI (Day 2)
-1. Build `/tools/marketplace-analytics` landing page
-2. Create overview cards layout
-3. Add filter controls (date range, category dropdown)
-4. Style everything with Tailwind
+### Phase 2: UI Shell
+- Layout grid + overview cards
+- Filters (date range + category)
+- Consistent spacing + typography
 
-### Phase 3: Data & Charts (Day 3)
-1. Implement revenue trends chart
-2. Build category performance table
-3. Wire up filters with HTMX
-4. Test filtering and data updates
+### Phase 3: Charts + Table
+- Revenue trend chart
+- Category table with sorting
+- HTMX filter hooks
 
-### Phase 4: Polish (Day 4)
-1. Add export to CSV functionality
-2. Responsive mobile design
-3. Dark mode compatibility
-4. Performance optimization (cache data if needed)
+### Phase 4: Cohorts + Export
+- Cohort table
+- CSV export
+- Loading states
 
-### Phase 5: Optional Enhancements (Day 5)
-1. Add cohort analysis table
-2. Add seller comparison feature
-3. Add anomaly detection (highlight unusual trends)
-4. Add tooltips/help text
+### Phase 5: Polish
+- Dark mode + responsive QA
+- Empty states + error handling
+- Performance cleanup
 
 ---
 
 ## Acceptance Criteria
 
 ### MVP (Must Have)
-- ✅ Dashboard loads at `/tools/marketplace-analytics`
-- ✅ Overview cards show: revenue, listings, rating, satisfaction
-- ✅ Revenue trend chart displays (last 12 weeks)
-- ✅ Category performance table displays all data
-- ✅ Date range filter works (affects all charts/tables)
-- ✅ Category filter works (affects all data)
-- ✅ Mobile responsive (works on phone/tablet/desktop)
-- ✅ Dark mode compatible
-- ✅ No console errors
+- Dashboard loads at `/tools/marketplace-analytics`
+- Overview cards show revenue, listings, rating, satisfaction
+- Revenue trend chart renders (last 12 weeks)
+- Category table renders and sorts
+- Filters update cards, charts, and table
+- Responsive + dark mode ready
+- No console errors
 
-### Nice to Have
-- ✅ CSV export button works
-- ✅ Cohort analysis table present
-- ✅ Charts are interactive (hover tooltips)
-- ✅ Fast page load (<1s)
-
-### Testing
-1. Test filters (date + category combinations)
-2. Test mobile layout on actual phone
-3. Test dark mode toggle
-4. Verify CSV export data matches dashboard
+### Nice-to-Haves
+- CSV export works
+- Cohort analysis table present
+- Interactive chart tooltips
+- Fast load (<1s)
 
 ---
 
-## Design System
+## Design System Guidelines
 
-Use existing design:
-- **Colors:** Use `--color-text-primary`, `--color-bg-secondary`, `--color-accent`
-- **Typography:** Use `text-h2`, `text-body`, `text-small` classes
-- **Cards:** Use rounded borders with `border-color: var(--color-border)`
-- **Tables:** Follow existing table styling from projects/comments sections
-
----
-
-## Questions for You
-
-Before starting, clarify:
-1. Should we use mock data or connect to a real data source?
-2. Which chart library do you prefer? (Chart.js is lightweight)
-3. Do you want real seller data or synthetic data?
-4. Should this be real-time or snapshot-based?
-5. Any specific metrics you want highlighted?
+Use existing tokens + typography:
+- Colors via CSS variables (`--color-bg-secondary`, `--color-text-primary`, `--color-accent`)
+- Typography: `text-h2`, `text-body`, `text-small`
+- Cards: `rounded-xl`, `border-color: var(--color-border)`
+- Tables: consistent border + zebra rows
 
 ---
 
-## Deployment
+## Mock Data Structure
 
-- No new dependencies needed (Pandas is fast, Chart.js is CDN)
-- Add new route to main.py
-- No database migrations needed
-- Push to GitHub → auto-deploy on Render
+Use a small deterministic dataset:
+- `sellers`: id, name, signup_month
+- `listings`: id, seller_id, category, price, rating, created_at
+- `sales`: id, listing_id, amount, timestamp
 
----
-
-## Success Metrics
-
-When complete:
-- Dashboard is useful and fast
-- Demonstrates data visualization skills
-- Shows PM ability to spot insights
-- Easy to extend with more metrics later
+Derived metrics:
+- Weekly revenue trends
+- Category rollups
+- Cohort retention + revenue
 
 ---
 
-**Ready to build? Let me know if you have questions!**
+## Deployment Notes
+
+- No schema migrations required for MVP
+- Chart.js via CDN
+- Add route in `main.py`
+- Deploy to Render (FastAPI)
+
+---
+
+## Next Project
+
+**Interactive analytics dashboard for marketplace sellers:**
+- Revenue trends, category performance, cohort analysis
+- Charts with Chart.js, tables, filtering, export
+
+---
+
+**Ready to build when you are.**
