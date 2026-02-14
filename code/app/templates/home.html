@@ -113,10 +113,11 @@
     {% set projects = [
       {
         "title": "PM Interview Coach",
-        "desc": "AI-powered interview practice tool with Claude API evaluation, structured feedback, and progress tracking.",
-        "tags": ["FastAPI", "Claude API", "HTMX"],
-        "status": "In Progress",
-        "icon": "target"
+        "desc": "AI-powered interview practice with structured feedback on frameworks, clarity, and strategy. Covers product design, strategy, execution, and analytical questions.",
+        "tags": ["FastAPI", "OpenAI", "HTMX"],
+        "status": "Live",
+        "icon": "target",
+        "url": "/tools/interview-coach"
       },
       {
         "title": "Marketplace Analytics Dashboard",
@@ -135,8 +136,10 @@
     ] %}
 
     {% for project in projects %}
-    <div class="rounded-xl border p-8 card-hover text-center"
-         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <a {% if project.url %}href="{{ project.url }}"{% endif %} class="rounded-xl border p-8 card-hover text-center transition-colors"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border); text-decoration: none; display: block;"
+         onmouseover="this.style.borderColor='var(--color-border-hover)'"
+         onmouseout="this.style.borderColor='var(--color-border)'">
 
       <!-- Icon -->
       <div class="flex justify-center mb-4">
@@ -162,6 +165,8 @@
       <div class="mb-3">
         {% if project.status == "In Progress" %}
         <span class="badge badge-warning">{{ project.status }}</span>
+        {% elif project.status == "Live" %}
+        <span class="badge badge-success">{{ project.status }}</span>
         {% else %}
         <span class="badge badge-info">{{ project.status }}</span>
         {% endif %}
@@ -180,7 +185,7 @@
         </span>
         {% endfor %}
       </div>
-    </div>
+    </a>
     {% endfor %}
   </div>
 </section>

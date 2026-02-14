@@ -1,0 +1,74 @@
+<!-- app/templates/interview-coach/partials/feedback.html -->
+<div class="mt-8 rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  <h3 class="text-h3 mb-6" style="color: var(--color-text-primary);">Your Evaluation</h3>
+
+  <!-- Scores Grid -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="rounded-lg p-4" style="background-color: var(--color-bg-primary);">
+      <div class="text-2xl font-bold" style="color: var(--color-blue-600);">{{ "%.1f" | format(result.overall_score) }}/10</div>
+      <div class="text-small" style="color: var(--color-text-tertiary);">Overall Score</div>
+    </div>
+    <div class="rounded-lg p-4" style="background-color: var(--color-bg-primary);">
+      <div class="text-2xl font-bold" style="color: var(--color-blue-600);">{{ "%.1f" | format(result.framework_score) }}/10</div>
+      <div class="text-small" style="color: var(--color-text-tertiary);">Framework</div>
+    </div>
+    <div class="rounded-lg p-4" style="background-color: var(--color-bg-primary);">
+      <div class="text-2xl font-bold" style="color: var(--color-blue-600);">{{ "%.1f" | format(result.structure_score) }}/10</div>
+      <div class="text-small" style="color: var(--color-text-tertiary);">Structure</div>
+    </div>
+    <div class="rounded-lg p-4" style="background-color: var(--color-bg-primary);">
+      <div class="text-2xl font-bold" style="color: var(--color-blue-600);">{{ "%.1f" | format(result.completeness_score) }}/10</div>
+      <div class="text-small" style="color: var(--color-text-tertiary);">Completeness</div>
+    </div>
+  </div>
+
+  <!-- Strengths -->
+  {% if result.strengths %}
+  <div class="mb-6">
+    <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">✓ Strengths</h4>
+    <ul class="space-y-2">
+      {% for strength in result.strengths %}
+      <li class="text-body" style="color: var(--color-text-secondary); padding-left: 1rem;">• {{ strength }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- Improvements -->
+  {% if result.improvements %}
+  <div class="mb-6">
+    <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">💡 Areas to Improve</h4>
+    <ul class="space-y-2">
+      {% for improvement in result.improvements %}
+      <li class="text-body" style="color: var(--color-text-secondary); padding-left: 1rem;">• {{ improvement }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- Suggested Framework -->
+  {% if result.suggested_framework %}
+  <div class="rounded-lg p-4 mb-6" style="background-color: var(--color-bg-tertiary);">
+    <p class="text-small font-semibold mb-1" style="color: var(--color-text-tertiary);">SUGGESTED FRAMEWORK</p>
+    <p class="text-body" style="color: var(--color-text-primary);">{{ result.suggested_framework }}</p>
+  </div>
+  {% endif %}
+
+  <!-- CTA -->
+  <div class="flex gap-3 mt-6">
+    <a href="/tools/interview-coach"
+       class="inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+       style="background-color: var(--color-accent);"
+       onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+       onmouseout="this.style.backgroundColor='var(--color-accent)'">
+      Try Another Question
+    </a>
+    <a href="/tools/interview-coach"
+       class="inline-flex items-center rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+       style="border-color: var(--color-border); color: var(--color-text-primary);"
+       onmouseover="this.style.borderColor='var(--color-border-hover)'"
+       onmouseout="this.style.borderColor='var(--color-border)'">
+      View All Categories
+    </a>
+  </div>
+</div>

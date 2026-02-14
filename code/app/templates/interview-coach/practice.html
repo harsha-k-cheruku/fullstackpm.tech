@@ -1,0 +1,95 @@
+<!-- app/templates/interview-coach/practice.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-12 lg:py-16">
+  <div class="max-w-3xl mx-auto">
+    <a href="/tools/interview-coach"
+       class="inline-flex items-center gap-2 text-small font-medium transition-colors mb-6"
+       style="color: var(--color-accent);"
+       onmouseover="this.style.color='var(--color-accent-hover)'"
+       onmouseout="this.style.color='var(--color-accent)'">
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+      Back to Categories
+    </a>
+
+    <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">Practice</h1>
+    <p class="text-small mb-6" style="color: var(--color-text-tertiary); font-style: italic;">
+      🤖 Your responses are evaluated by AI (ChatGPT) — no API key needed.
+    </p>
+
+    <form id="practice-form"
+          hx-post="/api/interview-coach/submit"
+          hx-target="#feedback-panel"
+          hx-swap="outerHTML"
+          hx-indicator="#submit-spinner">
+      <input type="hidden" name="session_id" value="{{ session_id }}">
+      <input type="hidden" name="question_id" value="{{ question.id }}">
+      <input type="hidden" name="category" value="{{ category }}">
+
+      <!-- Question Card -->
+      <div class="rounded-xl border p-6 mb-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <p class="text-small font-semibold mb-3" style="color: var(--color-text-tertiary);">QUESTION</p>
+        <h2 class="text-h3" style="color: var(--color-text-primary);">{{ question.text }}</h2>
+      </div>
+
+      <!-- Answer Textarea -->
+      <div class="mb-6">
+        <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Your Answer</label>
+        <textarea id="answer-text"
+                  name="answer_text"
+                  rows="8"
+                  class="mt-2 w-full rounded-xl border px-4 py-3 text-body"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                  placeholder="Think out loud. Structure your answer. Show your frameworks."
+                  required></textarea>
+      </div>
+
+      <!-- Timer -->
+      <div class="mb-6">
+        <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Optional: Set a timer</label>
+        <select id="timer-select"
+                class="mt-2 rounded-lg border px-4 py-2.5"
+                style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">
+          <option value="">No timer</option>
+          <option value="300">5 minutes</option>
+          <option value="600">10 minutes</option>
+          <option value="900">15 minutes</option>
+        </select>
+      </div>
+
+      <input type="hidden" name="time_spent_sec" id="time-spent" value="">
+
+      <!-- Submit Button -->
+      <div class="flex gap-3">
+        <button id="submit-btn"
+                type="submit"
+                class="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+                style="background-color: var(--color-accent);"
+                onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+                onmouseout="this.style.backgroundColor='var(--color-accent)'">
+          Submit Answer
+          <span id="submit-spinner" class="htmx-indicator">
+            <svg class="h-4 w-4 animate-spin" style="color: white;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+          </span>
+        </button>
+        <a href="/tools/interview-coach"
+           class="inline-flex items-center rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+           style="border-color: var(--color-border); color: var(--color-text-primary);"
+           onmouseover="this.style.borderColor='var(--color-border-hover)'"
+           onmouseout="this.style.borderColor='var(--color-border)'">
+          New Category
+        </a>
+      </div>
+    </form>
+
+    <!-- Feedback Panel -->
+    <div class="mt-8" id="feedback-panel"></div>
+  </div>
+</section>
+{% endblock %}

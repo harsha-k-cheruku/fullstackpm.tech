@@ -1,0 +1,53 @@
+<!-- app/templates/interview-coach/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-12 lg:py-16">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-h1 mb-3" style="color: var(--color-text-primary);">PM Interview Coach</h1>
+      <p class="text-body-lg" style="color: var(--color-text-secondary);">
+        Practice product interview questions and get structured AI feedback.
+      </p>
+      <p class="text-small mt-4" style="color: var(--color-text-tertiary); font-style: italic;">
+        💡 Tip: AI evaluation is powered by OpenAI's ChatGPT. No API key needed — this is a hosted service.
+      </p>
+    </div>
+
+    <div class="flex justify-center mb-8">
+      <a href="#practice"
+         class="inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+         style="background-color: var(--color-accent);"
+         onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+         onmouseout="this.style.backgroundColor='var(--color-accent)'">
+        Start Practicing
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4" id="practice">
+      {% for category in categories %}
+      <a href="/tools/interview-coach/{{ category.id }}"
+         class="rounded-xl border p-6 transition-colors"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-border-hover)'"
+         onmouseout="this.style.borderColor='var(--color-border)'">
+        <h2 class="text-h4 mb-2" style="color: var(--color-text-primary);">{{ category.label }}</h2>
+        <p class="text-small" style="color: var(--color-text-tertiary);">
+          {{ category.count }} questions
+        </p>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="mt-12 rounded-lg p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border); border: 1px solid;">
+      <h3 class="text-h4 mb-3" style="color: var(--color-text-primary);">How it works</h3>
+      <ol class="space-y-2 text-body" style="color: var(--color-text-secondary);">
+        <li><strong>1. Pick a category</strong> — Product Design, Strategy, Execution, or Analytical</li>
+        <li><strong>2. Respond to a question</strong> — Think like you're in a real interview</li>
+        <li><strong>3. Get AI feedback</strong> — Structured evaluation on frameworks, clarity, and completeness</li>
+        <li><strong>4. Track progress</strong> — See your scores across categories and improve over time</li>
+      </ol>
+    </div>
+  </div>
+</section>
+{% endblock %}

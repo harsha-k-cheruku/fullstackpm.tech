@@ -14,6 +14,11 @@ class Settings(BaseSettings):
     # Database
     database_url: str = "sqlite:///./fullstackpm.db"
 
+    # OpenAI API (for interview coach)
+    openai_api_key: str = ""
+    openai_model: str = "gpt-4o-mini"
+    openai_max_tokens: int = 2000
+
     # Site metadata
     site_title: str = "fullstackpm.tech"
     site_description: str = "Portfolio of Harsha Cheruku — Full Stack AI Product Manager"
