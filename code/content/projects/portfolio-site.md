@@ -5,7 +5,7 @@ tech_stack: [FastAPI, Jinja2, Tailwind CSS, HTMX, Markdown]
 status: "in_progress"
 featured: true
 display_order: 1
-github_url: "https://github.com/hcheruku/fullstackpm.tech"
+github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
 live_url: ""
 ---
 ## Problem
