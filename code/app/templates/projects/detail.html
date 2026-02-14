@@ -72,6 +72,45 @@
         {% endif %}
       </div>
 
+      <!-- Problem → Approach → Solution Cards -->
+      {% if project.problem or project.approach or project.solution %}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {% if project.problem %}
+        <div class="rounded-lg border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-2xl">❌</span>
+            <h3 class="text-h4" style="color: var(--color-text-primary);">The Problem</h3>
+          </div>
+          <p class="text-body" style="color: var(--color-text-secondary);">{{ project.problem }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.approach %}
+        <div class="rounded-lg border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-2xl">💡</span>
+            <h3 class="text-h4" style="color: var(--color-text-primary);">The Approach</h3>
+          </div>
+          <p class="text-body" style="color: var(--color-text-secondary);">{{ project.approach }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.solution %}
+        <div class="rounded-lg border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-2xl">✅</span>
+            <h3 class="text-h4" style="color: var(--color-text-primary);">The Solution</h3>
+          </div>
+          <p class="text-body" style="color: var(--color-text-secondary);">{{ project.solution }}</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Divider -->
+      <hr style="border-color: var(--color-border); margin-bottom: 3rem;">
+      {% endif %}
+
+      <!-- Blog-style content -->
       <div class="prose max-w-3xl mx-auto">
         {{ project.html_content | safe }}
       </div>

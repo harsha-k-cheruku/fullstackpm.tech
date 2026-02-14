@@ -6,7 +6,10 @@ status: "shipping"
 featured: true
 display_order: 2
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
-live_url: ""
+live_url: "/tools/interview-coach"
+problem: "PM interview prep is fragmented. Candidates memorize frameworks but don't know how to apply them under pressure. Feedback comes too late to iterate."
+approach: "Build an AI coach that evaluates answers in real-time using the same frameworks interviewers use (CIRCLES, RICE, HEART, STAR). Make feedback immediate and actionable."
+solution: "An interactive tool where users answer PM questions and get structured feedback on frameworks, clarity, and strategy. They iterate until they're confident."
 ---
 ## What
 

@@ -7,6 +7,9 @@ featured: true
 display_order: 1
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
 live_url: "https://www.fullstackpm.tech"
+problem: "Most PM portfolios show opinions, not outcomes. Decks and case studies don't prove you can actually build and ship products."
+approach: "Build a working product portfolio where projects live as markdown, deploy with one push, and demonstrate Full Stack PM capabilities through shipped artifacts."
+solution: "A fast, simple architecture using FastAPI + Jinja2 that shows PM work (blog), PM thinking (projects with What/Why/How), and PM execution (working tools like Interview Coach)."
 ---
 ## What
 

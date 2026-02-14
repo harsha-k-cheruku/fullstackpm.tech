@@ -33,6 +33,9 @@ class Project(BaseModel):
     display_order: int
     github_url: str
     live_url: str
+    problem: str | None = None
+    approach: str | None = None
+    solution: str | None = None
     html_content: str
 
 
@@ -115,6 +118,9 @@ class ContentService:
                     display_order=int(metadata.get("display_order", 9999)),
                     github_url=str(metadata.get("github_url", "")),
                     live_url=str(metadata.get("live_url", "")),
+                    problem=str(metadata.get("problem", "")) or None,
+                    approach=str(metadata.get("approach", "")) or None,
+                    solution=str(metadata.get("solution", "")) or None,
                     html_content=content_html,
                 )
             )
