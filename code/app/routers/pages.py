@@ -26,7 +26,7 @@ async def home(request: Request) -> HTMLResponse:
     """Consolidated home page: Full Stack PM definition + components."""
     return templates.TemplateResponse(
         "index.html",
-        _ctx(request, title="Harsha Cheruku — Full Stack PM", current_page="/"),
+        _ctx(request, title="@fullstackpm - Harsha Cheruku", current_page="/"),
     )
 
 
