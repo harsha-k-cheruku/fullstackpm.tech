@@ -61,5 +61,5 @@ async def fullstackpm_page(request: Request) -> HTMLResponse:
     """Personal brand page — consolidated about/contact/career."""
     return templates.TemplateResponse(
         "fullstackpm.html",
-        _ctx(request, title="@FullStackPM — Harsha Cheruku", current_page="/@fullstackpm"),
+        _ctx(request, title="@fullstackpm — Harsha Cheruku", current_page="/@fullstackpm"),
     )
