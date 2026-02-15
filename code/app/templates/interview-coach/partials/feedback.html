@@ -54,6 +54,15 @@
   </div>
   {% endif %}
 
+  <!-- Model and Cost Info -->
+  <div class="text-xs pt-4 border-t" style="border-color: var(--color-border); color: var(--color-text-tertiary);">
+    <p>
+      Model: <strong>{{ result.llm_model }}</strong> |
+      Tokens: <strong>{{ result.input_tokens + result.output_tokens }}</strong> |
+      Cost: <strong>${{ "%.6f" | format(result.estimated_cost_usd) }}</strong>
+    </p>
+  </div>
+
   <!-- CTA -->
   <div class="flex gap-3 mt-6">
     <a href="/tools/interview-coach"

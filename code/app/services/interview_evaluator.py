@@ -1,15 +1,21 @@
 # app/services/interview_evaluator.py
-"""Interview answer evaluation using OpenAI ChatGPT."""
+"""Interview answer evaluation using multi-provider LLM support."""
 from __future__ import annotations
 
 import json
 import logging
 from dataclasses import dataclass
+from typing import Optional
 
-from openai import AsyncOpenAI
 from pydantic import BaseModel, Field, ValidationError
 
 from app.config import settings
+from app.services.llm_provider import (
+    LLMProvider,
+    LLMProviderError,
+    get_provider,
+)
+from app.services.encryption import SessionEncryption, EncryptionError
 
 logger = logging.getLogger(__name__)
 
@@ -50,6 +56,11 @@ class EvaluationResult:
     suggested_framework: str | None
     example_point: str | None
     raw_json: str
+    input_tokens: int = 0
+    output_tokens: int = 0
+    estimated_cost_usd: float = 0.0
+    llm_provider: str = "google"
+    llm_model: str = "gemini-2.5-flash"
 
 
 class EvaluationError(RuntimeError):
@@ -57,29 +68,59 @@ class EvaluationError(RuntimeError):
 
 
 async def evaluate_interview_answer(
-    category: str, question: str, answer: str, time_spent_sec: int | None = None
+    category: str,
+    question: str,
+    answer: str,
+    time_spent_sec: int | None = None,
+    provider: str = "google",
+    model: Optional[str] = None,
+    encrypted_api_key: Optional[str] = None,
 ) -> EvaluationResult:
-    """Evaluate an interview answer using OpenAI ChatGPT."""
-    if not settings.openai_api_key:
-        raise EvaluationError("OPENAI_API_KEY not configured")
+    """Evaluate an interview answer using multi-provider LLM.
 
-    client = AsyncOpenAI(api_key=settings.openai_api_key)
+    Args:
+        category: Interview category
+        question: Interview question
+        answer: User's answer
+        time_spent_sec: Time spent answering (optional)
+        provider: LLM provider ("openai", "anthropic", "google")
+        model: Model name (uses provider default if not specified)
+        encrypted_api_key: Encrypted API key from session (optional)
+
+    Returns:
+        EvaluationResult with scores and feedback
+
+    Raises:
+        EvaluationError: If evaluation fails
+    """
     system_prompt = _build_system_prompt(category)
     user_prompt = _build_user_prompt(question, answer, time_spent_sec)
 
     try:
-        response = await client.chat.completions.create(
-            model=settings.openai_model,
-            max_tokens=settings.openai_max_tokens,
+        # Get the LLM provider
+        llm = _get_llm_provider(provider, model, encrypted_api_key)
+
+        # Call the LLM
+        response = await llm.complete(
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
+            max_tokens=settings.openai_max_tokens,
         )
-        raw_text = response.choices[0].message.content
+
+        # Parse response
+        raw_text = response.content
         payload = json.loads(raw_text)
         parsed = EvaluationSchema(**payload)
-    except (ValidationError, json.JSONDecodeError, Exception) as exc:
+
+    except (ValidationError, json.JSONDecodeError) as exc:
+        logger.error("Evaluation failed: invalid response format", exc_info=True)
+        raise EvaluationError("Evaluation failed: invalid response format") from exc
+    except (LLMProviderError, EncryptionError) as exc:
+        logger.error("Evaluation failed: LLM provider error", exc_info=True)
+        raise EvaluationError(f"Evaluation failed: {exc}") from exc
+    except Exception as exc:
         logger.error("Evaluation failed", exc_info=True)
         raise EvaluationError("Evaluation failed") from exc
 
@@ -93,6 +134,11 @@ async def evaluate_interview_answer(
         suggested_framework=parsed.suggested_framework,
         example_point=parsed.example_point,
         raw_json=json.dumps(payload),
+        input_tokens=response.input_tokens,
+        output_tokens=response.output_tokens,
+        estimated_cost_usd=response.cost_usd,
+        llm_provider=provider,
+        llm_model=response.model,
     )
 
 
@@ -126,3 +172,51 @@ def _build_user_prompt(question: str, answer: str, time_spent_sec: int | None) -
         "Return JSON only with keys: overall_score, framework_score, structure_score, "
         "completeness_score, strengths, improvements, suggested_framework, example_point."
     )
+
+
+def _get_llm_provider(
+    provider: str, model: Optional[str], encrypted_api_key: Optional[str]
+) -> LLMProvider:
+    """Get the appropriate LLM provider with decryption support.
+
+    Args:
+        provider: Provider name ("openai", "anthropic", "google")
+        model: Model name (optional, uses default if not specified)
+        encrypted_api_key: Encrypted API key from session (optional)
+
+    Returns:
+        Initialized LLMProvider
+
+    Raises:
+        EvaluationError: If provider cannot be initialized
+    """
+    try:
+        # Prepare fallback keys from settings
+        fallback_keys = {}
+        if settings.openai_api_key:
+            fallback_keys["openai"] = settings.openai_api_key
+        if settings.anthropic_api_key:
+            fallback_keys["anthropic"] = settings.anthropic_api_key
+        if settings.google_api_key:
+            fallback_keys["google"] = settings.google_api_key
+
+        # Decrypt the API key if provided
+        api_key = None
+        if encrypted_api_key and settings.secret_key:
+            try:
+                cipher = SessionEncryption(settings.secret_key)
+                api_key = cipher.decrypt(encrypted_api_key)
+            except EncryptionError as exc:
+                logger.error("Failed to decrypt API key", exc_info=True)
+                raise EvaluationError("Failed to decrypt API key") from exc
+
+        # Get the provider
+        llm = get_provider(provider, api_key, model, fallback_keys)
+        return llm
+
+    except LLMProviderError as exc:
+        logger.error(f"LLM provider error: {exc}", exc_info=True)
+        raise EvaluationError(f"LLM provider error: {exc}") from exc
+    except Exception as exc:
+        logger.error("Failed to get LLM provider", exc_info=True)
+        raise EvaluationError("Failed to get LLM provider") from exc

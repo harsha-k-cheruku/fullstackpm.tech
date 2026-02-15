@@ -23,25 +23,28 @@ def _ctx(request: Request, **kwargs) -> dict:
 
 @router.get("/", response_class=HTMLResponse)
 async def home(request: Request) -> HTMLResponse:
+    """Consolidated home page: Full Stack PM definition + components."""
     return templates.TemplateResponse(
-        "home.html",
-        _ctx(request, title="Harsha Cheruku — Full Stack AI PM", current_page="/"),
+        "index.html",
+        _ctx(request, title="Harsha Cheruku — Full Stack PM", current_page="/"),
     )
 
 
 @router.get("/about", response_class=HTMLResponse)
 async def about(request: Request) -> HTMLResponse:
+    """Redirect to home for backward compatibility."""
     return templates.TemplateResponse(
-        "about.html",
-        _ctx(request, title="About — fullstackpm.tech", current_page="/about"),
+        "index.html",
+        _ctx(request, title="Harsha Cheruku — Full Stack PM", current_page="/"),
     )
 
 
 @router.get("/contact", response_class=HTMLResponse)
 async def contact(request: Request) -> HTMLResponse:
+    """Redirect to home for backward compatibility."""
     return templates.TemplateResponse(
-        "contact.html",
-        _ctx(request, title="Contact — fullstackpm.tech", current_page="/contact"),
+        "index.html",
+        _ctx(request, title="Harsha Cheruku — Full Stack PM", current_page="/"),
     )
 
 
@@ -50,4 +53,13 @@ async def resume(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(
         "resume.html",
         _ctx(request, title="Resume — fullstackpm.tech", current_page="/resume"),
+    )
+
+
+@router.get("/@fullstackpm", response_class=HTMLResponse)
+async def fullstackpm_page(request: Request) -> HTMLResponse:
+    """Personal brand page — consolidated about/contact/career."""
+    return templates.TemplateResponse(
+        "fullstackpm.html",
+        _ctx(request, title="@FullStackPM — Harsha Cheruku", current_page="/@fullstackpm"),
     )

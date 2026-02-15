@@ -1,0 +1,359 @@
+<!-- app/templates/partials/api_key_settings.html -->
+<!-- API Key Settings Modal -->
+
+<div id="api-key-settings-modal"
+     class="hidden fixed inset-0 z-50 bg-black bg-opacity-50 overflow-y-auto">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="rounded-xl border max-w-md w-full p-6 animate-in fade-in"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-h3" style="color: var(--color-text-primary);">AI Settings</h2>
+        <button onclick="closeApiKeySettings()"
+                class="p-1 rounded-lg transition-colors"
+                style="color: var(--color-text-tertiary);"
+                onmouseover="this.style.backgroundColor='var(--color-bg-primary)'"
+                onmouseout="this.style.backgroundColor='transparent'">
+          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Current Status -->
+      <div id="status-panel"
+           hx-get="/api/keys/status"
+           hx-trigger="load"
+           class="mb-6 p-4 rounded-lg"
+           style="background-color: var(--color-bg-primary);">
+        <div class="text-sm" style="color: var(--color-text-tertiary);">Loading...</div>
+      </div>
+
+      <!-- Settings Form -->
+      <form id="api-key-form" class="space-y-4">
+
+        <!-- Provider Selection -->
+        <div>
+          <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Provider</label>
+          <select id="provider-select"
+                  name="provider"
+                  class="mt-2 w-full rounded-lg border px-4 py-2.5"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                  onchange="updateModelOptions()">
+            <option value="">-- Select Provider --</option>
+            <option value="google">🆓 Google Gemini (Free Tier)</option>
+            <option value="openai">OpenAI GPT</option>
+            <option value="anthropic">Anthropic Claude</option>
+          </select>
+          <p class="text-xs mt-1" style="color: var(--color-text-tertiary);">
+            Google Gemini is free with 1M tokens/day. Other providers require your API key.
+          </p>
+        </div>
+
+        <!-- Model Selection -->
+        <div>
+          <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Model</label>
+          <select id="model-select"
+                  name="model"
+                  class="mt-2 w-full rounded-lg border px-4 py-2.5 disabled:opacity-50"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                  disabled>
+            <option value="">-- Select Model --</option>
+          </select>
+          <div id="model-pricing" class="text-xs mt-1" style="color: var(--color-text-tertiary);"></div>
+        </div>
+
+        <!-- API Key Input -->
+        <div id="api-key-input-container" class="hidden">
+          <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">API Key</label>
+          <input type="password"
+                 id="api-key-input"
+                 name="api_key"
+                 class="mt-2 w-full rounded-lg border px-4 py-2.5"
+                 style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+                 placeholder="Your API key (encrypted in session)"
+                 autocomplete="off">
+          <p class="text-xs mt-1" style="color: var(--color-text-tertiary);">
+            🔒 Your key is encrypted with AES-256 and stored only in a secure cookie for 30 minutes. Never persisted to our database.
+          </p>
+        </div>
+
+        <!-- Error/Success Messages -->
+        <div id="message-panel" class="hidden rounded-lg p-3 text-sm"></div>
+
+        <!-- Buttons -->
+        <div class="flex gap-2 pt-4">
+          <button type="button"
+                  id="save-btn"
+                  onclick="saveApiKey()"
+                  class="flex-1 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-colors disabled:opacity-50"
+                  style="background-color: var(--color-accent);"
+                  onmouseover="if(!this.disabled) this.style.backgroundColor='var(--color-accent-hover)'"
+                  onmouseout="if(!this.disabled) this.style.backgroundColor='var(--color-accent)'"
+                  disabled>
+            Save Settings
+            <span id="save-spinner" class="htmx-indicator ml-2">
+              <svg class="h-4 w-4 animate-spin" style="color: white; display: inline;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+              </svg>
+            </span>
+          </button>
+          <button type="button"
+                  id="clear-btn"
+                  onclick="clearApiKey()"
+                  class="rounded-lg border px-4 py-2.5 text-sm font-semibold transition-colors"
+                  style="border-color: var(--color-border); color: var(--color-text-primary);"
+                  onmouseover="this.style.borderColor='var(--color-border-hover)'"
+                  onmouseout="this.style.borderColor='var(--color-border)'">
+            Use Free
+          </button>
+          <button type="button"
+                  onclick="closeApiKeySettings()"
+                  class="rounded-lg border px-4 py-2.5 text-sm font-semibold transition-colors"
+                  style="border-color: var(--color-border); color: var(--color-text-primary);"
+                  onmouseover="this.style.borderColor='var(--color-border-hover)'"
+                  onmouseout="this.style.borderColor='var(--color-border)'">
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Model Pricing Data (hidden, used by JS) -->
+<script id="model-pricing-data" type="application/json">
+{
+  "google": {
+    "gemini-2.5-flash": {
+      "display": "Gemini 2.5 Flash (Free)",
+      "cost": "$0.00 per evaluation",
+      "description": "1M tokens/day free tier"
+    }
+  },
+  "openai": {
+    "gpt-4o-mini": {
+      "display": "GPT-4o Mini",
+      "cost": "$0.0003 per evaluation",
+      "description": "$0.15 per 1M input + $0.60 per 1M output tokens"
+    },
+    "gpt-4o": {
+      "display": "GPT-4o",
+      "cost": "$0.002 per evaluation",
+      "description": "$5 per 1M input + $15 per 1M output tokens"
+    }
+  },
+  "anthropic": {
+    "claude-3-5-haiku": {
+      "display": "Claude 3.5 Haiku",
+      "cost": "$0.0006 per evaluation",
+      "description": "$0.80 per 1M input + $4 per 1M output tokens"
+    },
+    "claude-3-5-sonnet": {
+      "display": "Claude 3.5 Sonnet",
+      "cost": "$0.003 per evaluation",
+      "description": "$3 per 1M input + $15 per 1M output tokens"
+    }
+  }
+}
+</script>
+
+<script>
+  // Model selection based on provider
+  const modelPricingData = JSON.parse(document.getElementById('model-pricing-data').textContent);
+
+  function updateModelOptions() {
+    const provider = document.getElementById('provider-select').value;
+    const modelSelect = document.getElementById('model-select');
+    const apiKeyContainer = document.getElementById('api-key-input-container');
+    const modelPricing = document.getElementById('model-pricing');
+    const saveBtn = document.getElementById('save-btn');
+
+    modelSelect.innerHTML = '<option value="">-- Select Model --</option>';
+    modelPricing.textContent = '';
+
+    if (!provider) {
+      modelSelect.disabled = true;
+      apiKeyContainer.classList.add('hidden');
+      saveBtn.disabled = true;
+      return;
+    }
+
+    const models = modelPricingData[provider] || {};
+    const defaultModel = Object.keys(models)[0];
+
+    Object.entries(models).forEach(([key, data]) => {
+      const option = document.createElement('option');
+      option.value = key;
+      option.textContent = data.display;
+      modelSelect.appendChild(option);
+    });
+
+    modelSelect.value = defaultModel;
+    modelSelect.disabled = false;
+
+    // Show/hide API key input based on provider
+    if (provider === 'google') {
+      apiKeyContainer.classList.add('hidden');
+      saveBtn.disabled = false;
+    } else {
+      apiKeyContainer.classList.remove('hidden');
+      saveBtn.disabled = true; // Enable after key is entered
+    }
+
+    updateModelPricing();
+  }
+
+  function updateModelPricing() {
+    const provider = document.getElementById('provider-select').value;
+    const model = document.getElementById('model-select').value;
+    const modelPricing = document.getElementById('model-pricing');
+
+    if (!provider || !model) return;
+
+    const data = modelPricingData[provider]?.[model];
+    if (data) {
+      modelPricing.innerHTML = `
+        <strong>${data.cost}</strong><br>
+        ${data.description}
+      `;
+    }
+  }
+
+  // Enable save button when API key is entered (non-Google providers)
+  document.getElementById('api-key-input')?.addEventListener('input', function() {
+    const saveBtn = document.getElementById('save-btn');
+    const provider = document.getElementById('provider-select').value;
+    if (provider === 'google' || this.value.trim()) {
+      saveBtn.disabled = false;
+    } else {
+      saveBtn.disabled = true;
+    }
+  });
+
+  function showMessage(text, type = 'info') {
+    const panel = document.getElementById('message-panel');
+    const bgColor = type === 'error' ? '#fee2e2' : '#dbeafe';
+    const textColor = type === 'error' ? '#991b1b' : '#0c4a6e';
+
+    panel.innerHTML = text;
+    panel.style.backgroundColor = bgColor;
+    panel.style.color = textColor;
+    panel.classList.remove('hidden');
+
+    if (type === 'success') {
+      setTimeout(() => {
+        panel.classList.add('hidden');
+      }, 3000);
+    }
+  }
+
+  async function saveApiKey() {
+    const provider = document.getElementById('provider-select').value;
+    const model = document.getElementById('model-select').value;
+    const apiKey = document.getElementById('api-key-input').value || '';
+
+    if (!provider || !model) {
+      showMessage('Please select both provider and model', 'error');
+      return;
+    }
+
+    if (provider !== 'google' && !apiKey) {
+      showMessage('Please enter your API key', 'error');
+      return;
+    }
+
+    try {
+      const saveBtn = document.getElementById('save-btn');
+      saveBtn.disabled = true;
+
+      const response = await fetch('/api/keys/set', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          provider,
+          api_key: apiKey,
+          model,
+          test_key: false
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        showMessage('✅ Settings saved! Using ' + model + ' for evaluations.', 'success');
+
+        // Clear API key field for security
+        document.getElementById('api-key-input').value = '';
+
+        // Reload status panel
+        htmx.ajax('GET', '/api/keys/status', '#status-panel');
+
+        // Close after success
+        setTimeout(() => {
+          closeApiKeySettings();
+        }, 1500);
+      } else {
+        showMessage('❌ Error: ' + (data.error || 'Unknown error'), 'error');
+        saveBtn.disabled = false;
+      }
+    } catch (error) {
+      showMessage('❌ Error: ' + error.message, 'error');
+      document.getElementById('save-btn').disabled = false;
+    }
+  }
+
+  async function clearApiKey() {
+    if (!confirm('Switch to free Gemini tier? You can always configure a paid API key later.')) {
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/keys/clear', { method: 'POST' });
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        showMessage('✅ Switched to free Gemini tier.', 'success');
+
+        // Clear form
+        document.getElementById('api-key-form').reset();
+
+        // Reload status panel
+        htmx.ajax('GET', '/api/keys/status', '#status-panel');
+
+        // Close after success
+        setTimeout(() => {
+          closeApiKeySettings();
+        }, 1500);
+      } else {
+        showMessage('❌ Error: ' + (data.error || 'Unknown error'), 'error');
+      }
+    } catch (error) {
+      showMessage('❌ Error: ' + error.message, 'error');
+    }
+  }
+
+  function openApiKeySettings() {
+    document.getElementById('api-key-settings-modal').classList.remove('hidden');
+  }
+
+  function closeApiKeySettings() {
+    document.getElementById('api-key-settings-modal').classList.add('hidden');
+  }
+
+  // Close on ESC key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeApiKeySettings();
+    }
+  });
+
+  // Close on background click
+  document.getElementById('api-key-settings-modal')?.addEventListener('click', function(event) {
+    if (event.target === this) {
+      closeApiKeySettings();
+    }
+  });
+</script>

@@ -1,0 +1,379 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO: The Future of Work Story -->
+<section style="padding: 6rem 0; background: linear-gradient(135deg, var(--color-blue-100) 0%, var(--color-bg-primary) 100%);">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="mb-12">
+      <p class="text-small mb-4" style="color: var(--color-text-secondary); font-style: italic;">
+        2027. A fictional scenario.
+      </p>
+
+      <h1 class="text-display mb-6" style="color: var(--color-text-primary); line-height: 1.1;">
+        Your PM job is disappearing
+      </h1>
+
+      <p class="text-h3 mb-8" style="color: var(--color-text-secondary); font-weight: 400; line-height: 1.6;">
+        Not your job title. Your job <strong>function</strong>.
+      </p>
+
+      <div class="rounded-xl border p-8 mb-8" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <p class="text-body-lg mb-6" style="color: var(--color-text-secondary); line-height: 1.8;">
+          <strong>The scenario:</strong> A PM at a startup writes a spec in Notion. She asks Claude to generate the functional requirements, user stories, and acceptance criteria. She uses her company's dashboard templates to mock the UI. She spins up a prototype with FastAPI and HTMX in 3 hours. By EOD, she has user feedback. By tomorrow, she ships V1 to 100 beta users.
+        </p>
+        <p class="text-body-lg" style="color: var(--color-text-secondary); line-height: 1.8;">
+          <strong>What changed:</strong> The work that used to take a PM + designer + engineer for weeks now takes one person and one day. The PM didn't become less important—they became <strong>more powerful</strong>.
+        </p>
+      </div>
+
+      <p class="text-body-lg" style="color: var(--color-text-secondary); line-height: 1.8;">
+        If you can only <em>manage</em> products, your leverage disappears. If you can <em>build</em> them, you become invaluable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Why This is Happening Now -->
+<section style="padding: 4rem 0;">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-h2 mb-12" style="color: var(--color-text-primary);">Why This Matters Right Now</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Force 1: AI -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <div class="text-3xl mb-4">🤖</div>
+        <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">AI is a Co-Pilot</h4>
+        <p class="text-body" style="color: var(--color-text-secondary);">
+          Claude, GPT, Gemini handle 60% of spec writing, requirements gathering, and even basic coding. You direct, but don't execute.
+        </p>
+      </div>
+
+      <!-- Force 2: Tooling -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <div class="text-3xl mb-4">🛠️</div>
+        <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">No-Code is Dead (Almost)</h4>
+        <p class="text-body" style="color: var(--color-text-secondary);">
+          Modern web frameworks (FastAPI, Next.js, React) are approachable for non-engineers. One person can ship real products.
+        </p>
+      </div>
+
+      <!-- Force 3: Economics -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <div class="text-3xl mb-4">📈</div>
+        <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">Faster = Cheaper = Wins</h4>
+        <p class="text-body" style="color: var(--color-text-secondary);">
+          Teams that ship in days beat teams that ship in months. The economics favor the full-stack.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What is Full Stack PM -->
+<section style="padding: 4rem 0; background-color: var(--color-bg-secondary);">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-h2 mb-12" style="color: var(--color-text-primary);">What is a Full Stack PM?</h2>
+
+    <div class="rounded-xl border p-8 mb-12" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+      <p class="text-h3 mb-6" style="color: var(--color-text-primary); font-weight: 500; line-height: 1.6;">
+        A PM who can go from <strong>insight → prototype → shipped product</strong> without handing off.
+      </p>
+
+      <p class="text-body-lg mb-6" style="color: var(--color-text-secondary); line-height: 1.8;">
+        Not a designer. Not an engineer. Not a PM. But a hybrid that can <strong>think like a PM, code like an engineer, and design like a designer</strong>.
+      </p>
+
+      <p class="text-body" style="color: var(--color-text-tertiary); font-style: italic;">
+        Full Stack PM = PM instinct + Technical depth + Design sensibility + Ship mindset
+      </p>
+    </div>
+
+    <!-- The Five Components: Connected Flow -->
+    <h3 class="text-h3 mb-8" style="color: var(--color-text-primary);">What It Takes (5 Skills)</h3>
+
+    <div class="space-y-6">
+
+      <!-- 1. Insight -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl flex-shrink-0">💡</div>
+          <div class="flex-1">
+            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">1. Product Instinct</h4>
+            <p class="text-body" style="color: var(--color-text-secondary);">
+              See problems worth solving. Understand users deeply. Ask "why" 5 times. Know what to build before you build it.
+            </p>
+            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
+              → Learn: User research, competitive analysis, market dynamics, CIRCLES framework
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow indicator -->
+      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
+
+      <!-- 2. Data -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl flex-shrink-0">📊</div>
+          <div class="flex-1">
+            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">2. Data Rigor</h4>
+            <p class="text-body" style="color: var(--color-text-secondary);">
+              Write SQL to explore data. Build dashboards. Analyze metrics yourself. A/B test rigorously. Don't rely on others for truth.
+            </p>
+            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
+              → Learn: SQL, analytics, A/B testing, metrics definition, Python for data
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow indicator -->
+      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
+
+      <!-- 3. Design -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl flex-shrink-0">🎨</div>
+          <div class="flex-1">
+            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">3. Design Thinking</h4>
+            <p class="text-body" style="color: var(--color-text-secondary);">
+              Prototype before building. Iterate on mockups. Know UX patterns. Design for emotion, not just function.
+            </p>
+            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
+              → Learn: Figma, UX principles, user testing, design patterns, accessibility
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow indicator -->
+      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
+
+      <!-- 4. Code -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl flex-shrink-0">💻</div>
+          <div class="flex-1">
+            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">4. Technical Depth</h4>
+            <p class="text-body" style="color: var(--color-text-secondary);">
+              Build working prototypes. Ship real products. Understand systems, APIs, databases, and architecture. Know what's possible.
+            </p>
+            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
+              → Learn: Python/JavaScript, web frameworks (FastAPI, Next.js), databases, git, deployment
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow indicator -->
+      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
+
+      <!-- 5. Ship -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-4">
+          <div class="text-3xl flex-shrink-0">🚀</div>
+          <div class="flex-1">
+            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">5. Shipping Mentality</h4>
+            <p class="text-body" style="color: var(--color-text-secondary);">
+              Release imperfect. Iterate based on feedback. Bias toward done. Speed is a feature.
+            </p>
+            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
+              → Learn: MVP thinking, feedback loops, scrappy execution, growth tactics
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- The Reality Check -->
+<section style="padding: 4rem 0;">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">The Reality Check</h2>
+
+    <div class="rounded-xl border p-8" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div>
+          <h4 class="text-h4 mb-4" style="color: var(--color-accent);">You Don't Need to Be...</h4>
+          <ul class="space-y-2" style="color: var(--color-text-secondary);">
+            <li>❌ A software engineer (no, you don't need 10 years experience)</li>
+            <li>❌ A UX designer (good taste beats design degree)</li>
+            <li>❌ A data scientist (SQL + basic stats is enough)</li>
+            <li>❌ Perfect (done is better than perfect)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-h4 mb-4" style="color: var(--color-accent);">You Do Need...</h4>
+          <ul class="space-y-2" style="color: var(--color-text-secondary);">
+            <li>✅ Curiosity (can you learn constantly?)</li>
+            <li>✅ Systems thinking (can you see how things connect?)</li>
+            <li>✅ Bias to action (can you ship imperfectly?)</li>
+            <li>✅ User empathy (do you actually care about users?)</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools & Resources -->
+<section style="padding: 4rem 0; background-color: var(--color-bg-secondary);">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">Resources to Get Started</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Interview Coach Tool -->
+      <a href="/tools/interview-coach"
+         class="rounded-xl border p-8 card-hover transition-colors"
+         style="background-color: var(--color-bg-primary); border-color: var(--color-border); text-decoration: none;">
+        <div class="flex items-start gap-3 mb-4">
+          <span style="font-size: 2rem;">🎯</span>
+          <div>
+            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Interview Coach</h4>
+            <span class="text-xs font-medium" style="background-color: var(--color-accent); color: white; padding: 0.25rem 0.5rem; border-radius: 4px;">Live</span>
+          </div>
+        </div>
+        <p class="text-body" style="color: var(--color-text-secondary);">
+          Practice PM interviews. Get AI feedback on your frameworks, structure, and thinking. Build confidence.
+        </p>
+        <p class="text-small mt-4" style="color: var(--color-accent); font-medium;">Start practicing →</p>
+      </a>
+
+      <!-- Learning Path (Placeholder) -->
+      <div class="rounded-xl border p-8 card-hover transition-colors"
+           style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-3 mb-4">
+          <span style="font-size: 2rem;">📚</span>
+          <div>
+            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Learning Guides</h4>
+            <span class="text-xs font-medium" style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary); padding: 0.25rem 0.5rem; border-radius: 4px;">Coming Soon</span>
+          </div>
+        </div>
+        <p class="text-body" style="color: var(--color-text-secondary);">
+          Step-by-step guides on each skill. Resources, recommended courses, and projects to build.
+        </p>
+        <p class="text-small mt-4" style="color: var(--color-text-tertiary); font-style: italic;">Building now</p>
+      </div>
+
+      <!-- Community (Placeholder) -->
+      <div class="rounded-xl border p-8 card-hover transition-colors"
+           style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-3 mb-4">
+          <span style="font-size: 2rem;">👥</span>
+          <div>
+            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Community</h4>
+            <span class="text-xs font-medium" style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary); padding: 0.25rem 0.5rem; border-radius: 4px;">Coming Soon</span>
+          </div>
+        </div>
+        <p class="text-body" style="color: var(--color-text-secondary);">
+          Connect with other PMs learning to become full-stack. Share challenges, wins, and resources.
+        </p>
+        <p class="text-small mt-4" style="color: var(--color-text-tertiary); font-style: italic;">Launching soon</p>
+      </div>
+
+      <!-- Tools & Templates (Placeholder) -->
+      <div class="rounded-xl border p-8 card-hover transition-colors"
+           style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+        <div class="flex items-start gap-3 mb-4">
+          <span style="font-size: 2rem;">🛠️</span>
+          <div>
+            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Tools & Templates</h4>
+            <span class="text-xs font-medium" style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary); padding: 0.25rem 0.5rem; border-radius: 4px;">Planned</span>
+          </div>
+        </div>
+        <p class="text-body" style="color: var(--color-text-secondary);">
+          AI toolkit, spec templates, roadmap frameworks. Open-source + MIT license.
+        </p>
+        <p class="text-small mt-4" style="color: var(--color-text-tertiary); font-style: italic;">Q2 2026</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Blog Preview -->
+<section style="padding: 4rem 0;">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">Latest Thinking</h2>
+
+    <div class="space-y-6">
+      {% set articles = [
+        {
+          "title": "How to Learn to Code (as a PM)",
+          "desc": "You don't need to become a software engineer. You need enough Python/JS to build prototypes and understand constraints.",
+          "slug": "how-to-learn-to-code-as-pm"
+        },
+        {
+          "title": "Why Data Skills Matter More Than Ever",
+          "desc": "The PM who can query data wins. Stop asking engineers for analytics. Learn SQL in a weekend.",
+          "slug": "why-data-skills-matter"
+        },
+        {
+          "title": "The Art of Shipping Imperfectly",
+          "desc": "Perfectionism kills products. How to release MVP thinking, iterate fast, and improve based on real feedback.",
+          "slug": "shipping-imperfectly"
+        }
+      ] %}
+
+      {% for article in articles %}
+      <a href="/blog/{{ article.slug }}"
+         class="block rounded-xl border p-6 card-hover transition-colors"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border); text-decoration: none;">
+        <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">{{ article.title }}</h4>
+        <p class="text-body" style="color: var(--color-text-secondary);">{{ article.desc }}</p>
+        <p class="text-small mt-3" style="color: var(--color-accent); font-medium;">Read →</p>
+      </a>
+      {% endfor %}
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="/blog"
+         class="inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold transition-colors"
+         style="border-color: var(--color-border); color: var(--color-text-primary);"
+         onmouseover="this.style.borderColor='var(--color-border-hover)'"
+         onmouseout="this.style.borderColor='var(--color-border)'">
+        All Articles
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Minimal Author Credit -->
+<section style="padding: 2rem 0; border-top: 1px solid var(--color-border);">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <p class="text-small" style="color: var(--color-text-tertiary);">
+      Built by <a href="/@fullstackpm" style="color: var(--color-accent); text-decoration: none;">@FullStackPM</a>
+    </p>
+  </div>
+</section>
+
+<!-- CTA: Start Learning -->
+<section style="padding: 4rem 0;">
+  <div class="max-w-2xl mx-auto text-center px-6">
+    <h2 class="text-h2 mb-4" style="color: var(--color-text-primary);">Ready to Become Full Stack?</h2>
+    <p class="text-body-lg mb-8" style="color: var(--color-text-secondary);">
+      Start with the Interview Coach to practice your product thinking. Then dive into guides on coding, data, and shipping.
+    </p>
+    <a href="/tools/interview-coach"
+       class="inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-semibold text-white transition-all card-hover"
+       style="background-color: var(--color-accent);">
+      Start Practicing
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+{% endblock %}

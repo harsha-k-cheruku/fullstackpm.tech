@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.config import settings
 from app.database import init_db
-from app.routers import blog, comments, interview_coach, marketplace, pages, projects, seo
+from app.routers import api_keys, blog, comments, interview_coach, marketplace, pages, projects, seo
 from app.services.content import ContentService
 
 
@@ -38,6 +38,7 @@ app.include_router(pages.router)
 app.include_router(projects.router)
 app.include_router(blog.router)
 app.include_router(comments.router)
+app.include_router(api_keys.router)
 app.include_router(interview_coach.router)
 app.include_router(marketplace.router)
 app.include_router(seo.router)
