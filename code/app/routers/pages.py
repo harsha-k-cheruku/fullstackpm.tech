@@ -35,7 +35,7 @@ async def about(request: Request) -> HTMLResponse:
     """Redirect to home for backward compatibility."""
     return templates.TemplateResponse(
         "index.html",
-        _ctx(request, title="Harsha Cheruku — Full Stack PM", current_page="/"),
+        _ctx(request, title="@fullstackpm - Harsha Cheruku", current_page="/"),
     )
 
 
@@ -44,7 +44,7 @@ async def contact(request: Request) -> HTMLResponse:
     """Redirect to home for backward compatibility."""
     return templates.TemplateResponse(
         "index.html",
-        _ctx(request, title="Harsha Cheruku — Full Stack PM", current_page="/"),
+        _ctx(request, title="@fullstackpm - Harsha Cheruku", current_page="/"),
     )
 
 
