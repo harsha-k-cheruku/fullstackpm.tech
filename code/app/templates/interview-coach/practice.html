@@ -4,32 +4,20 @@
 {% block content %}
 <section class="py-12 lg:py-16">
   <div class="max-w-3xl mx-auto">
-    <div class="flex items-center justify-between mb-6">
-      <a href="/tools/interview-coach"
-         class="inline-flex items-center gap-2 text-small font-medium transition-colors"
-         style="color: var(--color-accent);"
-         onmouseover="this.style.color='var(--color-accent-hover)'"
-         onmouseout="this.style.color='var(--color-accent)'">
-        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-        </svg>
-        Back to Categories
-      </a>
-      <button onclick="openApiKeySettings()"
-              class="inline-flex items-center gap-2 text-small font-medium rounded-lg px-3 py-1.5 transition-colors"
-              style="color: var(--color-text-secondary); background-color: var(--color-bg-primary); border: 1px solid var(--color-border);"
-              onmouseover="this.style.borderColor='var(--color-border-hover)'"
-              onmouseout="this.style.borderColor='var(--color-border)'">
-        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.592c.55 0 1.02.398 1.11.94m-.213 9.472c-.45.152-.75.682-.75 1.268v4.043c0 .586.3 1.116.75 1.268m0-9.581c.45-.152.75-.682.75-1.268V6.25c0-.586-.3-1.116-.75-1.268m0 9.581v4.043m0-6.575V6.25m0 0C19.238 4.817 20.317 2.998 20.317 1.5M3.75 22.5a.75.75 0 0 0 1.5 0V12a.75.75 0 0 0-1.5 0v10.5Z" />
-        </svg>
-        Settings
-      </button>
-    </div>
+    <a href="/tools/interview-coach"
+       class="inline-flex items-center gap-2 text-small font-medium transition-colors mb-6"
+       style="color: var(--color-accent);"
+       onmouseover="this.style.color='var(--color-accent-hover)'"
+       onmouseout="this.style.color='var(--color-accent)'">
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+      Back to Categories
+    </a>
 
     <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">Practice</h1>
     <p class="text-small mb-6" style="color: var(--color-text-tertiary); font-style: italic;">
-      🤖 Your responses are evaluated by AI (free Gemini model) — no API key needed. <button onclick="openApiKeySettings()" class="underline" style="color: var(--color-accent);">Use your own API key</button>
+      🤖 Your responses are evaluated by AI (ChatGPT) — no API key needed.
     </p>
 
     <form id="practice-form"
@@ -104,8 +92,4 @@
     <div class="mt-8" id="feedback-panel"></div>
   </div>
 </section>
-
-<!-- Include API Key Settings Modal -->
-{% include "partials/api_key_settings.html" %}
-
 {% endblock %}

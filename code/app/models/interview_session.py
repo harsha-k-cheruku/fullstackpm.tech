@@ -45,12 +45,6 @@ class InterviewAttempt(Base):
     improvements = Column(Text, nullable=True)  # JSON string
     suggested_framework = Column(String, nullable=True)
     time_spent_sec = Column(Integer, nullable=True)
-    # Multi-provider LLM fields
-    input_tokens = Column(Integer, nullable=True)
-    output_tokens = Column(Integer, nullable=True)
-    estimated_cost_usd = Column(Float, nullable=True)
-    llm_provider = Column(String, nullable=True)  # "openai", "anthropic", "google"
-    llm_model = Column(String, nullable=True)  # "gpt-4o-mini", "claude-3-5-haiku", etc.
     created_at = Column(DateTime, server_default=func.now(), nullable=False)
 
     def to_dict(self):
@@ -70,10 +64,5 @@ class InterviewAttempt(Base):
             "improvements": json.loads(self.improvements) if self.improvements else [],
             "suggested_framework": self.suggested_framework,
             "time_spent_sec": self.time_spent_sec,
-            "input_tokens": self.input_tokens,
-            "output_tokens": self.output_tokens,
-            "estimated_cost_usd": self.estimated_cost_usd,
-            "llm_provider": self.llm_provider,
-            "llm_model": self.llm_model,
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }

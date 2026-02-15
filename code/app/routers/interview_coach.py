@@ -184,26 +184,9 @@ async def submit_interview_answer(request: Request) -> HTMLResponse:
         if not question:
             return "<div>Error: Question not found</div>"
 
-        # Get provider, model, and encrypted key from session cookie
-        cookie_value = request.cookies.get("llm_api_key", "")
-        provider = "google"
-        model = "gemini-2.5-flash"
-        encrypted_api_key = None
-
-        if cookie_value:
-            parts = cookie_value.split(":", 2)
-            if len(parts) == 3:
-                provider, model, encrypted_api_key = parts
-
-        # Evaluate answer with multi-provider support
+        # Evaluate answer
         result = await evaluate_interview_answer(
-            category=category,
-            question=question["text"],
-            answer=answer_text,
-            time_spent_sec=time_spent,
-            provider=provider,
-            model=model,
-            encrypted_api_key=encrypted_api_key,
+            category=category, question=question["text"], answer=answer_text, time_spent_sec=time_spent
         )
 
         # Save attempt to database
@@ -220,11 +203,6 @@ async def submit_interview_answer(request: Request) -> HTMLResponse:
             improvements=json.dumps(result.improvements),
             suggested_framework=result.suggested_framework,
             time_spent_sec=time_spent,
-            input_tokens=result.input_tokens,
-            output_tokens=result.output_tokens,
-            estimated_cost_usd=result.estimated_cost_usd,
-            llm_provider=result.llm_provider,
-            llm_model=result.llm_model,
         )
         db.add(attempt)
         db.commit()
