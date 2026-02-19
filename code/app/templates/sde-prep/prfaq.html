@@ -28,10 +28,28 @@
   <link rel="stylesheet" href="/static/css/sde-prep.css">
 
   <style>
+    /* Override main site colors with Walmart brand colors */
+    :root {
+      --color-walmart-blue: #0053e2;
+      --color-walmart-spark: #ffc220;
+      --color-walmart-green: #2a8703;
+      --color-walmart-red: #ea1100;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
     .prfaq-container {
       max-width: 900px;
       margin: 0 auto;
       padding: 2rem 1.5rem;
+      background-color: white;
+      border-radius: 0.5rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .prfaq-section {
@@ -43,8 +61,8 @@
       font-weight: 700;
       margin-bottom: 1.5rem;
       padding-bottom: 0.75rem;
-      border-bottom: 3px solid;
-      border-color: var(--color-accent);
+      border-bottom: 3px solid var(--color-walmart-blue);
+      color: var(--color-walmart-blue);
     }
 
     .prfaq-section h3 {
@@ -52,13 +70,13 @@
       font-weight: 600;
       margin-top: 2rem;
       margin-bottom: 1rem;
-      color: var(--color-text-primary);
+      color: var(--color-walmart-blue);
     }
 
     .prfaq-section p {
       line-height: 1.8;
       margin-bottom: 1rem;
-      color: var(--color-text-secondary);
+      color: #555;
     }
 
     .prfaq-section ul {
@@ -71,7 +89,7 @@
       margin-bottom: 0.75rem;
       padding-left: 1.5rem;
       position: relative;
-      color: var(--color-text-secondary);
+      color: #555;
       line-height: 1.6;
     }
 
@@ -79,43 +97,43 @@
       content: "→";
       position: absolute;
       left: 0;
-      color: var(--color-accent);
+      color: var(--color-walmart-blue);
       font-weight: bold;
     }
 
     .prfaq-quote {
       padding: 1.5rem;
-      border-left: 4px solid;
-      border-color: var(--color-accent);
-      background-color: var(--color-bg-secondary);
+      border-left: 4px solid var(--color-walmart-blue);
+      background-color: #f0f7ff;
       border-radius: 0.5rem;
       margin: 1.5rem 0;
       font-style: italic;
-      color: var(--color-text-primary);
+      color: #333;
     }
 
     .prfaq-table {
       width: 100%;
       border-collapse: collapse;
       margin: 1.5rem 0;
-      background-color: var(--color-bg-secondary);
+      background-color: #f9f9f9;
       border-radius: 0.5rem;
       overflow: hidden;
+      border: 1px solid #e0e0e0;
     }
 
     .prfaq-table th {
-      background-color: var(--color-bg-tertiary);
+      background-color: var(--color-walmart-blue);
+      color: white;
       padding: 1rem;
       text-align: left;
       font-weight: 600;
-      color: var(--color-text-primary);
-      border-bottom: 2px solid var(--color-border);
+      border-bottom: 2px solid var(--color-walmart-blue);
     }
 
     .prfaq-table td {
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--color-border);
-      color: var(--color-text-secondary);
+      border-bottom: 1px solid #e0e0e0;
+      color: #555;
     }
 
     .prfaq-table tr:last-child td {
@@ -123,20 +141,21 @@
     }
 
     .prfaq-code {
-      background-color: var(--color-bg-secondary);
+      background-color: #f5f5f5;
       padding: 1rem;
       border-radius: 0.5rem;
       overflow-x: auto;
       margin: 1rem 0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.875rem;
-      color: var(--color-text-primary);
+      color: #333;
+      border: 1px solid #e0e0e0;
     }
 
     .prfaq-cta {
       display: inline-block;
       padding: 1rem 2rem;
-      background-color: var(--color-accent);
+      background-color: var(--color-walmart-blue);
       color: white;
       text-decoration: none;
       border-radius: 0.5rem;
@@ -146,8 +165,18 @@
     }
 
     .prfaq-cta:hover {
+      background-color: #003fa3;
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 83, 226, 0.3);
+    }
+
+    a {
+      color: var(--color-walmart-blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
