@@ -1,421 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SDE Prep Tool - Press Release & FAQ</title>
-  <meta name="description" content="Learn about the SDE Prep Tool - an integrated interview preparation platform for software engineers.">
+{% extends "base.html" %}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+{% block title %}SDE Prep Tool - Press Release & FAQ{% endblock %}
+{% block description %}Learn about the SDE Prep Tool - an integrated interview preparation platform for software engineers.{% endblock %}
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            'walmart-blue': '#0053e2',
-            'walmart-spark': '#ffc220',
-            'walmart-green': '#2a8703',
-            'walmart-red': '#ea1100',
-          },
-        },
-      },
-    }
-  </script>
+{% block content %}
+<div class="max-w-4xl mx-auto py-12">
 
-  <link rel="stylesheet" href="/static/css/sde-prep.css">
+  <!-- Press Release Section -->
+  <section class="mb-16">
+    <h2 class="text-4xl font-bold mb-8">📰 Press Release</h2>
 
-  <style>
-    /* SDE Prep PRFAQ Page - Walmart Brand Colors */
+    <div class="border-t border-gray-300 pt-8 mb-8">
+      <p class="font-semibold mb-4">FOR IMMEDIATE RELEASE</p>
 
-    html, body {
-      background-color: #f5f5f5 !important;
-      color: #333 !important;
-    }
-
-    .prfaq-container {
-      max-width: 900px !important;
-      margin: 0 auto !important;
-      padding: 2rem 1.5rem !important;
-      background-color: white !important;
-      border-radius: 0.5rem !important;
-      margin-top: 2rem !important;
-      margin-bottom: 2rem !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-    }
-
-    .prfaq-section {
-      margin-bottom: 3rem !important;
-    }
-
-    .prfaq-section h2 {
-      font-size: 1.875rem !important;
-      font-weight: 700 !important;
-      margin-bottom: 1.5rem !important;
-      padding-bottom: 0.75rem !important;
-      border-bottom: 3px solid #0053e2 !important;
-      color: #0053e2 !important;
-    }
-
-    .prfaq-section h3 {
-      font-size: 1.25rem !important;
-      font-weight: 600 !important;
-      margin-top: 2rem !important;
-      margin-bottom: 1rem !important;
-      color: #0053e2 !important;
-    }
-
-    .prfaq-section p {
-      line-height: 1.8 !important;
-      margin-bottom: 1rem !important;
-      color: #555 !important;
-    }
-
-    .prfaq-section ul {
-      list-style: none !important;
-      padding-left: 0 !important;
-      margin-bottom: 1.5rem !important;
-    }
-
-    .prfaq-section li {
-      margin-bottom: 0.75rem !important;
-      padding-left: 1.5rem !important;
-      position: relative !important;
-      color: #555 !important;
-      line-height: 1.6 !important;
-    }
-
-    .prfaq-section li:before {
-      content: "→" !important;
-      position: absolute !important;
-      left: 0 !important;
-      color: #0053e2 !important;
-      font-weight: bold !important;
-    }
-
-    .prfaq-quote {
-      padding: 1.5rem !important;
-      border-left: 4px solid #0053e2 !important;
-      background-color: #f0f7ff !important;
-      border-radius: 0.5rem !important;
-      margin: 1.5rem 0 !important;
-      font-style: italic !important;
-      color: #333 !important;
-    }
-
-    .prfaq-table {
-      width: 100% !important;
-      border-collapse: collapse !important;
-      margin: 1.5rem 0 !important;
-      background-color: #f9f9f9 !important;
-      border-radius: 0.5rem !important;
-      overflow: hidden !important;
-      border: 1px solid #e0e0e0 !important;
-    }
-
-    .prfaq-table th {
-      background-color: #0053e2 !important;
-      color: white !important;
-      padding: 1rem !important;
-      text-align: left !important;
-      font-weight: 600 !important;
-      border-bottom: 2px solid #0053e2 !important;
-    }
-
-    .prfaq-table td {
-      padding: 0.75rem 1rem !important;
-      border-bottom: 1px solid #e0e0e0 !important;
-      color: #555 !important;
-    }
-
-    .prfaq-table tr:last-child td {
-      border-bottom: none !important;
-    }
-
-    .prfaq-code {
-      background-color: #f5f5f5 !important;
-      padding: 1rem !important;
-      border-radius: 0.5rem !important;
-      overflow-x: auto !important;
-      margin: 1rem 0 !important;
-      font-family: 'JetBrains Mono', monospace !important;
-      font-size: 0.875rem !important;
-      color: #333 !important;
-      border: 1px solid #e0e0e0 !important;
-    }
-
-    .prfaq-cta {
-      display: inline-block !important;
-      padding: 1rem 2rem !important;
-      background-color: #0053e2 !important;
-      color: white !important;
-      text-decoration: none !important;
-      border-radius: 0.5rem !important;
-      font-weight: 600 !important;
-      margin-top: 1rem !important;
-      transition: all 0.3s ease !important;
-    }
-
-    .prfaq-cta:hover {
-      background-color: #003fa3 !important;
-      transform: translateY(-2px) !important;
-      box-shadow: 0 4px 12px rgba(0, 83, 226, 0.3) !important;
-    }
-
-    .prfaq-container a {
-      color: #0053e2 !important;
-      text-decoration: none !important;
-    }
-
-    .prfaq-container a:hover {
-      text-decoration: underline !important;
-    }
-  </style>
-</head>
-
-<body class="min-h-screen font-sans antialiased"
-      style="background-color: var(--color-bg-primary); color: var(--color-text-primary);">
-
-  {% include "partials/navbar.html" %}
-
-  <div class="prfaq-container">
-
-    <!-- Press Release Section -->
-    <div class="prfaq-section">
-      <h2>📰 Press Release</h2>
-
-      <div style="border-top: 2px solid var(--color-border); padding-top: 1.5rem; margin-bottom: 2rem;"></div>
-
-      <p><strong>FOR IMMEDIATE RELEASE</strong></p>
-
-      <h3 style="margin-top: 1.5rem; border: none; padding-bottom: 0;">
-        Harsha Cheruku Launches SDE Prep Tracker: The First Integrated Interview Preparation Platform Built for Comprehensive Software Engineering Interview Success
+      <h3 class="text-2xl font-bold mb-4 mt-6">
+        Harsha Cheruku Launches SDE Prep Tracker: The First Integrated Interview Preparation Platform
       </h3>
 
-      <p style="color: var(--color-text-secondary); font-style: italic;">
+      <p class="text-gray-600 italic mb-6">
         A 12-week structured learning system combining LeetCode tracking, system design mastery, behavioral prep, and real-time progress analytics—all in one place
       </p>
 
-      <p>
-        <strong>San Francisco, CA</strong> — Harsha Cheruku today announced the launch of the <strong>SDE Prep Tracker</strong>, a comprehensive software engineering interview preparation tool now live at fullstackpm.tech/tools/sde-prep.
+      <p class="mb-4"><strong>San Francisco, CA</strong> — Harsha Cheruku today announced the launch of the <strong>SDE Prep Tracker</strong>, a comprehensive software engineering interview preparation tool now live at fullstackpm.tech/tools/sde-prep.</p>
+
+      <p class="mb-4">
+        The SDE Prep Tracker addresses a critical gap in interview preparation: most engineers juggle multiple tools (LeetCode, notion docs, spreadsheets, YouTube playlists) to prepare for technical interviews. This fragmentation leads to lost focus, scattered progress tracking, and no holistic view of interview readiness.
       </p>
 
-      <p>
-        The SDE Prep Tracker addresses a critical gap in interview preparation: most engineers juggle multiple tools (LeetCode, notion docs, spreadsheets, YouTube playlists) to prepare for technical interviews. This fragmentation leads to:
-      </p>
-
-      <ul>
-        <li>Lost focus and scattered progress tracking</li>
-        <li>Inconsistent preparation across coding, system design, and behavioral questions</li>
-        <li>No holistic view of interview readiness</li>
-        <li>Decision fatigue from context switching</li>
+      <h4 class="text-xl font-bold mt-6 mb-3">🎯 Complete Coverage</h4>
+      <ul class="space-y-2 mb-4 text-gray-700">
+        <li>✓ <strong>LeetCode Tracking:</strong> 60+ problems with progress, complexity analysis, and practice session logging</li>
+        <li>✓ <strong>System Design Mastery:</strong> 15 curated topics with practice tracking</li>
+        <li>✓ <strong>Behavioral Storytelling:</strong> STAR format story manager with practice counters</li>
+        <li>✓ <strong>Daily Task Planning:</strong> 50+ pre-built daily tasks with real-time progress tracking</li>
+        <li>✓ <strong>Study Roadmap:</strong> 12-week curriculum with weekly goals and milestones</li>
       </ul>
 
-      <p>
-        The SDE Prep Tracker consolidates the entire 12-week interview preparation journey into one integrated platform with:
-      </p>
-
-      <h3>🎯 Complete Coverage</h3>
-      <ul>
-        <li><strong>LeetCode Tracking:</strong> 60+ problems (including all Blind 75) with progress, complexity analysis, and practice session logging</li>
-        <li><strong>System Design Mastery:</strong> 15 curated topics from Twitter to Walmart-specific designs, with practice tracking</li>
-        <li><strong>Behavioral Storytelling:</strong> STAR format story manager with practice counters and readiness tracking</li>
-        <li><strong>Daily Task Planning:</strong> 50+ pre-built daily tasks across 12 weeks with real-time progress tracking</li>
-        <li><strong>Study Roadmap:</strong> 12-week curriculum with weekly goals, milestones, and completion tracking</li>
+      <h4 class="text-xl font-bold mt-6 mb-3">📊 Real-Time Analytics</h4>
+      <ul class="space-y-2 mb-4 text-gray-700">
+        <li>✓ Dashboard with multi-chart visualization</li>
+        <li>✓ Problem difficulty breakdown</li>
+        <li>✓ Weekly progress trends</li>
+        <li>✓ Study streak tracking</li>
+        <li>✓ Completion percentages across all categories</li>
       </ul>
 
-      <h3>📊 Real-Time Analytics</h3>
-      <ul>
-        <li>Dashboard with multi-chart visualization (Chart.js)</li>
-        <li>Problem difficulty breakdown</li>
-        <li>Weekly progress trends</li>
-        <li>Study streak tracking</li>
-        <li>Completion percentages across all categories</li>
+      <h4 class="text-xl font-bold mt-6 mb-3">⚡ Seamless Experience</h4>
+      <ul class="space-y-2 mb-6 text-gray-700">
+        <li>✓ HTMX-powered real-time updates (no page reloads)</li>
+        <li>✓ Auto-save features for notes and progress</li>
+        <li>✓ Mobile-responsive design</li>
+        <li>✓ Zero configuration—everything pre-seeded and ready</li>
       </ul>
 
-      <h3>⚡ Seamless Experience</h3>
-      <ul>
-        <li>HTMX-powered real-time updates (no page reloads)</li>
-        <li>Auto-save features for notes and progress</li>
-        <li>Walmart brand colors for visual consistency</li>
-        <li>Mobile-responsive design</li>
-        <li>Zero configuration—everything pre-seeded and ready</li>
-      </ul>
-
-      <h3>🎓 Proven Curriculum</h3>
-      <ul>
-        <li><strong>Week 1-2:</strong> Foundation (Resume, Networking, Behavioral Prep)</li>
-        <li><strong>Week 3-6:</strong> Coding Deep Dive (Arrays, Trees, Graphs, DP, Advanced)</li>
-        <li><strong>Week 7-9:</strong> System Design Fundamentals to Advanced</li>
-        <li><strong>Week 10:</strong> E-commerce Focus (Walmart-specific designs)</li>
-        <li><strong>Week 11-12:</strong> Mock Interviews and Polish</li>
-      </ul>
-
-      <h3>Impact:</h3>
-      <ul>
-        <li><strong>Single Source of Truth:</strong> No more context switching between tools</li>
-        <li><strong>Better Tracking:</strong> See exactly what's studied, practiced, and mastered</li>
-        <li><strong>Accountability:</strong> Visual progress motivates daily preparation</li>
-        <li><strong>Structured Learning:</strong> Follow a proven 12-week curriculum or customize</li>
-        <li><strong>Confidence Building:</strong> Know what you're ready for before interviews</li>
-      </ul>
-
-      <div class="prfaq-quote">
+      <div class="bg-gray-100 border-l-4 border-blue-600 p-6 my-6 italic">
         "Most engineers fail at interview prep not because they can't code—they can. They fail because they're unprepared, unorganized, and unfocused," says Harsha. "The SDE Prep Tracker fixes that. It's like having a personal interview coach that keeps you on track, shows you exactly where you stand, and tells you when you're ready."
       </div>
 
-      <p>
-        The tool is live now and completely free to use. It's built with FastAPI, SQLAlchemy, HTMX, and Tailwind CSS, making it fast, responsive, and ready for production use.
-      </p>
+      <p class="mb-4">The tool is live now and completely free to use. It's built with FastAPI, SQLAlchemy, HTMX, and Tailwind CSS, making it fast, responsive, and ready for production use.</p>
 
-      <p>
-        <strong>Availability:</strong> Live at <a href="/tools/sde-prep" class="text-walmart-blue hover:underline">fullstackpm.tech/tools/sde-prep</a>
-      </p>
+      <p><strong>Availability:</strong> Live at <a href="/tools/sde-prep" class="text-blue-600 hover:underline">fullstackpm.tech/tools/sde-prep</a></p>
     </div>
+  </section>
 
-    <!-- FAQ Section -->
-    <div class="prfaq-section">
-      <h2>❓ Frequently Asked Questions</h2>
+  <!-- FAQ Section -->
+  <section>
+    <h2 class="text-4xl font-bold mb-8">❓ Frequently Asked Questions</h2>
 
-      <h3>Why did you build this?</h3>
-      <p>
-        I interviewed at multiple tech companies (Amazon, Google, Walmart) and realized the biggest bottleneck wasn't <em>ability to solve problems</em>—most engineers can. It was <em>organization and tracking</em>. I built this to solve that specific problem: create one place where you can see your entire interview preparation journey.
-      </p>
-
-      <h3>Who is this for?</h3>
-      <ul>
-        <li><strong>SDE interview prep students:</strong> Anyone preparing for software engineering interviews (L4-L5 roles at BigTech companies)</li>
-        <li><strong>Career changers:</strong> People transitioning into tech who need structured prep</li>
-        <li><strong>Interview coaches:</strong> Can use as a template for students</li>
-        <li><strong>Anyone job hunting in tech:</strong> No matter your background</li>
-      </ul>
-
-      <h3>How is this different from LeetCode, Notion, or other prep tools?</h3>
-      <table class="prfaq-table">
-        <tr>
-          <th>Aspect</th>
-          <th>LeetCode</th>
-          <th>Notion</th>
-          <th>This Tool</th>
-        </tr>
-        <tr>
-          <td><strong>Problem Tracking</strong></td>
-          <td>✅ Excellent</td>
-          <td>✅ Customizable</td>
-          <td>✅ Excellent</td>
-        </tr>
-        <tr>
-          <td><strong>System Design</strong></td>
-          <td>❌ None</td>
-          <td>✅ If you build it</td>
-          <td>✅ Pre-built, curated</td>
-        </tr>
-        <tr>
-          <td><strong>Behavioral Prep</strong></td>
-          <td>❌ None</td>
-          <td>✅ If you build it</td>
-          <td>✅ STAR format manager</td>
-        </tr>
-        <tr>
-          <td><strong>Daily Planning</strong></td>
-          <td>❌ None</td>
-          <td>✅ If you build it</td>
-          <td>✅ 50+ pre-built tasks</td>
-        </tr>
-        <tr>
-          <td><strong>Curriculum</strong></td>
-          <td>❌ None</td>
-          <td>❌ None</td>
-          <td>✅ 12-week proven path</td>
-        </tr>
-        <tr>
-          <td><strong>Real-time Analytics</strong></td>
-          <td>⚠️ Limited</td>
-          <td>❌ None</td>
-          <td>✅ Full dashboard</td>
-        </tr>
-      </table>
-
-      <h3>What's included in the "seed data"?</h3>
-      <p>The tool comes pre-loaded with everything you need:</p>
-      <ul>
-        <li><strong>60+ LeetCode Problems</strong> — All Blind 75 problems plus additional challenges across every category</li>
-        <li><strong>15 System Design Topics</strong> — From Twitter/Netflix to Walmart-specific designs</li>
-        <li><strong>12-Week Curriculum</strong> — Complete roadmap from resume to final polished prep</li>
-        <li><strong>50+ Daily Tasks</strong> — Pre-built daily schedule with estimated times</li>
-      </ul>
-      <p>No setup required—everything is ready on day one.</p>
-
-      <h3>How does the 12-week curriculum work?</h3>
-      <div class="prfaq-code">
-Week 1-2:   Foundation (Resume, Networking, Behavioral Stories)
-Week 3-6:   Coding (Arrays → Graphs → DP → Advanced)
-Week 7-9:   System Design (Fundamentals → Distributed → Advanced)
-Week 10:    E-commerce Focus (Walmart-specific challenges)
-Week 11:    Mock Interviews (Full-loop practice)
-Week 12:    Final Polish & Review
+    <div class="space-y-6">
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">Why did you build this?</h3>
+        <p class="text-gray-700">I interviewed at multiple tech companies and realized the biggest bottleneck wasn't ability to solve problems—most engineers can. It was organization and tracking. I built this to create one place where you can see your entire interview preparation journey.</p>
       </div>
-      <p>Each week has daily tasks, specific goals, and estimated time commitments. You can follow it exactly or customize for your needs.</p>
 
-      <h3>Can I use this if I'm already mid-interview prep?</h3>
-      <p>
-        100%. The tool works whether you're starting from scratch, already prepping, or weeks in. You can jump to any section and use what's relevant to you. There's no "wrong time" to start organizing your prep.
-      </p>
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">Who is this for?</h3>
+        <p class="text-gray-700">Anyone preparing for software engineering interviews: new grads, bootcamp graduates, career changers, and experienced engineers prepping for new roles at BigTech companies.</p>
+      </div>
 
-      <h3>What if I don't want to follow the 12-week plan?</h3>
-      <p>
-        You don't have to. You can focus only on LeetCode problems, only track system design topics, only work on behavioral stories, or mix and match however you want. The curriculum is guidance, not a requirement.
-      </p>
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">Can I use this if I'm already mid-interview prep?</h3>
+        <p class="text-gray-700">100%. The tool works whether you're starting from scratch, already prepping, or weeks in. You can jump to any section and use what's relevant to you.</p>
+      </div>
 
-      <h3>How do I know when I'm "ready" for interviews?</h3>
-      <p>The tool shows objective metrics:</p>
-      <ul>
-        <li>✅ LeetCode: 45/60+ problems solved</li>
-        <li>✅ System Design: 8/15+ topics at "Confident"</li>
-        <li>✅ Behavioral: 8/12+ stories marked "Ready"</li>
-        <li>✅ Daily Tasks: 80%+ completion</li>
-        <li>✅ Study Streak: 5+ weeks consistent</li>
-      </ul>
-      <p>These aren't hard rules—interview readiness is personal. But these metrics give you confidence.</p>
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">How long does it take to prep?</h3>
+        <p class="text-gray-700">Typical timelines: Full-time (40 hrs/week) = 6-8 weeks. Part-time (20 hrs/week) = 12 weeks. Very part-time (10 hrs/week) = 20+ weeks.</p>
+      </div>
 
-      <h3>Is this tool free?</h3>
-      <p>
-        Yes, completely free. It's built and maintained as part of my portfolio at fullstackpm.tech. No ads, no paywalls, no premium tiers.
-      </p>
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">Is this tool free?</h3>
+        <p class="text-gray-700">Yes, completely free. It's built and maintained as part of my portfolio. No ads, no paywalls, no premium tiers.</p>
+      </div>
 
-      <h3>Final question: Will this actually help me get hired?</h3>
-      <p>
-        This tool can't guarantee job offers—that depends on your skills, interview performance, market timing, and luck. But it <em>will</em>:
-      </p>
-      <ul>
-        <li>✅ Help you prepare comprehensively</li>
-        <li>✅ Show you exactly where you stand</li>
-        <li>✅ Give you accountability and motivation</li>
-        <li>✅ Ensure you don't forget anything</li>
-        <li>✅ Build confidence through visible progress</li>
-      </ul>
-      <p>
-        If you do the work the tool guides you through, you'll be significantly better prepared than 90% of other candidates. That's a real advantage.
-      </p>
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-lg font-bold mb-2">Will this actually help me get hired?</h3>
+        <p class="text-gray-700">This tool can't guarantee job offers, but it will help you prepare comprehensively, show you exactly where you stand, give you accountability, and build confidence through visible progress. If you do the work, you'll be significantly better prepared than 90% of other candidates.</p>
+      </div>
     </div>
+  </section>
 
-    <!-- CTA Section -->
-    <div class="prfaq-section" style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--color-border);">
-      <h2>🎯 Start Your Interview Prep Journey</h2>
-      <p>No account. No payment. Just 12 weeks of structured preparation to land your dream job.</p>
-      <a href="/tools/sde-prep/dashboard" class="prfaq-cta">Go to Dashboard →</a>
-      <p style="margin-top: 2rem; color: var(--color-text-secondary);">Good luck. You've got this. 🚀</p>
-    </div>
-  </div>
+  <!-- CTA Section -->
+  <section class="mt-16 pt-8 border-t border-gray-300 text-center">
+    <h2 class="text-4xl font-bold mb-6">🎯 Start Your Interview Prep Journey</h2>
+    <p class="text-lg mb-8 text-gray-700">No account. No payment. Just 12 weeks of structured preparation to land your dream job.</p>
 
-  {% include "partials/footer.html" %}
-  <script src="/static/js/theme.js"></script>
-</body>
-</html>
+    <a href="/tools/sde-prep/dashboard" class="inline-block px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition">
+      Go to Dashboard →
+    </a>
+
+    <p class="text-gray-600 mt-8">Good luck. You've got this. 🚀</p>
+  </section>
+
+</div>
+{% endblock %}
