@@ -83,6 +83,14 @@ async def landing(request: Request) -> HTMLResponse:
     )
 
 
+@router.get("/tools/sde-prep/prfaq", response_class=HTMLResponse)
+async def prfaq(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(
+        "sde-prep/prfaq.html",
+        _ctx(request, title="SDE Prep Tracker — About & FAQ", current_page="/tools/sde-prep/prfaq"),
+    )
+
+
 @router.get("/tools/sde-prep/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(
