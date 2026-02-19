@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ title | default("SDE Prep Tracker") }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ meta_description | default("SDE Interview Prep Tracker") }}{% endblock %}">
+  <meta name="author" content="Harsha Cheruku">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}{{ title | default("SDE Prep Tracker") }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ meta_description | default("SDE Interview Prep Tracker") }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ config.site_url }}{{ request.url.path }}">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/img/FSPM.png">
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            'walmart-blue': '#0053e2',
+            'walmart-spark': '#ffc220',
+            'walmart-green': '#2a8703',
+            'walmart-red': '#ea1100',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- SDE Prep Design System (Walmart Brand Colors) -->
+  <link rel="stylesheet" href="/static/css/sde-prep.css">
+
+  {% block head %}{% endblock %}
+</head>
+
+<body class="min-h-screen font-sans antialiased"
+      style="background-color: #f5f5f5; color: #333;">
+
+  <!-- Navigation -->
+  {% include "partials/navbar.html" %}
+
+  <!-- Main Content -->
+  <main class="mx-auto max-w-[1200px] px-4 sm:px-6 py-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include "partials/footer.html" %}
+
+  <!-- Theme Toggle Script -->
+  <script src="/static/js/theme.js"></script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
