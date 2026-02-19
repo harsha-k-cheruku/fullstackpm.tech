@@ -1,0 +1,49 @@
+<div id="tasksContainer" class="card-walmart">
+  {% if not week_number %}
+    <p class="text-sm text-gray-500">Select a week to view tasks.</p>
+  {% else %}
+    <div class="flex items-center justify-between">
+      <div>
+        <h3 class="font-semibold">Week {{ week_number }}{% if day_name %}, {{ day_name }}{% endif %}</h3>
+        <p class="text-sm text-gray-500">{{ task_count }} tasks • {{ total_minutes }} min • {{ completion_percentage }}% complete</p>
+      </div>
+    </div>
+    <div class="mt-3 h-2 bg-gray-200 rounded-full">
+      <div class="progress-bar-walmart" style="width: {{ completion_percentage }}%"></div>
+    </div>
+    <div class="mt-4 space-y-3">
+      {% for task in tasks %}
+      <div class="border rounded-lg p-3">
+        <div class="flex items-start justify-between gap-3">
+          <label class="flex items-start gap-2">
+            <input type="checkbox" {% if task.is_completed %}checked{% endif %}
+                   hx-put="/api/sde-prep/daily-tasks/{{ task.id }}"
+                   hx-vals='{"is_completed": this.checked, "week": "{{ week_number }}", "day": "{{ selected_day }}"}'
+                   hx-target="#tasksContainer"
+                   hx-swap="outerHTML">
+            <div>
+              <p class="font-semibold">{{ task.task_title }}</p>
+              <p class="text-sm text-gray-500">{{ task.task_description or '' }}</p>
+              <p class="text-xs text-gray-400">{{ task.task_type }} • {{ task.estimated_minutes or 0 }} min</p>
+            </div>
+          </label>
+          {% if task.completed_at %}
+          <span class="text-xs text-walmart-green">Completed</span>
+          {% endif %}
+        </div>
+        {% if task.is_completed %}
+        <textarea class="input-walmart w-full mt-2" placeholder="Notes"
+                  hx-put="/api/sde-prep/daily-tasks/{{ task.id }}" hx-trigger="blur"
+                  hx-vals='{"notes": this.value, "week": "{{ week_number }}", "day": "{{ selected_day }}"}'
+                  hx-target="#tasksContainer" hx-swap="outerHTML">{{ task.notes or '' }}</textarea>
+        {% endif %}
+        {% if task.related_problem_id %}
+          <p class="text-xs text-gray-500 mt-2">Linked problem ID: {{ task.related_problem_id }}</p>
+        {% endif %}
+      </div>
+      {% else %}
+      <p class="text-sm text-gray-500">No tasks found for this selection.</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>

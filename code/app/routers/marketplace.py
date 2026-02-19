@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 from datetime import datetime
 from io import StringIO
+from typing import Dict, Optional
 
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, StreamingResponse
@@ -16,7 +17,7 @@ router = APIRouter(prefix="/tools/marketplace-analytics")
 templates = Jinja2Templates(directory=str(settings.templates_dir))
 
 
-def _ctx(request: Request, **kwargs) -> dict:
+def _ctx(request: Request, **kwargs) -> Dict:
     return {
         "request": request,
         "config": settings,
@@ -25,14 +26,14 @@ def _ctx(request: Request, **kwargs) -> dict:
     }
 
 
-def _parse_int(value: str | None, default: int) -> int:
+def _parse_int(value: Optional[str], default: int) -> int:
     try:
         return int(value) if value is not None else default
     except ValueError:
         return default
 
 
-def _filters(request: Request) -> dict:
+def _filters(request: Request) -> Dict:
     date_range = _parse_int(request.query_params.get("date_range"), 90)
     category = request.query_params.get("category", "all")
     sort_by = request.query_params.get("sort_by", "revenue")

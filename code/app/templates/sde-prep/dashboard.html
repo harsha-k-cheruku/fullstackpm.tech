@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/sde-prep.css">
+{% endblock %}
+
+{% block content %}
+{% include "sde-prep/partials/user_header.html" %}
+<section class="py-10 space-y-6">
+  <div id="dashboardData" hx-get="/api/sde-prep/dashboard/stats" hx-trigger="load" hx-swap="none"></div>
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="text-sm uppercase tracking-[0.2em] text-walmart-blue">SDE Prep</p>
+      <h1 class="text-h2 mt-2">SDE Prep Tracker</h1>
+      <p class="text-body text-gray-600">All your prep progress in one dashboard.</p>
+    </div>
+    <div class="text-sm text-gray-500">Streak: <span id="streakDays">0</span> days</div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="card-walmart">
+      <h3 class="font-semibold">LeetCode</h3>
+      <p class="text-2xl font-bold" id="leetcodeProgress">0/0</p>
+      <p class="text-sm text-gray-500" id="leetcodePercent">0%</p>
+      <div class="mt-3 h-2 bg-gray-200 rounded-full">
+        <div class="progress-bar-walmart" id="leetcodeBar" style="width: 0%"></div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2">Blind 75: <span id="blindCount">0</span></p>
+    </div>
+
+    <div class="card-walmart">
+      <h3 class="font-semibold">System Design</h3>
+      <p class="text-2xl font-bold" id="systemDesignProgress">0/0</p>
+      <p class="text-sm text-gray-500" id="systemDesignPercent">0%</p>
+      <div class="mt-3 h-2 bg-gray-200 rounded-full">
+        <div class="progress-bar-walmart" id="systemDesignBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="card-walmart">
+      <h3 class="font-semibold">Behavioral</h3>
+      <p class="text-2xl font-bold" id="behavioralProgress">0/0</p>
+      <p class="text-sm text-gray-500" id="behavioralPercent">0%</p>
+      <div class="mt-3 h-2 bg-gray-200 rounded-full">
+        <div class="progress-bar-walmart" id="behavioralBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="card-walmart">
+      <h3 class="font-semibold">Current Week</h3>
+      <p class="text-lg font-semibold" id="currentWeekTitle">Week 1</p>
+      <p class="text-sm text-gray-500" id="currentWeekPercent">0%</p>
+      <div class="mt-3 h-2 bg-gray-200 rounded-full">
+        <div class="progress-bar-walmart" id="currentWeekBar" style="width: 0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="card-walmart">
+      <h3 class="font-semibold mb-2">Difficulty Mix</h3>
+      <canvas id="difficultyChart" height="200"></canvas>
+    </div>
+    <div class="card-walmart">
+      <h3 class="font-semibold mb-2">Weekly Progress</h3>
+      <canvas id="progressChart" height="200"></canvas>
+    </div>
+    <div class="card-walmart">
+      <h3 class="font-semibold mb-2">Study Hours</h3>
+      <canvas id="hoursChart" height="200"></canvas>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    function renderDashboard(data) {
+      document.getElementById('leetcodeProgress').textContent = `${data.leetcode.solved}/${data.leetcode.total}`;
+      document.getElementById('leetcodePercent').textContent = `${data.leetcode.percentage}%`;
+      document.getElementById('leetcodeBar').style.width = `${data.leetcode.percentage}%`;
+      document.getElementById('blindCount').textContent = data.leetcode.blind_75_count;
+
+      document.getElementById('systemDesignProgress').textContent = `${data.system_design.confident}/${data.system_design.total}`;
+      document.getElementById('systemDesignPercent').textContent = `${data.system_design.percentage}%`;
+      document.getElementById('systemDesignBar').style.width = `${data.system_design.percentage}%`;
+
+      document.getElementById('behavioralProgress').textContent = `${data.behavioral.ready}/${data.behavioral.total}`;
+      document.getElementById('behavioralPercent').textContent = `${data.behavioral.percentage}%`;
+      document.getElementById('behavioralBar').style.width = `${data.behavioral.percentage}%`;
+
+      document.getElementById('currentWeekTitle').textContent = data.current_week.title;
+      document.getElementById('currentWeekPercent').textContent = `${data.current_week.percentage}%`;
+      document.getElementById('currentWeekBar').style.width = `${data.current_week.percentage}%`;
+
+      document.getElementById('streakDays').textContent = data.streak_days;
+
+      const difficulty = data.charts_data.difficulty;
+      new Chart(document.getElementById('difficultyChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Easy', 'Medium', 'Hard'],
+          datasets: [{
+            data: [difficulty.EASY, difficulty.MEDIUM, difficulty.HARD],
+            backgroundColor: ['#2a8703', '#ffc220', '#ea1100']
+          }]
+        },
+        options: { plugins: { legend: { position: 'bottom' } } }
+      });
+
+      const weekly = data.charts_data.weekly_progress;
+      new Chart(document.getElementById('progressChart'), {
+        type: 'bar',
+        data: {
+          labels: weekly.map(item => `W${item.week}`),
+          datasets: [{
+            label: 'Completion %',
+            data: weekly.map(item => item.percentage),
+            backgroundColor: '#0053e2'
+          }]
+        },
+        options: { scales: { y: { max: 100 } }, plugins: { legend: { display: false } } }
+      });
+
+      const hours = data.charts_data.study_hours;
+      new Chart(document.getElementById('hoursChart'), {
+        type: 'line',
+        data: {
+          labels: hours.labels,
+          datasets: [{
+            label: 'Study Hours',
+            data: hours.values,
+            borderColor: '#0053e2',
+            backgroundColor: 'rgba(0, 83, 226, 0.2)',
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: { plugins: { legend: { display: false } } }
+      });
+    }
+
+    document.body.addEventListener('htmx:afterRequest', (event) => {
+      if (event.target && event.target.id === 'dashboardData') {
+        const data = JSON.parse(event.detail.xhr.responseText);
+        renderDashboard(data);
+      }
+    });
+  </script>
+{% endblock %}

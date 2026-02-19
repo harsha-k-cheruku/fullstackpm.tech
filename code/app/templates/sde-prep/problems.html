@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/sde-prep.css">
+{% endblock %}
+
+{% block content %}
+{% include "sde-prep/partials/user_header.html" %}
+<section class="py-10 space-y-6">
+  <div>
+    <p class="text-sm uppercase tracking-[0.2em] text-walmart-blue">SDE Prep</p>
+    <h1 class="text-h2 mt-2">LeetCode Problems</h1>
+    <p class="text-body text-gray-600">Filter and update your problem progress.</p>
+  </div>
+
+  <div class="card-walmart space-y-4">
+    <form id="problemFilters" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <select id="categoryFilter" name="category" class="input-walmart" hx-trigger="change" hx-get="/api/sde-prep/problems" hx-target="#problemsTable" hx-include="#problemFilters">
+        <option value="all">All Categories</option>
+        {% for category in categories %}
+        <option value="{{ category }}">{{ category.replace('_', ' ').title() }}</option>
+        {% endfor %}
+      </select>
+      <select id="difficultyFilter" name="difficulty" class="input-walmart" hx-trigger="change" hx-get="/api/sde-prep/problems" hx-target="#problemsTable" hx-include="#problemFilters">
+        <option value="all">All Difficulties</option>
+        {% for difficulty in difficulties %}
+        <option value="{{ difficulty }}">{{ difficulty.title() }}</option>
+        {% endfor %}
+      </select>
+      <select id="statusFilter" name="status" class="input-walmart" hx-trigger="change" hx-get="/api/sde-prep/problems" hx-target="#problemsTable" hx-include="#problemFilters">
+        <option value="all">All Statuses</option>
+        {% for status in statuses %}
+        <option value="{{ status }}">{{ status.replace('_', ' ').title() }}</option>
+        {% endfor %}
+      </select>
+      <label class="flex items-center gap-2 text-sm">
+        <input id="blind75Filter" type="checkbox" name="blind_75_only" value="true" class="input-walmart" hx-trigger="change" hx-get="/api/sde-prep/problems" hx-target="#problemsTable" hx-include="#problemFilters">
+        Blind 75 Only
+      </label>
+    </form>
+  </div>
+
+  <div id="problemsTable" hx-get="/api/sde-prep/problems" hx-trigger="load"></div>
+</section>
+{% endblock %}

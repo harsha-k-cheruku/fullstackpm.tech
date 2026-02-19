@@ -1,0 +1,35 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {% for topic in topics %}
+  <div class="card-walmart">
+    <div class="flex items-center justify-between">
+      <h3 class="font-semibold">{{ topic.title }}</h3>
+      <select class="input-walmart"
+              hx-put="/api/sde-prep/system-design/{{ topic.id }}" hx-trigger="change"
+              hx-vals='{"status": this.value}' hx-swap="none">
+        {% for status in statuses %}
+        <option value="{{ status }}" {% if topic.status.value == status %}selected{% endif %}>{{ status.replace('_', ' ').title() }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <p class="text-sm text-gray-500 mt-2">{{ topic.description }}</p>
+    <p class="text-xs text-gray-400 mt-2">Practiced {{ topic.practice_count }} times</p>
+    <details class="mt-3">
+      <summary class="text-xs text-walmart-blue cursor-pointer">Expand</summary>
+      <div class="mt-2 space-y-2">
+        <textarea class="input-walmart w-full" placeholder="Key concepts"
+                  hx-put="/api/sde-prep/system-design/{{ topic.id }}" hx-trigger="blur"
+                  hx-vals='{"key_concepts": this.value}' hx-swap="none">{{ topic.key_concepts or '' }}</textarea>
+        <textarea class="input-walmart w-full" placeholder="Common patterns"
+                  hx-put="/api/sde-prep/system-design/{{ topic.id }}" hx-trigger="blur"
+                  hx-vals='{"common_patterns": this.value}' hx-swap="none">{{ topic.common_patterns or '' }}</textarea>
+        <textarea class="input-walmart w-full" placeholder="Notes"
+                  hx-put="/api/sde-prep/system-design/{{ topic.id }}" hx-trigger="blur"
+                  hx-vals='{"notes": this.value}' hx-swap="none">{{ topic.notes or '' }}</textarea>
+        <button class="btn-walmart-secondary" hx-put="/api/sde-prep/system-design/{{ topic.id }}" hx-vals='{"practice_count": {{ topic.practice_count + 1 }} }' hx-swap="none">Mark Practiced</button>
+      </div>
+    </details>
+  </div>
+  {% else %}
+  <p class="text-sm text-gray-500">No topics found.</p>
+  {% endfor %}
+</div>

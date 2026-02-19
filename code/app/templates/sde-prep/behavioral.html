@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/sde-prep.css">
+{% endblock %}
+
+{% block content %}
+{% include "sde-prep/partials/user_header.html" %}
+<section class="py-10 space-y-6">
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="text-sm uppercase tracking-[0.2em] text-walmart-blue">SDE Prep</p>
+      <h1 class="text-h2 mt-2">Behavioral Stories</h1>
+      <p class="text-body text-gray-600">Capture STAR stories and track readiness.</p>
+    </div>
+    <button class="btn-walmart-primary" id="newStoryBtn">+ New Story</button>
+  </div>
+
+  <div id="newStoryForm" class="card-walmart hidden space-y-3">
+    <input class="input-walmart w-full" id="storyTitle" placeholder="Story title">
+    <input class="input-walmart w-full" id="storyCategory" placeholder="Category">
+    <textarea class="input-walmart w-full" id="storySituation" placeholder="Situation"></textarea>
+    <textarea class="input-walmart w-full" id="storyTask" placeholder="Task"></textarea>
+    <textarea class="input-walmart w-full" id="storyAction" placeholder="Action"></textarea>
+    <textarea class="input-walmart w-full" id="storyResult" placeholder="Result"></textarea>
+    <button class="btn-walmart-primary" id="createStoryBtn">Create Story</button>
+  </div>
+
+  <div class="space-y-4">
+    {% for story in stories %}
+    <div class="card-walmart">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="font-semibold">{{ story.title }}</h3>
+          <p class="text-sm text-gray-500">{{ story.category }}</p>
+        </div>
+        <label class="text-sm flex items-center gap-2">
+          <input type="checkbox" {% if story.is_ready %}checked{% endif %}
+                 hx-put="/api/sde-prep/behavioral/{{ story.id }}"
+                 hx-vals='{"is_ready": this.checked}'
+                 hx-swap="none">
+          Ready
+        </label>
+      </div>
+      <details class="mt-3">
+        <summary class="cursor-pointer text-sm text-walmart-blue">Edit story</summary>
+        <div class="mt-3 space-y-3">
+          <textarea class="input-walmart w-full" name="situation" hx-put="/api/sde-prep/behavioral/{{ story.id }}" hx-trigger="blur" hx-vals='{"situation": this.value}' hx-swap="none">{{ story.situation or '' }}</textarea>
+          <textarea class="input-walmart w-full" name="task" hx-put="/api/sde-prep/behavioral/{{ story.id }}" hx-trigger="blur" hx-vals='{"task": this.value}' hx-swap="none">{{ story.task or '' }}</textarea>
+          <textarea class="input-walmart w-full" name="action" hx-put="/api/sde-prep/behavioral/{{ story.id }}" hx-trigger="blur" hx-vals='{"action": this.value}' hx-swap="none">{{ story.action or '' }}</textarea>
+          <textarea class="input-walmart w-full" name="result" hx-put="/api/sde-prep/behavioral/{{ story.id }}" hx-trigger="blur" hx-vals='{"result": this.value}' hx-swap="none">{{ story.result or '' }}</textarea>
+          <textarea class="input-walmart w-full" name="notes" hx-put="/api/sde-prep/behavioral/{{ story.id }}" hx-trigger="blur" hx-vals='{"notes": this.value}' hx-swap="none">{{ story.notes or '' }}</textarea>
+        </div>
+      </details>
+    </div>
+    {% else %}
+    <p class="text-sm text-gray-500">No stories yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const btn = document.getElementById('newStoryBtn');
+  const form = document.getElementById('newStoryForm');
+  const createBtn = document.getElementById('createStoryBtn');
+
+  btn?.addEventListener('click', () => form.classList.toggle('hidden'));
+
+  createBtn?.addEventListener('click', async () => {
+    const payload = {
+      title: document.getElementById('storyTitle').value,
+      category: document.getElementById('storyCategory').value,
+      situation: document.getElementById('storySituation').value,
+      task: document.getElementById('storyTask').value,
+      action: document.getElementById('storyAction').value,
+      result: document.getElementById('storyResult').value,
+    };
+    const response = await fetch('/api/sde-prep/behavioral', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (response.ok) {
+      window.location.reload();
+    }
+  });
+</script>
+{% endblock %}

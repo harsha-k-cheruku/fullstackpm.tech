@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/sde-prep.css">
+{% endblock %}
+
+{% block content %}
+{% include "sde-prep/partials/user_header.html" %}
+<section class="py-10 space-y-6">
+  <div>
+    <p class="text-sm uppercase tracking-[0.2em] text-walmart-blue">SDE Prep</p>
+    <h1 class="text-h2 mt-2">Daily Plan</h1>
+    <p class="text-body text-gray-600">Track tasks by week and day.</p>
+  </div>
+
+  <div class="card-walmart space-y-4">
+    <div class="flex flex-col md:flex-row gap-4">
+      <select id="weekSelect" name="week" class="input-walmart" hx-trigger="change" hx-get="/api/sde-prep/daily-tasks" hx-target="#tasksContainer" hx-include="#weekSelect,#daySelect">
+        <option value="">Select Week</option>
+        {% for week in range(1, 13) %}
+        <option value="{{ week }}">Week {{ week }}</option>
+        {% endfor %}
+      </select>
+      <select id="daySelect" name="day" class="input-walmart" hx-trigger="change" hx-get="/api/sde-prep/daily-tasks" hx-target="#tasksContainer" hx-include="#weekSelect,#daySelect">
+        <option value="0">All Days</option>
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6">Saturday</option>
+        <option value="7">Sunday</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="tasksContainer" hx-get="/api/sde-prep/daily-tasks" hx-trigger="load" hx-include="#weekSelect,#daySelect"></div>
+</section>
+{% endblock %}

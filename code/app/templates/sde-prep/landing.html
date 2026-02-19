@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+
+{% block title %}SDE Interview Prep Tracker - Free Interview Preparation Tool{% endblock %}
+{% block description %}Comprehensive SDE interview preparation tracker with LeetCode tracking, system design topics, behavioral prep, and real-time progress analytics.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/sde-prep.css">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="bg-gradient-to-r from-walmart-blue to-blue-600 text-white py-20 px-4 -mx-4 sm:-mx-6">
+    <div class="max-w-6xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">🎯 SDE Interview Prep Tracker</h1>
+        <p class="text-xl md:text-2xl mb-8 text-blue-100">One tool to master coding, system design, behavioral prep, and more</p>
+        <div id="loginFormContainer" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-walmart-blue">Get Started</h2>
+
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-gray-700">First Name</label>
+                    <input type="text" name="first_name" required placeholder="John"
+                           class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-walmart-blue">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-gray-700">Last Name</label>
+                    <input type="text" name="last_name" required placeholder="Doe"
+                           class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-walmart-blue">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2 text-gray-700">Email</label>
+                    <input type="email" name="email" required placeholder="john@example.com"
+                           class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-walmart-blue">
+                </div>
+
+                <button type="submit" class="w-full bg-walmart-spark text-gray-900 py-3 rounded-lg font-bold text-lg hover:bg-yellow-300 transition">
+                    🚀 Start Preparing Now
+                </button>
+            </form>
+
+            <p class="text-xs text-gray-500 mt-4 text-center">
+                No password needed. Enter your name to get started.
+            </p>
+        </div>
+        <p class="text-blue-200 mt-8">✨ Completely Free • No Password Required • 12-Week Curriculum Included</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const response = await fetch('/api/sde-prep/auth/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            body: new URLSearchParams(formData)
+        });
+
+        if (response.ok) {
+            window.location.href = '/tools/sde-prep/dashboard';
+        } else {
+            alert('Login failed. Please try again.');
+        }
+    });
+
+    fetch('/api/sde-prep/auth/current-user')
+        .then(r => r.ok && (window.location.href = '/tools/sde-prep/dashboard'))
+        .catch(() => {});
+</script>
+
+<!-- Problem Statement -->
+<div class="bg-gray-50 py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-8 text-center">The Problem</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-4xl mb-4">😫</div>
+                <h3 class="text-xl font-bold mb-3">You're Scattered</h3>
+                <p class="text-gray-600">Jumping between LeetCode, Notion, spreadsheets, and YouTube. Context switching kills productivity.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-4xl mb-4">📊</div>
+                <h3 class="text-xl font-bold mb-3">No Progress Visibility</h3>
+                <p class="text-gray-600">You don't know if you're actually ready. Is 30 problems enough? Are you confident enough?</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-4xl mb-4">🤷</div>
+                <h3 class="text-xl font-bold mb-3">Unclear Path Forward</h3>
+                <p class="text-gray-600">No structured curriculum. You're DIY-ing everything. What week should you focus on system design?</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <div class="text-4xl mb-4">😰</div>
+                <h3 class="text-xl font-bold mb-3">Unmotivated</h3>
+                <p class="text-gray-600">No visible progress. No streak tracking. No way to celebrate wins. It feels endless.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Solution Features -->
+<div class="py-16 px-4" id="features">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">The Solution</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <!-- Feature 1 -->
+            <div class="bg-gradient-to-br from-walmart-blue/10 to-blue-100 p-8 rounded-lg border-l-4 border-walmart-blue">
+                <div class="text-3xl mb-3">💻</div>
+                <h3 class="text-xl font-bold mb-3">LeetCode Tracking</h3>
+                <p class="text-gray-700 mb-4">Track 60+ problems (all Blind 75 included)</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>✓ Status tracking</li>
+                    <li>✓ Complexity analysis</li>
+                    <li>✓ Practice sessions</li>
+                    <li>✓ Personal notes</li>
+                </ul>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="bg-gradient-to-br from-walmart-spark/10 to-yellow-100 p-8 rounded-lg border-l-4 border-walmart-spark">
+                <div class="text-3xl mb-3">🏗️</div>
+                <h3 class="text-xl font-bold mb-3">System Design Topics</h3>
+                <p class="text-gray-700 mb-4">15 curated topics ready to learn</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>✓ Twitter, Netflix, Amazon</li>
+                    <li>✓ Walmart-specific designs</li>
+                    <li>✓ Practice tracking</li>
+                    <li>✓ Confidence levels</li>
+                </ul>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="bg-gradient-to-br from-walmart-green/10 to-green-100 p-8 rounded-lg border-l-4 border-walmart-green">
+                <div class="text-3xl mb-3">🎭</div>
+                <h3 class="text-xl font-bold mb-3">Behavioral Stories</h3>
+                <p class="text-gray-700 mb-4">Master STAR format storytelling</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>✓ STAR format manager</li>
+                    <li>✓ Practice counters</li>
+                    <li>✓ Readiness tracking</li>
+                    <li>✓ Leadership mapping</li>
+                </ul>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="bg-gradient-to-br from-walmart-red/10 to-red-100 p-8 rounded-lg border-l-4 border-walmart-red">
+                <div class="text-3xl mb-3">📅</div>
+                <h3 class="text-xl font-bold mb-3">Daily Planning</h3>
+                <p class="text-gray-700 mb-4">Never wonder "what should I study today?"</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>✓ 50+ pre-built tasks</li>
+                    <li>✓ Week/day selectors</li>
+                    <li>✓ Real-time tracking</li>
+                    <li>✓ Time estimates</li>
+                </ul>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-8 rounded-lg border-l-4 border-purple-500">
+                <div class="text-3xl mb-3">📊</div>
+                <h3 class="text-xl font-bold mb-3">Real-Time Analytics</h3>
+                <p class="text-gray-700 mb-4">See exactly where you stand</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>✓ Charts & visualizations</li>
+                    <li>✓ Progress tracking</li>
+                    <li>✓ Study streaks</li>
+                    <li>✓ Readiness metrics</li>
+                </ul>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="bg-gradient-to-br from-indigo-100 to-cyan-100 p-8 rounded-lg border-l-4 border-indigo-500">
+                <div class="text-3xl mb-3">📈</div>
+                <h3 class="text-xl font-bold mb-3">12-Week Curriculum</h3>
+                <p class="text-gray-700 mb-4">Follow a proven interview prep path</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li>✓ Foundation → Coding → Design</li>
+                    <li>✓ Weekly goals</li>
+                    <li>✓ Mock interviews</li>
+                    <li>✓ Final polish</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Curriculum Timeline -->
+<div class="bg-walmart-blue text-white py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">Your 12-Week Journey</h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-blue-500 p-6 rounded-lg">
+                <div class="text-2xl font-bold mb-2">Weeks 1-2</div>
+                <p class="font-semibold mb-2">🏗️ Foundation</p>
+                <p class="text-blue-100 text-sm">Resume, networking, behavioral prep</p>
+            </div>
+
+            <div class="bg-blue-500 p-6 rounded-lg">
+                <div class="text-2xl font-bold mb-2">Weeks 3-6</div>
+                <p class="font-semibold mb-2">💻 Coding Deep Dive</p>
+                <p class="text-blue-100 text-sm">Arrays, Trees, Graphs, DP, Advanced</p>
+            </div>
+
+            <div class="bg-blue-500 p-6 rounded-lg">
+                <div class="text-2xl font-bold mb-2">Weeks 7-9</div>
+                <p class="font-semibold mb-2">🏗️ System Design</p>
+                <p class="text-blue-100 text-sm">Fundamentals to Advanced</p>
+            </div>
+
+            <div class="bg-blue-500 p-6 rounded-lg">
+                <div class="text-2xl font-bold mb-2">Week 10</div>
+                <p class="font-semibold mb-2">🛒 E-Commerce Focus</p>
+                <p class="text-blue-100 text-sm">Walmart-specific designs</p>
+            </div>
+
+            <div class="bg-blue-500 p-6 rounded-lg">
+                <div class="text-2xl font-bold mb-2">Week 11</div>
+                <p class="font-semibold mb-2">🎬 Mock Interviews</p>
+                <p class="text-blue-100 text-sm">Full-loop practice</p>
+            </div>
+
+            <div class="bg-blue-500 p-6 rounded-lg">
+                <div class="text-2xl font-bold mb-2">Week 12</div>
+                <p class="font-semibold mb-2">✨ Final Polish</p>
+                <p class="text-blue-100 text-sm">Review & confidence building</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Metrics Section -->
+<div class="bg-gradient-to-r from-walmart-blue to-blue-600 text-white py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">You'll Be Ready When</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
+                <div class="text-4xl font-bold mb-2">45+</div>
+                <p class="text-blue-100">LeetCode Problems Solved</p>
+            </div>
+
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
+                <div class="text-4xl font-bold mb-2">8+</div>
+                <p class="text-blue-100">System Design Topics Confident</p>
+            </div>
+
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
+                <div class="text-4xl font-bold mb-2">8+</div>
+                <p class="text-blue-100">Behavioral Stories Ready</p>
+            </div>
+
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
+                <div class="text-4xl font-bold mb-2">80%+</div>
+                <p class="text-blue-100">Daily Tasks Complete</p>
+            </div>
+
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
+                <div class="text-4xl font-bold mb-2">5+</div>
+                <p class="text-blue-100">Week Streak</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ Preview -->
+<div class="py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">Common Questions</h2>
+
+        <div class="space-y-6">
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 text-walmart-blue">Q: Do I need an account?</h3>
+                <p class="text-gray-700">No. Just visit and start using. No signup, no configuration.</p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 text-walmart-blue">Q: Is this really free?</h3>
+                <p class="text-gray-700">Yes, completely free. No ads, no paywalls, no premium tiers.</p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 text-walmart-blue">Q: Can I jump in mid-cycle?</h3>
+                <p class="text-gray-700">Absolutely. Start from scratch, mid-prep, or just the coding section—your choice.</p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 text-walmart-blue">Q: How long does it take?</h3>
+                <p class="text-gray-700">20 hrs/week = 12 weeks (as designed). Adjust your pace—40 hrs/week = 6 weeks.</p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 text-walmart-blue">Q: Will this guarantee me a job?</h3>
+                <p class="text-gray-700">No. But it will prepare you comprehensively and put you ahead of 90% of other candidates.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="bg-gradient-to-r from-walmart-blue via-blue-500 to-blue-600 text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl font-bold mb-6">Ready to Ace Your Interview?</h2>
+        <p class="text-xl text-blue-100 mb-10">Start your 12-week journey to interview readiness. Everything you need is included.</p>
+
+        <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
+            <a href="/tools/sde-prep" class="bg-walmart-spark text-gray-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition shadow-lg inline-block">
+                🚀 Start Preparing Now
+            </a>
+            <a href="/tools/sde-prep" class="bg-white text-walmart-blue px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-lg inline-block">
+                📖 Enter the Tool
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div>
+                <div class="text-3xl mb-2">✨</div>
+                <p class="font-semibold">Completely Free</p>
+            </div>
+            <div>
+                <div class="text-3xl mb-2">⚡</div>
+                <p class="font-semibold">No Signup Required</p>
+            </div>
+            <div>
+                <div class="text-3xl mb-2">🎯</div>
+                <p class="font-semibold">Ready to Go</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

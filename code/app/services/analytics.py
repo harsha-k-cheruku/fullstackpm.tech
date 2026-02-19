@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta
-from typing import Iterable
+from typing import Dict, Iterable, List, Optional, Tuple
 import random
 
 
@@ -47,7 +47,7 @@ class Sale:
 @dataclass(frozen=True)
 class OverviewMetrics:
     total_revenue: float
-    revenue_delta_pct: float | None
+    revenue_delta_pct: Optional[float]
     active_listings: int
     average_rating: float
     satisfaction_score: int
@@ -79,19 +79,19 @@ class CohortRow:
 @dataclass(frozen=True)
 class AnalyticsSnapshot:
     overview: OverviewMetrics
-    trends: list[TrendPoint]
-    categories: list[CategoryPerformance]
-    cohorts: list[CohortRow]
-    available_categories: list[str]
+    trends: List[TrendPoint]
+    categories: List[CategoryPerformance]
+    cohorts: List[CohortRow]
+    available_categories: List[str]
 
 
-_DATA_CACHE: dict[str, list] = {}
+_DATA_CACHE: Dict[str, List] = {}
 
 
 def get_snapshot(
     *,
     date_range_days: int,
-    category: str | None,
+    category: Optional[str],
     sort_by: str,
     sort_dir: str,
 ) -> AnalyticsSnapshot:
@@ -139,7 +139,7 @@ def get_snapshot(
     )
 
 
-def _load_mock_data() -> tuple[list[Seller], list[Listing], list[Sale]]:
+def _load_mock_data() -> Tuple[List[Seller], List[Listing], List[Sale]]:
     if _DATA_CACHE:
         return (
             _DATA_CACHE["sellers"],
@@ -150,9 +150,9 @@ def _load_mock_data() -> tuple[list[Seller], list[Listing], list[Sale]]:
     rng = random.Random(42)
     today = date.today()
 
-    sellers: list[Seller] = []
-    listings: list[Listing] = []
-    sales: list[Sale] = []
+    sellers: List[Seller] = []
+    listings: List[Listing] = []
+    sales: List[Sale] = []
 
     for seller_id in range(1, 13):
         signup_date = today - timedelta(days=30 * (seller_id % 8 + 1))
@@ -205,7 +205,7 @@ def _load_mock_data() -> tuple[list[Seller], list[Listing], list[Sale]]:
     return sellers, listings, sales
 
 
-def _filter_listings(listings: Iterable[Listing], category: str | None) -> list[Listing]:
+def _filter_listings(listings: Iterable[Listing], category: Optional[str]) -> List[Listing]:
     if not category or category.lower() == "all":
         return list(listings)
     return [listing for listing in listings if listing.category == category]

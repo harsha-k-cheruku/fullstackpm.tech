@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/sde-prep.css">
+{% endblock %}
+
+{% block content %}
+{% include "sde-prep/partials/user_header.html" %}
+<section class="py-10 space-y-6">
+  <div>
+    <p class="text-sm uppercase tracking-[0.2em] text-walmart-blue">SDE Prep</p>
+    <h1 class="text-h2 mt-2">12-Week Study Plan</h1>
+    <p class="text-body text-gray-600">Track progress across all weeks.</p>
+  </div>
+
+  <div class="space-y-4">
+    {% for week in weeks %}
+    <div class="card-walmart">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="font-semibold">Week {{ week.week_number }}: {{ week.title }}</h3>
+          <p class="text-sm text-gray-500">{{ week.description }}</p>
+        </div>
+        <label class="text-sm flex items-center gap-2">
+          <input type="checkbox" {% if week.is_completed %}checked{% endif %}
+                 hx-put="/api/sde-prep/weeks/{{ week.id }}"
+                 hx-vals='{"is_completed": this.checked}'
+                 hx-swap="none">
+          Complete
+        </label>
+      </div>
+      <ul class="list-disc ml-5 mt-3 text-sm text-gray-600">
+        {% for goal in week.to_dict().goals %}
+        <li>{{ goal }}</li>
+        {% endfor %}
+      </ul>
+      <div class="mt-4">
+        <div class="flex items-center justify-between text-sm text-gray-500">
+          <span>Completion</span>
+          <span>{{ week.completion_percentage }}%</span>
+        </div>
+        <div class="mt-2 h-2 bg-gray-200 rounded-full">
+          <div class="progress-bar-walmart" style="width: {{ week.completion_percentage }}%"></div>
+        </div>
+      </div>
+      <textarea class="input-walmart w-full mt-3" placeholder="Notes"
+                hx-put="/api/sde-prep/weeks/{{ week.id }}"
+                hx-trigger="blur"
+                hx-vals='{"notes": this.value}'
+                hx-swap="none">{{ week.notes or '' }}</textarea>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

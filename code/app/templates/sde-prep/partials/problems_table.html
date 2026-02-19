@@ -1,0 +1,69 @@
+<div class="card-walmart">
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="text-left px-3 py-2">#</th>
+          <th class="text-left px-3 py-2">Title</th>
+          <th class="text-left px-3 py-2">Difficulty</th>
+          <th class="text-left px-3 py-2">Category</th>
+          <th class="text-left px-3 py-2">Status</th>
+          <th class="text-left px-3 py-2">Blind 75</th>
+          <th class="text-left px-3 py-2">Attempts</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for problem in problems %}
+        <tr class="border-b">
+          <td class="px-3 py-2">{{ problem.number }}</td>
+          <td class="px-3 py-2">
+            <a href="{{ problem.url }}" target="_blank" class="text-walmart-blue font-semibold">{{ problem.title }}</a>
+            <details class="mt-2">
+              <summary class="text-xs text-gray-500 cursor-pointer">Notes</summary>
+              <div class="mt-2 space-y-2">
+                <textarea class="input-walmart w-full" placeholder="Solution approach"
+                          hx-put="/api/sde-prep/problems/{{ problem.id }}" hx-trigger="blur"
+                          hx-vals='{"solution_approach": this.value}' hx-swap="none">{{ problem.solution_approach or '' }}</textarea>
+                <textarea class="input-walmart w-full" placeholder="Notes"
+                          hx-put="/api/sde-prep/problems/{{ problem.id }}" hx-trigger="blur"
+                          hx-vals='{"notes": this.value}' hx-swap="none">{{ problem.notes or '' }}</textarea>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <input class="input-walmart" placeholder="Time complexity" value="{{ problem.time_complexity or '' }}"
+                         hx-put="/api/sde-prep/problems/{{ problem.id }}" hx-trigger="blur"
+                         hx-vals='{"time_complexity": this.value}' hx-swap="none">
+                  <input class="input-walmart" placeholder="Space complexity" value="{{ problem.space_complexity or '' }}"
+                         hx-put="/api/sde-prep/problems/{{ problem.id }}" hx-trigger="blur"
+                         hx-vals='{"space_complexity": this.value}' hx-swap="none">
+                </div>
+              </div>
+            </details>
+          </td>
+          <td class="px-3 py-2">
+            {% if problem.difficulty.value == 'EASY' %}
+              <span class="badge-easy">Easy</span>
+            {% elif problem.difficulty.value == 'MEDIUM' %}
+              <span class="badge-medium">Medium</span>
+            {% else %}
+              <span class="badge-hard">Hard</span>
+            {% endif %}
+          </td>
+          <td class="px-3 py-2">{{ problem.category.value.replace('_', ' ').title() }}</td>
+          <td class="px-3 py-2">
+            <select class="input-walmart" hx-put="/api/sde-prep/problems/{{ problem.id }}" hx-trigger="change" hx-vals='{"status": this.value}' hx-swap="none">
+              {% for status in ['NOT_STARTED', 'IN_PROGRESS', 'COMPLETED', 'REVIEW'] %}
+              <option value="{{ status }}" {% if problem.status.value == status %}selected{% endif %}>{{ status.replace('_', ' ').title() }}</option>
+              {% endfor %}
+            </select>
+          </td>
+          <td class="px-3 py-2">{% if problem.is_blind_75 %}⭐{% else %}-{% endif %}</td>
+          <td class="px-3 py-2">{{ problem.attempts }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="7" class="px-3 py-6 text-center text-gray-500">No problems found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

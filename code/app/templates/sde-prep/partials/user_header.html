@@ -1,0 +1,28 @@
+<div class="bg-walmart-blue text-white px-4 py-3 rounded-lg mb-6 flex justify-between items-center">
+  <div>
+    <span id="currentUser" class="font-semibold">Loading...</span>
+  </div>
+  <button onclick="logout()"
+          class="bg-walmart-spark text-gray-900 px-4 py-1 rounded font-bold text-sm hover:bg-yellow-300">
+    Logout
+  </button>
+</div>
+
+<script>
+  fetch('/api/sde-prep/auth/current-user')
+    .then((response) => {
+      if (!response.ok) throw new Error('Not authenticated');
+      return response.json();
+    })
+    .then((user) => {
+      document.getElementById('currentUser').textContent = `👤 Logged in as: ${user.full_name}`;
+    })
+    .catch(() => {
+      window.location.href = '/tools/sde-prep';
+    });
+
+  function logout() {
+    fetch('/api/sde-prep/auth/logout', { method: 'POST' })
+      .then(() => window.location.href = '/tools/sde-prep');
+  }
+</script>
