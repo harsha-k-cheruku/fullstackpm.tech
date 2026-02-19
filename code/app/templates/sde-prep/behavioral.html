@@ -11,7 +11,7 @@
 <section class="py-10 space-y-6">
   <div class="flex items-center justify-between">
     <div>
-      <p class="text-sm uppercase tracking-[0.2em] text-walmart-blue">SDE Prep</p>
+      <p class="text-sm uppercase tracking-[0.2em] text-blue-600">SDE Prep</p>
       <h1 class="text-h2 mt-2">Behavioral Stories</h1>
       <p class="text-body text-gray-600">Capture STAR stories and track readiness.</p>
     </div>
@@ -45,7 +45,7 @@
         </label>
       </div>
       <details class="mt-3">
-        <summary class="cursor-pointer text-sm text-walmart-blue">Edit story</summary>
+        <summary class="cursor-pointer text-sm text-blue-600">Edit story</summary>
         <div class="mt-3 space-y-3">
           <textarea class="input-walmart w-full" name="situation" hx-put="/api/sde-prep/behavioral/{{ story.id }}" hx-trigger="blur" hx-vals='{"situation": this.value}' hx-swap="none">{{ story.situation or '' }}</textarea>
           <textarea class="input-walmart w-full" name="task" hx-put="/api/sde-prep/behavioral/{{ story.id }}" hx-trigger="blur" hx-vals='{"task": this.value}' hx-swap="none">{{ story.task or '' }}</textarea>
