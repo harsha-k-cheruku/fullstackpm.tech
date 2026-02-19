@@ -1,0 +1,128 @@
+<!-- SDE Prep Top Navigation -->
+<nav aria-label="SDE Prep navigation"
+     class="sticky top-0 z-50 h-16 border-b"
+     style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+  <div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 sm:px-6">
+
+    <!-- Site name / SDE Prep title -->
+    <a href="/tools/sde-prep"
+       class="text-lg font-bold transition-colors"
+       style="color: var(--color-text-primary);">
+      🎯 SDE Prep
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden items-center gap-1 md:flex">
+      {% set sde_nav_links = [
+        ("Dashboard", "/tools/sde-prep/dashboard"),
+        ("Problems", "/tools/sde-prep/problems"),
+        ("Daily Plan", "/tools/sde-prep/daily-plan"),
+        ("System Design", "/tools/sde-prep/system-design"),
+        ("Behavioral", "/tools/sde-prep/behavioral"),
+        ("Study Plan", "/tools/sde-prep/study-plan"),
+        ("FAQ", "/tools/sde-prep/prfaq"),
+      ] %}
+      {% for label, href in sde_nav_links %}
+      <a href="{{ href }}"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: {{ 'var(--color-text-primary)' if current_page == href else 'var(--color-text-secondary)' }};"
+         {% if current_page == href %}aria-current="page"{% endif %}
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='{{ 'var(--color-text-primary)' if current_page == href else 'var(--color-text-secondary)' }}'">
+        {{ label }}
+        {% if current_page == href %}
+        <span class="absolute bottom-0 left-3 right-3 h-0.5" style="background-color: var(--color-accent);"></span>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Right side: user info + logout + mobile menu button -->
+    <div class="flex items-center gap-4">
+
+      <!-- User info (desktop) -->
+      <div class="hidden items-center gap-2 md:flex">
+        <span id="navUser" class="text-sm" style="color: var(--color-text-secondary);">Loading...</span>
+        <button onclick="logout()"
+                class="rounded px-2 py-1 text-sm font-medium transition-colors"
+                style="color: var(--color-text-secondary); background-color: var(--color-bg-secondary);"
+                onmouseover="this.style.color='var(--color-text-primary)'"
+                onmouseout="this.style.color='var(--color-text-secondary)'">
+          Logout
+        </button>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="sde-mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="sde-mobile-menu"
+              class="rounded-lg p-2 transition-colors md:hidden focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="sde-mobile-menu"
+       class="hidden border-b md:hidden"
+       style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+    <div class="mx-auto max-w-[1200px] px-4 py-3 sm:px-6">
+      {% for label, href in sde_nav_links %}
+      <a href="{{ href }}"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: {{ 'var(--color-text-primary)' if current_page == href else 'var(--color-text-secondary)' }};"
+         {% if current_page == href %}aria-current="page"{% endif %}>
+        {{ label }}
+      </a>
+      {% endfor %}
+      <div class="border-t my-3" style="border-color: var(--color-border);"></div>
+      <button onclick="logout()"
+              class="w-full rounded-lg px-3 py-2 text-sm font-medium text-left transition-colors"
+              style="color: var(--color-text-secondary);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Update navbar user info
+  fetch('/api/sde-prep/auth/current-user')
+    .then((response) => {
+      if (!response.ok) throw new Error('Not authenticated');
+      return response.json();
+    })
+    .then((user) => {
+      const navUser = document.getElementById('navUser');
+      if (navUser) {
+        navUser.textContent = user.full_name || user.email;
+      }
+    })
+    .catch(() => {
+      window.location.href = '/tools/sde-prep';
+    });
+
+  function logout() {
+    fetch('/api/sde-prep/auth/logout', { method: 'POST' })
+      .then(() => window.location.href = '/tools/sde-prep');
+  }
+
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('sde-mobile-menu-btn');
+  const mobileMenu = document.getElementById('sde-mobile-menu');
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
+    });
+  }
+</script>

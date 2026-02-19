@@ -1,157 +1,15 @@
-/* SDE Prep Tool - Walmart Brand Color Scheme */
+/* SDE Prep Tool - Design System Colors (Parent Site) */
 
-:root {
-  --color-walmart-blue: #0053e2;
-  --color-walmart-spark: #ffc220;
-  --color-walmart-green: #2a8703;
-  --color-walmart-red: #ea1100;
-  --color-walmart-blue-dark: #003fa3;
-  --color-walmart-blue-light: #4a7bea;
-}
-
-/* Tailwind utility classes for SDE Prep Tool */
-
-/* Background colors */
-.bg-walmart-blue {
-  background-color: var(--color-walmart-blue);
-}
-
-.bg-walmart-spark {
-  background-color: var(--color-walmart-spark);
-}
-
-.bg-walmart-green {
-  background-color: var(--color-walmart-green);
-}
-
-.bg-walmart-red {
-  background-color: var(--color-walmart-red);
-}
-
-/* Text colors */
-.text-walmart-blue {
-  color: var(--color-walmart-blue);
-}
-
-.text-walmart-spark {
-  color: var(--color-walmart-spark);
-}
-
-.text-walmart-green {
-  color: var(--color-walmart-green);
-}
-
-.text-walmart-red {
-  color: var(--color-walmart-red);
-}
-
-/* Border colors */
-.border-walmart-blue {
-  border-color: var(--color-walmart-blue);
-}
-
-.border-walmart-spark {
-  border-color: var(--color-walmart-spark);
-}
-
-.border-walmart-green {
-  border-color: var(--color-walmart-green);
-}
-
-.border-walmart-red {
-  border-color: var(--color-walmart-red);
-}
-
-/* Hover states */
-.hover\:bg-walmart-blue:hover {
-  background-color: var(--color-walmart-blue-dark);
-}
-
-.hover\:text-walmart-spark:hover {
-  color: var(--color-walmart-spark);
-}
-
-/* Focus states */
-.focus\:ring-walmart-blue:focus {
-  outline: 2px solid var(--color-walmart-blue);
-  outline-offset: 2px;
-}
-
-/* Difficulty badges */
-.badge-easy {
-  background-color: var(--color-walmart-green);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.badge-medium {
-  background-color: #f59e0b;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.badge-hard {
-  background-color: var(--color-walmart-red);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-/* Status badges */
-.badge-not-started {
-  background-color: #e5e7eb;
-  color: #374151;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.badge-in-progress {
-  background-color: var(--color-walmart-spark);
-  color: #111827;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.badge-completed {
-  background-color: var(--color-walmart-green);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.badge-confident {
-  background-color: var(--color-walmart-blue);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-/* Progress bar colors */
+/* Progress bar colors - using accent blue */
 .progress-bar-walmart {
-  background: linear-gradient(90deg, var(--color-walmart-blue), var(--color-walmart-blue-light));
+  background: linear-gradient(90deg, var(--color-accent), var(--color-blue-400));
   border-radius: 9999px;
   height: 0.75rem;
 }
 
 /* Buttons */
 .btn-walmart-primary {
-  background-color: var(--color-walmart-blue);
+  background-color: var(--color-accent);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -161,13 +19,13 @@
 }
 
 .btn-walmart-primary:hover {
-  background-color: var(--color-walmart-blue-dark);
+  background-color: var(--color-accent-hover);
 }
 
 .btn-walmart-secondary {
   background-color: transparent;
-  color: var(--color-walmart-blue);
-  border: 2px solid var(--color-walmart-blue);
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -176,80 +34,110 @@
 }
 
 .btn-walmart-secondary:hover {
-  background-color: var(--color-walmart-blue);
+  background-color: var(--color-accent);
   color: white;
 }
 
 /* Cards */
 .card-walmart {
-  background-color: white;
+  background-color: var(--color-bg-primary);
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
 }
 
 .card-walmart:hover {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Navigation */
-.nav-walmart {
-  background: linear-gradient(90deg, var(--color-walmart-blue), #0047c4);
-  color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
-.nav-walmart a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.2s;
-}
-
-.nav-walmart a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.nav-walmart a.active {
-  background-color: var(--color-walmart-spark);
-  color: #111827;
+.dark .card-walmart {
+  background-color: var(--color-bg-secondary);
 }
 
 /* Inputs & Textareas */
 .input-walmart {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   padding: 0.5rem;
   font-size: 1rem;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input-walmart:focus {
   outline: none;
-  border-color: var(--color-walmart-blue);
-  box-shadow: 0 0 0 3px rgba(0, 83, 226, 0.1);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
 }
 
-/* Charts.js color scheme */
-.chart-walmart-blue {
-  color: var(--color-walmart-blue);
-  border-color: var(--color-walmart-blue);
+.dark .input-walmart {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
 }
 
-.chart-walmart-spark {
-  color: var(--color-walmart-spark);
-  border-color: var(--color-walmart-spark);
+/* Difficulty badges */
+.badge-easy {
+  background-color: var(--color-success);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
-.chart-walmart-green {
-  color: var(--color-walmart-green);
-  border-color: var(--color-walmart-green);
+.badge-medium {
+  background-color: var(--color-warning);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
-.chart-walmart-red {
-  color: var(--color-walmart-red);
-  border-color: var(--color-walmart-red);
+.badge-hard {
+  background-color: var(--color-danger);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Status badges */
+.badge-not-started {
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge-in-progress {
+  background-color: var(--color-warning);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge-completed {
+  background-color: var(--color-success);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge-confident {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
