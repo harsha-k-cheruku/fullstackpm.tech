@@ -4,7 +4,12 @@ slug: sde-prep-tracker
 description: Comprehensive software engineering interview preparation tool with LeetCode tracking, system design topics, daily task planning, behavioral stories, and progress analytics.
 status: live
 featured: true
+display_order: 1
+github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
 live_url: /tools/sde-prep
+problem: "SDE candidates juggle multiple tools for interview prep: LeetCode for coding, Notion docs for system design, spreadsheets for tracking, video playlists for learning. This fragmentation kills focus, causes scattered progress tracking, and makes it impossible to see overall interview readiness."
+approach: "Build an integrated, single-source-of-truth interview prep platform. Pre-seed with 60+ LeetCode problems, 15 system design topics, STAR-format behavioral stories, and a 12-week curriculum. Use HTMX for seamless real-time updates. Focus on clarity, not complexity."
+solution: "A comprehensive prep tracker with dashboard analytics, LeetCode problem tracking (with Blind 75 flagging), system design topics with confidence levels, behavioral story manager, 12-week curriculum with daily tasks, and real-time progress visualization via Chart.js—everything pre-loaded and ready to use."
 categories:
   - Tool
   - Education
