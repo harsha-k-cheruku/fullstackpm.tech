@@ -1,0 +1,119 @@
+<!-- SDE Prep Sidebar Navigation -->
+<nav class="bg-gray-50 border-r border-gray-200 w-64 min-h-screen p-6 fixed left-0 top-0">
+  <!-- Logo/Title -->
+  <div class="mb-8">
+    <a href="/tools/sde-prep" class="text-2xl font-bold text-gray-900 hover:text-blue-600">
+      🎯 SDE Prep
+    </a>
+    <p class="text-xs text-gray-500 mt-2">Interview Preparation Tracker</p>
+  </div>
+
+  <!-- Navigation Links -->
+  <ul class="space-y-2 mb-8">
+    <li>
+      <a href="/tools/sde-prep/dashboard"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+         style="{% if current_page == '/tools/sde-prep/dashboard' %}background-color: #e0e7ff; color: #1e3a8a; font-weight: 600;{% endif %}">
+        📊 Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="/tools/sde-prep/problems"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+         style="{% if current_page == '/tools/sde-prep/problems' %}background-color: #e0e7ff; color: #1e3a8a; font-weight: 600;{% endif %}">
+        💻 LeetCode Problems
+      </a>
+    </li>
+    <li>
+      <a href="/tools/sde-prep/daily-plan"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+         style="{% if current_page == '/tools/sde-prep/daily-plan' %}background-color: #e0e7ff; color: #1e3a8a; font-weight: 600;{% endif %}">
+        📅 Daily Plan
+      </a>
+    </li>
+    <li>
+      <a href="/tools/sde-prep/system-design"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+         style="{% if current_page == '/tools/sde-prep/system-design' %}background-color: #e0e7ff; color: #1e3a8a; font-weight: 600;{% endif %}">
+        🏗️ System Design
+      </a>
+    </li>
+    <li>
+      <a href="/tools/sde-prep/behavioral"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+         style="{% if current_page == '/tools/sde-prep/behavioral' %}background-color: #e0e7ff; color: #1e3a8a; font-weight: 600;{% endif %}">
+        🎭 Behavioral
+      </a>
+    </li>
+    <li>
+      <a href="/tools/sde-prep/study-plan"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition"
+         style="{% if current_page == '/tools/sde-prep/study-plan' %}background-color: #e0e7ff; color: #1e3a8a; font-weight: 600;{% endif %}">
+        📈 Study Plan
+      </a>
+    </li>
+  </ul>
+
+  <!-- Divider -->
+  <div class="border-t border-gray-200 my-6"></div>
+
+  <!-- Help & Resources -->
+  <ul class="space-y-2 mb-8">
+    <li>
+      <a href="/tools/sde-prep/prfaq"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition text-gray-700"
+         style="{% if current_page == '/tools/sde-prep/prfaq' %}background-color: #e0e7ff; color: #1e3a8a; font-weight: 600;{% endif %}">
+        ❓ FAQ & Press Release
+      </a>
+    </li>
+    <li>
+      <a href="/tools/sde-prep"
+         class="block px-4 py-2 rounded-lg hover:bg-gray-200 transition text-gray-700">
+        🏠 Back to Landing
+      </a>
+    </li>
+  </ul>
+
+  <!-- Divider -->
+  <div class="border-t border-gray-200 my-6"></div>
+
+  <!-- User Info & Logout -->
+  <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+    <p class="text-sm font-semibold text-gray-700 mb-2">Logged in as:</p>
+    <p id="sidebarUser" class="text-sm font-bold text-blue-600 mb-4">Loading...</p>
+    <button onclick="logout()"
+            class="w-full bg-red-500 text-white px-3 py-2 rounded font-semibold text-sm hover:bg-red-600 transition">
+      🚪 Logout
+    </button>
+  </div>
+</nav>
+
+<!-- Adjust main content to account for sidebar -->
+<style>
+  body.sde-prep-layout main {
+    margin-left: 256px;
+  }
+</style>
+
+<script>
+  // Update sidebar user info
+  fetch('/api/sde-prep/auth/current-user')
+    .then((response) => {
+      if (!response.ok) throw new Error('Not authenticated');
+      return response.json();
+    })
+    .then((user) => {
+      const sidebarUser = document.getElementById('sidebarUser');
+      if (sidebarUser) {
+        sidebarUser.textContent = user.full_name || user.email;
+      }
+    })
+    .catch(() => {
+      window.location.href = '/tools/sde-prep';
+    });
+
+  function logout() {
+    fetch('/api/sde-prep/auth/logout', { method: 'POST' })
+      .then(() => window.location.href = '/tools/sde-prep');
+  }
+</script>
