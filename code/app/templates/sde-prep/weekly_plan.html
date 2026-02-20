@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+<!-- NOTE: This page reads from /static/data/curriculum.json -->
+<!-- To update curriculum content, edit the JSON file, not this template -->
+
 {% block title %}SDE Prep Weekly Plan{% endblock %}
 
 {% block description %}Your 12-week SDE interview preparation roadmap with daily tasks and goals.{% endblock %}
@@ -81,8 +84,22 @@
 
 {% block scripts %}
   <script>
-    // Mock data for weeks
-    const weekData = [
+    // Load curriculum from JSON file
+    let curriculumData = null;
+
+    // Fetch curriculum data
+    async function loadCurriculum() {
+      try {
+        const response = await fetch('/static/data/curriculum.json');
+        curriculumData = await response.json();
+        renderWeeks();
+      } catch (error) {
+        console.error('Error loading curriculum:', error);
+        document.getElementById('weeksContainer').innerHTML = '<p style="color: var(--color-text-secondary);">Error loading curriculum data</p>';
+      }
+    }
+
+    // Mock data for weeks (fallback)
       {
         week: 1,
         title: "Week 1: Arrays & Strings",
@@ -206,7 +223,9 @@
       const container = document.getElementById('weeksContainer');
       container.innerHTML = '';
 
-      const weeksToShow = selectedWeek ? weekData.filter(w => w.week == selectedWeek) : weekData;
+      // Use curriculum data if loaded, otherwise use fallback
+      const dataSource = curriculumData ? curriculumData.weeks : weekData;
+      const weeksToShow = selectedWeek ? dataSource.filter(w => w.week == selectedWeek) : dataSource;
 
       weeksToShow.forEach(week => {
         container.appendChild(createWeekElement(week));
@@ -466,7 +485,7 @@
       console.log(`Task ${taskId} marked as ${completed ? 'complete' : 'incomplete'}`);
     }
 
-    // Initial render
-    renderWeeks();
+    // Load curriculum data and render
+    loadCurriculum();
   </script>
 {% endblock %}

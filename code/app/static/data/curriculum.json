@@ -1,0 +1,498 @@
+{
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Week 1: Arrays & Strings - Fundamentals",
+      "description": "Master array/string manipulation and two-pointer techniques",
+      "goals": [
+        "Master array/string manipulation and two-pointer techniques",
+        "Understand sliding window approach",
+        "Complete Blind 75 array subset",
+        "Practice hash map optimization"
+      ],
+      "totalHours": "12-14",
+      "keyFocusAreas": ["Sliding window", "Two pointers", "Hash maps", "Prefix sums"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Array Basics & Two Sum",
+          "description": "Arrays, hash maps, brute force vs optimized",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Review array fundamentals",
+              "description": "Understand array operations and complexity",
+              "type": "reading",
+              "minutes": 30,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "GeeksforGeeks - Array Introduction",
+                  "url": "https://www.geeksforgeeks.org/array-data-structure/",
+                  "type": "article"
+                },
+                {
+                  "title": "LeetCode - Array Concepts",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/",
+                  "type": "interactive"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "LeetCode #1 - Two Sum",
+              "description": "Find two numbers that add up to target",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 1,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/two-sum/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/two-sum/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video - Two Sum",
+                  "url": "https://youtu.be/KLlXCFG5MsM",
+                  "type": "video"
+                },
+                {
+                  "title": "Hash Map Explanation",
+                  "url": "https://www.geeksforgeeks.org/two-sum-in-array/",
+                  "type": "article"
+                }
+              ],
+              "keyTakeaway": "Hash map for O(n) solution",
+              "complexity": "O(n) time, O(n) space"
+            },
+            {
+              "id": 3,
+              "title": "LeetCode #167 - Two Sum II (Sorted)",
+              "description": "Find two numbers in sorted array that add to target",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 167,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Two Pointer Technique",
+                  "url": "https://youtu.be/cQ1Xx-oNs5Q",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Two-pointer technique for sorted arrays",
+              "complexity": "O(n) time, O(1) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Prefix Sums & Running Totals",
+          "description": "Prefix sums, cumulative calculations, range queries",
+          "tasks": [
+            {
+              "id": 4,
+              "title": "LeetCode #121 - Best Time to Buy and Sell Stock",
+              "description": "Find max profit with single transaction",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 121,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/1pkOgXD63yU",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Single pass tracking min price",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 5,
+              "title": "LeetCode #238 - Product of Array Except Self",
+              "description": "Get product of all elements except current",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 238,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/product-of-array-except-self/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/product-of-array-except-self/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/bNvIQYRUtKI",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Prefix and suffix products",
+              "complexity": "O(n) time, O(n) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Sliding Window - Part 1",
+          "description": "Sliding window technique, character frequency, substring problems",
+          "tasks": [
+            {
+              "id": 6,
+              "title": "LeetCode #3 - Longest Substring Without Repeating Characters",
+              "description": "Find longest substring with unique characters",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 3,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/wiGpWwVHdE0",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Sliding window with hash map",
+              "complexity": "O(n) time, O(min(n, m)) space"
+            },
+            {
+              "id": 7,
+              "title": "Sliding Window Pattern Study",
+              "description": "Master the sliding window technique",
+              "type": "reading",
+              "minutes": 20,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "LeetCode - Sliding Window Pattern",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-medium/103/array-and-string/756/",
+                  "type": "interactive"
+                },
+                {
+                  "title": "GeeksforGeeks - Sliding Window",
+                  "url": "https://www.geeksforgeeks.org/window-sliding-technique/",
+                  "type": "article"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Sliding Window - Part 2",
+          "description": "Minimum window substring, max consecutive, container problems",
+          "tasks": [
+            {
+              "id": 8,
+              "title": "LeetCode #11 - Container With Most Water",
+              "description": "Find two lines that together with x-axis form max area",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 11,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/container-with-most-water/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/container-with-most-water/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/UuzmtauqAOA",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Two pointers with greedy optimization",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 9,
+              "title": "LeetCode #76 - Minimum Window Substring",
+              "description": "Find minimum window containing all characters",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 76,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/minimum-window-substring/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/minimum-window-substring/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/jSto0O6aQ4k",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Complex sliding window with frequency tracking",
+              "complexity": "O(n + m) time, O(m) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "String Manipulation",
+          "description": "Valid palindromes, string reversal, anagrams",
+          "tasks": [
+            {
+              "id": 10,
+              "title": "LeetCode #125 - Valid Palindrome",
+              "description": "Check if string is palindrome (alphanumeric only)",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 125,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/valid-palindrome/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/valid-palindrome/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/jJXJ5UJ7Nzo",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Two-pointer with filtering",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 11,
+              "title": "LeetCode #242 - Valid Anagram",
+              "description": "Check if two strings are anagrams",
+              "type": "coding",
+              "minutes": 15,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 242,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/valid-anagram/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/valid-anagram/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Hash map or sorting",
+              "complexity": "O(n) or O(n log n) time"
+            },
+            {
+              "id": 12,
+              "title": "LeetCode #49 - Group Anagrams",
+              "description": "Group strings that are anagrams of each other",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 49,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/group-anagrams/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/group-anagrams/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/utguzs4F3gg",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Hash map with sorted key",
+              "complexity": "O(n * k log k) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Array Manipulation & Merging",
+          "description": "Merge sorted arrays, remove duplicates, rotation",
+          "tasks": [
+            {
+              "id": 13,
+              "title": "LeetCode #88 - Merge Sorted Array",
+              "description": "Merge two sorted arrays in-place",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 88,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/merge-sorted-array/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/merge-sorted-array/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Three pointers from end (avoid extra space)",
+              "complexity": "O(n + m) time, O(1) space"
+            },
+            {
+              "id": 14,
+              "title": "LeetCode #26 - Remove Duplicates from Sorted Array",
+              "description": "Remove duplicates in-place, return new length",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 26,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Two pointers in-place modification",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 15,
+              "title": "LeetCode #189 - Rotate Array",
+              "description": "Rotate array right by k steps",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 189,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/rotate-array/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/rotate-array/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/BHVmZZRvW6o",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Reverse technique (O(1) space)",
+              "complexity": "O(n) time, O(1) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Practice & Review",
+          "description": "Reinforce Week 1 concepts",
+          "tasks": [
+            {
+              "id": 16,
+              "title": "Review & Reinforce Week 1",
+              "description": "Revisit difficult problems from the week",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "Week 1 Problem List",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/",
+                  "type": "interactive"
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "title": "Rest & Prepare for Week 2",
+              "description": "Light reading and mental preparation",
+              "type": "rest",
+              "minutes": 20,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
