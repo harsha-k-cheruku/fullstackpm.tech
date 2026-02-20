@@ -122,6 +122,14 @@ async def daily_plan(request: Request) -> HTMLResponse:
     )
 
 
+@router.get("/tools/sde-prep/weekly-plan", response_class=HTMLResponse)
+async def weekly_plan(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(
+        "sde-prep/weekly_plan.html",
+        _ctx(request, title="Weekly Plan — SDE Prep", current_page=""),
+    )
+
+
 @router.get("/tools/sde-prep/system-design", response_class=HTMLResponse)
 async def system_design(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(

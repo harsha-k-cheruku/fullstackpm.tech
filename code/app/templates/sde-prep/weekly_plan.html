@@ -1,0 +1,451 @@
+{% extends "base.html" %}
+
+{% block title %}SDE Prep Weekly Plan{% endblock %}
+
+{% block description %}Your 12-week SDE interview preparation roadmap with daily tasks and goals.{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+  <!-- SDE Prep Navigation Bar -->
+  <nav style="background-color: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border); margin: -1.5rem -1rem 0 -1rem; padding: 0;">
+    <div class="mx-auto max-w-[1200px] flex h-14 items-center justify-between px-4 sm:px-6">
+      <!-- Back to fullstackpm.tech -->
+      <a href="/" style="color: var(--color-text-primary); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">
+        ← Back to fullstackpm.tech
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="/tools/sde-prep/dashboard" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Dashboard</a>
+        <a href="/tools/sde-prep/problems" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Problems</a>
+        <a href="/tools/sde-prep/weekly-plan" style="color: var(--color-accent); font-size: 0.875rem; font-weight: 600;">Weekly Plan</a>
+        <a href="/tools/sde-prep/system-design" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">System Design</a>
+        <a href="/tools/sde-prep/behavioral" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Behavioral</a>
+        <a href="/tools/sde-prep/prfaq" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">PRFAQ</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2" style="color: var(--color-text-secondary);" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+      <div class="px-4 py-3 space-y-2">
+        <a href="/tools/sde-prep/dashboard" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Dashboard</a>
+        <a href="/tools/sde-prep/problems" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Problems</a>
+        <a href="/tools/sde-prep/weekly-plan" class="block px-3 py-2 text-sm" style="color: var(--color-accent); font-weight: 600;">Weekly Plan</a>
+        <a href="/tools/sde-prep/system-design" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">System Design</a>
+        <a href="/tools/sde-prep/behavioral" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Behavioral</a>
+        <a href="/tools/sde-prep/prfaq" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">PRFAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div style="margin-top: 2rem;">
+    <!-- Header -->
+    <div style="margin-bottom: 2rem;">
+      <p style="color: var(--color-accent); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SDE Prep</p>
+      <h1 style="color: var(--color-text-primary); font-size: 2.25rem; font-weight: bold; margin-bottom: 0.5rem;">Weekly Plan</h1>
+      <p style="color: var(--color-text-secondary);">Your 12-week roadmap to interview mastery.</p>
+    </div>
+
+    <!-- Week Selector -->
+    <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <label style="color: var(--color-text-primary); font-weight: 600;">Select Week:</label>
+      <select id="weekSelector" onchange="selectWeek(this.value)" style="padding: 0.5rem 1rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.5rem; font-family: inherit; cursor: pointer;">
+        <option value="">-- All Weeks --</option>
+        <option value="1">Week 1: Arrays & Strings</option>
+        <option value="2">Week 2: Linked Lists</option>
+        <option value="3">Week 3: Trees & Graphs</option>
+        <option value="4">Week 4: Dynamic Programming</option>
+        <option value="5">Week 5: Greedy & Backtracking</option>
+        <option value="6">Week 6: System Design Basics</option>
+        <option value="7">Week 7: Advanced System Design</option>
+        <option value="8">Week 8: Behavioral Prep</option>
+        <option value="9">Week 9: Mock Interviews</option>
+        <option value="10">Week 10: Final Review - Arrays</option>
+        <option value="11">Week 11: Final Review - System Design</option>
+        <option value="12">Week 12: Final Polish</option>
+      </select>
+    </div>
+
+    <!-- Weeks Container -->
+    <div id="weeksContainer" style="space-y: 2rem;">
+      <!-- Week items will be inserted here -->
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    // Mock data for weeks
+    const weekData = [
+      {
+        week: 1,
+        title: "Week 1: Arrays & Strings",
+        goals: [
+          "Master array manipulation techniques",
+          "Understand two-pointer approach",
+          "Complete 10 LeetCode easy problems",
+          "Review sliding window patterns"
+        ],
+        completion: 45,
+        days: [
+          {
+            day: "Monday",
+            date: "Feb 17",
+            tasks: [
+              { id: 1, title: "Two Sum", description: "LeetCode problem", type: "coding", minutes: 30, completed: true },
+              { id: 2, title: "Best Time to Buy & Sell Stock", description: "Dynamic programming", type: "coding", minutes: 25, completed: true },
+              { id: 3, title: "Read array patterns article", description: "Preparation material", type: "reading", minutes: 20, completed: false }
+            ]
+          },
+          {
+            day: "Tuesday",
+            date: "Feb 18",
+            tasks: [
+              { id: 4, title: "Container With Most Water", description: "Two pointer approach", type: "coding", minutes: 30, completed: true },
+              { id: 5, title: "3Sum problem", description: "Sorted array solution", type: "coding", minutes: 35, completed: false }
+            ]
+          },
+          {
+            day: "Wednesday",
+            date: "Feb 19",
+            tasks: [
+              { id: 6, title: "Longest Substring", description: "Sliding window", type: "coding", minutes: 35, completed: false },
+              { id: 7, title: "Watch sliding window video", description: "YouTube tutorial", type: "video", minutes: 25, completed: false }
+            ]
+          },
+          {
+            day: "Thursday",
+            date: "Feb 20",
+            tasks: [
+              { id: 8, title: "Palindrome problems", description: "Two approaches", type: "coding", minutes: 30, completed: false }
+            ]
+          },
+          {
+            day: "Friday",
+            date: "Feb 21",
+            tasks: [
+              { id: 9, title: "Review & practice", description: "Revisit difficult problems", type: "coding", minutes: 45, completed: false }
+            ]
+          },
+          {
+            day: "Saturday",
+            date: "Feb 22",
+            tasks: [
+              { id: 10, title: "Mock interview", description: "Practice with friend", type: "coding", minutes: 60, completed: false }
+            ]
+          },
+          {
+            day: "Sunday",
+            date: "Feb 23",
+            tasks: [
+              { id: 11, title: "Rest & reflection", description: "Plan for next week", type: "planning", minutes: 30, completed: false }
+            ]
+          }
+        ]
+      },
+      {
+        week: 2,
+        title: "Week 2: Linked Lists",
+        goals: [
+          "Understand linked list structure",
+          "Implement common operations",
+          "Solve 8 LeetCode problems",
+          "Practice pointer manipulation"
+        ],
+        completion: 20,
+        days: [
+          {
+            day: "Monday",
+            date: "Feb 24",
+            tasks: [
+              { id: 12, title: "Reverse Linked List", description: "Iterative approach", type: "coding", minutes: 30, completed: false },
+              { id: 13, title: "Linked List fundamentals", description: "Review core concepts", type: "reading", minutes: 20, completed: false }
+            ]
+          },
+          {
+            day: "Tuesday",
+            date: "Feb 25",
+            tasks: [
+              { id: 14, title: "Merge Sorted Lists", description: "Two pointers", type: "coding", minutes: 25, completed: false }
+            ]
+          },
+          {
+            day: "Wednesday",
+            date: "Feb 26",
+            tasks: [
+              { id: 15, title: "Detect Cycle", description: "Fast & slow pointers", type: "coding", minutes: 30, completed: false }
+            ]
+          },
+          {
+            day: "Thursday",
+            date: "Feb 27",
+            tasks: [
+              { id: 16, title: "Remove Nth Node", description: "Dummy node technique", type: "coding", minutes: 25, completed: false }
+            ]
+          },
+          {
+            day: "Friday",
+            date: "Feb 28",
+            tasks: [
+              { id: 17, title: "Practice problems", description: "Reinforce concepts", type: "coding", minutes: 45, completed: false }
+            ]
+          },
+          {
+            day: "Saturday",
+            date: "Mar 1",
+            tasks: [
+              { id: 18, title: "Review week", description: "Summary & notes", type: "planning", minutes: 30, completed: false }
+            ]
+          },
+          {
+            day: "Sunday",
+            date: "Mar 2",
+            tasks: [
+              { id: 19, title: "Rest day", description: "Prepare for week 3", type: "planning", minutes: 20, completed: false }
+            ]
+          }
+        ]
+      }
+    ];
+
+    function renderWeeks() {
+      const selectedWeek = document.getElementById('weekSelector').value;
+      const container = document.getElementById('weeksContainer');
+      container.innerHTML = '';
+
+      const weeksToShow = selectedWeek ? weekData.filter(w => w.week == selectedWeek) : weekData;
+
+      weeksToShow.forEach(week => {
+        container.appendChild(createWeekElement(week));
+      });
+    }
+
+    function createWeekElement(week) {
+      const weekDiv = document.createElement('div');
+      weekDiv.style.marginBottom = '2rem';
+
+      const weekHeader = document.createElement('div');
+      weekHeader.style.cssText = `
+        padding: 1.5rem;
+        background-color: var(--color-bg-secondary);
+        border-radius: 0.75rem;
+        border: 1px solid var(--color-border);
+        cursor: pointer;
+        transition: background-color 0.2s;
+      `;
+      weekHeader.onmouseover = function() { this.style.opacity = '0.8'; };
+      weekHeader.onmouseout = function() { this.style.opacity = '1'; };
+
+      const headerContent = document.createElement('div');
+      headerContent.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
+
+      const titleDiv = document.createElement('div');
+      const title = document.createElement('h3');
+      title.style.cssText = 'color: var(--color-text-primary); font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;';
+      title.textContent = week.title;
+
+      const progressDiv = document.createElement('div');
+      const progressLabel = document.createElement('p');
+      progressLabel.style.cssText = 'color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;';
+      progressLabel.textContent = `${week.completion}% complete`;
+
+      const progressBar = document.createElement('div');
+      progressBar.style.cssText = `height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden; width: 200px;`;
+      const fill = document.createElement('div');
+      fill.style.cssText = `width: ${week.completion}%; height: 100%; background: linear-gradient(90deg, var(--color-accent), #3B9DE9);`;
+      progressBar.appendChild(fill);
+      progressDiv.appendChild(progressLabel);
+      progressDiv.appendChild(progressBar);
+
+      const goalsDiv = document.createElement('div');
+      goalsDiv.style.marginTop = '1rem';
+      const goalsLabel = document.createElement('p');
+      goalsLabel.style.cssText = 'color: var(--color-text-secondary); font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;';
+      goalsLabel.textContent = 'Weekly Goals:';
+      goalsDiv.appendChild(goalsLabel);
+
+      const goalsList = document.createElement('ul');
+      goalsList.style.cssText = 'margin-left: 1rem; color: var(--color-text-secondary); font-size: 0.875rem;';
+      week.goals.forEach(goal => {
+        const li = document.createElement('li');
+        li.style.cssText = 'list-style-type: disc; margin-bottom: 0.25rem;';
+        li.textContent = goal;
+        goalsList.appendChild(li);
+      });
+      goalsDiv.appendChild(goalsList);
+
+      titleDiv.appendChild(title);
+      titleDiv.appendChild(progressDiv);
+      titleDiv.appendChild(goalsDiv);
+
+      const caretSpan = document.createElement('span');
+      caretSpan.id = `caret-week-${week.week}`;
+      caretSpan.style.cssText = 'color: var(--color-text-secondary); font-size: 1.5rem; transition: transform 0.2s;';
+      caretSpan.textContent = '▼';
+
+      headerContent.appendChild(titleDiv);
+      headerContent.appendChild(caretSpan);
+      weekHeader.appendChild(headerContent);
+
+      weekHeader.onclick = function() {
+        toggleWeekExpand(week.week);
+      };
+
+      weekDiv.appendChild(weekHeader);
+
+      const daysContainer = document.createElement('div');
+      daysContainer.id = `days-${week.week}`;
+      daysContainer.style.display = 'none';
+      daysContainer.style.marginTop = '1rem';
+
+      week.days.forEach(day => {
+        daysContainer.appendChild(createDayElement(day, week.week));
+      });
+
+      weekDiv.appendChild(daysContainer);
+      return weekDiv;
+    }
+
+    function createDayElement(day, weekNum) {
+      const dayDiv = document.createElement('div');
+      dayDiv.style.marginBottom = '1rem';
+
+      const dayHeader = document.createElement('div');
+      dayHeader.style.cssText = `
+        padding: 1rem;
+        background-color: var(--color-bg-tertiary);
+        border-radius: 0.5rem;
+        border: 1px solid var(--color-border);
+        cursor: pointer;
+        transition: background-color 0.2s;
+      `;
+      dayHeader.onmouseover = function() { this.style.opacity = '0.8'; };
+      dayHeader.onmouseout = function() { this.style.opacity = '1'; };
+
+      const dayHeaderContent = document.createElement('div');
+      dayHeaderContent.style.cssText = 'display: flex; justify-content: space-between; align-items: center;';
+
+      const dayInfo = document.createElement('div');
+      const dayTitle = document.createElement('h4');
+      dayTitle.style.cssText = 'color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.25rem;';
+      dayTitle.textContent = `${day.day}, ${day.date}`;
+
+      const dayStats = document.createElement('p');
+      dayStats.style.cssText = 'color: var(--color-text-secondary); font-size: 0.875rem;';
+      const totalMinutes = day.tasks.reduce((sum, t) => sum + t.minutes, 0);
+      const completedCount = day.tasks.filter(t => t.completed).length;
+      dayStats.textContent = `${day.tasks.length} tasks • ${totalMinutes} min • ${completedCount}/${day.tasks.length} done`;
+
+      dayInfo.appendChild(dayTitle);
+      dayInfo.appendChild(dayStats);
+
+      const caret = document.createElement('span');
+      caret.id = `caret-day-${day.date}`;
+      caret.style.cssText = 'color: var(--color-text-secondary); font-size: 1.25rem; transition: transform 0.2s;';
+      caret.textContent = '▼';
+
+      dayHeaderContent.appendChild(dayInfo);
+      dayHeaderContent.appendChild(caret);
+      dayHeader.appendChild(dayHeaderContent);
+
+      dayHeader.onclick = function() {
+        toggleDayExpand(day.date);
+      };
+
+      dayDiv.appendChild(dayHeader);
+
+      const tasksContainer = document.createElement('div');
+      tasksContainer.id = `tasks-${day.date}`;
+      tasksContainer.style.cssText = 'display: none; margin-top: 0.5rem; padding-left: 1rem; border-left: 2px solid var(--color-border);';
+
+      day.tasks.forEach(task => {
+        tasksContainer.appendChild(createTaskElement(task, day.date));
+      });
+
+      dayDiv.appendChild(tasksContainer);
+      return dayDiv;
+    }
+
+    function createTaskElement(task, dayDate) {
+      const taskDiv = document.createElement('div');
+      taskDiv.style.cssText = `
+        padding: 0.75rem;
+        margin-bottom: 0.5rem;
+        background-color: var(--color-bg-primary);
+        border: 1px solid var(--color-border);
+        border-radius: 0.375rem;
+        display: flex;
+        align-items: start;
+        gap: 0.75rem;
+      `;
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = task.completed;
+      checkbox.style.cssText = 'margin-top: 0.25rem; cursor: pointer; width: 20px; height: 20px;';
+      checkbox.onchange = function() {
+        toggleTask(task.id, this.checked);
+      };
+
+      const taskContent = document.createElement('div');
+      taskContent.style.flexGrow = '1';
+
+      const taskTitle = document.createElement('p');
+      taskTitle.style.cssText = `color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.25rem; text-decoration: ${task.completed ? 'line-through' : 'none'};`;
+      taskTitle.textContent = task.title;
+
+      const taskDesc = document.createElement('p');
+      taskDesc.style.cssText = 'color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem;';
+      taskDesc.textContent = task.description;
+
+      const taskMeta = document.createElement('p');
+      taskMeta.style.cssText = 'color: var(--color-text-tertiary); font-size: 0.75rem;';
+      const typeLabel = task.type.charAt(0).toUpperCase() + task.type.slice(1);
+      taskMeta.textContent = `${typeLabel} • ${task.minutes} min`;
+
+      taskContent.appendChild(taskTitle);
+      taskContent.appendChild(taskDesc);
+      taskContent.appendChild(taskMeta);
+
+      taskDiv.appendChild(checkbox);
+      taskDiv.appendChild(taskContent);
+      return taskDiv;
+    }
+
+    function toggleWeekExpand(weekNum) {
+      const daysContainer = document.getElementById(`days-${weekNum}`);
+      const caret = document.getElementById(`caret-week-${weekNum}`);
+      const isHidden = daysContainer.style.display === 'none';
+      daysContainer.style.display = isHidden ? 'block' : 'none';
+      caret.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+
+    function toggleDayExpand(dayDate) {
+      const tasksContainer = document.getElementById(`tasks-${dayDate}`);
+      const caret = document.getElementById(`caret-day-${dayDate}`);
+      const isHidden = tasksContainer.style.display === 'none';
+      tasksContainer.style.display = isHidden ? 'block' : 'none';
+      caret.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+
+    function selectWeek(weekNum) {
+      renderWeeks();
+    }
+
+    function toggleTask(taskId, completed) {
+      // In a real application, this would save to the database
+      console.log(`Task ${taskId} marked as ${completed ? 'complete' : 'incomplete'}`);
+    }
+
+    // Initial render
+    renderWeeks();
+  </script>
+{% endblock %}
