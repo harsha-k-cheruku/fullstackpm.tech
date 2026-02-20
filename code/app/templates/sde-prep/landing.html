@@ -1,333 +1,265 @@
 {% extends "base.html" %}
 
-{% block title %}SDE Interview Prep Tracker - Free Interview Preparation Tool{% endblock %}
-{% block description %}Comprehensive SDE interview preparation tracker with LeetCode tracking, system design topics, behavioral prep, and real-time progress analytics.{% endblock %}
-
-{% block head %}
-{% endblock %}
+{% block title %}SDE Interview Prep Tracker - Comprehensive Interview Preparation{% endblock %}
+{% block description %}Master technical interviews with the SDE Interview Prep Tracker. LeetCode problems, system design topics, behavioral prep, and progress tracking—all in one platform.{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<div class="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-20 px-4 -mx-4 sm:-mx-6">
-    <div class="max-w-6xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6">🎯 SDE Interview Prep Tracker</h1>
-        <p class="text-xl md:text-2xl mb-8 text-blue-100">One tool to master coding, system design, behavioral prep, and more</p>
-        <div id="loginFormContainer" class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
-            <h2 class="text-3xl font-bold mb-6 text-blue-600">Get Started</h2>
+<!-- SDE Prep Navigation Bar -->
+<nav style="background-color: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border); margin: 0 -1.5rem; padding: 0 1.5rem;">
+  <div class="mx-auto max-w-[1200px] flex h-14 items-center justify-between">
+    <!-- Home Link -->
+    <a href="/" style="color: var(--color-text-primary); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">
+      ← Back to fullstackpm.tech
+    </a>
 
-            <form id="loginForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">First Name</label>
-                    <input type="text" name="first_name" required placeholder="John"
-                           class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Last Name</label>
-                    <input type="text" name="last_name" required placeholder="Doe"
-                           class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold mb-2 text-gray-700">Email</label>
-                    <input type="email" name="email" required placeholder="john@example.com"
-                           class="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400">
-                </div>
-
-                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition">
-                    🚀 Start Preparing Now
-                </button>
-            </form>
-
-            <p class="text-xs text-gray-500 mt-4 text-center">
-                No password needed. Enter your name to get started.
-            </p>
-        </div>
-        <p class="text-blue-100 mt-8">✨ Completely Free • No Password Required • 12-Week Curriculum Included</p>
+    <!-- SDE Prep Sections (Desktop) -->
+    <div class="hidden md:flex items-center gap-6">
+      <a href="/tools/sde-prep/dashboard" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Dashboard</a>
+      <a href="/tools/sde-prep/problems" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Problems</a>
+      <a href="/tools/sde-prep/daily-plan" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Daily Plan</a>
+      <a href="/tools/sde-prep/system-design" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">System Design</a>
+      <a href="/tools/sde-prep/behavioral" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Behavioral</a>
+      <a href="/tools/sde-prep/study-plan" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Study Plan</a>
+      <a href="/tools/sde-prep/prfaq" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">FAQ</a>
     </div>
-</div>
+
+    <!-- Mobile Menu Button -->
+    <button id="sde-mobile-btn" class="md:hidden p-2" style="color: var(--color-text-secondary);" onclick="document.getElementById('sde-mobile-menu').classList.toggle('hidden')">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="sde-mobile-menu" class="hidden md:hidden border-t" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+    <div class="px-4 py-3 space-y-2">
+      <a href="/tools/sde-prep/dashboard" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Dashboard</a>
+      <a href="/tools/sde-prep/problems" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Problems</a>
+      <a href="/tools/sde-prep/daily-plan" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Daily Plan</a>
+      <a href="/tools/sde-prep/system-design" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">System Design</a>
+      <a href="/tools/sde-prep/behavioral" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Behavioral</a>
+      <a href="/tools/sde-prep/study-plan" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Study Plan</a>
+      <a href="/tools/sde-prep/prfaq" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section style="padding: 4rem 0; text-align: center;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h1 style="color: var(--color-text-primary); font-size: 3rem; font-weight: bold; margin-bottom: 1rem; line-height: 1.2;">
+      Master Your Technical Interviews
+    </h1>
+    <p style="color: var(--color-text-secondary); font-size: 1.25rem; margin-bottom: 3rem; line-height: 1.6;">
+      A comprehensive, structured 12-week program combining LeetCode problems, system design mastery, behavioral prep, and real-time progress tracking.
+    </p>
+
+    <!-- Login Form -->
+    <div style="background-color: var(--color-bg-secondary); padding: 2rem; border-radius: 0.75rem; max-width: 400px; margin: 0 auto;">
+      <h2 style="color: var(--color-text-primary); font-size: 1.25rem; font-weight: bold; margin-bottom: 1.5rem;">Get Started</h2>
+
+      <form onsubmit="handleLogin(event)">
+        <div style="margin-bottom: 1rem;">
+          <input type="text" id="firstName" placeholder="First Name" required
+                 style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 0.5rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); font-family: inherit;"
+                 onfocus="this.style.borderColor='var(--color-accent)'"
+                 onblur="this.style.borderColor='var(--color-border)'">
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <input type="email" id="email" placeholder="Email" required
+                 style="width: 100%; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 0.5rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); font-family: inherit;"
+                 onfocus="this.style.borderColor='var(--color-accent)'"
+                 onblur="this.style.borderColor='var(--color-border)'">
+        </div>
+
+        <button type="submit"
+                style="width: 100%; padding: 0.75rem; background-color: var(--color-accent); color: white; border: none; border-radius: 0.5rem; font-weight: bold; cursor: pointer; transition: background-color 0.2s;"
+                onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+                onmouseout="this.style.backgroundColor='var(--color-accent)'">
+          Start Free →
+        </button>
+      </form>
+
+      <p style="color: var(--color-text-tertiary); font-size: 0.875rem; margin-top: 1rem;">
+        No credit card required. Free forever.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Features Overview -->
+<section style="padding: 4rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); background-color: var(--color-bg-secondary);">
+  <div class="mx-auto max-w-[1200px] px-4">
+    <h2 style="color: var(--color-text-primary); font-size: 2.25rem; font-weight: bold; margin-bottom: 3rem; text-align: center;">
+      Everything You Need to Succeed
+    </h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <!-- Feature 1 -->
+      <div style="padding: 2rem; background-color: var(--color-bg-primary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">💻</div>
+        <h3 style="color: var(--color-text-primary); font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem;">
+          LeetCode Tracker
+        </h3>
+        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+          60+ curated problems with difficulty breakdown, practice session logging, and progress tracking.
+        </p>
+        <p style="color: var(--color-text-tertiary); font-size: 0.875rem;">
+          ✓ Blind 75 problems flagged<br>
+          ✓ Advanced filtering<br>
+          ✓ Time/complexity notes
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div style="padding: 2rem; background-color: var(--color-bg-primary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🏗️</div>
+        <h3 style="color: var(--color-text-primary); font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem;">
+          System Design
+        </h3>
+        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+          15 curated topics with practice tracking and confidence levels.
+        </p>
+        <p style="color: var(--color-text-tertiary); font-size: 0.875rem;">
+          ✓ Key concepts<br>
+          ✓ Design patterns<br>
+          ✓ Practice counter
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div style="padding: 2rem; background-color: var(--color-bg-primary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🎭</div>
+        <h3 style="color: var(--color-text-primary); font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem;">
+          Behavioral Prep
+        </h3>
+        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+          STAR format story manager with practice counters and readiness tracking.
+        </p>
+        <p style="color: var(--color-text-tertiary); font-size: 0.875rem;">
+          ✓ Story templates<br>
+          ✓ Quick editing<br>
+          ✓ Practice tracking
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div style="padding: 2rem; background-color: var(--color-bg-primary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📅</div>
+        <h3 style="color: var(--color-text-primary); font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem;">
+          Daily Planning
+        </h3>
+        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+          50+ pre-built daily tasks organized by week with real-time progress tracking.
+        </p>
+        <p style="color: var(--color-text-tertiary); font-size: 0.875rem;">
+          ✓ 12-week curriculum<br>
+          ✓ Task time estimates<br>
+          ✓ Progress bars
+        </p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div style="padding: 2rem; background-color: var(--color-bg-primary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
+        <h3 style="color: var(--color-text-primary); font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem;">
+          Analytics
+        </h3>
+        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+          Real-time dashboards showing your progress across all categories.
+        </p>
+        <p style="color: var(--color-text-tertiary); font-size: 0.875rem;">
+          ✓ Difficulty breakdown<br>
+          ✓ Weekly trends<br>
+          ✓ Study streaks
+        </p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div style="padding: 2rem; background-color: var(--color-bg-primary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+        <h3 style="color: var(--color-text-primary); font-size: 1.25rem; font-weight: bold; margin-bottom: 0.75rem;">
+          Seamless UX
+        </h3>
+        <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+          HTMX-powered real-time updates, auto-save, and mobile-responsive design.
+        </p>
+        <p style="color: var(--color-text-tertiary); font-size: 0.875rem;">
+          ✓ No page reloads<br>
+          ✓ Auto-save notes<br>
+          ✓ Mobile-ready
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section style="padding: 4rem 0;">
+  <div class="mx-auto max-w-[1200px] px-4">
+    <h2 style="color: var(--color-text-primary); font-size: 2.25rem; font-weight: bold; margin-bottom: 3rem; text-align: center;">
+      Built for Comprehensive Preparation
+    </h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; margin-bottom: 3rem;">
+      <div>
+        <div style="color: var(--color-accent); font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">60+</div>
+        <p style="color: var(--color-text-secondary);">LeetCode Problems</p>
+      </div>
+      <div>
+        <div style="color: var(--color-accent); font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">15</div>
+        <p style="color: var(--color-text-secondary);">System Design Topics</p>
+      </div>
+      <div>
+        <div style="color: var(--color-accent); font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">50+</div>
+        <p style="color: var(--color-text-secondary);">Daily Tasks</p>
+      </div>
+      <div>
+        <div style="color: var(--color-accent); font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">12</div>
+        <p style="color: var(--color-text-secondary);">Week Curriculum</p>
+      </div>
+    </div>
+
+    <div style="background-color: var(--color-bg-secondary); padding: 2rem; border-radius: 0.75rem; border-left: 4px solid var(--color-accent); text-align: center;">
+      <p style="color: var(--color-text-secondary); font-size: 1.125rem;">
+        📌 <strong>More materials are being added regularly</strong> to expand coverage across all major interview topics.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA Section -->
+<section style="padding: 4rem 0; background-color: var(--color-bg-secondary); border-top: 1px solid var(--color-border); text-align: center;">
+  <div class="mx-auto max-w-[1200px] px-4">
+    <h2 style="color: var(--color-text-primary); font-size: 2.25rem; font-weight: bold; margin-bottom: 1.5rem;">
+      Ready to Start Your Journey?
+    </h2>
+    <p style="color: var(--color-text-secondary); font-size: 1.125rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Join thousands preparing for their dream engineering roles. Structured, trackable, and free.
+    </p>
+
+    <button onclick="document.querySelector('input[type=text]').focus()"
+            style="padding: 1rem 2rem; background-color: var(--color-accent); color: white; border: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; transition: background-color 0.2s;"
+            onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+            onmouseout="this.style.backgroundColor='var(--color-accent)'">
+      Get Started Now →
+    </button>
+
+    <p style="color: var(--color-text-tertiary); font-size: 0.875rem; margin-top: 1.5rem;">
+      No credit card. No commitment. Start free today.
+    </p>
+  </div>
+</section>
 
 <script>
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+function handleLogin(event) {
+  event.preventDefault();
+  const firstName = document.getElementById('firstName').value;
+  const email = document.getElementById('email').value;
 
-        const formData = new FormData(e.target);
-        const response = await fetch('/api/sde-prep/auth/login', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: new URLSearchParams(formData)
-        });
-
-        if (response.ok) {
-            window.location.href = '/tools/sde-prep/dashboard';
-        } else {
-            alert('Login failed. Please try again.');
-        }
-    });
-
-    fetch('/api/sde-prep/auth/current-user')
-        .then(r => r.ok && (window.location.href = '/tools/sde-prep/dashboard'))
-        .catch(() => {});
+  alert(`Welcome, ${firstName}! 🎉\n\nLogin functionality coming soon.\nEmail: ${email}`);
+  // In the actual integration, this would handle authentication
+}
 </script>
 
-<!-- Problem Statement -->
-<div class="bg-gray-50 py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-8 text-center">The Problem</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="text-4xl mb-4">😫</div>
-                <h3 class="text-xl font-bold mb-3">You're Scattered</h3>
-                <p class="text-gray-600">Jumping between LeetCode, Notion, spreadsheets, and YouTube. Context switching kills productivity.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="text-4xl mb-4">📊</div>
-                <h3 class="text-xl font-bold mb-3">No Progress Visibility</h3>
-                <p class="text-gray-600">You don't know if you're actually ready. Is 30 problems enough? Are you confident enough?</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="text-4xl mb-4">🤷</div>
-                <h3 class="text-xl font-bold mb-3">Unclear Path Forward</h3>
-                <p class="text-gray-600">No structured curriculum. You're DIY-ing everything. What week should you focus on system design?</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="text-4xl mb-4">😰</div>
-                <h3 class="text-xl font-bold mb-3">Unmotivated</h3>
-                <p class="text-gray-600">No visible progress. No streak tracking. No way to celebrate wins. It feels endless.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Solution Features -->
-<div class="py-16 px-4" id="features">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center">The Solution</h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            <!-- Feature 1 -->
-            <div class="bg-gradient-to-br from-blue-600/10 to-blue-100 p-8 rounded-lg border-l-4 border-blue-600">
-                <div class="text-3xl mb-3">💻</div>
-                <h3 class="text-xl font-bold mb-3">LeetCode Tracking</h3>
-                <p class="text-gray-700 mb-4">Track 60+ problems (all Blind 75 included)</p>
-                <ul class="text-sm text-gray-600 space-y-2">
-                    <li>✓ Status tracking</li>
-                    <li>✓ Complexity analysis</li>
-                    <li>✓ Practice sessions</li>
-                    <li>✓ Personal notes</li>
-                </ul>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="bg-gradient-to-br from-yellow-100/10 to-yellow-100 p-8 rounded-lg border-l-4 border-yellow-400">
-                <div class="text-3xl mb-3">🏗️</div>
-                <h3 class="text-xl font-bold mb-3">System Design Topics</h3>
-                <p class="text-gray-700 mb-4">15 curated topics ready to learn</p>
-                <ul class="text-sm text-gray-600 space-y-2">
-                    <li>✓ Twitter, Netflix, Amazon</li>
-                    <li>✓ Walmart-specific designs</li>
-                    <li>✓ Practice tracking</li>
-                    <li>✓ Confidence levels</li>
-                </ul>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="bg-gradient-to-br from-green-100/10 to-green-100 p-8 rounded-lg border-l-4 border-green-600">
-                <div class="text-3xl mb-3">🎭</div>
-                <h3 class="text-xl font-bold mb-3">Behavioral Stories</h3>
-                <p class="text-gray-700 mb-4">Master STAR format storytelling</p>
-                <ul class="text-sm text-gray-600 space-y-2">
-                    <li>✓ STAR format manager</li>
-                    <li>✓ Practice counters</li>
-                    <li>✓ Readiness tracking</li>
-                    <li>✓ Leadership mapping</li>
-                </ul>
-            </div>
-
-            <!-- Feature 4 -->
-            <div class="bg-gradient-to-br from-red-100/10 to-red-100 p-8 rounded-lg border-l-4 border-red-600">
-                <div class="text-3xl mb-3">📅</div>
-                <h3 class="text-xl font-bold mb-3">Daily Planning</h3>
-                <p class="text-gray-700 mb-4">Never wonder "what should I study today?"</p>
-                <ul class="text-sm text-gray-600 space-y-2">
-                    <li>✓ 50+ pre-built tasks</li>
-                    <li>✓ Week/day selectors</li>
-                    <li>✓ Real-time tracking</li>
-                    <li>✓ Time estimates</li>
-                </ul>
-            </div>
-
-            <!-- Feature 5 -->
-            <div class="bg-gradient-to-br from-purple-100 to-pink-100 p-8 rounded-lg border-l-4 border-purple-500">
-                <div class="text-3xl mb-3">📊</div>
-                <h3 class="text-xl font-bold mb-3">Real-Time Analytics</h3>
-                <p class="text-gray-700 mb-4">See exactly where you stand</p>
-                <ul class="text-sm text-gray-600 space-y-2">
-                    <li>✓ Charts & visualizations</li>
-                    <li>✓ Progress tracking</li>
-                    <li>✓ Study streaks</li>
-                    <li>✓ Readiness metrics</li>
-                </ul>
-            </div>
-
-            <!-- Feature 6 -->
-            <div class="bg-gradient-to-br from-indigo-100 to-cyan-100 p-8 rounded-lg border-l-4 border-indigo-500">
-                <div class="text-3xl mb-3">📈</div>
-                <h3 class="text-xl font-bold mb-3">12-Week Curriculum</h3>
-                <p class="text-gray-700 mb-4">Follow a proven interview prep path</p>
-                <ul class="text-sm text-gray-600 space-y-2">
-                    <li>✓ Foundation → Coding → Design</li>
-                    <li>✓ Weekly goals</li>
-                    <li>✓ Mock interviews</li>
-                    <li>✓ Final polish</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Curriculum Timeline -->
-<div class="bg-blue-600 text-white py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center">Your 12-Week Journey</h2>
-
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-blue-500 p-6 rounded-lg">
-                <div class="text-2xl font-bold mb-2">Weeks 1-2</div>
-                <p class="font-semibold mb-2">🏗️ Foundation</p>
-                <p class="text-blue-100 text-sm">Resume, networking, behavioral prep</p>
-            </div>
-
-            <div class="bg-blue-500 p-6 rounded-lg">
-                <div class="text-2xl font-bold mb-2">Weeks 3-6</div>
-                <p class="font-semibold mb-2">💻 Coding Deep Dive</p>
-                <p class="text-blue-100 text-sm">Arrays, Trees, Graphs, DP, Advanced</p>
-            </div>
-
-            <div class="bg-blue-500 p-6 rounded-lg">
-                <div class="text-2xl font-bold mb-2">Weeks 7-9</div>
-                <p class="font-semibold mb-2">🏗️ System Design</p>
-                <p class="text-blue-100 text-sm">Fundamentals to Advanced</p>
-            </div>
-
-            <div class="bg-blue-500 p-6 rounded-lg">
-                <div class="text-2xl font-bold mb-2">Week 10</div>
-                <p class="font-semibold mb-2">🛒 E-Commerce Focus</p>
-                <p class="text-blue-100 text-sm">Walmart-specific designs</p>
-            </div>
-
-            <div class="bg-blue-500 p-6 rounded-lg">
-                <div class="text-2xl font-bold mb-2">Week 11</div>
-                <p class="font-semibold mb-2">🎬 Mock Interviews</p>
-                <p class="text-blue-100 text-sm">Full-loop practice</p>
-            </div>
-
-            <div class="bg-blue-500 p-6 rounded-lg">
-                <div class="text-2xl font-bold mb-2">Week 12</div>
-                <p class="font-semibold mb-2">✨ Final Polish</p>
-                <p class="text-blue-100 text-sm">Review & confidence building</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Metrics Section -->
-<div class="bg-gradient-to-r from-blue-600 to-blue-600 text-white py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center">You'll Be Ready When</h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
-                <div class="text-4xl font-bold mb-2">45+</div>
-                <p class="text-blue-100">LeetCode Problems Solved</p>
-            </div>
-
-            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
-                <div class="text-4xl font-bold mb-2">8+</div>
-                <p class="text-blue-100">System Design Topics Confident</p>
-            </div>
-
-            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
-                <div class="text-4xl font-bold mb-2">8+</div>
-                <p class="text-blue-100">Behavioral Stories Ready</p>
-            </div>
-
-            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
-                <div class="text-4xl font-bold mb-2">80%+</div>
-                <p class="text-blue-100">Daily Tasks Complete</p>
-            </div>
-
-            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-lg text-center">
-                <div class="text-4xl font-bold mb-2">5+</div>
-                <p class="text-blue-100">Week Streak</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- FAQ Preview -->
-<div class="py-16 px-4">
-    <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-bold mb-12 text-center">Common Questions</h2>
-
-        <div class="space-y-6">
-            <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-3 text-blue-600">Q: Do I need an account?</h3>
-                <p class="text-gray-700">No. Just visit and start using. No signup, no configuration.</p>
-            </div>
-
-            <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-3 text-blue-600">Q: Is this really free?</h3>
-                <p class="text-gray-700">Yes, completely free. No ads, no paywalls, no premium tiers.</p>
-            </div>
-
-            <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-3 text-blue-600">Q: Can I jump in mid-cycle?</h3>
-                <p class="text-gray-700">Absolutely. Start from scratch, mid-prep, or just the coding section—your choice.</p>
-            </div>
-
-            <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-3 text-blue-600">Q: How long does it take?</h3>
-                <p class="text-gray-700">20 hrs/week = 12 weeks (as designed). Adjust your pace—40 hrs/week = 6 weeks.</p>
-            </div>
-
-            <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-3 text-blue-600">Q: Will this guarantee me a job?</h3>
-                <p class="text-gray-700">No. But it will prepare you comprehensively and put you ahead of 90% of other candidates.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CTA Section -->
-<div class="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white py-20 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl font-bold mb-6">Ready to Ace Your Interview?</h2>
-        <p class="text-xl text-blue-100 mb-10">Start your 12-week journey to interview readiness. Everything you need is included.</p>
-
-        <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
-            <a href="/tools/sde-prep/dashboard" class="bg-yellow-400 text-gray-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition shadow-lg inline-block">
-                🚀 Start Preparing Now
-            </a>
-            <a href="/tools/sde-prep/prfaq" class="bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-lg inline-block">
-                📖 Learn More & FAQ
-            </a>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6 text-center">
-            <div>
-                <div class="text-3xl mb-2">✨</div>
-                <p class="font-semibold">Completely Free</p>
-            </div>
-            <div>
-                <div class="text-3xl mb-2">⚡</div>
-                <p class="font-semibold">No Signup Required</p>
-            </div>
-            <div>
-                <div class="text-3xl mb-2">🎯</div>
-                <p class="font-semibold">Ready to Go</p>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}
