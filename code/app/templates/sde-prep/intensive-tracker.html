@@ -131,17 +131,21 @@
     </div>
   </div>
 
-  <!-- Data Export/Sync -->
+  <!-- Data Export/Clear -->
   <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; gap: 1rem; flex-wrap: wrap;">
     <button onclick="exportData()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-accent); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">📥 Export Data</button>
-    <button onclick="syncData()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-accent); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">🔄 Sync to Cloud</button>
-    <span style="color: var(--color-text-secondary); font-size: 0.875rem; display: flex; align-items: center;">Last synced: <span id="lastSync" style="margin-left: 0.5rem; font-weight: 500;">Never</span></span>
+    <button onclick="importData()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-accent); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">📤 Import Data</button>
+    <button onclick="clearData()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: #ef4444; border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">🗑️ Clear All Data</button>
+    <span style="color: var(--color-text-secondary); font-size: 0.875rem; display: flex; align-items: center;">💾 Data saved locally in browser</span>
   </div>
 {% endblock %}
 
 {% block scripts %}
   <script>
-    // Load progress data
+    // Local storage keys
+    const STORAGE_KEY = 'intensive-tracker-progress';
+
+    // Initialize progress data structure
     let progressData = {
       problemsSolved: 0,
       applicationsSubmitted: 0,
@@ -153,16 +157,28 @@
       recentActivity: []
     };
 
-    async function loadProgressData() {
-      try {
-        const response = await fetch('/api/intensive-progress');
-        if (response.ok) {
-          progressData = await response.json();
+    // Load progress from localStorage
+    function loadProgressData() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          progressData = JSON.parse(stored);
+        } catch (error) {
+          console.error('Error parsing stored data:', error);
+          // Use default if parsing fails
         }
-      } catch (error) {
-        console.error('Error loading progress:', error);
       }
       updateUI();
+    }
+
+    // Save progress to localStorage
+    function saveProgressData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
+      } catch (error) {
+        console.error('Error saving to localStorage:', error);
+        alert('Failed to save data (storage full?)');
+      }
     }
 
     function updateUI() {
@@ -207,7 +223,7 @@
       const container = document.getElementById('weeklyBreakdown');
       container.innerHTML = '';
 
-      for (let week = 1; week <= 8; week++) {
+      for (let week = 1; week <= 9; week++) {
         const weekStats = progressData.weeklyStats[`week${week}`] || { problems: 0, apps: 0 };
         const weekDiv = document.createElement('div');
         weekDiv.style.cssText = `padding: 1rem; background-color: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 0.5rem;`;
@@ -239,77 +255,117 @@
       });
     }
 
-    async function saveQuickLog() {
+    function saveQuickLog() {
       const problems = parseInt(document.getElementById('todayProblems').value) || 0;
       const apps = parseInt(document.getElementById('todayApps').value) || 0;
       const interviews = parseInt(document.getElementById('todayInterviews').value) || 0;
 
-      try {
-        const response = await fetch('/api/intensive-progress/log', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ problems, apps, interviews })
-        });
-
-        if (response.ok) {
-          // Clear inputs
-          document.getElementById('todayProblems').value = '';
-          document.getElementById('todayApps').value = '';
-          document.getElementById('todayInterviews').value = '';
-
-          // Reload data
-          loadProgressData();
-
-          // Show confirmation
-          alert('Progress logged successfully!');
-        }
-      } catch (error) {
-        console.error('Error saving progress:', error);
-        alert('Error saving progress');
+      if (problems === 0 && apps === 0 && interviews === 0) {
+        alert('Please enter at least one value to log');
+        return;
       }
+
+      // Update totals
+      progressData.problemsSolved += problems;
+      progressData.applicationsSubmitted += apps;
+      progressData.interviewsCompleted += interviews;
+
+      // Add to recent activity
+      const today = new Date().toDateString();
+      progressData.recentActivity.push({
+        message: `Logged: ${problems} problems, ${apps} applications, ${interviews} interviews`,
+        timestamp: new Date().toISOString()
+      });
+
+      // Keep only last 50 activities
+      if (progressData.recentActivity.length > 50) {
+        progressData.recentActivity = progressData.recentActivity.slice(-50);
+      }
+
+      // Clear inputs
+      document.getElementById('todayProblems').value = '';
+      document.getElementById('todayApps').value = '';
+      document.getElementById('todayInterviews').value = '';
+
+      // Save and update UI
+      saveProgressData();
+      updateUI();
+
+      // Show confirmation
+      alert('Progress logged successfully!');
     }
 
-    async function exportData() {
+    function exportData() {
       try {
         const dataStr = JSON.stringify(progressData, null, 2);
         const dataBlob = new Blob([dataStr], { type: 'application/json' });
         const url = URL.createObjectURL(dataBlob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `8-week-progress-${new Date().toISOString().split('T')[0]}.json`;
+        link.download = `9-week-progress-${new Date().toISOString().split('T')[0]}.json`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
+        alert('Data exported successfully!');
       } catch (error) {
         console.error('Error exporting data:', error);
         alert('Error exporting data');
       }
     }
 
-    async function syncData() {
-      try {
-        const response = await fetch('/api/intensive-progress/sync', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(progressData)
-        });
+    function importData() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.onchange = function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
 
-        if (response.ok) {
-          const now = new Date().toLocaleTimeString();
-          document.getElementById('lastSync').textContent = now;
-          alert('Data synced successfully!');
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            const imported = JSON.parse(e.target.result);
+            // Validate structure
+            if (imported.problemsSolved !== undefined && imported.recentActivity !== undefined) {
+              progressData = imported;
+              saveProgressData();
+              updateUI();
+              alert('Data imported successfully!');
+            } else {
+              alert('Invalid data format');
+            }
+          } catch (error) {
+            console.error('Error importing data:', error);
+            alert('Error importing data: ' + error.message);
+          }
+        };
+        reader.readAsText(file);
+      };
+      input.click();
+    }
+
+    function clearData() {
+      if (confirm('⚠️ This will delete ALL your tracked progress. Are you sure?')) {
+        if (confirm('This action cannot be undone. Really clear all data?')) {
+          progressData = {
+            problemsSolved: 0,
+            applicationsSubmitted: 0,
+            interviewsCompleted: 0,
+            storiesWritten: 0,
+            designsMastered: 0,
+            offersReceived: 0,
+            weeklyStats: {},
+            recentActivity: []
+          };
+          saveProgressData();
+          updateUI();
+          alert('All data cleared!');
         }
-      } catch (error) {
-        console.error('Error syncing:', error);
-        alert('Error syncing data');
       }
     }
 
     // Load on page load
     loadProgressData();
-
-    // Auto-save every 30 seconds
-    setInterval(syncData, 30000);
   </script>
 {% endblock %}
