@@ -3,6 +3,13 @@
 {% block title %}SDE Interview Prep Tracker - Comprehensive Interview Preparation{% endblock %}
 {% block description %}Master technical interviews with the SDE Interview Prep Tracker. LeetCode problems, system design topics, behavioral prep, and progress tracking—all in one platform.{% endblock %}
 
+{% block head %}
+  <style>
+    /* Hide main navbar for SDE Prep pages */
+    nav:first-of-type { display: none; }
+  </style>
+{% endblock %}
+
 {% block content %}
 <!-- SDE Prep Navigation Bar -->
 <nav style="background-color: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border); margin: 0 -1.5rem; padding: 0 1.5rem;">
@@ -15,12 +22,10 @@
     <!-- SDE Prep Sections (Desktop) -->
     <div class="hidden md:flex items-center gap-6">
       <a href="/tools/sde-prep/dashboard" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Dashboard</a>
-      <a href="/tools/sde-prep/problems" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Problems</a>
-      <a href="/tools/sde-prep/daily-plan" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Daily Plan</a>
+      <a href="/tools/sde-prep/weekly-plan" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Weekly Plan</a>
       <a href="/tools/sde-prep/system-design" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">System Design</a>
       <a href="/tools/sde-prep/behavioral" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Behavioral</a>
-      <a href="/tools/sde-prep/study-plan" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Study Plan</a>
-      <a href="/tools/sde-prep/prfaq" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">FAQ</a>
+      <a href="/tools/sde-prep/prfaq" style="color: var(--color-text-secondary); font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">PRFAQ</a>
     </div>
 
     <!-- Mobile Menu Button -->
@@ -33,12 +38,10 @@
   <div id="sde-mobile-menu" class="hidden md:hidden border-t" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
     <div class="px-4 py-3 space-y-2">
       <a href="/tools/sde-prep/dashboard" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Dashboard</a>
-      <a href="/tools/sde-prep/problems" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Problems</a>
-      <a href="/tools/sde-prep/daily-plan" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Daily Plan</a>
+      <a href="/tools/sde-prep/weekly-plan" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Weekly Plan</a>
       <a href="/tools/sde-prep/system-design" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">System Design</a>
       <a href="/tools/sde-prep/behavioral" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Behavioral</a>
-      <a href="/tools/sde-prep/study-plan" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Study Plan</a>
-      <a href="/tools/sde-prep/prfaq" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">FAQ</a>
+      <a href="/tools/sde-prep/prfaq" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">PRFAQ</a>
     </div>
   </div>
 </nav>

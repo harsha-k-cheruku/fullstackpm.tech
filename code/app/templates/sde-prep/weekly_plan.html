@@ -5,6 +5,10 @@
 {% block description %}Your 12-week SDE interview preparation roadmap with daily tasks and goals.{% endblock %}
 
 {% block head %}
+  <style>
+    /* Hide main navbar for SDE Prep pages */
+    nav:first-of-type { display: none; }
+  </style>
 {% endblock %}
 
 {% block content %}
@@ -100,9 +104,9 @@
             day: "Monday",
             date: "Feb 17",
             tasks: [
-              { id: 1, title: "Two Sum", description: "LeetCode problem", type: "coding", minutes: 30, completed: true },
-              { id: 2, title: "Best Time to Buy & Sell Stock", description: "Dynamic programming", type: "coding", minutes: 25, completed: true },
-              { id: 3, title: "Read array patterns article", description: "Preparation material", type: "reading", minutes: 20, completed: false }
+              { id: 1, title: "Two Sum", description: "LeetCode problem", type: "coding", minutes: 30, completed: true, resources: [{ title: "LeetCode #1", url: "https://leetcode.com/problems/two-sum/" }, { title: "NeetCode Video", url: "https://www.youtube.com/watch?v=KLlXCFG5MsM" }] },
+              { id: 2, title: "Best Time to Buy & Sell Stock", description: "Dynamic programming", type: "coding", minutes: 25, completed: true, resources: [{ title: "LeetCode #121", url: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" }] },
+              { id: 3, title: "Read array patterns article", description: "Preparation material", type: "reading", minutes: 20, completed: false, resources: [{ title: "Arrays Deep Dive", url: "https://www.geeksforgeeks.org/introduction-to-arrays/" }] }
             ]
           },
           {
@@ -414,6 +418,42 @@
       taskContent.appendChild(taskTitle);
       taskContent.appendChild(taskDesc);
       taskContent.appendChild(taskMeta);
+
+      // Add resources if available
+      if (task.resources && task.resources.length > 0) {
+        const resourcesContainer = document.createElement('div');
+        resourcesContainer.style.cssText = 'margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--color-border);';
+
+        const resourcesLabel = document.createElement('p');
+        resourcesLabel.style.cssText = 'color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 600; margin-bottom: 0.25rem;';
+        resourcesLabel.textContent = 'Resources:';
+        resourcesContainer.appendChild(resourcesLabel);
+
+        const resourcesList = document.createElement('div');
+        resourcesList.style.cssText = 'display: flex; flex-wrap: wrap; gap: 0.5rem;';
+
+        task.resources.forEach(resource => {
+          const link = document.createElement('a');
+          link.href = resource.url;
+          link.target = '_blank';
+          link.textContent = resource.title;
+          link.style.cssText = `
+            color: var(--color-accent);
+            font-size: 0.75rem;
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            background-color: rgba(46, 142, 206, 0.1);
+            border-radius: 0.25rem;
+            transition: background-color 0.2s;
+          `;
+          link.onmouseover = function() { this.style.backgroundColor = 'rgba(46, 142, 206, 0.2)'; };
+          link.onmouseout = function() { this.style.backgroundColor = 'rgba(46, 142, 206, 0.1)'; };
+          resourcesList.appendChild(link);
+        });
+
+        resourcesContainer.appendChild(resourcesList);
+        taskContent.appendChild(resourcesContainer);
+      }
 
       taskDiv.appendChild(checkbox);
       taskDiv.appendChild(taskContent);
