@@ -6,15 +6,284 @@
 
 {% block content %}
 {% include "sde-prep/partials/sde_navbar.html" %}
-
 {% include "sde-prep/partials/user_header.html" %}
+
 <section class="py-10 space-y-6">
-  <div>
-    <p class="text-sm uppercase tracking-[0.2em] text-blue-600">SDE Prep</p>
-    <h1 class="text-h2 mt-2">System Design</h1>
-    <p class="text-body text-gray-600">Practice and track system design topics.</p>
+  <header class="space-y-2">
+    <p class="text-xs uppercase tracking-[0.2em]" style="color: var(--color-text-tertiary);">SDE Prep</p>
+    <h1 class="text-h2">System Design Topics</h1>
+    <p class="text-body" style="color: var(--color-text-secondary);">
+      Track your confidence, practice count, and notes for key design topics.
+    </p>
+  </header>
+
+  <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+    <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <select id="confidenceFilter" style="padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.5rem; font-family: inherit; cursor: pointer;">
+        <option value="all">All Confidence Levels</option>
+        <option value="Not Started">Not Started</option>
+        <option value="Practicing">Practicing</option>
+        <option value="Confident">Confident</option>
+      </select>
+      <input id="topicSearch" style="padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.5rem; font-family: inherit;" placeholder="Search by topic name">
+      <select id="topicSort" style="padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.5rem; font-family: inherit; cursor: pointer;">
+        <option value="number-asc">Sort: Topic #</option>
+        <option value="confidence-asc">Sort: Confidence</option>
+        <option value="practice-desc">Sort: Practice Count</option>
+      </select>
+    </div>
   </div>
 
-  <div id="systemDesignContainer" hx-get="/api/sde-prep/system-design" hx-trigger="load"></div>
+  <div id="topicGrid" class="grid gap-6" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));"></div>
 </section>
+
+<div id="topicModal" class="fixed inset-0 hidden items-center justify-center" style="background: rgba(0,0,0,0.4);">
+  <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border); max-w-3xl w-full space-y-4" style="max-height: 90vh; overflow-y: auto;">
+    <div class="flex items-start justify-between">
+      <div>
+        <h2 id="modalTopicTitle" class="text-h3"></h2>
+        <p id="modalTopicDesc" class="text-body" style="color: var(--color-text-secondary);"></p>
+      </div>
+      <button id="closeTopicModal" class="text-sm" style="color: var(--color-text-secondary);">Close</button>
+    </div>
+
+    <div class="grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+      <div>
+        <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Confidence</p>
+        <select id="modalConfidence" style="padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.5rem; font-family: inherit;">
+          <option value="Not Started">Not Started</option>
+          <option value="Practicing">Practicing</option>
+          <option value="Confident">Confident</option>
+        </select>
+      </div>
+      <div>
+        <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Practice Count</p>
+        <div class="flex items-center gap-2">
+          <button id="practiceDown" style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 0.5rem 0.75rem; border-radius: 0.375rem; cursor: pointer; font-weight: 600;" type="button">-</button>
+          <span id="modalPracticeCount" class="text-body"></span>
+          <button id="practiceUp" style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 0.5rem 0.75rem; border-radius: 0.375rem; cursor: pointer; font-weight: 600;" type="button">+</button>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Last Practiced</p>
+        <input id="modalLastPracticed" style="padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.5rem; font-family: inherit;" placeholder="YYYY-MM-DD">
+      </div>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Key Concepts</p>
+      <textarea id="modalConcepts" class="input-walmart w-full" rows="3" placeholder="Key concepts"></textarea>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Design Patterns</p>
+      <textarea id="modalPatterns" class="input-walmart w-full" rows="3" placeholder="Design patterns"></textarea>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Resources</p>
+      <textarea id="modalResources" class="input-walmart w-full" rows="3" placeholder="Resources and links"></textarea>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase" style="color: var(--color-text-tertiary);">Notes</p>
+      <textarea id="modalNotes" class="input-walmart w-full" rows="4" placeholder="Notes"></textarea>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <button id="deleteTopic" style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 0.5rem 0.75rem; border-radius: 0.375rem; cursor: pointer; font-weight: 600;" type="button">Delete</button>
+      <button id="saveTopic" style="background-color: var(--color-accent); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; cursor: pointer; font-weight: 600;" type="button">Save</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const topics = [
+    {
+      id: 1,
+      number: 1,
+      title: 'Design Twitter',
+      description: 'Design a social media feed with posts, follows, and likes.',
+      confidence: 'Practicing',
+      practiceCount: 2,
+      lastPracticed: '2025-02-19',
+      concepts: ['Feed generation', 'Timeline ranking'],
+      patterns: ['Fanout on write', 'Caching'],
+      resources: ['System Design Primer'],
+      notes: 'Focus on read-heavy workload.'
+    },
+    {
+      id: 2,
+      number: 2,
+      title: 'Design URL Shortener',
+      description: 'Generate short URLs and handle redirects at scale.',
+      confidence: 'Not Started',
+      practiceCount: 0,
+      lastPracticed: '',
+      concepts: ['Key generation', 'Analytics'],
+      patterns: ['Hashing', 'Rate limiting'],
+      resources: ['Grokking System Design'],
+      notes: ''
+    },
+    {
+      id: 3,
+      number: 3,
+      title: 'Design Netflix Streaming',
+      description: 'Video encoding, storage, and adaptive streaming.',
+      confidence: 'Confident',
+      practiceCount: 4,
+      lastPracticed: '2025-02-20',
+      concepts: ['CDN', 'Encoding pipelines'],
+      patterns: ['Caching', 'Chunking'],
+      resources: ['Netflix Tech Blog'],
+      notes: 'Need to mention DRM.'
+    }
+  ];
+
+  const confidenceOrder = ['Not Started', 'Practicing', 'Confident'];
+
+  const confidenceFilter = document.getElementById('confidenceFilter');
+  const topicSearch = document.getElementById('topicSearch');
+  const topicSort = document.getElementById('topicSort');
+  const topicGrid = document.getElementById('topicGrid');
+
+  const topicModal = document.getElementById('topicModal');
+  const modalTopicTitle = document.getElementById('modalTopicTitle');
+  const modalTopicDesc = document.getElementById('modalTopicDesc');
+  const modalConfidence = document.getElementById('modalConfidence');
+  const modalPracticeCount = document.getElementById('modalPracticeCount');
+  const modalLastPracticed = document.getElementById('modalLastPracticed');
+  const modalConcepts = document.getElementById('modalConcepts');
+  const modalPatterns = document.getElementById('modalPatterns');
+  const modalResources = document.getElementById('modalResources');
+  const modalNotes = document.getElementById('modalNotes');
+
+  let activeTopic = null;
+
+  function confidenceBadge(value) {
+    const colorMap = {
+      'Not Started': 'var(--color-bg-tertiary)',
+      Practicing: 'var(--color-warning)',
+      Confident: 'var(--color-success)'
+    };
+    const textColor = value === 'Not Started' ? 'var(--color-text-primary)' : 'white';
+    return `<span style="background-color: ${colorMap[value]}; color: ${textColor}; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">${value}</span>`;
+  }
+
+  function getFilteredTopics() {
+    const confidence = confidenceFilter.value;
+    const query = topicSearch.value.toLowerCase();
+    let filtered = topics.filter((topic) => {
+      if (confidence !== 'all' && topic.confidence !== confidence) return false;
+      if (query && !topic.title.toLowerCase().includes(query)) return false;
+      return true;
+    });
+
+    const sort = topicSort.value;
+    filtered = filtered.slice().sort((a, b) => {
+      if (sort === 'number-asc') return a.number - b.number;
+      if (sort === 'confidence-asc') return confidenceOrder.indexOf(a.confidence) - confidenceOrder.indexOf(b.confidence);
+      if (sort === 'practice-desc') return b.practiceCount - a.practiceCount;
+      return 0;
+    });
+
+    return filtered;
+  }
+
+  function renderTopics() {
+    const filtered = getFilteredTopics();
+    if (!filtered.length) {
+      topicGrid.innerHTML = '<p class="text-sm" style="color: var(--color-text-tertiary);">No topics found.</p>';
+      return;
+    }
+
+    topicGrid.innerHTML = filtered.map((topic) => `
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border); space-y-3">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="text-xs" style="color: var(--color-text-tertiary);">Topic ${topic.number}</p>
+            <h3 class="text-h4">${topic.title}</h3>
+          </div>
+          ${confidenceBadge(topic.confidence)}
+        </div>
+        <p class="text-sm" style="color: var(--color-text-secondary);">${topic.description}</p>
+        <p class="text-xs" style="color: var(--color-text-tertiary);">Practiced ${topic.practiceCount} times · Last: ${topic.lastPracticed || '—'}</p>
+        <button style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary); padding: 0.5rem 0.75rem; border-radius: 0.375rem; cursor: pointer; font-weight: 600;" data-id="${topic.id}">View Details</button>
+      </div>
+    `).join('');
+
+    topicGrid.querySelectorAll('button[data-id]').forEach((button) => {
+      button.addEventListener('click', () => openModal(Number(button.dataset.id)));
+    });
+  }
+
+  function openModal(id) {
+    const topic = topics.find((item) => item.id === id);
+    if (!topic) return;
+    activeTopic = topic;
+    modalTopicTitle.textContent = topic.title;
+    modalTopicDesc.textContent = topic.description;
+    modalConfidence.value = topic.confidence;
+    modalPracticeCount.textContent = topic.practiceCount;
+    modalLastPracticed.value = topic.lastPracticed || '';
+    modalConcepts.value = topic.concepts.join('\n');
+    modalPatterns.value = topic.patterns.join('\n');
+    modalResources.value = topic.resources.join('\n');
+    modalNotes.value = topic.notes;
+    topicModal.classList.remove('hidden');
+    topicModal.classList.add('flex');
+  }
+
+  function closeModal() {
+    topicModal.classList.add('hidden');
+    topicModal.classList.remove('flex');
+  }
+
+  document.getElementById('practiceUp').addEventListener('click', () => {
+    if (!activeTopic) return;
+    activeTopic.practiceCount += 1;
+    modalPracticeCount.textContent = activeTopic.practiceCount;
+  });
+
+  document.getElementById('practiceDown').addEventListener('click', () => {
+    if (!activeTopic) return;
+    activeTopic.practiceCount = Math.max(0, activeTopic.practiceCount - 1);
+    modalPracticeCount.textContent = activeTopic.practiceCount;
+  });
+
+  document.getElementById('saveTopic').addEventListener('click', () => {
+    if (!activeTopic) return;
+    activeTopic.confidence = modalConfidence.value;
+    activeTopic.lastPracticed = modalLastPracticed.value;
+    activeTopic.concepts = modalConcepts.value.split('\n').filter(Boolean);
+    activeTopic.patterns = modalPatterns.value.split('\n').filter(Boolean);
+    activeTopic.resources = modalResources.value.split('\n').filter(Boolean);
+    activeTopic.notes = modalNotes.value;
+    renderTopics();
+    closeModal();
+  });
+
+  document.getElementById('deleteTopic').addEventListener('click', () => {
+    if (!activeTopic) return;
+    const index = topics.findIndex((item) => item.id === activeTopic.id);
+    if (index >= 0) {
+      topics.splice(index, 1);
+      renderTopics();
+      closeModal();
+    }
+  });
+
+  document.getElementById('closeTopicModal').addEventListener('click', closeModal);
+  topicModal.addEventListener('click', (event) => {
+    if (event.target === topicModal) closeModal();
+  });
+
+  [confidenceFilter, topicSearch, topicSort].forEach((input) => {
+    input.addEventListener('input', renderTopics);
+  });
+
+  renderTopics();
+</script>
 {% endblock %}
