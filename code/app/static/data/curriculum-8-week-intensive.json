@@ -1,0 +1,2435 @@
+{
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Week 1: Foundation, Resume & LinkedIn Setup",
+      "description": "Establish strong foundation documents + Start coding fundamentals",
+      "goals": [
+        "Optimize resume with quantified impact statements",
+        "Build compelling LinkedIn profile with 30+ network connections",
+        "Develop 8-10 STAR stories covering all dimensions",
+        "Start with array and string fundamentals (20 problems)"
+      ],
+      "totalHours": "20",
+      "keyFocusAreas": ["Resume optimization", "LinkedIn presence", "STAR stories", "Arrays & Strings"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Resume Audit & Optimization",
+          "description": "Review current resume against top FAANG examples, add quantified metrics",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Review Resume Against FAANG Examples",
+              "description": "Study top resumes from Blind, Levels.fyi, GitHub",
+              "type": "research",
+              "minutes": 30,
+              "completed": false,
+              "resources": [
+                {"title": "Blind Resume Examples", "url": "https://www.blind.com", "type": "article"},
+                {"title": "Levels.fyi Profiles", "url": "https://www.levels.fyi", "type": "interactive"}
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Rewrite Bullet Points with Metrics",
+              "description": "Add quantified achievements: % improvement, revenue impact, scale metrics",
+              "type": "writing",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Target 5-7 bullets. Use: Reduced, Optimized, Architected, Led, Scaled",
+              "resources": []
+            },
+            {
+              "id": 3,
+              "title": "Update Projects Section",
+              "description": "Add 2-3 flagship projects with GitHub links and technical depth",
+              "type": "writing",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Include: tech stack, impact, link to GitHub",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "LinkedIn Deep Dive",
+          "description": "Build professional LinkedIn presence and initial network",
+          "tasks": [
+            {
+              "id": 4,
+              "title": "Setup LinkedIn Profile",
+              "description": "Profile picture, headline, summary, current role, skills",
+              "type": "writing",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Headline format: Software Engineer | {Languages} | Seeking {Roles} in {Locations}",
+              "resources": []
+            },
+            {
+              "id": 5,
+              "title": "Write Compelling Summary",
+              "description": "150-200 word summary highlighting technical depth and career goals",
+              "type": "writing",
+              "minutes": 45,
+              "completed": false,
+              "resources": []
+            },
+            {
+              "id": 6,
+              "title": "Add Skills & Endorsements",
+              "description": "List all relevant skills (Python, Java, AWS, Docker, etc.)",
+              "type": "writing",
+              "minutes": 30,
+              "completed": false,
+              "resources": []
+            },
+            {
+              "id": 7,
+              "title": "Connect with 30 Engineers at Target Companies",
+              "description": "Find and send personalized connection requests",
+              "type": "networking",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Mention something specific about their work in message",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Arrays Deep Dive + STAR Stories Brainstorm",
+          "description": "Start coding problems + identify career stories",
+          "tasks": [
+            {
+              "id": 8,
+              "title": "Solve LeetCode #1 (Two Sum)",
+              "description": "Hash map approach",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 1,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/two-sum/", "type": "problem"},
+                {"title": "Official Solution", "url": "https://leetcode.com/problems/two-sum/solutions/", "type": "solution"}
+              ],
+              "keyTakeaway": "Hash map for O(n) solution",
+              "complexity": "O(n) time, O(n) space"
+            },
+            {
+              "id": 9,
+              "title": "Solve LeetCode #88 (Merge Sorted Array)",
+              "description": "Two pointers approach",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 88,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/merge-sorted-array/", "type": "problem"},
+                {"title": "Official Solution", "url": "https://leetcode.com/problems/merge-sorted-array/solutions/", "type": "solution"}
+              ],
+              "keyTakeaway": "Three pointers from end (avoid extra space)",
+              "complexity": "O(n + m) time, O(1) space"
+            },
+            {
+              "id": 10,
+              "title": "Solve LeetCode #167 (Two Sum II)",
+              "description": "Two pointers on sorted array",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 167,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/", "type": "problem"}
+              ],
+              "keyTakeaway": "Two-pointer technique for sorted arrays",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 11,
+              "title": "Brainstorm STAR Stories",
+              "description": "List 20 achievements, pick top 10, categorize",
+              "type": "writing",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Categories: Leadership, Technical Excellence, Conflict, Failure, Impact",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Arrays & Strings + STAR Story Development",
+          "description": "Continue coding + develop first STAR stories",
+          "tasks": [
+            {
+              "id": 12,
+              "title": "Solve LeetCode #121 (Best Time to Buy Stock)",
+              "description": "Tracking min price",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 121,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", "type": "problem"}
+              ],
+              "keyTakeaway": "Single pass tracking min price",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 13,
+              "title": "Solve LeetCode #238 (Product of Array Except Self)",
+              "description": "Prefix and suffix products",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 238,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/product-of-array-except-self/", "type": "problem"}
+              ],
+              "keyTakeaway": "Prefix and suffix products",
+              "complexity": "O(n) time, O(n) space"
+            },
+            {
+              "id": 14,
+              "title": "Solve LeetCode #49 (Group Anagrams)",
+              "description": "Hash map with sorting",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 49,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/group-anagrams/", "type": "problem"}
+              ],
+              "keyTakeaway": "Hash map with sorted key",
+              "complexity": "O(n * k log k) time"
+            },
+            {
+              "id": 15,
+              "title": "Write First STAR Story (Leadership)",
+              "description": "Situation, Task, Action, Result format - 1.5-2 min delivery",
+              "type": "writing",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Action should be 3-4 sentences on what YOU did",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Strings & Hashing + More STAR Stories",
+          "description": "More coding problems + develop additional stories",
+          "tasks": [
+            {
+              "id": 16,
+              "title": "Solve LeetCode #125 (Valid Palindrome)",
+              "description": "Two pointers with filtering",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 125,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/valid-palindrome/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 17,
+              "title": "Solve LeetCode #76 (Minimum Window Substring)",
+              "description": "Sliding window advanced",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 76,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/minimum-window-substring/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 18,
+              "title": "Write STAR Stories 2 & 3",
+              "description": "Technical Excellence + Impact & Results",
+              "type": "writing",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Practice delivering aloud, natural pacing",
+              "resources": []
+            },
+            {
+              "id": 19,
+              "title": "Submit First 3 Job Applications",
+              "description": "Customize resume + apply to 3 companies",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Pick 3 'warm-up' companies you'd be happy with",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Linked Lists + STAR Refinement",
+          "description": "Introduce linked lists + polish stories",
+          "tasks": [
+            {
+              "id": 20,
+              "title": "Solve LeetCode #206 (Reverse Linked List)",
+              "description": "Pointer manipulation",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 206,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/reverse-linked-list/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 21,
+              "title": "Solve LeetCode #21 (Merge Two Sorted Lists)",
+              "description": "List merging",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 21,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/merge-two-sorted-lists/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 22,
+              "title": "Record STAR Stories",
+              "description": "Record yourself telling each story (video or audio)",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Play back and note: pacing, clarity, enthusiasm",
+              "resources": []
+            },
+            {
+              "id": 23,
+              "title": "Submit 3 More Applications + Network",
+              "description": "Continue applications and build network",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Send 5 personalized connection requests to hiring managers",
+              "resources": []
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Week 1 Review + Job Applications",
+          "description": "Review learnings + application push",
+          "tasks": [
+            {
+              "id": 24,
+              "title": "Redo 5 Hardest Problems from Scratch",
+              "description": "No looking at solutions, time yourself",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Aim for <5 min each for easy, <15 min for medium",
+              "resources": []
+            },
+            {
+              "id": 25,
+              "title": "Polish Resume & LinkedIn",
+              "description": "Get feedback, implement, finalize",
+              "type": "writing",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Share with 2-3 friends for feedback",
+              "resources": []
+            },
+            {
+              "id": 26,
+              "title": "Application Push",
+              "description": "Submit 5 applications",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Update target company list with top 20 priorities",
+              "resources": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "title": "Week 2: Trees, Graphs & System Design Intro",
+      "description": "Tree/graph fundamentals + Introduce system design thinking",
+      "goals": [
+        "Master tree and graph algorithms (28+ problems)",
+        "Understand system design fundamentals (scalability, load balancing, caching)",
+        "Develop understanding of 3 major system designs",
+        "Continue strategic job applications (20+)"
+      ],
+      "totalHours": "20",
+      "keyFocusAreas": ["Trees", "Graphs", "System Design Intro", "Scalability Basics"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Trees Fundamentals + System Design Intro",
+          "description": "DFS, BFS, recursion patterns + scalability basics",
+          "tasks": [
+            {
+              "id": 27,
+              "title": "Solve LeetCode #104 (Maximum Depth of Tree)",
+              "description": "DFS recursion",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 104,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 28,
+              "title": "Solve LeetCode #102 (Binary Tree Level Order Traversal)",
+              "description": "BFS with queue",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 102,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 29,
+              "title": "Solve LeetCode #98 (Validate Binary Search Tree)",
+              "description": "Tree property validation",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 98,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/validate-binary-search-tree/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 30,
+              "title": "Study System Design Basics",
+              "description": "Scalability, horizontal vs vertical, load balancing",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "System Design Primer", "url": "https://github.com/donnemartin/system-design-primer", "type": "article"}
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Graphs + Database Design",
+          "description": "Graph algorithms + SQL vs NoSQL",
+          "tasks": [
+            {
+              "id": 31,
+              "title": "Solve LeetCode #200 (Number of Islands)",
+              "description": "DFS on grid",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 200,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/number-of-islands/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 32,
+              "title": "Solve LeetCode #207 (Course Schedule)",
+              "description": "Topological sort, cycle detection",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 207,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/course-schedule/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 33,
+              "title": "Study Database Design",
+              "description": "SQL vs NoSQL, ACID, CAP theorem",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Grokking System Design", "url": "https://www.educative.io/courses/grokking-the-system-design-interview", "type": "interactive"}
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Dynamic Programming Intro + Design Twitter",
+          "description": "Simple DP + first system design case study",
+          "tasks": [
+            {
+              "id": 34,
+              "title": "Solve LeetCode #70 (Climbing Stairs)",
+              "description": "Simple DP/Fibonacci",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 70,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/climbing-stairs/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 35,
+              "title": "Solve LeetCode #198 (House Robber)",
+              "description": "1D DP with state tracking",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 198,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/house-robber/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 36,
+              "title": "Learn Design Twitter",
+              "description": "Features, data model, architecture, scalability",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Design Twitter Video", "url": "https://www.youtube.com/results?search_query=design+twitter+system+design", "type": "video"}
+              ],
+              "notes": "Watch 30-45 min detailed explanation"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "More Graphs + Design Uber",
+          "description": "Advanced graph algorithms + second system design",
+          "tasks": [
+            {
+              "id": 37,
+              "title": "Solve LeetCode #15 (3Sum)",
+              "description": "Sorting + two pointers",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 15,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/3sum/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 38,
+              "title": "Solve LeetCode #133 (Clone Graph)",
+              "description": "DFS/BFS with visited set",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 133,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/clone-graph/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 39,
+              "title": "Learn Design Uber",
+              "description": "Real-time matching, location tracking, payments",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Design Uber Video", "url": "https://www.youtube.com/results?search_query=design+uber+system+design", "type": "video"}
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Recursion & Backtracking + STAR Refinement",
+          "description": "Backtracking patterns + interview prep",
+          "tasks": [
+            {
+              "id": 40,
+              "title": "Solve LeetCode #46 (Permutations)",
+              "description": "Backtracking",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 46,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/permutations/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 41,
+              "title": "Solve LeetCode #39 (Combination Sum)",
+              "description": "Backtracking with reuse",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 39,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/combination-sum/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 42,
+              "title": "Refine STAR Stories",
+              "description": "Add details, practice in front of mirror",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Confident tone, natural pacing, no filler words"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Heaps & Advanced Algorithms + Design Instagram",
+          "description": "Heap problems + third system design",
+          "tasks": [
+            {
+              "id": 43,
+              "title": "Solve LeetCode #215 (Kth Largest Element)",
+              "description": "Min-heap",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 215,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 44,
+              "title": "Solve LeetCode #347 (Top K Frequent)",
+              "description": "Heap with frequency",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 347,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/top-k-frequent-elements/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 45,
+              "title": "Learn Design Instagram",
+              "description": "Feed, posts, likes, comments, real-time notifications",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Design Instagram Video", "url": "https://www.youtube.com/results?search_query=design+instagram+system+design", "type": "video"}
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Week 2 Review + Application Blitz",
+          "description": "Problem review + application push",
+          "tasks": [
+            {
+              "id": 46,
+              "title": "Redo 7 Hardest Problems",
+              "description": "From scratch, faster than Day 1",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Identify patterns across problems"
+            },
+            {
+              "id": 47,
+              "title": "Review System Designs",
+              "description": "Watch 1 more design case study",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Sketch solution before watching"
+            },
+            {
+              "id": 48,
+              "title": "Application Blitz",
+              "description": "Submit 5 applications + research + follow-up",
+              "type": "application",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Research company tech stack and recent engineering blogs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "title": "Week 3: DP, Greedy & System Design Deep Dive",
+      "description": "Advanced algorithms + Master 2-3 system designs deeply + Start getting interviews",
+      "goals": [
+        "Master complex DP and greedy algorithms (~25 coding problems)",
+        "Deep dive on 3 system designs (Dropbox, Netflix, WhatsApp)",
+        "Complete 2 full mock interviews",
+        "Continue strategic job applications (20+)"
+      ],
+      "totalHours": "20",
+      "keyFocusAreas": ["Dynamic Programming", "Greedy Algorithms", "System Design Deep Dive", "Mock Interviews"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Advanced DP + System Design: Design Dropbox",
+          "description": "2D DP problems + file storage system design",
+          "tasks": [
+            {
+              "id": 49,
+              "title": "Solve LeetCode #72 (Edit Distance)",
+              "description": "2D DP — classic string transformation problem",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 72,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/edit-distance/", "type": "problem"}
+              ],
+              "keyTakeaway": "2D DP on two strings, insert/delete/replace operations",
+              "complexity": "O(m*n) time, O(m*n) space"
+            },
+            {
+              "id": 50,
+              "title": "Solve LeetCode #516 (Longest Palindromic Subsequence)",
+              "description": "DP on subsequences",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 516,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/longest-palindromic-subsequence/", "type": "problem"}
+              ],
+              "keyTakeaway": "Reverse string + LCS pattern",
+              "complexity": "O(n^2) time, O(n^2) space"
+            },
+            {
+              "id": 51,
+              "title": "Solve LeetCode #97 (Interleaving String)",
+              "description": "2D DP — interleaving two strings",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 97,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/interleaving-string/", "type": "problem"}
+              ],
+              "keyTakeaway": "2D boolean DP table",
+              "complexity": "O(m*n) time, O(m*n) space"
+            },
+            {
+              "id": 52,
+              "title": "System Design: Design Dropbox",
+              "description": "File upload, sync, sharing, versioning, CDN, database sharding",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Design Dropbox Video", "url": "https://www.youtube.com/results?search_query=design+dropbox+system+design", "type": "video"},
+                {"title": "System Design Primer", "url": "https://github.com/donnemartin/system-design-primer", "type": "article"}
+              ],
+              "notes": "Focus on: file chunking, deduplication, sync conflicts, metadata DB vs blob storage"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Greedy Algorithms + System Design: Design Netflix",
+          "description": "Greedy optimization patterns + video streaming design",
+          "tasks": [
+            {
+              "id": 53,
+              "title": "Solve LeetCode #435 (Non-overlapping Intervals)",
+              "description": "Greedy interval scheduling",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 435,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/non-overlapping-intervals/", "type": "problem"}
+              ],
+              "keyTakeaway": "Sort by end time, greedy pick",
+              "complexity": "O(n log n) time"
+            },
+            {
+              "id": 54,
+              "title": "Solve LeetCode #45 (Jump Game II)",
+              "description": "Greedy with sliding window approach",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 45,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/jump-game-ii/", "type": "problem"}
+              ],
+              "keyTakeaway": "BFS-like greedy, track farthest reachable",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 55,
+              "title": "Solve LeetCode #56 (Merge Intervals)",
+              "description": "Greedy interval merging",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 56,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/merge-intervals/", "type": "problem"}
+              ],
+              "keyTakeaway": "Sort by start, merge overlapping",
+              "complexity": "O(n log n) time"
+            },
+            {
+              "id": 56,
+              "title": "System Design: Design Netflix",
+              "description": "Video streaming, transcoding, CDN, recommendations, bitrate adaptation",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Design Netflix Video", "url": "https://www.youtube.com/results?search_query=design+netflix+system+design", "type": "video"}
+              ],
+              "notes": "Focus on: video pipeline, adaptive streaming, content delivery network, recommendation engine"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "String DP + Full Mock Interview #1",
+          "description": "String DP problems + first timed mock interview",
+          "tasks": [
+            {
+              "id": 57,
+              "title": "Solve LeetCode #131 (Palindrome Partitioning)",
+              "description": "Backtracking + palindrome check",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 131,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/palindrome-partitioning/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 58,
+              "title": "Solve LeetCode #139 (Word Break)",
+              "description": "DP with dictionary set",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 139,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/word-break/", "type": "problem"}
+              ],
+              "keyTakeaway": "DP boolean array, check all prefixes",
+              "complexity": "O(n^2 * k) time"
+            },
+            {
+              "id": 59,
+              "title": "Solve LeetCode #212 (Word Search II)",
+              "description": "Trie + DFS on grid",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 212,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/word-search-ii/", "type": "problem"}
+              ],
+              "keyTakeaway": "Build trie from words, DFS grid with trie pruning",
+              "complexity": "O(m*n * 4^L) time"
+            },
+            {
+              "id": 60,
+              "title": "Full Mock Interview #1",
+              "description": "45 min coding (LeetCode Hard timed) + 15 min behavioral questions. Record yourself.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Explain thinking aloud, test with examples, practice STAR delivery"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Sliding Window + System Design: Design WhatsApp",
+          "description": "Sliding window problems + real-time messaging design",
+          "tasks": [
+            {
+              "id": 61,
+              "title": "Solve LeetCode #438 (Find All Anagrams in a String)",
+              "description": "Fixed-size sliding window with frequency map",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 438,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/find-all-anagrams-in-a-string/", "type": "problem"}
+              ],
+              "keyTakeaway": "Sliding window + character frequency comparison",
+              "complexity": "O(n) time"
+            },
+            {
+              "id": 62,
+              "title": "Solve LeetCode #567 (Permutation in String)",
+              "description": "Sliding window on permutation",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 567,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/permutation-in-string/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 63,
+              "title": "Solve LeetCode #819 (Most Common Word)",
+              "description": "String parsing + hash map frequency",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 819,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/most-common-word/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 64,
+              "title": "System Design: Design WhatsApp",
+              "description": "Real-time messaging, group chats, message delivery guarantees, WebSockets",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Design WhatsApp Video", "url": "https://www.youtube.com/results?search_query=design+whatsapp+system+design", "type": "video"}
+              ],
+              "notes": "Focus on: message ordering, delivery receipts, end-to-end encryption, presence system"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Coding Sprint + Behavioral Deep Dive",
+          "description": "Speed drill on 10 mixed problems + STAR story refinement",
+          "tasks": [
+            {
+              "id": 65,
+              "title": "Coding Sprint: 10 Mixed Problems",
+              "description": "Solve 10 random easy/medium LeetCode problems as fast as possible. Build speed and pattern recognition.",
+              "type": "practice",
+              "minutes": 150,
+              "completed": false,
+              "notes": "Don't over-optimize, just get working solutions. Build speed."
+            },
+            {
+              "id": 66,
+              "title": "Behavioral Deep Dive",
+              "description": "Practice all 5 STAR stories with a friend. Refine answers to: Why Google? Where do you see yourself in 5 years? Weaknesses?",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Get feedback: Are stories compelling? Too long? Memorable?"
+            },
+            {
+              "id": 67,
+              "title": "Submit 5 Applications + Schedule Interviews",
+              "description": "Submit applications, check for interview invites, schedule them",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Mark calendar 1 week before each interview for prep sprint"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Full Mock Interview #2 + System Design Practice",
+          "description": "Second mock interview + collaborative system design",
+          "tasks": [
+            {
+              "id": 68,
+              "title": "Full Mock Interview #2",
+              "description": "60 min: Two LeetCode mediums back-to-back (30 min each). Focus on clean code, good variable names, edge cases.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Explain thinking, test thoroughly, write production-quality code"
+            },
+            {
+              "id": 69,
+              "title": "System Design Practice: Design Pinterest or Airbnb",
+              "description": "Sketch data model, API design, scalability challenges, trade-offs for a complex system",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Focus on: feed generation, search, recommendations, media storage"
+            },
+            {
+              "id": 70,
+              "title": "Submit 3 Applications + Networking",
+              "description": "Submit apps, send 10 personalized connection requests mentioning specific things about their work",
+              "type": "application",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Week 3 Review + Interview Prep Intensive",
+          "description": "Review weak areas + prepare for upcoming interviews",
+          "tasks": [
+            {
+              "id": 71,
+              "title": "Solve 8 Problems from Weak Areas",
+              "description": "Identify 3-4 problem types you still struggle with. Deep dive on 1 of them.",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false,
+              "notes": "Watch videos, understand patterns for your weakest topic"
+            },
+            {
+              "id": 72,
+              "title": "Prepare for Upcoming Interviews",
+              "description": "Research each company deeply. Prepare 3-4 smart questions, 2-minute pitch, 2-3 projects to discuss.",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Know: their product, recent news, tech blog posts"
+            },
+            {
+              "id": 73,
+              "title": "Application Push + Tracker Update",
+              "description": "Submit 5 applications. Update tracker: applications sent, interviews scheduled, follow-ups needed.",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "You should have 5+ interviews scheduled by now!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "title": "Week 4: Interview Week 1 — Coding & System Design",
+      "description": "Crush your first interviews, maintain momentum with applications",
+      "goals": [
+        "Complete 3-7 real interviews",
+        "Stay sharp with 20+ practice problems",
+        "Continue submitting 15+ applications",
+        "Collect feedback from every interview"
+      ],
+      "totalHours": "20",
+      "keyFocusAreas": ["Interview Performance", "Staying Sharp", "Company Research", "Application Momentum"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Interview Mindset + Coding Drills",
+          "description": "Mental prep + solve 5 medium problems at interview pace",
+          "tasks": [
+            {
+              "id": 74,
+              "title": "Solve 5 Medium Problems at Interview Pace",
+              "description": "Time yourself: 20-25 min per problem. Practice articulating your solution clearly.",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false,
+              "notes": "Don't cheat! Simulate real interview conditions."
+            },
+            {
+              "id": 75,
+              "title": "Research 3 Companies with Interviews Scheduled",
+              "description": "For each company: answer 'Why this company?', know their tech stack and recent news",
+              "type": "research",
+              "minutes": 60,
+              "completed": false
+            },
+            {
+              "id": 76,
+              "title": "Submit 3 Applications",
+              "description": "Continue applying to maintain pipeline",
+              "type": "application",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Interview Day (or Practice Day)",
+          "description": "If interview: warm up + crush it. If no interview: hard practice session.",
+          "tasks": [
+            {
+              "id": 77,
+              "title": "Pre-Interview Warm-up: 5 Easy Problems",
+              "description": "Light warm-up to get brain engaged. Don't tire yourself before interview.",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "notes": "If no interview today, switch to 4 medium/hard problems instead"
+            },
+            {
+              "id": 78,
+              "title": "Company Deep Dive + Mental Focus",
+              "description": "Review company tech stack, 2-3 data structures you might need, breathing exercises",
+              "type": "research",
+              "minutes": 30,
+              "completed": false,
+              "notes": "30 min before interview: positive mindset, review key algorithms"
+            },
+            {
+              "id": 79,
+              "title": "Post-Interview Debrief + Applications",
+              "description": "After interview: debrief (what went well? what to improve?). Apply to 3 more companies.",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Don't overthink the interview after it's done"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Coding Practice + Interview Prep",
+          "description": "Stay sharp with medium/hard problems + prepare for next interview",
+          "tasks": [
+            {
+              "id": 80,
+              "title": "Solve LeetCode #152 (Maximum Product Subarray)",
+              "description": "DP tracking min and max",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 152,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/maximum-product-subarray/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 81,
+              "title": "Solve LeetCode #300 (Longest Increasing Subsequence)",
+              "description": "DP with binary search optimization",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 300,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/longest-increasing-subsequence/", "type": "problem"}
+              ],
+              "keyTakeaway": "Patience sorting with binary search for O(n log n)",
+              "complexity": "O(n log n) time"
+            },
+            {
+              "id": 82,
+              "title": "Solve LeetCode #42 (Trapping Rain Water)",
+              "description": "Two pointers or stack approach",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 42,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/trapping-rain-water/", "type": "problem"}
+              ],
+              "keyTakeaway": "Two pointers tracking left/right max",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 83,
+              "title": "Submit 3 Applications + Networking",
+              "description": "Apply to companies and send connection requests to people at target companies",
+              "type": "application",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Interview Day (or Practice Day)",
+          "description": "Interview or practice session + applications",
+          "tasks": [
+            {
+              "id": 84,
+              "title": "Pre-Interview Warm-up or Practice Problems",
+              "description": "If interview: 5 easy warm-ups. If not: 4 medium problems from weak areas.",
+              "type": "coding",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Focus on patterns you've seen in past interviews"
+            },
+            {
+              "id": 85,
+              "title": "System Design Quick Review",
+              "description": "Review 1 system design if you have a design interview coming up",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Sketch solution from memory before reviewing notes"
+            },
+            {
+              "id": 86,
+              "title": "Submit 3 Applications + Follow-ups",
+              "description": "Apply + follow up with recruiters who haven't responded",
+              "type": "application",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Mixed Practice + Behavioral Refresh",
+          "description": "Variety of problems + polish behavioral answers",
+          "tasks": [
+            {
+              "id": 87,
+              "title": "Solve LeetCode #23 (Merge K Sorted Lists)",
+              "description": "Min-heap with linked lists",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 23,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/merge-k-sorted-lists/", "type": "problem"}
+              ],
+              "keyTakeaway": "Priority queue (min-heap) for k-way merge",
+              "complexity": "O(N log k) time"
+            },
+            {
+              "id": 88,
+              "title": "Solve LeetCode #33 (Search in Rotated Sorted Array)",
+              "description": "Modified binary search",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 33,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/", "type": "problem"}
+              ],
+              "keyTakeaway": "Binary search with pivot detection",
+              "complexity": "O(log n) time"
+            },
+            {
+              "id": 89,
+              "title": "Behavioral Story Refresh",
+              "description": "Practice 3 STAR stories aloud. Practice 'Tell me about yourself' (2 min max).",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Confident tone, no filler words, natural pacing"
+            },
+            {
+              "id": 90,
+              "title": "Submit 3 Applications",
+              "description": "Continue application pipeline",
+              "type": "application",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Interview Day (or Hard Problem Session)",
+          "description": "Interview or tackle hard problems + applications",
+          "tasks": [
+            {
+              "id": 91,
+              "title": "Hard Problem Practice Session",
+              "description": "Solve 3 hard problems (or warm up for interview). Focus on clear communication.",
+              "type": "coding",
+              "minutes": 120,
+              "completed": false,
+              "notes": "If interview today: use first 45 min for easy warm-ups instead"
+            },
+            {
+              "id": 92,
+              "title": "Post-Interview Debrief or System Design Review",
+              "description": "Debrief interview performance or review a system design case study",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 93,
+              "title": "Submit 3 Applications + Network",
+              "description": "Applications + reach out to 5 people at companies where you interviewed",
+              "type": "application",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Week 4 Review + Rest",
+          "description": "Light review, collect feedback, plan next week",
+          "tasks": [
+            {
+              "id": 94,
+              "title": "Review All Interview Feedback",
+              "description": "What patterns emerge across interviews? Which topics need more work?",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Categorize: coding strengths/gaps, communication, system design, behavioral"
+            },
+            {
+              "id": 95,
+              "title": "Light Practice: 5 Problems for Fun",
+              "description": "Don't stress — just enjoy solving. Pick interesting problems.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false
+            },
+            {
+              "id": 96,
+              "title": "Submit 5 Applications + Weekly Reflection",
+              "description": "Application push + update tracker. Reflect: What went well? What to change?",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "You should have 3-7 interviews completed by now!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "title": "Week 5: Interview Week 2 — System Design & Behavioral",
+      "description": "Ace system design and behavioral interviews + continue applications",
+      "goals": [
+        "Complete 6-10 real interviews total",
+        "Ace system design interviews with detailed architecture",
+        "Deliver flawless STAR stories in behavioral rounds",
+        "Continue submitting 15+ applications"
+      ],
+      "totalHours": "20",
+      "keyFocusAreas": ["System Design Interviews", "Behavioral Mastery", "Interview Performance", "Negotiation Prep"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "System Design Interview Prep",
+          "description": "Review and practice system design case studies",
+          "tasks": [
+            {
+              "id": 97,
+              "title": "Review System Design: Design URL Shortener",
+              "description": "Study case: hashing, database design, analytics, rate limiting",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false,
+              "resources": [
+                {"title": "Design URL Shortener Video", "url": "https://www.youtube.com/results?search_query=design+url+shortener+system+design", "type": "video"}
+              ],
+              "notes": "Sketch your solution first before watching"
+            },
+            {
+              "id": 98,
+              "title": "Practice System Design Solo: Design a Notification System",
+              "description": "45 min timed: sketch architecture, discuss trade-offs, scale considerations",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Focus on: push vs pull, message queues, delivery guarantees, multi-channel (email, SMS, push)"
+            },
+            {
+              "id": 99,
+              "title": "Solve 3 Coding Problems (Stay Sharp)",
+              "description": "Mix of medium problems to keep coding skills fresh",
+              "type": "coding",
+              "minutes": 75,
+              "completed": false,
+              "notes": "Pick from weak areas identified in Week 4 interviews"
+            },
+            {
+              "id": 100,
+              "title": "Submit 3 Applications + Networking",
+              "description": "Continue pipeline + reach out to engineers at companies with upcoming interviews",
+              "type": "application",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "System Design Interview Day",
+          "description": "Design interview prep or practice + applications",
+          "tasks": [
+            {
+              "id": 101,
+              "title": "Pre-Interview: Review Company Tech Stack",
+              "description": "Know their product, scale, tech blog posts. Be ready to discuss trade-offs.",
+              "type": "research",
+              "minutes": 30,
+              "completed": false,
+              "notes": "If no interview: practice designing their product as a system"
+            },
+            {
+              "id": 102,
+              "title": "System Design Practice: Design a Chat System",
+              "description": "Real-time messaging at scale: WebSockets, message ordering, presence",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Compare to WhatsApp design — what's different for enterprise chat?"
+            },
+            {
+              "id": 103,
+              "title": "Solve 2 Medium Coding Problems",
+              "description": "Quick practice to stay sharp between interviews",
+              "type": "coding",
+              "minutes": 50,
+              "completed": false
+            },
+            {
+              "id": 104,
+              "title": "Submit 3 Applications",
+              "description": "Continue applying + follow up on pending responses",
+              "type": "application",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "System Design + Coding Mixed Day",
+          "description": "Balanced practice across all interview types",
+          "tasks": [
+            {
+              "id": 105,
+              "title": "System Design Review: Design YouTube",
+              "description": "Video upload pipeline, transcoding, CDN, recommendations, search",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false,
+              "resources": [
+                {"title": "Design YouTube Video", "url": "https://www.youtube.com/results?search_query=design+youtube+system+design", "type": "video"}
+              ]
+            },
+            {
+              "id": 106,
+              "title": "Solve LeetCode #146 (LRU Cache)",
+              "description": "Hash map + doubly linked list",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 146,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/lru-cache/", "type": "problem"}
+              ],
+              "keyTakeaway": "OrderedDict or manual DLL + hashmap",
+              "complexity": "O(1) get/put"
+            },
+            {
+              "id": 107,
+              "title": "Solve LeetCode #297 (Serialize and Deserialize Binary Tree)",
+              "description": "Tree serialization with BFS/DFS",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 297,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 108,
+              "title": "Submit 3 Applications + Send Thank-You Notes",
+              "description": "Apply + send personalized thank-you emails to recent interviewers",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Thank-you notes should reference specific discussion points"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Behavioral Interview Day",
+          "description": "Practice and deliver STAR stories + prepare for behavioral rounds",
+          "tasks": [
+            {
+              "id": 109,
+              "title": "Practice All STAR Stories (2 min each)",
+              "description": "Deliver each of your 5 best stories. Time yourself. Natural, confident, authentic.",
+              "type": "practice",
+              "minutes": 30,
+              "completed": false,
+              "notes": "Practice: Why us? Weaknesses? Tell me about a failure."
+            },
+            {
+              "id": 110,
+              "title": "Prepare Answers: Why This Company? (for 3 companies)",
+              "description": "Research mission, products, culture. Write personalized answers.",
+              "type": "research",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 111,
+              "title": "Solve 2 Coding Problems (Light Practice)",
+              "description": "Keep coding muscles warm with medium problems",
+              "type": "coding",
+              "minutes": 50,
+              "completed": false
+            },
+            {
+              "id": 112,
+              "title": "Submit 3 Applications",
+              "description": "Continue pipeline — don't slow down on applications",
+              "type": "application",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Behavioral Mastery + Interview Follow-up",
+          "description": "Polish behavioral delivery + track interview progress",
+          "tasks": [
+            {
+              "id": 113,
+              "title": "Mock Behavioral Interview (30 min)",
+              "description": "Have a friend ask you random behavioral questions. Record and review.",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Show genuine interest, ask thoughtful questions, tell authentic stories with passion"
+            },
+            {
+              "id": 114,
+              "title": "Solve 3 Coding Problems",
+              "description": "Mix of graph, DP, and array problems",
+              "type": "coding",
+              "minutes": 75,
+              "completed": false
+            },
+            {
+              "id": 115,
+              "title": "Submit 3 Applications + Follow-up Emails",
+              "description": "Apply + follow up with companies where you're waiting on feedback",
+              "type": "application",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Professional follow-up: 'I'm very excited about the opportunity...'"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Interview Assessment + Improvement",
+          "description": "Review all interview feedback, identify patterns, improve",
+          "tasks": [
+            {
+              "id": 116,
+              "title": "Review All Interview Feedback",
+              "description": "What went well across all interviews? Where do you need improvement?",
+              "type": "research",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Create improvement plan for any recurring weaknesses"
+            },
+            {
+              "id": 117,
+              "title": "Targeted Practice on Weak Areas",
+              "description": "Spend focused time on problem types or concepts that came up in interviews where you struggled",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            },
+            {
+              "id": 118,
+              "title": "Submit 5 Applications + Safety Net",
+              "description": "Apply to more companies as a safety net. Include stretch companies.",
+              "type": "application",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Week 5 Review + On-Site Prep",
+          "description": "Assess progress + prepare for on-site rounds",
+          "tasks": [
+            {
+              "id": 119,
+              "title": "Week 5 Assessment",
+              "description": "By now: 10+ interviews completed, 3-5 phone screens passed, 2-3 on-sites scheduled",
+              "type": "research",
+              "minutes": 30,
+              "completed": false,
+              "notes": "If fewer interviews: ramp up applications. If many: focus on on-site prep."
+            },
+            {
+              "id": 120,
+              "title": "Light Practice: 5 Problems Just for Fun",
+              "description": "Enjoy problem-solving without pressure. Pick interesting problems.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false
+            },
+            {
+              "id": 121,
+              "title": "Prepare for On-Sites",
+              "description": "Research each on-site company deeply. Plan outfit, logistics, questions for each interviewer.",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "notes": "On-sites are the final stretch — prepare to give your best performance!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "title": "Week 6: On-Site Preparation & Advanced Topics",
+      "description": "Prepare for final on-site rounds + advanced coding topics",
+      "goals": [
+        "Complete on-site interviews at 2-3 companies",
+        "Master advanced topics: Tries, Union-Find, Intervals (~20 problems)",
+        "Begin offer collection and comparison",
+        "Start negotiation strategy prep"
+      ],
+      "totalHours": "20",
+      "keyFocusAreas": ["On-Site Interviews", "Advanced Data Structures", "Offer Negotiations", "Company Research"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Advanced Data Structures + On-Site Prep",
+          "description": "Trie and Union-Find problems + company deep dive",
+          "tasks": [
+            {
+              "id": 122,
+              "title": "Solve LeetCode #208 (Implement Trie)",
+              "description": "Trie data structure implementation",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 208,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/implement-trie-prefix-tree/", "type": "problem"}
+              ],
+              "keyTakeaway": "HashMap of children nodes, isEnd flag",
+              "complexity": "O(L) per operation"
+            },
+            {
+              "id": 123,
+              "title": "Solve LeetCode #211 (Design Add and Search Words)",
+              "description": "Trie with wildcard DFS",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 211,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 124,
+              "title": "Solve LeetCode #128 (Longest Consecutive Sequence)",
+              "description": "Union-Find or HashSet approach",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 128,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/longest-consecutive-sequence/", "type": "problem"}
+              ],
+              "keyTakeaway": "HashSet — only start counting from sequence beginnings",
+              "complexity": "O(n) time"
+            },
+            {
+              "id": 125,
+              "title": "On-Site Company Research",
+              "description": "Deep dive on company with upcoming on-site: team structure, projects, interview panel",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Prepare specific questions for each interviewer"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Interval Problems + Interview Practice",
+          "description": "Interval-based problems + timed practice",
+          "tasks": [
+            {
+              "id": 126,
+              "title": "Solve LeetCode #57 (Insert Interval)",
+              "description": "Interval insertion and merging",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 57,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/insert-interval/", "type": "problem"}
+              ]
+            },
+            {
+              "id": 127,
+              "title": "Solve LeetCode #253 (Meeting Rooms II)",
+              "description": "Min-heap for overlapping intervals",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 253,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/meeting-rooms-ii/", "type": "problem"}
+              ],
+              "keyTakeaway": "Sort by start, use min-heap for end times",
+              "complexity": "O(n log n) time"
+            },
+            {
+              "id": 128,
+              "title": "Timed Mock: 2 Problems in 45 Minutes",
+              "description": "Simulate real interview: 2 medium problems, explain thinking, test edge cases",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Focus on: speed, communication, code quality"
+            },
+            {
+              "id": 129,
+              "title": "Submit 3 Applications",
+              "description": "Continue applications for safety net",
+              "type": "application",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Mixed Hard Problems + On-Site Prep",
+          "description": "Challenge yourself with hard problems + final on-site preparation",
+          "tasks": [
+            {
+              "id": 130,
+              "title": "Solve LeetCode #124 (Binary Tree Maximum Path Sum)",
+              "description": "DFS with global max tracking",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 124,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/", "type": "problem"}
+              ],
+              "keyTakeaway": "At each node: max(left, right, both). Track global max separately.",
+              "complexity": "O(n) time"
+            },
+            {
+              "id": 131,
+              "title": "Solve LeetCode #295 (Find Median from Data Stream)",
+              "description": "Two heaps (max-heap + min-heap)",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 295,
+              "resources": [
+                {"title": "Problem", "url": "https://leetcode.com/problems/find-median-from-data-stream/", "type": "problem"}
+              ],
+              "keyTakeaway": "Balance two heaps, median from tops",
+              "complexity": "O(log n) add, O(1) find"
+            },
+            {
+              "id": 132,
+              "title": "On-Site Final Prep",
+              "description": "Prepare questions for each interviewer. Review all system designs. Practice 2-min pitch.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "You've prepared for this — trust yourself!"
+            },
+            {
+              "id": 133,
+              "title": "Submit 3 Applications",
+              "description": "Keep pipeline active",
+              "type": "application",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Negotiation Prep + Light Practice",
+          "description": "Learn salary negotiation + stay sharp",
+          "tasks": [
+            {
+              "id": 134,
+              "title": "Salary Negotiation Strategy",
+              "description": "Research salary ranges (Levels.fyi, Blind). Determine minimum acceptable and target salary.",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "resources": [
+                {"title": "Levels.fyi", "url": "https://www.levels.fyi", "type": "interactive"},
+                {"title": "Blind", "url": "https://www.blind.com", "type": "article"}
+              ],
+              "notes": "Know: base salary, signing bonus, stock options/RSUs, benefits, PTO"
+            },
+            {
+              "id": 135,
+              "title": "Solve 3 Medium Problems (Stay Sharp)",
+              "description": "Quick practice to maintain skills",
+              "type": "coding",
+              "minutes": 75,
+              "completed": false
+            },
+            {
+              "id": 136,
+              "title": "Prepare Negotiation Talking Points",
+              "description": "Write down your value proposition, competing offers, market rate data",
+              "type": "writing",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Never accept the first offer — always negotiate professionally"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "On-Site Day",
+          "description": "Final warm-up + crush the on-site interview",
+          "tasks": [
+            {
+              "id": 137,
+              "title": "Final 5-Problem Warm-up",
+              "description": "Quick easy problems to get brain engaged. Don't tire yourself.",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Solve familiar patterns, build confidence"
+            },
+            {
+              "id": 138,
+              "title": "On-Site Interview",
+              "description": "You've prepared for this. Trust yourself. Be confident, clear, and authentic.",
+              "type": "practice",
+              "minutes": 180,
+              "completed": false,
+              "notes": "Ask good questions, be genuinely curious about their team and problems"
+            },
+            {
+              "id": 139,
+              "title": "Post-Interview Debrief",
+              "description": "Immediately after: write down every question asked, how you answered, what went well/poorly",
+              "type": "writing",
+              "minutes": 30,
+              "completed": false,
+              "notes": "Send thank-you notes within 24 hours"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Post On-Site + Continue Applications",
+          "description": "Recover from on-site + keep pipeline active",
+          "tasks": [
+            {
+              "id": 140,
+              "title": "Send Thank-You Notes to All Interviewers",
+              "description": "Personalized emails referencing specific discussion points from the on-site",
+              "type": "writing",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Professional, enthusiastic, reference specific conversations"
+            },
+            {
+              "id": 141,
+              "title": "Continue Applications (5 Companies)",
+              "description": "Don't stop applying until you have accepted an offer",
+              "type": "application",
+              "minutes": 60,
+              "completed": false
+            },
+            {
+              "id": 142,
+              "title": "Follow Up on Pending Interviews",
+              "description": "Check status of all outstanding applications and interviews. Ask: 'When should I expect feedback?'",
+              "type": "networking",
+              "minutes": 30,
+              "completed": false,
+              "notes": "If offers come: DO NOT accept immediately"
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Week 6 Review + Offer Comparison",
+          "description": "Review progress + begin comparing any offers received",
+          "tasks": [
+            {
+              "id": 143,
+              "title": "Offer Comparison Matrix",
+              "description": "If offers received: compare base salary, RSU, signing bonus, benefits, growth, location, team, culture",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Create spreadsheet with weighted scores for each factor"
+            },
+            {
+              "id": 144,
+              "title": "Light Practice: 3 Problems",
+              "description": "Stay sharp in case more interviews come up",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 145,
+              "title": "Weekly Reflection + Plan Week 7",
+              "description": "What worked? What didn't? Plan next week's interview/negotiation strategy.",
+              "type": "writing",
+              "minutes": 30,
+              "completed": false,
+              "notes": "You should have on-sites completed and possibly offers in hand!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "title": "Week 7: Offer Negotiations & Final Decision",
+      "description": "Negotiate best offers, make final decision, prepare for transition",
+      "goals": [
+        "Negotiate 3-5 offers to maximize compensation",
+        "Make informed final decision",
+        "Prepare for job transition",
+        "Light coding to stay sharp (~10 problems)"
+      ],
+      "totalHours": "15",
+      "keyFocusAreas": ["Salary Negotiation", "Offer Comparison", "Decision Making", "Transition Planning"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Negotiation Strategy + First Calls",
+          "description": "Begin negotiations with companies that have extended offers",
+          "tasks": [
+            {
+              "id": 146,
+              "title": "Review All Offers in Detail",
+              "description": "For each offer: total comp (base + bonus + RSU), benefits, PTO, remote policy, growth",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Don't just compare base salary — look at total compensation over 4 years"
+            },
+            {
+              "id": 147,
+              "title": "Prepare Negotiation Scripts",
+              "description": "For each company: write talking points highlighting your value and competing offers",
+              "type": "writing",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Be professional, enthusiastic, and firm. Show you've done your research."
+            },
+            {
+              "id": 148,
+              "title": "Light Coding Practice: 2 Problems",
+              "description": "Stay warm in case any final interviews come up",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Active Negotiations",
+          "description": "Make negotiation calls/emails + continue any remaining interviews",
+          "tasks": [
+            {
+              "id": 149,
+              "title": "Negotiate with Company #1",
+              "description": "Call or email with specific ask. Highlight competing offers, market data, your unique value.",
+              "type": "networking",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Target: +10-20% above initial offer if possible"
+            },
+            {
+              "id": 150,
+              "title": "Negotiate with Company #2",
+              "description": "Same approach: professional, data-driven, confident",
+              "type": "networking",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 151,
+              "title": "Get Everything in Writing",
+              "description": "Request updated offer letters with negotiated terms. Review all details carefully.",
+              "type": "research",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Check: start date, equity vesting schedule, signing bonus timing, relocation"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Continue Negotiations + Decision Framework",
+          "description": "Follow up on negotiations + build decision matrix",
+          "tasks": [
+            {
+              "id": 152,
+              "title": "Follow Up on Pending Negotiations",
+              "description": "Check status of all negotiations. Push for final numbers.",
+              "type": "networking",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 153,
+              "title": "Build Decision Matrix",
+              "description": "Create weighted scoring: compensation (30%), growth (25%), culture (20%), location (15%), work-life (10%)",
+              "type": "writing",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Adjust weights based on your personal priorities"
+            },
+            {
+              "id": 154,
+              "title": "Light Coding Practice: 2 Problems",
+              "description": "Keep skills warm just in case",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Final Decision Day",
+          "description": "Make your final decision with confidence",
+          "tasks": [
+            {
+              "id": 155,
+              "title": "Talk to Mentors/Friends About Offers",
+              "description": "Get outside perspective on your top choices. Discuss career trajectory.",
+              "type": "research",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Ask: 'If you were me, which would you choose and why?'"
+            },
+            {
+              "id": 156,
+              "title": "Make Final Decision",
+              "description": "Review decision matrix, trust your gut, and commit to your top choice.",
+              "type": "writing",
+              "minutes": 30,
+              "completed": false,
+              "notes": "Once decided, don't second-guess. You made a great choice!"
+            },
+            {
+              "id": 157,
+              "title": "Accept Offer + Decline Others",
+              "description": "Accept your top choice in writing. Professionally decline other offers with gratitude.",
+              "type": "networking",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Declining professionally keeps doors open for the future"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Transition Planning",
+          "description": "Plan your job transition",
+          "tasks": [
+            {
+              "id": 158,
+              "title": "Give Notice at Current Job (if employed)",
+              "description": "Professional 2-week notice. Prepare transition document for your team.",
+              "type": "writing",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Be gracious, offer to help with transition, maintain relationships"
+            },
+            {
+              "id": 159,
+              "title": "Review Offer Letter Details",
+              "description": "Confirm: start date, salary, equity, benefits enrollment, onboarding steps",
+              "type": "research",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 160,
+              "title": "Light Coding: 2 Fun Problems",
+              "description": "Just for enjoyment — you've earned it!",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "New Company Prep",
+          "description": "Start preparing for day 1 at your new company",
+          "tasks": [
+            {
+              "id": 161,
+              "title": "Research New Company Codebase",
+              "description": "If public: explore GitHub repos. Read engineering blog posts. Watch tech talks.",
+              "type": "research",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Understand: tech stack, architecture patterns, coding standards"
+            },
+            {
+              "id": 162,
+              "title": "Prepare Questions for Your Manager",
+              "description": "List thoughtful questions about: team goals, expectations, onboarding, first projects",
+              "type": "writing",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Celebrate + Rest",
+          "description": "You did it! Take time to celebrate this achievement.",
+          "tasks": [
+            {
+              "id": 163,
+              "title": "Update LinkedIn with New Role",
+              "description": "Announce your new position. Thank people who helped along the way.",
+              "type": "writing",
+              "minutes": 30,
+              "completed": false,
+              "notes": "A gracious announcement post can strengthen your professional network"
+            },
+            {
+              "id": 164,
+              "title": "Celebrate and Rest!",
+              "description": "You've worked incredibly hard. Celebrate with family and friends. Take time to recharge.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "JOB OFFER ACCEPTED! You earned this!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "title": "Week 8: Preparation & Soft Landing",
+      "description": "Prepare to succeed at your new company — first impressions matter",
+      "goals": [
+        "Deep dive on new company tech stack and culture",
+        "Set up development environment",
+        "Light coding review (~10 problems)",
+        "Arrive at day 1 confident and prepared"
+      ],
+      "totalHours": "15",
+      "keyFocusAreas": ["Company Research", "Onboarding Prep", "Development Setup", "Confidence Building"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Company Deep Dive — Codebase & Architecture",
+          "description": "Understand your new company's technical landscape",
+          "tasks": [
+            {
+              "id": 165,
+              "title": "Read Company Engineering Blog (5-10 Articles)",
+              "description": "Understand their technical challenges, architecture decisions, and values",
+              "type": "reading",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Note: what tech stack do they use? What patterns? What problems are they solving?"
+            },
+            {
+              "id": 166,
+              "title": "Watch Company Engineering Talks",
+              "description": "Find YouTube talks from engineers at the company. Understand their approach to problems.",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false
+            },
+            {
+              "id": 167,
+              "title": "Light Coding Review: 2 Easy Problems",
+              "description": "Keep brain sharp for any initial coding during onboarding",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Company Deep Dive — Products & Culture",
+          "description": "Understand the product, users, and company culture",
+          "tasks": [
+            {
+              "id": 168,
+              "title": "Use the Company's Product Deeply",
+              "description": "Sign up, explore every feature, think about the engineering behind it",
+              "type": "research",
+              "minutes": 90,
+              "completed": false,
+              "notes": "Think like a user AND an engineer. Note bugs, improvements, questions."
+            },
+            {
+              "id": 169,
+              "title": "Read Company Values & Culture Docs",
+              "description": "Understand mission, values, how they work, what they care about",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 170,
+              "title": "Light Coding Review: 2 Medium Problems",
+              "description": "Review key patterns: hash maps, two pointers, BFS/DFS",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Development Environment Setup",
+          "description": "Set up tools and environment for your new role",
+          "tasks": [
+            {
+              "id": 171,
+              "title": "Setup Development Environment",
+              "description": "Install relevant languages, frameworks, tools. Configure IDE. Set up dotfiles.",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false,
+              "notes": "If the company uses specific tools (e.g., IntelliJ, VS Code), make sure you're comfortable"
+            },
+            {
+              "id": 172,
+              "title": "Review Any Pre-Onboarding Materials",
+              "description": "If the company sent onboarding docs, videos, or reading material — complete them",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false
+            },
+            {
+              "id": 173,
+              "title": "Light Coding: 2 Problems from Company's Domain",
+              "description": "If the company focuses on specific areas (e.g., distributed systems), practice related problems",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Confidence Building — Light Review",
+          "description": "Review your strengths and build confidence for day 1",
+          "tasks": [
+            {
+              "id": 174,
+              "title": "Review Your Best Solutions",
+              "description": "Look at your top 10 LeetCode solutions. Remind yourself how far you've come.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "You solved 180+ problems! You're more than ready."
+            },
+            {
+              "id": 175,
+              "title": "Prepare First-Week Questions",
+              "description": "List smart questions to ask during onboarding: architecture, team workflows, code review process",
+              "type": "writing",
+              "minutes": 45,
+              "completed": false,
+              "notes": "Asking good questions shows initiative and curiosity"
+            },
+            {
+              "id": 176,
+              "title": "Light Coding: 2 Easy-Medium Problems",
+              "description": "Stay sharp, keep confidence high",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Final Technical Prep",
+          "description": "Last round of preparation before starting",
+          "tasks": [
+            {
+              "id": 177,
+              "title": "Review System Design Notes",
+              "description": "Quick review of your system design notes. You may need these in early team discussions.",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 178,
+              "title": "Practice Self-Introduction for New Team",
+              "description": "Prepare a 1-2 minute introduction: background, what excites you about the role, what you bring",
+              "type": "practice",
+              "minutes": 30,
+              "completed": false,
+              "notes": "Natural, enthusiastic, authentic — not a resume recitation"
+            },
+            {
+              "id": 179,
+              "title": "Setup Home Office",
+              "description": "Organize workspace, test equipment, prepare for first day logistics",
+              "type": "practice",
+              "minutes": 30,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Final Prep + Visualization",
+          "description": "Last day of structured prep",
+          "tasks": [
+            {
+              "id": 180,
+              "title": "Read Company Handbook",
+              "description": "If provided: review policies, benefits enrollment, HR processes",
+              "type": "reading",
+              "minutes": 60,
+              "completed": false
+            },
+            {
+              "id": 181,
+              "title": "Visualize Your First Day",
+              "description": "Imagine: meeting your team, setting up your laptop, your first standup. You belong here.",
+              "type": "practice",
+              "minutes": 15,
+              "completed": false,
+              "notes": "Positive visualization builds confidence"
+            },
+            {
+              "id": 182,
+              "title": "Confirm Start Date Logistics",
+              "description": "Confirm: time, location/remote link, what to bring, who to contact on day 1",
+              "type": "research",
+              "minutes": 15,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Rest & Celebration",
+          "description": "NO coding today. You've earned this.",
+          "tasks": [
+            {
+              "id": 183,
+              "title": "Rest Your Brain",
+              "description": "No coding, no studying. Watch a movie, go for a walk, spend time with family.",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false,
+              "notes": "You completed an 8-week intensive job search. That takes incredible discipline."
+            },
+            {
+              "id": 184,
+              "title": "Celebrate the Achievement!",
+              "description": "You went from preparation to offer in 8 weeks. Celebrate with the people who supported you.",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false,
+              "notes": "Confidence at all-time high. Ready for day 1. You've got this!"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "totalProblems": 180,
+  "totalApplications": 120,
+  "expectedOutcomeWeek": 8,
+  "successMetrics": {
+    "codingProblems": "180+ LeetCode problems solved",
+    "systemDesigns": "6+ major designs mastered",
+    "starStories": "10+ compelling behavioral stories",
+    "applications": "120+ job applications submitted",
+    "interviews": "20+ interviews scheduled and completed",
+    "offers": "3-5 competitive offers expected"
+  }
+}

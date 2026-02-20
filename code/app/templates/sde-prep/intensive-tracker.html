@@ -1,0 +1,315 @@
+{% extends "base.html" %}
+
+<!-- NOTE: This is a PRIVATE/UNEXPOSED page for personal use only -->
+<!-- Access via: /tools/sde-prep/intensive-tracker -->
+<!-- Tracks progress with data persistence -->
+
+{% block title %}8-Week Intensive Tracker & Dashboard{% endblock %}
+
+{% block description %}Personal progress tracker for 8-week job search prep. Track coding problems, applications, interviews, and notes.{% endblock %}
+
+{% block content %}
+  <!-- Simple Navigation -->
+  <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
+    <div style="display: flex; gap: 1rem;">
+      <a href="/tools/sde-prep/intensive-8-week" style="color: var(--color-accent); text-decoration: none; font-weight: 500;">← Back to 8-Week Plan</a>
+      <span style="color: var(--color-text-secondary);">|</span>
+      <a href="/tools/sde-prep/intensive-notes" style="color: var(--color-accent); text-decoration: none; font-weight: 500;">Notes →</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div style="margin-bottom: 2rem;">
+    <p style="color: var(--color-accent); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Dashboard</p>
+    <h1 style="color: var(--color-text-primary); font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem;">8-Week Progress Tracker</h1>
+    <p style="color: var(--color-text-secondary);">Monitor your progress across coding, applications, interviews, and more.</p>
+  </div>
+
+  <!-- Overall Progress Bar -->
+  <div style="margin-bottom: 2rem; padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <h3 style="color: var(--color-text-primary); font-weight: 600;">Overall Progress</h3>
+      <span id="overallPercent" style="color: var(--color-accent); font-weight: bold; font-size: 1.25rem;">0%</span>
+    </div>
+    <div style="height: 1rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+      <div id="overallProgress" style="height: 100%; background: linear-gradient(90deg, var(--color-accent), #3B9DE9); width: 0%; transition: width 0.3s;"></div>
+    </div>
+  </div>
+
+  <!-- Metric Cards -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+    <!-- Coding Problems -->
+    <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">Coding Problems Completed</p>
+      <p style="color: var(--color-accent); font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;"><span id="problemsCount">0</span>/180</p>
+      <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+        <div id="problemsProgress" style="height: 100%; background-color: #6366f1; width: 0%; transition: width 0.3s;"></div>
+      </div>
+    </div>
+
+    <!-- Applications -->
+    <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">Applications Submitted</p>
+      <p style="color: var(--color-accent); font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;"><span id="appCount">0</span>/120</p>
+      <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+        <div id="appProgress" style="height: 100%; background-color: #ec4899; width: 0%; transition: width 0.3s;"></div>
+      </div>
+    </div>
+
+    <!-- Interviews -->
+    <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">Interviews Completed</p>
+      <p style="color: var(--color-accent); font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;"><span id="interviewCount">0</span>/20</p>
+      <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+        <div id="interviewProgress" style="height: 100%; background-color: #8b5cf6; width: 0%; transition: width 0.3s;"></div>
+      </div>
+    </div>
+
+    <!-- STAR Stories -->
+    <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">STAR Stories Written</p>
+      <p style="color: var(--color-accent); font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;"><span id="storyCount">0</span>/10</p>
+      <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+        <div id="storyProgress" style="height: 100%; background-color: #f59e0b; width: 0%; transition: width 0.3s;"></div>
+      </div>
+    </div>
+
+    <!-- System Designs -->
+    <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">System Designs Mastered</p>
+      <p style="color: var(--color-accent); font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;"><span id="designCount">0</span>/6</p>
+      <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+        <div id="designProgress" style="height: 100%; background-color: #10b981; width: 0%; transition: width 0.3s;"></div>
+      </div>
+    </div>
+
+    <!-- Expected Offers -->
+    <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">Offers Received</p>
+      <p style="color: var(--color-accent); font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;"><span id="offerCount">0</span>/5</p>
+      <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+        <div id="offerProgress" style="height: 100%; background-color: #06b6d4; width: 0%; transition: width 0.3s;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manual Entry Section -->
+  <div style="margin-bottom: 2rem; padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+    <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 1rem;">Quick Log</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+      <div>
+        <label style="color: var(--color-text-secondary); font-size: 0.875rem; display: block; margin-bottom: 0.5rem;">Problems Solved Today</label>
+        <input type="number" id="todayProblems" min="0" style="width: 100%; padding: 0.5rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem;" placeholder="0">
+      </div>
+      <div>
+        <label style="color: var(--color-text-secondary); font-size: 0.875rem; display: block; margin-bottom: 0.5rem;">Applications Sent Today</label>
+        <input type="number" id="todayApps" min="0" style="width: 100%; padding: 0.5rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem;" placeholder="0">
+      </div>
+      <div>
+        <label style="color: var(--color-text-secondary); font-size: 0.875rem; display: block; margin-bottom: 0.5rem;">Interviews Completed</label>
+        <input type="number" id="todayInterviews" min="0" style="width: 100%; padding: 0.5rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem;" placeholder="0">
+      </div>
+      <div style="display: flex; align-items: flex-end;">
+        <button onclick="saveQuickLog()" style="width: 100%; padding: 0.5rem; background-color: var(--color-accent); color: white; border: none; border-radius: 0.375rem; cursor: pointer; font-weight: 500; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Log Progress</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weekly Breakdown -->
+  <div style="margin-bottom: 2rem;">
+    <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 1rem;">Weekly Breakdown</h3>
+    <div id="weeklyBreakdown" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+      <!-- Will be populated by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+    <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 1rem;">Recent Activity</h3>
+    <div id="recentActivity" style="space-y: 1rem;">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem;">No activity logged yet. Start tracking your progress!</p>
+    </div>
+  </div>
+
+  <!-- Data Export/Sync -->
+  <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; gap: 1rem; flex-wrap: wrap;">
+    <button onclick="exportData()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-accent); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">📥 Export Data</button>
+    <button onclick="syncData()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-accent); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">🔄 Sync to Cloud</button>
+    <span style="color: var(--color-text-secondary); font-size: 0.875rem; display: flex; align-items: center;">Last synced: <span id="lastSync" style="margin-left: 0.5rem; font-weight: 500;">Never</span></span>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    // Load progress data
+    let progressData = {
+      problemsSolved: 0,
+      applicationsSubmitted: 0,
+      interviewsCompleted: 0,
+      storiesWritten: 0,
+      designsMastered: 0,
+      offersReceived: 0,
+      weeklyStats: {},
+      recentActivity: []
+    };
+
+    async function loadProgressData() {
+      try {
+        const response = await fetch('/api/intensive-progress');
+        if (response.ok) {
+          progressData = await response.json();
+        }
+      } catch (error) {
+        console.error('Error loading progress:', error);
+      }
+      updateUI();
+    }
+
+    function updateUI() {
+      // Update metrics
+      document.getElementById('problemsCount').textContent = progressData.problemsSolved;
+      document.getElementById('appCount').textContent = progressData.applicationsSubmitted;
+      document.getElementById('interviewCount').textContent = progressData.interviewsCompleted;
+      document.getElementById('storyCount').textContent = progressData.storiesWritten;
+      document.getElementById('designCount').textContent = progressData.designsMastered;
+      document.getElementById('offerCount').textContent = progressData.offersReceived;
+
+      // Update progress bars
+      document.getElementById('problemsProgress').style.width = `${(progressData.problemsSolved / 180) * 100}%`;
+      document.getElementById('appProgress').style.width = `${(progressData.applicationsSubmitted / 120) * 100}%`;
+      document.getElementById('interviewProgress').style.width = `${(progressData.interviewsCompleted / 20) * 100}%`;
+      document.getElementById('storyProgress').style.width = `${(progressData.storiesWritten / 10) * 100}%`;
+      document.getElementById('designProgress').style.width = `${(progressData.designsMastered / 6) * 100}%`;
+      document.getElementById('offerProgress').style.width = `${(progressData.offersReceived / 5) * 100}%`;
+
+      // Calculate overall progress (weighted average)
+      const weights = { problems: 0.3, apps: 0.2, interviews: 0.2, stories: 0.15, designs: 0.1, offers: 0.05 };
+      const overall = (
+        (progressData.problemsSolved / 180) * weights.problems +
+        (progressData.applicationsSubmitted / 120) * weights.apps +
+        (progressData.interviewsCompleted / 20) * weights.interviews +
+        (progressData.storiesWritten / 10) * weights.stories +
+        (progressData.designsMastered / 6) * weights.designs +
+        (progressData.offersReceived / 5) * weights.offers
+      ) * 100;
+
+      document.getElementById('overallProgress').style.width = `${overall}%`;
+      document.getElementById('overallPercent').textContent = `${Math.round(overall)}%`;
+
+      // Update weekly breakdown
+      updateWeeklyBreakdown();
+
+      // Update recent activity
+      updateRecentActivity();
+    }
+
+    function updateWeeklyBreakdown() {
+      const container = document.getElementById('weeklyBreakdown');
+      container.innerHTML = '';
+
+      for (let week = 1; week <= 8; week++) {
+        const weekStats = progressData.weeklyStats[`week${week}`] || { problems: 0, apps: 0 };
+        const weekDiv = document.createElement('div');
+        weekDiv.style.cssText = `padding: 1rem; background-color: var(--color-bg-primary); border: 1px solid var(--color-border); border-radius: 0.5rem;`;
+        weekDiv.innerHTML = `
+          <p style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.5rem;">Week ${week}</p>
+          <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem;">Problems: ${weekStats.problems}</p>
+          <p style="color: var(--color-text-secondary); font-size: 0.875rem;">Applications: ${weekStats.apps}</p>
+        `;
+        container.appendChild(weekDiv);
+      }
+    }
+
+    function updateRecentActivity() {
+      const container = document.getElementById('recentActivity');
+      if (progressData.recentActivity.length === 0) {
+        container.innerHTML = '<p style="color: var(--color-text-secondary); font-size: 0.875rem;">No activity logged yet. Start tracking your progress!</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      progressData.recentActivity.slice(-5).reverse().forEach(activity => {
+        const actDiv = document.createElement('div');
+        actDiv.style.cssText = 'padding: 0.75rem; background-color: var(--color-bg-secondary); border-radius: 0.375rem; margin-bottom: 0.5rem;';
+        actDiv.innerHTML = `
+          <p style="color: var(--color-text-primary); font-size: 0.875rem; margin-bottom: 0.25rem;">${activity.message}</p>
+          <p style="color: var(--color-text-secondary); font-size: 0.75rem;">${new Date(activity.timestamp).toLocaleString()}</p>
+        `;
+        container.appendChild(actDiv);
+      });
+    }
+
+    async function saveQuickLog() {
+      const problems = parseInt(document.getElementById('todayProblems').value) || 0;
+      const apps = parseInt(document.getElementById('todayApps').value) || 0;
+      const interviews = parseInt(document.getElementById('todayInterviews').value) || 0;
+
+      try {
+        const response = await fetch('/api/intensive-progress/log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ problems, apps, interviews })
+        });
+
+        if (response.ok) {
+          // Clear inputs
+          document.getElementById('todayProblems').value = '';
+          document.getElementById('todayApps').value = '';
+          document.getElementById('todayInterviews').value = '';
+
+          // Reload data
+          loadProgressData();
+
+          // Show confirmation
+          alert('Progress logged successfully!');
+        }
+      } catch (error) {
+        console.error('Error saving progress:', error);
+        alert('Error saving progress');
+      }
+    }
+
+    async function exportData() {
+      try {
+        const dataStr = JSON.stringify(progressData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `8-week-progress-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error('Error exporting data:', error);
+        alert('Error exporting data');
+      }
+    }
+
+    async function syncData() {
+      try {
+        const response = await fetch('/api/intensive-progress/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(progressData)
+        });
+
+        if (response.ok) {
+          const now = new Date().toLocaleTimeString();
+          document.getElementById('lastSync').textContent = now;
+          alert('Data synced successfully!');
+        }
+      } catch (error) {
+        console.error('Error syncing:', error);
+        alert('Error syncing data');
+      }
+    }
+
+    // Load on page load
+    loadProgressData();
+
+    // Auto-save every 30 seconds
+    setInterval(syncData, 30000);
+  </script>
+{% endblock %}

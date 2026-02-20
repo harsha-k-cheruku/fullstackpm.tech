@@ -10,6 +10,7 @@ class Settings(BaseSettings):
     content_dir: Path = base_dir / "content"
     templates_dir: Path = base_dir / "app" / "templates"
     static_dir: Path = base_dir / "app" / "static"
+    data_dir: Path = base_dir / "app" / "data"
 
     # Database
     database_url: str = "sqlite:///./fullstackpm.db"

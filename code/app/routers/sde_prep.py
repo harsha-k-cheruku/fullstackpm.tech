@@ -668,3 +668,239 @@ async def update_week(
     except (ValueError, SQLAlchemyError) as exc:
         db.rollback()
         raise HTTPException(status_code=400, detail="Update failed") from exc
+
+
+# ===== INTENSIVE 8-WEEK PLAN ROUTES (PRIVATE/UNEXPOSED) =====
+
+@router.get("/tools/sde-prep/intensive-8-week", response_class=HTMLResponse)
+async def intensive_8_week(request: Request) -> HTMLResponse:
+    """Private endpoint for 8-week intensive job search plan."""
+    return templates.TemplateResponse(
+        "sde-prep/intensive-8-week-plan.html",
+        _ctx(request, title="8-Week Intensive Job Search Prep", current_page=""),
+    )
+
+
+@router.get("/tools/sde-prep/intensive-tracker", response_class=HTMLResponse)
+async def intensive_tracker(request: Request) -> HTMLResponse:
+    """Private endpoint for progress tracker and dashboard."""
+    return templates.TemplateResponse(
+        "sde-prep/intensive-tracker.html",
+        _ctx(request, title="8-Week Intensive Tracker", current_page=""),
+    )
+
+
+@router.get("/tools/sde-prep/intensive-notes", response_class=HTMLResponse)
+async def intensive_notes(request: Request) -> HTMLResponse:
+    """Private endpoint for notes and reflections."""
+    return templates.TemplateResponse(
+        "sde-prep/intensive-notes.html",
+        _ctx(request, title="8-Week Intensive Notes", current_page=""),
+    )
+
+
+# ===== INTENSIVE PROGRESS API =====
+
+@router.get("/api/intensive-progress")
+async def get_intensive_progress(request: Request) -> JSONResponse:
+    """Get progress data for 8-week plan."""
+    import json
+
+    user_id = request.cookies.get("user_id") or "anonymous"
+    progress_file = settings.data_dir / f"intensive_progress_{user_id}.json"
+
+    if progress_file.exists():
+        with open(progress_file, 'r') as f:
+            return JSONResponse(json.load(f))
+
+    return JSONResponse({
+        "problemsSolved": 0,
+        "applicationsSubmitted": 0,
+        "interviewsCompleted": 0,
+        "storiesWritten": 0,
+        "designsMastered": 0,
+        "offersReceived": 0,
+        "weeklyStats": {},
+        "recentActivity": []
+    })
+
+
+@router.post("/api/intensive-progress/log")
+async def log_intensive_progress(request: Request) -> JSONResponse:
+    """Log daily progress for 8-week plan."""
+    import json
+
+    user_id = request.cookies.get("user_id") or "anonymous"
+    payload = await _read_payload(request)
+
+    progress_file = settings.data_dir / f"intensive_progress_{user_id}.json"
+    progress_file.parent.mkdir(parents=True, exist_ok=True)
+
+    # Load existing progress
+    if progress_file.exists():
+        with open(progress_file, 'r') as f:
+            progress = json.load(f)
+    else:
+        progress = {
+            "problemsSolved": 0,
+            "applicationsSubmitted": 0,
+            "interviewsCompleted": 0,
+            "storiesWritten": 0,
+            "designsMastered": 0,
+            "offersReceived": 0,
+            "weeklyStats": {},
+            "recentActivity": []
+        }
+
+    # Update with new data
+    problems = int(payload.get("problems", 0))
+    apps = int(payload.get("apps", 0))
+    interviews = int(payload.get("interviews", 0))
+
+    progress["problemsSolved"] = progress.get("problemsSolved", 0) + problems
+    progress["applicationsSubmitted"] = progress.get("applicationsSubmitted", 0) + apps
+    progress["interviewsCompleted"] = progress.get("interviewsCompleted", 0) + interviews
+
+    # Add to recent activity
+    today = datetime.now().isoformat()
+    progress["recentActivity"].append({
+        "message": f"Logged: {problems} problems, {apps} applications, {interviews} interviews",
+        "timestamp": today
+    })
+
+    # Save progress
+    with open(progress_file, 'w') as f:
+        json.dump(progress, f, indent=2)
+
+    return JSONResponse({"status": "ok", "progress": progress})
+
+
+@router.post("/api/intensive-progress/sync")
+async def sync_intensive_progress(request: Request) -> JSONResponse:
+    """Sync progress data to backend."""
+    import json
+
+    user_id = request.cookies.get("user_id") or "anonymous"
+    payload = await _read_payload(request)
+
+    progress_file = settings.data_dir / f"intensive_progress_{user_id}.json"
+    progress_file.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(progress_file, 'w') as f:
+        json.dump(payload, f, indent=2)
+
+    return JSONResponse({"status": "synced", "timestamp": datetime.now().isoformat()})
+
+
+@router.post("/api/intensive-progress")
+async def update_intensive_progress(request: Request) -> JSONResponse:
+    """Update specific progress metric."""
+    import json
+
+    user_id = request.cookies.get("user_id") or "anonymous"
+    payload = await _read_payload(request)
+
+    progress_file = settings.data_dir / f"intensive_progress_{user_id}.json"
+    progress_file.parent.mkdir(parents=True, exist_ok=True)
+
+    if progress_file.exists():
+        with open(progress_file, 'r') as f:
+            progress = json.load(f)
+    else:
+        progress = {
+            "problemsSolved": 0,
+            "applicationsSubmitted": 0,
+            "interviewsCompleted": 0,
+            "storiesWritten": 0,
+            "designsMastered": 0,
+            "offersReceived": 0,
+            "weeklyStats": {},
+            "recentActivity": []
+        }
+
+    # Update progress with payload
+    for key, value in payload.items():
+        if key in progress:
+            progress[key] = value
+
+    with open(progress_file, 'w') as f:
+        json.dump(progress, f, indent=2)
+
+    return JSONResponse(progress)
+
+
+# ===== INTENSIVE NOTES API =====
+
+@router.get("/api/intensive-notes")
+async def get_intensive_notes(request: Request) -> JSONResponse:
+    """Get all notes for 8-week plan."""
+    import json
+
+    user_id = request.cookies.get("user_id") or "anonymous"
+    notes_file = settings.data_dir / f"intensive_notes_{user_id}.json"
+
+    if notes_file.exists():
+        with open(notes_file, 'r') as f:
+            return JSONResponse(json.load(f))
+
+    return JSONResponse([])
+
+
+@router.post("/api/intensive-notes")
+async def create_intensive_note(request: Request) -> JSONResponse:
+    """Create a new note."""
+    import json
+    import uuid
+
+    user_id = request.cookies.get("user_id") or "anonymous"
+    payload = await _read_payload(request)
+
+    notes_file = settings.data_dir / f"intensive_notes_{user_id}.json"
+    notes_file.parent.mkdir(parents=True, exist_ok=True)
+
+    # Load existing notes
+    if notes_file.exists():
+        with open(notes_file, 'r') as f:
+            notes = json.load(f)
+    else:
+        notes = []
+
+    # Create new note
+    new_note = {
+        "id": str(uuid.uuid4()),
+        "category": payload.get("category", "other"),
+        "week": payload.get("week"),
+        "content": payload.get("content", ""),
+        "mood": payload.get("mood"),
+        "timestamp": datetime.now().isoformat()
+    }
+
+    notes.append(new_note)
+
+    # Save notes
+    with open(notes_file, 'w') as f:
+        json.dump(notes, f, indent=2)
+
+    return JSONResponse(new_note)
+
+
+@router.delete("/api/intensive-notes/{note_id}")
+async def delete_intensive_note(note_id: str, request: Request) -> JSONResponse:
+    """Delete a note."""
+    import json
+
+    user_id = request.cookies.get("user_id") or "anonymous"
+    notes_file = settings.data_dir / f"intensive_notes_{user_id}.json"
+
+    if not notes_file.exists():
+        raise HTTPException(status_code=404, detail="No notes found")
+
+    with open(notes_file, 'r') as f:
+        notes = json.load(f)
+
+    notes = [n for n in notes if n["id"] != note_id]
+
+    with open(notes_file, 'w') as f:
+        json.dump(notes, f, indent=2)
+
+    return JSONResponse({"status": "deleted"})

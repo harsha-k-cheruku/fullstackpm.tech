@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+
+<!-- NOTE: This is a PRIVATE/UNEXPOSED page for personal use only -->
+<!-- Access via: /tools/sde-prep/intensive-notes -->
+<!-- Notes persist across devices via backend -->
+
+{% block title %}8-Week Intensive Notes{% endblock %}
+
+{% block description %}Personal notes for 8-week job search prep. Reflections, learnings, and interview feedback.{% endblock %}
+
+{% block content %}
+  <!-- Simple Navigation -->
+  <div style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
+    <div style="display: flex; gap: 1rem;">
+      <a href="/tools/sde-prep/intensive-tracker" style="color: var(--color-accent); text-decoration: none; font-weight: 500;">← Back to Tracker</a>
+      <span style="color: var(--color-text-secondary);">|</span>
+      <a href="/tools/sde-prep/intensive-8-week" style="color: var(--color-accent); text-decoration: none; font-weight: 500;">8-Week Plan →</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div style="margin-bottom: 2rem;">
+    <p style="color: var(--color-accent); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Personal</p>
+    <h1 style="color: var(--color-text-primary); font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem;">Reflections & Notes</h1>
+    <p style="color: var(--color-text-secondary);">Capture your learnings, breakthroughs, and interview feedback throughout your 8-week journey.</p>
+  </div>
+
+  <!-- Quick Stats -->
+  <div style="margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+    <div style="padding: 1rem; background-color: var(--color-bg-secondary); border-radius: 0.5rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem;">Total Notes</p>
+      <p style="color: var(--color-accent); font-size: 1.5rem; font-weight: bold;" id="totalNotes">0</p>
+    </div>
+    <div style="padding: 1rem; background-color: var(--color-bg-secondary); border-radius: 0.5rem; border: 1px solid var(--color-border);">
+      <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem;">Last Updated</p>
+      <p style="color: var(--color-accent); font-size: 0.875rem; font-weight: bold;" id="lastUpdated">Never</p>
+    </div>
+  </div>
+
+  <!-- New Note Form -->
+  <div style="margin-bottom: 2rem; padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+    <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 1rem;">Add New Note</h3>
+
+    <div style="margin-bottom: 1rem;">
+      <label style="color: var(--color-text-primary); font-weight: 500; display: block; margin-bottom: 0.5rem;">Category</label>
+      <select id="category" style="width: 100%; padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem; font-family: inherit; cursor: pointer;">
+        <option value="reflection">Daily Reflection</option>
+        <option value="breakthrough">Breakthrough/Learning</option>
+        <option value="interview-feedback">Interview Feedback</option>
+        <option value="problem-difficulty">Problem Difficulty Notes</option>
+        <option value="mental-health">Mental Health & Motivation</option>
+        <option value="application">Application Notes</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <label style="color: var(--color-text-primary); font-weight: 500; display: block; margin-bottom: 0.5rem;">Week (Optional)</label>
+      <select id="week" style="width: 100%; padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem; font-family: inherit; cursor: pointer;">
+        <option value="">-- Select Week --</option>
+        <option value="1">Week 1</option>
+        <option value="2">Week 2</option>
+        <option value="3">Week 3</option>
+        <option value="4">Week 4</option>
+        <option value="5">Week 5</option>
+        <option value="6">Week 6</option>
+        <option value="7">Week 7</option>
+        <option value="8">Week 8</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <label style="color: var(--color-text-primary); font-weight: 500; display: block; margin-bottom: 0.5rem;">Mood (Optional)</label>
+      <div style="display: flex; gap: 0.5rem;">
+        <button data-mood="😊" style="font-size: 1.5rem; border: none; cursor: pointer; padding: 0.5rem; background-color: var(--color-bg-primary); border-radius: 0.375rem; transition: transform 0.2s;" onclick="selectMood(this)">😊</button>
+        <button data-mood="😌" style="font-size: 1.5rem; border: none; cursor: pointer; padding: 0.5rem; background-color: var(--color-bg-primary); border-radius: 0.375rem; transition: transform 0.2s;" onclick="selectMood(this)">😌</button>
+        <button data-mood="😐" style="font-size: 1.5rem; border: none; cursor: pointer; padding: 0.5rem; background-color: var(--color-bg-primary); border-radius: 0.375rem; transition: transform 0.2s;" onclick="selectMood(this)">😐</button>
+        <button data-mood="😕" style="font-size: 1.5rem; border: none; cursor: pointer; padding: 0.5rem; background-color: var(--color-bg-primary); border-radius: 0.375rem; transition: transform 0.2s;" onclick="selectMood(this)">😕</button>
+        <button data-mood="😤" style="font-size: 1.5rem; border: none; cursor: pointer; padding: 0.5rem; background-color: var(--color-bg-primary); border-radius: 0.375rem; transition: transform 0.2s;" onclick="selectMood(this)">😤</button>
+      </div>
+      <input type="hidden" id="mood">
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <label style="color: var(--color-text-primary); font-weight: 500; display: block; margin-bottom: 0.5rem;">Your Note</label>
+      <textarea id="noteContent" placeholder="What did you learn? How did the interview go? What can you improve? What are you proud of?" style="width: 100%; min-height: 150px; padding: 0.75rem; background-color: var(--color-bg-primary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem; font-family: inherit; resize: vertical;"></textarea>
+    </div>
+
+    <button onclick="saveNote()" style="padding: 0.75rem 1.5rem; background-color: var(--color-accent); color: white; border: none; border-radius: 0.375rem; cursor: pointer; font-weight: 500; font-size: 1rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Save Note</button>
+  </div>
+
+  <!-- Filter Notes -->
+  <div style="margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+    <button onclick="filterNotes('all')" class="filter-btn" style="padding: 0.5rem 1rem; background-color: var(--color-accent); color: white; border: none; border-radius: 0.375rem; cursor: pointer; font-weight: 500; font-size: 0.875rem;">All</button>
+    <button onclick="filterNotes('reflection')" class="filter-btn" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500; font-size: 0.875rem;">Reflections</button>
+    <button onclick="filterNotes('breakthrough')" class="filter-btn" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500; font-size: 0.875rem;">Breakthroughs</button>
+    <button onclick="filterNotes('interview-feedback')" class="filter-btn" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500; font-size: 0.875rem;">Interviews</button>
+    <button onclick="filterNotes('mental-health')" class="filter-btn" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-text-primary); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500; font-size: 0.875rem;">Mental Health</button>
+  </div>
+
+  <!-- Notes Container -->
+  <div id="notesContainer" style="space-y: 1rem;">
+    <p style="color: var(--color-text-secondary); font-size: 0.875rem; text-align: center; padding: 2rem;">No notes yet. Start journaling your journey!</p>
+  </div>
+
+  <!-- Export Notes -->
+  <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); display: flex; gap: 1rem; flex-wrap: wrap;">
+    <button onclick="exportNotes()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-accent); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">📥 Export Notes</button>
+    <button onclick="downloadPDF()" style="padding: 0.5rem 1rem; background-color: var(--color-bg-secondary); color: var(--color-accent); border: 1px solid var(--color-border); border-radius: 0.375rem; cursor: pointer; font-weight: 500;">📄 Download as PDF</button>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    let notes = [];
+    let currentFilter = 'all';
+    let selectedMood = '';
+
+    // Category colors
+    const categoryColors = {
+      'reflection': '#6366f1',
+      'breakthrough': '#10b981',
+      'interview-feedback': '#f59e0b',
+      'problem-difficulty': '#ef4444',
+      'mental-health': '#ec4899',
+      'application': '#3b82f6',
+      'other': '#8b5cf6'
+    };
+
+    const categoryEmojis = {
+      'reflection': '💭',
+      'breakthrough': '⚡',
+      'interview-feedback': '🎤',
+      'problem-difficulty': '🤔',
+      'mental-health': '💪',
+      'application': '📝',
+      'other': '📌'
+    };
+
+    async function loadNotes() {
+      try {
+        const response = await fetch('/api/intensive-notes');
+        if (response.ok) {
+          notes = await response.json();
+          renderNotes();
+          updateStats();
+        }
+      } catch (error) {
+        console.error('Error loading notes:', error);
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('totalNotes').textContent = notes.length;
+      if (notes.length > 0) {
+        const lastNote = new Date(notes[notes.length - 1].timestamp);
+        document.getElementById('lastUpdated').textContent = lastNote.toLocaleDateString();
+      }
+    }
+
+    function selectMood(button) {
+      // Remove selection from all buttons
+      document.querySelectorAll('[data-mood]').forEach(btn => {
+        btn.style.transform = 'scale(1)';
+        btn.style.backgroundColor = 'var(--color-bg-primary)';
+      });
+
+      // Select this button
+      button.style.transform = 'scale(1.3)';
+      button.style.backgroundColor = 'var(--color-accent)';
+      selectedMood = button.dataset.mood;
+      document.getElementById('mood').value = selectedMood;
+    }
+
+    async function saveNote() {
+      const category = document.getElementById('category').value;
+      const week = document.getElementById('week').value || null;
+      const content = document.getElementById('noteContent').value.trim();
+      const mood = selectedMood;
+
+      if (!content) {
+        alert('Please write something in your note!');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/intensive-notes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ category, week, content, mood })
+        });
+
+        if (response.ok) {
+          const newNote = await response.json();
+          notes.push(newNote);
+
+          // Clear form
+          document.getElementById('category').value = 'reflection';
+          document.getElementById('week').value = '';
+          document.getElementById('noteContent').value = '';
+          selectedMood = '';
+          document.querySelectorAll('[data-mood]').forEach(btn => {
+            btn.style.transform = 'scale(1)';
+            btn.style.backgroundColor = 'var(--color-bg-primary)';
+          });
+
+          renderNotes();
+          updateStats();
+          alert('Note saved successfully!');
+        }
+      } catch (error) {
+        console.error('Error saving note:', error);
+        alert('Error saving note');
+      }
+    }
+
+    function filterNotes(category) {
+      currentFilter = category;
+
+      // Update button styles
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.style.backgroundColor = 'var(--color-bg-secondary)';
+        btn.style.color = 'var(--color-text-primary)';
+        btn.style.border = '1px solid var(--color-border)';
+      });
+
+      event.target.style.backgroundColor = 'var(--color-accent)';
+      event.target.style.color = 'white';
+      event.target.style.border = 'none';
+
+      renderNotes();
+    }
+
+    function renderNotes() {
+      const container = document.getElementById('notesContainer');
+
+      let filteredNotes = notes;
+      if (currentFilter !== 'all') {
+        filteredNotes = notes.filter(n => n.category === currentFilter);
+      }
+
+      // Sort by newest first
+      filteredNotes.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+      if (filteredNotes.length === 0) {
+        container.innerHTML = '<p style="color: var(--color-text-secondary); font-size: 0.875rem; text-align: center; padding: 2rem;">No notes in this category yet.</p>';
+        return;
+      }
+
+      container.innerHTML = '';
+      filteredNotes.forEach((note, index) => {
+        const noteDiv = document.createElement('div');
+        noteDiv.style.cssText = `
+          padding: 1.5rem;
+          background-color: var(--color-bg-secondary);
+          border-radius: 0.75rem;
+          border-left: 4px solid ${categoryColors[note.category]};
+          margin-bottom: 1rem;
+        `;
+
+        const headerDiv = document.createElement('div');
+        headerDiv.style.cssText = 'display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;';
+
+        const titleDiv = document.createElement('div');
+        titleDiv.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <span style="font-size: 1.25rem;">${categoryEmojis[note.category]}</span>
+            <span style="color: var(--color-text-primary); font-weight: 600; text-transform: capitalize;">${note.category.replace('-', ' ')}</span>
+            ${note.mood ? `<span style="font-size: 1.25rem;">${note.mood}</span>` : ''}
+          </div>
+          <p style="color: var(--color-text-secondary); font-size: 0.75rem;">
+            ${new Date(note.timestamp).toLocaleString()}
+            ${note.week ? ` • Week ${note.week}` : ''}
+          </p>
+        `;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '✕';
+        deleteBtn.style.cssText = 'background: none; border: none; color: var(--color-text-secondary); font-size: 1.5rem; cursor: pointer; padding: 0;';
+        deleteBtn.onclick = function() {
+          if (confirm('Delete this note?')) {
+            deleteNote(note.id, index);
+          }
+        };
+
+        headerDiv.appendChild(titleDiv);
+        headerDiv.appendChild(deleteBtn);
+
+        const contentDiv = document.createElement('div');
+        contentDiv.style.cssText = 'color: var(--color-text-primary); line-height: 1.6; white-space: pre-wrap; word-wrap: break-word;';
+        contentDiv.textContent = note.content;
+
+        noteDiv.appendChild(headerDiv);
+        noteDiv.appendChild(contentDiv);
+
+        container.appendChild(noteDiv);
+      });
+    }
+
+    async function deleteNote(noteId, index) {
+      try {
+        const response = await fetch(`/api/intensive-notes/${noteId}`, { method: 'DELETE' });
+        if (response.ok) {
+          notes.splice(index, 1);
+          renderNotes();
+          updateStats();
+        }
+      } catch (error) {
+        console.error('Error deleting note:', error);
+      }
+    }
+
+    function exportNotes() {
+      const text = notes.map(n => {
+        return `[${n.category.toUpperCase()}] ${new Date(n.timestamp).toLocaleString()}\n${n.mood ? 'Mood: ' + n.mood + '\n' : ''}${n.week ? 'Week: ' + n.week + '\n' : ''}\n${n.content}\n${'='.repeat(80)}\n`;
+      }).join('\n');
+
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `8-week-notes-${new Date().toISOString().split('T')[0]}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadPDF() {
+      alert('PDF download coming soon! For now, use export to get your notes.');
+    }
+
+    // Load on page load
+    loadNotes();
+  </script>
+{% endblock %}
