@@ -1,150 +1,271 @@
 {% extends "base.html" %}
 
+{% block title %}SDE Prep Dashboard{% endblock %}
+
+{% block description %}Track your SDE interview preparation progress with the SDE Prep Dashboard.{% endblock %}
+
 {% block head %}
-  {{ super() }}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 {% endblock %}
 
 {% block content %}
-{% include "sde-prep/partials/sde_navbar.html" %}
-<section class="py-10 space-y-6">
-  <div id="dashboardData" hx-get="/api/sde-prep/dashboard/stats" hx-trigger="load" hx-swap="none"></div>
-  <div class="flex items-center justify-between">
-    <div>
-      <p class="text-sm uppercase tracking-[0.2em] text-blue-600">SDE Prep</p>
-      <h1 class="text-h2 mt-2">SDE Prep Tracker</h1>
-      <p class="text-body text-gray-600">All your prep progress in one dashboard.</p>
+  <!-- SDE Prep Navigation Bar -->
+  <nav style="background-color: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border); margin: -1.5rem -1rem 0 -1rem; padding: 0;">
+    <div class="mx-auto max-w-[1200px] flex h-14 items-center justify-between px-4 sm:px-6">
+      <!-- Back to fullstackpm.tech -->
+      <a href="/" style="color: var(--color-text-primary); font-weight: 600; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">
+        ← Back to fullstackpm.tech
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="/tools/sde-prep/dashboard" style="color: var(--color-accent); font-size: 0.875rem; font-weight: 600;">Dashboard</a>
+        <a href="/tools/sde-prep/problems" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Problems</a>
+        <a href="/tools/sde-prep/weekly-plan" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Weekly Plan</a>
+        <a href="/tools/sde-prep/system-design" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">System Design</a>
+        <a href="/tools/sde-prep/behavioral" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">Behavioral</a>
+        <a href="/tools/sde-prep/prfaq" style="color: var(--color-text-secondary); font-size: 0.875rem;" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-secondary)'">PRFAQ</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2" style="color: var(--color-text-secondary);" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        ☰
+      </button>
     </div>
-    <div class="text-sm text-gray-500">Streak: <span id="streakDays">0</span> days</div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t" style="border-color: var(--color-border); background-color: var(--color-bg-primary);">
+      <div class="px-4 py-3 space-y-2">
+        <a href="/tools/sde-prep/dashboard" class="block px-3 py-2 text-sm" style="color: var(--color-accent); font-weight: 600;">Dashboard</a>
+        <a href="/tools/sde-prep/problems" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Problems</a>
+        <a href="/tools/sde-prep/weekly-plan" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Weekly Plan</a>
+        <a href="/tools/sde-prep/system-design" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">System Design</a>
+        <a href="/tools/sde-prep/behavioral" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">Behavioral</a>
+        <a href="/tools/sde-prep/prfaq" class="block px-3 py-2 text-sm" style="color: var(--color-text-secondary);">PRFAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard Content -->
+  <div style="margin-top: 2rem;">
+    <!-- Header -->
+    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 2rem;">
+      <div>
+        <p style="color: var(--color-accent); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">SDE Prep</p>
+        <h1 style="color: var(--color-text-primary); font-size: 2.25rem; font-weight: bold; margin-bottom: 0.5rem;">Dashboard</h1>
+        <p style="color: var(--color-text-secondary);">All your prep progress in one place.</p>
+      </div>
+      <div style="text-align: right;">
+        <p style="font-size: 0.875rem; color: var(--color-text-secondary);">Streak: <span style="font-weight: bold; color: var(--color-accent);">12 days</span></p>
+      </div>
+    </div>
+
+    <!-- Progress Cards (4 columns) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      <!-- LeetCode Card -->
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.75rem;">💻 LeetCode</h3>
+        <p style="font-size: 1.875rem; font-weight: bold; color: var(--color-text-primary); margin-bottom: 0.25rem;">42/60</p>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">70% complete</p>
+        <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; margin-bottom: 1rem; overflow: hidden;">
+          <div style="width: 70%; height: 100%; background: linear-gradient(90deg, var(--color-accent), #3B9DE9); border-radius: 9999px;"></div>
+        </div>
+        <p style="font-size: 0.875rem; color: var(--color-text-secondary);">Blind 75: <span style="font-weight: 600;">35</span></p>
+      </div>
+
+      <!-- System Design Card -->
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.75rem;">🏗️ System Design</h3>
+        <p style="font-size: 1.875rem; font-weight: bold; color: var(--color-text-primary); margin-bottom: 0.25rem;">9/15</p>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">60% complete</p>
+        <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; margin-bottom: 1rem; overflow: hidden;">
+          <div style="width: 60%; height: 100%; background: linear-gradient(90deg, var(--color-accent), #3B9DE9); border-radius: 9999px;"></div>
+        </div>
+      </div>
+
+      <!-- Behavioral Card -->
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.75rem;">🎭 Behavioral</h3>
+        <p style="font-size: 1.875rem; font-weight: bold; color: var(--color-text-primary); margin-bottom: 0.25rem;">8/10</p>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">80% complete</p>
+        <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; margin-bottom: 1rem; overflow: hidden;">
+          <div style="width: 80%; height: 100%; background: linear-gradient(90deg, var(--color-accent), #3B9DE9); border-radius: 9999px;"></div>
+        </div>
+      </div>
+
+      <!-- Current Week Card -->
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 0.75rem;">📅 Current Week</h3>
+        <p style="font-size: 1.5rem; font-weight: bold; color: var(--color-text-primary); margin-bottom: 0.25rem;">Week 6</p>
+        <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">75% complete</p>
+        <div style="height: 0.5rem; background-color: var(--color-bg-tertiary); border-radius: 9999px; overflow: hidden;">
+          <div style="width: 75%; height: 100%; background: linear-gradient(90deg, var(--color-accent), #3B9DE9); border-radius: 9999px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section (3 columns) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+      <!-- Difficulty Chart -->
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 1.5rem;">📊 Difficulty Mix</h3>
+        <canvas id="difficultyChart" height="180"></canvas>
+      </div>
+
+      <!-- Weekly Progress Chart -->
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 1.5rem;">📈 Weekly Progress</h3>
+        <canvas id="progressChart" height="180"></canvas>
+      </div>
+
+      <!-- Study Hours Chart -->
+      <div style="padding: 1.5rem; background-color: var(--color-bg-secondary); border-radius: 0.75rem; border: 1px solid var(--color-border);">
+        <h3 style="color: var(--color-text-primary); font-weight: 600; margin-bottom: 1.5rem;">⏰ Study Hours</h3>
+        <canvas id="hoursChart" height="180"></canvas>
+      </div>
+    </div>
   </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-    <div class="card-walmart">
-      <h3 class="font-semibold">LeetCode</h3>
-      <p class="text-2xl font-bold" id="leetcodeProgress">0/0</p>
-      <p class="text-sm text-gray-500" id="leetcodePercent">0%</p>
-      <div class="mt-3 h-2 bg-gray-200 rounded-full">
-        <div class="progress-bar-walmart" id="leetcodeBar" style="width: 0%"></div>
-      </div>
-      <p class="text-xs text-gray-500 mt-2">Blind 75: <span id="blindCount">0</span></p>
-    </div>
-
-    <div class="card-walmart">
-      <h3 class="font-semibold">System Design</h3>
-      <p class="text-2xl font-bold" id="systemDesignProgress">0/0</p>
-      <p class="text-sm text-gray-500" id="systemDesignPercent">0%</p>
-      <div class="mt-3 h-2 bg-gray-200 rounded-full">
-        <div class="progress-bar-walmart" id="systemDesignBar" style="width: 0%"></div>
-      </div>
-    </div>
-
-    <div class="card-walmart">
-      <h3 class="font-semibold">Behavioral</h3>
-      <p class="text-2xl font-bold" id="behavioralProgress">0/0</p>
-      <p class="text-sm text-gray-500" id="behavioralPercent">0%</p>
-      <div class="mt-3 h-2 bg-gray-200 rounded-full">
-        <div class="progress-bar-walmart" id="behavioralBar" style="width: 0%"></div>
-      </div>
-    </div>
-
-    <div class="card-walmart">
-      <h3 class="font-semibold">Current Week</h3>
-      <p class="text-lg font-semibold" id="currentWeekTitle">Week 1</p>
-      <p class="text-sm text-gray-500" id="currentWeekPercent">0%</p>
-      <div class="mt-3 h-2 bg-gray-200 rounded-full">
-        <div class="progress-bar-walmart" id="currentWeekBar" style="width: 0%"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-    <div class="card-walmart">
-      <h3 class="font-semibold mb-2">Difficulty Mix</h3>
-      <canvas id="difficultyChart" height="200"></canvas>
-    </div>
-    <div class="card-walmart">
-      <h3 class="font-semibold mb-2">Weekly Progress</h3>
-      <canvas id="progressChart" height="200"></canvas>
-    </div>
-    <div class="card-walmart">
-      <h3 class="font-semibold mb-2">Study Hours</h3>
-      <canvas id="hoursChart" height="200"></canvas>
-    </div>
-  </div>
-</section>
 {% endblock %}
 
 {% block scripts %}
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script>
-    function renderDashboard(data) {
-      document.getElementById('leetcodeProgress').textContent = `${data.leetcode.solved}/${data.leetcode.total}`;
-      document.getElementById('leetcodePercent').textContent = `${data.leetcode.percentage}%`;
-      document.getElementById('leetcodeBar').style.width = `${data.leetcode.percentage}%`;
-      document.getElementById('blindCount').textContent = data.leetcode.blind_75_count;
+    // Sample data
+    const dashboardData = {
+      leetcode: { solved: 42, total: 60, percentage: 70, blind_75_count: 35 },
+      system_design: { confident: 9, total: 15, percentage: 60 },
+      behavioral: { ready: 8, total: 10, percentage: 80 },
+      current_week: { title: 'Week 6', percentage: 75 },
+      streak_days: 12,
+      charts_data: {
+        difficulty: { EASY: 20, MEDIUM: 15, HARD: 7 },
+        weekly_progress: [
+          { week: 1, percentage: 45 },
+          { week: 2, percentage: 52 },
+          { week: 3, percentage: 60 },
+          { week: 4, percentage: 65 },
+          { week: 5, percentage: 70 },
+          { week: 6, percentage: 75 }
+        ],
+        study_hours: {
+          labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+          values: [15, 18, 20, 22, 25, 23]
+        }
+      }
+    };
 
-      document.getElementById('systemDesignProgress').textContent = `${data.system_design.confident}/${data.system_design.total}`;
-      document.getElementById('systemDesignPercent').textContent = `${data.system_design.percentage}%`;
-      document.getElementById('systemDesignBar').style.width = `${data.system_design.percentage}%`;
+    // Get CSS color variables
+    const getComputedVariable = (varName) => {
+      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    };
 
-      document.getElementById('behavioralProgress').textContent = `${data.behavioral.ready}/${data.behavioral.total}`;
-      document.getElementById('behavioralPercent').textContent = `${data.behavioral.percentage}%`;
-      document.getElementById('behavioralBar').style.width = `${data.behavioral.percentage}%`;
-
-      document.getElementById('currentWeekTitle').textContent = data.current_week.title;
-      document.getElementById('currentWeekPercent').textContent = `${data.current_week.percentage}%`;
-      document.getElementById('currentWeekBar').style.width = `${data.current_week.percentage}%`;
-
-      document.getElementById('streakDays').textContent = data.streak_days;
-
-      const difficulty = data.charts_data.difficulty;
-      new Chart(document.getElementById('difficultyChart'), {
-        type: 'doughnut',
-        data: {
-          labels: ['Easy', 'Medium', 'Hard'],
-          datasets: [{
-            data: [difficulty.EASY, difficulty.MEDIUM, difficulty.HARD],
-            backgroundColor: ['#2a8703', '#ffc220', '#ea1100']
-          }]
+    // Render Difficulty Chart
+    const ctxDifficulty = document.getElementById('difficultyChart').getContext('2d');
+    new Chart(ctxDifficulty, {
+      type: 'doughnut',
+      data: {
+        labels: ['Easy', 'Medium', 'Hard'],
+        datasets: [{
+          data: [dashboardData.charts_data.difficulty.EASY, dashboardData.charts_data.difficulty.MEDIUM, dashboardData.charts_data.difficulty.HARD],
+          backgroundColor: ['#10B981', '#F59E0B', '#EF4444']
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: getComputedVariable('--color-text-primary'),
+              font: { family: 'Inter, system-ui, sans-serif' }
+            }
+          }
         },
-        options: { plugins: { legend: { position: 'bottom' } } }
-      });
+        maintainAspectRatio: true
+      }
+    });
 
-      const weekly = data.charts_data.weekly_progress;
-      new Chart(document.getElementById('progressChart'), {
-        type: 'bar',
-        data: {
-          labels: weekly.map(item => `W${item.week}`),
-          datasets: [{
-            label: 'Completion %',
-            data: weekly.map(item => item.percentage),
-            backgroundColor: '#0053e2'
-          }]
+    // Render Weekly Progress Chart
+    const ctxProgress = document.getElementById('progressChart').getContext('2d');
+    new Chart(ctxProgress, {
+      type: 'bar',
+      data: {
+        labels: dashboardData.charts_data.weekly_progress.map(item => `W${item.week}`),
+        datasets: [{
+          label: 'Completion %',
+          data: dashboardData.charts_data.weekly_progress.map(item => item.percentage),
+          backgroundColor: getComputedVariable('--color-accent')
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            max: 100,
+            ticks: {
+              color: getComputedVariable('--color-text-secondary')
+            },
+            grid: {
+              color: getComputedVariable('--color-border')
+            }
+          },
+          x: {
+            ticks: {
+              color: getComputedVariable('--color-text-secondary')
+            },
+            grid: {
+              display: false
+            }
+          }
         },
-        options: { scales: { y: { max: 100 } }, plugins: { legend: { display: false } } }
-      });
-
-      const hours = data.charts_data.study_hours;
-      new Chart(document.getElementById('hoursChart'), {
-        type: 'line',
-        data: {
-          labels: hours.labels,
-          datasets: [{
-            label: 'Study Hours',
-            data: hours.values,
-            borderColor: '#0053e2',
-            backgroundColor: 'rgba(0, 83, 226, 0.2)',
-            fill: true,
-            tension: 0.3
-          }]
+        plugins: {
+          legend: {
+            display: false
+          }
         },
-        options: { plugins: { legend: { display: false } } }
-      });
-    }
+        maintainAspectRatio: true
+      }
+    });
 
-    document.body.addEventListener('htmx:afterRequest', (event) => {
-      if (event.target && event.target.id === 'dashboardData') {
-        const data = JSON.parse(event.detail.xhr.responseText);
-        renderDashboard(data);
+    // Render Study Hours Chart
+    const ctxHours = document.getElementById('hoursChart').getContext('2d');
+    new Chart(ctxHours, {
+      type: 'line',
+      data: {
+        labels: dashboardData.charts_data.study_hours.labels,
+        datasets: [{
+          label: 'Study Hours',
+          data: dashboardData.charts_data.study_hours.values,
+          borderColor: getComputedVariable('--color-accent'),
+          backgroundColor: 'rgba(46, 142, 206, 0.1)',
+          fill: true,
+          tension: 0.3,
+          pointBackgroundColor: getComputedVariable('--color-accent'),
+          pointBorderColor: getComputedVariable('--color-accent')
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            ticks: {
+              color: getComputedVariable('--color-text-secondary')
+            },
+            grid: {
+              color: getComputedVariable('--color-border')
+            }
+          },
+          x: {
+            ticks: {
+              color: getComputedVariable('--color-text-secondary')
+            },
+            grid: {
+              display: false
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        maintainAspectRatio: true
       }
     });
   </script>
