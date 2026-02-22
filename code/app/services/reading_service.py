@@ -5,7 +5,11 @@ import json
 import time
 from pathlib import Path
 
-import feedparser
+try:
+    import feedparser
+    _FEEDPARSER_AVAILABLE = True
+except ImportError:
+    _FEEDPARSER_AVAILABLE = False
 
 # Pre-approved RSS feeds — edit this list to change auto-pulled content
 RSS_FEEDS = [
@@ -42,6 +46,8 @@ class ReadingService:
             return [], ""
 
     def _fetch_rss(self) -> list[dict]:
+        if not _FEEDPARSER_AVAILABLE:
+            return []
         now = time.time()
         if self._rss_cache and (now - self._cache_time) < _CACHE_TTL:
             return self._rss_cache
