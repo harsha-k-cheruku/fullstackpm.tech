@@ -4,7 +4,7 @@ description: "Portfolio site showcasing AI PM projects, writing, and career high
 tech_stack: [FastAPI, Jinja2, Tailwind CSS, HTMX, Markdown]
 status: "live"
 featured: true
-display_order: 1
+display_order: 4
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
 live_url: "https://www.fullstackpm.tech"
 problem: "Most PM portfolios show opinions, not outcomes. Decks and case studies don't prove you can actually build and ship products."
