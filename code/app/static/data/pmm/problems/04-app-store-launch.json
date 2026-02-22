@@ -1,0 +1,525 @@
+{
+  "id": "app-store-launch",
+  "title": "Launch a productivity app in a crowded market",
+  "tags": [
+    "Launch",
+    "Growth",
+    "Consumer"
+  ],
+  "prompt": "You're launching a new productivity app in a category with 200+ competitors (note-taking). You have a $50K marketing budget, a 3-person team, and 90 days. The app is genuinely better for a specific use case (meeting notes to action items). How do you break through?",
+  "problemDefinition": [
+    "Crowded category with entrenched winners and high switching costs",
+    "Tiny team and limited budget forces brutal focus",
+    "Product advantage is narrow: meeting notes to action items"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Validate the specific meeting-notes job with target users before any launch spend.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Niche wedge",
+            "text": "Pick a sharp niche (e.g., sales teams) and own it end-to-end.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship fast",
+            "text": "Launch to Product Hunt this week and iterate based on live feedback.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Growth loop",
+            "text": "Define activation (first action item sent) and run experiments to lift it.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Where do you focus the budget?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "User research",
+            "text": "Invest in interviews and prototypes to validate the exact pain point and messaging.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Niche channels",
+            "text": "Spend on one channel that matches the wedge (e.g., sales ops communities).",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Launch blitz",
+            "text": "Push a launch on Product Hunt + Reddit + LinkedIn to spike installs.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 2,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Conversion funnel",
+            "text": "Put budget into onboarding experiments and retention nudges.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the hardest decision?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Value proof",
+            "text": "Prove users will switch for this workflow before marketing.",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic scope",
+            "text": "Choosing the wedge and saying no to everything else.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed",
+            "text": "Move fast enough to matter in a saturated category.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Activation",
+            "text": "Define and move the activation metric above baseline.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should the team niche down to a specific user wedge or launch broadly with growth experiments?",
+    "sides": [
+      {
+        "position": "NICHE DOWN",
+        "personas": [
+          "Shreyas Doshi",
+          "Marty Cagan"
+        ],
+        "reasoning": "Focus is the only leverage with a tiny team and crowded market."
+      },
+      {
+        "position": "LAUNCH BROAD + LEARN",
+        "personas": [
+          "Execution AI Monster",
+          "Lenny Rachitsky"
+        ],
+        "reasoning": "Speed and data will reveal the winning segment faster than analysis."
+      },
+      {
+        "position": "DISCOVER FIRST",
+        "personas": [
+          "Teresa Torres"
+        ],
+        "reasoning": "The opportunity space must be mapped before choosing the wedge."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Validate value and viability before burning a launch budget",
+      "spicyQuote": "If you spend $50K on a launch before proving users will switch, you're doing marketing theater, not product management.",
+      "breakdown": [
+        "Value risk: will users switch from Notion/Evernote for this workflow?",
+        "Viability risk: can this be monetized with a tiny team?",
+        "Usability risk: meeting notes to action items must be effortless",
+        "The best companies validate value before they scale distribution"
+      ],
+      "solution": [
+        "Interview 20 target users and test prototypes",
+        "Run a concierge pilot to prove workflow value",
+        "Define go/no-go criteria for switching intent",
+        "Launch only after value risk clears"
+      ],
+      "disagreement": "Execution AI Monster will ship and hope adoption appears, but that is how you burn $50K and learn nothing. Lenny's growth loops are useful, but only after you know people actually want to switch. Doshi's wedge is right, but he still needs validation on which wedge is real. Torres's discovery is aligned, but she needs sharper go/no-go criteria.",
+      "mvp": [
+        "Concierge workflow for 10 users",
+        "Action-item export to email/Slack",
+        "Prototype onboarding flow",
+        "Switching intent scorecard"
+      ],
+      "metrics": [
+        "Switching intent (stated + observed)",
+        "Time to first action item",
+        "Weekly active users",
+        "Paid conversion intent"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery \u2014 interviews + prototypes",
+        "Weeks 3-4: Concierge pilot \u2014 validate value",
+        "Weeks 5-8: MVP build \u2014 core workflow only",
+        "Weeks 9-12: Focused launch \u2014 if value risk clears"
+      ],
+      "scoreboard": {
+        "speed": 4.5,
+        "riskManagement": 9.0,
+        "strategicClarity": 8.0,
+        "growthPotential": 6.0
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map the opportunity space before choosing the wedge",
+      "spicyQuote": "If we don't understand the opportunity space, we're just guessing which niche will stick.",
+      "breakdown": [
+        "Define desired outcome (e.g., D30 retention + paid conversion)",
+        "Map opportunities: meeting capture, summarization, action tracking",
+        "Run weekly customer touchpoints to build evidence",
+        "Compare opportunities before choosing a niche"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree",
+        "Weekly interviews with target users across roles",
+        "Prototype tests for top opportunity branches",
+        "Choose the niche only when evidence accumulates"
+      ],
+      "disagreement": "Cagan's risk framework is aligned, but he can still fall into phase-based discovery. Lenny and Execution AI Monster will ship experiments without a clear opportunity hypothesis, which makes the learning shallow. Doshi's wedge is useful, but picking a wedge before mapping opportunities is a strategy guess, not evidence.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Interview snapshot archive",
+        "Prototype tests on key flows",
+        "Evidence score per opportunity"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Prototype success rate",
+        "Activation intent",
+        "Learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence",
+        "Weeks 2-4: Opportunity mapping",
+        "Weeks 5-6: Experiments on top branches",
+        "Weeks 7-10: Evidence-led build"
+      ],
+      "scoreboard": {
+        "speed": 3.5,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.5,
+        "growthPotential": 5.5
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Pick a sharp wedge and win it decisively",
+      "spicyQuote": "In a crowded market, breadth is just another word for irrelevance. Choose a wedge or die slowly.",
+      "breakdown": [
+        "This is a strategy problem, not a marketing problem",
+        "Opportunity cost: a broad launch guarantees mediocrity",
+        "Run a pre-mortem on niche selection before spending budget",
+        "The wedge is the leverage move; everything else is overhead"
+      ],
+      "solution": [
+        "Pick a niche (e.g., sales teams or PMs) with painful meeting workflows",
+        "Design the end-to-end workflow for that niche only",
+        "Run a pre-mortem and define wedge success criteria",
+        "Expand only if the wedge proves durable"
+      ],
+      "disagreement": "Torres and Cagan will spend too long validating; you need to place a strategic bet. Execution AI Monster will ship fast but with no strategic focus, which is just thrash. Lenny's growth loops are fine, but if the wedge is wrong, loops won't save you.",
+      "mvp": [
+        "Niche-specific templates",
+        "Action item extraction",
+        "Team sharing + reminders",
+        "Wedge success scorecard"
+      ],
+      "metrics": [
+        "Wedge activation rate",
+        "Time-to-first-action-item",
+        "Weekly retention in wedge",
+        "Referral rate within niche"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge MVP",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 6.0,
+        "riskManagement": 7.5,
+        "strategicClarity": 9.5,
+        "growthPotential": 7.0
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Find the activation loop and run experiments fast",
+      "spicyQuote": "The winners in crowded categories don't win on features. They win on activation. What's yours?",
+      "breakdown": [
+        "Define activation: first action item sent within 24 hours",
+        "Find the growth loop: note -> action -> share -> teammate adopts",
+        "Benchmark against best-in-class onboarding rates",
+        "Run 2-3 experiments weekly to lift activation"
+      ],
+      "solution": [
+        "Instrument onboarding funnel end-to-end",
+        "Run experiments on activation nudges",
+        "Scale the winner to 30%",
+        "Double down on the loop that improves activation"
+      ],
+      "disagreement": "Torres wants more discovery, but the metric is clear: activation. Cagan's risk framing is great, but you can test value through experiments. Doshi's wedge is fine, but in growth you need loops, not just positioning. Execution AI Monster is fast, but without measurement discipline, speed is just noise.",
+      "mvp": [
+        "Activation dashboard",
+        "Guided onboarding",
+        "Share-to-teammate flow",
+        "Experiment framework"
+      ],
+      "metrics": [
+        "Activation rate",
+        "D30 retention",
+        "Invite-to-adopt rate",
+        "Conversion to paid"
+      ],
+      "roadmap": [
+        "Week 1: Benchmarks + activation definition",
+        "Weeks 2-3: Run experiments",
+        "Weeks 4-6: Scale winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 8.0,
+        "riskManagement": 5.0,
+        "strategicClarity": 6.0,
+        "growthPotential": 9.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship to Product Hunt this week and learn in public",
+      "spicyQuote": "In 90 days, either you shipped or you didn't. I'd have this live by Friday.",
+      "breakdown": [
+        "Building is discovery \u2014 ship to learn",
+        "Crowded categories reward speed and momentum",
+        "AI tools make weekly iteration possible",
+        "The fastest feedback loop wins"
+      ],
+      "solution": [
+        "Ship a public MVP this week",
+        "Run a Product Hunt launch + Reddit outreach",
+        "Iterate weekly based on usage data",
+        "Kill or scale based on real adoption"
+      ],
+      "disagreement": "Cagan and Torres will still be interviewing while the market forgets you. Doshi's wedge is smart but too slow. Lenny is close, but if you wait for benchmarks, you miss the window. Ship, measure, repeat.",
+      "mvp": [
+        "Meeting note capture",
+        "Action item extraction",
+        "One-click sharing",
+        "Basic analytics"
+      ],
+      "metrics": [
+        "Time-to-ship",
+        "Activation in week 1",
+        "Weekly active users",
+        "Retention after 7 days"
+      ],
+      "roadmap": [
+        "Days 1-7: Build + launch MVP",
+        "Weeks 2-3: Iterate on activation",
+        "Weeks 4-6: Scale distribution",
+        "Weeks 7-10: Add features that prove demand"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 3.0,
+        "strategicClarity": 5.0,
+        "growthPotential": 8.5
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Niche Wedge Launch",
+      "reason": "Focus on one role with a painful workflow and win decisively.",
+      "personaAlignment": [
+        "doshi",
+        "cagan"
+      ]
+    },
+    {
+      "name": "Activation Loop MVP",
+      "reason": "Optimize for first action item and share loop.",
+      "personaAlignment": [
+        "lenny"
+      ]
+    },
+    {
+      "name": "Concierge Validation",
+      "reason": "Manual workflow to prove switching intent before marketing spend.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    },
+    {
+      "name": "Public Launch Blitz",
+      "reason": "Ship fast and learn from live adoption signals.",
+      "personaAlignment": [
+        "exec"
+      ]
+    }
+  ],
+  "premortem": [
+    "Positioning blur: we launch broadly and users can't tell why we're different",
+    "Activation miss: users try once and never convert to action items",
+    "Budget waste: $50K spend drives installs but zero retention"
+  ],
+  "vitalQuestion": "Which niche values automated action items enough to switch from their current tool?",
+  "voteResults": {
+    "cagan": 14,
+    "torres": 8,
+    "doshi": 22,
+    "lenny": 35,
+    "exec": 21
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

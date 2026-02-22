@@ -1,0 +1,525 @@
+{
+  "id": "redfin-hot-home",
+  "title": "Redfin Hot Home badge vs. trust",
+  "tags": [
+    "Trust",
+    "Metrics",
+    "Real Estate"
+  ],
+  "prompt": "Redfin's \"Hot Home\" badge drives 3x more saves and 2x more tours. But agents report that 30% of Hot Homes sell at or below asking price   the badge creates false urgency. You're the PM. The feature drives engagement but may erode trust. What do you do?",
+  "problemDefinition": [
+    "The badge drives engagement but may mislead buyers",
+    "Agents report false urgency and trust erosion",
+    "Changing the badge risks hurting a high-performing metric"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Interview buyers and agents to understand how the badge influences decisions.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Define wedge",
+            "text": "Narrow the badge to a segment where it is most predictive of bidding wars.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship fix now",
+            "text": "Adjust the algorithm immediately and measure engagement + trust changes.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Experiment loop",
+            "text": "Run experiments on badge messaging to reduce false urgency.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the core tension?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Trust vs engagement",
+            "text": "If the badge erodes trust, short-term engagement isn't worth it.",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Strategic focus",
+            "text": "We need a sharper definition of \"hot\" or the badge becomes noise.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Speed",
+            "text": "We can t wait for research while buyers act on bad signals.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Metric design",
+            "text": "If the badge increases tours but not outcomes, it s a broken loop.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "What do you change first?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Algorithm",
+            "text": "Fix the model so the badge actually predicts above-asking outcomes.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Messaging",
+            "text": "Reframe the badge (e.g., \"High Interest\") to reduce urgency bias.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 2,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Ship and learn",
+            "text": "Run two variants live and keep the one that protects trust.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 2,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Narrow scope",
+            "text": "Restrict the badge to specific markets or price ranges first.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should Redfin keep the Hot Home badge and tune it, or remove/rebrand it to protect trust?",
+    "sides": [
+      {
+        "position": "TUNE IT",
+        "personas": [
+          "Lenny Rachitsky",
+          "Execution AI Monster"
+        ],
+        "reasoning": "The badge drives engagement; optimize it with experiments instead of removing it."
+      },
+      {
+        "position": "REBRAND/RESTRICT",
+        "personas": [
+          "Marty Cagan",
+          "Shreyas Doshi"
+        ],
+        "reasoning": "Trust is the core asset; a narrower or rebranded badge protects it."
+      },
+      {
+        "position": "DISCOVER FIRST",
+        "personas": [
+          "Teresa Torres"
+        ],
+        "reasoning": "Map the opportunity space before changing a high-impact feature."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Protect trust; engagement isn t the outcome",
+      "spicyQuote": "If your growth metric is built on false urgency, you re borrowing trust you can t repay.",
+      "breakdown": [
+        "Value risk: does the badge actually help buyers make better decisions?",
+        "Viability risk: trust loss damages the brand",
+        "Usability risk: badge creates cognitive bias",
+        "The best companies optimize for outcomes, not vanity engagement"
+      ],
+      "solution": [
+        "Validate whether the badge predicts real outcomes",
+        "Run a controlled test with rebranded messaging",
+        "Reduce badge coverage if precision is low",
+        "Scale only if trust metrics stay healthy"
+      ],
+      "disagreement": "Execution AI Monster and Lenny will optimize engagement without addressing trust risk. Doshi is right to narrow scope, but we need evidence for the right constraints. Torres aligns on discovery but must link it to measurable trust outcomes.",
+      "mvp": [
+        "Trust metric baseline",
+        "Rebranded badge variant",
+        "Precision audit of hot-home predictions",
+        "Go/no-go criteria"
+      ],
+      "metrics": [
+        "Buyer trust score",
+        "Above-asking close rate for badge homes",
+        "Badge precision/recall",
+        "Engagement vs trust delta"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery + trust baseline",
+        "Weeks 3-4: Controlled badge test",
+        "Weeks 5-6: Evaluate precision + trust",
+        "Weeks 7-10: Scale or restrict"
+      ],
+      "scoreboard": {
+        "speed": 3.5,
+        "riskManagement": 9.5,
+        "strategicClarity": 8.0,
+        "growthPotential": 5.5
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map why buyers trust or distrust the badge",
+      "spicyQuote": "If we don t understand how the badge influences decisions, we re guessing at fixes.",
+      "breakdown": [
+        "Define desired outcome (trust + successful purchase decisions)",
+        "Map opportunities: clarity, transparency, predictive accuracy",
+        "Weekly interviews with buyers and agents",
+        "Test solutions tied to specific opportunities"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree",
+        "Run weekly interviews and message tests",
+        "Compare alternative badge framings",
+        "Ship only after evidence accumulates"
+      ],
+      "disagreement": "Cagan and Doshi want to narrow the badge quickly, but without mapping the opportunity space, we don t know what to change. Lenny and Execution AI Monster will ship experiments without a theory of trust, which means they ll misread results.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Interview snapshot archive",
+        "Badge copy prototypes",
+        "Evidence score per opportunity"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Trust rating post-viewing",
+        "Decision confidence score",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence",
+        "Weeks 2-4: Opportunity mapping",
+        "Weeks 5-6: Experiments on top branches",
+        "Weeks 7-10: Evidence-led rollout"
+      ],
+      "scoreboard": {
+        "speed": 3.0,
+        "riskManagement": 9.5,
+        "strategicClarity": 7.5,
+        "growthPotential": 4.5
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Narrow the badge to where it is truly predictive",
+      "spicyQuote": "A badge that s wrong 30% of the time is a strategy failure, not a tuning issue.",
+      "breakdown": [
+        "This is a strategy problem disguised as a model tweak",
+        "Opportunity cost: broad badge damages trust across the platform",
+        "Pre-mortem the trust fallout and agent backlash",
+        "Narrow scope is the leverage move"
+      ],
+      "solution": [
+        "Pick the markets where hot-home signal is strongest",
+        "Define strict badge criteria and publish them",
+        "Run a pre-mortem and set success criteria",
+        "Expand only if trust improves"
+      ],
+      "disagreement": "Torres will map for weeks while trust erodes in the field. Lenny and Execution AI Monster will optimize engagement and ignore brand damage. Cagan is right on trust risk, but he needs a sharper strategic wedge, not just a risk audit.",
+      "mvp": [
+        "Market-specific badge criteria",
+        "Transparency tooltip",
+        "Agent feedback loop",
+        "Wedge success scorecard"
+      ],
+      "metrics": [
+        "Badge precision in wedge markets",
+        "Agent trust rating",
+        "Buyer confidence score",
+        "Engagement in wedge vs control"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge badge",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 5.5,
+        "riskManagement": 8.0,
+        "strategicClarity": 9.0,
+        "growthPotential": 6.0
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Optimize the badge loop without losing trust",
+      "spicyQuote": "The badge is a growth loop. Don t delete the loop   fix it.",
+      "breakdown": [
+        "Define success: tours + trust + close outcomes",
+        "Map the loop: badge -> save -> tour -> offer",
+        "Benchmark against competing marketplaces",
+        "Run experiments on badge accuracy and copy"
+      ],
+      "solution": [
+        "Instrument the funnel and trust metrics",
+        "Run A/B tests on badge criteria and messaging",
+        "Scale the highest-trust variant",
+        "Iterate weekly based on data"
+      ],
+      "disagreement": "Torres wants to map opportunities, but the loop is measurable now. Cagan and Doshi are right about trust, but you can test fixes without removing the badge. Execution AI Monster is fast, but needs measurement discipline.",
+      "mvp": [
+        "Badge experiment framework",
+        "Trust survey widget",
+        "Precision dashboard",
+        "Feature flags"
+      ],
+      "metrics": [
+        "Tour conversion rate",
+        "Trust score delta",
+        "Badge precision",
+        "Offer rate per badge"
+      ],
+      "roadmap": [
+        "Week 1: Baselines + experiment design",
+        "Weeks 2-3: Run tests",
+        "Weeks 4-6: Scale winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 6.5,
+        "riskManagement": 6.0,
+        "strategicClarity": 6.0,
+        "growthPotential": 8.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship two variants now and keep the winner",
+      "spicyQuote": "You can debate trust for a quarter, or ship two badge variants this week and see which one wins.",
+      "breakdown": [
+        "Building is discovery   ship to learn",
+        "Bad signals require fast iteration",
+        "AI tooling makes variant testing cheap",
+        "Speed beats perfect theory"
+      ],
+      "solution": [
+        "Launch two badge variants immediately",
+        "Measure trust + engagement daily",
+        "Kill losers within a week",
+        "Iterate weekly based on data"
+      ],
+      "disagreement": "Cagan and Torres will still be interviewing while buyers act on a broken badge. Doshi's wedge is smart but too slow. Lenny is close, but don t wait for perfect benchmarks   ship and learn.",
+      "mvp": [
+        "Two badge variants",
+        "Trust feedback widget",
+        "Rollback switch",
+        "Live metrics dashboard"
+      ],
+      "metrics": [
+        "Time-to-ship",
+        "Trust delta",
+        "Tour conversion",
+        "Badge precision"
+      ],
+      "roadmap": [
+        "Days 1-7: Ship variants",
+        "Weeks 2-3: Keep winner",
+        "Weeks 4-6: Iterate",
+        "Weeks 7-10: Stabilize"
+      ],
+      "scoreboard": {
+        "speed": 9.0,
+        "riskManagement": 2.0,
+        "strategicClarity": 4.5,
+        "growthPotential": 7.5
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Precision-Only Badge",
+      "reason": "Restrict the badge to markets with proven accuracy.",
+      "personaAlignment": [
+        "doshi",
+        "cagan"
+      ]
+    },
+    {
+      "name": "Rebranded Trust Badge",
+      "reason": "Change messaging to reduce urgency bias while keeping signal.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    },
+    {
+      "name": "Experiment Framework",
+      "reason": "Run variants to optimize engagement + trust.",
+      "personaAlignment": [
+        "lenny"
+      ]
+    },
+    {
+      "name": "Rapid Variant Test",
+      "reason": "Ship two variants and learn from live data immediately.",
+      "personaAlignment": [
+        "exec"
+      ]
+    }
+  ],
+  "premortem": [
+    "Trust erosion: buyers feel manipulated and churn to competitors",
+    "Over-correction: badge removed, engagement plummets",
+    "Precision backlash: agents dispute badge logic and stop cooperating"
+  ],
+  "vitalQuestion": "Can we design a badge that increases engagement without creating false urgency?",
+  "voteResults": {
+    "cagan": 30,
+    "torres": 22,
+    "doshi": 26,
+    "lenny": 14,
+    "exec": 8
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

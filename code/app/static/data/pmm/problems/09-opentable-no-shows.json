@@ -1,0 +1,525 @@
+{
+  "id": "opentable-no-shows",
+  "title": "OpenTable no-show problem",
+  "tags": [
+    "Marketplace",
+    "Trust",
+    "Behavioral Design"
+  ],
+  "prompt": "OpenTable's no-show rate is 12%   restaurants lose $200 per empty table. Charging deposits reduces no-shows but also reduces bookings by 25%. You're the PM. Solve the no-show problem without killing the booking funnel.",
+  "problemDefinition": [
+    "No-shows create real revenue loss for restaurants",
+    "Deposits reduce no-shows but significantly reduce bookings",
+    "Need a trust mechanism that doesn't collapse demand"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Interview diners and restaurants to map reasons for no-shows.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Pick the wedge",
+            "text": "Target high-end restaurants first with a strict policy.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship now",
+            "text": "Introduce a small deposit immediately and measure fallout.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Experiment loop",
+            "text": "Test multiple behavioral nudges to reduce no-shows.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Who do you optimize for first?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Restaurants",
+            "text": "Protect restaurant economics even if bookings drop slightly.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 1,
+              "doshi": 2,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Diners",
+            "text": "Minimize friction and preserve booking volume.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Wedge",
+            "text": "Apply strict policy only to premium restaurants first.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Ship fast",
+            "text": "Roll out a policy platform-wide and iterate quickly.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the hardest tradeoff?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Trust vs growth",
+            "text": "If we punish diners, trust drops; if we don't, restaurants churn.",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic focus",
+            "text": "Deciding where to apply strict policies without collapsing demand.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed",
+            "text": "If we wait, restaurants churn off the platform.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Activation",
+            "text": "If confirmation flows aren t effective, nothing else matters.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should OpenTable introduce deposits broadly or only for a focused wedge?",
+    "sides": [
+      {
+        "position": "FOCUSED WEDGE",
+        "personas": [
+          "Shreyas Doshi",
+          "Marty Cagan"
+        ],
+        "reasoning": "Restrict deposits to high-value restaurants to protect volume."
+      },
+      {
+        "position": "SHIP BROAD",
+        "personas": [
+          "Execution AI Monster",
+          "Lenny Rachitsky"
+        ],
+        "reasoning": "Only broad rollout gives real data on no-show reduction."
+      },
+      {
+        "position": "DISCOVER FIRST",
+        "personas": [
+          "Teresa Torres"
+        ],
+        "reasoning": "Map diner motivations and trust before imposing penalties."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Protect trust while proving real reduction in no-shows",
+      "spicyQuote": "If deposits reduce bookings by 25%, you've solved one problem and created a bigger one.",
+      "breakdown": [
+        "Value risk: can we reduce no-shows without harming demand?",
+        "Viability risk: restaurants may churn if trust erodes",
+        "Usability risk: deposit flows add friction",
+        "The best companies validate both sides of the marketplace"
+      ],
+      "solution": [
+        "Run a controlled wedge pilot on premium restaurants",
+        "Test deposit vs alternative trust signals",
+        "Measure booking volume and no-show reduction",
+        "Scale only if outcomes improve"
+      ],
+      "disagreement": "Execution AI Monster will ship deposits broadly and call it learning. Lenny will optimize the loop, but if trust collapses, the loop is dead. Doshi's wedge is right, but still needs value validation. Torres aligns on discovery but must tie it to outcomes.",
+      "mvp": [
+        "Premium-restaurant deposit pilot",
+        "Diner trust messaging",
+        "Alternative penalties test",
+        "Go/no-go scorecard"
+      ],
+      "metrics": [
+        "No-show rate reduction",
+        "Booking volume change",
+        "Restaurant churn rate",
+        "Net revenue impact"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery + risk mapping",
+        "Weeks 3-4: Wedge pilot",
+        "Weeks 5-6: Evaluate outcomes",
+        "Weeks 7-10: Scale or stop"
+      ],
+      "scoreboard": {
+        "speed": 5.0,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.5,
+        "growthPotential": 5.5
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map diner motivations before applying penalties",
+      "spicyQuote": "If we don t understand why people no-show, we ll build the wrong deterrent.",
+      "breakdown": [
+        "Define desired outcome (no-show reduction with minimal booking loss)",
+        "Map opportunities: reminders, deposits, social accountability",
+        "Weekly interviews with diners and restaurants",
+        "Test opportunity branches before rollout"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree",
+        "Run weekly interviews + prototype tests",
+        "Experiment with reminder and trust mechanisms",
+        "Ship only after evidence accumulates"
+      ],
+      "disagreement": "Cagan and Doshi want a wedge quickly, but without understanding the opportunity space, the wedge might be wrong. Lenny and Execution AI Monster will ship experiments without a theory of trust, which makes learning shallow.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Interview snapshot archive",
+        "Reminder prototypes",
+        "Evidence score per opportunity"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Reminder effectiveness",
+        "Diner trust score",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence",
+        "Weeks 2-4: Opportunity mapping",
+        "Weeks 5-6: Experiments",
+        "Weeks 7-10: Evidence-led rollout"
+      ],
+      "scoreboard": {
+        "speed": 4.0,
+        "riskManagement": 8.0,
+        "strategicClarity": 7.0,
+        "growthPotential": 5.0
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Apply strict policies only where no-shows are most costly",
+      "spicyQuote": "A blanket deposit policy is a strategy failure. Pick the wedge where it actually matters.",
+      "breakdown": [
+        "This is a strategy problem, not a pricing tweak",
+        "Opportunity cost: broad deposits shrink the marketplace",
+        "Pre-mortem: booking collapse, diner backlash, restaurant churn",
+        "Wedge enforcement is the leverage move"
+      ],
+      "solution": [
+        "Choose premium restaurants as the wedge",
+        "Design a strict but transparent policy",
+        "Run a pre-mortem and set success criteria",
+        "Expand only if wedge proves durable"
+      ],
+      "disagreement": "Torres will map for weeks while restaurants churn. Lenny and Execution AI Monster will ship deposits broadly and trigger backlash. Cagan is right on risk, but needs a sharper strategic wedge, not just validation.",
+      "mvp": [
+        "Premium wedge policy",
+        "Transparent cancellation rules",
+        "Restaurant feedback loop",
+        "Wedge success scorecard"
+      ],
+      "metrics": [
+        "No-show rate in wedge",
+        "Booking retention in wedge",
+        "Restaurant satisfaction",
+        "Revenue impact"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge policy",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 6.0,
+        "riskManagement": 7.0,
+        "strategicClarity": 9.0,
+        "growthPotential": 6.5
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Run behavioral experiments to reduce no-shows",
+      "spicyQuote": "No-shows are a behavioral funnel. Fix the funnel before punishing users.",
+      "breakdown": [
+        "Define activation: confirmed attendance",
+        "Map loop: booking -> reminder -> show",
+        "Benchmark against Resy and Tock",
+        "Run experiments on reminders and deposits"
+      ],
+      "solution": [
+        "Instrument the funnel end-to-end",
+        "Run experiments on reminders, penalties, and deposits",
+        "Scale the highest-lift variant",
+        "Iterate weekly based on data"
+      ],
+      "disagreement": "Torres wants more discovery, but no-show reduction is measurable now. Cagan and Doshi are right on trust, but experiments answer it faster. Execution AI Monster is fast, but without measurement discipline, speed is noise.",
+      "mvp": [
+        "Reminder experiment framework",
+        "Funnel analytics",
+        "Deposit toggle",
+        "Feature flags"
+      ],
+      "metrics": [
+        "No-show rate",
+        "Booking conversion",
+        "Reminder engagement rate",
+        "Repeat booking rate"
+      ],
+      "roadmap": [
+        "Week 1: Benchmark + experiment design",
+        "Weeks 2-3: Run tests",
+        "Weeks 4-6: Scale winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 8.0,
+        "riskManagement": 5.5,
+        "strategicClarity": 6.0,
+        "growthPotential": 9.0
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship a small deposit now and learn from real data",
+      "spicyQuote": "You can debate no-shows for a quarter, or ship a deposit policy this week and see what happens.",
+      "breakdown": [
+        "Building is discovery   ship to learn",
+        "Deposits are easy to test and rollback",
+        "Speed beats perfect policy",
+        "Iterate weekly based on data"
+      ],
+      "solution": [
+        "Roll out a small deposit to 10% of bookings",
+        "Monitor no-show reduction daily",
+        "Adjust policy weekly",
+        "Scale if metrics hold"
+      ],
+      "disagreement": "Cagan and Torres will still be interviewing while restaurants lose money. Doshi's wedge is smart but too slow. Lenny is close, but don't wait for perfect experiments   ship and learn.",
+      "mvp": [
+        "Deposit toggle",
+        "Churn monitoring dashboard",
+        "Rollback switch",
+        "In-app messaging"
+      ],
+      "metrics": [
+        "Time-to-ship",
+        "No-show rate change",
+        "Booking conversion drop",
+        "Restaurant retention"
+      ],
+      "roadmap": [
+        "Days 1-7: Ship deposit pilot",
+        "Weeks 2-3: Iterate policy",
+        "Weeks 4-6: Scale if stable",
+        "Weeks 7-10: Optimize trust"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 2.5,
+        "strategicClarity": 5.5,
+        "growthPotential": 8.5
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Premium Restaurant Wedge",
+      "reason": "Apply strict policies where no-shows are most costly.",
+      "personaAlignment": [
+        "doshi",
+        "cagan"
+      ]
+    },
+    {
+      "name": "Behavioral Nudges MVP",
+      "reason": "Use reminders and social accountability before deposits.",
+      "personaAlignment": [
+        "torres",
+        "lenny"
+      ]
+    },
+    {
+      "name": "Controlled Deposit Test",
+      "reason": "Run a pilot to measure lift vs booking drop.",
+      "personaAlignment": [
+        "cagan"
+      ]
+    },
+    {
+      "name": "Rapid Deposit Rollout",
+      "reason": "Ship fast and iterate on live data.",
+      "personaAlignment": [
+        "exec"
+      ]
+    }
+  ],
+  "premortem": [
+    "Booking collapse: deposits scare away casual diners",
+    "Restaurant churn: high no-shows persist and restaurants leave",
+    "Trust backlash: diners perceive OpenTable as punitive"
+  ],
+  "vitalQuestion": "What deterrent reduces no-shows without reducing bookings by more than 5%?",
+  "voteResults": {
+    "cagan": 12,
+    "torres": 8,
+    "doshi": 22,
+    "lenny": 28,
+    "exec": 30
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

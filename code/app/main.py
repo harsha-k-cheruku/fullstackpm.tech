@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.config import settings
 from app.database import init_db
-from app.routers import auth, blog, comments, interview_coach, marketplace, pages, projects, sde_prep, seo
+from app.routers import auth, blog, comments, interview_coach, marketplace, pages, pm_multiverse, projects, sde_prep, seo
 from app.services.content import ContentService
 
 
@@ -35,6 +35,7 @@ app.mount("/static", StaticFiles(directory=str(settings.static_dir)), name="stat
 
 # Include routers
 app.include_router(pages.router)
+app.include_router(pm_multiverse.router)
 app.include_router(projects.router)
 app.include_router(blog.router)
 app.include_router(comments.router)

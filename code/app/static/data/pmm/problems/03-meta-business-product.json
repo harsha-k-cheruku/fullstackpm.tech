@@ -1,0 +1,526 @@
+{
+  "id": "meta-business-product",
+  "title": "Meta self-serve business product for SMBs",
+  "tags": [
+    "Platform",
+    "B2B",
+    "Strategy"
+  ],
+  "prompt": "Meta wants to launch a self-serve business product that lets SMBs create a full online presence (website + store + messaging) powered by WhatsApp and Instagram. You're the PM. Facebook's business tools have failed before. How do you avoid building another graveyard product?",
+  "problemDefinition": [
+    "Meta has a graveyard of SMB tools that never hit durable adoption",
+    "Scope is huge: website, store, and messaging in one product for time-poor owners",
+    "Strategic tension: embed inside WhatsApp/Instagram or build standalone"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Start weekly interviews with SMB owners to map workflows and unmet needs before committing to product surface.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Pick the wedge",
+            "text": "Select one wedge (e.g., WhatsApp commerce for local shops) and build only that end-to-end.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship a PoC",
+            "text": "Vibe-code a storefront + WhatsApp checkout flow this week and ship to 50 SMBs.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Benchmarks + loop",
+            "text": "Define the activation metric (first sale) and run experiments to move it fast.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Where should this live?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Inside WhatsApp",
+            "text": "Meet SMBs in their daily sales channel with a chat-first commerce flow.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 1,
+              "doshi": 2,
+              "lenny": 1,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Inside Instagram",
+            "text": "Use IG Shops + discovery to drive organic adoption and social proof.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Standalone product",
+            "text": "Avoid legacy constraints and design a full SMB workflow from scratch.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Ship everywhere",
+            "text": "Deploy a small MVP in WhatsApp + IG + FB Pages to learn fastest.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the biggest risk to de-risk?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Value risk",
+            "text": "Will SMBs actually choose Meta tools over Shopify, Square, or marketplaces?",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic focus",
+            "text": "If we don't pick the right wedge, we build another forgotten tool.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed to market",
+            "text": "The window is closing. Ship fast or competitors lock up SMB mindshare.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Activation loop",
+            "text": "First sale is the activation moment. If we can't drive that, nothing else matters.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should Meta build a standalone SMB product or embed a focused wedge inside WhatsApp/Instagram?",
+    "sides": [
+      {
+        "position": "EMBED THE WEDGE",
+        "personas": [
+          "Shreyas Doshi",
+          "Execution AI Monster"
+        ],
+        "reasoning": "A wedge inside existing surfaces reduces adoption friction and avoids cold-start."
+      },
+      {
+        "position": "STANDALONE PRODUCT",
+        "personas": [
+          "Marty Cagan",
+          "Teresa Torres"
+        ],
+        "reasoning": "A clean-slate product enables real value discovery without legacy constraints."
+      },
+      {
+        "position": "GROWTH-LOOP FIRST",
+        "personas": [
+          "Lenny Rachitsky"
+        ],
+        "reasoning": "Surface matters less than the activation loop that drives first-sale success."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Validate value and viability before building a new SMB platform",
+      "spicyQuote": "If you ship another SMB tool without proving value and viability, you haven't launched \u2014 you've added a new tombstone to Meta's graveyard.",
+      "breakdown": [
+        "Value risk: do SMBs actually want an all-in-one stack from Meta?",
+        "Viability risk: can Meta support onboarding, payments, and compliance at SMB scale?",
+        "Usability risk: SMB owners are time-poor   complexity kills adoption",
+        "The best companies validate the four risks before they commit to a new platform"
+      ],
+      "solution": [
+        "Run discovery with 30 SMBs across retail, services, and local commerce",
+        "Test value with a lightweight landing page and concierge onboarding",
+        "Validate viability with payments, support, and legal in the loop",
+        "Only then commit to build, starting with a constrained MVP"
+      ],
+      "disagreement": "Execution AI Monster will ship a PoC and call it learning, but without viability validation it will die in compliance and support. Lenny will optimize the activation loop, but if SMBs don't want Meta as their storefront, those loops are lipstick. Doshi's wedge is promising, but he still needs evidence for which wedge has value and viability.",
+      "mvp": [
+        "Concierge pilot with 20 SMBs",
+        "Payment + catalog basics only",
+        "Manual onboarding checklist",
+        "Clear go/no-go scorecard across four risks"
+      ],
+      "metrics": [
+        "SMB activation rate (first sale within 14 days)",
+        "Retention of active storefronts at 30 days",
+        "Support tickets per active SMB",
+        "Net promoter score from pilot SMBs"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery   interviews + risk mapping",
+        "Weeks 3-4: Concierge pilot   validate value and viability",
+        "Weeks 5-8: MVP build   constrained scope",
+        "Weeks 9-12: Scale   expand only if risks are cleared"
+      ],
+      "scoreboard": {
+        "speed": 5.0,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.5,
+        "growthPotential": 7.0
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map the SMB opportunity space before choosing a solution",
+      "spicyQuote": "If we skip the opportunity space and jump to a platform, we'll just fail faster with more features.",
+      "breakdown": [
+        "Desired outcome must be explicit (e.g., % of SMBs making weekly sales)",
+        "Map opportunities: acquisition, catalog setup, messaging conversion, payment trust",
+        "Weekly touchpoints with SMBs to build an evidence bank",
+        "Compare opportunities before committing to any surface"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree for SMB commerce",
+        "Run weekly interviews and prototype tests with 5-7 SMBs",
+        "Test one opportunity branch at a time with small experiments",
+        "Choose a surface only after the opportunity is proven"
+      ],
+      "disagreement": "Cagan's risk framework is right, but he can slip into phase-based discovery. This needs continuous evidence because SMB needs change fast. Lenny and the Execution AI Monster will ship experiments without a clear opportunity hypothesis, which means they won't know what to learn. Doshi's wedge is helpful once the opportunity space is mapped, not before.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Weekly interview cadence with SMBs",
+        "Prototype tests for onboarding + messaging",
+        "Evidence score per opportunity branch"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Prototype success rate",
+        "SMB activation intent",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence   interviews + tests",
+        "Weeks 2-4: Opportunity mapping   rank branches",
+        "Weeks 5-7: Experiments   test top two branches",
+        "Week 8+: Evidence-led build   ship validated solution"
+      ],
+      "scoreboard": {
+        "speed": 4.0,
+        "riskManagement": 8.0,
+        "strategicClarity": 7.0,
+        "growthPotential": 5.5
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Pick a sharp SMB wedge and avoid platform sprawl",
+      "spicyQuote": "A platform is just a collection of weak choices with a big label. Pick a wedge or die in mediocrity.",
+      "breakdown": [
+        "This is a strategy problem disguised as an execution roadmap",
+        "Opportunity cost: building a full stack means doing nothing well",
+        "Pre-mortem the top failure modes   adoption, payments, trust",
+        "The wedge is the leverage move; everything else is overhead"
+      ],
+      "solution": [
+        "Identify the wedge with highest adoption leverage (e.g., WhatsApp orders)",
+        "Run a pre-mortem on the wedge launch",
+        "Ship the wedge experience end-to-end, no extra scope",
+        "Expand only after the wedge proves durable"
+      ],
+      "disagreement": "Cagan and Torres will spend weeks validating while the market locks in elsewhere. The Execution AI Monster ships fast but without strategic focus, which is just thrash. Lenny will optimize activation, but if the wedge is wrong, the loop is wrong.",
+      "mvp": [
+        "WhatsApp commerce wedge",
+        "Single-category storefront template",
+        "Manual onboarding for 50 SMBs",
+        "Wedge success criteria (first sale within 7 days)"
+      ],
+      "metrics": [
+        "Wedge activation rate",
+        "First-sale time-to-value",
+        "30-day retention of wedge SMBs",
+        "Cost-to-serve per active SMB"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge MVP",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 6.0,
+        "riskManagement": 7.0,
+        "strategicClarity": 9.5,
+        "growthPotential": 7.0
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Define the activation loop and run experiments to hit first sale",
+      "spicyQuote": "The best SMB products win by getting to the first sale fast. If you can t hit that, no surface will save you.",
+      "breakdown": [
+        "Define activation: first sale within 14 days",
+        "Identify the growth loop: setup -> first sale -> repeat customers -> referrals",
+        "Use benchmarks from Shopify, Square, and Etsy",
+        "Run weekly experiments to lift activation and retention"
+      ],
+      "solution": [
+        "Instrument the full onboarding funnel",
+        "Run 3 experiments: setup wizard, catalog import, checkout speed",
+        "Ship the winner to 20% and iterate",
+        "Double down on the loop that improves first-sale rate"
+      ],
+      "disagreement": "Torres wants to map the opportunity space, but the metric is clear: first sale. Cagan is right about risks, but we can test them via experiments instead of weeks of interviews. Doshi's wedge is fine, but you still need the activation loop to scale. Execution AI Monster ships fast, but without measurement discipline it's just noise.",
+      "mvp": [
+        "Activation dashboard",
+        "Onboarding wizard with catalog import",
+        "Checkout flow optimized for mobile",
+        "Experiment framework + feature flags"
+      ],
+      "metrics": [
+        "First-sale activation rate",
+        "Time-to-first-sale",
+        "Weekly active SMBs",
+        "Referral rate from existing SMBs"
+      ],
+      "roadmap": [
+        "Week 1: Benchmark + activation definition",
+        "Weeks 2-3: Run 3 experiments",
+        "Weeks 4-6: Scale the winner",
+        "Weeks 7-10: Iterate + refine growth loop"
+      ],
+      "scoreboard": {
+        "speed": 7.5,
+        "riskManagement": 5.5,
+        "strategicClarity": 6.5,
+        "growthPotential": 9.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship a WhatsApp storefront PoC this week and learn",
+      "spicyQuote": "Your SMB discovery sprint costs more time than my shipped product. I ll have this live by Friday.",
+      "breakdown": [
+        "Building is discovery   ship to learn",
+        "AI tools collapse the build timeline to days",
+        "WhatsApp is already the SMB channel   meet them there",
+        "Competitive clock is ticking; speed is the moat"
+      ],
+      "solution": [
+        "Vibe-code a storefront + payment flow in days",
+        "Ship to 100 SMBs inside WhatsApp",
+        "Daily metric review and iterate weekly",
+        "Kill or scale based on live data"
+      ],
+      "disagreement": "Cagan and Torres will still be mapping risks while SMBs churn to Shopify. Doshi s wedge is right but too slow; you can ship the wedge this week. Lenny has the loop mindset, but if you wait for benchmarks you re already behind.",
+      "mvp": [
+        "WhatsApp storefront bot",
+        "Basic catalog upload",
+        "Stripe/Meta Pay checkout",
+        "Live metrics dashboard"
+      ],
+      "metrics": [
+        "Days to first SMB live",
+        "Activation rate in week 1",
+        "Checkout completion rate",
+        "Time-to-ship"
+      ],
+      "roadmap": [
+        "Days 1-7: Build + ship PoC",
+        "Weeks 2-3: Iterate based on live data",
+        "Weeks 4-6: Scale to 1,000 SMBs",
+        "Weeks 7-10: Add features that prove demand"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 3.0,
+        "strategicClarity": 5.5,
+        "growthPotential": 8.5
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "WhatsApp Commerce Wedge",
+      "reason": "Focus on chat-first commerce where SMBs already operate and reduce adoption friction.",
+      "personaAlignment": [
+        "doshi",
+        "exec"
+      ]
+    },
+    {
+      "name": "Standalone SMB Studio",
+      "reason": "Clean-slate product to validate value without legacy constraints.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    },
+    {
+      "name": "Activation Loop MVP",
+      "reason": "Optimize for first sale with onboarding and checkout experiments.",
+      "personaAlignment": [
+        "lenny"
+      ]
+    },
+    {
+      "name": "Concierge Pilot",
+      "reason": "Manual onboarding with a tiny cohort to validate value and viability fast.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    }
+  ],
+  "premortem": [
+    "Adoption flop: SMBs stick with Shopify/Square and ignore the Meta tool",
+    "Scope creep: we build a bloated platform and never nail a wedge",
+    "Trust gap: SMBs worry about Meta owning their customer relationship and churn"
+  ],
+  "vitalQuestion": "What is the single highest-leverage SMB workflow we can own that others can't easily copy?",
+  "voteResults": {
+    "cagan": 16,
+    "torres": 10,
+    "doshi": 24,
+    "lenny": 32,
+    "exec": 18
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

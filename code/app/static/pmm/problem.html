@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PM Multiverse</title>
+  <link rel="stylesheet" href="/static/pmm/css/style.css" />
+</head>
+<body data-page="experience">
+
+<div class="topbar">
+  <a class="topbar-logo" href="/tools/pm-multiverse">PM <span>Multiverse</span></a>
+  <div class="topbar-right">
+    <div class="topbar-progress">
+      <div class="step-indicator" id="stepDots"></div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <span id="progressLabel">0/10</span>
+    </div>
+  </div>
+</div>
+
+<div id="loading" class="loading">
+  <div class="spinner"></div>
+  Loading problem…
+</div>
+
+<!-- STEP 1: QUIZ -->
+<div class="screen" id="screen-1">
+  <div class="content">
+    <div id="quizProblemText" class="quiz-problem-box"></div>
+    <div class="quiz-progress" id="quizProgress">
+      <div class="quiz-progress-seg active" id="qseg0"></div>
+      <div class="quiz-progress-seg" id="qseg1"></div>
+      <div class="quiz-progress-seg" id="qseg2"></div>
+    </div>
+    <div id="quizContainer"></div>
+  </div>
+</div>
+
+<!-- STEP 2: PERSONA MATCH -->
+<div class="screen" id="screen-2">
+  <div class="content">
+    <div class="reveal-center anim-fade-up">
+      <div class="reveal-title">Your PM DNA for this problem…</div>
+      <h1 class="hero-title reveal-headline" id="revealHeadline" style="text-align:center;margin-bottom:6px;"></h1>
+    </div>
+    <div class="persona-blend-row" id="blendRow"></div>
+    <div class="blend-meaning" id="blendMeaning"></div>
+    <div style="text-align:center;">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">
+        Now let's see how each expert would tackle this — and where they violently disagree.
+      </p>
+      <button class="btn btn-primary" onclick="goToStep(3)">See The Expert Breakdown →</button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3: THE SPLIT + ARENA -->
+<div class="screen" id="screen-3">
+  <div class="content wide">
+    <div class="pill pill-red anim-fade-up">The Split</div>
+    <h1 class="hero-title anim-fade-up" style="margin-bottom:20px;">
+      Where they <span style="color:var(--red)">disagree</span>
+    </h1>
+    <div class="split-box anim-fade-up">
+      <div class="split-question" id="splitQuestion"></div>
+      <div class="split-positions" id="splitPositions"></div>
+    </div>
+
+    <div class="pill pill-accent">The Arena</div>
+    <h2 style="font-size:24px;font-weight:800;margin-bottom:20px;">5 Perspectives. Zero Agreement.</h2>
+
+    <div class="compare-toggle-row">
+      <span style="font-size:13px;color:var(--muted);">View:</span>
+      <button class="compare-toggle active" id="singleViewBtn" onclick="toggleView('single')">Single Persona</button>
+      <button class="compare-toggle" id="compareViewBtn" onclick="toggleView('compare')">Compare Two</button>
+    </div>
+
+    <div id="singleView">
+      <div class="arena-tabs" id="arenaTabs"></div>
+      <div id="arenaContent"></div>
+    </div>
+    <div id="compareViewSection" class="compare-view"></div>
+
+    <div style="text-align:center;margin-top:36px;">
+      <button class="btn btn-primary" onclick="goToStep(4)">Cast Your Vote →</button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 4: VOTE -->
+<div class="screen" id="screen-4">
+  <div class="content">
+    <div id="votePart1">
+      <div class="pill pill-yellow anim-fade-up">Your Verdict</div>
+      <h1 class="hero-title anim-fade-up">
+        Whose approach would <span style="color:var(--yellow)">you</span> run?
+      </h1>
+      <p style="color:var(--muted);margin-bottom:24px;" class="anim-fade-up delay-1">
+        If you were the PM on this problem, whose playbook do you follow? Pick one.
+      </p>
+      <div class="vote-grid" id="voteGrid"></div>
+    </div>
+
+    <div id="votePart2" style="display:none;">
+      <div class="vote-your-pick anim-fade-up" id="voteYourPick"></div>
+      <div class="quiz-divider" style="margin:24px 0;"></div>
+      <div class="anim-fade-up" style="text-align:center;margin-bottom:16px;">
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;">How would you describe this problem?</h3>
+        <p style="font-size:13px;color:var(--muted);">One more instinct check — what's your gut reaction?</p>
+      </div>
+      <div class="reaction-row" id="reactionRow">
+        <button class="reaction-btn" onclick="react(this,'ship')">🚀 Ship It<span class="reaction-sub">Move fast, learn live</span></button>
+        <button class="reaction-btn" onclick="react(this,'discover')">🧯 Needs Discovery<span class="reaction-sub">Validate before building</span></button>
+        <button class="reaction-btn" onclick="react(this,'debate')">🤺 Debate This<span class="reaction-sub">It genuinely depends</span></button>
+      </div>
+    </div>
+
+    <div class="vote-results" id="voteResults">
+      <h3 style="font-size:16px;font-weight:700;margin-bottom:6px;">Here's how others voted</h3>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">Live community votes</p>
+      <div id="voteResultBars"></div>
+      <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);text-align:center;">
+        <button class="btn btn-primary" onclick="goToStep(5)">See Your PM DNA Card →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 5: DNA CARD -->
+<div class="screen" id="screen-5">
+  <div class="content">
+    <div class="complete-banner anim-fade-up">
+      <div class="confetti">🎯</div>
+      <h2>Problem Complete!</h2>
+      <p id="completeBannerMsg"></p>
+    </div>
+
+    <div class="unlock-progress anim-fade-up delay-1">
+      <h3>Progress to Your PM DNA Card</h3>
+      <div class="unlock-dots" id="unlockDots"></div>
+      <div class="unlock-label" id="unlockLabel"></div>
+    </div>
+
+    <div class="dna-card-wrapper anim-fade-up delay-2">
+      <div class="dna-card dna-card-blur" id="dnaCardPreview">
+        <div class="dna-card-title">Your PM DNA</div>
+        <div class="donut-wrap">
+          <svg width="140" height="140" viewBox="0 0 140 140" id="donutSvg"></svg>
+          <div class="donut-center">
+            <div style="font-size:11px;color:var(--muted);line-height:1.3;">PM<br>DNA</div>
+          </div>
+        </div>
+        <div class="dna-legend" id="dnaLegend"></div>
+        <div class="dna-archetype" id="dnaArchetype"></div>
+        <div class="dna-tagline" id="dnaTagline"></div>
+      </div>
+      <div class="dna-lock-overlay" id="dnaLockOverlay">
+        <div class="lock-icon">🔒</div>
+        <p>Complete 3 problems to unlock and share your PM DNA Card</p>
+      </div>
+    </div>
+
+    <div class="share-btn-row anim-fade-up delay-3">
+      <button class="btn btn-primary btn-disabled" id="shareBtn">Share on LinkedIn</button>
+      <button class="btn btn-secondary" onclick="window.location.href='/tools/pm-multiverse'">Try Another Problem</button>
+    </div>
+  </div>
+</div>
+
+<script src="/static/pmm/js/multiverse.js"></script>
+</body>
+</html>

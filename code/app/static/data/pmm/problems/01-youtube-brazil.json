@@ -1,0 +1,409 @@
+{
+  "id": "youtube-brazil",
+  "title": "Launch YouTube in Brazil",
+  "tags": ["Strategy", "Market Entry"],
+  "prompt": "YouTube wants to launch in Brazil. There are 10M potential creators but almost zero local content. Advertisers won't pay without scale. Creators won't join without an audience. You're the PM. You have 90 days.",
+  "problemDefinition": [
+    "Classic two-sided marketplace cold start: creators need viewers, viewers need content, advertisers need both",
+    "Competitive pressure: TikTok, Instagram Reels, and Kwai are already recruiting Brazilian creators",
+    "Cultural complexity: Brazil has intense passion in specific categories (funk, futebol, novela culture) — a generic launch will fail"
+  ],
+
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move as PM?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Deep discovery research",
+            "text": "Run discovery interviews with Brazilian creators, viewers, and advertisers. Map the opportunity space before committing to anything.",
+            "personaWeights": { "cagan": 2, "torres": 3, "doshi": 1, "lenny": 0, "exec": 0 }
+          },
+          {
+            "id": "q1b",
+            "label": "Find the sharpest wedge",
+            "text": "Identify the one content category where Brazil already has passionate fans but no local supply — and nail that first.",
+            "personaWeights": { "cagan": 1, "torres": 0, "doshi": 3, "lenny": 2, "exec": 1 }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship an MVP this month",
+            "text": "Get something live fast. 90 days of real data beats 90 days of planning. Hire 10 seed creators and ship.",
+            "personaWeights": { "cagan": 0, "torres": 0, "doshi": 0, "lenny": 1, "exec": 3 }
+          },
+          {
+            "id": "q1d",
+            "label": "Map the growth loop first",
+            "text": "Model the creator-viewer flywheel. Identify where supply or demand breaks first, then design an experiment to de-risk it.",
+            "personaWeights": { "cagan": 1, "torres": 1, "doshi": 2, "lenny": 3, "exec": 0 }
+          }
+        ]
+      },
+      {
+        "text": "YouTube Brazil has 10M potential creators but no local content yet. What do you prioritize?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Validate creator willingness first",
+            "text": "Before investing in supply, prove creators will actually show up. Run assumption tests with 100 potential creators.",
+            "personaWeights": { "cagan": 2, "torres": 3, "doshi": 1, "lenny": 0, "exec": 0 }
+          },
+          {
+            "id": "q2b",
+            "label": "Partner with top 100 creators",
+            "text": "Identify Brazil's top micro-influencers and offer white-glove onboarding, early monetization access, and dedicated support.",
+            "personaWeights": { "cagan": 1, "torres": 0, "doshi": 2, "lenny": 3, "exec": 1 }
+          },
+          {
+            "id": "q2c",
+            "label": "Launch with music creators only",
+            "text": "Music is Brazil's cultural heartbeat. Start with a single category that already has demand and concentrate all resources there.",
+            "personaWeights": { "cagan": 0, "torres": 0, "doshi": 3, "lenny": 2, "exec": 1 }
+          },
+          {
+            "id": "q2d",
+            "label": "Build creator referral engine",
+            "text": "Launch a creator-refers-creator program. Give existing creators incentives to recruit peers — let the supply side grow itself.",
+            "personaWeights": { "cagan": 0, "torres": 1, "doshi": 1, "lenny": 2, "exec": 3 }
+          }
+        ]
+      },
+      {
+        "text": "Your VP asks for a launch date. What do you say?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "\"After we've de-risked the 4 key assumptions\"",
+            "text": "Set a date only after running discovery sprints on creator supply, viewer demand, advertiser appetite, and content moderation.",
+            "personaWeights": { "cagan": 3, "torres": 2, "doshi": 1, "lenny": 0, "exec": 0 }
+          },
+          {
+            "id": "q3b",
+            "label": "\"6 weeks — here's the wedge we'll nail first\"",
+            "text": "Commit to a date, but scope it to the music creator wedge. Not a full launch — a sharp bet with clear success criteria.",
+            "personaWeights": { "cagan": 0, "torres": 1, "doshi": 3, "lenny": 2, "exec": 1 }
+          },
+          {
+            "id": "q3c",
+            "label": "\"2 weeks — we'll learn more from being live\"",
+            "text": "Ship in 2 weeks with whatever we have. We'll get 100x better signal from real users than from any research sprint.",
+            "personaWeights": { "cagan": 0, "torres": 0, "doshi": 0, "lenny": 1, "exec": 3 }
+          },
+          {
+            "id": "q3d",
+            "label": "\"When we hit 1000 activated creators\"",
+            "text": "Don't give a date — give a milestone. We launch when we have creator supply. Map the work backward from that.",
+            "personaWeights": { "cagan": 1, "torres": 3, "doshi": 2, "lenny": 1, "exec": 0 }
+          }
+        ]
+      }
+    ]
+  },
+
+  "theSplit": {
+    "question": "Should YouTube ship in Brazil before validating the creator supply?",
+    "sides": [
+      {
+        "position": "SHIP NOW",
+        "personas": ["Execution AI Monster", "Lenny Rachitsky"],
+        "reasoning": "Market moves fast. 90 days of live data beats 90 days of research. Ship, learn, iterate."
+      },
+      {
+        "position": "VALIDATE FIRST",
+        "personas": ["Marty Cagan", "Teresa Torres"],
+        "reasoning": "Shipping without creator supply validation is how you destroy a brand in a new market."
+      },
+      {
+        "position": "SHIP THE WEDGE",
+        "personas": ["Shreyas Doshi"],
+        "reasoning": "Wrong question. Don't ship 'YouTube Brazil' — ship the sharpest wedge that de-risks the flywheel."
+      }
+    ]
+  },
+
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "📚",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Prove the creator flywheel works before you scale",
+      "spicyQuote": "If you launch in Brazil without proving creators will stay, you haven't launched — you've created an expensive ghost town.",
+      "breakdown": [
+        "The core risk is supply-side, not demand-side — viewers will come if content exists",
+        "Value risk: Will creators produce content worth watching? Unknown.",
+        "Feasibility risk: Can YouTube's recommendation engine work with <1% local content?",
+        "Business viability: Advertisers need brand-safe, local-language content to spend"
+      ],
+      "solution": [
+        "Run a 6-week continuous discovery sprint with 50 potential Brazilian creators",
+        "Test creator willingness with a lightweight 'Creator Early Access' landing page",
+        "Define explicit go/no-go criteria before any engineering investment",
+        "Only launch when you can defend the four risks to the board"
+      ],
+      "disagreement": "The Execution AI Monster's 'ship in 2 weeks' approach is how you enter a market with a dud and spend 2 years cleaning up the brand damage. Lenny's growth loop model assumes you have supply to run experiments on — you don't. Doshi's wedge strategy is closer, but skips the discovery work that tells you *which* wedge is real.",
+      "mvp": [
+        "'Creator Early Access' waitlist with 1,000 Brazilian sign-ups",
+        "Structured discovery interviews with 50 potential creators",
+        "Assumption testing: will they post weekly for 90 days?",
+        "Go/no-go scorecard shared with exec before any $1 of engineering"
+      ],
+      "metrics": [
+        "Creator interview completion rate (target: 50 within 3 weeks)",
+        "Assumption validation score across 4 risk categories",
+        "Creator stated intent to post weekly (proxy for supply viability)",
+        "Advertiser brand-safety assessment: go or no-go"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery — Creator interviews, assumption mapping, risk scorecard",
+        "Weeks 3-4: Validate — Test creator intent with lightweight landing page + follow-ups",
+        "Weeks 5-6: Go/No-Go — Exec review, resource commitment, clear success definition",
+        "Weeks 7-12: Seed Launch — 100 curated creators, full support, strict quality bar"
+      ],
+      "scoreboard": {
+        "speed": 4.0,
+        "riskManagement": 9.0,
+        "strategicClarity": 8.0,
+        "growthPotential": 6.5
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "🔭",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map the opportunity tree before committing to any solution",
+      "spicyQuote": "Every week we're not talking to Brazilian creators is a week we're building on assumptions. I don't care about your launch date — I care about your evidence threshold.",
+      "breakdown": [
+        "The opportunity space isn't 'launch YouTube Brazil' — it's 'enable Brazilian creator income'",
+        "Current solutions: TikTok, Instagram Reels, local platforms — creators have options",
+        "Key assumption gap: We don't know what's actually blocking creator supply",
+        "The Opportunity Solution Tree needs branches before you can pick a leaf"
+      ],
+      "solution": [
+        "Weekly touchpoints with 5-7 Brazilian creators — not a one-time research sprint",
+        "Map the full Opportunity Solution Tree: creator blockers, viewer needs, advertiser constraints",
+        "Run assumption tests weekly: fast, cheap, specific to one branch of the OST",
+        "Identify the sub-problem where evidence is strongest before writing a line of code"
+      ],
+      "disagreement": "Cagan's 6-week discovery sprint is a step in the right direction, but it's still too waterfall — one big research phase followed by a decision. Discovery should be continuous. The Execution AI Monster's approach is the opposite of what the evidence supports: you can't iterate your way out of a fundamental supply problem. Doshi's strategic clarity is admirable but he's solving the wrong problem if we haven't validated the opportunity.",
+      "mvp": [
+        "Ongoing weekly interviews with 5-7 potential Brazilian creators",
+        "OST diagram with assumptions mapped per branch",
+        "Assumption tests: Creator income viability, audience discovery mechanism",
+        "One solved sub-problem with evidence before any broad launch"
+      ],
+      "metrics": [
+        "Weekly creator interview cadence (are we learning, or just talking?)",
+        "Assumption invalidation rate (how fast are we killing bad ideas?)",
+        "Opportunity branches validated vs. total in OST",
+        "Evidence confidence score per solution direction"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly Cadence — Establish creator interview rhythm — this never stops",
+        "Weeks 2-4: OST Build — Map opportunities, rank by evidence potential, set assumption tests",
+        "Weeks 5-8: Test Branches — Run cheap assumption tests on top 3 OST branches",
+        "Week 9+: Evidence-led Build — Build only what the OST + evidence supports"
+      ],
+      "scoreboard": {
+        "speed": 3.5,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.5,
+        "growthPotential": 5.0
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "⚔️",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Pick the sharpest wedge, concentrate all resources, measure ruthlessly",
+      "spicyQuote": "Everyone is asking 'when do we launch.' That's a Level 2 question. The Level 1 question is: what is the one thing that, if true, makes the entire flywheel spin?",
+      "breakdown": [
+        "This is a two-sided market cold-start — the hardest class of product problem",
+        "Anti-goal: Do NOT launch a 'general' YouTube Brazil — that's the recipe for a thin, unmemorable product",
+        "The strategic insight: Brazil has intense passion in specific categories (funk, futebol, novela culture)",
+        "LNO analysis: The Leverage move is picking the right wedge. Everything else is Overhead."
+      ],
+      "solution": [
+        "Pre-mortem: List the 5 ways this fails. 'No local content' and 'wrong wedge' top the list.",
+        "Identify the one content category where Brazil has outsized passion and zero good supply",
+        "Concentrate all resources — creator support, monetization access, editorial — on that one wedge",
+        "Define crisp success criteria: 500 activated creators, 2M local views, before expanding"
+      ],
+      "disagreement": "Cagan and Torres are right to want validation, but they risk analysis paralysis — 6 weeks of interviews can give you 6 more weeks of uncertainty. The Execution AI Monster's shipping speed is admirable but strategically reckless: you'll ship the wrong thing fast. Lenny's growth loop thinking is good but skips the upstream question of which wedge to run the loop on.",
+      "mvp": [
+        "Wedge selection framework: score 5 categories on passion, supply gap, monetization speed",
+        "Secure 50 music/funk creators with exclusive early access + monetization Day 1",
+        "Define the 'activated creator' bar before launch (posts 4x/week, 10K+ views)",
+        "Ship music-only YouTube Brazil with a clear 90-day success scorecard"
+      ],
+      "metrics": [
+        "Wedge category: creator supply within 30 days (target: 500)",
+        "Week-4 creator retention rate (are they sticking?)",
+        "Local content per category per day (supply health metric)",
+        "90-day go/expand decision: hit criteria or pivot wedge"
+      ],
+      "roadmap": [
+        "Week 1: Wedge Selection — Score categories, pick music/funk, pre-mortem the bet",
+        "Weeks 2-4: Creator Seeding — 50 curated creators, full white-glove support, monetization access",
+        "Weeks 5-8: Activate & Measure — Track activated creator rate, adjust creator support model",
+        "Weeks 9-12: Wedge Expansion — If 500 activated creators: expand to adjacent category"
+      ],
+      "scoreboard": {
+        "speed": 5.5,
+        "riskManagement": 7.0,
+        "strategicClarity": 9.5,
+        "growthPotential": 7.0
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "📈",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Personally recruit the first 100 creators, then build the referral flywheel",
+      "spicyQuote": "The best cold-start playbook always has one pattern: the founding team personally recruits the first 100 supply-side users. Airbnb photographed apartments. Uber drove cars. YouTube Brazil needs to personally activate the first 100 creators.",
+      "breakdown": [
+        "This is a marketplace cold-start problem — solved dozens of times, but only one way works",
+        "The creator-viewer loop only spins when local content density hits a critical threshold",
+        "Historical benchmark: ~500 active local creators before the algorithmic flywheel takes over",
+        "The fastest path: high-touch creator recruitment + referral program + viewer feedback loop"
+      ],
+      "solution": [
+        "Personal recruitment: team members directly recruit the first 100 Brazilian creators",
+        "Creator referral program: give activated creators incentives to recruit 2 peers each",
+        "Weekly experiment cadence: test creator retention interventions and pick winners",
+        "Track the 'creator D30 retention' metric obsessively — if it's <50%, nothing else matters"
+      ],
+      "disagreement": "Torres's continuous discovery cadence is great but moves too slow for a market window. Brazil's creator economy is growing now — Kwai, TikTok, and Instagram are all recruiting. Cagan's risk framework is right on the theory, but he'd still be interviewing creators while TikTok locks them up. The Execution AI Monster's 'ship it' approach is close, but misses the creator retention flywheel — you can't acquisition-out your way to creator stickiness.",
+      "mvp": [
+        "Direct personal outreach to 200 Brazilian creators by YouTube team members",
+        "Creator referral program: $500 bonus per recruited creator who activates",
+        "Weekly experiment: test 3 creator-retention interventions, cut losers",
+        "Creator dashboard: show earnings trajectory and comparative benchmark"
+      ],
+      "metrics": [
+        "Creator D30 retention (north star: >50% posting weekly at day 30)",
+        "Creator referral rate (target: each activated creator recruits 1.5 peers)",
+        "Time to first video posted (target: <72 hours from signup)",
+        "Local content density by category (trigger for algorithmic promotion)"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Manual Hustle — Team personally recruits 100 creators — no shortcuts",
+        "Weeks 3-5: Referral Engine — Launch creator referral, test incentive structures weekly",
+        "Weeks 6-9: Retention Loop — Experiment on D7 and D30 creator retention interventions",
+        "Weeks 10-12: Flywheel Check — Hit 500 active creators → algorithmic promotion kicks in"
+      ],
+      "scoreboard": {
+        "speed": 7.0,
+        "riskManagement": 5.0,
+        "strategicClarity": 6.5,
+        "growthPotential": 9.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "⚡",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship in 2 weeks, learn from real data, iterate from a position of being live",
+      "spicyQuote": "You have 90 days. TikTok Brazil has been running for 2 years. The market isn't waiting for your discovery sprint. Ship in 2 weeks. Iterate from a position of being live rather than being right.",
+      "breakdown": [
+        "The biggest risk isn't a bad launch — it's showing up late to a market TikTok already owns",
+        "Brazil is a high-context, social-first culture: content spreads fast when it hits",
+        "Two weeks to get something live: seed 20 creators, basic monetization, Brazilian recommendations",
+        "Every week offline is a week TikTok reinforces its habits with Brazilian creators"
+      ],
+      "solution": [
+        "Hire 5 contractor creator scouts in Brazil this week — start recruiting immediately",
+        "Set a 14-day live deadline: whatever is ready ships, everything else iterates post-launch",
+        "Give creators a 6-month revenue guarantee: remove the economic risk of early adoption",
+        "Ship, measure, iterate — don't let perfect be the enemy of live"
+      ],
+      "disagreement": "Cagan and Torres would still be running discovery interviews in Week 6 while TikTok signs exclusive creator deals. Their four-risk framework assumes you have time — you don't. Doshi's wedge strategy adds a planning layer that delays shipping by 2-3 weeks. Lenny's personal outreach is right, but the timelines are too slow. In fast-moving markets, being live with a 60-out-of-100 product beats being in beta with a 90-out-of-100 product.",
+      "mvp": [
+        "Launch in 14 days: 20 seed creators, Brazilian UI localization, basic recommendations",
+        "6-month revenue guarantee for first 100 creators (removes supply-side risk)",
+        "Live data dashboard: track creator activity and viewer retention from Day 1",
+        "Weekly iteration sprint: one improvement cycle per week, shipped on Fridays"
+      ],
+      "metrics": [
+        "Days to first Brazilian creator video (target: <14 from project kick-off)",
+        "Creator activation in Week 1 (target: 20 posting weekly)",
+        "Week-2 viewer retention (are people watching Brazilian content?)",
+        "Competitive heat map: are we signing creators before TikTok does?"
+      ],
+      "roadmap": [
+        "Days 1-7: Sprint Setup — Hire scouts, recruit 20 creators, localize UI — ship in 14 days",
+        "Days 8-14: Launch Day — Go live. Broken things are fine. Offline is not.",
+        "Weeks 3-6: Fast Iteration — Weekly ship cycles. Fix what breaks. Double what works.",
+        "Weeks 7-12: Scale — Revenue guarantee program, 500 creators, algorithmic growth"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 2.5,
+        "strategicClarity": 5.0,
+        "growthPotential": 8.0
+      }
+    }
+  },
+
+  "mvpOptions": [
+    {
+      "name": "Creator Early Access Program",
+      "reason": "Validate supply-side willingness before any engineering investment. Cheapest way to test if creators will actually show up.",
+      "personaAlignment": ["cagan", "torres"]
+    },
+    {
+      "name": "Music Creator Wedge Launch",
+      "reason": "Concentrate all resources on Brazil's strongest content category. Sharp scope, clear success criteria, manageable risk.",
+      "personaAlignment": ["doshi"]
+    },
+    {
+      "name": "Personal Recruitment + Referral Engine",
+      "reason": "Hand-recruit the first 100, then let the referral flywheel scale supply. Proven cold-start pattern from Airbnb, Uber.",
+      "personaAlignment": ["lenny"]
+    },
+    {
+      "name": "14-Day Blitz Launch",
+      "reason": "Ship whatever is ready in 2 weeks. Revenue-guarantee creators. Learn from live data instead of hypotheticals.",
+      "personaAlignment": ["exec"]
+    }
+  ],
+
+  "premortem": [
+    "Creator churn: We recruit 500 creators but 80% stop posting after Week 2 because monetization is too slow — we built supply that evaporated",
+    "Wrong wedge: We bet on music creators but the real opportunity was futebol commentary — 3 months wasted on the wrong category",
+    "Competitive lockout: TikTok signs exclusive deals with Brazil's top 50 creators while we're still in discovery — we lose the supply war before launching"
+  ],
+
+  "vitalQuestion": "If you could only know one thing before committing to the launch plan — creator willingness to post weekly, viewer demand for local content, advertiser willingness to pay, or competitive timeline pressure — which would it be, and why?",
+
+  "voteResults": {
+    "cagan": 18,
+    "torres": 12,
+    "doshi": 35,
+    "lenny": 22,
+    "exec": 13
+  },
+
+  "pmDnaBlends": {
+    "cagan_torres": { "name": "The Evidence Purist", "tagline": "You won't ship until the data says yes" },
+    "cagan_doshi": { "name": "The Strategic Guardian", "tagline": "You de-risk with frameworks, not gut feel" },
+    "cagan_lenny": { "name": "The Measured Builder", "tagline": "You build for growth but validate first" },
+    "torres_doshi": { "name": "The Structured Thinker", "tagline": "You map the problem before you solve it" },
+    "torres_lenny": { "name": "The Discovery Optimizer", "tagline": "You find opportunities then measure what works" },
+    "doshi_lenny": { "name": "The Strategic Experimenter", "tagline": "You pick the right wedge then run the loop" },
+    "doshi_exec": { "name": "The Fast Strategist", "tagline": "You think sharp then move fast" },
+    "lenny_exec": { "name": "The Growth Hacker", "tagline": "You ship loops and measure everything" },
+    "cagan_exec": { "name": "The Paradox PM", "tagline": "You want to validate AND ship yesterday" },
+    "torres_exec": { "name": "The Rapid Discoverer", "tagline": "You discover fast by building real things" }
+  }
+}

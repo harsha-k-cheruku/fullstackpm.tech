@@ -1,0 +1,525 @@
+{
+  "id": "meta-marketplace",
+  "title": "Monetize Facebook Marketplace without killing growth",
+  "tags": [
+    "Monetization",
+    "Marketplace",
+    "Strategy"
+  ],
+  "prompt": "Facebook Marketplace has 1B monthly users but monetization is near-zero. Leadership wants to introduce seller fees (5% transaction fee) without killing growth. Craigslist died trying this. eBay succeeded. You're the PM. How do you monetize without destroying the free marketplace culture?",
+  "problemDefinition": [
+    "Huge user base with near-zero revenue creates pressure to monetize",
+    "Marketplace culture is explicitly free and fee-sensitive",
+    "Competitive risk: fees could push sellers to free alternatives"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Interview power sellers and buyers to map price sensitivity and value perception.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Pick the wedge",
+            "text": "Start with a narrow category where value is highest (e.g., cars).",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship fees now",
+            "text": "Introduce a small fee immediately and measure churn in real time.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Experiment loop",
+            "text": "Run pricing experiments to find elasticity and optimize conversion.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Who should pay first?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Power sellers",
+            "text": "Charge high-volume sellers who already monetize through Marketplace.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 1,
+              "doshi": 2,
+              "lenny": 1,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Buyers",
+            "text": "Add buyer protection or escrow fees tied to trust value.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 1,
+              "lenny": 2,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Category-based",
+            "text": "Charge only in high-value categories (cars, electronics).",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 1,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Everyone",
+            "text": "Flat fee everywhere and iterate on fallout quickly.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the biggest risk?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Value perception",
+            "text": "If users don't see added value, fees will feel like a tax.",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic focus",
+            "text": "If we monetize too broadly, we lose the core marketplace.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed",
+            "text": "If we don't move fast, leadership will force a bad fee rollout.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Elasticity",
+            "text": "If price elasticity is high, a tiny fee can crash volume.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should Facebook Marketplace introduce fees broadly or only in a focused wedge first?",
+    "sides": [
+      {
+        "position": "FOCUSED WEDGE",
+        "personas": [
+          "Shreyas Doshi",
+          "Marty Cagan"
+        ],
+        "reasoning": "Monetize where value is clear before touching the broader marketplace."
+      },
+      {
+        "position": "SHIP BROAD",
+        "personas": [
+          "Execution AI Monster",
+          "Lenny Rachitsky"
+        ],
+        "reasoning": "Price elasticity needs real data; broad rollout yields signal fast."
+      },
+      {
+        "position": "DISCOVER FIRST",
+        "personas": [
+          "Teresa Torres"
+        ],
+        "reasoning": "Map user value perception before choosing any fee model."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Prove value exchange before charging fees",
+      "spicyQuote": "If users feel you're taxing their free marketplace, you've destroyed the trust that made it valuable.",
+      "breakdown": [
+        "Value risk: do users see a clear value exchange for fees?",
+        "Viability risk: fees may kill liquidity and ad revenue",
+        "Usability risk: fee confusion drives churn",
+        "The best companies validate value before monetization"
+      ],
+      "solution": [
+        "Test fees in a narrow category with clear value",
+        "Offer seller tools or protection as the value exchange",
+        "Measure impact on liquidity and trust",
+        "Scale only if value risk clears"
+      ],
+      "disagreement": "Execution AI Monster will ship fees without proving value and call it learning. Lenny will optimize elasticity, but if users don't trust the value exchange, the loop is broken. Doshi's wedge is right but still needs hard validation. Torres aligns on discovery but must tie it to viability outcomes.",
+      "mvp": [
+        "Category-specific fee pilot",
+        "Seller protection bundle",
+        "Trust + support messaging",
+        "Go/no-go scorecard"
+      ],
+      "metrics": [
+        "Liquidity change (listings + transactions)",
+        "Seller churn rate",
+        "NPS after fee introduction",
+        "Revenue per transaction"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery + risk mapping",
+        "Weeks 3-4: Wedge pilot",
+        "Weeks 5-6: Viability review",
+        "Weeks 7-10: Scale or stop"
+      ],
+      "scoreboard": {
+        "speed": 4.0,
+        "riskManagement": 9.0,
+        "strategicClarity": 8.0,
+        "growthPotential": 6.5
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map value perception and price sensitivity before charging",
+      "spicyQuote": "Fees are just a tax unless we've proven the opportunity they're solving.",
+      "breakdown": [
+        "Define desired outcome (revenue without liquidity loss)",
+        "Map opportunities: trust, protection, seller tools",
+        "Weekly interviews with buyers and sellers",
+        "Test value exchange before pricing"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree",
+        "Run weekly interviews + prototype tests",
+        "Test value propositions before fee rollout",
+        "Use evidence to choose the fee model"
+      ],
+      "disagreement": "Cagan's risk framing is aligned, but this requires continuous evidence, not a one-off pilot. Lenny and Execution AI Monster will ship fees without understanding value perception. Doshi's wedge is fine, but the wedge still needs opportunity validation.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Value proposition prototypes",
+        "Interview snapshot archive",
+        "Evidence score per opportunity"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Perceived value rating",
+        "Elasticity estimate",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence",
+        "Weeks 2-4: Opportunity mapping",
+        "Weeks 5-6: Value tests",
+        "Weeks 7-10: Evidence-led rollout"
+      ],
+      "scoreboard": {
+        "speed": 3.0,
+        "riskManagement": 9.0,
+        "strategicClarity": 7.5,
+        "growthPotential": 5.0
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Monetize the highest-value wedge first",
+      "spicyQuote": "Broad fees are the peanut-butter strategy of monetization. Choose a wedge or burn the marketplace.",
+      "breakdown": [
+        "This is a strategy decision disguised as a pricing tweak",
+        "Opportunity cost: broad fees risk the whole marketplace",
+        "Pre-mortem: liquidity collapse, trust loss, seller churn",
+        "Wedge monetization is the leverage move"
+      ],
+      "solution": [
+        "Pick a high-value category wedge",
+        "Design value exchange specific to that wedge",
+        "Run a pre-mortem and define success criteria",
+        "Expand only if the wedge proves durable"
+      ],
+      "disagreement": "Torres and Cagan will spend too long validating while leadership pushes a broad fee. Execution AI Monster will ship fees everywhere and trigger backlash. Lenny will optimize elasticity, but without a strategic wedge it's still a tax.",
+      "mvp": [
+        "Cars category fee pilot",
+        "Seller verification badge",
+        "Fraud protection bundle",
+        "Wedge success scorecard"
+      ],
+      "metrics": [
+        "Wedge liquidity retention",
+        "Seller churn in wedge",
+        "Revenue per transaction",
+        "Trust score changes"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge pilot",
+        "Weeks 5-6: Measure + adjust",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 5.0,
+        "riskManagement": 7.5,
+        "strategicClarity": 9.5,
+        "growthPotential": 7.5
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Run pricing experiments to find elasticity fast",
+      "spicyQuote": "You don't guess price sensitivity at 1B users. You experiment and let the data speak.",
+      "breakdown": [
+        "Define activation: successful transaction with fee applied",
+        "Map loop: listing -> sale -> buyer trust -> repeat",
+        "Benchmark against eBay and OfferUp",
+        "Run pricing experiments to find elasticity"
+      ],
+      "solution": [
+        "Instrument the funnel and run fee experiments",
+        "Segment by category and seller type",
+        "Scale the highest-revenue / lowest-churn model",
+        "Iterate weekly based on data"
+      ],
+      "disagreement": "Torres wants more discovery, but pricing elasticity is a data problem. Cagan's risk framing is right, but experiments are how you answer it. Doshi's wedge is helpful, but you still need the loop and data. Execution AI Monster is fast, but without measurement discipline, speed is noise.",
+      "mvp": [
+        "Pricing experiment framework",
+        "Elasticity dashboard",
+        "Category segmentation",
+        "Feature flags"
+      ],
+      "metrics": [
+        "Revenue per active seller",
+        "Transaction volume change",
+        "Repeat purchase rate",
+        "Price elasticity coefficient"
+      ],
+      "roadmap": [
+        "Week 1: Benchmark + experiment design",
+        "Weeks 2-3: Run pricing tests",
+        "Weeks 4-6: Scale winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 7.0,
+        "riskManagement": 5.5,
+        "strategicClarity": 6.5,
+        "growthPotential": 9.0
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship a small fee now and learn from backlash",
+      "spicyQuote": "You can debate fees for six months or collect real data in six days. Ship it.",
+      "breakdown": [
+        "Building is discovery   ship to learn",
+        "At this scale, you need real data fast",
+        "Small fees are reversible if backlash hits",
+        "Speed beats perfect pricing models"
+      ],
+      "solution": [
+        "Introduce a 1-2% fee to 5% of users",
+        "Monitor churn and transaction volume daily",
+        "Iterate pricing weekly",
+        "Scale only if metrics hold"
+      ],
+      "disagreement": "Cagan and Torres will still be researching while leadership forces a broad fee. Doshi's wedge is smart but too slow. Lenny is close, but don't wait for perfect experiments   ship and learn.",
+      "mvp": [
+        "Small fee pilot",
+        "Churn monitoring dashboard",
+        "In-app messaging",
+        "Rollback switch"
+      ],
+      "metrics": [
+        "Time-to-ship",
+        "Transaction volume change",
+        "Seller churn rate",
+        "Revenue per transaction"
+      ],
+      "roadmap": [
+        "Days 1-7: Pilot fee rollout",
+        "Weeks 2-3: Iterate pricing",
+        "Weeks 4-6: Scale if stable",
+        "Weeks 7-10: Add value features"
+      ],
+      "scoreboard": {
+        "speed": 9.0,
+        "riskManagement": 2.0,
+        "strategicClarity": 5.0,
+        "growthPotential": 7.5
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Category Wedge Monetization",
+      "reason": "Charge only in high-value categories to protect core liquidity.",
+      "personaAlignment": [
+        "doshi",
+        "cagan"
+      ]
+    },
+    {
+      "name": "Value Exchange Bundle",
+      "reason": "Add seller protection tools before introducing fees.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    },
+    {
+      "name": "Pricing Experiment MVP",
+      "reason": "Run elasticity tests to find the fee sweet spot.",
+      "personaAlignment": [
+        "lenny"
+      ]
+    },
+    {
+      "name": "Rapid Fee Pilot",
+      "reason": "Ship small fees quickly and iterate on backlash data.",
+      "personaAlignment": [
+        "exec"
+      ]
+    }
+  ],
+  "premortem": [
+    "Liquidity collapse: sellers leave and buyers can't find inventory",
+    "Trust backlash: users see fees as a tax and stop using Marketplace",
+    "Revenue mirage: fees rise but total GMV falls"
+  ],
+  "vitalQuestion": "What value exchange is strong enough that sellers will tolerate a fee?",
+  "voteResults": {
+    "cagan": 20,
+    "torres": 10,
+    "doshi": 34,
+    "lenny": 22,
+    "exec": 14
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

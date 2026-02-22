@@ -1,0 +1,525 @@
+{
+  "id": "netflix-podcasts",
+  "title": "Netflix entering podcasts",
+  "tags": [
+    "New Category",
+    "Strategy",
+    "Entertainment"
+  ],
+  "prompt": "Netflix is considering launching podcasts \u2014 companion audio content for its top shows (behind-the-scenes, cast interviews, deep dives). Spotify proved podcasts drive retention. But Netflix has never done audio. You're the PM. Should Netflix enter podcasts, and if so, how?",
+  "problemDefinition": [
+    "New category risk: Netflix has no audio DNA",
+    "Potential retention boost but unclear demand for Netflix-branded podcasts",
+    "Build vs partner tradeoff with limited internal audio expertise"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Interview super-fans to test whether podcast companions are a real need.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Pick the wedge",
+            "text": "Focus on top 10 shows only and make those podcasts world-class.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship fast",
+            "text": "Launch a podcast feed for one show this month and measure retention.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Growth loop",
+            "text": "Define activation (podcast listen after episode) and run experiments.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Build or partner?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Partner first",
+            "text": "Work with existing podcast studios to reduce execution risk.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Build in-house",
+            "text": "Own the IP and build a Netflix-native podcast pipeline.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 2,
+              "lenny": 1,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Hybrid",
+            "text": "Partner for production but keep distribution in Netflix app.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 1,
+              "doshi": 2,
+              "lenny": 2,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Ship now",
+            "text": "Publish audio in-app this quarter, production quality can iterate.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the core risk?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Value risk",
+            "text": "Do podcasts actually increase retention for Netflix subscribers?",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic focus",
+            "text": "If we do too many shows, quality drops and brand dilutes.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed",
+            "text": "If we wait, Spotify and YouTube own companion audio.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Activation",
+            "text": "If listeners don t convert to watchers, the loop fails.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should Netflix launch podcasts broadly or focus on a top-show wedge first?",
+    "sides": [
+      {
+        "position": "TOP-SHOW WEDGE",
+        "personas": [
+          "Shreyas Doshi",
+          "Marty Cagan"
+        ],
+        "reasoning": "Quality and focus matter in a new category; start with the biggest shows."
+      },
+      {
+        "position": "SHIP BROAD",
+        "personas": [
+          "Execution AI Monster",
+          "Lenny Rachitsky"
+        ],
+        "reasoning": "You need scale and data to know what works; ship fast."
+      },
+      {
+        "position": "DISCOVER FIRST",
+        "personas": [
+          "Teresa Torres"
+        ],
+        "reasoning": "Map the opportunity space before committing to any production model."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Validate retention lift before building an audio pipeline",
+      "spicyQuote": "If podcasts don t move retention, you re building a media side project, not a product bet.",
+      "breakdown": [
+        "Value risk: does audio increase retention?",
+        "Feasibility risk: Netflix lacks audio production muscle",
+        "Viability risk: opportunity cost vs core content",
+        "The best companies validate outcomes before new categories"
+      ],
+      "solution": [
+        "Run a pilot with one flagship show",
+        "Measure retention lift vs control cohort",
+        "Partner for production to reduce feasibility risk",
+        "Expand only if value risk clears"
+      ],
+      "disagreement": "Execution AI Monster will ship audio fast without proving retention impact. Lenny will optimize the loop, but if podcasts don't move retention, it's wasted. Doshi's wedge is right but still needs value validation. Torres aligns on discovery but must tie it to retention outcomes.",
+      "mvp": [
+        "Single flagship podcast",
+        "Partner production team",
+        "Retention experiment cohort",
+        "Go/no-go scorecard"
+      ],
+      "metrics": [
+        "Retention lift in podcast listeners",
+        "Completion rate per episode",
+        "Podcast to show conversion rate",
+        "Cost per retained subscriber"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery + pilot design",
+        "Weeks 3-4: Flagship pilot launch",
+        "Weeks 5-6: Measure retention impact",
+        "Weeks 7-10: Expand or stop"
+      ],
+      "scoreboard": {
+        "speed": 4.0,
+        "riskManagement": 8.5,
+        "strategicClarity": 8.5,
+        "growthPotential": 6.5
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map why fans want companion audio before building it",
+      "spicyQuote": "If we don t understand why fans want companion audio, we ll build the wrong kind of podcast.",
+      "breakdown": [
+        "Define desired outcome (retention + engagement)",
+        "Map opportunities: fandom, behind-the-scenes, community",
+        "Weekly interviews with superfans",
+        "Test opportunity branches before committing"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree",
+        "Interview fans weekly and test prototypes",
+        "Compare different podcast formats",
+        "Ship only after evidence accumulates"
+      ],
+      "disagreement": "Cagan and Doshi want to pick a wedge quickly, but without understanding why fans engage, you might pick the wrong format. Lenny and Execution AI Monster will ship experiments without a clear opportunity hypothesis, which makes learning shallow.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Prototype podcast formats",
+        "Interview snapshot archive",
+        "Evidence score per opportunity"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Fan interest rating",
+        "Prototype listen intent",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence",
+        "Weeks 2-4: Opportunity mapping",
+        "Weeks 5-6: Format experiments",
+        "Weeks 7-10: Evidence-led launch"
+      ],
+      "scoreboard": {
+        "speed": 3.0,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.5,
+        "growthPotential": 5.0
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Use top shows as the wedge to de-risk audio",
+      "spicyQuote": "If you can't make podcasts work for your top show, you can't make them work at all.",
+      "breakdown": [
+        "This is a strategy problem, not a content experiment",
+        "Opportunity cost: broad rollout risks mediocre audio",
+        "Pre-mortem: low quality, brand dilution, wasted budget",
+        "Wedge is the leverage move"
+      ],
+      "solution": [
+        "Pick 1-2 top shows",
+        "Design premium companion content",
+        "Run a pre-mortem and set success criteria",
+        "Expand only if the wedge proves durable"
+      ],
+      "disagreement": "Torres will map for weeks while the market moves. Execution AI Monster will ship audio fast but low quality. Lenny will optimize loops without a wedge. Cagan aligns on risk but needs sharper focus on the wedge strategy.",
+      "mvp": [
+        "Top-show companion series",
+        "Premium host lineup",
+        "Exclusive behind-the-scenes",
+        "Wedge success scorecard"
+      ],
+      "metrics": [
+        "Wedge listen-through rate",
+        "Show retention lift in wedge",
+        "Subscriber engagement delta",
+        "Brand sentiment"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Produce pilot",
+        "Weeks 5-6: Launch + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 5.0,
+        "riskManagement": 7.5,
+        "strategicClarity": 9.5,
+        "growthPotential": 7.5
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Treat podcasts as a retention loop and experiment fast",
+      "spicyQuote": "The loop is episode   podcast   return to Netflix. Optimize the loop, not the theory.",
+      "breakdown": [
+        "Define activation: podcast listen after episode",
+        "Map loop: watch -> listen -> return",
+        "Benchmark against Spotify and HBO companion content",
+        "Run experiments on formats and placement"
+      ],
+      "solution": [
+        "Instrument the in-app loop",
+        "Run experiments on show prompts",
+        "Scale the highest-retention format",
+        "Iterate weekly based on data"
+      ],
+      "disagreement": "Torres wants more discovery, but the loop is measurable now. Cagan's risk framing is good, but experiments answer it faster. Doshi's wedge is fine, but you still need the loop to work. Execution AI Monster is fast, but needs measurement discipline.",
+      "mvp": [
+        "Podcast prompt in show page",
+        "Retention dashboard",
+        "Experiment framework",
+        "Feature flags"
+      ],
+      "metrics": [
+        "Podcast listen rate",
+        "Return-to-Netflix rate",
+        "Retention lift",
+        "Episode completion"
+      ],
+      "roadmap": [
+        "Week 1: Benchmarks + activation definition",
+        "Weeks 2-3: Run experiments",
+        "Weeks 4-6: Scale winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 7.0,
+        "riskManagement": 5.0,
+        "strategicClarity": 6.5,
+        "growthPotential": 9.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Launch a companion podcast this month and learn fast",
+      "spicyQuote": "You can debate audio strategy or ship a podcast next week. Ship it.",
+      "breakdown": [
+        "Building is discovery   ship to learn",
+        "Audio production can be scrappy at first",
+        "Speed beats perfect polish",
+        "Iterate based on real listening data"
+      ],
+      "solution": [
+        "Launch a podcast feed for one hit show",
+        "Embed in-app promo immediately",
+        "Measure retention impact daily",
+        "Iterate weekly based on data"
+      ],
+      "disagreement": "Cagan and Torres will still be researching while we could be collecting listener data. Doshi's wedge is smart but too slow. Lenny is close, but don't wait for benchmarks   ship and learn.",
+      "mvp": [
+        "Single show podcast feed",
+        "In-app promotion banner",
+        "Analytics dashboard",
+        "Rollback switch"
+      ],
+      "metrics": [
+        "Time-to-ship",
+        "Podcast listen rate",
+        "Retention delta",
+        "Episode completion"
+      ],
+      "roadmap": [
+        "Days 1-7: Build + launch",
+        "Weeks 2-3: Iterate on format",
+        "Weeks 4-6: Scale if lift",
+        "Weeks 7-10: Expand catalog"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 2.5,
+        "strategicClarity": 5.0,
+        "growthPotential": 8.0
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Top-Show Companion",
+      "reason": "Start with the biggest show to maximize signal and minimize risk.",
+      "personaAlignment": [
+        "doshi",
+        "cagan"
+      ]
+    },
+    {
+      "name": "Partnered Pilot",
+      "reason": "Use a podcast studio to reduce feasibility risk.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    },
+    {
+      "name": "Retention Loop MVP",
+      "reason": "Optimize the listen -> return loop with experiments.",
+      "personaAlignment": [
+        "lenny"
+      ]
+    },
+    {
+      "name": "Rapid Launch",
+      "reason": "Ship quickly and learn from real listener data.",
+      "personaAlignment": [
+        "exec"
+      ]
+    }
+  ],
+  "premortem": [
+    "Low demand: listeners don't care about companion podcasts",
+    "Quality backlash: low production quality harms Netflix brand",
+    "No retention lift: podcasts don't change churn outcomes"
+  ],
+  "vitalQuestion": "Do companion podcasts measurably increase Netflix retention for top shows?",
+  "voteResults": {
+    "cagan": 18,
+    "torres": 9,
+    "doshi": 35,
+    "lenny": 26,
+    "exec": 12
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

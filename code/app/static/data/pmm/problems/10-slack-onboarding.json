@@ -1,0 +1,524 @@
+{
+  "id": "slack-onboarding",
+  "title": "Slack activation for small teams",
+  "tags": [
+    "Activation",
+    "PLG",
+    "B2B"
+  ],
+  "prompt": "Slack's free-to-paid conversion rate is 3.5%. Analysis shows the gap isn't feature awareness   it's that small teams (5-15 people) never hit the \"aha moment\" of cross-channel workflows. They use Slack like a chat app. You're the PM. How do you activate small teams without being annoying?",
+  "problemDefinition": [
+    "Small teams don't experience the collaboration workflow that drives paid conversion",
+    "Feature awareness isn't the issue; behavior change is",
+    "Onboarding changes risk annoying users and hurting retention"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Interview small teams to understand why they never reach the workflow aha.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Pick the wedge",
+            "text": "Target one segment (e.g., engineering) and design a tailored onboarding flow.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship now",
+            "text": "Launch guided onboarding nudges this week and measure activation lift.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Growth loop",
+            "text": "Define activation (cross-channel workflow) and run experiments to lift it.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Who do you target first?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Admins",
+            "text": "Enable admins to set up workflows and seed behavior.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 1,
+              "doshi": 2,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "End users",
+            "text": "Guide everyday users to create cross-channel habits.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Segment wedge",
+            "text": "Pick a team type (design, support) and build onboarding for them.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Everyone",
+            "text": "Roll out nudges broadly and iterate based on data.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the hardest tradeoff?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Trust vs growth",
+            "text": "If nudges are annoying, we lose trust even if activation rises.",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic focus",
+            "text": "Choosing the right segment without overfitting onboarding.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed",
+            "text": "If we wait, conversion stagnates and revenue misses targets.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Activation",
+            "text": "If the aha moment is unclear, experiments won t help.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should Slack push guided onboarding aggressively or keep it subtle to protect trust?",
+    "sides": [
+      {
+        "position": "AGGRESSIVE GUIDANCE",
+        "personas": [
+          "Execution AI Monster",
+          "Lenny Rachitsky"
+        ],
+        "reasoning": "Activation requires behavior change; strong nudges drive it faster."
+      },
+      {
+        "position": "SUBTLE GUIDANCE",
+        "personas": [
+          "Marty Cagan",
+          "Teresa Torres"
+        ],
+        "reasoning": "Trust and value must be validated before heavy nudges."
+      },
+      {
+        "position": "SEGMENT WEDGE",
+        "personas": [
+          "Shreyas Doshi"
+        ],
+        "reasoning": "Choose a segment and design for them, not everyone."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Validate the value of the workflow before nudging it",
+      "spicyQuote": "If you shove teams into workflows they don't value, you're creating churn, not activation.",
+      "breakdown": [
+        "Value risk: do small teams actually want structured workflows?",
+        "Usability risk: nudges can be annoying if value is unclear",
+        "Viability risk: aggressive onboarding can hurt brand trust",
+        "The best companies validate value before forcing behavior change"
+      ],
+      "solution": [
+        "Interview small teams about collaboration pain points",
+        "Prototype workflow nudges and test value perception",
+        "Define go/no-go criteria on trust and activation",
+        "Scale only when value risk clears"
+      ],
+      "disagreement": "Execution AI Monster and Lenny will push aggressive nudges without proving teams value the workflow. Doshi's wedge is smart, but still needs validation of which segment truly values it. Torres aligns on discovery but must define hard outcome thresholds.",
+      "mvp": [
+        "Workflow value prototype",
+        "Onboarding test cohort",
+        "Trust metric baseline",
+        "Go/no-go scorecard"
+      ],
+      "metrics": [
+        "Activation rate (workflow adoption)",
+        "Trust score",
+        "D30 retention",
+        "Free-to-paid conversion"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery + risk mapping",
+        "Weeks 3-4: Prototype test",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 4.5,
+        "riskManagement": 9.0,
+        "strategicClarity": 7.5,
+        "growthPotential": 7.0
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map opportunities that lead to the workflow aha",
+      "spicyQuote": "If we don't understand why teams avoid workflows, our nudges are just noise.",
+      "breakdown": [
+        "Define desired outcome (activation + paid conversion)",
+        "Map opportunities: onboarding, templates, team rituals",
+        "Weekly interviews with small teams",
+        "Test opportunity branches before scaling"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree",
+        "Run weekly interviews + prototype tests",
+        "Compare onboarding concepts",
+        "Ship only after evidence accumulates"
+      ],
+      "disagreement": "Cagan's risk framing is aligned, but continuous evidence is required. Lenny and Execution AI Monster will ship nudges without understanding the opportunity space. Doshi's wedge is fine, but you still need evidence that this segment cares about workflows.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Interview snapshot archive",
+        "Onboarding prototype tests",
+        "Evidence score per opportunity"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Activation intent",
+        "Prototype success rate",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence",
+        "Weeks 2-4: Opportunity mapping",
+        "Weeks 5-6: Experiments",
+        "Weeks 7-10: Evidence-led rollout"
+      ],
+      "scoreboard": {
+        "speed": 3.5,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.0,
+        "growthPotential": 5.5
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Pick a segment wedge and design activation for them",
+      "spicyQuote": "If you try to design activation for everyone, you end up activating no one.",
+      "breakdown": [
+        "This is a strategy problem, not an onboarding tweak",
+        "Opportunity cost: broad nudges annoy everyone",
+        "Pre-mortem: churn, spammy UX, low activation",
+        "Wedge focus is the leverage move"
+      ],
+      "solution": [
+        "Pick a segment (e.g., engineering or support)",
+        "Design workflow templates for that segment",
+        "Run a pre-mortem and set success criteria",
+        "Expand only if wedge proves durable"
+      ],
+      "disagreement": "Torres will map for weeks while conversion stalls. Lenny and Execution AI Monster will push broad nudges and annoy users. Cagan is right about value risk, but he needs a sharper wedge strategy, not just validation.",
+      "mvp": [
+        "Segment-specific templates",
+        "Guided setup for wedge",
+        "Workflow checklist",
+        "Wedge success scorecard"
+      ],
+      "metrics": [
+        "Wedge activation rate",
+        "Workflow adoption depth",
+        "Retention in wedge",
+        "Paid conversion in wedge"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge onboarding",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 5.5,
+        "riskManagement": 7.0,
+        "strategicClarity": 9.0,
+        "growthPotential": 7.0
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Define activation and run onboarding experiments fast",
+      "spicyQuote": "Slack is a growth loop. If the activation moment isn't hit, nothing else matters.",
+      "breakdown": [
+        "Define activation: cross-channel workflow in week 1",
+        "Map loop: invite -> channel -> workflow -> retention",
+        "Benchmark against high-performing work tools",
+        "Run experiments to lift activation"
+      ],
+      "solution": [
+        "Instrument onboarding funnel",
+        "Run experiments on nudges and templates",
+        "Scale highest-lift variant",
+        "Iterate weekly based on data"
+      ],
+      "disagreement": "Torres wants more discovery, but the loop is measurable now. Cagan's risk framing is good, but experiments answer it faster. Doshi's wedge is fine, but you still need the loop to work. Execution AI Monster is fast, but needs measurement discipline.",
+      "mvp": [
+        "Activation dashboard",
+        "Workflow templates",
+        "Experiment framework",
+        "Feature flags"
+      ],
+      "metrics": [
+        "Activation rate",
+        "D30 retention",
+        "Paid conversion",
+        "Invite-to-workflow rate"
+      ],
+      "roadmap": [
+        "Week 1: Benchmarks + activation definition",
+        "Weeks 2-3: Run experiments",
+        "Weeks 4-6: Scale winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 7.5,
+        "riskManagement": 5.0,
+        "strategicClarity": 7.0,
+        "growthPotential": 9.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship guided onboarding now and measure lift",
+      "spicyQuote": "You can debate activation theory or ship a guided flow this week and see if it works.",
+      "breakdown": [
+        "Building is discovery   ship to learn",
+        "Guided onboarding is cheap to test",
+        "Speed beats perfect research",
+        "Iterate weekly based on data"
+      ],
+      "solution": [
+        "Launch guided onboarding to 10% of teams",
+        "Monitor activation daily",
+        "Adjust nudges weekly",
+        "Scale if lift holds"
+      ],
+      "disagreement": "Cagan and Torres will still be interviewing while conversion stays flat. Doshi's wedge is smart but too slow. Lenny is close, but don't wait for perfect benchmarks   ship and learn.",
+      "mvp": [
+        "Guided onboarding flow",
+        "Nudge templates",
+        "Activation dashboard",
+        "Rollback switch"
+      ],
+      "metrics": [
+        "Time-to-ship",
+        "Activation lift",
+        "Retention delta",
+        "Paid conversion"
+      ],
+      "roadmap": [
+        "Days 1-7: Ship onboarding",
+        "Weeks 2-3: Iterate",
+        "Weeks 4-6: Scale",
+        "Weeks 7-10: Optimize"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 2.5,
+        "strategicClarity": 5.5,
+        "growthPotential": 8.5
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Segment Wedge Onboarding",
+      "reason": "Design workflows for a specific team segment to maximize activation.",
+      "personaAlignment": [
+        "doshi"
+      ]
+    },
+    {
+      "name": "Evidence-Led Onboarding",
+      "reason": "Validate workflow value before nudging broadly.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    },
+    {
+      "name": "Activation Loop MVP",
+      "reason": "Optimize the activation loop with experiments.",
+      "personaAlignment": [
+        "lenny"
+      ]
+    },
+    {
+      "name": "Rapid Guided Flow",
+      "reason": "Ship guided onboarding fast and iterate.",
+      "personaAlignment": [
+        "exec"
+      ]
+    }
+  ],
+  "premortem": [
+    "Nudge fatigue: users find onboarding annoying and churn",
+    "Activation mirage: nudges increase clicks but not durable workflows",
+    "Segment miss: the chosen wedge doesn't generalize"
+  ],
+  "vitalQuestion": "What single behavior change predicts that a small team will pay for Slack?",
+  "voteResults": {
+    "cagan": 14,
+    "torres": 8,
+    "doshi": 22,
+    "lenny": 38,
+    "exec": 18
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

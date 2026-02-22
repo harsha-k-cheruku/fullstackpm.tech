@@ -1,0 +1,523 @@
+{
+  "id": "amazon-prime-gift-card",
+  "title": "Amazon Prime gifting mechanism",
+  "tags": [
+    "Growth",
+    "Experimentation",
+    "E-commerce"
+  ],
+  "prompt": "Amazon wants to increase Prime subscriptions through a gifting mechanism \u2014 let existing Prime members gift 3-month trials to friends/family. The hypothesis: gifting converts better than free trials because of social proof. You're the PM. Design the experience and prove the hypothesis.",
+  "problemDefinition": [
+    "Conversion tradeoff: social proof may help, but gifting adds friction",
+    "Risk of abuse and low-quality signups if incentives are wrong",
+    "Need to prove causal lift over the existing free-trial funnel"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Interview gifters and recipients to map motivations before building flows.",
+            "personaWeights": {
+              "cagan": 2.5,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Define wedge",
+            "text": "Pick a wedge (e.g., family accounts) and focus the gifting UX there.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship fast",
+            "text": "Launch a simple gift flow this week and measure conversion.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Experiment loop",
+            "text": "Define activation (gift redeemed) and run A/B tests to lift it.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Where do you place the gift entry point?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Checkout",
+            "text": "Inject gifting at checkout when intent is high.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 1,
+              "doshi": 2,
+              "lenny": 1,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Prime hub",
+            "text": "Make it a Prime benefit in the membership dashboard.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 2,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Email/social",
+            "text": "Use shareable invites and email nudges to scale gifting.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Ship everywhere",
+            "text": "Put gifting everywhere and let data tell us where it works.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          }
+        ]
+      },
+      {
+        "text": "What's the riskiest assumption?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Value lift",
+            "text": "Does social proof actually increase conversion vs free trials?",
+            "personaWeights": {
+              "cagan": 3,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic fit",
+            "text": "Is gifting the right wedge or just a gimmick?",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed",
+            "text": "If we wait, competitors will copy and win the gifting space.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Activation",
+            "text": "Gift redemption is the true activation moment; without it, nothing matters.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should Amazon optimize the gifting UX first or optimize the conversion funnel end-to-end?",
+    "sides": [
+      {
+        "position": "GIFTING UX FIRST",
+        "personas": [
+          "Shreyas Doshi",
+          "Teresa Torres"
+        ],
+        "reasoning": "If gifting feels awkward or unclear, the funnel never starts. Fix the wedge first."
+      },
+      {
+        "position": "FUNNEL FIRST",
+        "personas": [
+          "Lenny Rachitsky",
+          "Execution AI Monster"
+        ],
+        "reasoning": "The funnel metrics will show the leverage points faster than interviews."
+      },
+      {
+        "position": "VALIDATE FIRST",
+        "personas": [
+          "Marty Cagan"
+        ],
+        "reasoning": "If social proof doesn't actually lift conversion, the UX doesn't matter."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "Validate the value lift before building a fancy gifting flow",
+      "spicyQuote": "If gifting doesn't beat the free-trial baseline, you're just adding friction and calling it innovation.",
+      "breakdown": [
+        "Value risk: does social proof actually increase conversion?",
+        "Usability risk: gifting flows can be clunky and confusing",
+        "Viability risk: fraud and abuse could erase gains",
+        "The best companies test the hypothesis before scaling the UX"
+      ],
+      "solution": [
+        "Run a controlled experiment against free-trial baseline",
+        "Use a minimal gifting flow with clear attribution",
+        "Validate lift in conversion and paid retention",
+        "Only then invest in full UX and distribution"
+      ],
+      "disagreement": "Execution AI Monster will ship a gifting flow without proving lift and call it learning. Lenny will optimize the funnel, but if the core hypothesis is wrong, it's wasted. Doshi wants a wedge, but the wedge must still prove value. Torres's discovery is good, but needs a hard go/no-go test.",
+      "mvp": [
+        "Minimal gifting flow",
+        "Attribution tracking",
+        "A/B test vs free trial",
+        "Fraud monitoring"
+      ],
+      "metrics": [
+        "Gift conversion lift vs baseline",
+        "Paid retention at 90 days",
+        "Fraud/abuse rate",
+        "Net revenue per gifted trial"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Hypothesis test design",
+        "Weeks 3-4: Pilot A/B test",
+        "Weeks 5-6: Evaluate lift + viability",
+        "Weeks 7-10: Scale if value clears"
+      ],
+      "scoreboard": {
+        "speed": 4.5,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.0,
+        "growthPotential": 7.0
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map gifting motivations before building the flow",
+      "spicyQuote": "If we don't understand why people would gift Prime, we can't design a flow that feels natural.",
+      "breakdown": [
+        "Define desired outcome (conversion + retention lift)",
+        "Map opportunities: gifting motivations, recipient trust, redemption friction",
+        "Weekly touchpoints with gifters and recipients",
+        "Test opportunity branches before scaling"
+      ],
+      "solution": [
+        "Build an Opportunity Solution Tree",
+        "Interview both gifters and recipients weekly",
+        "Prototype gifting messages and redemption flows",
+        "Run experiments tied to specific opportunity branches"
+      ],
+      "disagreement": "Cagan's value-risk framing is aligned, but this needs continuous evidence, not a one-time test. Lenny and Execution AI Monster will ship without understanding gifting motivations and misinterpret the data. Doshi's wedge is fine once the opportunity space is mapped, not before.",
+      "mvp": [
+        "Opportunity Solution Tree",
+        "Prototype gift flow",
+        "Recipient trust messaging",
+        "Evidence score per opportunity"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Gift redemption rate",
+        "Recipient trust rating",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly discovery cadence",
+        "Weeks 2-4: Opportunity mapping",
+        "Weeks 5-6: Experiments on top branches",
+        "Weeks 7-10: Evidence-led build"
+      ],
+      "scoreboard": {
+        "speed": 3.5,
+        "riskManagement": 8.5,
+        "strategicClarity": 7.0,
+        "growthPotential": 5.5
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Pick the highest-leverage gifting wedge and win it",
+      "spicyQuote": "If gifting is a wedge, treat it like one. If it's not, don't pretend a funnel can save it.",
+      "breakdown": [
+        "This is a strategy question disguised as a UX tweak",
+        "Opportunity cost: a broad gift flow could dilute Prime value",
+        "Pre-mortem the failure modes: abuse, awkward gifting, low redemption",
+        "Pick the wedge with maximum social proof impact"
+      ],
+      "solution": [
+        "Identify the most natural gifting context (family, holidays)",
+        "Design the wedge experience end-to-end",
+        "Run a pre-mortem and define wedge success criteria",
+        "Expand only if the wedge proves durable"
+      ],
+      "disagreement": "Cagan and Torres will spend too long validating without picking a wedge. Execution AI Monster will ship everywhere and learn nothing. Lenny will optimize the funnel, but if gifting is the wrong wedge, the loop is wrong.",
+      "mvp": [
+        "Holiday gifting flow",
+        "Family plan invite",
+        "Personalized message template",
+        "Wedge success scorecard"
+      ],
+      "metrics": [
+        "Wedge conversion rate",
+        "Redemption time",
+        "Recipient-to-paid conversion",
+        "Fraud rate"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge MVP",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 5.5,
+        "riskManagement": 7.0,
+        "strategicClarity": 8.5,
+        "growthPotential": 7.0
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Optimize the activation loop: gift sent to gift redeemed",
+      "spicyQuote": "The whole loop is gift sent \u2192 gift redeemed \u2192 paid conversion. Find the friction and kill it.",
+      "breakdown": [
+        "Define activation: gift redeemed within 7 days",
+        "Map the loop: gifter sends -> recipient redeems -> trial uses -> paid",
+        "Benchmark against referral programs",
+        "Run weekly experiments to lift redemption"
+      ],
+      "solution": [
+        "Instrument the gifting funnel end-to-end",
+        "Run experiments on copy, incentives, and reminders",
+        "Scale the highest-lift variant",
+        "Double down on the loop that improves paid conversion"
+      ],
+      "disagreement": "Torres wants to map opportunities, but the data will show the friction points faster. Cagan's hypothesis testing is good, but you can run it via experiments. Doshi's wedge is fine, but you still need the loop to work. Execution AI Monster is fast, but speed without measurement is noise.",
+      "mvp": [
+        "Funnel analytics dashboard",
+        "One-click gift send",
+        "Reminder nudges",
+        "Experiment framework"
+      ],
+      "metrics": [
+        "Gift redemption rate",
+        "Time-to-redeem",
+        "Trial-to-paid conversion",
+        "Referral rate"
+      ],
+      "roadmap": [
+        "Week 1: Baseline funnel + benchmarks",
+        "Weeks 2-3: Run experiments",
+        "Weeks 4-6: Scale winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 7.5,
+        "riskManagement": 5.0,
+        "strategicClarity": 6.5,
+        "growthPotential": 9.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship a gifting flow this week and let data decide",
+      "spicyQuote": "If it takes you a month to design a gifting flow, you're already late. Ship it now.",
+      "breakdown": [
+        "Building is discovery \u2014 ship to learn",
+        "Gifting is cheap to test in production",
+        "Speed beats perfect UX",
+        "Kill losers fast and iterate"
+      ],
+      "solution": [
+        "Launch a simple gifting flow in days",
+        "Expose to 10% of Prime members",
+        "Review metrics daily",
+        "Iterate weekly based on live data"
+      ],
+      "disagreement": "Cagan and Torres will still be interviewing while we could have real conversion data. Doshi's wedge is smart but too slow. Lenny is close, but if you wait for benchmark data, you miss the moment. Ship, measure, repeat.",
+      "mvp": [
+        "Gift button in Prime hub",
+        "Simple invite email",
+        "Redemption page",
+        "Live metrics dashboard"
+      ],
+      "metrics": [
+        "Time-to-ship",
+        "Gift send rate",
+        "Redemption rate",
+        "Paid conversion"
+      ],
+      "roadmap": [
+        "Days 1-7: Build + ship",
+        "Weeks 2-3: Iterate on funnel",
+        "Weeks 4-6: Scale if lift",
+        "Weeks 7-10: Optimize retention"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 2.5,
+        "strategicClarity": 5.5,
+        "growthPotential": 8.0
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Holiday Gifting Wedge",
+      "reason": "Focus on a natural gifting context to maximize social proof.",
+      "personaAlignment": [
+        "doshi"
+      ]
+    },
+    {
+      "name": "Controlled A/B Test",
+      "reason": "Prove conversion lift vs free trial before scaling UX.",
+      "personaAlignment": [
+        "cagan"
+      ]
+    },
+    {
+      "name": "Funnel Optimization MVP",
+      "reason": "Instrument and optimize the gift send-to-redeem loop.",
+      "personaAlignment": [
+        "lenny"
+      ]
+    },
+    {
+      "name": "Rapid Ship MVP",
+      "reason": "Ship fast and learn from real conversion data.",
+      "personaAlignment": [
+        "exec"
+      ]
+    }
+  ],
+  "premortem": [
+    "Redemption flop: gifts are sent but recipients never redeem",
+    "Fraud spike: bad actors abuse gift trials and inflate costs",
+    "Conversion mirage: redemption rises but paid conversion doesn't"
+  ],
+  "vitalQuestion": "Does gifting create a measurable conversion lift over free trials for Prime?",
+  "voteResults": {
+    "cagan": 18,
+    "torres": 10,
+    "doshi": 22,
+    "lenny": 36,
+    "exec": 14
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PM Multiverse — Same Problem. Different PM Brains.</title>
+  <meta name="description" content="10 real PM problems. 5 expert personas. See how the best product thinkers disagree — and discover your PM DNA." />
+  <link rel="stylesheet" href="/static/pmm/css/style.css" />
+</head>
+<body data-page="index">
+
+<div class="topbar">
+  <a class="topbar-logo" href="/tools/pm-multiverse">PM <span>Multiverse</span></a>
+  <div class="topbar-right">
+    <div class="topbar-progress">
+      <div class="progress-bar-outer">
+        <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <span id="progressLabel">0/10</span>
+    </div>
+    <a href="/" style="font-size:12px;color:var(--muted);text-decoration:none;padding:6px 12px;border:1px solid var(--border);border-radius:8px;">← fullstackpm.tech</a>
+  </div>
+</div>
+
+<div class="screen active" id="screen-main">
+  <div class="content">
+
+    <div class="s1-hero anim-fade-up">
+      <div class="pill pill-accent">10 Problems · 5 PM Brains</div>
+      <h1 class="hero-title">Same problem.<br><span>Different PM brains.</span></h1>
+      <p class="tagline">What's YOUR take? Answer first, then see how the experts disagree.</p>
+    </div>
+
+    <div class="problems-grid" id="problemsGrid">
+      <div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted);">
+        <div class="loading" style="min-height:auto;">
+          <div class="spinner"></div>
+          Loading problems…
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/static/pmm/js/multiverse.js"></script>
+</body>
+</html>

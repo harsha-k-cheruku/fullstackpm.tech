@@ -1,0 +1,526 @@
+{
+  "id": "spotify-discover-weekly",
+  "title": "Fix Spotify Discover Weekly personalization decay",
+  "tags": [
+    "Data/ML",
+    "Engagement",
+    "Consumer"
+  ],
+  "prompt": "Spotify's Discover Weekly playlist is losing engagement \u2014 skip rates are up 15% and saves are down. The algorithm team says the model is fine. Users say, \"it used to know me better.\" You're the PM. How do you diagnose and fix personalization decay without rebuilding the recommendation engine?",
+  "problemDefinition": [
+    "Signals are decaying: skip rates rising and saves dropping despite model health metrics",
+    "Perception gap: users feel the playlist \"lost its magic\" even if relevance is statistically flat",
+    "Constraints: you cannot rebuild the core recommendation model in the next 90 days"
+  ],
+  "yourTakeFirst": {
+    "questions": [
+      {
+        "text": "What's your first move?",
+        "options": [
+          {
+            "id": "q1a",
+            "label": "Discovery-first",
+            "text": "Run weekly interviews with heavy and churned users to map where the experience feels broken before touching any UI or algorithms.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1b",
+            "label": "Define the wedge",
+            "text": "Pick a single user segment (e.g., \u2018taste\u2011drifters\u2019) and design a targeted fix with clear success criteria.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q1c",
+            "label": "Ship UI fixes now",
+            "text": "Add quick changes (refresh button, theme labels) and learn from live behavior. Don\u2019t wait on research.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q1d",
+            "label": "Benchmark + experiment",
+            "text": "Compare to best-in-class retention benchmarks and run 2\u20133 growth experiments per week to lift saves.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 3,
+              "exec": 1
+            }
+          }
+        ]
+      },
+      {
+        "text": "Users say \"it used to know me better.\" What do you believe?",
+        "options": [
+          {
+            "id": "q2a",
+            "label": "Perception problem",
+            "text": "The model might be fine, but expectations shifted. Fix framing and feedback loops.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 1,
+              "doshi": 1,
+              "lenny": 2,
+              "exec": 1
+            }
+          },
+          {
+            "id": "q2b",
+            "label": "Segment mismatch",
+            "text": "The model works overall but fails a high\u2011value segment. Fix that segment first.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2c",
+            "label": "Feedback decay",
+            "text": "The feedback loop is broken \u2014 users aren\u2019t giving the system enough fresh signals.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q2d",
+            "label": "Just ship fixes",
+            "text": "Stop debating. Add a refresh button + quick thumbs UI and measure lift this week.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 1,
+              "exec": 3
+            }
+          }
+        ]
+      },
+      {
+        "text": "What do you optimize for first?",
+        "options": [
+          {
+            "id": "q3a",
+            "label": "Retention lift",
+            "text": "Define a clear retention target (e.g., +8% D30) and work backward from that outcome.",
+            "personaWeights": {
+              "cagan": 2,
+              "torres": 2,
+              "doshi": 1,
+              "lenny": 2,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3b",
+            "label": "Strategic wedge",
+            "text": "Pick one narrow user wedge and fix the experience end-to-end for them.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 0,
+              "doshi": 3,
+              "lenny": 1,
+              "exec": 0
+            }
+          },
+          {
+            "id": "q3c",
+            "label": "Speed to learn",
+            "text": "Ship two experiments this week and kill anything that doesn\u2019t move saves.",
+            "personaWeights": {
+              "cagan": 0,
+              "torres": 0,
+              "doshi": 0,
+              "lenny": 2,
+              "exec": 3
+            }
+          },
+          {
+            "id": "q3d",
+            "label": "Evidence quality",
+            "text": "Run weekly interviews + prototype tests until we\u2019re confident about the opportunity space.",
+            "personaWeights": {
+              "cagan": 1,
+              "torres": 3,
+              "doshi": 1,
+              "lenny": 0,
+              "exec": 0
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "theSplit": {
+    "question": "Should Spotify ship UI/feedback fixes immediately, or diagnose the root cause first?",
+    "sides": [
+      {
+        "position": "SHIP NOW",
+        "personas": [
+          "Execution AI Monster",
+          "Lenny Rachitsky"
+        ],
+        "reasoning": "User feedback is noisy. Ship fast, measure lift, and iterate based on real behavior."
+      },
+      {
+        "position": "DIAGNOSE FIRST",
+        "personas": [
+          "Marty Cagan",
+          "Teresa Torres"
+        ],
+        "reasoning": "Without understanding the opportunity space, you\u2019ll ship UI noise that doesn\u2019t fix relevance."
+      },
+      {
+        "position": "SHIP THE WEDGE",
+        "personas": [
+          "Shreyas Doshi"
+        ],
+        "reasoning": "Pick one segment where decay is worst and fix that experience end-to-end."
+      }
+    ]
+  },
+  "personas": {
+    "cagan": {
+      "id": "cagan",
+      "name": "Marty Cagan",
+      "emoji": "\ud83d\udcda",
+      "color": "#ff6b8a",
+      "role": "Outcome-first. Risk-driven.",
+      "summary": "If you don\u2019t validate the value risk, you\u2019re just adding UI noise",
+      "spicyQuote": "If your fix is a \u2018refresh\u2019 button without proving the playlist is valuable, you\u2019re treating symptoms, not solving the disease.",
+      "breakdown": [
+        "Value risk: do users still want this playlist, or has the job-to-be-done changed?",
+        "Usability risk: do users know how to influence recommendations?",
+        "Viability risk: if this decays, it threatens retention and ad revenue",
+        "Discovery should validate the outcome before we ship cosmetic fixes"
+      ],
+      "solution": [
+        "Run discovery interviews with heavy, light, and churned users",
+        "Validate whether decay is relevance, novelty, or signal feedback",
+        "Prototype 2\u20133 fixes and test before engineering investment",
+        "Ship only the solution that proves value + retention lift"
+      ],
+      "disagreement": "Execution AI Monster\u2019s \u2018ship it now\u2019 approach is how you bury yourself in noisy UI experiments. Lenny\u2019s benchmarks are useful, but growth loops don\u2019t help if the underlying value isn\u2019t there. Doshi\u2019s wedge is smart, but he\u2019s still skipping the value-risk validation that tells you *which* wedge is real.",
+      "mvp": [
+        "User interviews across 3 cohorts (heavy, casual, churned)",
+        "Prototype tests for refresh, theme labels, and feedback UI",
+        "Small cohort experiment with clear go/no-go criteria",
+        "Viability review tied to retention impact"
+      ],
+      "metrics": [
+        "D30 retention lift in test cohort",
+        "Playlist save rate per user",
+        "Skip rate by cohort",
+        "Perceived relevance score (qual)"
+      ],
+      "roadmap": [
+        "Weeks 1-2: Discovery \u2014 interviews, risk mapping, prototype options",
+        "Weeks 3-4: Test \u2014 cohort experiment on top 2 hypotheses",
+        "Weeks 5-6: Ship \u2014 release proven fix to 10%",
+        "Weeks 7-10: Scale \u2014 expand and monitor retention"
+      ],
+      "scoreboard": {
+        "speed": 4.0,
+        "riskManagement": 9.0,
+        "strategicClarity": 8.0,
+        "growthPotential": 6.0
+      }
+    },
+    "torres": {
+      "id": "torres",
+      "name": "Teresa Torres",
+      "emoji": "\ud83d\udd2d",
+      "color": "#5ee4ff",
+      "role": "Continuous Discovery. Evidence-driven.",
+      "summary": "Map the opportunity space before you ship fixes",
+      "spicyQuote": "If we don\u2019t know *why* Discover Weekly feels broken, we\u2019ll just ship features that add noise to the wrong opportunity.",
+      "breakdown": [
+        "Desired outcome must be explicit (e.g., +8% D30 retention)",
+        "Map opportunities: relevance decay, novelty decay, weak feedback loops",
+        "Use weekly touchpoints to build evidence, not one-off research",
+        "Run experiments that test the link between opportunity and outcome"
+      ],
+      "solution": [
+        "Create an Opportunity Solution Tree for personalization decay",
+        "Weekly interviews + prototype tests with heavy and churned users",
+        "Run small experiments tied to specific opportunity branches",
+        "Ship only after evidence accumulates across multiple touchpoints"
+      ],
+      "disagreement": "Cagan\u2019s risk framing is close but still too phase-based \u2014 discovery should be continuous, not a 2-week sprint. Lenny and the Execution AI Monster will ship fast, but they\u2019ll be measuring behavior without a clear theory of the opportunity space. Doshi\u2019s wedge is useful once the opportunity is mapped, not before.",
+      "mvp": [
+        "Opportunity Solution Tree with top 3 branches",
+        "Weekly user interviews + interview snapshots",
+        "Prototype tests for feedback mechanisms",
+        "Evidence score per opportunity branch"
+      ],
+      "metrics": [
+        "Opportunity evidence score",
+        "Repeat listens per cohort",
+        "Qualitative relevance rating",
+        "Experiment learning velocity"
+      ],
+      "roadmap": [
+        "Week 1+: Weekly cadence \u2014 interviews + prototype tests",
+        "Weeks 2-4: OST build \u2014 map and rank opportunities",
+        "Weeks 5-7: Experiments \u2014 test top 2 branches",
+        "Week 8+: Evidence-led ship \u2014 release only validated fix"
+      ],
+      "scoreboard": {
+        "speed": 3.0,
+        "riskManagement": 9.0,
+        "strategicClarity": 7.5,
+        "growthPotential": 5.0
+      }
+    },
+    "doshi": {
+      "id": "doshi",
+      "name": "Shreyas Doshi",
+      "emoji": "\u2694\ufe0f",
+      "color": "#c49bff",
+      "role": "Strategy-first. LNO thinking.",
+      "summary": "Pick one segment where decay is worst and fix it end-to-end",
+      "spicyQuote": "This is a strategy problem disguised as a tuning problem. Pick a wedge, or you\u2019ll polish mediocrity.",
+      "breakdown": [
+        "The bandaid is falling off: experiments without a strategy won\u2019t stick",
+        "We need a wedge segment with outsized impact (e.g., power users)",
+        "Pre-mortem the top 3 failure modes before shipping anything",
+        "Opportunity cost > ROI: one wedge over ten small fixes"
+      ],
+      "solution": [
+        "Identify the segment with the largest decay delta",
+        "Run a pre-mortem on fixes that could backfire",
+        "Ship a focused experience for that segment only",
+        "Expand only if the wedge proves durable"
+      ],
+      "disagreement": "Torres and Cagan want more discovery, but you\u2019ll drown in research without a sharp wedge. The Execution AI Monster ships fast but will thrash without strategic focus. Lenny\u2019s growth loops are useful after you fix the core experience \u2014 not before.",
+      "mvp": [
+        "Segment-specific Discover Weekly variant",
+        "Wedge success criteria (e.g., +10% saves)",
+        "Pre-mortem action plan",
+        "Focused rollout to 5% of target segment"
+      ],
+      "metrics": [
+        "Segment retention lift",
+        "Save rate delta",
+        "Skip rate reduction",
+        "Cohort stickiness"
+      ],
+      "roadmap": [
+        "Week 1: Wedge selection + pre-mortem",
+        "Weeks 2-4: Build wedge experience",
+        "Weeks 5-6: Pilot + measure",
+        "Weeks 7-10: Scale or pivot"
+      ],
+      "scoreboard": {
+        "speed": 5.5,
+        "riskManagement": 7.0,
+        "strategicClarity": 9.5,
+        "growthPotential": 6.5
+      }
+    },
+    "lenny": {
+      "id": "lenny",
+      "name": "Lenny Rachitsky",
+      "emoji": "\ud83d\udcc8",
+      "color": "#ffb86c",
+      "role": "Growth loops. Experiments. Benchmarks.",
+      "summary": "Benchmark, experiment, and ship the smallest lift",
+      "spicyQuote": "Discover Weekly is a growth loop. If saves are down, the loop is broken. Run three experiments this week and ship the winner.",
+      "breakdown": [
+        "Look at benchmarks: what do great save rates look like?",
+        "Find the growth loop: listen -> save -> share -> return",
+        "Identify the activation moment for weekly habit",
+        "Design experiments that can move the metric 5\u201310%"
+      ],
+      "solution": [
+        "Run 3 parallel experiments (refresh, theme labels, feedback UI)",
+        "Pick the highest-lift winner after one week",
+        "Scale to 20% and iterate",
+        "Double down on the loop that improves saves"
+      ],
+      "disagreement": "Torres wants to map the opportunity space, but the data already tells us the loop is broken. Cagan\u2019s risk framing is solid, but we don\u2019t need weeks of interviews to run experiments. Doshi\u2019s wedge is fine, but in growth you need loops, not anecdotes. Execution AI Monster is fast, but without measurement discipline, speed is just thrashing.",
+      "mvp": [
+        "Experiment framework + KPI dashboard",
+        "Feature flag infrastructure",
+        "3 experiment variants live",
+        "Weekly experiment review cadence"
+      ],
+      "metrics": [
+        "Save rate lift",
+        "Skip rate reduction",
+        "Repeat listen rate",
+        "Activation to habit conversion"
+      ],
+      "roadmap": [
+        "Week 1: Benchmarks + experiment design",
+        "Weeks 2-3: Run 3 experiments",
+        "Weeks 4-6: Scale the winner",
+        "Weeks 7-10: Iterate + refine"
+      ],
+      "scoreboard": {
+        "speed": 7.5,
+        "riskManagement": 5.0,
+        "strategicClarity": 6.0,
+        "growthPotential": 9.5
+      }
+    },
+    "exec": {
+      "id": "exec",
+      "name": "Execution AI Monster",
+      "emoji": "\u26a1",
+      "color": "#7cf49a",
+      "role": "Ship now. Fix later. Win markets.",
+      "summary": "Ship 3 fixes this week and let data decide",
+      "spicyQuote": "You can\u2019t diagnose decay in a conference room. Ship a refresh button today and watch what happens tomorrow.",
+      "breakdown": [
+        "Building is discovery \u2014 ship to learn",
+        "The cost of shipping UI fixes is near-zero",
+        "Every week offline is wasted signal",
+        "Measure fast, kill fast"
+      ],
+      "solution": [
+        "Ship refresh, theme labels, and feedback UI this week",
+        "Expose to 10% of users immediately",
+        "Daily metric review, kill losers fast",
+        "Iterate weekly based on live data"
+      ],
+      "disagreement": "Cagan and Torres will still be in interviews while engagement decays. Lenny is close but too slow \u2014 one week is an eternity. Doshi wants a wedge, but we can ship multiple wedges faster than we can debate one.",
+      "mvp": [
+        "Refresh button",
+        "Theme label UI",
+        "Thumbs + quick feedback",
+        "10% rollout with daily metrics"
+      ],
+      "metrics": [
+        "Save rate lift (daily)",
+        "Skip rate drop",
+        "Engagement per session",
+        "Time-to-ship"
+      ],
+      "roadmap": [
+        "Week 1: Ship 3 UI fixes",
+        "Weeks 2-3: Kill losers, scale winner",
+        "Weeks 4-6: Iterate weekly",
+        "Weeks 7-10: Stabilize + expand"
+      ],
+      "scoreboard": {
+        "speed": 9.5,
+        "riskManagement": 2.0,
+        "strategicClarity": 4.5,
+        "growthPotential": 7.5
+      }
+    }
+  },
+  "mvpOptions": [
+    {
+      "name": "Perception Fix Pack",
+      "reason": "UI + framing fixes (refresh, theme labels) to restore perceived relevance quickly.",
+      "personaAlignment": [
+        "lenny",
+        "exec"
+      ]
+    },
+    {
+      "name": "Segment Wedge Fix",
+      "reason": "Pick one segment with the largest decay and build a tailored experience.",
+      "personaAlignment": [
+        "doshi"
+      ]
+    },
+    {
+      "name": "Evidence-led Discovery",
+      "reason": "Run interviews + opportunity mapping before shipping any fixes.",
+      "personaAlignment": [
+        "cagan",
+        "torres"
+      ]
+    },
+    {
+      "name": "Feedback Loop Repair",
+      "reason": "Improve signal collection (thumbs, taste refresh, onboarding prompts).",
+      "personaAlignment": [
+        "cagan",
+        "lenny"
+      ]
+    }
+  ],
+  "premortem": [
+    "UI noise: We ship multiple fixes and confuse users, making trust worse",
+    "Segment miss: We optimize for power users and harm casual listeners",
+    "Signal bias: More feedback UI biases the model with low-quality signals"
+  ],
+  "vitalQuestion": "Is decay driven by relevance drift, novelty fatigue, or broken feedback signals \u2014 and which is fastest to prove?",
+  "voteResults": {
+    "cagan": 20,
+    "torres": 12,
+    "doshi": 32,
+    "lenny": 24,
+    "exec": 12
+  },
+  "pmDnaBlends": {
+    "cagan_torres": {
+      "name": "The Evidence Purist",
+      "tagline": "You won't ship until the data says yes"
+    },
+    "cagan_doshi": {
+      "name": "The Strategic Guardian",
+      "tagline": "You de-risk with frameworks, not gut feel"
+    },
+    "cagan_lenny": {
+      "name": "The Measured Builder",
+      "tagline": "You build for growth but validate first"
+    },
+    "torres_doshi": {
+      "name": "The Structured Thinker",
+      "tagline": "You map the problem before you solve it"
+    },
+    "torres_lenny": {
+      "name": "The Discovery Optimizer",
+      "tagline": "You find opportunities then measure what works"
+    },
+    "doshi_lenny": {
+      "name": "The Strategic Experimenter",
+      "tagline": "You pick the right wedge then run the loop"
+    },
+    "doshi_exec": {
+      "name": "The Fast Strategist",
+      "tagline": "You think sharp then move fast"
+    },
+    "lenny_exec": {
+      "name": "The Growth Hacker",
+      "tagline": "You ship loops and measure everything"
+    },
+    "cagan_exec": {
+      "name": "The Paradox PM",
+      "tagline": "You want to validate AND ship yesterday"
+    },
+    "torres_exec": {
+      "name": "The Rapid Discoverer",
+      "tagline": "You discover fast by building real things"
+    }
+  }
+}
