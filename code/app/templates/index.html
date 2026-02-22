@@ -15,9 +15,9 @@
 
     <script>
       (function () {
-        var text = "Built code for other people\u2019s products. Wrote the vision for other engineers to ship. Now doing both \u2014 for projects small enough to launch alone, fun enough to actually finish. Learning in public.";
+        var part1 = "Built code for other people\u2019s products. Wrote the vision for other engineers to ship. Now doing both \u2014 for projects small enough to launch alone, fun enough to actually finish.";
+        var part2 = "Learning in public.";
         var el = document.getElementById("hero-tagline");
-        var i = 0;
         var style = document.createElement("style");
         style.textContent = "@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}";
         document.head.appendChild(style);
@@ -25,13 +25,27 @@
         cursor.textContent = "|";
         cursor.style.cssText = "animation:blink 0.75s step-end infinite;margin-left:1px;color:var(--color-accent);font-weight:300;";
         el.appendChild(cursor);
+        var i = 0;
         var interval = setInterval(function () {
-          if (i < text.length) {
-            el.insertBefore(document.createTextNode(text[i]), cursor);
+          if (i < part1.length) {
+            el.insertBefore(document.createTextNode(part1[i]), cursor);
+            i++;
+          } else if (i === part1.length) {
+            var br = document.createElement("br");
+            el.insertBefore(br, cursor);
+            var strong = document.createElement("strong");
+            strong.style.color = "var(--color-text-primary)";
+            el.insertBefore(strong, cursor);
             i++;
           } else {
-            clearInterval(interval);
-            setTimeout(function () { cursor.remove(); }, 1800);
+            var j = i - part1.length - 1;
+            if (j < part2.length) {
+              strong.appendChild(document.createTextNode(part2[j]));
+              i++;
+            } else {
+              clearInterval(interval);
+              setTimeout(function () { cursor.remove(); }, 1800);
+            }
           }
         }, 38);
       })();
