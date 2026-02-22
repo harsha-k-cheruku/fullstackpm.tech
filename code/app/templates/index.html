@@ -2,384 +2,274 @@
 
 {% block content %}
 
-<!-- HERO: The Future of Work Story -->
-<section style="padding: 6rem 0; background: linear-gradient(135deg, var(--color-blue-100) 0%, var(--color-bg-primary) 100%);">
+<!-- HERO -->
+<section style="padding: 5rem 0 4rem; border-bottom: 1px solid var(--color-border);">
   <div class="max-w-3xl mx-auto px-6">
-    <div class="mb-12">
-      <p class="text-small mb-4" style="color: var(--color-text-secondary); font-style: italic;">
-        Peeking into 2027!
-      </p>
+    <p class="text-small mb-4" style="color: var(--color-text-tertiary); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;">
+      Harsha Cheruku &middot; @fullstackpm
+    </p>
+    <h1 class="text-display mb-5" style="color: var(--color-text-primary); line-height: 1.05;">
+      The PM<br>who ships.
+    </h1>
+    <p id="hero-tagline" class="text-body-lg mb-8" style="color: var(--color-text-secondary); max-width: 540px; line-height: 1.75; min-height: 5rem;"></p>
 
-      <h1 class="text-display mb-6" style="color: var(--color-text-primary); line-height: 1.1;">
-        Your PM job is transforming
-      </h1>
+    <script>
+      (function () {
+        var text = "Built code for other people\u2019s products. Wrote the vision for other engineers to ship. Now doing both \u2014 for projects small enough to launch alone, fun enough to actually finish. Learning in public.";
+        var el = document.getElementById("hero-tagline");
+        var i = 0;
+        var style = document.createElement("style");
+        style.textContent = "@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}";
+        document.head.appendChild(style);
+        var cursor = document.createElement("span");
+        cursor.textContent = "|";
+        cursor.style.cssText = "animation:blink 0.75s step-end infinite;margin-left:1px;color:var(--color-accent);font-weight:300;";
+        el.appendChild(cursor);
+        var interval = setInterval(function () {
+          if (i < text.length) {
+            el.insertBefore(document.createTextNode(text[i]), cursor);
+            i++;
+          } else {
+            clearInterval(interval);
+            setTimeout(function () { cursor.remove(); }, 1800);
+          }
+        }, 38);
+      })();
+    </script>
 
-      <p class="text-h3 mb-8" style="color: var(--color-text-secondary); font-weight: 400; line-height: 1.6;">
-        Not your job title. Your job <strong>function</strong>.
-      </p>
-
-      <div class="rounded-xl border p-8 mb-8" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-          <p class="text-body-lg mb-6" style="color: var(--color-text-secondary); line-height: 1.8;">
-            <strong>The scenario:</strong> It's Tuesday afternoon. Maya, a PM at an early-stage startup, realizes her team has a bottleneck in their workflow. She sketches out the solution in Notion—not pretty, but clear. Claude converts it into structured requirements and user stories in minutes. She builds quick mockups using her company's component
-  l        ibrary. By evening, she's prototyped the feature in FastAPI and HTMX.
-          </p>
-          <p class="text-body-lg" style="color: var(--color-text-secondary); line-height: 1.8;">
-            By end of week, it's shipped to their beta users and she's got real feedback. By the next week, it's live.
-          </p>
-          <p class="text-body-lg mt-6" style="color: var(--color-text-secondary); line-height: 1.8;">
-            <strong>What changed:</strong> The work that used to require coordination across multiple people now happens in one person's week.
-          </p>
-        </div>
-
-      <p class="text-body-lg" style="color: var(--color-text-secondary); line-height: 1.8;">
-        If you can only <em>manage</em> products, your leverage disappears. If you can <em>build</em> them, you become invaluable.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Why This is Happening Now -->
-<section style="padding: 4rem 0;">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-h2 mb-12" style="color: var(--color-text-primary);">Why This Matters Right Now</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Force 1: AI -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-        <div class="text-3xl mb-4">🤖</div>
-        <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">AI is a Co-Pilot</h4>
-        <p class="text-body" style="color: var(--color-text-secondary);">
-          Claude, GPT, Gemini handle 60% of spec writing, requirements gathering, and even basic coding. You direct, but don't execute.
-        </p>
-      </div>
-
-      <!-- Force 2: Tooling -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-        <div class="text-3xl mb-4">🛠️</div>
-        <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">No-Code is Dead (Almost)</h4>
-        <p class="text-body" style="color: var(--color-text-secondary);">
-          Modern web frameworks (FastAPI, Next.js, React) are approachable for non-engineers. One person can ship real products.
-        </p>
-      </div>
-
-      <!-- Force 3: Economics -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-        <div class="text-3xl mb-4">📈</div>
-        <h4 class="text-h4 mb-3" style="color: var(--color-text-primary);">Faster = Cheaper = Wins</h4>
-        <p class="text-body" style="color: var(--color-text-secondary);">
-          Teams that ship in days beat teams that ship in months. The economics favor the full-stack.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- What is Full Stack PM -->
-<section style="padding: 4rem 0; background-color: var(--color-bg-secondary);">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-h2 mb-12" style="color: var(--color-text-primary);">What is a Full Stack PM?</h2>
-
-    <div class="rounded-xl border p-8 mb-12" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-      <p class="text-h3 mb-6" style="color: var(--color-text-primary); font-weight: 500; line-height: 1.6;">
-        A PM who can go from <strong>insight → prototype → shipped product</strong> without handing off.
-      </p>
-
-      <p class="text-body-lg mb-6" style="color: var(--color-text-secondary); line-height: 1.8;">
-        Not a designer. Not an engineer. Not a PM. But a hybrid that can <strong>think like a PM, code like an engineer, and design like a designer</strong>.
-      </p>
-
-      <p class="text-body" style="color: var(--color-text-tertiary); font-style: italic;">
-        Full Stack PM = PM instinct + Technical depth + Design sensibility + Ship mindset
-      </p>
-    </div>
-
-    <!-- The Five Components: Connected Flow -->
-    <h3 class="text-h3 mb-8" style="color: var(--color-text-primary);">What It Takes (5 Skills)</h3>
-
-    <div class="space-y-6">
-
-      <!-- 1. Insight -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-4">
-          <div class="text-3xl flex-shrink-0">💡</div>
-          <div class="flex-1">
-            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">1. Product Instinct</h4>
-            <p class="text-body" style="color: var(--color-text-secondary);">
-              See problems worth solving. Understand users deeply. Ask "why" 5 times. Know what to build before you build it.
-            </p>
-            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
-              → Learn: User research, competitive analysis, market dynamics, CIRCLES framework
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Arrow indicator -->
-      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
-
-      <!-- 2. Data -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-4">
-          <div class="text-3xl flex-shrink-0">📊</div>
-          <div class="flex-1">
-            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">2. Data Rigor</h4>
-            <p class="text-body" style="color: var(--color-text-secondary);">
-              Write SQL to explore data. Build dashboards. Analyze metrics yourself. A/B test rigorously. Don't rely on others for truth.
-            </p>
-            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
-              → Learn: SQL, analytics, A/B testing, metrics definition, Python for data
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Arrow indicator -->
-      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
-
-      <!-- 3. Design -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-4">
-          <div class="text-3xl flex-shrink-0">🎨</div>
-          <div class="flex-1">
-            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">3. Design Thinking</h4>
-            <p class="text-body" style="color: var(--color-text-secondary);">
-              Prototype before building. Iterate on mockups. Know UX patterns. Design for emotion, not just function.
-            </p>
-            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
-              → Learn: Figma, UX principles, user testing, design patterns, accessibility
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Arrow indicator -->
-      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
-
-      <!-- 4. Code -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-4">
-          <div class="text-3xl flex-shrink-0">💻</div>
-          <div class="flex-1">
-            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">4. Technical Depth</h4>
-            <p class="text-body" style="color: var(--color-text-secondary);">
-              Build working prototypes. Ship real products. Understand systems, APIs, databases, and architecture. Know what's possible.
-            </p>
-            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
-              → Learn: Python/JavaScript, web frameworks (FastAPI, Next.js), databases, git, deployment
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Arrow indicator -->
-      <div class="text-center" style="color: var(--color-text-tertiary);">↓</div>
-
-      <!-- 5. Ship -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-4">
-          <div class="text-3xl flex-shrink-0">🚀</div>
-          <div class="flex-1">
-            <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">5. Shipping Mentality</h4>
-            <p class="text-body" style="color: var(--color-text-secondary);">
-              Release imperfect. Iterate based on feedback. Bias toward done. Speed is a feature.
-            </p>
-            <p class="text-small mt-3" style="color: var(--color-text-tertiary);">
-              → Learn: MVP thinking, feedback loops, scrappy execution, growth tactics
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- The Reality Check -->
-<section style="padding: 4rem 0;">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">The Reality Check</h2>
-
-    <div class="rounded-xl border p-8" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-        <div>
-          <h4 class="text-h4 mb-4" style="color: var(--color-accent);">You Don't Need to Be...</h4>
-          <ul class="space-y-2" style="color: var(--color-text-secondary);">
-            <li>❌ A software engineer (no, you don't need 10 years experience)</li>
-            <li>❌ A UX designer (good taste beats design degree)</li>
-            <li>❌ A data scientist (SQL + basic stats is enough)</li>
-            <li>❌ Perfect (done is better than perfect)</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-h4 mb-4" style="color: var(--color-accent);">You Do Need...</h4>
-          <ul class="space-y-2" style="color: var(--color-text-secondary);">
-            <li>✅ Curiosity (can you learn constantly?)</li>
-            <li>✅ Systems thinking (can you see how things connect?)</li>
-            <li>✅ Bias to action (can you ship imperfectly?)</li>
-            <li>✅ User empathy (do you actually care about users?)</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tools & Resources -->
-<section style="padding: 4rem 0; background-color: var(--color-bg-secondary);">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">Resources to Get Started</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- Interview Coach Tool -->
-      <a href="/tools/interview-coach"
-         class="rounded-xl border p-8 card-hover transition-colors"
-         style="background-color: var(--color-bg-primary); border-color: var(--color-border); text-decoration: none;">
-        <div class="flex items-start gap-3 mb-4">
-          <span style="font-size: 2rem;">🎯</span>
-          <div>
-            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Interview Coach</h4>
-            <span class="text-xs font-medium" style="background-color: var(--color-accent); color: white; padding: 0.25rem 0.5rem; border-radius: 4px;">Live</span>
-          </div>
-        </div>
-        <p class="text-body" style="color: var(--color-text-secondary);">
-          Practice PM interviews. Get AI feedback on your frameworks, structure, and thinking. Build confidence.
-        </p>
-        <p class="text-small mt-4" style="color: var(--color-accent); font-medium;">Start practicing →</p>
+    <!-- Live tool pills -->
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      <a href="/tools/pm-multiverse"
+         class="card-hover"
+         style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;background-color:var(--color-accent);color:white;text-decoration:none;font-size:14px;font-weight:600;">
+        PM Multiverse &rarr;
       </a>
-
-      <!-- Learning Path (Placeholder) -->
-      <div class="rounded-xl border p-8 card-hover transition-colors"
-           style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-3 mb-4">
-          <span style="font-size: 2rem;">📚</span>
-          <div>
-            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Learning Guides</h4>
-            <span class="text-xs font-medium" style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary); padding: 0.25rem 0.5rem; border-radius: 4px;">Coming Soon</span>
-          </div>
-        </div>
-        <p class="text-body" style="color: var(--color-text-secondary);">
-          Step-by-step guides on each skill. Resources, recommended courses, and projects to build.
-        </p>
-        <p class="text-small mt-4" style="color: var(--color-text-tertiary); font-style: italic;">Building now</p>
-      </div>
-
-      <!-- Community (Placeholder) -->
-      <div class="rounded-xl border p-8 card-hover transition-colors"
-           style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-3 mb-4">
-          <span style="font-size: 2rem;">👥</span>
-          <div>
-            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Community</h4>
-            <span class="text-xs font-medium" style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary); padding: 0.25rem 0.5rem; border-radius: 4px;">Coming Soon</span>
-          </div>
-        </div>
-        <p class="text-body" style="color: var(--color-text-secondary);">
-          Connect with other PMs learning to become full-stack. Share challenges, wins, and resources.
-        </p>
-        <p class="text-small mt-4" style="color: var(--color-text-tertiary); font-style: italic;">Launching soon</p>
-      </div>
-
-      <!-- Tools & Templates (Placeholder) -->
-      <div class="rounded-xl border p-8 card-hover transition-colors"
-           style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
-        <div class="flex items-start gap-3 mb-4">
-          <span style="font-size: 2rem;">🛠️</span>
-          <div>
-            <h4 class="text-h4 mb-1" style="color: var(--color-text-primary);">Tools & Templates</h4>
-            <span class="text-xs font-medium" style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary); padding: 0.25rem 0.5rem; border-radius: 4px;">Planned</span>
-          </div>
-        </div>
-        <p class="text-body" style="color: var(--color-text-secondary);">
-          AI toolkit, spec templates, roadmap frameworks. Open-source + MIT license.
-        </p>
-        <p class="text-small mt-4" style="color: var(--color-text-tertiary); font-style: italic;">Q2 2026</p>
-      </div>
-
+      <a href="/tools/interview-coach"
+         class="card-hover"
+         style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;border:1.5px solid var(--color-border);color:var(--color-text-primary);text-decoration:none;font-size:14px;font-weight:600;">
+        Interview Coach &rarr;
+      </a>
+      <a href="/tools/sde-prep/intensive-8-week"
+         class="card-hover"
+         style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:999px;border:1.5px solid var(--color-border);color:var(--color-text-primary);text-decoration:none;font-size:14px;font-weight:600;">
+        SDE Prep &rarr;
+      </a>
     </div>
   </div>
 </section>
 
-<!-- Blog Preview -->
-<section style="padding: 4rem 0;">
+<!-- PM READING STACK -->
+<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg-secondary);">
   <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">Latest Thinking</h2>
 
-    <div class="space-y-6">
-      {% set articles = [
-        {
-          "title": "How to Learn to Code (as a PM)",
-          "desc": "You don't need to become a software engineer. You need enough Python/JS to build prototypes and understand constraints.",
-          "slug": "how-to-learn-to-code-as-pm"
-        },
-        {
-          "title": "Why Data Skills Matter More Than Ever",
-          "desc": "The PM who can query data wins. Stop asking engineers for analytics. Learn SQL in a weekend.",
-          "slug": "why-data-skills-matter"
-        },
-        {
-          "title": "The Art of Shipping Imperfectly",
-          "desc": "Perfectionism kills products. How to release MVP thinking, iterate fast, and improve based on real feedback.",
-          "slug": "shipping-imperfectly"
-        }
-      ] %}
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:32px;">
+      <div>
+        <h2 class="text-h2" style="color: var(--color-text-primary);">PM Reading Stack</h2>
+        <p class="text-small" style="color: var(--color-text-tertiary); margin-top:5px;">
+          What I'm reading, listening to, and thinking about this month
+        </p>
+      </div>
+      {% if reading.last_updated %}
+      <span style="font-size:12px;color:var(--color-text-tertiary);padding:4px 12px;border-radius:999px;border:1px solid var(--color-border);background-color:var(--color-bg-primary);white-space:nowrap;align-self:flex-start;margin-top:6px;">
+        Updated {{ reading.last_updated }}
+      </span>
+      {% endif %}
+    </div>
 
-      {% for article in articles %}
-      <a href="/blog/{{ article.slug }}"
-         class="block rounded-xl border p-6 card-hover transition-colors"
-         style="background-color: var(--color-bg-secondary); border-color: var(--color-border); text-decoration: none;">
-        <h4 class="text-h4 mb-2" style="color: var(--color-text-primary);">{{ article.title }}</h4>
-        <p class="text-body" style="color: var(--color-text-secondary);">{{ article.desc }}</p>
-        <p class="text-small mt-3" style="color: var(--color-accent); font-medium;">Read →</p>
+    <!-- Curated picks -->
+    {% if reading.picks %}
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      {% for pick in reading.picks %}
+      <a href="{{ pick.url }}" target="_blank" rel="noopener noreferrer"
+         class="card-hover"
+         style="display:block;border-radius:12px;border:1px solid var(--color-border);padding:20px 22px;background-color:var(--color-bg-primary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          {% if pick.type == 'essay' %}
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-blue-100);color:var(--color-blue-900);">Essay</span>
+          {% elif pick.type == 'podcast' %}
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-warning-100);color:var(--color-warning-900);">Podcast</span>
+          {% elif pick.type == 'book' %}
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-success-100);color:var(--color-success-900);">Book</span>
+          {% elif pick.type == 'video' %}
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-danger-100);color:var(--color-danger-900);">Video</span>
+          {% else %}
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-bg-tertiary);color:var(--color-text-tertiary);">{{ pick.type | title }}</span>
+          {% endif %}
+          <span class="text-small" style="color:var(--color-text-tertiary);">{{ pick.source }}</span>
+        </div>
+        <h4 style="font-size:1rem;font-weight:600;color:var(--color-text-primary);line-height:1.4;margin-bottom:0;">{{ pick.title }}</h4>
+        {% if pick.note %}
+        <p class="text-small" style="color:var(--color-text-secondary);font-style:italic;border-left:2px solid var(--color-accent);padding-left:10px;margin-top:12px;line-height:1.6;">{{ pick.note }}</p>
+        {% endif %}
       </a>
       {% endfor %}
     </div>
+    {% endif %}
 
-    <div class="mt-8 text-center">
-      <a href="/blog"
-         class="inline-flex items-center gap-2 rounded-lg border px-6 py-3 text-sm font-semibold transition-colors"
-         style="border-color: var(--color-border); color: var(--color-text-primary);"
-         onmouseover="this.style.borderColor='var(--color-border-hover)'"
-         onmouseout="this.style.borderColor='var(--color-border)'">
-        All Articles
-        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-        </svg>
+    <!-- Auto-fetched RSS items -->
+    {% if reading.rss %}
+    <div style="margin-top:32px;">
+      <h3 style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:14px;">
+        Fresh from the feed
+      </h3>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        {% for item in reading.rss %}
+        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer"
+           class="card-hover"
+           style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;border:1px solid var(--color-border);background-color:var(--color-bg-primary);text-decoration:none;">
+          <div style="flex:1;min-width:0;">
+            <p class="text-small" style="color:var(--color-text-primary);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ item.title }}</p>
+            <p style="font-size:12px;color:var(--color-text-tertiary);margin-top:2px;">{{ item.source }}</p>
+          </div>
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-bg-tertiary);color:var(--color-text-tertiary);flex-shrink:0;">{{ item.type | title }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    {% if not reading.picks and not reading.rss %}
+    <p class="text-body" style="color:var(--color-text-tertiary);font-style:italic;">Reading stack coming soon — check back shortly.</p>
+    {% endif %}
+
+  </div>
+</section>
+
+<!-- LIVE TOOLS -->
+<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-5xl mx-auto px-6">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
+      <h2 class="text-h2" style="color: var(--color-text-primary);">Live Tools</h2>
+      <span class="text-small" style="color: var(--color-text-tertiary);">Built &amp; shipped, not just planned</span>
+    </div>
+
+    <!-- PM Multiverse — featured full-width card -->
+    <a href="/tools/pm-multiverse"
+       class="card-hover"
+       style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:32px;background:linear-gradient(135deg,var(--color-blue-50) 0%,var(--color-bg-primary) 100%);text-decoration:none;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-bg-secondary);color:var(--color-text-tertiary);border:1px solid var(--color-border);">Featured</span>
+      </div>
+      <h3 class="text-h3" style="color:var(--color-text-primary);margin-bottom:10px;">PM Multiverse</h3>
+      <p class="text-body-lg" style="color:var(--color-text-secondary);margin-bottom:18px;max-width:600px;">
+        Same problem. 5 PM brains. Where do Cagan, Torres, Doshi, Lenny, and the Exec AI Monster disagree &mdash; and which one thinks like you?
+      </p>
+      <p class="text-small" style="color:var(--color-accent);font-weight:600;">10 problems &middot; 5 personas &middot; Live community votes &rarr;</p>
+    </a>
+
+    <!-- Two smaller tools -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Interview Coach -->
+      <a href="/tools/interview-coach"
+         class="card-hover"
+         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
+        </div>
+        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">🎯 Interview Coach</h4>
+        <p class="text-body" style="color:var(--color-text-secondary);">
+          Practice PM interviews. Get AI feedback on your frameworks, structure, and thinking. Build confidence before the real thing.
+        </p>
+        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">Start practicing &rarr;</p>
       </a>
+
+      <!-- SDE Prep -->
+      <a href="/tools/sde-prep/intensive-8-week"
+         class="card-hover"
+         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
+        </div>
+        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">📋 SDE Prep</h4>
+        <p class="text-body" style="color:var(--color-text-secondary);">
+          9-week job search intensive. 200+ daily tasks, structured to get you from prep mode to signed offer.
+        </p>
+        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">See the plan &rarr;</p>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- Mission Section -->
-<section style="padding: 3rem 0; border-top: 1px solid var(--color-border);">
-  <div class="max-w-3xl mx-auto px-6 text-center">
-    <p class="text-body mb-2" style="color: var(--color-text-secondary); font-weight: 500;">
-      Our mission: Help PMs ship products without waiting for a team.
+<!-- LATEST WRITING -->
+<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-3xl mx-auto px-6">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;">
+      <h2 class="text-h2" style="color: var(--color-text-primary);">Latest Writing</h2>
+      <a href="/blog" class="text-small" style="color:var(--color-accent);text-decoration:none;font-weight:600;">All articles &rarr;</a>
+    </div>
+
+    {% if recent_posts %}
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      {% for post in recent_posts %}
+      <a href="/blog/{{ post.slug }}"
+         class="card-hover"
+         style="display:block;border-radius:12px;border:1px solid var(--color-border);padding:20px 22px;background-color:var(--color-bg-secondary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          {% for tag in post.tags[:2] %}
+          <span style="font-size:11px;color:var(--color-text-tertiary);padding:2px 8px;border-radius:4px;background-color:var(--color-bg-primary);border:1px solid var(--color-border);">{{ tag }}</span>
+          {% endfor %}
+          <span class="text-small" style="color:var(--color-text-tertiary);margin-left:auto;">{{ post.date.strftime('%b %d, %Y') if post.date else '' }}</span>
+        </div>
+        <h4 style="font-size:1rem;font-weight:600;color:var(--color-text-primary);line-height:1.4;margin-bottom:6px;">{{ post.title }}</h4>
+        {% if post.excerpt %}
+        <p class="text-small" style="color:var(--color-text-secondary);line-clamp-2;">{{ post.excerpt }}</p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-body" style="color:var(--color-text-tertiary);">
+      Writing coming soon. <a href="/blog" style="color:var(--color-accent);">Check the blog &rarr;</a>
     </p>
-    <p class="text-small" style="color: var(--color-text-tertiary);">
-      Built by <a href="/@fullstackpm" style="color: var(--color-accent); text-decoration: none;">@fullstackpm</a>
-    </p>
+    {% endif %}
   </div>
 </section>
 
-<!-- CTA: Start Learning -->
-<section style="padding: 4rem 0;">
-  <div class="max-w-2xl mx-auto text-center px-6">
-    <h2 class="text-h2 mb-4" style="color: var(--color-text-primary);">Ready to Become Full Stack?</h2>
-    <p class="text-body-lg mb-8" style="color: var(--color-text-secondary);">
-      Start with the Interview Coach to practice your product thinking. Then dive into guides on coding, data, and shipping.
-    </p>
-    <a href="/tools/interview-coach"
-       class="inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-semibold text-white transition-all card-hover"
-       style="background-color: var(--color-accent);">
-      Start Practicing
-      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-      </svg>
+<!-- BOOK -->
+<section style="padding: 3rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-3xl mx-auto px-6">
+    <a href="https://www.amazon.com/Memoirs-Mediocre-Manager-Surviving-Cross-Functional/dp/B0G2X59WRL/"
+       target="_blank" rel="noopener noreferrer"
+       class="card-hover"
+       style="display:flex;align-items:center;gap:24px;border-radius:14px;border:1px solid var(--color-border);padding:24px 28px;background-color:var(--color-bg-secondary);text-decoration:none;flex-wrap:wrap;">
+      <div style="font-size:2.5rem;flex-shrink:0;">📖</div>
+      <div style="flex:1;min-width:200px;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Published Book</span>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--color-text-primary);margin:4px 0 6px;">Memoirs of a Mediocre Manager</h3>
+        <p class="text-small" style="color:var(--color-text-secondary);">Part satire, part field guide. The quiet majority who actually keep the lights on finally get their story told.</p>
+      </div>
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;background-color:var(--color-accent);color:white;font-size:13px;font-weight:600;flex-shrink:0;white-space:nowrap;">
+        Read on Amazon &rarr;
+      </span>
     </a>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section style="padding: 5rem 0;">
+  <div class="max-w-xl mx-auto text-center px-6">
+    <p class="text-small mb-3" style="color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">
+      @fullstackpm
+    </p>
+    <h2 class="text-h2 mb-4" style="color: var(--color-text-primary);">PM instinct.<br>Ship mindset.</h2>
+    <p class="text-body-lg mb-8" style="color: var(--color-text-secondary);">
+      Built by a PM who codes. 16 years of product, shipped in public.
+    </p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+      <a href="/tools/pm-multiverse"
+         class="card-hover"
+         style="display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background-color:var(--color-accent);color:white;text-decoration:none;font-size:14px;font-weight:600;">
+        Try PM Multiverse
+      </a>
+      <a href="/@fullstackpm"
+         class="card-hover"
+         style="display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;border:1.5px solid var(--color-border);color:var(--color-text-primary);text-decoration:none;font-size:14px;font-weight:600;">
+        About me &rarr;
+      </a>
+    </div>
   </div>
 </section>
 

@@ -24,9 +24,19 @@ def _ctx(request: Request, **kwargs) -> dict:
 @router.get("/", response_class=HTMLResponse)
 async def home(request: Request) -> HTMLResponse:
     """Consolidated home page: Full Stack PM definition + components."""
+    content_service = request.app.state.content_service
+    reading_service = request.app.state.reading_service
+    recent_posts, _ = content_service.get_posts(page=1, per_page=3)
+    reading = reading_service.get()
     return templates.TemplateResponse(
         "index.html",
-        _ctx(request, title="@fullstackpm - Harsha Cheruku", current_page="/"),
+        _ctx(
+            request,
+            title="@fullstackpm - Harsha Cheruku",
+            current_page="/",
+            recent_posts=recent_posts,
+            reading=reading,
+        ),
     )
 
 

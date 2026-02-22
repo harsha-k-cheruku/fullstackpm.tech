@@ -11,6 +11,7 @@ from app.config import settings
 from app.database import init_db
 from app.routers import auth, blog, comments, interview_coach, marketplace, pages, pm_multiverse, projects, sde_prep, seo
 from app.services.content import ContentService
+from app.services.reading_service import ReadingService
 
 
 @asynccontextmanager
@@ -22,6 +23,9 @@ async def lifespan(app: FastAPI):
     content_service = ContentService(settings.content_dir)
     content_service.load()
     app.state.content_service = content_service
+
+    # Reading stack (manual picks + RSS auto-pull)
+    app.state.reading_service = ReadingService(settings.static_dir / "data")
     yield
 
 
@@ -43,7 +47,6 @@ app.include_router(interview_coach.router)
 app.include_router(marketplace.router)
 app.include_router(sde_prep.router)
 app.include_router(auth.router)
-app.include_router(seo.router)
 app.include_router(seo.router)
 
 # Templates
