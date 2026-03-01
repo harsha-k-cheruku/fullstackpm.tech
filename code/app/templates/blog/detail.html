@@ -38,6 +38,18 @@
       {{ post.html_content | safe }}
     </div>
 
+    <!-- Newsletter CTA -->
+    <div class="max-w-3xl mx-auto mt-12 pt-8 pb-4 border-t" style="border-color: var(--color-border);">
+      <div class="rounded-lg p-6" style="background-color: var(--color-bg-secondary);">
+        <h3 class="text-lg font-bold mb-2" style="color: var(--color-text-primary);">Enjoyed this?</h3>
+        <p class="text-sm mb-4" style="color: var(--color-text-secondary);">
+          Get posts like this in your inbox. No spam, unsubscribe anytime.
+        </p>
+        {% set newsletter_source = "blog" %}
+        {% include "partials/newsletter_signup.html" %}
+      </div>
+    </div>
+
     <!-- Comments Section -->
     <div class="max-w-3xl mx-auto">
       {% include "partials/comments.html" %}

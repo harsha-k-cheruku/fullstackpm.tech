@@ -1,0 +1,27 @@
+<!-- partials/newsletter_signup.html -->
+<div id="newsletter-form-{{ newsletter_source | default('footer') }}">
+  <form hx-post="/api/newsletter/subscribe"
+        hx-target="#newsletter-form-{{ newsletter_source | default('footer') }}"
+        hx-swap="innerHTML"
+        class="flex flex-col sm:flex-row gap-3">
+    <input type="hidden" name="source" value="{{ newsletter_source | default('footer') }}">
+    <input type="email"
+           name="email"
+           class="flex-1 rounded-lg border px-4 py-2.5 text-sm"
+           style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+           placeholder="you@example.com"
+           required>
+    <input type="text"
+           name="name"
+           class="sm:w-40 rounded-lg border px-4 py-2.5 text-sm"
+           style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"
+           placeholder="Name (optional)">
+    <button type="submit"
+            class="rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors whitespace-nowrap"
+            style="background-color: var(--color-accent);"
+            onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+            onmouseout="this.style.backgroundColor='var(--color-accent)'">
+      Subscribe
+    </button>
+  </form>
+</div>

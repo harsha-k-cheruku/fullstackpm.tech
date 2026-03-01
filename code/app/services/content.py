@@ -96,7 +96,10 @@ class ContentService:
                     html_content=content_html,
                 )
             )
-        return sorted(posts, key=lambda item: item.date, reverse=True)
+        # Filter out future-dated posts (enables scheduling)
+        now = datetime.now()
+        published = [p for p in posts if p.date <= now]
+        return sorted(published, key=lambda item: item.date, reverse=True)
 
     def _load_projects(self) -> List[Project]:
         projects_dir = self.content_dir / "projects"
