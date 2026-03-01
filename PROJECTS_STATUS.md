@@ -52,7 +52,32 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 
 ---
 
-### 3. Blog + Comments System
+### 3. SDE Prep Tool (9-Week Intensive)
+**Status:** 🟢 Live
+**URL:** /tools/sde-prep/intensive-8-week
+**Tech:** FastAPI + Jinja2 + localStorage + JSON curriculum data
+**Features:**
+- 9-week intensive job search prep curriculum (208 tasks)
+- Plan page with expandable weeks/days/tasks
+- Progress tracker using browser localStorage
+- Personal reflection notes page
+- Task types: research, writing, practice, networking, application
+
+**Key Files:**
+- Curriculum data: `code/app/static/data/curriculum-8-week-intensive.json`
+- Plan page: `/tools/sde-prep/intensive-8-week`
+- Tracker: `/tools/sde-prep/intensive-tracker`
+- Notes: `/tools/sde-prep/intensive-notes`
+
+**Metrics:**
+- Storage: localStorage only (no server persistence)
+- No API cost
+
+**When to Extract:** Never (personal tool, part of portfolio)
+
+---
+
+### 4. Blog + Comments System
 **Status:** 🟢 Live
 **URL:** /blog
 **Tech:** Markdown + SQLite (comments)
@@ -99,7 +124,33 @@ Projects being actively built. Deployed with main app during development.
 
 ---
 
-### 2. Book Marketing Content Generator
+### 2. PM Multiverse
+**Status:** 🟡 Phase 1 Complete (Persona Synthesis)
+**Location:** `/Users/sidc/Projects/claude_code/pm_multiverse/`
+**Dashboard:** `pm_multiverse/dashboard/index.html`
+**Timeline:** Started 2026-02-20
+**Features (Planned):**
+- Interactive experience: 5 PM personas solve the same product problems and explicitly disagree
+- Your Take First quiz → Persona Match → The Split → Arena deep dives → Live voting → PM DNA Card
+- 10 product problems, ~60-70 content atoms per problem
+- LinkedIn-shareable PM DNA cards
+- Live vote aggregation (SQLite backend)
+
+**Personas:** Marty Cagan, Teresa Torres, Shreyas Doshi, Lenny Rachitsky, Execution AI Monster (fictional)
+
+**Build Plan:**
+- Phase 1 ✅: Persona research + synthesis (all 5 persona files complete)
+- Phase 2 (next): Rewrite YouTube Brazil problem JSON with persona-grounded content
+- Phase 3: Build interactive HTML/CSS/JS shell + vote API
+- Phase 4: Haiku replicates problems 2-10 using content template
+
+**When to Extract:** 2026 Q2
+- Criteria: 3+ problems live, vote API working, shareable DNA cards
+- Action: Integrate into fullstackpm.tech as `/tools/pm-multiverse` or standalone
+
+---
+
+### 3. Book Marketing Content Generator
 **Status:** 🟡 Phase 0 (Planning)
 **Location:** `code/BOOK_MARKETING_GENERATOR.md`
 **Timeline:** Start design 2026-03-01
@@ -154,7 +205,21 @@ Projects conceptualized but not yet built. Will live on fullstackpm.tech during 
 
 ---
 
-### 3. Advanced Interview Coach
+### 3. fullstackpm.tech UI/UX Redesign
+**Status:** 📋 Concept
+**Planned Scope:**
+- Adopt the dark gradient + accent color + card-based design language from PM Multiverse "How I Built It" page
+- Create unified design system (CSS variables, component patterns) across all pages
+- Modernize homepage, project pages, tool pages with consistent visual language
+- Improve mobile responsiveness and dark mode consistency
+
+**Inspiration:** `pm_multiverse/how_it_was_built/index.html`
+**When to Build:** 2026 Q2
+**When to Extract:** N/A (site-wide improvement)
+
+---
+
+### 4. Advanced Interview Coach
 **Status:** 📋 Concept
 **Planned Features:**
 - OAuth + LLM selection (use your ChatGPT/Claude/Gemini key)
@@ -222,9 +287,12 @@ fullstackpm-projects/      ← Mature standalone projects
 | Project | Current Status | Extraction Date | Target | New Repo |
 |---------|---|---|---|---|
 | Interview Coach | Live | Q2 2026 | npm + SaaS | fullstackpm-interview-coach |
+| SDE Prep Tool | Live | Never | Stay integrated | (none) |
 | Marketplace Analytics | Live | Q3 2026 | Reusable template | fullstackpm-marketplace-analytics |
+| PM Multiverse | Phase 1 done | Q2 2026 | Integrate or standalone | fullstackpm-pm-multiverse |
 | PM Tech Companion | In dev | Q3 2026 | SaaS or standalone | fullstackpm-pm-tech-companion |
 | Book Marketing Gen | Planned | Q4 2026 | Open source | fullstackpm-book-marketing-gen |
+| UI/UX Redesign | Concept | N/A | Site-wide | (none) |
 | Books Portal | Planned | Q2 2026 | Stay integrated | (none) |
 | PM Community | Concept | 2027+ | Separate service | fullstackpm-community |
 
@@ -253,15 +321,21 @@ fullstackpm-projects/      ← Mature standalone projects
 
 ### This Month (February 2026)
 - ✅ Fix project filters (done!)
+- ✅ PM Multiverse Phase 1: All 5 persona files synthesized
+- 🔄 PM Multiverse Phase 2: Rewrite YouTube Brazil problem with persona-grounded content
 - 🔄 Start PM Tech Companion Phase 1
 - 📋 Plan Books Portal feature
 
 ### Next Month (March 2026)
+- PM Multiverse Phase 3: Build interactive shell + vote API
+- PM Multiverse Phase 4: Haiku generates problems 2-10
 - Complete PM Tech Companion Phase 1-2
 - Start Book Marketing Generator design
 - Add 3+ new PM Tech Companion examples
 
 ### Q2 2026
+- PM Multiverse: Integrate into fullstackpm.tech
+- UI/UX Redesign: Apply PM Multiverse design language site-wide
 - Launch Books Portal
 - Extract Interview Coach (npm)
 - Complete PM Tech Companion SaaS planning
@@ -276,5 +350,5 @@ fullstackpm-projects/      ← Mature standalone projects
 3. When you **extract** → Update with new repo name
 4. When metrics change → Update metrics quarterly
 
-**Last Updated:** 2026-02-14
+**Last Updated:** 2026-02-21
 **Next Review:** 2026-04-01

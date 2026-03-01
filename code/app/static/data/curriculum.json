@@ -493,6 +493,2850 @@
           ]
         }
       ]
+    },
+    {
+      "week": 2,
+      "title": "Week 2: Linked Lists",
+      "description": "Master linked list operations and pointer manipulation",
+      "goals": [
+        "Master linked list operations and pointer manipulation",
+        "Understand dummy nodes and fast/slow pointers",
+        "Practice complex pointer operations",
+        "Build confidence with reference-based data structures"
+      ],
+      "totalHours": "12-14",
+      "keyFocusAreas": ["Pointer arithmetic", "Dummy nodes", "Fast/slow pointers", "Reversal techniques"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Linked List Basics",
+          "description": "Fundamental operations and reversal",
+          "tasks": [
+            {
+              "id": 18,
+              "title": "Study Linked List Fundamentals",
+              "description": "Singly vs doubly linked, operations (insert, delete, traverse)",
+              "type": "reading",
+              "minutes": 30,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "GeeksforGeeks - Linked List",
+                  "url": "https://www.geeksforgeeks.org/linked-list-set-1-introduction/",
+                  "type": "article"
+                },
+                {
+                  "title": "LeetCode - Linked List Concepts",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-easy/93/linked-list/",
+                  "type": "interactive"
+                }
+              ]
+            },
+            {
+              "id": 19,
+              "title": "LeetCode #206 - Reverse Linked List",
+              "description": "Reverse a linked list iteratively",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 206,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/reverse-linked-list/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/reverse-linked-list/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/G0_I-ZF0S38",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Iterative reversal with pointers",
+              "complexity": "O(n) time, O(1) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Merging & Combining",
+          "description": "Merge linked lists",
+          "tasks": [
+            {
+              "id": 20,
+              "title": "LeetCode #21 - Merge Two Sorted Lists",
+              "description": "Merge two sorted lists into one",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 21,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/merge-two-sorted-lists/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/merge-two-sorted-lists/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/XIdigk956u0",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Two pointer merge",
+              "complexity": "O(n + m) time, O(1) space"
+            },
+            {
+              "id": 21,
+              "title": "LeetCode #23 - Merge K Sorted Lists",
+              "description": "Merge multiple sorted lists",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 23,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/merge-k-sorted-lists/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/merge-k-sorted-lists/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/q5a5OiGbT6Q",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Min-heap or divide and conquer",
+              "complexity": "O(n log k) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Cycle Detection & Two Pointers",
+          "description": "Floyd's algorithm and cycle detection",
+          "tasks": [
+            {
+              "id": 22,
+              "title": "LeetCode #141 - Linked List Cycle",
+              "description": "Detect if list has a cycle",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 141,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/linked-list-cycle/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/linked-list-cycle/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/gBUqvjCSF64",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Floyd's cycle detection algorithm",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 23,
+              "title": "LeetCode #142 - Linked List Cycle II",
+              "description": "Find the entry point of a cycle",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 142,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/linked-list-cycle-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/linked-list-cycle-ii/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/R6M_zXl8f1E",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Floyd's algorithm + finding entry point",
+              "complexity": "O(n) time, O(1) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Removal & Modification",
+          "description": "Remove nodes and modify lists",
+          "tasks": [
+            {
+              "id": 24,
+              "title": "LeetCode #19 - Remove Nth Node From End",
+              "description": "Remove the Nth node from end of list",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 19,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/XVuQxVEmKSs",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Dummy node + two pointers",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 25,
+              "title": "LeetCode #82 - Remove Duplicates from Sorted List II",
+              "description": "Remove all duplicates from sorted list",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 82,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Dummy node for handling edge cases",
+              "complexity": "O(n) time, O(1) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Complex Operations",
+          "description": "Reverse portions and partition lists",
+          "tasks": [
+            {
+              "id": 26,
+              "title": "LeetCode #92 - Reverse Linked List II",
+              "description": "Reverse a portion of a list",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 92,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/reverse-linked-list-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/reverse-linked-list-ii/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/RF_M9tX4Eag",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Reverse portion of list with pointers",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 27,
+              "title": "LeetCode #86 - Partition List",
+              "description": "Partition list around a value",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 86,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/partition-list/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/partition-list/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Split and merge approach",
+              "complexity": "O(n) time, O(1) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Practice Problems",
+          "description": "Advanced linked list operations",
+          "tasks": [
+            {
+              "id": 28,
+              "title": "LeetCode #2 - Add Two Numbers",
+              "description": "Add two numbers represented as linked lists",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 2,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/add-two-numbers/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/add-two-numbers/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/wgFnzlwFd_4",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Traversal with carry",
+              "complexity": "O(max(m, n)) time"
+            },
+            {
+              "id": 29,
+              "title": "LeetCode #143 - Reorder List",
+              "description": "Reorder list in L0->Ln->L1->Ln-1 pattern",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 143,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/reorder-list/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/reorder-list/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Find middle, reverse second half, merge",
+              "complexity": "O(n) time, O(1) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Review & Rest",
+          "description": "Consolidate Week 2 learning",
+          "tasks": [
+            {
+              "id": 30,
+              "title": "Review Week 2 problems",
+              "description": "Revisit challenging linked list problems",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 31,
+              "title": "Rest and prepare for Week 3",
+              "description": "Mental preparation for trees and graphs",
+              "type": "rest",
+              "minutes": 20,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "title": "Week 3: Trees & Graphs - Fundamentals",
+      "description": "Master tree traversals and basic graph algorithms",
+      "goals": [
+        "Master tree traversals and basic graph algorithms",
+        "Understand DFS, BFS, and recursion patterns",
+        "Practice tree properties and BST operations",
+        "Build foundation for advanced graph problems"
+      ],
+      "totalHours": "14-16",
+      "keyFocusAreas": ["DFS", "BFS", "Recursion", "Tree properties", "Graph traversal"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Tree Basics & Traversals",
+          "description": "Tree fundamentals and traversal patterns",
+          "tasks": [
+            {
+              "id": 32,
+              "title": "Study Tree Fundamentals",
+              "description": "Binary tree structure, properties, and operations",
+              "type": "reading",
+              "minutes": 30,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "GeeksforGeeks - Binary Tree",
+                  "url": "https://www.geeksforgeeks.org/binary-tree-data-structure/",
+                  "type": "article"
+                },
+                {
+                  "title": "LeetCode - Tree Concepts",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-easy/94/trees/",
+                  "type": "interactive"
+                }
+              ]
+            },
+            {
+              "id": 33,
+              "title": "LeetCode #144 - Binary Tree Preorder Traversal",
+              "description": "Root, left, right traversal",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 144,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Recursive and iterative approaches",
+              "complexity": "O(n) time, O(h) space"
+            },
+            {
+              "id": 34,
+              "title": "LeetCode #94 - Binary Tree Inorder Traversal",
+              "description": "Left, root, right traversal",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 94,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Stack-based iterative traversal",
+              "complexity": "O(n) time, O(h) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Tree Traversals & Search",
+          "description": "Postorder and level order traversals",
+          "tasks": [
+            {
+              "id": 35,
+              "title": "LeetCode #145 - Binary Tree Postorder Traversal",
+              "description": "Left, right, root traversal",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 145,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Iterative postorder with stack",
+              "complexity": "O(n) time, O(h) space"
+            },
+            {
+              "id": 36,
+              "title": "LeetCode #102 - Binary Tree Level Order Traversal",
+              "description": "BFS traversal level by level",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 102,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/6ZnyEApgFYg",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "BFS with queue",
+              "complexity": "O(n) time, O(w) space"
+            },
+            {
+              "id": 37,
+              "title": "LeetCode #104 - Maximum Depth of Binary Tree",
+              "description": "Find height of binary tree",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 104,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "DFS recursion",
+              "complexity": "O(n) time, O(h) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Binary Search Trees",
+          "description": "BST validation and operations",
+          "tasks": [
+            {
+              "id": 38,
+              "title": "LeetCode #98 - Validate Binary Search Tree",
+              "description": "Check if tree is a valid BST",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 98,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/validate-binary-search-tree/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/validate-binary-search-tree/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/s6ATEkipzow",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Inorder traversal or min/max bounds",
+              "complexity": "O(n) time, O(h) space"
+            },
+            {
+              "id": 39,
+              "title": "LeetCode #700 - Search in a Binary Search Tree",
+              "description": "Search for a value in BST",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 700,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "BST search property",
+              "complexity": "O(h) time average, O(n) worst"
+            },
+            {
+              "id": 40,
+              "title": "LeetCode #701 - Insert into a Binary Search Tree",
+              "description": "Insert value into BST",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 701,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Maintain BST property during insertion",
+              "complexity": "O(h) time average"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Path & Sum Problems",
+          "description": "Path sum and backtracking problems",
+          "tasks": [
+            {
+              "id": 41,
+              "title": "LeetCode #112 - Path Sum",
+              "description": "Check if root-to-leaf path sums to target",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 112,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/path-sum/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/path-sum/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "DFS with target tracking",
+              "complexity": "O(n) time, O(h) space"
+            },
+            {
+              "id": 42,
+              "title": "LeetCode #113 - Path Sum II",
+              "description": "Find all root-to-leaf paths with target sum",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 113,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/path-sum-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/path-sum-ii/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/saumyYIn6qE",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Backtracking",
+              "complexity": "O(n log n) time average"
+            },
+            {
+              "id": 43,
+              "title": "LeetCode #437 - Path Sum III",
+              "description": "Find paths with target sum anywhere in tree",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 437,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/path-sum-iii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/path-sum-iii/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "DFS with prefix sum",
+              "complexity": "O(n^2) time worst case"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Graph Basics & DFS",
+          "description": "Graph fundamentals and DFS algorithms",
+          "tasks": [
+            {
+              "id": 44,
+              "title": "Study Graph Fundamentals",
+              "description": "Graph representation and traversal basics",
+              "type": "reading",
+              "minutes": 30,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "GeeksforGeeks - Graph",
+                  "url": "https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/",
+                  "type": "article"
+                },
+                {
+                  "title": "LeetCode - Graph Concepts",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-hard/117/graph/",
+                  "type": "interactive"
+                }
+              ]
+            },
+            {
+              "id": 45,
+              "title": "LeetCode #200 - Number of Islands",
+              "description": "Count connected components using DFS/BFS",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 200,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/number-of-islands/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/number-of-islands/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/pNqkz5X8zf4",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "DFS or BFS on grid",
+              "complexity": "O(m*n) time, O(m*n) space"
+            },
+            {
+              "id": 46,
+              "title": "LeetCode #133 - Clone Graph",
+              "description": "Deep copy a graph",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 133,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/clone-graph/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/clone-graph/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "DFS/BFS with visited set",
+              "complexity": "O(n + e) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "More Graph Problems",
+          "description": "Topological sort and shortest path",
+          "tasks": [
+            {
+              "id": 47,
+              "title": "LeetCode #207 - Course Schedule",
+              "description": "Detect cycle in directed graph",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 207,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/course-schedule/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/course-schedule/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/O674yvbHXUc",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Topological sort, cycle detection",
+              "complexity": "O(n + e) time"
+            },
+            {
+              "id": 48,
+              "title": "LeetCode #322 - Coin Change",
+              "description": "Minimum coins for target amount",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 322,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/coin-change/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/coin-change/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/H9bfqozjoqs",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "BFS shortest path",
+              "complexity": "O(target * n) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Review & Practice",
+          "description": "Consolidate Week 3 learning",
+          "tasks": [
+            {
+              "id": 49,
+              "title": "Review Week 3 problems",
+              "description": "Revisit challenging tree and graph problems",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 50,
+              "title": "Rest",
+              "description": "Prepare for dynamic programming",
+              "type": "rest",
+              "minutes": 20,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "title": "Week 4: Dynamic Programming - Part 1",
+      "description": "Master DP fundamentals and memoization",
+      "goals": [
+        "Master DP fundamentals and memoization",
+        "Understand overlapping subproblems and optimal substructure",
+        "Practice 1D and 2D DP solutions",
+        "Build foundation for advanced DP problems"
+      ],
+      "totalHours": "14-16",
+      "keyFocusAreas": ["Memoization", "Overlapping subproblems", "1D DP", "2D DP"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "DP Basics",
+          "description": "Fundamentals and simple DP problems",
+          "tasks": [
+            {
+              "id": 51,
+              "title": "Study DP Fundamentals",
+              "description": "Overlapping subproblems, optimal substructure, memoization",
+              "type": "reading",
+              "minutes": 40,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "GeeksforGeeks - DP",
+                  "url": "https://www.geeksforgeeks.org/dynamic-programming/",
+                  "type": "article"
+                },
+                {
+                  "title": "LeetCode - DP Pattern",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-medium/",
+                  "type": "interactive"
+                }
+              ]
+            },
+            {
+              "id": 52,
+              "title": "LeetCode #70 - Climbing Stairs",
+              "description": "Count ways to climb n stairs",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 70,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/climbing-stairs/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/climbing-stairs/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Simple DP/Fibonacci",
+              "complexity": "O(n) time, O(n) or O(1) space"
+            },
+            {
+              "id": 53,
+              "title": "LeetCode #509 - Fibonacci Number",
+              "description": "Calculate Nth Fibonacci number",
+              "type": "coding",
+              "minutes": 15,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 509,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/fibonacci-number/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/fibonacci-number/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Memoization vs tabulation",
+              "complexity": "O(n) time, O(n) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "1D DP",
+          "description": "One-dimensional DP problems",
+          "tasks": [
+            {
+              "id": 54,
+              "title": "LeetCode #198 - House Robber",
+              "description": "Max sum with no adjacent elements",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 198,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/house-robber/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/house-robber/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/73r3KWiEvyk",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "DP with state tracking",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 55,
+              "title": "LeetCode #213 - House Robber II",
+              "description": "Max sum in circular array",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 213,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/house-robber-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/house-robber-ii/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Circular variant handling",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 56,
+              "title": "LeetCode #139 - Word Break",
+              "description": "Check if string can be segmented",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 139,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/word-break/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/word-break/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/Sx9NNqCbop8",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "DP with set lookup",
+              "complexity": "O(n^2) time, O(n) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "2D DP",
+          "description": "Two-dimensional DP problems",
+          "tasks": [
+            {
+              "id": 57,
+              "title": "LeetCode #62 - Unique Paths",
+              "description": "Count paths in grid",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 62,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/unique-paths/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/unique-paths/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "2D grid DP",
+              "complexity": "O(m*n) time, O(m*n) space"
+            },
+            {
+              "id": 58,
+              "title": "LeetCode #63 - Unique Paths II",
+              "description": "Count paths with obstacles",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 63,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/unique-paths-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/unique-paths-ii/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "2D DP with obstacles",
+              "complexity": "O(m*n) time, O(m*n) space"
+            },
+            {
+              "id": 59,
+              "title": "LeetCode #64 - Minimum Path Sum",
+              "description": "Find minimum sum path",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 64,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/minimum-path-sum/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/minimum-path-sum/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Cumulative DP",
+              "complexity": "O(m*n) time, O(m*n) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "String DP",
+          "description": "String manipulation with DP",
+          "tasks": [
+            {
+              "id": 60,
+              "title": "LeetCode #72 - Edit Distance",
+              "description": "Minimum edits to transform string",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 72,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/edit-distance/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/edit-distance/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/jnyFjiMg-fE",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Classic DP pattern",
+              "complexity": "O(m*n) time, O(m*n) space"
+            },
+            {
+              "id": 61,
+              "title": "LeetCode #1143 - Longest Common Subsequence",
+              "description": "Find LCS of two strings",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 1143,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/longest-common-subsequence/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/longest-common-subsequence/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "String comparison DP",
+              "complexity": "O(m*n) time, O(m*n) space"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Knapsack Variants",
+          "description": "Subset sum and target problems",
+          "tasks": [
+            {
+              "id": 62,
+              "title": "LeetCode #416 - Partition Equal Subset Sum",
+              "description": "0/1 Knapsack variant",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 416,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/partition-equal-subset-sum/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/partition-equal-subset-sum/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/IvscKL5eI98",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "0/1 Knapsack pattern",
+              "complexity": "O(n * sum) time, O(sum) space"
+            },
+            {
+              "id": 63,
+              "title": "LeetCode #494 - Target Sum",
+              "description": "Assign + or - to reach target",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 494,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/target-sum/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/target-sum/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "DP or backtracking",
+              "complexity": "O(n * target) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Hard DP Problems",
+          "description": "Advanced DP challenges",
+          "tasks": [
+            {
+              "id": 64,
+              "title": "LeetCode #97 - Interleaving String",
+              "description": "Check if s3 is interleaving of s1 and s2",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 97,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/interleaving-string/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/interleaving-string/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Multi-string DP",
+              "complexity": "O(m*n) time, O(m*n) space"
+            },
+            {
+              "id": 65,
+              "title": "LeetCode #188 - Best Time to Buy and Sell Stock IV",
+              "description": "Max profit with k transactions",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 188,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Transaction-based DP",
+              "complexity": "O(n*k) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Review",
+          "description": "Consolidate Week 4 learning",
+          "tasks": [
+            {
+              "id": 66,
+              "title": "Review Week 4 problems",
+              "description": "Revisit challenging DP problems",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false
+            },
+            {
+              "id": 67,
+              "title": "Rest",
+              "description": "Prepare for greedy and backtracking",
+              "type": "rest",
+              "minutes": 20,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "title": "Week 5: Greedy & Backtracking",
+      "description": "Master greedy algorithms and backtracking techniques",
+      "goals": [
+        "Understand greedy algorithm design",
+        "Master backtracking and exploration patterns",
+        "Practice permission and combination problems",
+        "Build problem-solving intuition"
+      ],
+      "totalHours": "12-14",
+      "keyFocusAreas": ["Greedy algorithms", "Backtracking", "Permutations", "Combinations"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Greedy Basics",
+          "description": "Greedy algorithm fundamentals",
+          "tasks": [
+            {
+              "id": 68,
+              "title": "LeetCode #455 - Assign Cookies",
+              "description": "Greedy assignment problem",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 455,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/assign-cookies/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/assign-cookies/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Greedy with sorting",
+              "complexity": "O(n log n) time"
+            },
+            {
+              "id": 69,
+              "title": "LeetCode #435 - Non-overlapping Intervals",
+              "description": "Greedy interval scheduling",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 435,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/non-overlapping-intervals/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/non-overlapping-intervals/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Greedy interval scheduling",
+              "complexity": "O(n log n) time"
+            },
+            {
+              "id": 70,
+              "title": "LeetCode #56 - Merge Intervals",
+              "description": "Merge overlapping intervals",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 56,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/merge-intervals/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/merge-intervals/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Interval merging",
+              "complexity": "O(n log n) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "More Greedy",
+          "description": "Advanced greedy patterns",
+          "tasks": [
+            {
+              "id": 71,
+              "title": "LeetCode #45 - Jump Game II",
+              "description": "Minimum jumps to reach end",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 45,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/jump-game-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/jump-game-ii/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/bM2-p-yFZ1s",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Greedy window expansion",
+              "complexity": "O(n) time, O(1) space"
+            },
+            {
+              "id": 72,
+              "title": "LeetCode #1899 - Merge Triplets to Form Target Triplet",
+              "description": "Merge triplets greedily",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 1899,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Greedy filtering",
+              "complexity": "O(n) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Backtracking Basics",
+          "description": "Permutation generation",
+          "tasks": [
+            {
+              "id": 73,
+              "title": "LeetCode #46 - Permutations",
+              "description": "Generate all permutations",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 46,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/permutations/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/permutations/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/AfSk-PEZnqo",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Backtracking template",
+              "complexity": "O(n!) time"
+            },
+            {
+              "id": 74,
+              "title": "LeetCode #47 - Permutations II",
+              "description": "Permutations with duplicates",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 47,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/permutations-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/permutations-ii/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Backtracking with duplicate handling",
+              "complexity": "O(n!) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Combination Problems",
+          "description": "Combination and subset generation",
+          "tasks": [
+            {
+              "id": 75,
+              "title": "LeetCode #77 - Combinations",
+              "description": "Generate all k-combinations",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 77,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/combinations/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/combinations/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Combination generation",
+              "complexity": "O(C(n,k)) time"
+            },
+            {
+              "id": 76,
+              "title": "LeetCode #39 - Combination Sum",
+              "description": "Find combinations that sum to target",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 39,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/combination-sum/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/combination-sum/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/GBKI9VSKjGI",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Backtracking with reuse",
+              "complexity": "O(2^n) time"
+            },
+            {
+              "id": 77,
+              "title": "LeetCode #40 - Combination Sum II",
+              "description": "Combinations with constraints",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 40,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/combination-sum-ii/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/combination-sum-ii/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Backtracking with constraints",
+              "complexity": "O(2^n) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "N-Queens & Sudoku",
+          "description": "Complex backtracking problems",
+          "tasks": [
+            {
+              "id": 78,
+              "title": "LeetCode #51 - N-Queens",
+              "description": "Place N queens on board",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 51,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/n-queens/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/n-queens/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/1U2B2bn3MWs",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Backtracking with board validation",
+              "complexity": "O(N!) time"
+            },
+            {
+              "id": 79,
+              "title": "LeetCode #37 - Sudoku Solver",
+              "description": "Solve sudoku puzzle",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 37,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/sudoku-solver/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/sudoku-solver/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Constraint propagation with backtracking",
+              "complexity": "O(9^(n^2)) worst case"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Subset Problems",
+          "description": "Subset and partition problems",
+          "tasks": [
+            {
+              "id": 80,
+              "title": "LeetCode #78 - Subsets",
+              "description": "Generate all subsets",
+              "type": "coding",
+              "minutes": 25,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 78,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/subsets/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/subsets/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Subset generation patterns",
+              "complexity": "O(2^n) time"
+            },
+            {
+              "id": 81,
+              "title": "LeetCode #131 - Palindrome Partitioning",
+              "description": "Partition string into palindromes",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 131,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/palindrome-partitioning/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/palindrome-partitioning/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Backtracking with string partitioning",
+              "complexity": "O(2^n) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Review",
+          "description": "Consolidate Week 5 learning",
+          "tasks": [
+            {
+              "id": 82,
+              "title": "Review Week 5",
+              "description": "Revisit greedy and backtracking problems",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "title": "Week 6: Advanced Data Structures",
+      "description": "Master heaps, tries, and specialized data structures",
+      "goals": [
+        "Master heap operations and priority queues",
+        "Understand trie data structures",
+        "Practice advanced data structure implementations",
+        "Solve problems using specialized structures"
+      ],
+      "totalHours": "12-14",
+      "keyFocusAreas": ["Heaps", "Priority queues", "Tries", "Hash tables", "Advanced structures"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Heaps",
+          "description": "Heap operations and top-K problems",
+          "tasks": [
+            {
+              "id": 83,
+              "title": "LeetCode #215 - Kth Largest Element",
+              "description": "Find Kth largest element using min-heap",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 215,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/XEmy13g1Qxc",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Min-heap for top-K",
+              "complexity": "O(n log k) time"
+            },
+            {
+              "id": 84,
+              "title": "LeetCode #347 - Top K Frequent Elements",
+              "description": "Find K most frequent elements",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 347,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/top-k-frequent-elements/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/top-k-frequent-elements/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/YPTqKIgVk-k",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Heap with frequency",
+              "complexity": "O(n log k) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "More Heaps",
+          "description": "Advanced heap problems",
+          "tasks": [
+            {
+              "id": 85,
+              "title": "LeetCode #295 - Find Median from Data Stream",
+              "description": "Maintain median with two heaps",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 295,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/find-median-from-data-stream/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/find-median-from-data-stream/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/itmhHiLsHKo",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Two heaps pattern",
+              "complexity": "O(log n) add, O(1) median"
+            },
+            {
+              "id": 86,
+              "title": "LeetCode #1046 - Last Stone Weight",
+              "description": "Simulate stone collision",
+              "type": "coding",
+              "minutes": 20,
+              "completed": false,
+              "difficulty": "Easy",
+              "leetcodeNumber": 1046,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/last-stone-weight/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/last-stone-weight/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Max-heap simulation",
+              "complexity": "O(n log n) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Tries",
+          "description": "Trie data structure and operations",
+          "tasks": [
+            {
+              "id": 87,
+              "title": "Study Trie Data Structure",
+              "description": "Trie structure and applications",
+              "type": "reading",
+              "minutes": 30,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "GeeksforGeeks - Trie",
+                  "url": "https://www.geeksforgeeks.org/trie-insert-and-search/",
+                  "type": "article"
+                },
+                {
+                  "title": "LeetCode - Trie Problems",
+                  "url": "https://leetcode.com/explore/featured/card/top-interview-questions-hard/117/data-structure/",
+                  "type": "interactive"
+                }
+              ]
+            },
+            {
+              "id": 88,
+              "title": "LeetCode #208 - Implement Trie (Prefix Tree)",
+              "description": "Implement Trie data structure",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 208,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/implement-trie-prefix-tree/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/oobqoO6Zgx0",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Trie implementation",
+              "complexity": "O(m) insert/search where m is word length"
+            },
+            {
+              "id": 89,
+              "title": "LeetCode #211 - Design Add and Search Words",
+              "description": "Trie with wildcard support",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 211,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/design-add-and-search-words-data-structure/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Trie with wildcard DFS",
+              "complexity": "O(26^m) search with wildcards"
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Hash Tables & Sets",
+          "description": "Advanced hash-based problems",
+          "tasks": [
+            {
+              "id": 90,
+              "title": "LeetCode #36 - Valid Sudoku",
+              "description": "Validate sudoku board",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 36,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/valid-sudoku/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/valid-sudoku/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Hash sets for validation",
+              "complexity": "O(1) for 9x9 board"
+            },
+            {
+              "id": 91,
+              "title": "LeetCode #15 - 3Sum",
+              "description": "Find all triplets that sum to zero",
+              "type": "coding",
+              "minutes": 35,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 15,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/3sum/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/3sum/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/jzZsG8bJJYk",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Sorting + two pointers",
+              "complexity": "O(n^2) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Graph Advanced",
+          "description": "Advanced graph algorithms",
+          "tasks": [
+            {
+              "id": 92,
+              "title": "LeetCode #269 - Alien Dictionary",
+              "description": "Topological sort for alien language",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 269,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/alien-dictionary/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/alien-dictionary/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "Solution Video",
+                  "url": "https://youtu.be/MzBB7tniVKs",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "Topological sort",
+              "complexity": "O(n * l) time"
+            },
+            {
+              "id": 93,
+              "title": "LeetCode #765 - Couples Holding Hands",
+              "description": "Rearrange couples in seats",
+              "type": "coding",
+              "minutes": 40,
+              "completed": false,
+              "difficulty": "Hard",
+              "leetcodeNumber": 765,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/couples-holding-hands/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/couples-holding-hands/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Union-Find or greedy swapping",
+              "complexity": "O(n) time"
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Miscellaneous",
+          "description": "Additional important problems",
+          "tasks": [
+            {
+              "id": 94,
+              "title": "LeetCode #54 - Spiral Matrix",
+              "description": "Traverse matrix in spiral order",
+              "type": "coding",
+              "minutes": 30,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 54,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/spiral-matrix/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/spiral-matrix/solutions/",
+                  "type": "solution"
+                }
+              ],
+              "keyTakeaway": "Matrix boundary management",
+              "complexity": "O(m*n) time, O(1) space"
+            },
+            {
+              "id": 95,
+              "title": "LeetCode #146 - LRU Cache",
+              "description": "Implement LRU cache",
+              "type": "coding",
+              "minutes": 45,
+              "completed": false,
+              "difficulty": "Medium",
+              "leetcodeNumber": 146,
+              "resources": [
+                {
+                  "title": "Problem",
+                  "url": "https://leetcode.com/problems/lru-cache/",
+                  "type": "problem"
+                },
+                {
+                  "title": "Official Solution",
+                  "url": "https://leetcode.com/problems/lru-cache/solutions/",
+                  "type": "solution"
+                },
+                {
+                  "title": "NeetCode Video",
+                  "url": "https://youtu.be/7ABKWP8cH90",
+                  "type": "video"
+                }
+              ],
+              "keyTakeaway": "HashMap + Doubly Linked List",
+              "complexity": "O(1) operations"
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Review",
+          "description": "Consolidate Week 6 learning",
+          "tasks": [
+            {
+              "id": 96,
+              "title": "Review Week 6",
+              "description": "Revisit advanced data structure problems",
+              "type": "practice",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "title": "Week 7-8: System Design Fundamentals",
+      "description": "Build foundational system design knowledge",
+      "goals": [
+        "Understand scalability fundamentals",
+        "Master load balancing and caching",
+        "Learn database design patterns",
+        "Prepare for real-world system design interviews"
+      ],
+      "totalHours": "18-20",
+      "keyFocusAreas": ["Scalability", "Load balancing", "Database design", "Caching", "Message queues"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Scalability & Load Balancing",
+          "description": "Horizontal vs vertical scaling and load balancing strategies",
+          "tasks": [
+            {
+              "id": 97,
+              "title": "Study Scalability Basics",
+              "description": "Vertical vs horizontal scaling, load balancing concepts",
+              "type": "reading",
+              "minutes": 40,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "System Design Primer",
+                  "url": "https://github.com/donnemartin/system-design-primer",
+                  "type": "article"
+                },
+                {
+                  "title": "Grokking System Design",
+                  "url": "https://www.educative.io/courses/grokking-the-system-design-interview",
+                  "type": "interactive"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Database Design",
+          "description": "SQL vs NoSQL and database selection",
+          "tasks": [
+            {
+              "id": 98,
+              "title": "Study Database Fundamentals",
+              "description": "Relational vs document databases, ACID, CAP theorem",
+              "type": "reading",
+              "minutes": 50,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "LeetCode System Design",
+                  "url": "https://leetcode.com/discuss/interview-question?currentPage=1&orderBy=most_votes&topicTags=system-design",
+                  "type": "interactive"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Caching & CDN",
+          "description": "Caching strategies and content delivery",
+          "tasks": [
+            {
+              "id": 99,
+              "title": "Study Caching Strategies",
+              "description": "Cache invalidation, LRU, distributed caching",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Message Queues",
+          "description": "Asynchronous processing and message systems",
+          "tasks": [
+            {
+              "id": 100,
+              "title": "Study Message Queues",
+              "description": "Pub-sub, message brokers, event streaming",
+              "type": "reading",
+              "minutes": 45,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Microservices",
+          "description": "Microservices architecture patterns",
+          "tasks": [
+            {
+              "id": 101,
+              "title": "Study Microservices",
+              "description": "Service decomposition, API gateways, service discovery",
+              "type": "reading",
+              "minutes": 50,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Design Practice - Twitter",
+          "description": "Design a social media feed system",
+          "tasks": [
+            {
+              "id": 102,
+              "title": "Design Twitter",
+              "description": "Real-time feed, notifications, scalability",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Design Practice - Uber",
+          "description": "Design a ride-sharing system",
+          "tasks": [
+            {
+              "id": 103,
+              "title": "Design Uber",
+              "description": "Real-time location, matching, payments",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "title": "Week 9: Behavioral & STAR Stories",
+      "description": "Develop compelling behavioral stories using STAR method",
+      "goals": [
+        "Develop compelling behavioral stories",
+        "Master STAR method (Situation, Task, Action, Result)",
+        "Practice delivering stories with confidence",
+        "Build authentic narratives"
+      ],
+      "totalHours": "10-12",
+      "keyFocusAreas": ["STAR method", "Leadership", "Conflict resolution", "Technical excellence"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Leadership & Initiative",
+          "description": "Stories about leading teams and taking initiative",
+          "tasks": [
+            {
+              "id": 104,
+              "title": "Develop Leadership Stories",
+              "description": "Led team through deadline, made difficult decisions, mentored",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false,
+              "resources": [
+                {
+                  "title": "HackerRank - Behavioral",
+                  "url": "https://www.hackerrank.com/blog/behavioral-interview-questions/",
+                  "type": "article"
+                },
+                {
+                  "title": "STAR Method Guide",
+                  "url": "https://www.indeed.com/career-advice/interviewing/how-to-use-the-star-interview-response-technique",
+                  "type": "article"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Conflict Resolution",
+          "description": "Stories about handling disagreements and difficult situations",
+          "tasks": [
+            {
+              "id": 105,
+              "title": "Develop Conflict Stories",
+              "description": "Disagreement with team, critical bugs, difficult stakeholders",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Failure & Learning",
+          "description": "Stories about learning from failure",
+          "tasks": [
+            {
+              "id": 106,
+              "title": "Develop Failure Stories",
+              "description": "Failed project, technical mistakes, skill gaps",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Technical Excellence",
+          "description": "Stories about technical achievements",
+          "tasks": [
+            {
+              "id": 107,
+              "title": "Develop Technical Stories",
+              "description": "System optimization, complex features, code quality",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Impact & Results",
+          "description": "Stories about business impact",
+          "tasks": [
+            {
+              "id": 108,
+              "title": "Develop Impact Stories",
+              "description": "Business results, customer satisfaction, process improvement",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Story Refinement",
+          "description": "Practice and refine all stories",
+          "tasks": [
+            {
+              "id": 109,
+              "title": "Practice All Stories",
+              "description": "Record and evaluate all behavioral stories",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Review & Polish",
+          "description": "Final review and polish",
+          "tasks": [
+            {
+              "id": 110,
+              "title": "Final Polish",
+              "description": "Refine delivery and timing of all stories",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "title": "Week 10: Mock Interviews & Practice",
+      "description": "Simulate real interview conditions",
+      "goals": [
+        "Practice under realistic interview conditions",
+        "Improve communication and explanation skills",
+        "Build confidence with mock interviews",
+        "Get feedback from peers"
+      ],
+      "totalHours": "14-16",
+      "keyFocusAreas": ["Mock coding interviews", "System design discussions", "Behavioral practice"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Mock Coding - 1",
+          "description": "Timed 75-minute LeetCode contest",
+          "tasks": [
+            {
+              "id": 111,
+              "title": "Mock Coding Interview 1",
+              "description": "Timed LeetCode contest, focus on communication",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Mock Coding - 2",
+          "description": "Timed 75-minute LeetCode contest",
+          "tasks": [
+            {
+              "id": 112,
+              "title": "Mock Coding Interview 2",
+              "description": "Timed LeetCode contest, different problem set",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Mock Coding - 3",
+          "description": "Timed 75-minute LeetCode contest",
+          "tasks": [
+            {
+              "id": 113,
+              "title": "Mock Coding Interview 3",
+              "description": "Timed LeetCode contest with harder problems",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "System Design Mock - 1",
+          "description": "Design Twitter in 2 hours",
+          "tasks": [
+            {
+              "id": 114,
+              "title": "Design Twitter Mock",
+              "description": "Full system design interview simulation",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "System Design Mock - 2",
+          "description": "Design Uber in 2 hours",
+          "tasks": [
+            {
+              "id": 115,
+              "title": "Design Uber Mock",
+              "description": "Full system design interview simulation",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Behavioral Mock",
+          "description": "Record yourself answering behavioral questions",
+          "tasks": [
+            {
+              "id": 116,
+              "title": "Behavioral Interview Mock",
+              "description": "Practice with friends or mock interview platform",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Review & Feedback",
+          "description": "Get feedback and analyze performance",
+          "tasks": [
+            {
+              "id": 117,
+              "title": "Analyze Mock Performance",
+              "description": "Identify weak areas and improvement opportunities",
+              "type": "practice",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "title": "Week 11: Final Review - Algorithms",
+      "description": "Refresh all major algorithmic concepts",
+      "goals": [
+        "Deep dive into hardest problems",
+        "Refresh all major topics",
+        "Build final confidence",
+        "Practice under pressure"
+      ],
+      "totalHours": "12-14",
+      "keyFocusAreas": ["Hard problems", "Topic review", "Edge cases", "Optimization"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "Arrays & Strings Deep Dive",
+          "description": "Revisit hardest array/string problems",
+          "tasks": [
+            {
+              "id": 118,
+              "title": "Arrays & Strings Review",
+              "description": "Revisit difficult problems, practice 5 new ones",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "Linked Lists & Trees Deep Dive",
+          "description": "Refresh linked list and tree operations",
+          "tasks": [
+            {
+              "id": 119,
+              "title": "Linked Lists Review",
+              "description": "Complex pointer operations and tree traversals",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Trees & Graphs Deep Dive",
+          "description": "Review BST operations and advanced graph algorithms",
+          "tasks": [
+            {
+              "id": 120,
+              "title": "Trees & Graphs Review",
+              "description": "Practice advanced tree and graph problems",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "DP Deep Dive",
+          "description": "Revisit state transitions and hard DP problems",
+          "tasks": [
+            {
+              "id": 121,
+              "title": "DP Review",
+              "description": "Revisit state transitions, practice 3 hard DP problems",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Greedy & Backtracking Review",
+          "description": "Review optimization and exploration strategies",
+          "tasks": [
+            {
+              "id": 122,
+              "title": "Greedy & Backtracking Review",
+              "description": "Practice mixed greedy and backtracking problems",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Data Structures Review",
+          "description": "Practice with heaps, tries, and advanced structures",
+          "tasks": [
+            {
+              "id": 123,
+              "title": "Advanced Data Structures Review",
+              "description": "Comprehensive data structure practice",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Full Mock Interview",
+          "description": "3-hour comprehensive mock",
+          "tasks": [
+            {
+              "id": 124,
+              "title": "Full 3-Hour Mock",
+              "description": "Coding + System Design + Behavioral sections",
+              "type": "practice",
+              "minutes": 180,
+              "completed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "title": "Week 12: Final Polish & Interview Readiness",
+      "description": "Final preparation and confidence building",
+      "goals": [
+        "Solidify system design knowledge",
+        "Polish behavioral stories",
+        "Review edge cases and optimization",
+        "Build final confidence"
+      ],
+      "totalHours": "10-12",
+      "keyFocusAreas": ["System design", "Behavioral refinement", "Edge cases", "Confidence"],
+      "days": [
+        {
+          "day": "Day 1",
+          "title": "System Design Review - Part 1",
+          "description": "Review major system designs",
+          "tasks": [
+            {
+              "id": 125,
+              "title": "Review System Designs 1-3",
+              "description": "Twitter, Instagram, Uber - practice follow-ups",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "title": "System Design Review - Part 2",
+          "description": "Review more system designs",
+          "tasks": [
+            {
+              "id": 126,
+              "title": "Review System Designs 4-6",
+              "description": "Dropbox, Netflix, WhatsApp - practice follow-ups",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "title": "Behavioral Refinement - Part 1",
+          "description": "Polish leadership and technical stories",
+          "tasks": [
+            {
+              "id": 127,
+              "title": "Polish Technical & Leadership Stories",
+              "description": "Record and refine delivery, timing, and confidence",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 4",
+          "title": "Behavioral Refinement - Part 2",
+          "description": "Polish conflict and impact stories",
+          "tasks": [
+            {
+              "id": 128,
+              "title": "Polish Conflict & Impact Stories",
+              "description": "Refine all remaining behavioral stories",
+              "type": "practice",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 5",
+          "title": "Edge Cases & Optimization",
+          "description": "Review edge cases and optimization strategies",
+          "tasks": [
+            {
+              "id": 129,
+              "title": "Edge Cases & Optimization Review",
+              "description": "Common pitfalls and optimization techniques",
+              "type": "reading",
+              "minutes": 90,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 6",
+          "title": "Full Mock Interview",
+          "description": "3-hour comprehensive final mock",
+          "tasks": [
+            {
+              "id": 130,
+              "title": "Final Full Mock",
+              "description": "45 min coding + 45 min design + 30 min behavioral",
+              "type": "practice",
+              "minutes": 120,
+              "completed": false
+            }
+          ]
+        },
+        {
+          "day": "Day 7",
+          "title": "Rest & Confidence",
+          "description": "Light review and mental preparation",
+          "tasks": [
+            {
+              "id": 131,
+              "title": "Final Rest Day",
+              "description": "Light review only, mental preparation, sleep well!",
+              "type": "rest",
+              "minutes": 60,
+              "completed": false
+            }
+          ]
+        }
+      ]
     }
   ]
 }
