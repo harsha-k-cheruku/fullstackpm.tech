@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from pydantic_settings import BaseSettings
@@ -19,6 +20,10 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"
     openai_max_tokens: int = 2000
+
+    # Google Sheets Newsletter
+    google_sheets_credentials_path: str = os.getenv("GOOGLE_SHEETS_CREDENTIALS_PATH", "code/secrets/credentials.json")
+    google_sheets_id: str = os.getenv("GOOGLE_SHEETS_ID", "YOUR_GOOGLE_SHEET_ID_HERE")
 
     # Site metadata
     site_title: str = "fullstackpm.tech"
