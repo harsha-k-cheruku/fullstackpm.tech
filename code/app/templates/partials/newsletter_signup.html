@@ -1,6 +1,8 @@
 <!-- partials/newsletter_signup.html -->
 <div id="newsletter-form-{{ newsletter_source | default('footer') }}">
-  <form hx-post="/api/newsletter/subscribe"
+  <form method="post"
+        action="/api/newsletter/subscribe"
+        hx-post="/api/newsletter/subscribe"
         hx-target="#newsletter-form-{{ newsletter_source | default('footer') }}"
         hx-swap="innerHTML"
         class="flex flex-col sm:flex-row gap-3">
