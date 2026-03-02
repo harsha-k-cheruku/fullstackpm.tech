@@ -23,7 +23,7 @@ class Settings(BaseSettings):
 
     # Google Sheets Newsletter
     google_sheets_credentials_path: str = os.getenv("GOOGLE_SHEETS_CREDENTIALS_PATH", "code/secrets/credentials.json")
-    google_sheets_id: str = os.getenv("GOOGLE_SHEETS_ID", "YOUR_GOOGLE_SHEET_ID_HERE")
+    google_sheets_id: str = os.getenv("GOOGLE_SHEETS_ID", "19-FyJ8gKiqodVBGnyAYIlvJ9Tun9NYU02AdvUM12T3Q")
 
     # Site metadata
     site_title: str = "fullstackpm.tech"
