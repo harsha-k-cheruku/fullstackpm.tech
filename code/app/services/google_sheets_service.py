@@ -62,11 +62,32 @@ class GoogleSheetsSubscriberService:
                 name.strip() if name else "",
                 source,
                 datetime.now().isoformat(),
+                "active",
             ]
             self.worksheet.append_row(new_row)
             return {"success": True, "message": "You're in! Thanks for subscribing."}
         except Exception as e:
             print(f"Error adding subscriber: {e}")
+            return {"success": False, "message": "Something went wrong. Please try again."}
+
+    def unsubscribe(self, email: str) -> Dict:
+        """Mark a subscriber as unsubscribed (soft delete)."""
+        email = email.lower().strip()
+        if not email:
+            return {"success": False, "message": "Invalid email address."}
+
+        try:
+            all_emails = self.worksheet.col_values(1)[1:]  # Skip header
+            if email not in all_emails:
+                return {"success": False, "message": "Email not found in our list."}
+
+            # Find the row (1-indexed, +1 for header)
+            row_index = all_emails.index(email) + 2
+            # Update status column (E = column 5)
+            self.worksheet.update_cell(row_index, 5, "unsubscribed")
+            return {"success": True, "message": "You've been unsubscribed. Sorry to see you go!"}
+        except Exception as e:
+            print(f"Error unsubscribing: {e}")
             return {"success": False, "message": "Something went wrong. Please try again."}
 
     def export_csv(self) -> str:

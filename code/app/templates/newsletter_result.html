@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section style="padding: 6rem 0;">
+  <div class="max-w-md mx-auto px-6 text-center">
+    {{ snippet | safe }}
+    <a href="/"
+       class="inline-block mt-6 text-sm font-medium transition-colors"
+       style="color: var(--color-accent);"
+       onmouseover="this.style.color='var(--color-accent-hover)'"
+       onmouseout="this.style.color='var(--color-accent)'">
+      &larr; Back to fullstackpm.tech
+    </a>
+  </div>
+</section>
+{% endblock %}
