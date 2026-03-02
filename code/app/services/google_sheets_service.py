@@ -3,8 +3,13 @@
 from datetime import datetime
 from typing import Dict, Optional
 
-import gspread
-from google.oauth2.service_account import Credentials
+try:
+    import gspread
+    from google.oauth2.service_account import Credentials
+    GSPREAD_AVAILABLE = True
+except ImportError:
+    GSPREAD_AVAILABLE = False
+    print("Warning: gspread not installed. Newsletter will show 'service unavailable'.")
 
 
 class GoogleSheetsSubscriberService:
@@ -19,6 +24,9 @@ class GoogleSheetsSubscriberService:
             spreadsheet_id: ID from your Google Sheet URL (between /d/ and /edit)
                            Example: "1a2b3c4d5e6f7g8h9i0j"
         """
+        if not GSPREAD_AVAILABLE:
+            raise ImportError("gspread is not installed")
+
         self.spreadsheet_id = spreadsheet_id
 
         # Authenticate with Google Sheets API
@@ -28,7 +36,7 @@ class GoogleSheetsSubscriberService:
 
         # Open the spreadsheet
         self.sheet = self.client.open_by_key(spreadsheet_id)
-        self.worksheet = self.sheet.worksheet(0)  # First sheet
+        self.worksheet = self.sheet.sheet1
 
     def subscribe(self, email: str, name: Optional[str] = None, source: str = "footer") -> Dict:
         """Add subscriber to Google Sheet."""
