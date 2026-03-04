@@ -1,6 +1,6 @@
 ---
 title: "How I Built PM Multiverse in a Weekend"
-date: 2026-02-28
+date: 2026-02-25
 tags: [product-management, ai, building-in-public, full-stack-pm, pm-multiverse]
 excerpt: "I was tired of PM case studies that feel like homework. So I built a tool where 5 AI personas argue about real product problems — and you vote on who's right. Here's how."
 author: "Harsha Cheruku"
