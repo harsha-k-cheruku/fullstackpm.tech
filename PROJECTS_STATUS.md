@@ -82,11 +82,15 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 **URL:** /blog
 **Tech:** Markdown + SQLite (comments)
 **Features:**
-- 2 published posts
+- 7 published posts (AI-Native PM series, build logs, frameworks)
 - Blog post comments (database-backed)
 - Tag filtering
 - RSS feed
 - SEO (sitemap, robots.txt)
+- Future-date scheduling (posts with future dates hidden until publish date)
+
+**Content Series:**
+- AI-Native PM Series: Part 1 (What Is an AI-Native PM) + Part 2 (D/P Framework)
 
 **Metrics:**
 - ~50 monthly blog visitors (estimate)
@@ -94,8 +98,35 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 - Storage: <1MB
 
 **When to Extract:** Never (part of core portfolio)
-- Stay integrated with main site
-- Content = your voice
+
+---
+
+### 5. Newsletter Signup
+**Status:** 🟢 Live (shipped Mar 1, 2026)
+**Locations:** Homepage ("Stay in the Loop" section) + Blog post detail pages
+**Tech:** FastAPI + HTMX + Google Sheets backend
+**Features:**
+- Email + name collection via HTMX form
+- Google Sheets storage (persistent across Render redeploys)
+- Duplicate detection (friendly "already on the list" message)
+- Soft unsubscribe (status column, keeps record)
+- CSV export endpoint (/api/newsletter/export)
+- Styled success/error responses (HTMX swap + full-page fallback)
+
+**Subscribers:** 2 (as of Mar 2, 2026)
+
+**When to Extract:** Never (core site feature)
+
+---
+
+### 6. Content Strategy Pipeline
+**Status:** 🟢 Active
+**Location:** `content_strategy/` (linkedin/, substack/, twitter/)
+**Purpose:** Cross-posting templates for blog → LinkedIn → Substack → X pipeline
+**Content Ready:**
+- D/P Framework: LinkedIn post (3 versions), Substack (3 options), Twitter thread
+
+**When to Extract:** Never (part of content workflow)
 
 ---
 
@@ -163,12 +194,6 @@ Projects being actively built. Deployed with main app during development.
   - Twitter/X threads
   - Testimonial prompts
 
-**Build Plan:**
-- Phase 1 (2 weeks): Metadata form + LinkedIn post generator
-- Phase 2 (2 weeks): Multi-platform variations
-- Phase 3 (1 week): Content library + batch export
-- Phase 4 (1 week): Performance tracking
-
 **When to Extract:** 2026 Q4
 - Criteria: Tested with "Memoirs of a Mediocre Manager"
 - Action: Open-source or SaaS depending on demand
@@ -179,7 +204,23 @@ Projects being actively built. Deployed with main app during development.
 
 Projects conceptualized but not yet built. Will live on fullstackpm.tech during development, then move to separate repos.
 
-### 1. Books Portal
+### 1. Junior PM Agent
+**Status:** 📋 Idea Evaluated (in `ideas_evaluated/`)
+**Spec:** `ideas_evaluated/2026-03-01-junior-pm-agent.md`
+**Concept:** AI agent that handles task-level PM work (PRDs, user stories, bug triage, stakeholder updates, research synthesis) using explicit D/P workflow patterns with human checkpoints.
+**Monetization:** Freemium SaaS — Free (5 tasks/mo) → Pro $29/mo → Team $79/seat/mo
+**Tech:** FastAPI + Claude API + PostgreSQL + Jira/Slack integrations
+
+**Success Criteria (before moving to active):**
+- 10+ PM interviews confirm top 3 tasks worth automating
+- Landing page converts at 10%+ from 200+ visitors
+- PRD generation prototype rated "usable with minor edits" by 7/10 PMs
+
+**When to Build:** After validation (Q2 2026)
+
+---
+
+### 2. Books Portal
 **Status:** 📋 Concept
 **Planned Scope:**
 - Consolidate all books under `/books/` section
@@ -192,7 +233,7 @@ Projects conceptualized but not yet built. Will live on fullstackpm.tech during 
 
 ---
 
-### 2. PM Community Platform (Future)
+### 3. PM Community Platform (Future)
 **Status:** 📋 Concept
 **Planned Scope:**
 - Forum for PMs to discuss architectural decisions
@@ -205,7 +246,7 @@ Projects conceptualized but not yet built. Will live on fullstackpm.tech during 
 
 ---
 
-### 3. fullstackpm.tech UI/UX Redesign
+### 4. fullstackpm.tech UI/UX Redesign
 **Status:** 📋 Concept
 **Planned Scope:**
 - Adopt the dark gradient + accent color + card-based design language from PM Multiverse "How I Built It" page
@@ -219,7 +260,7 @@ Projects conceptualized but not yet built. Will live on fullstackpm.tech during 
 
 ---
 
-### 4. Advanced Interview Coach
+### 5. Advanced Interview Coach
 **Status:** 📋 Concept
 **Planned Features:**
 - OAuth + LLM selection (use your ChatGPT/Claude/Gemini key)
@@ -240,31 +281,58 @@ Projects conceptualized but not yet built. Will live on fullstackpm.tech during 
 fullstackpm.tech/
 ├── code/              ← What Render deploys
 ├── content/           ← Blog posts, projects
+├── content_strategy/  ← Cross-posting drafts (LinkedIn, Substack, X)
 ├── project_ideas/     ← Concepts being developed
 └── docs/              ← Developer documentation
+
+ideas_evaluated/       ← Separate folder (~/Projects/claude_code/ideas_evaluated/)
+                         Ideas incubate here before moving to PROJECTS_STATUS.md
 ```
 
 **Benefits:** Simple, fast iteration, single deployment
 **Drawbacks:** Gets cluttered as projects accumulate
 
-### Year 2 (Selective Extraction)
-```
-fullstackpm.tech/          ← Core portfolio + integrated tools
-├── code/
-├── content/
-├── project_ideas/
-└── projects_integrated/
-    ├── interview-coach/
-    └── marketplace-analytics/
+---
 
-fullstackpm-projects/      ← Mature standalone projects
-├── pm-tech-companion/
-├── book-marketing-gen/
-└── pm-community-platform/
-```
+## Current Snapshot (March 2, 2026)
 
-**Benefits:** Clean separation, reusable projects, different deployment pipelines
-**Drawbacks:** More repos to manage
+| Metric | Value |
+|--------|-------|
+| Blog posts | 7 |
+| Project pages | 9 |
+| Live tools | 4 (Interview Coach, Marketplace Analytics, SDE Prep, PM Multiverse) |
+| Newsletter subscribers | 2 |
+| Content strategy drafts | 3 (LinkedIn, Substack, X for D/P article) |
+| Monthly visitors | ~100 |
+| Revenue | $0 |
+
+---
+
+## Week of March 2-8, 2026 — Plan
+
+### Content (1 post/day goal)
+- [ ] Mon 3/2: Cross-post D/P Framework to LinkedIn (draft ready in `content_strategy/linkedin/`)
+- [ ] Tue 3/3: Write Part 3 of AI-Native PM series (topic TBD — human checkpoints? confidence thresholds?)
+- [ ] Wed 3/4: Cross-post to Substack (draft ready in `content_strategy/substack/`)
+- [ ] Thu 3/5: "How I Built the Newsletter System" build log (content + technical)
+- [ ] Fri 3/6: Write PM Agent concept teaser post (validates idea publicly)
+- [ ] Sat 3/7: Catch-up / buffer day
+- [ ] Sun 3/8: Week 1 retrospective + plan Week 2
+
+### Audience Building
+- [ ] Add analytics to site (Plausible or Umami)
+- [ ] Connect Google Search Console
+- [ ] Post D/P Framework to LinkedIn (from content_strategy/)
+- [ ] Share on X/Twitter
+
+### Infrastructure
+- [ ] Verify newsletter works end-to-end on Render (subscribe + unsubscribe)
+- [ ] Add newsletter CTA to About page and Project pages
+- [ ] Set up Render env var for Google Sheets credentials ✅ Done
+
+### Product
+- [ ] PM Multiverse Phase 2: Start persona-grounded content rewrite
+- [ ] Evaluate PM Agent: Start drafting PM interview questions
 
 ---
 
@@ -289,57 +357,14 @@ fullstackpm-projects/      ← Mature standalone projects
 | Interview Coach | Live | Q2 2026 | npm + SaaS | fullstackpm-interview-coach |
 | SDE Prep Tool | Live | Never | Stay integrated | (none) |
 | Marketplace Analytics | Live | Q3 2026 | Reusable template | fullstackpm-marketplace-analytics |
+| Newsletter | Live | Never | Stay integrated | (none) |
 | PM Multiverse | Phase 1 done | Q2 2026 | Integrate or standalone | fullstackpm-pm-multiverse |
 | PM Tech Companion | In dev | Q3 2026 | SaaS or standalone | fullstackpm-pm-tech-companion |
+| Junior PM Agent | Idea evaluated | Q2-Q3 2026 | SaaS | fullstackpm-pm-agent |
 | Book Marketing Gen | Planned | Q4 2026 | Open source | fullstackpm-book-marketing-gen |
 | UI/UX Redesign | Concept | N/A | Site-wide | (none) |
 | Books Portal | Planned | Q2 2026 | Stay integrated | (none) |
 | PM Community | Concept | 2027+ | Separate service | fullstackpm-community |
-
----
-
-## Monitoring & Metrics
-
-### Interview Coach
-- **Track:** Monthly evaluations, user sessions, OpenAI API cost
-- **Goal:** 5K+ monthly evaluations before extraction
-- **Check:** `SELECT COUNT(*) FROM interview_attempt WHERE created_at > now() - interval '1 month'`
-
-### Marketplace Analytics
-- **Track:** Daily active users, feature adoption, data volume
-- **Goal:** 1K+ active sellers before extraction
-- **Check:** Manual review (no analytics instrumented yet)
-
-### PM Tech Companion
-- **Track:** Examples in library, user feedback, usage
-- **Goal:** 20+ working examples before SaaS launch
-- **Check:** Count markdown files in `project_ideas/examples/`
-
----
-
-## Next Project Priorities
-
-### This Month (February 2026)
-- ✅ Fix project filters (done!)
-- ✅ PM Multiverse Phase 1: All 5 persona files synthesized
-- 🔄 PM Multiverse Phase 2: Rewrite YouTube Brazil problem with persona-grounded content
-- 🔄 Start PM Tech Companion Phase 1
-- 📋 Plan Books Portal feature
-
-### Next Month (March 2026)
-- PM Multiverse Phase 3: Build interactive shell + vote API
-- PM Multiverse Phase 4: Haiku generates problems 2-10
-- Complete PM Tech Companion Phase 1-2
-- Start Book Marketing Generator design
-- Add 3+ new PM Tech Companion examples
-
-### Q2 2026
-- PM Multiverse: Integrate into fullstackpm.tech
-- UI/UX Redesign: Apply PM Multiverse design language site-wide
-- Launch Books Portal
-- Extract Interview Coach (npm)
-- Complete PM Tech Companion SaaS planning
-- Add advanced Interview Coach features
 
 ---
 
@@ -350,5 +375,5 @@ fullstackpm-projects/      ← Mature standalone projects
 3. When you **extract** → Update with new repo name
 4. When metrics change → Update metrics quarterly
 
-**Last Updated:** 2026-02-21
-**Next Review:** 2026-04-01
+**Last Updated:** 2026-03-02
+**Next Review:** 2026-03-09
