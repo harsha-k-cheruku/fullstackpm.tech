@@ -225,53 +225,57 @@ The AI makes a decision. The human reviews it. Then what?
 
 ## Part 4: Your Implementation Checklist
 
-Let's get tactical. You're starting a new P work project. The AI is going to make judgments that affect your users. Here's the checklist.
+Let's get tactical. You're starting a new P work project. The AI is going to make judgments that affect your users. Here's the six-phase checklist.
 
-### Phase 1: Identify the Failure Modes (Pre-Launch)
+### Phase 1: Identify Failure Modes
 
-**Question 1: What can go wrong?**
+Ask yourself:
+
+**What can go wrong?**
 - Hallucination: Can the AI confidently generate plausible-sounding but wrong information?
 - Misunderstanding: Can I specify what I want clearly enough? Are there hidden assumptions in my specification?
 - Drift: Is the real-world context different from what the AI was trained on? Will it change during deployment?
 
-**Question 2: What's the cost of each failure type?**
+**What's the cost of each failure type?**
 - Hallucination → costs X (wasted time, revenue loss, trust damage, legal liability?)
 - Misunderstanding → costs Y
 - Drift → costs Z
 
 **Action:** List them. Explicitly. Don't assume they won't happen.
 
-### Phase 2: Choose Checkpoint Types (Pre-Launch)
+### Phase 2: Choose Checkpoint Types
 
 Based on failure costs, decide:
 
-**For hallucination risks:** Use D→P checkpoint
+**For hallucination risks:** D→P checkpoint
 - Human verifies AI output before it reaches users
 - Cost: Slow (requires review)
 - Benefit: Catches seductive lies
 
-**For misunderstanding risks:** Use P→D checkpoint
+**For misunderstanding risks:** P→D checkpoint
 - Human makes the specification before AI executes
 - Cost: You make judgments upfront
 - Benefit: Avoids divergence between intent and execution
 
-**For drift risks:** Use P→P checkpoint
+**For drift risks:** P→P checkpoint
 - Human reviews AI judgments for reasonableness
 - Cost: Medium (requires sampling, not 100% review)
 - Benefit: Catches context shifts
 
-### Phase 3: Set Thresholds (Pre-Launch)
+### Phase 3: Set Thresholds
 
-**For each checkpoint, decide:**
+For each checkpoint, decide:
+
 1. What's my false positive cost? What's my false negative cost?
 2. What's my human review cost?
 3. Based on those three numbers, what confidence threshold makes sense?
 
 **Action:** Write it down. "For resume screening, threshold is 75%. Anything below 75% gets reviewed by a human. Anything above 75% goes to interviews."
 
-### Phase 4: Design the UX (Pre-Launch)
+### Phase 4: Design the UX
 
-**For each checkpoint, decide:**
+For each checkpoint, decide:
+
 1. Is this binary (yes/no) or ternary (yes/maybe/no)?
 2. Who reviews? When? How do they surface decisions?
 3. What happens if the human disagrees with the AI?
@@ -280,32 +284,35 @@ Based on failure costs, decide:
 
 ### Phase 5: Monitor (Post-Launch)
 
-**Monitor three things:**
+Track three metrics:
 
-1. **False Positive Rate:** How often is the AI wrong when it's confident?
-   - Track this per confidence bucket (for 90%+ confidence decisions, how often is the AI actually right?)
-   - If false positive rate is higher than expected, lower your threshold
+**False Positive Rate:** How often is the AI wrong when it's confident?
+- Track this per confidence bucket (for 90%+ confidence decisions, how often is the AI actually right?)
+- If false positive rate is higher than expected, lower your threshold
 
-2. **Human Override Rate:** How often do humans disagree with the AI?
-   - If humans are overriding high-confidence decisions frequently, something's wrong (data shifted, AI broke, misalignment, etc.)
-   - If humans are overriding <5% of low-confidence decisions, threshold is about right
+**Human Override Rate:** How often do humans disagree with the AI?
+- If humans are overriding high-confidence decisions frequently, something's wrong (data shifted, AI broke, misalignment, etc.)
+- If humans are overriding <5% of low-confidence decisions, threshold is about right
 
-3. **Downstream Impact:** Is the P work actually having the effect you intended?
-   - Are users happy? Is revenue growing? Is churn decreasing? Are you seeing signs of drift?
-   - Monitor the metric you *actually* care about, not the metric the AI is optimizing for
+**Downstream Impact:** Is the P work actually having the effect you intended?
+- Are users happy? Is revenue growing? Is churn decreasing? Are you seeing signs of drift?
+- Monitor the metric you *actually* care about, not the metric the AI is optimizing for
 
 ### Phase 6: Iterate (Ongoing)
 
 Based on monitoring, adjust:
-- **If false positives are high:** Lower threshold, add checkpoints, retrain the model
-- **If false negatives are high:** Raise threshold, reduce checkpoints, review specification
-- **If downstream impact is bad:** You probably have a P→D misunderstanding. Check your specification. Is the AI doing what you asked, or what you *wanted*?
+
+**If false positives are high:** Lower threshold, add checkpoints, retrain the model
+
+**If false negatives are high:** Raise threshold, reduce checkpoints, review specification
+
+**If downstream impact is bad:** You probably have a P→D misunderstanding. Check your specification. Is the AI doing what you asked, or what you *wanted*?
 
 ---
 
 ## Part 5: The Bigger Picture — P Work as a System
 
-Here's what you're really doing when you place checkpoints and set thresholds: **You're treating P work like a high-risk system.**
+Here's the key insight: **When you place checkpoints and set thresholds, you're treating P work like a high-risk system.**
 
 Because it is.
 
@@ -313,13 +320,15 @@ In manufacturing, high-risk systems have multiple levels of checkpoints. A plane
 
 Your P work should have these too.
 
-**The checkpoint isn't a bottleneck. It's a safety mechanism.** It's there because P work errors compound, and you need to catch them early.
+### Understanding the Checkpoint
 
-The human in the checkpoint isn't a rubber stamp. They're not approving everything the AI does. They're a sniff test. An error detector. A force that says: "Wait, does this actually make sense in this context?"
+**The checkpoint isn't a bottleneck.** It's a safety mechanism. It's there because P work errors compound, and you need to catch them early.
 
-### The Anti-Burnout Message
+**The human in the checkpoint isn't a rubber stamp.** They're not approving everything the AI does. They're a sniff test. An error detector. A force that says: "Wait, does this actually make sense in this context?"
 
-Here's the thing: **Burnout happens when you feel responsible for errors you can't detect.**
+### Why Checkpoints Prevent Burnout
+
+**Burnout happens when you feel responsible for errors you can't detect.**
 
 If you're doing D work, errors are visible. The test fails. The query returns wrong data. You know something's wrong immediately.
 
