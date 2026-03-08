@@ -7,7 +7,7 @@ tags: ["AI", "product-management", "deterministic-probabilistic", "p-work", "con
 
 # P Work Thresholds, Case Studies, and Your Implementation Checklist
 
-Three days ago, I shared the diagnostic framework: **hallucinations, misunderstandings, and drift** — the three types of P work failures, and which checkpoint types catch each one.
+Two days ago, I shared the diagnostic framework: **hallucinations, misunderstandings, and drift** — the three types of P work failures, and which checkpoint types catch each one.
 
 But diagnosis without treatment is useless.
 
