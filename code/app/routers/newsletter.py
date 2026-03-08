@@ -16,8 +16,22 @@ try:
         credentials_json=settings.google_sheets_credentials_path,
         spreadsheet_id=settings.google_sheets_id,
     )
+    print(f"✅ Newsletter service initialized successfully")
+except FileNotFoundError as e:
+    print(f"❌ Credentials file not found: {settings.google_sheets_credentials_path}")
+    print(f"   Error: {e}")
+    subscriber_service = None
+except ImportError as e:
+    print(f"❌ Google Sheets library not installed: {e}")
+    subscriber_service = None
 except Exception as e:
-    print(f"Warning: Could not initialize Google Sheets service: {e}")
+    print(f"❌ Could not initialize Google Sheets service")
+    print(f"   Credentials path: {settings.google_sheets_credentials_path}")
+    print(f"   Spreadsheet ID: {settings.google_sheets_id}")
+    print(f"   Error type: {type(e).__name__}")
+    print(f"   Error message: {e}")
+    import traceback
+    traceback.print_exc()
     subscriber_service = None
 
 
@@ -101,6 +115,20 @@ async def unsubscribe(
         "title": "Unsubscribe",
         "snippet": snippet,
     })
+
+
+@router.get("/status")
+async def status():
+    """Check if newsletter service is operational (for debugging)."""
+    from pathlib import Path
+    creds_path = Path(settings.google_sheets_credentials_path)
+
+    return {
+        "service_running": subscriber_service is not None,
+        "credentials_path": settings.google_sheets_credentials_path,
+        "credentials_file_exists": creds_path.exists(),
+        "spreadsheet_id": settings.google_sheets_id,
+    }
 
 
 @router.get("/export")

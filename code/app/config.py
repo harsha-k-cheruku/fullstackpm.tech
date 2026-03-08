@@ -22,7 +22,10 @@ class Settings(BaseSettings):
     openai_max_tokens: int = 2000
 
     # Google Sheets Newsletter
-    google_sheets_credentials_path: str = os.getenv("GOOGLE_SHEETS_CREDENTIALS_PATH", "secrets/credentials.json")
+    google_sheets_credentials_path: str = os.getenv(
+        "GOOGLE_SHEETS_CREDENTIALS_PATH",
+        str(base_dir / "secrets" / "credentials.json")  # Use absolute path
+    )
     google_sheets_id: str = os.getenv("GOOGLE_SHEETS_ID", "19-FyJ8gKiqodVBGnyAYIlvJ9Tun9NYU02AdvUM12T3Q")
 
     # Site metadata
