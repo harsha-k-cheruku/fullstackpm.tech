@@ -1,6 +1,6 @@
 ---
 title: "The Three Types of P Work Failures and Where to Put Your Human Checkpoints"
-date: 2026-03-08
+date: 2026-03-06
 author: "Harsha Cheruku"
 tags: ["AI", "product-management", "deterministic-probabilistic", "p-work", "risk-management"]
 ---

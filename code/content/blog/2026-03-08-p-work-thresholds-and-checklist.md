@@ -1,6 +1,6 @@
 ---
 title: "P Work Thresholds, Case Studies, and Your Implementation Checklist"
-date: 2026-03-11
+date: 2026-03-08
 author: "Harsha Cheruku"
 tags: ["AI", "product-management", "deterministic-probabilistic", "p-work", "confidence-thresholds", "operational"]
 ---
