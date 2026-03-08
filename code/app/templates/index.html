@@ -13,43 +13,46 @@
     </h1>
     <p id="hero-tagline" class="text-body-lg mb-8" style="color: var(--color-text-secondary); max-width: 540px; line-height: 1.75; min-height: 5rem;"></p>
 
-    <script>
-      (function () {
-        var part1 = "Built code for other people\u2019s products. Wrote the vision for other engineers to ship. Now doing both \u2014 for projects small enough to launch alone, fun enough to actually finish.";
-        var part2 = "Learning in public.";
-        var el = document.getElementById("hero-tagline");
-        var style = document.createElement("style");
-        style.textContent = "@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}";
-        document.head.appendChild(style);
-        var cursor = document.createElement("span");
-        cursor.textContent = "|";
-        cursor.style.cssText = "animation:blink 0.75s step-end infinite;margin-left:1px;color:var(--color-accent);font-weight:300;";
-        el.appendChild(cursor);
-        var i = 0;
-        var interval = setInterval(function () {
-          if (i < part1.length) {
-            el.insertBefore(document.createTextNode(part1[i]), cursor);
-            i++;
-          } else if (i === part1.length) {
-            var br = document.createElement("br");
-            el.insertBefore(br, cursor);
-            var strong = document.createElement("strong");
-            strong.style.color = "var(--color-text-primary)";
-            el.insertBefore(strong, cursor);
+  <script>
+    (function () {
+      var part1 = "Built code for other people\u2019s products. Wrote the vision for other engineers to ship. Now doing both \u2014 for projects small enough to launch alone, fun enough to actually finish.";
+      var part2 = "Learning in public.";
+      var el = document.getElementById("hero-tagline");
+      var style = document.createElement("style");
+      style.textContent = "@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}";
+      document.head.appendChild(style);
+      var cursor = document.createElement("span");
+      cursor.textContent = "|";
+      cursor.style.cssText = "animation:blink 0.75s step-end infinite;margin-left:1px;color:var(--color-accent);font-weight:300;";
+      el.appendChild(cursor);
+      var i = 0;
+      var strong = null;  // ← Declare here so it's always in scope
+      var interval = setInterval(function () {
+        if (i < part1.length) {
+          el.insertBefore(document.createTextNode(part1[i]), cursor);
+          i++;
+        } else if (i === part1.length) {
+          var br = document.createElement("br");
+          el.insertBefore(br, cursor);
+          strong = document.createElement("strong");  // ← Assign to outer scope
+          strong.style.color = "var(--color-text-primary)";
+          el.insertBefore(strong, cursor);
+          i++;
+        } else {
+          var j = i - part1.length - 1;
+          if (j < part2.length) {
+            if (strong) {  // ← Safety check
+              strong.appendChild(document.createTextNode(part2[j]));
+            }
             i++;
           } else {
-            var j = i - part1.length - 1;
-            if (j < part2.length) {
-              strong.appendChild(document.createTextNode(part2[j]));
-              i++;
-            } else {
-              clearInterval(interval);
-              setTimeout(function () { cursor.remove(); }, 1800);
-            }
+            clearInterval(interval);
+            setTimeout(function () { cursor.remove(); }, 1800);
           }
-        }, 38);
-      })();
-    </script>
+        }
+      }, 38);
+    })();
+  </script>
 
   </div>
 </section>
@@ -264,7 +267,7 @@
     </p>
     <h2 class="text-h2 mb-4" style="color: var(--color-text-primary);">PM instinct.<br>Ship mindset.</h2>
     <p class="text-body-lg mb-8" style="color: var(--color-text-secondary);">
-      Built by a PM who codes. 16 years of product, shipped in public.
+      Built by a PM who codes. 16 years of product experience, now shipping fun projects in public.
     </p>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
       <a href="/tools/pm-multiverse"
