@@ -15,7 +15,7 @@ This article is the operational part. It's about **setting confidence thresholds
 
 ---
 
-## Part 1: Confidence Thresholds as PM Decisions
+## Part 1: Confidence Thresholds (How to Make PM Decisions, Not Math Decisions)
 
 Here's the shift in thinking: **Confidence thresholds aren't ML engineer decisions. They're PM decisions.**
 
@@ -77,7 +77,7 @@ You're not running logistic regression on confidence scores. You're making a jud
 
 ---
 
-## Part 2: When Checkpoint Placement Failed — Real Cases
+## Part 2: When Checkpoint Placement Failed (Real Cases and Lessons)
 
 Theory is useful. Examples are better. Let's look at real cases where checkpoints were placed wrong—and what happened.
 
@@ -162,7 +162,7 @@ Sometimes the checkpoint type matters more than the threshold. You can have a pe
 
 ---
 
-## Part 3: The UX of Uncertainty — Designing Checkpoints That Don't Slow You Down
+## Part 3: The UX of Uncertainty (Designing Checkpoints That Don't Slow You Down)
 
 Here's where most teams get it wrong: They place a checkpoint but design the UX terribly.
 
