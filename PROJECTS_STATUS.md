@@ -82,7 +82,7 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 **URL:** /blog
 **Tech:** Markdown + SQLite (comments)
 **Features:**
-- 7 published posts (AI-Native PM series, build logs, frameworks)
+- 13 published posts (AI-Native PM series, D/P Framework, build logs)
 - Blog post comments (database-backed)
 - Tag filtering
 - RSS feed
@@ -90,7 +90,8 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 - Future-date scheduling (posts with future dates hidden until publish date)
 
 **Content Series:**
-- AI-Native PM Series: Part 1 (What Is an AI-Native PM) + Part 2 (D/P Framework)
+- AI-Native PM Series: 5 posts (What Is an AI-Native PM, The D/P Framework, Life in D/P, When AI Masters D, More P = More Burnout)
+- How to Execute P Work: 2 parts (Diagnostic: Mar 6, Tactical: Mar 8)
 
 **Metrics:**
 - ~50 monthly blog visitors (estimate)
@@ -102,7 +103,7 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 ---
 
 ### 5. Newsletter Signup
-**Status:** 🟢 Live (shipped Mar 1, 2026)
+**Status:** 🟢 Live (shipped Mar 1, 2026 | debugged Mar 7-8)
 **Locations:** Homepage ("Stay in the Loop" section) + Blog post detail pages
 **Tech:** FastAPI + HTMX + Google Sheets backend
 **Features:**
@@ -112,8 +113,10 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 - Soft unsubscribe (status column, keeps record)
 - CSV export endpoint (/api/newsletter/export)
 - Styled success/error responses (HTMX swap + full-page fallback)
+- Fixed: Special character URL encoding in unsubscribe links (emails with +, @, etc.)
 
-**Subscribers:** 2 (as of Mar 2, 2026)
+**Subscribers:** 2+ (as of Mar 8, 2026)
+**Status Health:** ✅ Fully operational, tested with special characters
 
 **When to Extract:** Never (core site feature)
 
@@ -124,7 +127,9 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 **Location:** `content_strategy/` (linkedin/, substack/, twitter/)
 **Purpose:** Cross-posting templates for blog → LinkedIn → Substack → X pipeline
 **Content Ready:**
-- D/P Framework: LinkedIn post (3 versions), Substack (3 options), Twitter thread
+- Articles 1-5 (D/P Framework): LinkedIn posts, Substack variants, Twitter threads
+- Articles 6a & 6b (P Work Execution): LinkedIn short form (500-700 words), Substack drafts, Twitter threads
+- Roadmap document: `content_strategy/DP_Framework/ROADMAP_AND_OUTLINE.md` (15+ planned articles)
 
 **When to Extract:** Never (part of content workflow)
 
@@ -318,42 +323,37 @@ ideas_evaluated/       ← Separate folder (~/Projects/claude_code/ideas_evaluat
 
 ---
 
-## Current Snapshot (March 6, 2026)
+## Current Snapshot (March 8, 2026)
 
 | Metric | Value |
 |--------|-------|
-| Blog posts | 11 |
+| Blog posts | 13 |
 | Project pages | 9 |
-| Live tools | 4 (Interview Coach, Marketplace Analytics, SDE Prep, PM Multiverse) |
+| Live tools | 3 (Interview Coach, Marketplace Analytics, SDE Prep) |
 | Dev tools | 1 (LinkedIn Job Search System) |
-| Newsletter subscribers | 2 |
-| Content strategy drafts | 3 (LinkedIn, Substack, X for D/P article) |
+| Newsletter subscribers | 2+ |
+| Content strategy drafts | 3 (LinkedIn, Substack, X for D/P Framework) |
 | Monthly visitors | ~100 |
 | Revenue | $0 |
 
 ---
 
-## Week of March 2-8, 2026 — Plan
+## Week of March 2-8, 2026 — Completed
 
-### Content (1 post/day goal)
-- [ ] Mon 3/2: Cross-post D/P Framework to LinkedIn (draft ready in `content_strategy/linkedin/`)
-- [ ] Tue 3/3: Write Part 3 of AI-Native PM series (topic TBD — human checkpoints? confidence thresholds?)
-- [ ] Wed 3/4: Cross-post to Substack (draft ready in `content_strategy/substack/`)
-- [ ] Thu 3/5: "How I Built the Newsletter System" build log (content + technical)
-- [ ] Fri 3/6: Write PM Agent concept teaser post (validates idea publicly)
-- [ ] Sat 3/7: Catch-up / buffer day
-- [ ] Sun 3/8: Week 1 retrospective + plan Week 2
+### Content ✅
+- [x] Mar 6: Article 6a published — "The Three Types of P Work Failures and Where to Put Your Human Checkpoints" (diagnostic)
+- [x] Mar 8: Article 6b published — "P Work Thresholds, Case Studies, and Your Implementation Checklist" (tactical)
+- [ ] Cross-post D/P Framework to LinkedIn (draft ready in `content_strategy/linkedin/`)
+- [ ] Cross-post to Substack (draft ready in `content_strategy/substack/`)
+- [ ] "How I Built the Newsletter System" build log (deferred to next week)
 
-### Audience Building
+### Infrastructure ✅
+- [x] Newsletter debugging: Fixed special character encoding bug in unsubscribe links (+ @ symbols)
+- [x] Newsletter fully tested and operational on Render
+- [x] Set up Render env var for Google Sheets credentials
 - [ ] Add analytics to site (Plausible or Umami)
 - [ ] Connect Google Search Console
-- [ ] Post D/P Framework to LinkedIn (from content_strategy/)
-- [ ] Share on X/Twitter
-
-### Infrastructure
-- [ ] Verify newsletter works end-to-end on Render (subscribe + unsubscribe)
 - [ ] Add newsletter CTA to About page and Project pages
-- [ ] Set up Render env var for Google Sheets credentials ✅ Done
 
 ### Product
 - [ ] PM Multiverse Phase 2: Start persona-grounded content rewrite
@@ -401,5 +401,33 @@ ideas_evaluated/       ← Separate folder (~/Projects/claude_code/ideas_evaluat
 3. When you **extract** → Update with new repo name
 4. When metrics change → Update metrics quarterly
 
-**Last Updated:** 2026-03-06
-**Next Review:** 2026-03-13
+## Week of March 9-15, 2026 — Plan
+
+### Content (Cross-posting focus)
+- [ ] Mon 3/9: Cross-post Article 6a to LinkedIn (diagnostic, 500-700 words)
+- [ ] Tue 3/10: Cross-post Article 6b to LinkedIn (tactical, 500-700 words)
+- [ ] Wed 3/11: Post Substack version of 6a + 6b
+- [ ] Thu 3/12: Write Article 7 (Building Teams for P Work) — 10-15K words
+- [ ] Fri 3/13: Build log: "How I Built the Newsletter System"
+- [ ] Sat 3/14: Catch-up / publishing buffer
+- [ ] Sun 3/15: Week 2 retrospective
+
+### Audience Building
+- [ ] Add analytics (Plausible or Umami)
+- [ ] Google Search Console setup
+- [ ] LinkedIn cross-posting (Articles 6a & 6b)
+- [ ] Share on X/Twitter (threads from both articles)
+
+### Product
+- [ ] PM Multiverse Phase 2: Start persona-grounded content rewrite (YouTube Brazil problem)
+- [ ] Junior PM Agent: Finalize validation questions + start PM interviews
+- [ ] Interview Coach: Plan Q2 extraction roadmap
+
+### Infrastructure
+- [ ] Add newsletter CTA to About page and all Project pages
+- [ ] Set up email forwarding from newsletter to personal inbox (if desired)
+
+---
+
+**Last Updated:** 2026-03-08
+**Next Review:** 2026-03-15
