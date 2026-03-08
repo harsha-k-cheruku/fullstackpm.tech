@@ -1,5 +1,7 @@
 # app/routers/newsletter.py
 """Newsletter subscription API routes using Google Sheets."""
+from urllib.parse import quote
+
 from fastapi import APIRouter, Form, Request, Query
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
@@ -39,9 +41,10 @@ def _success_html(message: str, email: str = "") -> str:
     """Styled success snippet for HTMX swap."""
     unsubscribe_link = ""
     if email:
+        encoded_email = quote(email, safe="")  # URL-encode email address
         unsubscribe_link = f"""
         <p class="text-xs mt-2" style="color: var(--color-text-tertiary, #9ca3af);">
-          Changed your mind? <a href="/api/newsletter/unsubscribe?email={email}"
+          Changed your mind? <a href="/api/newsletter/unsubscribe?email={encoded_email}"
             style="color: var(--color-accent); text-decoration: underline;">Unsubscribe</a>
         </p>"""
     return f"""
@@ -71,25 +74,39 @@ async def subscribe(
     source: str = Form("footer"),
 ):
     """Subscribe an email to the newsletter. Returns HTMX HTML snippet or full page."""
-    if not subscriber_service:
-        snippet = _error_html("Service unavailable. Please try again later.")
-    else:
-        result = subscriber_service.subscribe(email, name, source)
-        if result["success"]:
-            snippet = _success_html(result["message"], email=email)
+    try:
+        if not subscriber_service:
+            snippet = _error_html("Service unavailable. Please try again later.")
         else:
-            snippet = _error_html(result["message"])
+            result = subscriber_service.subscribe(email, name, source)
+            if result["success"]:
+                snippet = _success_html(result["message"], email=email)
+            else:
+                snippet = _error_html(result["message"])
 
-    # HTMX request → return just the snippet
-    if _is_htmx(request):
-        return HTMLResponse(snippet)
+        # HTMX request → return just the snippet
+        if _is_htmx(request):
+            return HTMLResponse(snippet)
 
-    # Full POST fallback → render a proper page
-    return templates.TemplateResponse("newsletter_result.html", {
-        "request": request,
-        "title": "Newsletter",
-        "snippet": snippet,
-    })
+        # Full POST fallback → render a proper page
+        return templates.TemplateResponse("newsletter_result.html", {
+            "request": request,
+            "title": "Newsletter",
+            "snippet": snippet,
+        })
+    except Exception as e:
+        print(f"❌ Error in /subscribe endpoint: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
+
+        error_snippet = _error_html("Something went wrong. Please try again.")
+        if _is_htmx(request):
+            return HTMLResponse(error_snippet)
+        return templates.TemplateResponse("newsletter_result.html", {
+            "request": request,
+            "title": "Newsletter",
+            "snippet": error_snippet,
+        })
 
 
 @router.get("/unsubscribe", response_class=HTMLResponse)
@@ -98,23 +115,35 @@ async def unsubscribe(
     email: str = Query(...),
 ):
     """Unsubscribe an email from the newsletter."""
-    if not subscriber_service:
-        snippet = _error_html("Service unavailable. Please try again later.")
-    else:
-        result = subscriber_service.unsubscribe(email)
-        if result["success"]:
-            snippet = f"""
-            <div class="text-center py-4">
-              <p class="text-sm font-semibold" style="color: var(--color-accent);">{result["message"]}</p>
-            </div>"""
+    try:
+        if not subscriber_service:
+            snippet = _error_html("Service unavailable. Please try again later.")
         else:
-            snippet = _error_html(result["message"])
+            result = subscriber_service.unsubscribe(email)
+            if result["success"]:
+                snippet = f"""
+                <div class="text-center py-4">
+                  <p class="text-sm font-semibold" style="color: var(--color-accent);">{result["message"]}</p>
+                </div>"""
+            else:
+                snippet = _error_html(result["message"])
 
-    return templates.TemplateResponse("newsletter_result.html", {
-        "request": request,
-        "title": "Unsubscribe",
-        "snippet": snippet,
-    })
+        return templates.TemplateResponse("newsletter_result.html", {
+            "request": request,
+            "title": "Unsubscribe",
+            "snippet": snippet,
+        })
+    except Exception as e:
+        print(f"❌ Error in /unsubscribe endpoint: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
+
+        snippet = _error_html("Something went wrong during unsubscribe.")
+        return templates.TemplateResponse("newsletter_result.html", {
+            "request": request,
+            "title": "Unsubscribe",
+            "snippet": snippet,
+        })
 
 
 @router.get("/status")

@@ -181,7 +181,31 @@ Projects being actively built. Deployed with main app during development.
 
 ---
 
-### 3. Book Marketing Content Generator
+### 3. LinkedIn Job Search System
+**Status:** 🟡 Phase 1 Complete (Pipeline Built)
+**Location:** `/Users/sidc/Projects/claude_code/linkedin_job_search/`
+**Timeline:** Built 2026-03-05
+**Features (Shipped):**
+- Daily job finder — searches LinkedIn, Indeed, Glassdoor via JobSpy (no credentials needed)
+- JD analyzer — extracts keywords, requirements, ATS-critical terms
+- Resume matcher — scores fit against ATS master resume with gap analysis
+- Resume tailor — generates specific bullet rewrites to close keyword gaps
+- Prompt templates for Claude-powered analysis (zero API cost)
+- Config-driven search: Senior PM roles, Seattle + remote, 25mi radius
+
+**Key Files:**
+- `scripts/find_jobs.py` → daily job discovery (73+ PM jobs per run)
+- `scripts/analyze_jd.py` → JD extraction and prompt generation
+- `scripts/match_resume.py` → resume scoring prompt generation
+- `scripts/tailor_resume.py` → tailored bullet rewrite prompt generation
+- `templates/*.md` → Claude instruction sets for analysis
+
+**Dependencies:** Python 3.10+, python-jobspy, pandas
+**When to Extract:** N/A (personal job search tool, separate repo already)
+
+---
+
+### 4. Book Marketing Content Generator
 **Status:** 🟡 Phase 0 (Planning)
 **Location:** `code/BOOK_MARKETING_GENERATOR.md`
 **Timeline:** Start design 2026-03-01
@@ -294,13 +318,14 @@ ideas_evaluated/       ← Separate folder (~/Projects/claude_code/ideas_evaluat
 
 ---
 
-## Current Snapshot (March 2, 2026)
+## Current Snapshot (March 6, 2026)
 
 | Metric | Value |
 |--------|-------|
-| Blog posts | 7 |
+| Blog posts | 11 |
 | Project pages | 9 |
 | Live tools | 4 (Interview Coach, Marketplace Analytics, SDE Prep, PM Multiverse) |
+| Dev tools | 1 (LinkedIn Job Search System) |
 | Newsletter subscribers | 2 |
 | Content strategy drafts | 3 (LinkedIn, Substack, X for D/P article) |
 | Monthly visitors | ~100 |
@@ -360,6 +385,7 @@ ideas_evaluated/       ← Separate folder (~/Projects/claude_code/ideas_evaluat
 | Newsletter | Live | Never | Stay integrated | (none) |
 | PM Multiverse | Phase 1 done | Q2 2026 | Integrate or standalone | fullstackpm-pm-multiverse |
 | PM Tech Companion | In dev | Q3 2026 | SaaS or standalone | fullstackpm-pm-tech-companion |
+| LinkedIn Job Search | Phase 1 done | N/A | Personal tool | linkedin_job_search |
 | Junior PM Agent | Idea evaluated | Q2-Q3 2026 | SaaS | fullstackpm-pm-agent |
 | Book Marketing Gen | Planned | Q4 2026 | Open source | fullstackpm-book-marketing-gen |
 | UI/UX Redesign | Concept | N/A | Site-wide | (none) |
@@ -375,5 +401,5 @@ ideas_evaluated/       ← Separate folder (~/Projects/claude_code/ideas_evaluat
 3. When you **extract** → Update with new repo name
 4. When metrics change → Update metrics quarterly
 
-**Last Updated:** 2026-03-02
-**Next Review:** 2026-03-09
+**Last Updated:** 2026-03-06
+**Next Review:** 2026-03-13
