@@ -28,10 +28,61 @@
   </div>
   {% endif %}
 
-  {% if posts %}
-  <div id="posts-container" class="space-y-6">
-    {% include "blog/partials/post_list.html" %}
+  {% if grouped_posts %}
+  <div id="posts-container">
+    {% for group in grouped_posts %}
+
+    <!-- Month divider -->
+    <div class="flex items-center gap-4 mb-6 {% if not loop.first %}mt-14{% endif %}">
+      <span class="text-xs uppercase tracking-widest font-semibold whitespace-nowrap"
+            style="color: var(--color-accent);">{{ group.month }}</span>
+      <div class="flex-1 h-px" style="background-color: var(--color-border);"></div>
+      <span class="text-xs font-medium" style="color: var(--color-text-tertiary);">
+        {{ group.posts | length }} {{ 'post' if group.posts | length == 1 else 'posts' }}
+      </span>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {% for post in group.posts %}
+      <article class="rounded-xl border overflow-hidden flex flex-col transition-all duration-200"
+               style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+               onmouseover="this.style.borderColor='var(--color-border-hover)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 24px rgba(0,0,0,0.1)';"
+               onmouseout="this.style.borderColor='var(--color-border)'; this.style.transform=''; this.style.boxShadow='';">
+        <!-- Accent bar -->
+        <div class="h-0.5" style="background: linear-gradient(90deg, var(--color-accent) 0%, transparent 80%);"></div>
+        <div class="p-6 flex flex-col flex-1">
+          <h2 class="text-h3 mb-2 leading-snug">
+            <a href="/blog/{{ post.slug }}"
+               class="transition-colors"
+               style="color: var(--color-text-primary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-primary)'">
+              {{ post.title }}
+            </a>
+          </h2>
+          <p class="text-small mb-3" style="color: var(--color-text-tertiary);">
+            {{ post.date.strftime('%b %d, %Y') }} &middot; {{ post.reading_time }}
+          </p>
+          <p class="text-body mb-4 line-clamp-3 flex-1" style="color: var(--color-text-secondary);">
+            {{ post.excerpt }}
+          </p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            {% for tag in post.tags %}
+            <span class="text-xs rounded-md px-2 py-1 font-medium"
+                  style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+              {{ tag }}
+            </span>
+            {% endfor %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% endfor %}
   </div>
+
   {% else %}
   <div class="rounded-xl border p-8 text-center"
        style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">

@@ -4,6 +4,7 @@ date: 2026-03-10
 author: "Harsha"
 tags: ["economics", "technology", "AI", "labor", "product-thinking"]
 description: "Every decade, technology makes us dramatically more productive. Every decade, GDP growth slows. These two facts should not coexist — and understanding why they do reveals the defining economic tension of our era."
+excerpt: "Every decade, technology makes us dramatically more productive. Every decade, GDP growth slows. These two facts should not coexist — and understanding why they do reveals the defining economic tension of our era."
 ---
 
 Every decade, technology makes us dramatically more productive. Every decade, GDP growth slows.

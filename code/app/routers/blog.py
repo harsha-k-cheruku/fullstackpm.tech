@@ -1,10 +1,10 @@
 # app/routers/blog.py
 from datetime import datetime
+from typing import List
 
 from fastapi import APIRouter, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database import SessionLocal
@@ -12,6 +12,19 @@ from app.models.comment import Comment
 
 router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
+
+
+def _group_by_month(posts: List) -> List[dict]:
+    """Group posts into [{month: 'March 2026', posts: [...]}] preserving sort order."""
+    grouped: List[dict] = []
+    current_month: str = ""
+    for post in posts:
+        month = post.date.strftime("%B %Y")
+        if month != current_month:
+            current_month = month
+            grouped.append({"month": month, "posts": []})
+        grouped[-1]["posts"].append(post)
+    return grouped
 
 
 def _ctx(request: Request, **kwargs) -> dict:
@@ -25,24 +38,21 @@ def _ctx(request: Request, **kwargs) -> dict:
 
 
 @router.get("/blog", response_class=HTMLResponse)
-async def blog_list(request: Request, page: int = Query(1, ge=1)) -> HTMLResponse:
+async def blog_list(request: Request) -> HTMLResponse:
     content_service = request.app.state.content_service
-    posts, total = content_service.get_posts(page=page, per_page=10)
+    posts, _ = content_service.get_posts(page=1, per_page=100)
     tags = content_service.get_all_tags()
-    has_newer = page > 1
-    has_older = page * 10 < total
+    grouped_posts = _group_by_month(posts)
 
     return templates.TemplateResponse(
         "blog/list.html",
         _ctx(
             request,
-            title="Blog  fullstackpm.tech",
+            title="Blog — fullstackpm.tech",
             current_page="/blog",
             posts=posts,
+            grouped_posts=grouped_posts,
             tags=tags,
-            page=page,
-            has_newer=has_newer,
-            has_older=has_older,
         ),
     )
 

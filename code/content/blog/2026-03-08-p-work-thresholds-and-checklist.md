@@ -3,6 +3,7 @@ title: "P Work Thresholds, Case Studies, and Your Implementation Checklist"
 date: 2026-03-08
 author: "Harsha Cheruku"
 tags: ["AI", "product-management", "deterministic-probabilistic", "p-work", "confidence-thresholds", "operational"]
+excerpt: "When to stop checking, when to keep going, and what actually changes when AI takes over the deterministic layer. Case studies and an implementation checklist."
 ---
 
 Two days ago, I shared the diagnostic framework: **hallucinations, misunderstandings, and drift** — the three types of P work failures, and which checkpoint types catch each one.

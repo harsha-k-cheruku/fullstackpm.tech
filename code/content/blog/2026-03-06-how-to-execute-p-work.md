@@ -3,6 +3,7 @@ title: "The Three Types of P Work Failures and Where to Put Your Human Checkpoin
 date: 2026-03-06
 author: "Harsha Cheruku"
 tags: ["AI", "product-management", "deterministic-probabilistic", "p-work", "risk-management"]
+excerpt: "Hallucinations, misunderstandings, and drift — the three types of P work failures, and exactly where to put your human checkpoints to catch each one."
 ---
 
 # The Three Types of P Work Failures and Where to Put Your Human Checkpoints
