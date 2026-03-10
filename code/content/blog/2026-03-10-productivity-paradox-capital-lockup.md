@@ -57,7 +57,7 @@ Per worker, across 160 million employed Americans: about $10,500 annually.
 
 For an average household: closer to $26,000 a year.
 
-That's where the productivity gains went.
+That's where the productivity gains went, i.e. back to the capital/company.
 
 ---
 
