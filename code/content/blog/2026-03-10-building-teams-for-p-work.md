@@ -1,6 +1,6 @@
 ---
 title: "Building Teams for P Work: Hiring, Structuring, and Managing Probabilistic Work"
-date: 2026-03-10
+date: 2026-03-09
 author: "Harsha Cheruku"
 tags: ["AI", "product-management", "deterministic-probabilistic", "p-work", "team-design", "leadership", "org-design"]
 excerpt: "If P work is the new bottleneck, your team model has to change: who you hire, how you structure ownership, how decisions get made, and what you measure."
