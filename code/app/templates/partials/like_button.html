@@ -1,0 +1,19 @@
+<!-- partials/like_button.html — returned by HTMX on toggle -->
+<button hx-post="/api/blog/{{ slug }}/like"
+        hx-target="#like-btn"
+        hx-swap="outerHTML"
+        id="like-btn"
+        class="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-200"
+        style="{% if liked %}background-color: var(--color-accent); border-color: var(--color-accent); color: #fff;{% else %}background-color: var(--color-bg-secondary); border-color: var(--color-border); color: var(--color-text-secondary);{% endif %}"
+        onmouseover="{% if not liked %}this.style.borderColor='var(--color-accent)'; this.style.color='var(--color-accent)';{% endif %}"
+        onmouseout="{% if not liked %}this.style.borderColor='var(--color-border)'; this.style.color='var(--color-text-secondary)';{% endif %}"
+        aria-label="Like this post">
+  <!-- Heart icon -->
+  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+       fill="{% if liked %}currentColor{% else %}none{% endif %}"
+       viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round"
+          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+  </svg>
+  <span>{{ like_count if like_count > 0 else '' }}{% if like_count > 0 %} {{ 'Like' if like_count == 1 else 'Likes' }}{% else %}Like{% endif %}</span>
+</button>

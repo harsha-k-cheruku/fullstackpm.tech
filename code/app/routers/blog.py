@@ -2,13 +2,14 @@
 from datetime import datetime
 from typing import List
 
-from fastapi import APIRouter, Query, Request
+from fastapi import APIRouter, Cookie, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
 from app.database import SessionLocal
 from app.models.comment import Comment
+from app.models.like import Like
 
 router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
@@ -58,7 +59,11 @@ async def blog_list(request: Request) -> HTMLResponse:
 
 
 @router.get("/blog/{slug}", response_class=HTMLResponse)
-async def blog_detail(request: Request, slug: str) -> HTMLResponse:
+async def blog_detail(
+    request: Request,
+    slug: str,
+    blog_visitor_id: str = Cookie(default=None),
+) -> HTMLResponse:
     content_service = request.app.state.content_service
     post = content_service.get_post_by_slug(slug)
     if post is None:
@@ -68,7 +73,6 @@ async def blog_detail(request: Request, slug: str) -> HTMLResponse:
             status_code=404,
         )
 
-    # Fetch comments from database
     db = SessionLocal()
     comments = (
         db.query(Comment)
@@ -76,16 +80,23 @@ async def blog_detail(request: Request, slug: str) -> HTMLResponse:
         .order_by(Comment.created_at.desc())
         .all()
     )
+    like_count = db.query(Like).filter(Like.blog_post_slug == slug).count()
+    liked = bool(blog_visitor_id and db.query(Like).filter(
+        Like.blog_post_slug == slug,
+        Like.user_id == blog_visitor_id,
+    ).first())
     db.close()
 
     return templates.TemplateResponse(
         "blog/detail.html",
         _ctx(
             request,
-            title=f"{post.title}  Blog",
+            title=f"{post.title} — Blog",
             current_page="/blog",
             post=post,
             comments=comments,
+            like_count=like_count,
+            liked=liked,
         ),
     )
 
