@@ -94,6 +94,7 @@ async def blog_detail(
             title=f"{post.title} — Blog",
             current_page="/blog",
             post=post,
+            slug=slug,
             comments=comments,
             like_count=like_count,
             liked=liked,
