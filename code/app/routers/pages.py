@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
@@ -40,22 +40,14 @@ async def home(request: Request) -> HTMLResponse:
     )
 
 
-@router.get("/about", response_class=HTMLResponse)
-async def about(request: Request) -> HTMLResponse:
-    """Redirect to home for backward compatibility."""
-    return templates.TemplateResponse(
-        "index.html",
-        _ctx(request, title="@fullstackpm - Harsha Cheruku", current_page="/"),
-    )
+@router.get("/about")
+async def about(request: Request) -> RedirectResponse:
+    return RedirectResponse(url="/@fullstackpm", status_code=301)
 
 
-@router.get("/contact", response_class=HTMLResponse)
-async def contact(request: Request) -> HTMLResponse:
-    """Redirect to home for backward compatibility."""
-    return templates.TemplateResponse(
-        "index.html",
-        _ctx(request, title="@fullstackpm - Harsha Cheruku", current_page="/"),
-    )
+@router.get("/contact")
+async def contact(request: Request) -> RedirectResponse:
+    return RedirectResponse(url="/@fullstackpm", status_code=301)
 
 
 @router.get("/resume", response_class=HTMLResponse)
