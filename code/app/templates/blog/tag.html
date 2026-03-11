@@ -47,9 +47,9 @@
           {% for tag in post.tags %}
           <a href="/blog/tag/{{ tag }}"
              class="text-xs rounded-md px-2 py-1 font-medium transition-colors"
-             style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);"
-             onmouseover="this.style.color='var(--color-text-primary)'"
-             onmouseout="this.style.color='var(--color-text-secondary)'">
+             style="background-color: var(--color-bg-tertiary); color: var(--color-accent);"
+             onmouseover="this.style.color='var(--color-accent-hover)'"
+             onmouseout="this.style.color='var(--color-accent)'">
             {{ tag }}
           </a>
           {% endfor %}
