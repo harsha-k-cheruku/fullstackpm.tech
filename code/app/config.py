@@ -38,6 +38,8 @@ class Settings(BaseSettings):
     github_url: str = "https://github.com/harsha-k-cheruku"
     linkedin_url: str = "https://linkedin.com/in/harshacheruku"
     rss_url: str = "/feed.xml"
+    twitter_handle: str = "@fullstackpmtech"
+    og_image: str = "https://fullstackpm.tech/static/img/FSPM.png"
 
     class Config:
         env_file = ".env"
