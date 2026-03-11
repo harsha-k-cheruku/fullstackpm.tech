@@ -61,10 +61,11 @@ async def sitemap(request: Request) -> Response:
 
     posts, _ = content_service.get_posts(page=1, per_page=100)
     for post in posts:
+        post_date = post.date.strftime('%Y-%m-%d') if hasattr(post.date, 'strftime') else str(post.date)
         urls.append(
             f"  <url>\n"
             f"    <loc>{base}/blog/{post.slug}</loc>\n"
-            f"    <lastmod>{today}</lastmod>\n"
+            f"    <lastmod>{post_date}</lastmod>\n"
             f"    <changefreq>monthly</changefreq>\n"
             f"    <priority>0.7</priority>\n"
             f"  </url>"

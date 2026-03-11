@@ -1,6 +1,37 @@
 <!-- app/templates/blog/detail.html -->
 {% extends "base.html" %}
 
+{% block description %}{{ post.excerpt | default(post.title) }}{% endblock %}
+{% block og_title %}{{ post.title }} — fullstackpm.tech{% endblock %}
+{% block og_description %}{{ post.excerpt | default(post.title) }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block twitter_title %}{{ post.title }} — fullstackpm.tech{% endblock %}
+{% block twitter_description %}{{ post.excerpt | default(post.title) }}{% endblock %}
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ post.title | tojson }},
+  "description": {{ (post.excerpt | default(post.title)) | tojson }},
+  "author": {
+    "@type": "Person",
+    "name": {{ post.author | tojson }},
+    "url": "{{ config.site_url }}/@fullstackpm"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "fullstackpm.tech",
+    "url": "{{ config.site_url }}"
+  },
+  "datePublished": "{{ post.date.strftime('%Y-%m-%d') }}",
+  "url": "{{ config.site_url }}/blog/{{ post.slug }}",
+  "image": "{{ config.og_image }}"
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="py-12 lg:py-16">
   <div class="max-w-3xl mx-auto">
