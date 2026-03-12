@@ -1,185 +1,135 @@
 ---
-title: "The Speed Drug: What History and Neuroscience Tell Us About Throttling AI's Most Productive Users"
+title: "The Speed Drug: What a 19th-Century Economist Tells Us About Throttling AI's Most Productive Users"
 date: 2026-03-11
 author: "Harsha Cheruku"
 tags: ["AI", "productivity", "economics", "technology", "future-of-work"]
-excerpt: "We're becoming the most productive humans in history. And the most impatient. What happens when cost, throttling, or capacity forces the tap to slow down — and what does history tell us about how that plays out?"
+excerpt: "Every time we've made a productive tool more efficient, we used more of it, not less. AI is no different — except this time the tool is augmenting thinking itself. That changes what happens when you restrict it, and what happens even when you don't."
 ---
 
 There's a moment every power user of an LLM knows.
 
-You're in the middle of something — a document, a codebase, a strategy deck. The thinking is flowing. You send a prompt. The cursor blinks. You wait. Three seconds. Five seconds. Ten.
+You're in the middle of something — a document, a codebase, a strategy deck. The thinking is flowing. You send a prompt. The cursor blinks. You wait. Three seconds. Five. Ten.
 
 And something breaks.
 
-Not the tool. Something in you.
+Not the tool. Something in *you*.
 
 A flicker of irritation. An urge to open another tab. A slight, involuntary recalibration of how much you actually valued what you were doing.
 
-That moment — that particular species of impatience — is worth examining. Because it's not new. We've been here before, every time a technology dramatically raised our speed baseline. And the history of what happens *after* is surprisingly predictive of where we're headed.
+That moment isn't impatience. It's the precise instant you realize a tool has restructured your cognition around its availability — and is now making you feel the terms.
+
+This is worth examining carefully, because the pattern behind it is 160 years old. And understanding it tells you something important about where AI productivity is actually headed — including for the people who have it fastest.
 
 ---
 
-## Part 1: We Have Always Done This
+## Part 1: An Old Pattern, Cleanly Stated
 
-In 1844, the first commercial telegraph line opened between Washington and Baltimore. Within a decade, the American business world had reorganized itself around telegrams. Two-week letter turnarounds were replaced by same-day communication. Contracts, prices, orders — all went instant.
+In 1865, the British economist William Stanley Jevons was studying steam engine efficiency. Engineers had made real improvements — each engine now produced more work per unit of coal. The natural expectation was that coal consumption would stabilize, maybe decline.
 
-Then, in the 1870s, telegram demand began outstripping cable capacity. Delays crept back in — hours instead of seconds. Merchants who had restructured their operations around instantaneous communication were furious. They had not gone back to tolerating two-week letters. They had gone forward to tolerating *nothing*.
+The opposite happened. Coal consumption doubled.
 
-Faster tools don't return you to your prior baseline when they slow down. They drag your expectations forward with them.
+Jevons' observation: when you make a productive resource more efficient, you don't use the same amount more carefully. You expand what you try to do. Efficiency creates demand. Cheap and easy means *more*, not less.
 
-The telephone did the same thing. When it arrived in offices in the 1880s, people marveled at talking across cities. By 1920, "hold" — a few seconds of silence — had become an offense. Business relationships were damaged over perceived delays that would have been considered miraculous efficiency a generation earlier.
+The pattern has held across 160 years and every major productive technology:
 
-The internet sharpened this pattern to a point.
+- Cars got more fuel-efficient. People drove more miles, not fewer. Total fuel consumption rose.
+- Broadband speeds increased tenfold. Data consumption didn't plateau — it exploded. Video, streaming, always-on applications filled every new bit of headroom.
+- Smartphones dropped from $600 to free-with-contract. Screen time went from minutes to hours per day.
 
-In 1993, Jakob Nielsen codified the "10-second rule" for web interfaces: if a page doesn't respond within 10 seconds, users will leave. That was considered ambitious at the time.
+**Efficiency creates consumption, not conservation.** You don't use a faster, cheaper tool the same way. You use it for things you wouldn't have attempted before.
 
-By 2009, Google's internal research found that adding **400 milliseconds of latency** — less than half a second, invisible to conscious perception — reduced daily search queries by roughly 8 million. Amazon found that **100 milliseconds of additional load time** correlated with approximately 1% revenue loss.
+AI is not going to be the exception. Power users running 50, 100, several hundred prompts a day haven't used the same effort more efficiently. They've expanded what they try to do — strategies that used to take a week now take a day, codebases that needed a team now need one person with a good prompting habit.
 
-That's the speed ratchet. Every generation of technology moves the threshold. And thresholds, once moved, do not move back.
-
----
-
-## Part 2: The LLM Power User Is a Different Animal
-
-The users showing up in enterprise AI adoption data aren't casual. They're running 50, 100, sometimes several hundred prompts per day. They've rebuilt their workflows around the assumption of instant, intelligent response.
-
-One person is doing the analytical work that used to require a team of three. One engineer is producing code at the pace of four. One writer is producing the first draft of what used to take a week.
-
-This is not metaphorical. It's showing up in the productivity numbers at companies with high AI adoption rates — and it's showing up in cognitive dependency. These users don't just prefer fast AI. They've **calibrated their thinking pace to it**.
-
-Here's what makes this different from previous technology speed curves:
-
-Previous fast tools — search, email, messaging — augmented communication. They made it easier to share information already in your head.
-
-LLMs are augmenting *thinking itself*. The latency isn't just waiting for a page to load. It's waiting for the next step in your own cognitive process.
-
-When a search page loads slowly, you wait for information. When an LLM responds slowly, you're waiting for your *train of thought* to resume.
-
-That's a fundamentally different dependency. And it makes the impatience qualitatively different from anything before it.
+The question isn't whether Jevons applies to AI. It's what happens when you run the engine backward. And what happens when you run it forward too fast.
 
 ---
 
-## Part 3: The Throttle — What Happens at the Speed Wall?
+## Part 2: Jevons in the Time Dimension
 
-So: what actually happens if cost pressure, infrastructure limits, or deliberate policy forces the tap to slow?
+The efficiency principle operates on cost and price. But it also operates on *speed* — and the speed version has an additional property that makes it harder to undo.
 
-There isn't one answer. There are several — and they're likely to play out simultaneously across different user segments.
+Every technology that dramatically raised the speed baseline didn't just increase usage. It moved the patience threshold permanently upward.
 
-### Path A: Withdrawal and Fragmentation
+In 1844, the first commercial telegraph line opened between Washington and Baltimore. Same-day communication replaced two-week letters. Within a decade, American business had reorganized itself around telegrams. Then, in the 1870s, demand began outstripping cable capacity. Delays crept back in. The merchants who had rebuilt their operations around instant communication were furious. They hadn't gone back to tolerating two-week letters. They had gone forward to tolerating *nothing*.
 
-The first-order effect is frustration-driven context switching.
+The telephone repeated the pattern. In the 1880s, talking across a city was a marvel. By 1920, "hold" — a few seconds of silence — was a professional offense.
 
-Attention science is reasonably clear on this: once a task is interrupted — even by a 5-10 second delay — resuming deep cognitive work takes an average of 23 minutes (per Gloria Mark's research at UC Irvine). An LLM that responds in 2 seconds keeps you in the flow. One that takes 15 seconds kicks you out of it.
+Then the internet sharpened this to a measurable point. In 1993, Jakob Nielsen codified the "10-second rule" for web interfaces. That was considered ambitious at the time. By 2009, Google's internal research found that 400 milliseconds of added latency — invisible to conscious perception — reduced daily search queries by 8 million. Amazon found that 100 milliseconds of additional load time correlated with approximately 1% revenue loss.
 
-Power users who hit throttle walls don't sit patiently. They open Twitter. They check Slack. They start a different task. By the time the response arrives, the original context is partially lost. The *quality* of the work degrades, not just the speed.
+That's the speed ratchet: every generation of technology moves the threshold, and thresholds, once moved, do not move back.
 
-This is the insidious part: throttling doesn't produce proportionally slower output. It produces disproportionately *worse* output, because the interruption tax is fixed regardless of work quality.
-
-### Path B: Strategic Rationing and Prompt Engineering
-
-Some users will adapt by becoming more deliberate.
-
-This happened with mobile data caps. When AT&T introduced data limits in 2010, users didn't reduce usage proportionally — they changed *behavior*. WiFi-hopping became a habit. Apps were optimized for offline use. Users learned to compress images before sending and batch-download before commuting.
-
-An equivalent for LLM throttling: users will write fewer, longer, more carefully constructed prompts. They'll batch questions that would have been three separate calls into one. They'll cache outputs more aggressively. They'll pre-load context more deliberately.
-
-Paradoxically, this might produce better prompting discipline across the industry. Current power users often use AI in a very conversational, iterative way — cheap, fast, low-commitment. Token rationing would force more intentional design of the AI interaction.
-
-### Path C: Model Arbitrage
-
-When one lane gets congested, traffic reroutes.
-
-If Claude or GPT-4o becomes rate-limited or expensive, the natural response is multi-model workflows. Use the fast, cheap model for first-pass work. Route complex reasoning to the slower, more capable model only when necessary. Smaller, locally-run models (Mistral, Llama, Phi) absorb the mid-tier work.
-
-This is already happening at the enterprise level. Companies building AI-native workflows don't use a single model — they use a routing layer that matches task complexity to model capability and cost.
-
-Rate limiting won't kill AI-powered productivity. It'll accelerate model portfolio strategies.
-
-### Path D: A Paradoxical Deep Work Renaissance
-
-This path is the most counterintuitive, and possibly the most important.
-
-There's a serious argument that instant AI access is actually *degrading* certain kinds of thinking. When answers are always 2 seconds away, the habit of sitting with a hard problem — of tolerating productive discomfort long enough for real insight to form — atrophies.
-
-Cal Newport's "deep work" thesis is essentially: the ability to focus without distraction is a rare and valuable skill, and the tools that deliver constant stimulation are eroding it.
-
-LLMs, at their fastest and most fluid, can become another stimulation feed. You think, it responds, you think again. It's conversational, fast, rewarding — and potentially shallow.
-
-Throttling could force a different mode: *slower, longer prompts with longer waits*. Users would need to batch more thinking before invoking the model. They'd spend more time synthesizing the output rather than immediately requesting more.
-
-It wouldn't feel better. But it might produce better work.
-
-### Path E: The Two-Tier Speed Economy
-
-The most troubling path is the structural one.
-
-Speed has never been free, and the people who pay for speed always capture asymmetric advantage. The trader with the co-located server executes before you. The Prime subscriber gets the package first. The enterprise license holder gets GPT-4o while the free tier gets throttled to GPT-3.5.
-
-If AI speed becomes a meaningful productivity differentiator — which it already is — then rate limiting becomes a class issue.
-
-The knowledge worker at a well-funded company with enterprise AI contracts will produce three-to-five times the output of someone on a free tier. Not because they're smarter or work harder. Because they have access to faster loops.
-
-This has happened before. Broadband access in the early 2000s was strongly correlated with income — rural and low-income households stayed on dial-up years after urban professionals moved to cable. The productivity gap between the two groups in that period is hard to measure but almost certainly real.
-
-Token throttling, priced by tier, risks reproducing that dynamic at the level of cognitive output. Not just information access. *Thinking speed.*
+The LLM ratchet is already in motion. Users who have calibrated their thinking pace to instant response are not going to recalibrate downward. Jevons' principle guarantees it — they've expanded what they try to do to fill the available speed.
 
 ---
 
-## Part 4: Jevons Runs in Both Directions
+## Part 3: The Part Where This Gets Different
 
-There's an economic principle worth naming here: Jevons Paradox.
+Every prior application of these patterns operated on *communication or logistics*. Faster packages. Faster messages. Faster retrieval of information already in your head.
 
-In 1865, economist William Stanley Jevons observed that as coal engines became more efficient — using less coal per unit of work — total coal consumption *increased*, not decreased. Efficiency creates demand. When something gets cheaper and easier to use, people use more of it, not less.
+LLMs are the first technology where both principles — the efficiency expansion and the speed ratchet — operate on *thinking itself*.
 
-This has held for almost every productivity technology since. More fuel-efficient cars lead to more driving. Faster internet speeds led to more bandwidth consumption, not less. Cheaper flights led to more flying.
+When a search page loads slowly, you're waiting for information. When an LLM responds slowly, you're waiting for the next step in your own cognitive process. The latency isn't between you and a tool. It's inside the thinking.
 
-The LLM version: as AI gets faster and cheaper, users don't consume the same amount of AI more efficiently. They expand what they're trying to do. A 10x faster model doesn't mean you do the same work 10x faster and then stop. You find 10x more work to do.
+One person using AI seriously today is doing the analytical work that used to require a team of three. One engineer is producing code at the pace of four. The Jevons expansion isn't happening at the level of convenience. It's happening at the level of cognitive output.
 
-Jevons cuts the other way too. When you *restrict* supply or raise price, the first-order assumption is proportional demand reduction. But that's not what happens with technologies embedded in flow-state work. The dependency is inelastic — especially for the highest-value users.
-
-What actually happens is: users hit the constraint, feel it acutely, find the most expensive workaround they can afford, and then consume at the maximum their new budget allows. Throttling doesn't reduce usage so much as *stratify* it.
+This changes what happens when you restrict supply — and, as we'll see, what happens even when you don't.
 
 ---
 
-## Part 5: The Question Nobody Is Asking
+## Part 4: Running the Engine Backward
 
-All of this raises a question that the AI industry is not yet seriously engaging with:
+So: what actually happens when cost pressure, infrastructure limits, or pricing policy forces the tap to slow?
 
-**What is the right amount of thinking speed?**
+The intuitive answer is proportional reduction. Less supply → less usage. People adjust.
 
-Speed, when applied to communication or logistics, is almost unambiguously good. Faster package delivery is better. Faster search results are better. These are delivery mechanisms for things that already exist.
+That's not what happens with inelastic cognitive dependencies.
 
-But speed applied to *cognition* is different. Thinking is not just retrieval. It's a process with necessary friction — uncertainty, error, revision, synthesis. A certain amount of slowness is not a bug in cognition. It's a feature.
+The people who have most deeply integrated the tool into their thinking are the ones for whom it's most valuable — and they will pay, route around, or optimize aggressively to maintain their access level. Gloria Mark's research at UC Irvine found that once a task is interrupted, resuming deep cognitive work takes an average of 23 minutes. An LLM that responds in 2 seconds keeps you in flow. One that takes 15 seconds kicks you out of it entirely. The quality of the work degrades — not just the pace — because the interruption tax is fixed regardless of what the work was worth.
 
-When we dramatically accelerate the feedback loop between question and answer, we change what kinds of questions get asked. Easy, fast, iterative questions flourish. The slow, uncomfortable, structural questions that require sitting with ambiguity get deprioritized — not because they're less important, but because they don't fit the interaction model.
+What throttling actually produces is not reduced consumption. It's **stratification**.
 
-There's a version of LLM dependency that produces the output of many people but the *wisdom* of none.
+This is Jevons in reverse. The forward direction: efficiency → everyone expands usage. The reverse direction: restriction → the highest-value users find workarounds and consume at maximum budget; lower tiers fall behind. Demand doesn't compress proportionally. It bifurcates.
 
-This isn't a reason to deliberately throttle AI. It's a reason to think carefully about what kinds of work we're routing through it, and what kinds we're choosing — consciously or unconsciously — to skip.
+The enterprise license holder gets the fast model. The free tier gets throttled to something slower and less capable. The gap isn't just a speed difference — it's an output quality difference. Not because one person is smarter or works harder. Because they have access to faster loops.
 
----
+Broadband is the clearest prior example. In the early 2000s, high-speed internet access was strongly correlated with income. Rural and lower-income households stayed on dial-up years after urban professionals moved to cable. The productivity gap between the two groups is hard to measure precisely, but the structural advantage was real and it compounded.
 
-## Where This Goes: Three Open Futures
-
-The behavior change from AI speed is real and will compound. Here's where it seems to be heading — but none of these are certain.
-
-**Future 1: Speed stratification locks in.** Enterprise tiers get faster and faster. Free tiers stagnate or degrade. The cognitive output gap between well-funded and under-funded knowledge workers becomes the defining inequality of the 2030s. Not information access. *Processing speed.*
-
-**Future 2: Speed becomes a UX battlefield.** Competition between AI providers on latency (not just capability) reshapes the market. Just as Google made sub-second search the baseline expectation, someone makes sub-second *thinking assistance* the baseline. Users migrate to whoever hits that bar. Cost pressure forces efficiency innovations rather than throttling.
-
-**Future 3: The backlash and reset.** A cohort of users — perhaps creative professionals, perhaps academics, perhaps just the burned-out — deliberately choose slower AI modes or opt out entirely. "Slow thinking" becomes a luxury positioning, the way "slow food" emerged in response to fast food. Deep work retreats and AI-free writing residencies become the status signal of the next generation of knowledge workers.
+Token throttling, priced by tier, risks reproducing that dynamic — but at the level of cognitive output rather than information access. Not what you can find. What you can *think through, at speed*. That's a different and harder inequality than anything the internet produced, because it operates invisibly, inside the quality of decisions made and strategies formed.
 
 ---
 
-These futures aren't mutually exclusive. They'll probably all happen at once, for different people, in different domains.
+## Part 5: The Question Jevons Didn't Have to Ask
 
-What's certain is that we're past the point of asking whether AI speed changes human behavior. It already has. The only remaining question is whether we're paying attention to the change, or just riding it.
+Jevons was worried about coal running out. That was the right worry in 1865.
 
-The telegram merchants didn't choose to become impatient with letters. The expectation arrived with the technology, installed itself quietly, and was only visible in retrospect.
+We are not running out of AI. But the stratification problem in Part 4 is only half the picture — and it only affects people without fast access. There's a second problem, less discussed, that affects the people who have it fastest.
+
+Think about the donut machine analogy. If a machine produces donuts at 100x the rate you can eat them, it doesn't make you better fed. It makes you anxious about the backlog. You start rushing through each one without tasting it. You grab the next before finishing the last. You are technically consuming more and meaningfully nourishing less.
+
+The same dynamic applies to AI output. Even the power user with the fastest access hits a **consumption ceiling** — because human attention is still the scarce resource even when generation is abundant. The bottleneck doesn't disappear. It relocates from generation to absorption.
+
+And the super user's response to this isn't to slow down. It's to generate more, faster, and process each thing more shallowly. You start skimming your own outputs. You produce the next thing before fully synthesizing the last. You move *through* ideas instead of actually thinking them. The tool is fast enough to outrun the reflection it was supposed to support.
+
+This is the mechanism behind what might be the most important sentence in this whole piece: *there is a version of LLM dependency that produces the output of many people but the wisdom of none.* It doesn't happen despite being a power user. It happens because of it.
+
+Speed, applied to logistics, is almost unambiguously good. Faster packages, faster search — delivery mechanisms for things that already exist.
+
+Speed applied to *thinking* is different. Thinking has necessary friction: uncertainty, revision, the discomfort of not-yet-knowing. A certain amount of slowness isn't a bug in cognition. It's where synthesis forms. When you shorten the feedback loop between question and answer dramatically enough, you change which questions get asked. Fast, conversational, iterative questions flourish. The slow, structural ones that require sitting with ambiguity get quietly deprioritized — not because they're less important, but because they don't fit the interaction model.
+
+This isn't an argument for throttling. It's an argument for being deliberate about what we route through the fast loop — and what we're choosing, consciously or not, to skip.
+
+---
+
+The cursor is still blinking.
+
+You know what's happening now: it's not just impatience. It's the ratchet. It's the dependency the tool installed quietly, that you only noticed when the response was late. Jevons running in real time, in your browser, in your thinking.
+
+Whether the tap speeds up or slows down from here, the principle holds: you'll use more, not less. You'll expand to fill the available speed. But expanding to fill speed and actually absorbing what you produce are two different things — and the gap between them is where the wisdom goes.
+
+The telegram merchants didn't choose to become impatient with letters. The expectation arrived with the technology and was only visible in retrospect.
 
 We have more notice than they did.
 
 ---
 
-*Data references: Jakob Nielsen's response time limits (1993); Gloria Mark, "The Cost of Interrupted Work" (UC Irvine, 2008); Greg Linden, "Make Data Useful" (Amazon study, 2006); Google "Speed Matters" internal study (2009); Jevons, "The Coal Question" (1865); William Jevons paradox literature; Csikszentmihalyi, "Flow: The Psychology of Optimal Experience" (1990); Cal Newport, "Deep Work" (2016).*
+*Data references: William Jevons, "The Coal Question" (1865); Jakob Nielsen, response time limits (1993); Google "Speed Matters" internal study (2009); Greg Linden, "Make Data Useful" (Amazon, 2006); Gloria Mark, "The Cost of Interrupted Work" (UC Irvine, 2008); Cal Newport, "Deep Work" (2016); Csikszentmihalyi, "Flow: The Psychology of Optimal Experience" (1990).*
