@@ -2,7 +2,7 @@
 <div id="like-btn-wrap">
   <button hx-post="/api/blog/{{ slug }}/like"
           hx-target="#like-btn-wrap"
-          hx-swap="innerHTML"
+          hx-swap="outerHTML"
           class="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-200"
           style="{% if liked %}background-color: var(--color-accent); border-color: var(--color-accent); color: #fff;{% else %}background-color: var(--color-bg-secondary); border-color: var(--color-border); color: var(--color-text-secondary);{% endif %}"
           onmouseover="{% if not liked %}this.style.borderColor='var(--color-accent)'; this.style.color='var(--color-accent)';{% endif %}"
