@@ -19,7 +19,8 @@ Here's the cold math:
 2) **Supply is about to explode.** Jevons Paradox — cheap production means *more* production. Apps, tools, agents, APIs — an order of magnitude more within five years.
 3) **Buyers are also getting AI-enabled.** A B2B buyer in 2024 evaluated 3-4 vendors per cycle. In 2026, they evaluate 15. More options = faster price compression.
 4) **The integration clock is accelerating.** Zoom → OS feature: 4 years. Calendly → CRM feature: 3 years. With AI, a platform clones your feature in weeks. The window is shrinking from 3-5 years to 12-18 months.
-5) **Diapers.com had a great product.** Amazon dropped prices below cost, acquired them for $545M in 2010, shut them down in 2017. Distribution beat product. Every time.
+5) **The big platforms already know this.** Microsoft, Google, Salesforce, HubSpot — they're not building AI just because it's interesting. They're building it so that any feature you launch tomorrow can be absorbed as a native extension next quarter. Copilot isn't a product. It's a moat with a friendly UI.
+6) **Diapers.com had a great product.** Amazon dropped prices below cost, acquired them for $545M in 2010, shut them down in 2017. Distribution beat product. Every time.
 
 Building costs race toward zero from AI.
 Market prices race toward zero from competition.
