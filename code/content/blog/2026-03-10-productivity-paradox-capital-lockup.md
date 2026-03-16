@@ -39,6 +39,8 @@ Technology redistributes the existing pie. It doesn't reliably grow it.
 
 This creates the core dynamic: efficiency gains in the "middle layers" of the economy — distribution, logistics, retail, media — don't expand total spending. They determine **who captures the existing spending**.
 
+Think of it as a donut machine. The machine gets more efficient every year — faster, cheaper, higher output per hour. But if you don't own the machine, the extra donuts don't land in your pocket. They land in the owner's. Efficiency gains in how donuts are made don't change who eats them. They change who profits from making them. And if the machine gets efficient enough — they don't need as many people to run it either.
+
 ---
 
 ## Part 2: Following the Money
