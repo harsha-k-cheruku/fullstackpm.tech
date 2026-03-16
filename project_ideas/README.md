@@ -84,6 +84,11 @@ Give the project to Code Puppy or build it yourself, gather feedback, improve.
 
 ## Future Ideas (In Development)
 
+- **Article: The Person Who Benefits Most From Your Agent Might Not Be You** — Agent economy, objective drift, value extraction, preference manipulation. Fiction opening set in 2031. Part 4 of the trilogy (see `06_ARTICLE_AGENT_ECONOMY.md`)
+- **Audio Pipeline** — ElevenLabs TTS → MP3 → audio player on blog posts; POC with one article, natural extension to podcast RSS feed (see `05_AUDIO_PIPELINE.md`)
+- **Article: Building Gets Easy. Selling Gets Brutal.** — AI collapses building costs → supply explosion → margin compression → platform absorption (diapers.com pattern); connects directly to Speed Drug's donut machine and Productivity Paradox's bottleneck argument (see `04_ARTICLE_BUILDING_EASY_SELLING_HARD.md`)
+- **Review phuryn/pm-skills repo** — Review github.com/phuryn/pm-skills for inspiration, tools, or patterns worth adapting for fullstackpm.tech (see `03_REVIEW_PM_SKILLS_REPO.md`)
+- **Like, Share & Subscribe Embed** — Embeddable like/share/subscribe widget any website can drop in with one script tag (see `02_LIKE_SHARE_SUBSCRIBE_EMBED.md`)
 - **Book Marketing Generator** — Create variations of marketing copy for books across platforms
 - **Books Portal** — Consolidate writing projects under fullstackpm.tech/books
 - **PM Interview Coach (Advanced)** — OAuth + LLM selection, email notifications, advanced analytics
