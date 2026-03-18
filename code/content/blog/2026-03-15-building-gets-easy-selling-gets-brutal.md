@@ -125,7 +125,9 @@ This is the third piece in a sequence. The first — [The Productivity Paradox](
 
 This one closes the loop at the market level. The same underlying dynamic operating at three scales: Jevons plus platform power equals gains concentrated at the top.
 
-The donut machine metaphor from the Speed Drug lands here too, but differently. If a machine produces donuts at 100x the rate, it doesn't make any one baker richer — it makes donuts cheap and abundant and it makes the question of who owns the corner where people are hungry the only question that matters.
+The donut machine has appeared twice in this series. In the Speed Drug, it was a consumption problem — the machine generates faster than you can absorb, output of many, wisdom of none. Here it's a supply problem — everyone has the machine, so the machine itself is worthless. Same metaphor, different failure mode, same underlying dynamic.
+
+If a machine produces donuts at 100x the rate, it doesn't make any one baker richer — it makes donuts cheap and abundant and it makes the question of who owns the corner where people are hungry the only question that matters.
 
 Everyone will have a donut machine. The people who saw this coming built the corner first.
 
