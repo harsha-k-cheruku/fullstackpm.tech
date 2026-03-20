@@ -96,6 +96,7 @@ Give the project to Code Puppy or build it yourself, gather feedback, improve.
 - **Product Design System Generator** — AI-powered design system from product specs
 - **Marketplace Analytics Advanced** — Real data integration, forecasting, cohort prediction
 - **PM Community Platform** — Forum for sharing architectural decisions, trade-offs, lessons learned
+- **Kids Reading App** — Early reader tool (ages 4-8) with phonics, comprehension, and AI-generated personalized stories. Built for friends' kids initially. Similar to reading.com but with story generation. (see `07_KIDS_READING_APP.md`)
 
 ---
 
