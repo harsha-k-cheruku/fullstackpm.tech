@@ -1,6 +1,7 @@
 # app/routers/likes.py
 import uuid
 from datetime import datetime
+from typing import Optional, Tuple
 
 from fastapi import APIRouter, Cookie, Request
 from fastapi.responses import HTMLResponse
@@ -22,7 +23,7 @@ def _ctx(request: Request, **kwargs) -> dict:
     return {"request": request, "config": settings, "year": datetime.now().year, **kwargs}
 
 
-def _like_state(slug: str, visitor_id: str | None) -> tuple[int, bool]:
+def _like_state(slug: str, visitor_id: Optional[str]) -> Tuple[int, bool]:
     """Return (count, liked) for slug + visitor."""
     db = SessionLocal()
     count = db.query(Like).filter(Like.blog_post_slug == slug).count()
