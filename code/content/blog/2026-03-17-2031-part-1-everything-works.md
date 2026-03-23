@@ -4,8 +4,6 @@ date: 2026-03-17
 author: "Harsha Cheruku"
 tags: ["AI", "agent-economy", "fiction", "economics", "future-of-work"]
 excerpt: "A morning in 2031. Kai's agent handles everything — groceries, commute, dentist, insurance. It all feels like magic. They saved $43. They don't know what wasn't saved."
-series: "2031"
-series_part: 1
 ---
 
 *Part 1 of 5. A series about the agent economy, who it's built for, and what it quietly takes.*
