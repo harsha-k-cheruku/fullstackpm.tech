@@ -458,11 +458,15 @@ html { scroll-padding-top: 120px; }
   padding: 12px 24px; overflow-x: auto;
   border-bottom: 1px solid var(--color-border, #e2e8f0);
 }
-.fe-subnav a {
+.fe-subnav-link {
   color: var(--color-text-secondary, #64748b); text-decoration: none; white-space: nowrap;
   font-size: 13px; font-weight: 500;
   padding: 6px 14px; border-radius: 20px; transition: all .2s;
+  display: inline-block;
 }
-.fe-subnav a:hover { background: var(--color-bg-tertiary, #f1f5f9); color: var(--color-text-primary, #0f172a); }
-.fe-subnav-brand { color: var(--color-text-primary, #0f172a); font-weight: 700; font-size: 14px; margin-right: 10px; white-space: nowrap; }
-.fe-subnav-version { font-size: 11px; color: var(--color-text-secondary, #64748b); font-weight: 600; padding: 3px 10px; background: var(--color-bg-tertiary, #f1f5f9); border-radius: 20px; }
+.fe-subnav-link:hover { background: var(--color-bg-tertiary, #f1f5f9); color: var(--color-text-primary, #0f172a); }
+.fe-subnav-link.active {
+  background: var(--color-accent, #2E8ECE);
+  color: white;
+  font-weight: 600;
+}

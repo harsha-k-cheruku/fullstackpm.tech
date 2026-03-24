@@ -59,5 +59,43 @@
     document.getElementById('seq-' + id).style.display = 'block';
     btn.classList.add('active');
   }
+
+  // Update active nav link based on scroll position or click
+  const sections = ['ecosystem', 'models', 'sequence', 'vs', 'flywheel', 'moneyflow', 'journeys'];
+  const navLinks = document.querySelectorAll('.fe-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+
+    for (let link of navLinks) {
+      link.classList.remove('active');
+    }
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  // Update on scroll
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+  // Update on click
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Initialize on load
+  updateActiveLink();
 </script>
 {% endblock %}
