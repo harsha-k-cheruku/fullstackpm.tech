@@ -1,0 +1,336 @@
+<!-- Diagram 3 — How a Loan Clears (All 4 Models, Tabbed) -->
+<section id="sequence" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 3</span>
+    <h2>How a Loan Clears — All Four Models</h2>
+    <p>Each lending business model has a distinct clearing sequence — different participants, different handoffs, different fee moments. Select a model to trace the flow from application to funded.</p>
+  </div>
+
+  <div class="model-tabs">
+    <button class="model-tab active" onclick="showSeqModel('m1', this)">
+      <span class="mt-num">Model 1</span>
+      <span class="mt-name">Lead Gen</span>
+    </button>
+    <button class="model-tab" onclick="showSeqModel('m2', this)">
+      <span class="mt-num">Model 2</span>
+      <span class="mt-name">P2P / Institutional</span>
+    </button>
+    <button class="model-tab" onclick="showSeqModel('m3', this)">
+      <span class="mt-num">Model 3</span>
+      <span class="mt-name">AI Platform</span>
+    </button>
+    <button class="model-tab" onclick="showSeqModel('m4', this)">
+      <span class="mt-num">Model 4</span>
+      <span class="mt-name">Marketplace Bank</span>
+    </button>
+  </div>
+
+  <!-- Model 1: Lead Gen -->
+  <div id="seq-m1" class="seq-panel">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The platform is a matchmaker only. It sells the borrower's lead to multiple lenders and exits. It never underwrites, never holds credit risk, never disburses funds. Revenue is earned per lead sold — regardless of whether the borrower gets a loan.
+    </div>
+    <div class="sequence">
+      <div class="seq-participants seq-4col">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🌐</span>Lead Gen Platform</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span>Matched Lenders (3–5)</div>
+        <div class="seq-participant"><span class="p-icon">✅</span>Chosen Lender</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Single Form Submitted</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Fills one form — loan amount, purpose, rough credit estimate. One form reaches many lenders.</div>
+        <div class="seq-cell sending">Receives lead. Validates data quality. Sells lead to matched lenders simultaneously.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Platform Earns Fee Here (before any loan is made)</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Earns per-lead fee — collected at this point, regardless of loan outcome. Platform's financial interest ends here.</div>
+        <div class="seq-cell active">Each lender independently underwrites the borrower's lead and prices an offer</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Competing Offers Returned to Platform</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Sees multiple offers displayed side by side — different APRs, terms, lenders. Compares and picks.</div>
+        <div class="seq-cell sending">Aggregates and displays competing offers. Platform's operational role ends here.</div>
+        <div class="seq-cell sending">Returns approved offer to platform for display to borrower</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — Borrower Chooses a Lender (Platform Exits)</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Picks best offer. Redirected to chosen lender's site to complete full application — hard pull, e-signature.</div>
+        <div class="seq-cell">Platform is out. No further involvement in the transaction.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Borrower completes full application directly. Lender runs own hard pull and final underwriting.</div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Loan Funded Directly by Chosen Lender</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Funds arrive in bank account directly from chosen lender (1–3 days)</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Funds loan from own balance sheet or its own capital sources. Earns interest spread over loan life.</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border); color:var(--fe-lending-text);">
+      Platform earns: <strong>Per-lead fee</strong> — collected when lead is sold. No dependency on loan outcome, no ongoing revenue, no balance sheet exposure.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Chosen lender earns: <strong>Interest spread</strong> over loan life.
+    </div>
+  </div>
+
+  <!-- Model 2: P2P / Institutional -->
+  <div id="seq-m2" class="seq-panel" style="display:none;">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The platform originates and underwrites loans, then lists them for investors to fund. The platform never holds loans on its own balance sheet — investors bear the credit risk. Revenue comes from origination fees (upfront, one-time) and servicing fees (ongoing, percentage of outstanding balance).
+    </div>
+    <div class="sequence">
+      <div class="seq-participants seq-5col">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🌐</span>Platform</div>
+        <div class="seq-participant"><span class="p-icon">📋</span>Credit Bureau</div>
+        <div class="seq-participant"><span class="p-icon">📊</span>Institutional Investors</div>
+        <div class="seq-participant"><span class="p-icon">🏧</span>Payment Rails</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Application & Underwriting</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Applies directly on platform — submits full application, connects bank account</div>
+        <div class="seq-cell sending">Pulls credit file. Runs own underwriting models. Assigns risk grade and yield.</div>
+        <div class="seq-cell active">Returns credit file, FICO score, full tradeline history</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Loan Listed on Investor Marketplace</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Sees approved offer — APR, term, amount. Decides to accept.</div>
+        <div class="seq-cell sending">Lists loan on investor marketplace: risk grade, expected yield, term, borrower profile. Earns origination fee.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Reviews loan listing. Evaluates risk grade and historical default rates for that grade. Commits capital.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Investor Funding Committed</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Confirms full funding. Originates loan. Becomes loan servicer for the life of the loan.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Commits capital to fund loan. Becomes beneficial owner. Now holds credit risk.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — Disbursement to Borrower</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Funds arrive in bank account (1–2 days)</div>
+        <div class="seq-cell sending">Initiates disbursement from investor-committed funds</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Routes funds from investor account to borrower account via ACH</div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Ongoing Servicing (monthly, for full loan term)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Makes monthly repayment to platform</div>
+        <div class="seq-cell decision">Collects payment. Deducts servicing fee. Forwards net amount to investors. Earns servicing fee monthly.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives net repayment (principal + interest, minus servicing fee). Earns yield on investment.</div>
+        <div class="seq-cell active">Routes monthly repayment from borrower account</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-users-bg); border-color:var(--fe-users-border); color:var(--fe-users-text);">
+      Platform earns: <strong>Origination fee</strong> (1–5% of loan, upfront) + <strong>Servicing fee</strong> (~0.25–1% annually on outstanding balance).
+      &nbsp;&nbsp;|&nbsp;&nbsp;Investors earn: <strong>Yield</strong> on funded loans. They hold all credit risk.
+    </div>
+  </div>
+
+  <!-- Model 3: AI Platform -->
+  <div id="seq-m3" class="seq-panel" style="display:none;">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The platform provides the AI underwriting brain — it never originates or holds loans. A bank partner is the legal lender of record; a capital partner buys the loan after funding. The platform earns fees from both sides without touching the balance sheet. Three parties must align simultaneously for every loan.
+    </div>
+    <div class="sequence">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🌐</span>AI Platform</div>
+        <div class="seq-participant"><span class="p-icon">📋</span>Credit Bureau</div>
+        <div class="seq-participant"><span class="p-icon">🔗</span>Bank Data API</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span>Bank Partner</div>
+        <div class="seq-participant"><span class="p-icon">📊</span>Capital Partner</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Pre-qualification (Soft Pull — No Credit Impact)</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Enters loan amount, purpose, income estimate</div>
+        <div class="seq-cell sending">Receives data. Runs soft credit inquiry.</div>
+        <div class="seq-cell active">Returns credit snapshot — no hard pull yet</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Pre-qual Offer Shown</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Sees estimated APR range. Decides to continue.</div>
+        <div class="seq-cell decision">Shows soft offer — APR range, not yet locked</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Full Application (Hard Pull — Credit Impact)</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Submits full application. Connects bank account. Agrees to hard pull.</div>
+        <div class="seq-cell sending">Pulls full credit file. Connects to bank data API for income.</div>
+        <div class="seq-cell active">Returns full tradeline history, payment record, credit score</div>
+        <div class="seq-cell active">Returns bank account cash flow, income deposits</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — AI Model Runs (Probabilistic — hundreds to thousands of signals)</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">AI model processes all signals → outputs risk score + specific APR. Majority of decisions fully automated.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Firm Offer Presented</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Sees firm offer: exact APR, monthly payment, term, origination fee. Locked — not an estimate.</div>
+        <div class="seq-cell sending">Displays offer. Starts offer expiry clock (typically 30 days).</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 6 — Borrower Accepts</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Accepts offer. E-signs loan agreement.</div>
+        <div class="seq-cell sending">Confirms final underwriting. Routes loan to bank partner.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives loan file. Reviews compliance. Becomes lender of record.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 7 — Funding (via ACH or RTP)</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Money arrives in bank account (1–3 days ACH, or same-day RTP)</div>
+        <div class="seq-cell sending">Confirms disbursement. Earns referral + platform fee.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Disburses funds via payment rails. Earns origination fee.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 8 — Loan Sold to Capital Market</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Earns platform fee from capital partner transaction.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Sells loan (whole loan sale) to capital partner via Fedwire.</div>
+        <div class="seq-cell active">Buys loan. Now holds credit risk. Earns interest payments over loan life.</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-bnpl-bg); border-color:var(--fe-bnpl-border); color:var(--fe-bnpl-text);">
+      Platform earns: <strong>Referral fee</strong> (from bank) + <strong>platform fee</strong> (from capital partner). Never holds loans on balance sheet.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Bank earns: <strong>Origination fee</strong>.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Capital partner earns: <strong>Interest</strong> over loan life.
+    </div>
+  </div>
+
+  <!-- Model 4: Marketplace Bank -->
+  <div id="seq-m4" class="seq-panel" style="display:none;">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The bank and the platform are the same entity — fully vertically integrated. The bank funds loans from its own deposit base. No bank partner, no capital marketplace. The bank holds credit risk directly on its balance sheet and earns the full interest spread (loan APR minus deposit rate).
+    </div>
+    <div class="sequence">
+      <div class="seq-participants seq-5col">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span>Bank (= Platform)</div>
+        <div class="seq-participant"><span class="p-icon">📋</span>Credit Bureau</div>
+        <div class="seq-participant"><span class="p-icon">🔗</span>Bank Data API</div>
+        <div class="seq-participant"><span class="p-icon">💰</span>Depositors (Funding)</div>
+      </div>
+
+      <div class="seq-step-label">Step 0 — Funding Source Already Exists (passive, always-on)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Holds deposit balances. Pays depositors a savings rate. Deploys these deposits as loans to earn the spread.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Hold checking/savings at the bank. This is the bank's low-cost funding capital — no external capital market needed.</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Application (No Third Party Involved)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Applies directly with the bank — often an existing account holder</div>
+        <div class="seq-cell sending">Pulls credit file. May pre-fill application data from existing account relationship.</div>
+        <div class="seq-cell active">Returns full credit file, FICO score, tradelines</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Income Verification</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Connects external accounts or verifies income via payroll data</div>
+        <div class="seq-cell sending">Connects to bank data API for external income signals. May also use internal account transaction history directly.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Returns cash flow data and income deposit patterns from external accounts</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Bank Underwrites (Own Models, Full Control)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Runs own underwriting model. Full control over risk appetite, approval criteria, and APR pricing. Approves or declines.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — Offer Shown, Borrower Accepts</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Sees firm offer — APR, monthly payment, term. Accepts and e-signs loan agreement.</div>
+        <div class="seq-cell sending">Originates loan. Funds directly from deposit pool. No third-party approvals needed.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Funding (often same-day for existing account holders)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Funds arrive — ACH (1–2 days) or internal transfer (same-day if existing account)</div>
+        <div class="seq-cell sending">Disburses via ACH or internal book transfer. Records loan on balance sheet. Earns origination fee.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 6 — Ongoing Repayment + Spread (monthly, for full loan term)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Makes monthly repayment to bank</div>
+        <div class="seq-cell decision">Receives repayment. Earns interest spread (loan APR minus deposit rate) on every payment for the full term. May cross-sell other products.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives interest on their deposits — the return the bank pays for using their capital</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border); color:var(--fe-capital-text);">
+      Bank earns: <strong>Interest spread</strong> (loan APR minus deposit rate, held for full loan life) + <strong>Origination fee</strong> + <strong>Cross-sell</strong> from existing banking relationships.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Risk: Bank holds <strong>full credit risk</strong> on balance sheet — no external party absorbs defaults.
+    </div>
+  </div>
+</section>

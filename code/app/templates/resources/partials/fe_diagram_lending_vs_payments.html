@@ -1,0 +1,115 @@
+<!-- Diagram 4 — Lending vs Payments vs BNPL -->
+<section id="vs" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 4</span>
+    <h2>Lending vs. Payments vs. BNPL — The Core Distinction</h2>
+    <p>These three categories all deal with money, but they solve fundamentally different problems. Understanding this distinction explains why a payments PM and a lending PM need completely different mental models.</p>
+  </div>
+
+  <!-- Concept callout -->
+  <div class="vs-concept-row">
+    <div class="vs-concept-box" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+      <strong style="color:var(--fe-lending-text);">Money through TIME</strong>
+      <em>The borrower keeps the money — but trades a future obligation for it today. The lender gives up liquidity now and earns it back slowly, with interest, over months or years. The core question is: <strong>will the future happen as predicted?</strong> Risk is invisible at origination and only reveals itself 12–24 months later.</em>
+    </div>
+    <div class="vs-concept-box" style="background:var(--fe-payments-bg); border-color:var(--fe-payments-border);">
+      <strong style="color:var(--fe-payments-dark);">Money through SPACE</strong>
+      <em>Money teleports from one account to another — same moment, different location. No credit extension, no time horizon, no repayment. The core question is: <strong>did this transaction actually happen, and was it authorized?</strong> Risk is immediate (fraud, failed auth) and resolves in seconds.</em>
+    </div>
+    <div class="vs-concept-box" style="background:var(--fe-bnpl-bg); border-color:var(--fe-bnpl-border);">
+      <strong style="color:var(--fe-bnpl-text);">Both simultaneously</strong>
+      <em>BNPL moves money through space immediately (pays merchant now) and through time concurrently (shopper repays over weeks). It is a payment method and a credit product in a single transaction. Both risks exist at once: fraud at the point of sale + credit risk on repayment.</em>
+    </div>
+  </div>
+
+  <div class="vs-grid">
+    <div class="vs-card" style="border-color:var(--fe-lending-border);">
+      <div class="vs-head" style="background:var(--fe-lending-bg);">
+        Lending
+        <small>Money through <strong>TIME</strong></small>
+      </div>
+      <div class="vs-body">
+        <div class="vs-flow">
+          <div class="vs-node" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border);"><strong>Today</strong><br>Lender gives borrower a lump sum</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border);"><strong>Months 1–60</strong><br>Borrower pays back in installments</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border);"><strong>Lender earns</strong><br>Original principal + interest over time</div>
+        </div>
+        <div class="vs-risk" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border); color:var(--fe-lending-text);">
+          Core risk: <strong>Credit risk</strong> — will they repay? Shows up 12–24 months later.
+        </div>
+        <div class="vs-examples"><strong>Key metric:</strong> Default rate, vintage performance, APR spread</div>
+        <div class="vs-layers-label">Layers activated</div>
+        <div class="vs-chips">
+          <span class="vs-chip vc-eu"><span class="chip-num">EU</span> Borrower</span>
+          <span class="vs-chip vc-l3a"><span class="chip-num">L3A</span> Lending Products</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Bank Data API</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Money Movement</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> ACH / Fedwire</span>
+          <span class="vs-chip vc-cap">Capital Sources</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-card" style="border-color:var(--fe-payments-border);">
+      <div class="vs-head" style="background:var(--fe-payments-bg);">
+        Payments
+        <small>Money through <strong>SPACE</strong></small>
+      </div>
+      <div class="vs-body">
+        <div class="vs-flow">
+          <div class="vs-node" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border);"><strong>Shopper taps card</strong><br>at merchant terminal</div>
+          <div class="vs-arrow">↓ (~1.5 seconds)</div>
+          <div class="vs-node" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border);"><strong>Network routes it</strong><br>Card network → acquiring bank → issuing bank</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border);"><strong>Merchant receives</strong><br>Purchase amount minus processing fee</div>
+        </div>
+        <div class="vs-risk" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border); color:var(--fe-payments-dark);">
+          Core risk: <strong>Fraud + settlement risk</strong> — did this transaction actually happen?
+        </div>
+        <div class="vs-examples"><strong>Key metric:</strong> Authorization rate, fraud rate, transaction volume</div>
+        <div class="vs-layers-label">Layers activated</div>
+        <div class="vs-chips">
+          <span class="vs-chip vc-eu"><span class="chip-num">EU</span> Shopper + Merchant</span>
+          <span class="vs-chip vc-l3b"><span class="chip-num">L3B</span> Payments</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Card Issuing</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> Card Networks</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> ACH (settlement)</span>
+          <span class="vs-chip" style="background:var(--fe-neutral-bg); border-color:var(--fe-card-border); color:var(--fe-faint); font-style:italic;">No capital sources</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-card" style="border-color:var(--fe-bnpl-border);">
+      <div class="vs-head" style="background:var(--fe-bnpl-bg);">
+        BNPL
+        <small>Both — payment <strong>method</strong> + credit <strong>product</strong></small>
+      </div>
+      <div class="vs-body">
+        <div class="vs-flow">
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>Shopper checks out</strong><br>Selects installment option at checkout</div>
+          <div class="vs-arrow">↓ (milliseconds)</div>
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>BNPL underwrites in real-time</strong><br>Credit decision in under 1 second</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>Merchant paid immediately</strong><br>BNPL absorbs the credit risk</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>Shopper repays in installments</strong><br>Often 4 payments, often 0% APR</div>
+        </div>
+        <div class="vs-risk" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border); color:var(--fe-bnpl-text);">
+          Both risks: <strong>Fraud</strong> at point of sale + <strong>Credit risk</strong> on repayment
+        </div>
+        <div class="vs-examples"><strong>Key metric:</strong> Merchant fee rate, repayment rate, repeat usage</div>
+        <div class="vs-layers-label">Layers activated</div>
+        <div class="vs-chips">
+          <span class="vs-chip vc-eu"><span class="chip-num">EU</span> Shopper + Merchant</span>
+          <span class="vs-chip vc-l3c"><span class="chip-num">L3C</span> BNPL</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Bank Data API</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Money Movement</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> ACH / Card Networks</span>
+          <span class="vs-chip vc-cap">Capital Sources (BNPL warehouse)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

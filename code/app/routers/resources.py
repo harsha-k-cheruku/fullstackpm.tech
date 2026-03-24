@@ -3,7 +3,7 @@ from datetime import datetime
 from pathlib import Path
 
 from fastapi import APIRouter, Request
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
@@ -61,8 +61,14 @@ async def ecosystem_maps(request: Request) -> HTMLResponse:
     )
 
 
-@router.get("/resources/ecosystem-maps/financial-ecosystem")
-async def financial_ecosystem() -> FileResponse:
+@router.get("/resources/ecosystem-maps/financial-ecosystem", response_class=HTMLResponse)
+async def financial_ecosystem(request: Request) -> HTMLResponse:
     """Serve the Financial Ecosystem visual map."""
-    file_path = settings.static_dir / "resources" / "financial-ecosystem-v2.html"
-    return FileResponse(file_path, media_type="text/html")
+    return templates.TemplateResponse(
+        "resources/financial_ecosystem.html",
+        _ctx(
+            request,
+            title="Financial Ecosystem — PM Visual Guide | fullstackpm.tech",
+            current_page="/resources/ecosystem-maps",
+        ),
+    )

@@ -1,0 +1,128 @@
+<!-- Diagram 1 — Concentric Layer Map -->
+<section id="ecosystem" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 1</span>
+    <h2>The Financial Ecosystem — Concentric Layer Map</h2>
+    <p>Banks sit at the center because all money ultimately lives in bank accounts. Every other layer is built on top of that foundation. Outer rings depend on everything inside them — not the reverse.</p>
+  </div>
+
+  <div class="eco-container">
+
+    <!-- Left: nested boxes -->
+    <div class="eco-outer">
+
+      <span class="eco-layer-tag" style="background:var(--fe-users-chip-bg);color:var(--fe-users-text);">End Users</span>
+      <div class="eco-user-chips">
+        <span class="eco-user-chip">Borrowers</span>
+        <span class="eco-user-chip">Merchants</span>
+        <span class="eco-user-chip">Shoppers</span>
+      </div>
+
+      <div class="eco-products-wrap">
+        <span class="eco-layer-tag" style="background:var(--fe-tag-bg);color:var(--fe-tag-text);">Layer 3 · Financial Products</span>
+
+        <div class="eco-product-cols">
+          <div class="eco-product-box eco-lending">
+            <div class="pb-tag">Lending</div>
+            <div class="pb-title">Credit Products</div>
+            <ul class="pb-list">
+              <li>AI Underwriting</li>
+              <li>Marketplace Banks</li>
+              <li>Lead Generation</li>
+              <li>P2P / Institutional</li>
+            </ul>
+          </div>
+          <div class="eco-product-box eco-payments">
+            <div class="pb-tag">Payments</div>
+            <div class="pb-title">Payment Products</div>
+            <ul class="pb-list">
+              <li>Online Processing</li>
+              <li>In-store / POS</li>
+              <li>B2B Payments</li>
+              <li>Consumer Wallets</li>
+            </ul>
+          </div>
+          <div class="eco-product-box eco-bnpl">
+            <div class="pb-tag">Embedded Credit / BNPL</div>
+            <div class="pb-title">Buy Now Pay Later</div>
+            <ul class="pb-list">
+              <li>Pay in 4 installments</li>
+              <li>3–36 month financing</li>
+              <li>Credit at point of sale</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="eco-infra-wrap">
+          <span class="eco-layer-tag" style="background:var(--fe-chip-l2-bg);color:var(--fe-infra-text);">Layer 2 · Infrastructure APIs</span>
+          <div class="eco-inline-items" style="color:var(--fe-infra-border);">
+            <div class="eco-inline-item">
+              <strong>Bank Data APIs</strong>Income &amp; account verification
+            </div>
+            <div class="eco-inline-item">
+              <strong>Card Issuing APIs</strong>Virtual &amp; physical cards
+            </div>
+            <div class="eco-inline-item">
+              <strong>Money Movement APIs</strong>ACH · Wire · RTP orchestration
+            </div>
+          </div>
+
+          <div class="eco-rails-wrap">
+            <span class="eco-layer-tag" style="background:var(--fe-tag-bg);color:var(--fe-tag-text);">Layer 1 · Payment Rails</span>
+            <div class="eco-inline-items" style="color:var(--fe-faint);">
+              <div class="eco-inline-item">
+                <strong>Large-Value Wire</strong>Same-day (Fedwire)
+              </div>
+              <div class="eco-inline-item">
+                <strong>Card Networks</strong>~1.5s (Visa · MC)
+              </div>
+              <div class="eco-inline-item">
+                <strong>Bank Transfers</strong>1–2 days (ACH)
+              </div>
+              <div class="eco-inline-item">
+                <strong>Real-Time Payments</strong>Instant (RTP)
+              </div>
+            </div>
+
+            <div class="eco-banks-core">
+              <span class="eco-layer-tag" style="background:var(--fe-users-chip-bg);color:var(--fe-users-text);">Core Foundation</span>
+              <h3>Banks &amp; Regulated Institutions</h3>
+              <p>All money ultimately lives in bank accounts · Fed master accounts<br>Direct access to all rails · Lender of record in loan origination</p>
+            </div>
+
+          </div><!-- end rails -->
+        </div><!-- end infra -->
+      </div><!-- end products -->
+    </div><!-- end outer -->
+
+    <!-- Right: Capital Sources -->
+    <div class="eco-capital-panel">
+      <h4>Capital Sources</h4>
+      <div class="cp-sub">Funding relationship — not a technology layer. Connects directly to banks at the center, bypassing all middleware.</div>
+      <div class="eco-capital-item">
+        <strong>Bank Partners</strong>
+        <span>Lender of record in AI platform model</span>
+      </div>
+      <div class="eco-capital-item">
+        <strong>Institutional Investors</strong>
+        <span>Buy loan pools for yield above Treasuries</span>
+      </div>
+      <div class="eco-capital-item">
+        <strong>Forward-Flow Partners</strong>
+        <span>Pre-committed volume buyers</span>
+      </div>
+      <div class="eco-capital-item">
+        <strong>Depositors</strong>
+        <span>Low-cost funding for marketplace banks</span>
+      </div>
+      <div class="eco-capital-connect">
+        Connect directly to banks via <strong>Fedwire</strong> and <strong>ACH</strong> — they ARE regulated institutions, so no Layer 2 middleware is needed.
+      </div>
+    </div>
+
+  </div><!-- end eco-container -->
+
+  <div class="fe-callout" style="margin-top:20px;">
+    <p><strong>How to read this:</strong> Start at the center and move outward. Banks are the foundation — all money lives in bank accounts and they have direct access to every payment rail. Each outer layer depends on everything inside it: Infrastructure APIs abstract the rails for fintechs. Financial products are built on those APIs. End users consume the products. Capital sources sit outside entirely — they're a funding relationship that connects straight to the banking center, not a technology dependency.</p>
+  </div>
+</section>

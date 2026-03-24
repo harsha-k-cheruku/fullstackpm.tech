@@ -1,0 +1,273 @@
+<!-- Diagram 7 — User Journeys -->
+<section id="journeys" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 7</span>
+    <h2>User Journeys — Five Scenarios</h2>
+    <p>What actually happens at each step, from the user's perspective and behind the scenes. Green steps = money moves. Purple steps = a model or decision runs.</p>
+  </div>
+
+  <div class="journeys-grid">
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+        <div class="j-num">Journey 1</div>
+        <div class="j-title">Taking out a personal loan (AI Platform model)</div>
+        <div class="j-persona">Borrower applies online, AI underwrites, bank partner funds, capital partner buys</div>
+        <span class="j-time">Application: 5–10 min · Funds: 1–3 business days</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Enters loan amount, purpose, income estimate. Clicks "Check your rate" — no credit impact yet.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">AI Platform (soft pull)</div>
+            <div class="j-step-what">Pulls soft credit inquiry. Runs initial signals. Returns estimated APR range in seconds. No credit impact.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Sees APR range. Decides to continue. Connects bank account for income verification. Agrees to hard pull.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">AI Model + Bank Partner (hard pull)</div>
+            <div class="j-step-what">Full underwriting runs across hundreds of signals. Model outputs firm APR. Bank reviews compliance, becomes lender of record. Majority fully automated.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Receives firm offer: loan amount, APR, monthly payment, term. E-signs. Total process: ~8 minutes.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Bank Partner → Borrower's bank</div>
+            <div class="j-step-what">Bank disburses funds (minus origination fee) to borrower's bank account.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–3 business days</span></div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="7">
+          <div class="j-step-content">
+            <div class="j-step-who">Capital Partner → Bank Partner</div>
+            <div class="j-step-what">Bank sells loan (whole loan sale). Capital partner wires purchase price. Now holds credit risk and earns all future interest.</div>
+            <div class="j-step-rail"><span class="rail-badge wire">Fedwire — same-day</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (disbursement)</span>
+        <span class="rail-badge wire">Fedwire (loan sale)</span>
+        <span style="margin-left:4px;">Platform earns: referral + platform fee. No balance sheet risk.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-bnpl-bg); border-color:var(--fe-bnpl-border);">
+        <div class="j-num">Journey 2</div>
+        <div class="j-title">Buying with BNPL at checkout</div>
+        <div class="j-persona">Shopper selects installment option, BNPL underwrites in real-time, merchant paid same day</div>
+        <span class="j-time">Checkout decision: &lt;30 sec · Merchant paid: same day · Shopper pays over weeks</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Selects items, proceeds to checkout. Sees "Pay in 4" installment option. Selects it.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">BNPL provider (real-time underwriting)</div>
+            <div class="j-step-what">Runs soft credit check + proprietary signals in under 1 second. Approves installment plan. Merchant discount rate covers the 0% APR to shopper.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Sees approval. Confirms first payment + schedule. Quick verification step. 20 seconds total.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">BNPL provider → Merchant</div>
+            <div class="j-step-what">BNPL pays merchant the full purchase amount immediately, minus merchant discount rate (2–8%). Merchant takes zero credit risk.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–2 days to merchant</span></div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper → BNPL provider (x4)</div>
+            <div class="j-step-what">Payment pulled from shopper's bank every 2 weeks. 0% APR = no interest, but late fees apply for missed payments.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH pull — 4 installments</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (merchant payout + repayments)</span>
+        <span style="margin-left:4px;">BNPL earns: merchant fee (2–8%). Merchant earns: higher conversion. Shopper pays: $0 if on time.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-payments-bg); border-color:var(--fe-payments-border);">
+        <div class="j-num">Journey 3</div>
+        <div class="j-title">Paying for something with a card</div>
+        <div class="j-persona">Shopper enters card at checkout, card network routes it, merchant settles 2 days later</div>
+        <span class="j-time">Authorization: ~1.5 seconds · Settlement to merchant: 2 business days</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Enters card details at checkout. Clicks pay. Has no visibility into what happens next.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Payment processor (e.g. Stripe)</div>
+            <div class="j-step-what">Encrypts card data. Sends authorization request to card network. Handles PCI compliance — merchant never touches raw card data.</div>
+            <div class="j-step-rail"><span class="rail-badge api">API → Card network</span></div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Card network → Shopper's bank (issuer)</div>
+            <div class="j-step-what">Network routes request to shopper's issuing bank. Bank checks: sufficient funds? Fraud signals? Approves or declines. Total: ~1.5 seconds.</div>
+            <div class="j-step-rail"><span class="rail-badge visa">Card Network</span></div>
+          </div>
+        </div>
+        <div class="j-step" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Sees "Payment confirmed." Gets receipt. Charge shows as "pending" on bank statement. Transaction done from their perspective.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Card network settlement → Merchant</div>
+            <div class="j-step-what">Settlement runs overnight in batch. Merchant receives purchase amount minus processing fee (~3%). Charge finalizes on shopper's statement.</div>
+            <div class="j-step-rail"><span class="rail-badge visa">Card settlement + ACH — 2 business days</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge visa">Card network (auth + settlement)</span>
+        <span class="rail-badge ach">ACH (final bank transfer)</span>
+        <span style="margin-left:4px;">Processor earns: ~3% fee split across processor, card network, issuing bank.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+        <div class="j-num">Journey 4</div>
+        <div class="j-title">Depositor-funded lending (marketplace bank model)</div>
+        <div class="j-persona">One customer deposits savings, another takes a loan. Bank earns the interest rate spread between both.</div>
+        <span class="j-time">Deposit: 1–2 days · Loan approval: minutes · Funds: 1–2 days · Bank earns spread over years</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step money" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Depositor → Marketplace Bank</div>
+            <div class="j-step-what">Transfers savings into bank's high-yield account. Bank now has low-cost deposit funding — the core advantage of the bank charter model.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–2 business days</span></div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Applies for a loan directly with the bank. No third-party bank partner needed — the bank IS the lender of record.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Bank (underwriting)</div>
+            <div class="j-step-what">Runs credit check, income verification using own models. Often targets prime/super-prime borrowers. Approves loan. Will hold on balance sheet.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Bank → Borrower</div>
+            <div class="j-step-what">Funds loan from its deposit pool. Borrower receives proceeds (minus origination fee).</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–2 business days</span></div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower → Bank (monthly)</div>
+            <div class="j-step-what">Borrower repays monthly over the loan term. Bank earns loan APR (~10%), pays depositor savings rate (~4%). The ~6% spread is the margin.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH pull — monthly over loan term</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (deposit + disbursement + repayments)</span>
+        <span style="margin-left:4px;">Bank earns: interest spread. No capital marketplace needed — cleaner margin, but bank holds all credit risk.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+        <div class="j-num">Journey 5</div>
+        <div class="j-title">Finding a loan via Lead Gen marketplace (Model 1)</div>
+        <div class="j-persona">Borrower submits one form, receives competing offers from multiple lenders, leaves the platform to complete their chosen loan</div>
+        <span class="j-time">Form: 2–3 min · Offers returned: seconds · Full application with lender: 5–10 min · Funds: 1–3 days</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Visits lead gen platform. Fills one short form — loan amount, purpose, rough credit estimate, contact info. No SSN yet. No credit impact.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Lead Gen Platform</div>
+            <div class="j-step-what">Validates lead quality. Matches borrower profile to relevant lenders. Sells the lead simultaneously to 3–5 matched lenders. Platform earns its fee here — before any loan decision.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Matched Lenders (independently, in parallel)</div>
+            <div class="j-step-what">Each lender runs its own pre-qualification using the lead data — soft pull, internal scoring. Each returns an offer: APR range, loan amount, term. Lenders compete on rate.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Sees a comparison table of offers — multiple lenders, different APRs and terms side by side. Picks the best one. Key difference from other models: borrower leaves the platform at this step.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower → Chosen Lender's website</div>
+            <div class="j-step-what">Redirected to the chosen lender to complete the full application — SSN, employment details, bank account. Hard pull runs here. E-sign loan agreement. Platform has no further role.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Chosen Lender → Borrower</div>
+            <div class="j-step-what">Lender funds loan from its own capital sources. Disburses directly to borrower's bank. Platform never touched this money — it exited at Step 4.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–3 business days</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (disbursement by chosen lender only)</span>
+        <span style="margin-left:4px;">Platform earns: per-lead fee (Step 2). No credit risk. No ongoing relationship. The borrower's experience after Step 4 belongs entirely to the lender.</span>
+      </div>
+    </div>
+
+  </div>
+</section>

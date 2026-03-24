@@ -1,0 +1,77 @@
+<!-- Diagram 5 — Data Flywheel -->
+<section id="flywheel" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 5</span>
+    <h2>The Data Flywheel — Why the Market Leader Keeps Winning</h2>
+    <p>More loans → more repayment data → better model → better outcomes → more loans. This virtuous cycle compounds over years and becomes the primary competitive moat in AI-driven lending.</p>
+  </div>
+
+  <div class="seq-model-note" style="margin-bottom:24px;">
+    <strong>Scope: Models 3 &amp; 4 only (AI Platform and Marketplace Bank).</strong> This flywheel only exists where the platform does its own underwriting and accumulates labeled outcome data. Model 1 (Lead Gen) has no flywheel — it never underwrites, so it collects no repayment signal. Model 2 (P2P/Institutional) has a weak version — the platform underwrites and learns, but typically uses coarser risk grades rather than continuous ML signals, and institutional investors increasingly do their own analysis. The flywheel as described here — where proprietary signals compound across millions of loans — is specific to platforms that own the full underwriting stack.
+  </div>
+
+  <div class="flywheel-wrap">
+    <div class="flywheel-steps">
+      <div class="fw-step highlight" data-num="1">
+        <div class="fw-step-content">
+          <h4>More loan originations</h4>
+          <p>Each approved and funded loan generates a new repayment stream — a live experiment on whether the model priced risk correctly.</p>
+        </div>
+      </div>
+      <div class="fw-step" data-num="2">
+        <div class="fw-step-content">
+          <h4>More repayment data collected</h4>
+          <p>Who paid on time? Who defaulted? Under what economic conditions? Across which borrower segments? This labeled data is the raw material for model improvement.</p>
+        </div>
+      </div>
+      <div class="fw-step" data-num="3">
+        <div class="fw-step-content">
+          <h4>Better model calibration</h4>
+          <p>More outcome data → signals can be weighted more precisely → the model improves its ability to distinguish good risk from bad risk within similar credit profiles.</p>
+        </div>
+      </div>
+      <div class="fw-step" data-num="4">
+        <div class="fw-step-content">
+          <h4>More accurate underwriting</h4>
+          <p>Lower false positives (bad borrowers approved) and fewer false negatives (creditworthy borrowers rejected). Approval rates rise. Loss rates fall.</p>
+        </div>
+      </div>
+      <div class="fw-step highlight" data-num="5">
+        <div class="fw-step-content">
+          <h4>Better outcomes for all parties</h4>
+          <p>Borrowers get lower APRs. Capital partners earn better risk-adjusted returns. More capital partners join. More committed volume. Platform fees stay stable.</p>
+        </div>
+      </div>
+      <div class="fw-step highlight" data-num="6">
+        <div class="fw-step-content">
+          <h4>More borrowers accept → back to Step 1</h4>
+          <p>Better offers → higher acceptance rate → more originations → more training data. The cycle accelerates with scale.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flywheel-insight">
+      <h3>Why this matters for PMs</h3>
+      <div class="insight-item">
+        <span class="insight-icon">🔒</span>
+        <div class="insight-text"><strong>The moat is the data, not the algorithm.</strong> A competitor can hire the same ML engineers and use the same architecture. They cannot replicate years of loan performance data across millions of loans in every economic condition.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">⚠️</span>
+        <div class="insight-text"><strong>The flywheel can run backwards.</strong> Bad model → adverse selection → capital partners lose money → they pull back → fewer loans → less data → worse model. This failure mode has played out at multiple AI lenders during rate cycles.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">⏱️</span>
+        <div class="insight-text"><strong>Feedback is delayed 12–24 months.</strong> You won't know if today's model changes were right until loans from today mature. Early Payment Default (EPD) rate is the best leading indicator — defaults within 30–90 days signal problems early.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">🆕</span>
+        <div class="insight-text"><strong>New segments temporarily break the flywheel.</strong> Expanding to a new borrower segment (prime borrowers, auto loans) means less historical data on that segment. Expansion trades near-term model accuracy for long-term data accumulation.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">📊</span>
+        <div class="insight-text"><strong>Capital partners are the external validator.</strong> If they keep committing capital, the flywheel is healthy. If they pull back, the model's performance isn't meeting their return expectations — often a leading indicator before internal metrics show it.</div>
+      </div>
+    </div>
+  </div>
+</section>

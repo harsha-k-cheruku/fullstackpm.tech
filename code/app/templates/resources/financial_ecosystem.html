@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Financial Ecosystem — PM Visual Guide | fullstackpm.tech{% endblock %}
+{% block description %}Interactive visual guide to the financial ecosystem: lending models, payment rails, data flywheels, and user journeys — built for product managers.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/financial-ecosystem.css">
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">Financial Ecosystem</span>
+</nav>
+
+<!-- Page Header -->
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Financial Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 700px;">
+    Seven interconnected diagrams covering the full financial ecosystem: how money flows, how loans clear, how payments work, and what product managers need to know at each layer.
+  </p>
+</header>
+
+<!-- Sticky subnav -->
+{% include "resources/partials/fe_subnav.html" %}
+
+<!-- Diagrams -->
+<div class="fe-page">
+  {% include "resources/partials/fe_diagram_layer_map.html" %}
+  <hr class="fe-divider">
+  {% include "resources/partials/fe_diagram_lending_models.html" %}
+  <hr class="fe-divider">
+  {% include "resources/partials/fe_diagram_loan_flow.html" %}
+  <hr class="fe-divider">
+  {% include "resources/partials/fe_diagram_lending_vs_payments.html" %}
+  <hr class="fe-divider">
+  {% include "resources/partials/fe_diagram_data_flywheel.html" %}
+  <hr class="fe-divider">
+  {% include "resources/partials/fe_diagram_money_flow.html" %}
+  <hr class="fe-divider">
+  {% include "resources/partials/fe_diagram_user_journeys.html" %}
+</div>
+
+<!-- Footer attribution -->
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  Financial Ecosystem Visual Guide v2 (Generic) · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function showSeqModel(id, btn) {
+    document.querySelectorAll('.seq-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.model-tab').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('seq-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+</script>
+{% endblock %}

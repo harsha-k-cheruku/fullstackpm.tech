@@ -1,0 +1,105 @@
+<!-- Diagram 6 — Money Flow & Rails -->
+<section id="moneyflow" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 6</span>
+    <h2>How Money Actually Moves — Technology Stack vs. Capital Flow</h2>
+    <p>Capital sources are not a technology layer — they're a funding relationship. They connect directly to payment rails as regulated financial institutions, bypassing the middleware that regular fintechs need.</p>
+  </div>
+
+  <div class="money-flow-grid">
+    <div class="flow-panel">
+      <div class="flow-panel-head" style="background:var(--fe-infra-bg); border-color:var(--fe-infra-border);">
+        How Fintechs Reach the Rails
+        <div>A company without a bank charter uses Layer 2 APIs to access Layer 1 rails.</div>
+      </div>
+      <div class="flow-panel-body">
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+            <div class="fn-label">Fintech Product (Layer 3)</div>
+            <div class="fn-name">Lending / Payments / BNPL App</div>
+            <div class="fn-desc">Needs to disburse a loan or settle a payment — but has no Fed master account or direct rail access.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge api">API call</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-infra-bg); border-color:var(--fe-infra-border);">
+            <div class="fn-label">Infrastructure API (Layer 2)</div>
+            <div class="fn-name">Money Movement / Card Issuing / Data</div>
+            <div class="fn-desc">Translates the API call into rail-specific commands. Handles compliance, routing, error handling, reconciliation.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge ach">ACH file / card authorization / wire</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-neutral-bg); border-color:var(--fe-faint);">
+            <div class="fn-label">Payment Rails (Layer 1)</div>
+            <div class="fn-name">ACH / Fedwire / RTP / Card Networks</div>
+            <div class="fn-desc">The actual infrastructure that moves money between bank accounts. Regulated by the Federal Reserve, Nacha, and card networks.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge ach">1–3 days (ACH) · Instant (RTP) · 1.5s (Card)</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-users-bg); border-color:var(--fe-users-border);">
+            <div class="fn-label">End User</div>
+            <div class="fn-name">Borrower / Merchant / Shopper</div>
+            <div class="fn-desc">Money arrives in their bank account. They never see the infrastructure layers that made it happen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-panel">
+      <div class="flow-panel-head" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+        How Capital Moves (Institutional Flow)
+        <div>Capital sources are regulated institutions — they already have direct rail access. No Layer 2 needed.</div>
+      </div>
+      <div class="flow-panel-body">
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+            <div class="fn-label">Capital Source</div>
+            <div class="fn-name">Institutional Investor / Hedge Fund</div>
+            <div class="fn-desc">Holds a custodian bank account with direct Fedwire access. Wires purchase price for whole loan acquisitions.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge wire">Fedwire — same-day, large-value</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+            <div class="fn-label">Bank Partner (lender of record)</div>
+            <div class="fn-name">Licensed Bank or Credit Union</div>
+            <div class="fn-desc">Receives wire. Transfers loan ownership. Uses deposit pool to fund new loans. Earns origination fee before selling.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge ach">ACH (1–3 days) or RTP (instant)</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-users-bg); border-color:var(--fe-users-border);">
+            <div class="fn-label">Borrower</div>
+            <div class="fn-name">Loan Recipient</div>
+            <div class="fn-desc">Loan proceeds arrive in bank account. Monthly repayments leave via ACH pull, collected by servicer, forwarded to loan owner.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↑</div><span class="rail-badge ach">ACH pull — monthly over 3–7 year loan life</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+            <div class="fn-label">Capital Partner (loan owner)</div>
+            <div class="fn-name">Receives Principal + Interest</div>
+            <div class="fn-desc">Servicer collects and forwards repayments. Capital partner earns yield above Treasuries over the life of the loan.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↕</div><span class="rail-badge dtcc">DTCC — if loans are securitized into ABS</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-neutral-bg); border-color:var(--fe-faint);">
+            <div class="fn-label">Optional — Securitization</div>
+            <div class="fn-name">Asset-Backed Securities Market</div>
+            <div class="fn-desc">Loan pools can be bundled into ABS and sold to bond investors. Settlement via DTCC — entirely different infrastructure from payment rails.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="money-flow-insight">
+    <div class="icon">💡</div>
+    <div>
+      <strong>Why capital sources bypass Layer 2:</strong> Infrastructure APIs (Layer 2) exist because most fintechs are NOT banks — they don't have a Fed master account or direct rail connections. Capital sources (hedge funds, insurance companies, bank partners) ARE licensed financial institutions with direct Fedwire and ACH access. They're peers of the rails, not customers of them. The technology stack describes how fintechs access the financial system. Capital flow is a separate axis — it describes who funds the products those fintechs offer.
+    </div>
+  </div>
+</section>
