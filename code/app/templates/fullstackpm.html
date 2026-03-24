@@ -12,9 +12,37 @@
       <h1 class="text-display mb-4" style="color: var(--color-text-primary);">
         @fullstackpm
       </h1>
-      <p class="text-h3" style="color: var(--color-text-secondary); font-weight: 400; margin-bottom: 1rem;">
+      <p class="text-h3" style="color: var(--color-text-secondary); font-weight: 400; margin-bottom: 1.5rem;">
         Harsha Cheruku
       </p>
+
+      <!-- Typewriter tagline -->
+      <p id="fspm-tagline" class="text-body-lg mb-6" style="color: var(--color-accent); font-style: italic; line-height: 1.8; min-height: 2rem;"></p>
+
+      <script>
+        (function () {
+          var tagline = "Clone of the Curious George! Loves learning and tinkering in new spaces using new tools!";
+          var el = document.getElementById("fspm-tagline");
+          var style = document.createElement("style");
+          style.textContent = "@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}";
+          document.head.appendChild(style);
+          var cursor = document.createElement("span");
+          cursor.textContent = "|";
+          cursor.style.cssText = "animation:blink 0.75s step-end infinite;margin-left:1px;color:var(--color-accent);font-weight:300;";
+          el.appendChild(cursor);
+          var i = 0;
+          var interval = setInterval(function () {
+            if (i < tagline.length) {
+              el.insertBefore(document.createTextNode(tagline[i]), cursor);
+              i++;
+            } else {
+              clearInterval(interval);
+              setTimeout(function () { cursor.remove(); }, 1800);
+            }
+          }, 38);
+        })();
+      </script>
+
       <p class="text-body-lg mb-6" style="color: var(--color-text-secondary); line-height: 1.8;">
         Product Leader with 16+ years building and shipping AI-powered products, data platforms, and marketplace solutions at Amazon, Walmart, Verizon, and Delphi. Delivered $300M+ in measurable revenue impact across 22M+ customers and 370K+ businesses. Technical foundation (SDE background + Duke MBA) enables end-to-end ownership from product vision through engineering execution and go-to-market.
       </p>
