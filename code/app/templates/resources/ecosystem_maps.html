@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="py-16 lg:py-20">
+  <div class="max-w-4xl">
+
+    <!-- Hero -->
+    <div class="mb-16">
+      <p class="text-small mb-3" style="color: var(--color-text-secondary);">
+        Resources
+      </p>
+      <h1 class="text-h1 mb-6" style="color: var(--color-text-primary);">
+        Ecosystem Maps
+      </h1>
+      <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">
+        Visual maps of how complex ecosystems fit together — banks, platforms, infrastructure, and more.
+      </p>
+    </div>
+
+    <!-- Ecosystem cards grid -->
+    <div class="grid gap-6">
+
+      <!-- Financial Ecosystem Card -->
+      <a href="/resources/ecosystem-maps/financial-ecosystem"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">
+              Financial Ecosystem — Layer Map
+            </h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              How banks, payment rails, infrastructure APIs, lending products, BNPL, and capital sources fit together. Covers all four lending business models, loan clearing sequences, money flow through rails, and user journeys.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1"
+                style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+            Fintech / Lending
+          </span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1"
+               style="color: var(--color-accent);"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
