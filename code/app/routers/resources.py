@@ -22,6 +22,19 @@ def _ctx(request: Request, **kwargs) -> dict:
     }
 
 
+@router.get("/resources", response_class=HTMLResponse)
+async def resources_hub(request: Request) -> HTMLResponse:
+    """Resources hub page."""
+    return templates.TemplateResponse(
+        "resources/index.html",
+        _ctx(
+            request,
+            title="Resources - fullstackpm.tech",
+            current_page="/resources",
+        ),
+    )
+
+
 @router.get("/resources/product-breakdowns", response_class=HTMLResponse)
 async def product_breakdowns(request: Request) -> HTMLResponse:
     """Product Breakdowns placeholder page."""
