@@ -430,7 +430,7 @@ html { scroll-padding-top: 120px; }
 .eco-infra-wrap { border: 2px solid var(--fe-infra-border); border-radius: 10px; padding: 12px; background: var(--fe-infra-bg); }
 
 .eco-inline-items { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 10px; }
-.eco-inline-item { background: var(--fe-eco-inline-bg); border: 1px solid currentColor; border-radius: 8px; padding: 8px 12px; font-size: 11px; }
+.eco-inline-item { background: var(--fe-eco-inline-bg); border: 1px solid var(--fe-card-border); border-radius: 8px; padding: 8px 12px; font-size: 11px; color: var(--fe-body); }
 .eco-inline-item strong { display: block; font-size: 12px; font-weight: 700; color: var(--fe-heading); }
 
 .eco-rails-wrap { border: 2px solid var(--fe-faint); border-radius: 10px; padding: 12px; background: var(--fe-neutral-bg); }
