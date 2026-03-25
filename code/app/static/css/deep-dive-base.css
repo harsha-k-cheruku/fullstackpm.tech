@@ -1,0 +1,498 @@
+/* Product Deep Dive Base Styles
+   Shared, reusable styles for all deep-dive pages.
+   Topic pages define these semantic variables in their own dd-{topic}.css:
+   --dd-primary, --dd-secondary, --dd-accent, --dd-bg, --dd-border,
+   --dd-text, --dd-muted, --dd-node-bg, --dd-node-border, --dd-connector
+*/
+
+:root {
+  --dd-primary: #2563eb;
+  --dd-secondary: #4f46e5;
+  --dd-accent: #6366f1;
+  --dd-bg: #eff6ff;
+  --dd-border: #bfdbfe;
+  --dd-text: #1e3a8a;
+  --dd-muted: #475569;
+  --dd-node-bg: #ffffff;
+  --dd-node-border: #93c5fd;
+  --dd-connector: #94a3b8;
+  --dd-success-bg: #ecfdf5;
+  --dd-success-border: #86efac;
+  --dd-warning-bg: #fffbeb;
+  --dd-warning-border: #fcd34d;
+  --dd-danger-bg: #fef2f2;
+  --dd-danger-border: #fca5a5;
+  --dd-surface: #ffffff;
+  --dd-surface-muted: #f8fafc;
+  --dd-heading: #0f172a;
+  --dd-body: #475569;
+  --dd-faint: #94a3b8;
+}
+
+.dark {
+  --dd-bg: #172554;
+  --dd-border: #1d4ed8;
+  --dd-text: #93c5fd;
+  --dd-muted: #94a3b8;
+  --dd-node-bg: #1e293b;
+  --dd-node-border: #334155;
+  --dd-connector: #475569;
+  --dd-success-bg: #052e16;
+  --dd-success-border: #166534;
+  --dd-warning-bg: #451a03;
+  --dd-warning-border: #92400e;
+  --dd-danger-bg: #450a0a;
+  --dd-danger-border: #7f1d1d;
+  --dd-surface: var(--color-bg-secondary, #1e293b);
+  --dd-surface-muted: #1e293b;
+  --dd-heading: #f1f5f9;
+  --dd-body: #94a3b8;
+  --dd-faint: #64748b;
+}
+
+html {
+  scroll-padding-top: 120px;
+}
+
+.dd-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px 0 56px;
+}
+
+.dd-section {
+  padding-bottom: 8px;
+}
+
+.dd-divider {
+  border: none;
+  border-top: 1px solid var(--dd-node-border);
+  margin: 44px 0;
+}
+
+.dd-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  background: var(--dd-bg);
+  color: var(--dd-text);
+  border: 1px solid var(--dd-border);
+}
+
+.dd-section-header {
+  margin-bottom: 24px;
+}
+
+.dd-section-header h2 {
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--dd-heading);
+}
+
+.dd-section-header p {
+  margin-top: 8px;
+  font-size: 15px;
+  max-width: 760px;
+  color: var(--dd-body);
+}
+
+.dd-prose {
+  color: var(--dd-body);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 760px;
+}
+
+.dd-prose p + p {
+  margin-top: 10px;
+}
+
+.dd-prose strong {
+  color: var(--dd-heading);
+}
+
+.dd-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dd-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dd-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dd-card {
+  background: var(--dd-surface);
+  border: 2px solid var(--dd-node-border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.dd-card h3,
+.dd-card h4 {
+  color: var(--dd-heading);
+  font-weight: 700;
+}
+
+.dd-card p,
+.dd-card li {
+  color: var(--dd-body);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.dd-callout {
+  margin-top: 18px;
+  border-radius: 12px;
+  border: 2px solid var(--dd-border);
+  background: var(--dd-bg);
+  padding: 16px 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--dd-text);
+}
+
+.dd-callout strong {
+  color: var(--dd-heading);
+}
+
+.dd-subnav {
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 24px;
+  background: var(--color-bg-secondary, #f8fafc);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.dd-subnav-link {
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary, #64748b);
+  transition: all 0.2s ease;
+}
+
+.dd-subnav-link:hover {
+  background: var(--color-bg-tertiary, #f1f5f9);
+  color: var(--color-text-primary, #0f172a);
+}
+
+.dd-subnav-link.active {
+  background: var(--dd-primary);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dd-mode-visual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.dd-mode-panel {
+  border-radius: 14px;
+  border: 2px solid var(--dd-node-border);
+  background: var(--dd-surface);
+  padding: 18px;
+}
+
+.dd-mode-panel h3 {
+  color: var(--dd-heading);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.dd-mode-panel .dd-mode-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  color: var(--dd-text);
+}
+
+.dd-mode-panel p {
+  color: var(--dd-body);
+  font-size: 14px;
+}
+
+.dd-flow-wrap {
+  border: 2px solid var(--dd-node-border);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--dd-surface) 0%, var(--dd-surface-muted) 100%);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.dd-flow-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dd-flow-path {
+  fill: none;
+  stroke: var(--dd-connector);
+  stroke-width: 2;
+  stroke-dasharray: 8 5;
+}
+
+.dd-flow-node {
+  fill: var(--dd-node-bg);
+  stroke: var(--dd-node-border);
+  stroke-width: 2;
+}
+
+.dd-flow-label {
+  fill: var(--dd-heading);
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.dd-flow-dot {
+  fill: var(--dd-accent);
+  filter: drop-shadow(0 0 5px var(--dd-accent));
+}
+
+.dd-flow-node.pulse-1 { animation: nodeHighlight 8s ease-in-out infinite; animation-delay: 0s; }
+.dd-flow-node.pulse-2 { animation: nodeHighlight 8s ease-in-out infinite; animation-delay: 1s; }
+.dd-flow-node.pulse-3 { animation: nodeHighlight 8s ease-in-out infinite; animation-delay: 2s; }
+.dd-flow-node.pulse-4 { animation: nodeHighlight 8s ease-in-out infinite; animation-delay: 3s; }
+.dd-flow-node.pulse-5 { animation: nodeHighlight 8s ease-in-out infinite; animation-delay: 4s; }
+.dd-flow-node.pulse-6 { animation: nodeHighlight 8s ease-in-out infinite; animation-delay: 5s; }
+.dd-flow-node.pulse-7 { animation: nodeHighlight 8s ease-in-out infinite; animation-delay: 6s; }
+
+@keyframes nodeHighlight {
+  0%, 100% {
+    filter: none;
+    stroke-width: 2;
+  }
+  20% {
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--dd-accent) 60%, transparent));
+    stroke-width: 2.5;
+  }
+  30% {
+    filter: none;
+    stroke-width: 2;
+  }
+}
+
+.dd-flow-legend {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.dd-flow-legend-item {
+  border-left: 3px solid var(--dd-primary);
+  background: var(--dd-surface);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--dd-body);
+}
+
+.dd-flow-legend-item strong {
+  color: var(--dd-heading);
+}
+
+.dd-comparison-wrap {
+  overflow-x: auto;
+  border: 2px solid var(--dd-node-border);
+  border-radius: 14px;
+  background: var(--dd-surface);
+}
+
+.dd-comparison-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+}
+
+.dd-comparison-table th,
+.dd-comparison-table td {
+  border-bottom: 1px solid var(--dd-node-border);
+  border-right: 1px solid var(--dd-node-border);
+  padding: 12px;
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.dd-comparison-table th:last-child,
+.dd-comparison-table td:last-child {
+  border-right: none;
+}
+
+.dd-comparison-table thead th {
+  background: var(--dd-bg);
+  color: var(--dd-text);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dd-comparison-table tbody td:first-child {
+  width: 180px;
+  font-weight: 700;
+  color: var(--dd-heading);
+  background: var(--dd-surface-muted);
+}
+
+.dd-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dd-metric-card {
+  border-radius: 14px;
+  border: 2px solid var(--dd-node-border);
+  background: var(--dd-surface);
+  padding: 16px;
+}
+
+.dd-metric-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--dd-heading);
+}
+
+.dd-metric-row {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--dd-body);
+}
+
+.dd-metric-row strong {
+  color: var(--dd-heading);
+}
+
+.dd-architecture {
+  border: 2px solid var(--dd-node-border);
+  border-radius: 14px;
+  background: var(--dd-surface);
+  padding: 18px;
+}
+
+.dd-arch-layer {
+  border-radius: 10px;
+  border: 1.5px solid var(--dd-border);
+  background: var(--dd-bg);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.dd-arch-layer:last-child {
+  margin-bottom: 0;
+}
+
+.dd-arch-layer h4 {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--dd-text);
+}
+
+.dd-arch-layer p {
+  font-size: 13px;
+  color: var(--dd-body);
+}
+
+.dd-challenge-grid,
+.dd-company-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.dd-challenge-card,
+.dd-company-card {
+  border-radius: 14px;
+  border: 2px solid var(--dd-node-border);
+  background: var(--dd-surface);
+  padding: 18px;
+}
+
+.dd-challenge-card h3,
+.dd-company-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--dd-heading);
+}
+
+.dd-chip {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--dd-bg);
+  color: var(--dd-text);
+  border: 1px solid var(--dd-border);
+  margin-bottom: 8px;
+}
+
+.dd-footer-note {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 12px;
+  color: var(--color-text-tertiary, #94a3b8);
+}
+
+@media (max-width: 1024px) {
+  .dd-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .dd-grid-3,
+  .dd-grid-2,
+  .dd-mode-visual,
+  .dd-metric-grid,
+  .dd-challenge-grid,
+  .dd-company-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dd-section-header h2 {
+    font-size: 24px;
+  }
+
+  .dd-page {
+    padding-top: 28px;
+  }
+
+  .dd-subnav {
+    top: 56px;
+    padding: 10px 16px;
+  }
+}

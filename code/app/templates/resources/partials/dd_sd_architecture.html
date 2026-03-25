@@ -1,0 +1,49 @@
+<section id="architecture" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 5</span>
+    <h2>Architecture Deep Dive</h2>
+    <p>Search systems are layered for speed and quality: process query quickly, retrieve broadly, rank deeply, serve reliably, and learn continuously.</p>
+  </div>
+
+  <div class="dd-architecture">
+    <div class="dd-arch-layer">
+      <h4>Query Processing Layer</h4>
+      <p>NLP tokenizer, spell correction, synonym expansion, and intent classification transform messy user input into structured retrieval instructions.</p>
+      <div class="dd-sd-arch-grid">
+        <div class="dd-sd-arch-box"><h5>Tokenizer + Normalizer</h5><p>Standardizes query terms, casing, and phrase boundaries.</p></div>
+        <div class="dd-sd-arch-box"><h5>Intent Classifier</h5><p>Distinguishes lookup intent from exploratory or navigational intent.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Index Layer</h4>
+      <p>Inverted index powers keyword precision; vector index powers semantic retrieval. Real-time indexing keeps both aligned with latest catalog state.</p>
+      <div class="dd-sd-arch-grid">
+        <div class="dd-sd-arch-box"><h5>Keyword Index</h5><p>Fast lexical matching for explicit terms.</p></div>
+        <div class="dd-sd-arch-box"><h5>Vector Index</h5><p>Embedding similarity for long-tail and intent-rich queries.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Ranking Layer</h4>
+      <p>L1 retrieves broad candidates fast, L2 scores relevance + business signals, and L3 re-ranks for personalization, freshness, and ads blending constraints.</p>
+      <div class="dd-sd-arch-grid">
+        <div class="dd-sd-arch-box"><h5>L1 Candidate Retrieval</h5><p>Fast recall at scale; prioritize coverage.</p></div>
+        <div class="dd-sd-arch-box"><h5>L2/L3 Scoring</h5><p>Precision pass optimizing quality, policy, and monetization rules.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Serving + Feedback Layer</h4>
+      <p>Results cache, experimentation allocation, result blending, and ads insertion are orchestration concerns. Clicks, dwell, and conversion signals feed retraining pipelines.</p>
+      <div class="dd-sd-arch-grid">
+        <div class="dd-sd-arch-box"><h5>Serving Orchestration</h5><p>Latency, availability, and consistent ranking output under load.</p></div>
+        <div class="dd-sd-arch-box"><h5>Learning Loop</h5><p>Behavioral outcomes retrain ranking models continuously.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Architecture pattern:</strong> Retrieval is a recall problem; ranking is a precision problem. Treating them as one stage creates either slow search or shallow relevance.
+  </div>
+</section>

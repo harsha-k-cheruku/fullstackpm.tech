@@ -1,0 +1,53 @@
+<section id="patterns" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 7</span>
+    <h2>Real-World Patterns</h2>
+    <p>Different products, same core mechanism. The strategy is in what each company optimizes and what tradeoffs they accept.</p>
+  </div>
+
+  <div class="dd-company-grid">
+    <article class="dd-company-card">
+      <div class="dd-sd-company-name">
+        <h3>Amazon</h3>
+        <span class="dd-sd-ratio">Search:Discovery 70:30</span>
+      </div>
+      <p><strong>Approach:</strong> Search-dominant model where ranking blends text relevance, purchase probability, Prime signals, and ad economics.</p>
+      <p><strong>What’s different:</strong> Buy Box acts as a meta-ranking layer with huge downstream commercial impact.</p>
+      <p><strong>Lesson:</strong> In commerce, search quality and monetization are the same system. Treating them separately is fantasy PM-ing.</p>
+    </article>
+
+    <article class="dd-company-card">
+      <div class="dd-sd-company-name">
+        <h3>Airbnb</h3>
+        <span class="dd-sd-ratio">Search:Discovery 60:40</span>
+      </div>
+      <p><strong>Approach:</strong> Context-aware search where location, dates, party composition, and trip purpose shape ranking aggressively.</p>
+      <p><strong>What’s different:</strong> Trust signals (Superhost, reviews) and pricing logic are tightly interwoven into relevance.</p>
+      <p><strong>Lesson:</strong> Marketplace ranking encodes strategy decisions about trust, supply quality, and liquidity.</p>
+    </article>
+
+    <article class="dd-company-card">
+      <div class="dd-sd-company-name">
+        <h3>TikTok</h3>
+        <span class="dd-sd-ratio">Search:Discovery 10:90</span>
+      </div>
+      <p><strong>Approach:</strong> Discovery-first feed where predicted watch time and engagement dominate retrieval and ranking loops.</p>
+      <p><strong>What’s different:</strong> Reach is less tied to follower graph; content graph drives distribution.</p>
+      <p><strong>Lesson:</strong> If discovery is exceptional, explicit search becomes supportive rather than central.</p>
+    </article>
+
+    <article class="dd-company-card">
+      <div class="dd-sd-company-name">
+        <h3>Spotify</h3>
+        <span class="dd-sd-ratio">Search:Discovery Hybrid</span>
+      </div>
+      <p><strong>Approach:</strong> Dual-mode system: precise lookup search for known songs plus exploration loops like Discover Weekly and Daily Mix.</p>
+      <p><strong>What’s different:</strong> Collaborative filtering, behavior sequencing, and audio features combine to serve mode-specific intent.</p>
+      <p><strong>Lesson:</strong> You can excel at both search and discovery when the product correctly infers the user’s mode in-session.</p>
+    </article>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Shared pattern:</strong> The best teams don’t ask “search or discovery?” They ask “what mode is the user in right now, and what ranking objective fits that mode?”
+  </div>
+</section>

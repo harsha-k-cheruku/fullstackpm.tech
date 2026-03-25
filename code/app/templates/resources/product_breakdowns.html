@@ -14,21 +14,45 @@
         Product Breakdowns
       </h1>
       <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">
-        Deep dives into how specific product features and flows actually work — coming soon.
+        Deep dives into the horizontal product components every platform depends on — mechanics, metrics, architecture, and real-world company patterns.
       </p>
     </div>
 
-    <!-- Placeholder card -->
-    <div class="rounded-xl border p-8"
-         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-      <div class="flex items-center justify-center gap-4">
-        <div class="text-5xl">🔨</div>
-        <div>
-          <p class="text-body" style="color: var(--color-text-secondary);">
-            We're building this section. Check back soon for deep-dive breakdowns of real product features.
-          </p>
+    <!-- Breakdown cards grid -->
+    <div class="grid gap-6">
+
+      <!-- Search & Discovery Card -->
+      <a href="/resources/product-breakdowns/search-and-discovery"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">
+              Search &amp; Discovery
+            </h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              How modern platforms help users find what they need and discover what they didn’t know they wanted — including search pipeline mechanics, cross-model differences, metrics, architecture, and case patterns from Amazon, Airbnb, TikTok, and Spotify.
+            </p>
+          </div>
         </div>
-      </div>
+
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1"
+                style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+            Core Platform Component
+          </span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1"
+               style="color: var(--color-accent);"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </div>
+
+      </a>
+
     </div>
 
   </div>

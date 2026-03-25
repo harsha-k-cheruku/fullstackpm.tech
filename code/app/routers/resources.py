@@ -48,6 +48,19 @@ async def product_breakdowns(request: Request) -> HTMLResponse:
     )
 
 
+@router.get("/resources/product-breakdowns/search-and-discovery", response_class=HTMLResponse)
+async def search_and_discovery_breakdown(request: Request) -> HTMLResponse:
+    """Serve the Search & Discovery product deep dive."""
+    return templates.TemplateResponse(
+        "resources/product_breakdowns/search_and_discovery.html",
+        _ctx(
+            request,
+            title="Search & Discovery Deep Dive — PM Product Breakdown | fullstackpm.tech",
+            current_page="/resources/product-breakdowns",
+        ),
+    )
+
+
 @router.get("/resources/ecosystem-maps", response_class=HTMLResponse)
 async def ecosystem_maps(request: Request) -> HTMLResponse:
     """Ecosystem Maps gallery page."""

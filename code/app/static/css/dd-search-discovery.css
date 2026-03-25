@@ -1,0 +1,114 @@
+/* Search & Discovery Deep Dive Styles */
+
+:root {
+  --dd-sd-primary: #2563eb;
+  --dd-sd-secondary: #4f46e5;
+  --dd-sd-accent: #6366f1;
+  --dd-sd-bg: #eff6ff;
+  --dd-sd-border: #bfdbfe;
+  --dd-sd-text: #1e3a8a;
+  --dd-sd-muted: #475569;
+  --dd-sd-node-bg: #ffffff;
+  --dd-sd-node-border: #93c5fd;
+  --dd-sd-connector: #94a3b8;
+}
+
+.dark {
+  --dd-sd-primary: #60a5fa;
+  --dd-sd-secondary: #818cf8;
+  --dd-sd-accent: #a5b4fc;
+  --dd-sd-bg: #172554;
+  --dd-sd-border: #1d4ed8;
+  --dd-sd-text: #bfdbfe;
+  --dd-sd-muted: #94a3b8;
+  --dd-sd-node-bg: #1e293b;
+  --dd-sd-node-border: #334155;
+  --dd-sd-connector: #475569;
+}
+
+.dd-search-discovery {
+  --dd-primary: var(--dd-sd-primary);
+  --dd-secondary: var(--dd-sd-secondary);
+  --dd-accent: var(--dd-sd-accent);
+  --dd-bg: var(--dd-sd-bg);
+  --dd-border: var(--dd-sd-border);
+  --dd-text: var(--dd-sd-text);
+  --dd-muted: var(--dd-sd-muted);
+  --dd-node-bg: var(--dd-sd-node-bg);
+  --dd-node-border: var(--dd-sd-node-border);
+  --dd-connector: var(--dd-sd-connector);
+}
+
+.dd-sd-node-caption {
+  font-size: 10px;
+  fill: var(--dd-muted);
+  text-anchor: middle;
+}
+
+.dd-sd-feedback-arrow {
+  stroke: var(--dd-secondary);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 6 5;
+  opacity: 0.85;
+}
+
+.dd-sd-feedback-label {
+  font-size: 11px;
+  fill: var(--dd-secondary);
+  font-weight: 700;
+}
+
+.dd-sd-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dd-sd-arch-box {
+  border: 1.5px solid var(--dd-border);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--dd-bg) 65%, white);
+  padding: 10px;
+}
+
+.dark .dd-sd-arch-box {
+  background: color-mix(in srgb, var(--dd-bg) 55%, black);
+}
+
+.dd-sd-arch-box h5 {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--dd-text);
+}
+
+.dd-sd-arch-box p {
+  font-size: 12px;
+  color: var(--dd-body);
+}
+
+.dd-sd-company-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dd-sd-ratio {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: var(--dd-bg);
+  color: var(--dd-text);
+  border: 1px solid var(--dd-border);
+}
+
+@media (max-width: 900px) {
+  .dd-sd-arch-grid {
+    grid-template-columns: 1fr;
+  }
+}

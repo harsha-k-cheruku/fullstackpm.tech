@@ -1,0 +1,61 @@
+<section id="challenges" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 6</span>
+    <h2>Common Challenges</h2>
+    <p>Search quality degrades through predictable failure modes. The strongest PM teams detect these patterns early and apply proven mitigation playbooks.</p>
+  </div>
+
+  <div class="dd-challenge-grid">
+    <article class="dd-challenge-card">
+      <span class="dd-chip">Cold Start</span>
+      <h3>No data, no personalization</h3>
+      <p><strong>Problem:</strong> New products have no query history or click labels, so rankings are blind.</p>
+      <p><strong>Solution pattern:</strong> Start with editorial defaults, trending sets, and category priors. Backfill signals from adjacent contexts while behavior data accumulates.</p>
+      <p><strong>Example:</strong> Airbnb and Netflix both bootstrap with location/genre popularity before personalized loops mature.</p>
+    </article>
+
+    <article class="dd-challenge-card">
+      <span class="dd-chip">Long-Tail Queries</span>
+      <h3>Rare queries break lexical search</h3>
+      <p><strong>Problem:</strong> Exact-match retrieval struggles with sparse or novel query terms.</p>
+      <p><strong>Solution pattern:</strong> Use semantic retrieval (embeddings), synonym expansion, and guided suggestions (“did you mean…”).</p>
+      <p><strong>Example:</strong> Amazon and Spotify rely on semantic similarity to rescue uncommon query intent.</p>
+    </article>
+
+    <article class="dd-challenge-card">
+      <span class="dd-chip">Ambiguous Intent</span>
+      <h3>One query, multiple meanings</h3>
+      <p><strong>Problem:</strong> “Apple” or “Java” can refer to very different things, producing noisy retrieval.</p>
+      <p><strong>Solution pattern:</strong> Use session context and behavior priors; add clarification UI when uncertainty crosses threshold.</p>
+      <p><strong>Example:</strong> YouTube and Notion use context recency to disambiguate intent fast.</p>
+    </article>
+
+    <article class="dd-challenge-card">
+      <span class="dd-chip">Filter Trap</span>
+      <h3>Users over-filter to zero</h3>
+      <p><strong>Problem:</strong> Facets narrow candidate sets into dead ends.</p>
+      <p><strong>Solution pattern:</strong> Progressive filter counts, smart defaults, and explicit “relax filters” recovery pathways.</p>
+      <p><strong>Example:</strong> Booking and Airbnb preserve momentum by showing result availability before filters apply.</p>
+    </article>
+
+    <article class="dd-challenge-card">
+      <span class="dd-chip">Gaming & Spam</span>
+      <h3>Keyword stuffing manipulates ranking</h3>
+      <p><strong>Problem:</strong> Suppliers optimize metadata for algorithm loopholes instead of user value.</p>
+      <p><strong>Solution pattern:</strong> Weight behavioral quality signals above text match and penalize manipulative patterns.</p>
+      <p><strong>Example:</strong> Marketplace platforms use conversion-weighted relevance and quality scores to suppress spammy listings.</p>
+    </article>
+
+    <article class="dd-challenge-card">
+      <span class="dd-chip">Relevance vs Revenue</span>
+      <h3>Ads can degrade trust</h3>
+      <p><strong>Problem:</strong> Monetization pressure inserts low-relevance sponsored results.</p>
+      <p><strong>Solution pattern:</strong> Enforce relevance floors, cap ad load by context, and experiment against retention metrics (not only short-term revenue).</p>
+      <p><strong>Example:</strong> Amazon and Google heavily tune blend rules to avoid long-term quality erosion.</p>
+    </article>
+  </div>
+
+  <div class="dd-callout">
+    <strong>The killer challenge:</strong> Relevance/revenue imbalance silently erodes trust. You can win this quarter’s ad target and lose next year’s user habit.
+  </div>
+</section>
