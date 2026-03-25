@@ -72,3 +72,16 @@ async def financial_ecosystem(request: Request) -> HTMLResponse:
             current_page="/resources/ecosystem-maps",
         ),
     )
+
+
+@router.get("/resources/ecosystem-maps/two-sided-marketplace", response_class=HTMLResponse)
+async def two_sided_marketplace(request: Request) -> HTMLResponse:
+    """Serve the Two-Sided Marketplace visual map."""
+    return templates.TemplateResponse(
+        "resources/two_sided_marketplace.html",
+        _ctx(
+            request,
+            title="Two-Sided Marketplace Ecosystem — PM Visual Guide | fullstackpm.tech",
+            current_page="/resources/ecosystem-maps",
+        ),
+    )

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Two-Sided Marketplace Ecosystem — PM Visual Guide | fullstackpm.tech{% endblock %}
+{% block description %}Interactive visual guide to two-sided marketplaces: business models, clearing mechanics, network effects, and user journeys — built for product managers.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/two-sided-marketplace.css">
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">Two-Sided Marketplace</span>
+</nav>
+
+<!-- Page Header -->
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Two-Sided Marketplace Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 700px;">
+    Seven interconnected diagrams covering the complete marketplace architecture: how supply and demand connect, business model variations, clearing mechanics, network effects, financial flows, and user scenarios.
+  </p>
+</header>
+
+<!-- Sticky subnav -->
+{% include "resources/partials/tsm_subnav.html" %}
+
+<!-- Diagrams -->
+<div class="tsm-page">
+  {% include "resources/partials/tsm_diagram_layer_map.html" %}
+  <hr class="tsm-divider">
+  {% include "resources/partials/tsm_diagram_business_models.html" %}
+  <hr class="tsm-divider">
+  {% include "resources/partials/tsm_diagram_transaction.html" %}
+  <hr class="tsm-divider">
+  {% include "resources/partials/tsm_diagram_types.html" %}
+  <hr class="tsm-divider">
+  {% include "resources/partials/tsm_diagram_flywheel.html" %}
+  <hr class="tsm-divider">
+  {% include "resources/partials/tsm_diagram_money_flow.html" %}
+  <hr class="tsm-divider">
+  {% include "resources/partials/tsm_diagram_journeys.html" %}
+</div>
+
+<!-- Footer attribution -->
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  Two-Sided Marketplace Ecosystem Guide v1 · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function showTransModel(id, btn) {
+    document.querySelectorAll('.trans-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.trans-tab').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('trans-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  // Update active nav link based on scroll position or click
+  const sections = ['layermap', 'models', 'transaction', 'types', 'flywheel', 'moneyflow', 'journeys'];
+  const navLinks = document.querySelectorAll('.tsm-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+
+    for (let link of navLinks) {
+      link.classList.remove('active');
+    }
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  // Update on scroll
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+  // Update on click
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Initialize on load
+  updateActiveLink();
+</script>
+{% endblock %}

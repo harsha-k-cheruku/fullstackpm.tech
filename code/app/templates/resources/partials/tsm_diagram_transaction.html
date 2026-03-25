@@ -1,0 +1,300 @@
+<!-- Diagram 3: Transaction Sequence — Tabbed, one per business model -->
+<section id="transaction" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 3</span>
+    <h2>Transaction Sequence</h2>
+    <p>How a single transaction flows through the marketplace. The mechanics vary by model — click a tab to see the sequence for each approach.</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="transaction-tabs">
+    <button class="trans-tab active" onclick="showTransModel('etsy', this)">
+      <span class="tt-num">Pure</span>
+      <span class="tt-name">Etsy</span>
+    </button>
+    <button class="trans-tab" onclick="showTransModel('amazon', this)">
+      <span class="tt-num">Managed</span>
+      <span class="tt-name">Amazon 3P</span>
+    </button>
+    <button class="trans-tab" onclick="showTransModel('faire', this)">
+      <span class="tt-num">Vertical</span>
+      <span class="tt-name">Faire</span>
+    </button>
+    <button class="trans-tab" onclick="showTransModel('thumbtack', this)">
+      <span class="tt-num">Services</span>
+      <span class="tt-name">Thumbtack</span>
+    </button>
+  </div>
+
+  <!-- Etsy Transaction -->
+  <div id="trans-etsy" class="trans-panel" style="display: block;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">👤</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🎨</span> Seller</div>
+        <div class="seq-participant"><span class="p-icon">📱</span> Platform</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span> Payment Processor</div>
+        <div class="seq-participant"><span class="p-icon">🚚</span> Shipping</div>
+        <div class="seq-participant"><span class="p-icon">⭐</span> Feedback</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Discovery</div>
+      <div class="seq-step">
+        <div class="seq-cell">Searches for item</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Displays listings</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Purchase</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Clicks "Buy Now"</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Captures order</div>
+        <div class="seq-cell">Processes payment</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Fulfillment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Packs & ships</div>
+        <div class="seq-cell decision">Tracks shipment</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Receives & delivers</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Post-Delivery</div>
+      <div class="seq-step">
+        <div class="seq-cell">Receives package</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Payment held (7 days)</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Leaves review</div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Payout</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives $$ after 7d</div>
+        <div class="seq-cell sending">Deducts 5% fee</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-supply-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-supply-text);">
+      <strong>Seller earns:</strong> $95 (after Etsy's 5% commission) | <strong>Etsy earns:</strong> $5 flat fee
+    </div>
+  </div>
+
+  <!-- Amazon Transaction -->
+  <div id="trans-amazon" class="trans-panel" style="display: none;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">👤</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🏪</span> Seller</div>
+        <div class="seq-participant"><span class="p-icon">📦</span> FBA (Amazon)</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span> Payment</div>
+        <div class="seq-participant"><span class="p-icon">🚚</span> Logistics</div>
+        <div class="seq-participant"><span class="p-icon">💰</span> Payout</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Inbound Stock</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Ships inventory to FBA</div>
+        <div class="seq-cell sending">Receives & stores</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Purchase</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Clicks "Buy"</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Fulfillment triggered</div>
+        <div class="seq-cell">Captures $</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Fulfillment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Picks, packs, ships</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Amazon Logistics delivers</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Delivery & Review</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Receives 1-day</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Confirms receipt</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Payout</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Seller paid (~14 days)</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-platform-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-platform-text);">
+      <strong>Seller earns:</strong> 60-70% (referral fee 15%, FBA fee ~15%, other fees ~10-20%) | <strong>Amazon earns:</strong> 30-40%
+    </div>
+  </div>
+
+  <!-- Faire Transaction -->
+  <div id="trans-faire" class="trans-panel" style="display: none;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">🏪</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🏭</span> Seller</div>
+        <div class="seq-participant"><span class="p-icon">📱</span> Platform</div>
+        <div class="seq-participant"><span class="p-icon">💳</span> Payment</div>
+        <div class="seq-participant"><span class="p-icon">🚚</span> Logistics</div>
+        <div class="seq-participant"><span class="p-icon">💰</span> Settlement</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Wholesale Terms</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Buyer (retailer)</div>
+        <div class="seq-cell sending">Lists with MOQ</div>
+        <div class="seq-cell">Curates catalog</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Order Placement</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Places wholesale order</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Order confirmed</div>
+        <div class="seq-cell">Invoice generated</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Fulfillment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Manufactures & ships</div>
+        <div class="seq-cell">Logistics platform</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Delivery to buyer</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Quality Check</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Verifies quality</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Holds payment (30 days)</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Payment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives payment</div>
+        <div class="seq-cell sending">Deducts 8-10% fee</div>
+        <div class="seq-cell">ACH transfer</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-demand-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-demand-text);">
+      <strong>Seller earns:</strong> 90% (8-10% Faire fee) | <strong>Platform earns:</strong> 8-10% + financing revenue
+    </div>
+  </div>
+
+  <!-- Thumbtack Transaction -->
+  <div id="trans-thumbtack" class="trans-panel" style="display: none;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">👤</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🔧</span> Provider</div>
+        <div class="seq-participant"><span class="p-icon">📱</span> Platform</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span> Escrow</div>
+        <div class="seq-participant"><span class="p-icon">👀</span> QA</div>
+        <div class="seq-participant"><span class="p-icon">💰</span> Payout</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Request</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Posts job request</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Sends leads</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Bidding</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Provider bids</div>
+        <div class="seq-cell">Notifies buyer</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Selection & Payment</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Accepts provider</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Facilitates payment</div>
+        <div class="seq-cell sending">Holds in escrow</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Service Delivery</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Performs service</div>
+        <div class="seq-cell">Communication hub</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Completion & Release</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Approves work</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Releases escrow</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Marks complete</div>
+        <div class="seq-cell active">Receives payment</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-trust-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-trust-text);">
+      <strong>Provider earns:</strong> 80% (after Thumbtack's 20% commission) | <strong>Platform earns:</strong> 20% per booking
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The transaction flow reveals where platform leverage exists. More platform involvement = more fees but better buyer trust. Pure marketplaces move faster but demand higher seller quality upfront.</p>
+  </div>
+</section>

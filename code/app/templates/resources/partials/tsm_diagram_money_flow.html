@@ -1,0 +1,148 @@
+<!-- Diagram 6: Money and Value Flow -->
+<section id="moneyflow" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 6</span>
+    <h2>Money and Value Flows</h2>
+    <p>How cash and value move through the marketplace. Left side: buyer payment flows. Right side: institutional support and financing.</p>
+  </div>
+
+  <div class="money-flow-grid">
+    <!-- Payment Waterfall -->
+    <div class="flow-panel">
+      <div class="flow-panel-head">Payment Waterfall</div>
+      <div class="flow-panel-body">
+        <!-- Buyer pays -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-demand-bg); border-color: var(--tsm-demand-border); color: var(--tsm-demand-text);">
+            <div class="fn-label" style="color: var(--tsm-demand-text);">Step 1</div>
+            <div class="fn-name" style="color: var(--tsm-demand-text);">Buyer Pays</div>
+            <div class="fn-desc">Platform captures payment</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">↓</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Payment Processor (Stripe, Square)</span>
+        </div>
+
+        <!-- Platform holds -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-border); color: var(--tsm-trust-text);">
+            <div class="fn-label" style="color: var(--tsm-trust-text);">Step 2</div>
+            <div class="fn-name" style="color: var(--tsm-trust-text);">Hold Period</div>
+            <div class="fn-desc">7-30 days (Buyer protection, dispute resolution)</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">↓</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Escrow / Reserve Account</span>
+        </div>
+
+        <!-- Platform takes fee -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-takerate-bg); border-color: var(--tsm-takerate-border); color: var(--tsm-takerate-text);">
+            <div class="fn-label" style="color: var(--tsm-takerate-text);">Step 3</div>
+            <div class="fn-name" style="color: var(--tsm-takerate-text);">Platform Fee</div>
+            <div class="fn-desc">5-30% deducted (commission, transaction fee, payment fee)</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">↓</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Seller Payout Account</span>
+        </div>
+
+        <!-- Seller receives -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-border); color: var(--tsm-supply-text);">
+            <div class="fn-label" style="color: var(--tsm-supply-text);">Step 4</div>
+            <div class="fn-name" style="color: var(--tsm-supply-text);">Seller Paid</div>
+            <div class="fn-desc">ACH or instant transfer to seller bank account</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Institutional Flows -->
+    <div class="flow-panel">
+      <div class="flow-panel-head">Institutional Support</div>
+      <div class="flow-panel-body">
+        <!-- Processor -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-neutral-bg); border-color: var(--tsm-card-border);">
+            <div class="fn-label">Infrastructure</div>
+            <div class="fn-name" style="font-size: 13px;">Payment Processor</div>
+            <div class="fn-desc" style="font-size: 11px;">Stripe, PayPal charge 2-3% per transaction. Money flow through their rails.</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">←→</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Settlement Bank (ACH, Wire, RTP)</span>
+        </div>
+
+        <!-- Trust Account -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-border); color: var(--tsm-trust-text);">
+            <div class="fn-label" style="color: var(--tsm-trust-text);">Risk Mitigation</div>
+            <div class="fn-name" style="color: var(--tsm-trust-text);">Escrow / Trust Account</div>
+            <div class="fn-desc" style="font-size: 11px;">Bank partner holds buyer funds during dispute window. Protects both sides.</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">←→</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Held in Bank Account (Earning Float Interest)</span>
+        </div>
+
+        <!-- Insurance -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-border); color: var(--tsm-supply-text);">
+            <div class="fn-label" style="color: var(--tsm-supply-text);">Liability</div>
+            <div class="fn-name" style="color: var(--tsm-supply-text);">Insurance / Bond</div>
+            <div class="fn-desc" style="font-size: 11px;">Covers seller fraud, chargebacks, disputes. Platform pays premium.</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">→</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Claims Pool</span>
+        </div>
+
+        <!-- Financing -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-border); color: var(--tsm-platform-text);">
+            <div class="fn-label" style="color: var(--tsm-platform-text);">Capital Support</div>
+            <div class="fn-name" style="color: var(--tsm-platform-text);">Marketplace Financing</div>
+            <div class="fn-desc" style="font-size: 11px;">Some platforms (Faire, Square Cash) offer seller loans. Monetize GMV.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 16px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 16px;">Marketplace Revenue Streams</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 16px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 12px;">Direct Revenue (Transaction-Based)</h4>
+        <ul style="list-style: none; font-size: 13px; color: var(--tsm-body); line-height: 1.8;">
+          <li><strong style="color: var(--tsm-heading);">Commission/take-rate:</strong> 5-30% of transaction value (most markets)</li>
+          <li><strong style="color: var(--tsm-heading);">Transaction fee:</strong> $0.50-$2 fixed fee per transaction</li>
+          <li><strong style="color: var(--tsm-heading);">Payment processing:</strong> 2-3% pass-through (Stripe, PayPal)</li>
+          <li><strong style="color: var(--tsm-heading);">Listing fees:</strong> $0.20-$5 per item listed (some markets)</li>
+        </ul>
+      </div>
+
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 16px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 12px;">Indirect Revenue (Platform Services)</h4>
+        <ul style="list-style: none; font-size: 13px; color: var(--tsm-body); line-height: 1.8;">
+          <li><strong style="color: var(--tsm-heading);">Advertising:</strong> Seller ads for better placement (eBay, Etsy promoted listings)</li>
+          <li><strong style="color: var(--tsm-heading);">Seller tools:</strong> Analytics, shipping integrations ($9-$100/mo)</li>
+          <li><strong style="color: var(--tsm-heading);">Financing:</strong> Lend to sellers at interest (3-15% APR)</li>
+          <li><strong style="color: var(--tsm-heading);">Logistics:</strong> Discounted shipping or fulfillment services</li>
+          <li><strong style="color: var(--tsm-heading);">Float interest:</strong> Interest earned on funds in escrow account</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The take-rate is what gets publicized, but smart marketplaces build a diversified revenue model. Transaction fees alone become a ceiling — advertising, seller tools, and financing unlock the full economics. Stripe earns 2.9% + $0.30 on payment processing, but makes more per transaction from connected services.</p>
+  </div>
+</section>

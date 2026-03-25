@@ -1,0 +1,275 @@
+/* Two-Sided Marketplace Ecosystem — Dedicated CSS
+   All colors use CSS variables for dark mode support.
+   Semantic domains: supply=green, demand=blue, platform=indigo,
+   trust=amber, network=purple, take-rate=teal */
+
+/* ── Semantic Color Variables ── */
+:root {
+  /* Supply (Green) */
+  --tsm-supply-bg: #f0fdf4;
+  --tsm-supply-border: #86efac;
+  --tsm-supply-text: #15803d;
+  --tsm-supply-light: #bbf7d0;
+
+  /* Demand (Blue) */
+  --tsm-demand-bg: #eff6ff;
+  --tsm-demand-border: #93c5fd;
+  --tsm-demand-text: #1e40af;
+  --tsm-demand-chip-bg: #dbeafe;
+
+  /* Platform (Indigo) */
+  --tsm-platform-bg: #eef2ff;
+  --tsm-platform-border: #a5b4fc;
+  --tsm-platform-text: #3730a3;
+
+  /* Trust (Amber) */
+  --tsm-trust-bg: #fffbeb;
+  --tsm-trust-border: #fcd34d;
+  --tsm-trust-text: #b45309;
+
+  /* Network Effects (Purple) */
+  --tsm-network-bg: #faf5ff;
+  --tsm-network-border: #d8b4fe;
+  --tsm-network-text: #7e22ce;
+
+  /* Take Rate (Teal) */
+  --tsm-takerate-bg: #f0fdfa;
+  --tsm-takerate-border: #5eead4;
+  --tsm-takerate-text: #0f766e;
+
+  /* Neutral / Cards */
+  --tsm-card-bg: #ffffff;
+  --tsm-card-border: #e2e8f0;
+  --tsm-neutral-bg: #f8fafc;
+  --tsm-neutral-light: #f1f5f9;
+  --tsm-heading: #0f172a;
+  --tsm-body: #475569;
+  --tsm-muted: #64748b;
+  --tsm-faint: #94a3b8;
+  --tsm-tag-bg: #e2e8f0;
+  --tsm-tag-text: #475569;
+
+  /* Dark panels */
+  --tsm-dark-bg: #1e293b;
+  --tsm-dark-text: #f1f5f9;
+  --tsm-dark-muted: #cbd5e1;
+  --tsm-dark-heading: #f8fafc;
+
+  /* Callout */
+  --tsm-callout-bg: #fffbeb;
+  --tsm-callout-border: #fcd34d;
+  --tsm-callout-text: #b45309;
+  --tsm-callout-strong: #451a03;
+}
+
+/* ── Dark Mode Overrides ── */
+.dark {
+  --tsm-supply-bg: #052e16;
+  --tsm-supply-border: #16a34a;
+  --tsm-supply-text: #86efac;
+  --tsm-supply-light: #166534;
+
+  --tsm-demand-bg: #172554;
+  --tsm-demand-border: #3b82f6;
+  --tsm-demand-text: #93c5fd;
+  --tsm-demand-chip-bg: #1e3a5f;
+
+  --tsm-platform-bg: #1e1b4b;
+  --tsm-platform-border: #818cf8;
+  --tsm-platform-text: #a5b4fc;
+
+  --tsm-trust-bg: #451a03;
+  --tsm-trust-border: #ca8a04;
+  --tsm-trust-text: #fcd34d;
+
+  --tsm-network-bg: #2e1065;
+  --tsm-network-border: #7e22ce;
+  --tsm-network-text: #d8b4fe;
+
+  --tsm-takerate-bg: #042f2e;
+  --tsm-takerate-border: #14b8a6;
+  --tsm-takerate-text: #5eead4;
+
+  --tsm-card-bg: var(--color-bg-secondary);
+  --tsm-card-border: #334155;
+  --tsm-neutral-bg: #1e293b;
+  --tsm-neutral-light: #1e293b;
+  --tsm-heading: #f1f5f9;
+  --tsm-body: #94a3b8;
+  --tsm-muted: #94a3b8;
+  --tsm-faint: #64748b;
+  --tsm-tag-bg: #334155;
+  --tsm-tag-text: #94a3b8;
+
+  --tsm-dark-bg: #0f172a;
+  --tsm-dark-text: #e2e8f0;
+  --tsm-dark-muted: #94a3b8;
+  --tsm-dark-heading: #e2e8f0;
+
+  --tsm-callout-bg: #451a03;
+  --tsm-callout-border: #ca8a04;
+  --tsm-callout-text: #fde047;
+  --tsm-callout-strong: #fef9c3;
+}
+
+/* ── Scroll Offset for Anchor Nav ── */
+html { scroll-padding-top: 120px; }
+
+/* ── Page & Section Structure ── */
+.tsm-page { max-width: 1200px; margin: 0 auto; padding: 40px 0; }
+.tsm-section { padding-bottom: 12px; }
+
+.section-header { margin-bottom: 28px; }
+.section-header h2 { font-size: 26px; font-weight: 700; color: var(--tsm-heading); }
+.section-header p { color: var(--tsm-muted); margin-top: 6px; font-size: 15px; max-width: 700px; }
+.section-tag {
+  display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; background: var(--tsm-tag-bg); color: var(--tsm-tag-text);
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
+}
+.tsm-divider { border: none; border-top: 1px solid var(--tsm-card-border); margin: 48px 0; }
+
+/* ── Business Model Cards (Diagram 2) ── */
+.model-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .model-grid { grid-template-columns: repeat(2, 1fr); } }
+.model-card { background: var(--tsm-card-bg); border-radius: 14px; border: 2px solid var(--tsm-card-border); overflow: hidden; }
+.model-head { padding: 14px 16px; font-weight: 700; font-size: 15px; border-bottom: 2px solid transparent; color: var(--tsm-heading); }
+.model-head .model-num { font-size: 11px; font-weight: 700; opacity: .6; text-transform: uppercase; letter-spacing: .08em; display: block; margin-bottom: 4px; }
+.model-head .model-example { font-size: 12px; font-weight: 400; margin-top: 4px; opacity: .7; }
+.mh-pure { background: var(--tsm-supply-bg); border-color: var(--tsm-supply-border); }
+.mh-managed { background: var(--tsm-platform-bg); border-color: var(--tsm-platform-border); }
+.mh-vertical { background: var(--tsm-demand-bg); border-color: var(--tsm-demand-border); }
+.mh-services { background: var(--tsm-trust-bg); border-color: var(--tsm-trust-border); }
+.model-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.model-step { background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; font-size: 13px; border-left: 3px solid var(--tsm-card-border); color: var(--tsm-body); }
+.model-step strong { display: block; font-size: 13px; color: var(--tsm-heading); }
+
+/* ── Tabs for Transaction Diagram ── */
+.transaction-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.trans-tab { background: var(--tsm-neutral-light); border: 2px solid var(--tsm-card-border); border-radius: 10px; padding: 12px 18px; cursor: pointer; text-align: left; transition: all .2s; }
+.trans-tab .tt-num { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--tsm-muted); margin-bottom: 2px; }
+.trans-tab .tt-name { display: block; font-size: 15px; font-weight: 700; color: var(--tsm-dark-bg); }
+.trans-tab:hover { border-color: var(--tsm-faint); background: var(--tsm-tag-bg); }
+.trans-tab.active { background: var(--tsm-dark-bg); border-color: var(--tsm-dark-bg); }
+.trans-tab.active .tt-num { color: var(--tsm-faint); }
+.trans-tab.active .tt-name { color: var(--tsm-dark-heading); }
+
+/* ── Transaction Sequence ── */
+.transaction-seq { background: var(--tsm-card-bg); border-radius: 14px; border: 2px solid var(--tsm-card-border); overflow: hidden; }
+.seq-participants { display: grid; grid-template-columns: repeat(6, 1fr); background: var(--tsm-dark-bg); gap: 1px; }
+.seq-participant { padding: 14px 10px; text-align: center; font-size: 12px; font-weight: 600; color: var(--tsm-dark-text); background: var(--tsm-dark-bg); }
+.seq-participant .p-icon { font-size: 24px; display: block; margin-bottom: 4px; }
+.seq-step { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--tsm-neutral-light); min-height: 56px; }
+.seq-step:last-child { border-bottom: none; }
+.seq-cell { padding: 12px 10px; font-size: 12px; color: var(--tsm-body); border-right: 1px dashed var(--tsm-card-border); }
+.seq-cell:last-child { border-right: none; }
+.seq-cell.active { background: var(--tsm-supply-bg); font-weight: 600; color: var(--tsm-supply-text); }
+.seq-cell.sending { background: var(--tsm-demand-bg); font-weight: 600; color: var(--tsm-demand-text); }
+.seq-cell.decision { background: var(--tsm-platform-bg); font-weight: 600; color: var(--tsm-platform-text); }
+
+/* ── Types Grid (Diagram 4) ── */
+.types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .types-grid { grid-template-columns: repeat(2, 1fr); } }
+.type-card { background: var(--tsm-card-bg); border-radius: 14px; border: 2px solid var(--tsm-card-border); overflow: hidden; }
+.type-head { padding: 16px 18px; font-weight: 700; font-size: 16px; border-bottom: 1px solid var(--tsm-card-border); color: var(--tsm-heading); }
+.type-body { padding: 16px 18px; font-size: 13px; color: var(--tsm-body); line-height: 1.6; }
+.type-body strong { display: block; font-weight: 700; color: var(--tsm-heading); margin-bottom: 6px; }
+.type-bullets { list-style: none; margin-top: 10px; }
+.type-bullets li { margin-bottom: 6px; padding-left: 16px; position: relative; }
+.type-bullets li::before { content: "→"; position: absolute; left: 0; color: var(--tsm-muted); }
+
+/* ── Flywheel (Diagram 5) ── */
+.flywheel-wrap { display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap; }
+.flywheel-steps { flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 0; }
+.fw-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-left: 3px solid var(--tsm-card-border); margin-left: 16px; padding-left: 20px; position: relative; }
+.fw-step::before { content: attr(data-num); position: absolute; left: -16px; top: 16px; width: 28px; height: 28px; border-radius: 50%; background: var(--tsm-dark-bg); color: var(--tsm-dark-text); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.fw-step.highlight { border-left-color: #16a34a; }
+.fw-step.highlight::before { background: #16a34a; }
+.fw-step-content h4 { font-size: 15px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 4px; }
+.fw-step-content p { font-size: 13px; color: var(--tsm-body); }
+.flywheel-insight { flex: 1; min-width: 240px; background: var(--tsm-dark-bg); border-radius: 14px; padding: 28px; color: var(--tsm-dark-text); }
+.flywheel-insight h3 { font-size: 16px; font-weight: 700; margin-bottom: 18px; color: var(--tsm-dark-heading); }
+.insight-item { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+.insight-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.insight-text { font-size: 13px; color: var(--tsm-dark-muted); line-height: 1.6; }
+.insight-text strong { color: var(--tsm-dark-text); }
+
+/* ── Money Flow (Diagram 6) ── */
+.money-flow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+@media (max-width: 700px) { .money-flow-grid { grid-template-columns: 1fr; } }
+.flow-panel { background: var(--tsm-card-bg); border-radius: 14px; border: 2px solid var(--tsm-card-border); overflow: hidden; }
+.flow-panel-head { padding: 16px 20px; font-weight: 700; font-size: 16px; border-bottom: 2px solid var(--tsm-card-border); color: var(--tsm-heading); }
+.flow-panel-body { padding: 22px 20px; display: flex; flex-direction: column; gap: 0; }
+.flow-node-row { display: flex; align-items: center; gap: 10px; }
+.flow-node-box { flex: 1; border-radius: 10px; padding: 12px 16px; font-size: 13px; border: 1.5px solid; }
+.flow-node-box .fn-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; opacity: .65; margin-bottom: 4px; }
+.flow-node-box .fn-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--tsm-heading); }
+.flow-node-box .fn-desc { font-size: 12px; color: var(--tsm-body); }
+.flow-conn { display: flex; flex-direction: column; align-items: center; padding: 8px 0; gap: 4px; }
+.flow-conn-arrow { font-size: 20px; color: var(--tsm-faint); line-height: 1; }
+
+/* ── User Journeys (Diagram 7) ── */
+.journeys-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .journeys-grid { grid-template-columns: 1fr; } }
+.journey-card { background: var(--tsm-card-bg); border-radius: 14px; border: 2px solid var(--tsm-card-border); overflow: hidden; }
+.journey-head { padding: 16px 20px; border-bottom: 2px solid var(--tsm-card-border); }
+.journey-head .j-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; opacity: .6; margin-bottom: 4px; }
+.journey-head .j-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--tsm-heading); }
+.journey-head .j-persona { font-size: 12px; color: var(--tsm-muted); }
+.journey-head .j-time { display: inline-block; margin-top: 8px; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; background: var(--tsm-neutral-light); color: var(--tsm-body); }
+.journey-steps { padding: 18px 20px; display: flex; flex-direction: column; gap: 0; }
+.j-step { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-left: 2px solid var(--tsm-card-border); margin-left: 10px; padding-left: 16px; position: relative; }
+.j-step::before { content: attr(data-n); position: absolute; left: -8px; top: 12px; width: 16px; height: 16px; border-radius: 50%; background: var(--tsm-card-border); color: var(--tsm-body); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.j-step.money { border-left-color: var(--tsm-supply-border); }
+.j-step.money::before { background: var(--tsm-supply-text); color: #fff; }
+.j-step.decision { border-left-color: var(--tsm-platform-border); }
+.j-step.decision::before { background: var(--tsm-platform-text); color: #fff; }
+.j-step-content { flex: 1; }
+.j-step-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--tsm-muted); margin-bottom: 2px; }
+.j-step-what { font-size: 13px; color: var(--tsm-heading); margin-bottom: 4px; }
+.journey-footer { padding: 14px 20px; background: var(--tsm-neutral-bg); border-top: 1px solid var(--tsm-card-border); font-size: 12px; color: var(--tsm-muted); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.journey-footer strong { color: var(--tsm-heading); }
+
+/* ── Callout ── */
+.tsm-callout { background: var(--tsm-callout-bg); border: 2px solid var(--tsm-callout-border); border-radius: 12px; padding: 18px 22px; margin-top: 20px; display: flex; gap: 14px; align-items: flex-start; }
+.tsm-callout p { font-size: 13px; color: var(--tsm-callout-text); line-height: 1.6; }
+.tsm-callout strong { color: var(--tsm-callout-strong); }
+
+/* ── Layer Map Ecosystem (Diagram 1) ── */
+.tsm-layer-map { display: grid; grid-template-columns: 1fr 220px; gap: 20px; align-items: start; }
+@media (max-width: 900px) { .tsm-layer-map { grid-template-columns: 1fr; } }
+
+.tsm-layers-outer { background: var(--tsm-demand-bg); border: 3px solid #3b82f6; border-radius: 16px; padding: 16px; }
+.tsm-layer { background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.tsm-layer-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--tsm-muted); margin-bottom: 8px; }
+.tsm-layer-title { font-size: 14px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 6px; }
+.tsm-layer-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.tsm-layer-item { display: inline-block; padding: 4px 10px; background: var(--tsm-neutral-bg); border: 1px solid var(--tsm-card-border); border-radius: 6px; font-size: 11px; color: var(--tsm-body); }
+
+.tsm-capital-panel { background: var(--tsm-supply-bg); border: 2px solid var(--tsm-supply-border); border-radius: 14px; padding: 18px; }
+.tsm-capital-panel h4 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--tsm-supply-text); margin-bottom: 4px; }
+.tsm-capital-panel .cp-note { font-size: 11px; color: var(--tsm-body); padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--tsm-supply-border); line-height: 1.6; }
+.tsm-capital-item { margin-bottom: 12px; }
+.tsm-capital-item strong { display: block; font-size: 12px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 2px; }
+.tsm-capital-item span { font-size: 11px; color: var(--tsm-muted); }
+
+/* ── Subnav ── */
+.tsm-subnav {
+  position: sticky; top: 64px; z-index: 40;
+  background: var(--color-bg-secondary, #f8fafc);
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 24px; overflow-x: auto;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+.tsm-subnav-link {
+  color: var(--color-text-secondary, #64748b); text-decoration: none; white-space: nowrap;
+  font-size: 13px; font-weight: 500;
+  padding: 6px 14px; border-radius: 20px; transition: all .2s;
+  display: inline-block;
+}
+.tsm-subnav-link:hover { background: var(--color-bg-tertiary, #f1f5f9); color: var(--color-text-primary, #0f172a); }
+.tsm-subnav-link.active {
+  background: var(--color-accent, #2E8ECE);
+  color: white;
+  font-weight: 600;
+}
