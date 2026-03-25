@@ -1,0 +1,69 @@
+<section id="how-it-works" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 2</span>
+    <h2>How It Works</h2>
+    <p>Checkout flows through authorization, fraud controls, capture, settlement, and reconciliation — with chargeback data feeding model updates.</p>
+  </div>
+
+  <div class="dd-flow-wrap">
+    <svg class="dd-flow-svg" viewBox="0 0 1200 360" role="img" aria-label="Payments and checkout flow">
+      <defs>
+        <marker id="dd-pc-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <polygon points="0 0, 10 4, 0 8" fill="currentColor"></polygon>
+        </marker>
+      </defs>
+
+      <rect class="dd-flow-node pulse-1" x="20" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="100" y="80">Checkout Initiation</text>
+      <text class="dd-pc-node-caption" x="100" y="98">cart + order total</text>
+
+      <rect class="dd-flow-node pulse-2" x="200" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="280" y="80">Payment Method</text>
+      <text class="dd-pc-node-caption" x="280" y="98">card/wallet/ACH input</text>
+
+      <rect class="dd-flow-node pulse-3" x="380" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="460" y="80">Authorization</text>
+      <text class="dd-pc-node-caption" x="460" y="98">processor checks validity</text>
+
+      <rect class="dd-flow-node pulse-4" x="560" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="640" y="80">Fraud Check</text>
+      <text class="dd-pc-node-caption" x="640" y="98">risk score + 3DS rules</text>
+
+      <rect class="dd-flow-node pulse-5" x="740" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="820" y="80">Capture</text>
+      <text class="dd-pc-node-caption" x="820" y="98">fund capture request</text>
+
+      <rect class="dd-flow-node pulse-6" x="920" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="1000" y="80">Settlement</text>
+      <text class="dd-pc-node-caption" x="1000" y="98">fund transfer (1-2 days)</text>
+
+      <rect class="dd-flow-node pulse-7" x="920" y="220" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="1000" y="256">Reconciliation</text>
+      <text class="dd-pc-node-caption" x="1000" y="274">ledger + processor match</text>
+
+      <path id="pc-path-1" class="dd-flow-path" d="M180,80 C190,80 192,80 200,80"></path>
+      <path id="pc-path-2" class="dd-flow-path" d="M360,80 C370,80 372,80 380,80"></path>
+      <path id="pc-path-3" class="dd-flow-path" d="M540,80 C550,80 552,80 560,80"></path>
+      <path id="pc-path-4" class="dd-flow-path" d="M720,80 C730,80 732,80 740,80"></path>
+      <path id="pc-path-5" class="dd-flow-path" d="M900,80 C910,80 912,80 920,80"></path>
+      <path id="pc-path-6" class="dd-flow-path" d="M1000,116 C1000,150 1000,190 1000,220"></path>
+
+      <path class="dd-pc-feedback-arrow" d="M920,256 C760,340 430,340 640,116" marker-end="url(#dd-pc-arrow)"></path>
+      <text class="dd-pc-feedback-label" x="620" y="348">Chargeback outcomes retrain fraud scoring and decision thresholds</text>
+
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="0s"><mpath href="#pc-path-1"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="2s"><mpath href="#pc-path-2"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="4s"><mpath href="#pc-path-3"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="6s"><mpath href="#pc-path-4"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="8s"><mpath href="#pc-path-5"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="10s"><mpath href="#pc-path-6"></mpath></animateMotion></circle>
+    </svg>
+
+    <div class="dd-flow-legend">
+      <div class="dd-flow-legend-item"><strong>Authorization:</strong> determines card/account validity and funding status via processor.</div>
+      <div class="dd-flow-legend-item"><strong>Fraud gating:</strong> model + rules decide friction, challenge, or decline.</div>
+      <div class="dd-flow-legend-item"><strong>Settlement:</strong> operationally delayed money movement creates reconciliation complexity.</div>
+      <div class="dd-flow-legend-item"><strong>Feedback:</strong> dispute outcomes should directly tune risk strategy.</div>
+    </div>
+  </div>
+</section>

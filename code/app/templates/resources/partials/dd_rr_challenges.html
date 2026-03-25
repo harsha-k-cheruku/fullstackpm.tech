@@ -1,0 +1,20 @@
+<section id="challenges" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 6</span>
+    <h2>Common Challenges</h2>
+    <p>Review systems fail in predictable ways: manipulation, bias, sparse cold-start data, and low-information feedback.</p>
+  </div>
+
+  <div class="dd-challenge-grid">
+    <article class="dd-challenge-card"><span class="dd-chip">Fake Review Rings</span><h3>Coordinated manipulation networks</h3><p><strong>Problem:</strong> Clusters of accounts inflate target listings and attack competitors.</p><p><strong>Solution:</strong> Graph-based detection using shared identity, timing, and behavior edges.</p><p><strong>Example:</strong> Amazon’s anti-fraud teams detect account linkage at scale.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Selection Bias</span><h3>The missing middle-star majority</h3><p><strong>Problem:</strong> Reviews skew to emotional extremes, underrepresenting typical experiences.</p><p><strong>Solution:</strong> Blend explicit reviews with implicit behavior signals (repeat purchase, completion, returns).</p><p><strong>Example:</strong> Netflix prioritizes watch behavior over explicit ratings.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Cold Start</span><h3>Zero-review trust gap</h3><p><strong>Problem:</strong> New items look untrusted and under-convert.</p><p><strong>Solution:</strong> Weight verified/reputable reviewers and transfer seller trust priors.</p><p><strong>Example:</strong> Verified Purchase prioritization in Amazon review ranking.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Suppression</span><h3>Negative feedback gets discouraged</h3><p><strong>Problem:</strong> Sellers nudge unhappy users away from posting public criticism.</p><p><strong>Solution:</strong> Policy enforcement + easy suppression reporting + direct review prompts.</p><p><strong>Example:</strong> Airbnb policy restrictions on review manipulation.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Text Quality Decay</span><h3>Low-information reviews dominate</h3><p><strong>Problem:</strong> “Great!!!” and “Terrible!!!” add sentiment, not actionable context.</p><p><strong>Solution:</strong> Prompt-specificity design and helpfulness-based ordering.</p><p><strong>Example:</strong> Amazon surfaces “Most Helpful” over latest reviews.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Context Ambiguity</span><h3>Star meaning changes by category</h3><p><strong>Problem:</strong> Users misinterpret whether 4.2★ is strong or weak in context.</p><p><strong>Solution:</strong> Show category baselines and score distribution context.</p><p><strong>Example:</strong> Airbnb-style distribution bars and local-average framing.</p></article>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Persistent arms race:</strong> where reviews influence money flow, manipulation pressure never disappears — plan permanent anti-fraud capacity, not one-off cleanup projects.
+  </div>
+</section>

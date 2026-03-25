@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Ratings & Reviews — PM Visual Guide | fullstackpm.tech{% endblock %}
+{% block description %}Product deep dive into Ratings & Reviews: authenticity, ranking impact, metrics, architecture, and anti-manipulation patterns across major platforms.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/deep-dive-base.css">
+<link rel="stylesheet" href="/static/css/dd-ratings-reviews.css">
+{% endblock %}
+
+{% block content %}
+<div class="dd-ratings-reviews">
+  <nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+    <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+    <span class="mx-1">›</span>
+    <a href="/resources/product-breakdowns" class="hover:underline" style="color: var(--color-text-tertiary);">Product Breakdowns</a>
+    <span class="mx-1">›</span>
+    <span style="color: var(--color-text-primary);">Ratings &amp; Reviews</span>
+  </nav>
+
+  <header class="mb-2">
+    <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Ratings &amp; Reviews — Product Deep Dive</h1>
+    <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 760px;">
+      Word-of-mouth at scale, with receipts. This deep dive covers authenticity, ranking impact, quality signals, and fraud-resistant review system design.
+    </p>
+  </header>
+
+  {% include "resources/partials/dd_rr_subnav.html" %}
+
+  <div class="dd-page">
+    {% include "resources/partials/dd_rr_what_and_why.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_rr_how_it_works.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_rr_across_models.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_rr_metrics.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_rr_architecture.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_rr_challenges.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_rr_patterns.html" %}
+  </div>
+
+  <div class="dd-footer-note">
+    Product Deep Dives Series · Ratings &amp; Reviews · fullstackpm.tech · 2026
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const ddSections = ['what-and-why', 'how-it-works', 'across-models', 'metrics', 'architecture', 'challenges', 'patterns'];
+  const ddNavLinks = document.querySelectorAll('.dd-subnav-link');
+
+  function updateDdActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+    ddNavLinks.forEach(link => link.classList.remove('active'));
+    for (let i = ddSections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(ddSections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        ddNavLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + ddSections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateDdActiveLink, { passive: true });
+  ddNavLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      ddNavLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+  updateDdActiveLink();
+</script>
+{% endblock %}

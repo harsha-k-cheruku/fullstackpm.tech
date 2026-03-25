@@ -1,0 +1,25 @@
+<section id="challenges" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 6</span>
+    <h2>Common Challenges</h2>
+    <p>Most Trust &amp; Safety failures are not unknown unknowns. They’re recurring patterns that need explicit playbooks.</p>
+  </div>
+
+  <div class="dd-challenge-grid">
+    <article class="dd-challenge-card"><span class="dd-chip">Cold Start Fraud</span><h3>New accounts, zero history</h3><p><strong>Problem:</strong> Scammers exploit no-history windows immediately after signup.</p><p><strong>Solution:</strong> Heavily weight pre-trust signals (IP reputation, phone/email quality, payment method age) in first-week decisioning.</p><p><strong>Example:</strong> Stripe combines velocity thresholds and verification gates for early-account risk.</p></article>
+
+    <article class="dd-challenge-card"><span class="dd-chip">False Positive Spiral</span><h3>Overblocking hurts good users</h3><p><strong>Problem:</strong> Aggressive rules stop abuse and legitimate users together.</p><p><strong>Solution:</strong> Use graduated actions: friction/warnings for borderline cases, hard blocks for high confidence abuse.</p><p><strong>Example:</strong> Airbnb’s reservation holds soften damage vs immediate denial.</p></article>
+
+    <article class="dd-challenge-card"><span class="dd-chip">Adversarial Drift</span><h3>Bad actors adapt quickly</h3><p><strong>Problem:</strong> Static rules become stale once abusers learn thresholds.</p><p><strong>Solution:</strong> Blend ML scoring with adversarial testing and frequent rule/model refresh cycles.</p><p><strong>Example:</strong> Payment processors run ensemble models so no single rule can be gamed reliably.</p></article>
+
+    <article class="dd-challenge-card"><span class="dd-chip">Appeal Backlog</span><h3>Fairness delays become churn</h3><p><strong>Problem:</strong> Appeal queues outgrow analyst capacity, users wait weeks.</p><p><strong>Solution:</strong> Tiered appeal routing: auto-reverse high-evidence cases, escalate ambiguous ones.</p><p><strong>Example:</strong> Large social platforms automate low-complexity appeal triage to preserve SLA.</p></article>
+
+    <article class="dd-challenge-card"><span class="dd-chip">Regulatory Patchwork</span><h3>One policy cannot fit all markets</h3><p><strong>Problem:</strong> Jurisdiction conflicts (privacy vs reporting duties) create legal traps.</p><p><strong>Solution:</strong> Region-aware policy engines, data residency controls, and jurisdiction-specific workflows.</p><p><strong>Example:</strong> Different EU/US policy thresholds in fintech operations.</p></article>
+
+    <article class="dd-challenge-card"><span class="dd-chip">Trust Erosion</span><h3>Incidents damage brand memory</h3><p><strong>Problem:</strong> Even isolated scams can trigger broad perception collapse.</p><p><strong>Solution:</strong> Transparent policy communication, recovery guarantees, and published safety reporting.</p><p><strong>Example:</strong> Airbnb combines protection programs with trust transparency updates.</p></article>
+  </div>
+
+  <div class="dd-callout">
+    <strong>The brutal math:</strong> catching more bad actors doesn’t help if false positives push legitimate users out faster than abuse is reduced.
+  </div>
+</section>

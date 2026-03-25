@@ -1,0 +1,49 @@
+<section id="architecture" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 5</span>
+    <h2>Architecture Deep Dive</h2>
+    <p>Robust payment systems separate UI orchestration, authorization, risk decisioning, and settlement operations into distinct layers.</p>
+  </div>
+
+  <div class="dd-architecture">
+    <div class="dd-arch-layer">
+      <h4>Layer 1: Cart &amp; Checkout UI</h4>
+      <p>Order capture, payment method selection, and user-facing validation flow.</p>
+      <div class="dd-pc-arch-grid">
+        <div class="dd-pc-arch-box"><h5>Tokenized Collection</h5><p>Use processor SDKs to avoid handling raw card data and reduce PCI scope.</p></div>
+        <div class="dd-pc-arch-box"><h5>Checkout UX</h5><p>Saved methods, guest flow, and validation tuning to reduce abandonment.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 2: Authorization &amp; Processing</h4>
+      <p>Processor calls for authorization, fallback handling, 3DS orchestration, and retries.</p>
+      <div class="dd-pc-arch-grid">
+        <div class="dd-pc-arch-box"><h5>Processor Integration</h5><p>Primary + fallback provider patterns for resilience.</p></div>
+        <div class="dd-pc-arch-box"><h5>Decline Handling</h5><p>Soft decline recovery and alternate method prompts.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 3: Fraud Detection &amp; Risk Scoring</h4>
+      <p>Risk feature extraction, scoring models, and threshold/rule decision engine.</p>
+      <div class="dd-pc-arch-grid">
+        <div class="dd-pc-arch-box"><h5>Risk Feature Store</h5><p>Device, velocity, geo, account behavior, and payment metadata signals.</p></div>
+        <div class="dd-pc-arch-box"><h5>Decision Logic</h5><p>Challenge, approve, review, or decline based on score + policy.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 4: Settlement &amp; Reconciliation</h4>
+      <p>Ledgering, disbursements, settlement matching, and dispute workflows.</p>
+      <div class="dd-pc-arch-grid">
+        <div class="dd-pc-arch-box"><h5>Settlement Matching</h5><p>Reconcile processor reports against internal transaction records.</p></div>
+        <div class="dd-pc-arch-box"><h5>Dispute Ops</h5><p>Chargeback evidence tooling, SLA workflows, and reporting.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Most underestimated layer:</strong> reconciliation. Settlement adjustments and reversals can silently break cash accuracy without strong automation.
+  </div>
+</section>

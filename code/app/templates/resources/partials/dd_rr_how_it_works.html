@@ -1,0 +1,69 @@
+<section id="how-it-works" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 2</span>
+    <h2>How It Works</h2>
+    <p>From completed transaction to ranking signal: collect, validate, aggregate, and feed review outcomes into discovery systems.</p>
+  </div>
+
+  <div class="dd-flow-wrap">
+    <svg class="dd-flow-svg" viewBox="0 0 1200 360" role="img" aria-label="Ratings and reviews lifecycle">
+      <defs>
+        <marker id="dd-rr-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <polygon points="0 0, 10 4, 0 8" fill="currentColor"></polygon>
+        </marker>
+      </defs>
+
+      <rect class="dd-flow-node pulse-1" x="20" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="100" y="80">Transaction Completed</text>
+      <text class="dd-rr-node-caption" x="100" y="98">delivery / stay / ride done</text>
+
+      <rect class="dd-flow-node pulse-2" x="200" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="280" y="80">Prompt Delivery</text>
+      <text class="dd-rr-node-caption" x="280" y="98">timed review request</text>
+
+      <rect class="dd-flow-node pulse-3" x="380" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="460" y="80">Review Submission</text>
+      <text class="dd-rr-node-caption" x="460" y="98">stars + optional text</text>
+
+      <rect class="dd-flow-node pulse-4" x="560" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="640" y="80">Moderation</text>
+      <text class="dd-rr-node-caption" x="640" y="98">spam/authenticity checks</text>
+
+      <rect class="dd-flow-node pulse-5" x="740" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="820" y="80">Aggregation</text>
+      <text class="dd-rr-node-caption" x="820" y="98">score + distribution stats</text>
+
+      <rect class="dd-flow-node pulse-6" x="920" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="1000" y="80">Ranking Integration</text>
+      <text class="dd-rr-node-caption" x="1000" y="98">search + recommendation</text>
+
+      <rect class="dd-flow-node pulse-7" x="920" y="220" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="1000" y="256">Feedback Loop</text>
+      <text class="dd-rr-node-caption" x="1000" y="274">conversion impact tuning</text>
+
+      <path id="rr-path-1" class="dd-flow-path" d="M180,80 C190,80 192,80 200,80"></path>
+      <path id="rr-path-2" class="dd-flow-path" d="M360,80 C370,80 372,80 380,80"></path>
+      <path id="rr-path-3" class="dd-flow-path" d="M540,80 C550,80 552,80 560,80"></path>
+      <path id="rr-path-4" class="dd-flow-path" d="M720,80 C730,80 732,80 740,80"></path>
+      <path id="rr-path-5" class="dd-flow-path" d="M900,80 C910,80 912,80 920,80"></path>
+      <path id="rr-path-6" class="dd-flow-path" d="M1000,116 C1000,150 1000,190 1000,220"></path>
+
+      <path class="dd-rr-feedback-arrow" d="M920,256 C700,350 340,340 280,116" marker-end="url(#dd-rr-arrow)"></path>
+      <text class="dd-rr-feedback-label" x="600" y="348">Ranking outcomes tune prompting, weighting, and moderation thresholds</text>
+
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="0s"><mpath href="#rr-path-1"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="2s"><mpath href="#rr-path-2"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="4s"><mpath href="#rr-path-3"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="6s"><mpath href="#rr-path-4"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="8s"><mpath href="#rr-path-5"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="10s"><mpath href="#rr-path-6"></mpath></animateMotion></circle>
+    </svg>
+
+    <div class="dd-flow-legend">
+      <div class="dd-flow-legend-item"><strong>Prompt timing:</strong> too early gives shallow feedback; too late loses context and response rate.</div>
+      <div class="dd-flow-legend-item"><strong>Moderation:</strong> fake-review detection is mandatory where economic incentives are strong.</div>
+      <div class="dd-flow-legend-item"><strong>Aggregation:</strong> mean score alone is weak — distribution and helpfulness add trust context.</div>
+      <div class="dd-flow-legend-item"><strong>Feedback:</strong> review signals should be validated against conversion impact, not just vanity counts.</div>
+    </div>
+  </div>
+</section>

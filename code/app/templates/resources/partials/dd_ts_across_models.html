@@ -1,0 +1,37 @@
+<section id="across-models" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 3</span>
+    <h2>Across Business Models</h2>
+    <p>The same detection pipeline exists everywhere, but threat type, decision speed, and regulatory pressure vary dramatically.</p>
+  </div>
+
+  <div class="dd-comparison-wrap">
+    <table class="dd-comparison-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Marketplace (Airbnb)</th>
+          <th>E-commerce (Amazon)</th>
+          <th>Social (Twitter)</th>
+          <th>SaaS (Okta)</th>
+          <th>Fintech (Stripe)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Primary threat</td><td>Fake listings, scammer hosts/guests, chargebacks</td><td>Counterfeit goods, return fraud, payment fraud</td><td>Spam, harassment, child safety, election misinformation</td><td>Account takeover, insider threats, data breach</td><td>Money laundering, fraud, sanctions violations</td></tr>
+        <tr><td>Key signal #1</td><td>Host history, booking cancellation pattern</td><td>Seller track record, refund history</td><td>Account age, follower authenticity, content patterns</td><td>Login velocity, geographic mismatch, data access patterns</td><td>Transaction amount, beneficiary jurisdiction, velocity</td></tr>
+        <tr><td>Key signal #2</td><td>Guest reviews & disputes</td><td>Payment method changes, geo velocity</td><td>Report volume, engagement vs follower ratio</td><td>Unusual API calls, permission grants</td><td>KYC/AML data, sanctioned entity lists</td></tr>
+        <tr><td>Key signal #3</td><td>Booking timing (last-minute risk)</td><td>Return rate, time-to-return</td><td>Tweet similarity, follow/unfollow patterns</td><td>Session duration anomalies</td><td>Source of funds verification</td></tr>
+        <tr><td>Speed of decision</td><td>Hours to days</td><td>Minutes</td><td>Seconds to minutes</td><td>Hours</td><td>Real-time</td></tr>
+        <tr><td>Cost of false positive</td><td>High</td><td>Medium</td><td>High</td><td>Medium-high</td><td>Extreme</td></tr>
+        <tr><td>Enforcement tool</td><td>Suspend account, refund + blacklist, deactivate listing</td><td>Remove product, refund buyer, seller ban</td><td>Delete posts, shadowban, suspend, permanent ban</td><td>Password reset, 2FA, session terminate</td><td>Block transaction, freeze account, escalate to regulators</td></tr>
+        <tr><td>Regulatory weight</td><td>Low-medium</td><td>Medium</td><td>Medium</td><td>Light</td><td>Extreme</td></tr>
+        <tr><td>Repeat offender rate</td><td>15-25%</td><td>5-10%</td><td>20-40%</td><td>&lt;5%</td><td>&lt;2%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dd-callout">
+    <strong>The pattern:</strong> Fintech optimizes for strict real-time control, social optimizes for speed at scale, and marketplaces optimize for trust balance between both sides.
+  </div>
+</section>

@@ -1,0 +1,99 @@
+/* Trust & Safety Deep Dive Styles */
+
+:root {
+  --dd-ts-primary: #dc2626;
+  --dd-ts-secondary: #991b1b;
+  --dd-ts-accent: #f87171;
+  --dd-ts-bg: #fef2f2;
+  --dd-ts-border: #fca5a5;
+  --dd-ts-text: #7f1d1d;
+  --dd-ts-muted: #475569;
+  --dd-ts-node-bg: #ffffff;
+  --dd-ts-node-border: #fca5a5;
+  --dd-ts-connector: #9ca3af;
+}
+
+.dark {
+  --dd-ts-primary: #ef4444;
+  --dd-ts-secondary: #dc2626;
+  --dd-ts-accent: #f87171;
+  --dd-ts-bg: #450a0a;
+  --dd-ts-border: #7f1d1d;
+  --dd-ts-text: #fca5a5;
+  --dd-ts-muted: #94a3b8;
+  --dd-ts-node-bg: #1e293b;
+  --dd-ts-node-border: #7f1d1d;
+  --dd-ts-connector: #475569;
+}
+
+.dd-trust-safety {
+  --dd-primary: var(--dd-ts-primary);
+  --dd-secondary: var(--dd-ts-secondary);
+  --dd-accent: var(--dd-ts-accent);
+  --dd-bg: var(--dd-ts-bg);
+  --dd-border: var(--dd-ts-border);
+  --dd-text: var(--dd-ts-text);
+  --dd-muted: var(--dd-ts-muted);
+  --dd-node-bg: var(--dd-ts-node-bg);
+  --dd-node-border: var(--dd-ts-node-border);
+  --dd-connector: var(--dd-ts-connector);
+}
+
+.dd-ts-node-caption {
+  font-size: 10px;
+  fill: var(--dd-muted);
+  text-anchor: middle;
+}
+
+.dd-ts-feedback-arrow {
+  stroke: var(--dd-secondary);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 6 4;
+  opacity: 0.85;
+}
+
+.dd-ts-feedback-label {
+  font-size: 11px;
+  fill: var(--dd-secondary);
+  font-weight: 700;
+}
+
+.dd-ts-journey-good { border-left: 4px solid #16a34a; }
+.dd-ts-journey-bad { border-left: 4px solid #dc2626; }
+
+.dd-ts-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dd-ts-arch-box {
+  border: 1.5px solid var(--dd-border);
+  border-radius: 10px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--dd-bg) 65%, white);
+}
+
+.dark .dd-ts-arch-box {
+  background: color-mix(in srgb, var(--dd-bg) 55%, black);
+}
+
+.dd-ts-arch-box h5 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dd-text);
+  margin-bottom: 4px;
+}
+
+.dd-ts-arch-box p {
+  font-size: 12px;
+  color: var(--dd-body);
+}
+
+@media (max-width: 900px) {
+  .dd-ts-arch-grid {
+    grid-template-columns: 1fr;
+  }
+}

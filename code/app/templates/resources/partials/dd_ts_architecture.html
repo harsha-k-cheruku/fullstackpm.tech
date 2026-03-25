@@ -1,0 +1,49 @@
+<section id="architecture" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 5</span>
+    <h2>Architecture Deep Dive</h2>
+    <p>Operationally mature Trust &amp; Safety systems are layered: ingest signals, score risk, route decisions, execute actions, and continuously retrain.</p>
+  </div>
+
+  <div class="dd-architecture">
+    <div class="dd-arch-layer">
+      <h4>Layer 1: Signal Ingestion &amp; Storage</h4>
+      <p>User behavior logs, content events, reports, and transaction metadata stream through real-time ingestion and long-term retention stores.</p>
+      <div class="dd-ts-arch-grid">
+        <div class="dd-ts-arch-box"><h5>Streaming + Schema</h5><p>Event schemas, deduplication, and retention policies (often 2+ years for legal requirements).</p></div>
+        <div class="dd-ts-arch-box"><h5>Warehouse Backbone</h5><p>Centralized historical storage for model training and forensic analysis.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 2: Feature Engineering &amp; Risk Scoring</h4>
+      <p>Velocity, behavior, and graph features feed model scoring APIs in real-time.</p>
+      <div class="dd-ts-arch-grid">
+        <div class="dd-ts-arch-box"><h5>Feature Store</h5><p>Real-time feature retrieval (IP/account velocity, transaction bursts, reputation context).</p></div>
+        <div class="dd-ts-arch-box"><h5>Model Serving</h5><p>Versioned risk models with A/B capability and confidence scoring.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 3: Decision Engine &amp; Workflow</h4>
+      <p>Policy rules combine with model scores to route auto-action, manual investigation, or escalation.</p>
+      <div class="dd-ts-arch-grid">
+        <div class="dd-ts-arch-box"><h5>Rule Engine</h5><p>Threshold logic, rule versioning, and auditable change history.</p></div>
+        <div class="dd-ts-arch-box"><h5>Case Management</h5><p>Queues, SLA tracking, escalation tiers, and analyst workflow tooling.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 4: Enforcement &amp; Appeals</h4>
+      <p>Action APIs execute suspensions/removals/holds while appeal tooling supports fairness and reversibility.</p>
+      <div class="dd-ts-arch-grid">
+        <div class="dd-ts-arch-box"><h5>Action Executor</h5><p>Account/listing restrictions, blocks, reversals, and communication templates.</p></div>
+        <div class="dd-ts-arch-box"><h5>Appeal + Audit Trail</h5><p>Evidence intake, investigator tooling, reversal automation, compliance logs.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Hidden cost center:</strong> case management workflow. Weak tooling doubles analyst overhead and silently explodes operating cost.
+  </div>
+</section>

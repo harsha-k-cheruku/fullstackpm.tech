@@ -1,0 +1,69 @@
+<section id="how-it-works" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 2</span>
+    <h2>How It Works</h2>
+    <p>Signal observation feeds risk scoring, decisions, actions, appeals, and model updates in a continuous learning loop.</p>
+  </div>
+
+  <div class="dd-flow-wrap">
+    <svg class="dd-flow-svg" viewBox="0 0 1200 420" role="img" aria-label="Trust and safety decisioning pipeline">
+      <defs>
+        <marker id="dd-ts-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <polygon points="0 0, 10 4, 0 8" fill="currentColor"></polygon>
+        </marker>
+      </defs>
+
+      <rect class="dd-flow-node pulse-1" x="60" y="60" width="170" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="145" y="94">Signal Observation</text>
+      <text class="dd-ts-node-caption" x="145" y="112">logs, reports, metadata</text>
+
+      <rect class="dd-flow-node pulse-2" x="280" y="60" width="170" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="365" y="94">Risk Scoring</text>
+      <text class="dd-ts-node-caption" x="365" y="112">ML score (0-100)</text>
+
+      <rect class="dd-flow-node pulse-3" x="500" y="60" width="170" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="585" y="94">Decision Tree</text>
+      <text class="dd-ts-node-caption" x="585" y="112">allow, review, suspend</text>
+
+      <rect class="dd-flow-node pulse-4" x="680" y="160" width="170" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="765" y="194">Action</text>
+      <text class="dd-ts-node-caption" x="765" y="212">warn, restrict, remove</text>
+
+      <rect class="dd-flow-node pulse-5" x="500" y="280" width="170" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="585" y="314">User Appeal</text>
+      <text class="dd-ts-node-caption" x="585" y="332">evidence submitted</text>
+
+      <rect class="dd-flow-node pulse-6" x="280" y="280" width="170" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="365" y="314">Investigation</text>
+      <text class="dd-ts-node-caption" x="365" y="332">review + reversal</text>
+
+      <rect class="dd-flow-node pulse-7" x="900" y="160" width="170" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="985" y="194">Model Update</text>
+      <text class="dd-ts-node-caption" x="985" y="212">outcomes retrain model</text>
+
+      <path id="ts-path-1" class="dd-flow-path" d="M230,96 C245,96 260,96 280,96"></path>
+      <path id="ts-path-2" class="dd-flow-path" d="M450,96 C465,96 480,96 500,96"></path>
+      <path id="ts-path-3" class="dd-flow-path" d="M670,96 C710,96 740,130 765,160"></path>
+      <path id="ts-path-4" class="dd-flow-path" d="M765,232 C760,260 700,285 670,300"></path>
+      <path id="ts-path-5" class="dd-flow-path" d="M500,316 C470,316 440,316 450,316"></path>
+      <path id="ts-path-6" class="dd-flow-path" d="M670,196 C760,196 835,196 900,196"></path>
+
+      <path class="dd-ts-feedback-arrow" d="M985,232 C985,360 365,390 365,352" marker-end="url(#dd-ts-arrow)"></path>
+      <text class="dd-ts-feedback-label" x="640" y="398">Appeal and enforcement outcomes feed monthly model retraining</text>
+
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="0s"><mpath href="#ts-path-1"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="2s"><mpath href="#ts-path-2"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="4s"><mpath href="#ts-path-3"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="6s"><mpath href="#ts-path-4"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="8s"><mpath href="#ts-path-5"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="10s"><mpath href="#ts-path-6"></mpath></animateMotion></circle>
+    </svg>
+
+    <div class="dd-flow-legend">
+      <div class="dd-flow-legend-item"><strong>Signal observation:</strong> ingest transaction behavior, content, login telemetry, and user reports.</div>
+      <div class="dd-flow-legend-item"><strong>Decisioning:</strong> combine model score + policy thresholds to route auto-action vs human review.</div>
+      <div class="dd-flow-legend-item"><strong>Appeals:</strong> protect fairness and reduce false positives through structured evidence review.</div>
+      <div class="dd-flow-legend-item"><strong>Learning loop:</strong> reversals and repeat-offender outcomes calibrate future risk models.</div>
+    </div>
+  </div>
+</section>

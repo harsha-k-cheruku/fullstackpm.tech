@@ -1,0 +1,40 @@
+<section id="across-models" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 3</span>
+    <h2>Across Business Models</h2>
+    <p>Payment mechanics are shared, but fraud vectors, regulation, latency tolerance, and settlement expectations differ by model.</p>
+  </div>
+
+  <div class="dd-comparison-wrap">
+    <table class="dd-comparison-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Uber</th>
+          <th>Amazon</th>
+          <th>Stripe</th>
+          <th>Wise</th>
+          <th>Netflix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>What’s paid</td><td>Service (ride)</td><td>Product (goods)</td><td>Processing fees (SaaS)</td><td>Remittance transfer</td><td>Subscription content</td></tr>
+        <tr><td>$$ per transaction</td><td>$10-50</td><td>$20-200</td><td>$200-10K/month</td><td>$100-10K+</td><td>Recurring monthly</td></tr>
+        <tr><td>Transaction frequency</td><td>Daily</td><td>Monthly repeat</td><td>Monthly recurring</td><td>Variable</td><td>Monthly auto-charge</td></tr>
+        <tr><td>Chargeback rate</td><td>1-3%</td><td>0.5-1%</td><td>&lt;0.1%</td><td>&lt;0.1%</td><td>&lt;0.05%</td></tr>
+        <tr><td>Fraud vector</td><td>Stolen cards, account takeover</td><td>Friendly fraud, returns abuse</td><td>API key theft, account compromise</td><td>Sanctions evasion, wire fraud</td><td>Stolen card subscription spam</td></tr>
+        <tr><td>Avg fraud loss %</td><td>1-3%</td><td>0.3-0.8%</td><td>&lt;0.5%</td><td>&lt;0.2%</td><td>0.1-0.3%</td></tr>
+        <tr><td>Checkout steps</td><td>0-1</td><td>3-5</td><td>N/A backend</td><td>5-10</td><td>1-2</td></tr>
+        <tr><td>Checkout friction</td><td>Very low</td><td>Medium</td><td>N/A</td><td>High</td><td>Very low</td></tr>
+        <tr><td>Authorization latency target</td><td>&lt;100ms</td><td>&lt;500ms</td><td>Async billing</td><td>&lt;2s</td><td>&lt;1s</td></tr>
+        <tr><td>Payout speed</td><td>Daily/real-time</td><td>After shipment</td><td>Net-30</td><td>Near real-time</td><td>N/A recurring collection</td></tr>
+        <tr><td>Regulatory burden</td><td>Medium</td><td>Medium</td><td>High</td><td>Extreme</td><td>Low-medium</td></tr>
+        <tr><td>Key risk</td><td>Chargeback spirals</td><td>Returns/friendly fraud</td><td>Dispute fee margin pressure</td><td>Compliance breach</td><td>Volume card abuse</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Pattern:</strong> as money movement complexity increases, friction and regulation inevitably increase too. You can’t optimize all three of speed, security, and compliance equally.
+  </div>
+</section>

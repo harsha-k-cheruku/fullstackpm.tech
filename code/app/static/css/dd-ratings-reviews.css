@@ -1,0 +1,98 @@
+/* Ratings & Reviews Deep Dive Styles */
+
+:root {
+  --dd-rr-primary: #d97706;
+  --dd-rr-secondary: #b45309;
+  --dd-rr-accent: #f59e0b;
+  --dd-rr-bg: #fffbeb;
+  --dd-rr-border: #fcd34d;
+  --dd-rr-text: #b45309;
+  --dd-rr-muted: #475569;
+  --dd-rr-node-bg: #ffffff;
+  --dd-rr-node-border: #fcd34d;
+  --dd-rr-connector: #a8a29e;
+}
+
+.dark {
+  --dd-rr-primary: #f59e0b;
+  --dd-rr-secondary: #d97706;
+  --dd-rr-accent: #fbbf24;
+  --dd-rr-bg: #451a03;
+  --dd-rr-border: #b45309;
+  --dd-rr-text: #fcd34d;
+  --dd-rr-muted: #94a3b8;
+  --dd-rr-node-bg: #1e293b;
+  --dd-rr-node-border: #b45309;
+  --dd-rr-connector: #57534e;
+}
+
+.dd-ratings-reviews {
+  --dd-primary: var(--dd-rr-primary);
+  --dd-secondary: var(--dd-rr-secondary);
+  --dd-accent: var(--dd-rr-accent);
+  --dd-bg: var(--dd-rr-bg);
+  --dd-border: var(--dd-rr-border);
+  --dd-text: var(--dd-rr-text);
+  --dd-muted: var(--dd-rr-muted);
+  --dd-node-bg: var(--dd-rr-node-bg);
+  --dd-node-border: var(--dd-rr-node-border);
+  --dd-connector: var(--dd-rr-connector);
+}
+
+.dd-rr-node-caption {
+  font-size: 10px;
+  fill: var(--dd-muted);
+  text-anchor: middle;
+}
+
+.dd-rr-feedback-arrow {
+  stroke: var(--dd-secondary);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 6 4;
+}
+
+.dd-rr-feedback-label {
+  font-size: 11px;
+  fill: var(--dd-secondary);
+  font-weight: 700;
+}
+
+.dd-rr-pattern-good { border-left: 4px solid #16a34a; }
+.dd-rr-pattern-bad { border-left: 4px solid #dc2626; }
+
+.dd-rr-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dd-rr-arch-box {
+  border: 1.5px solid var(--dd-border);
+  border-radius: 10px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--dd-bg) 65%, white);
+}
+
+.dark .dd-rr-arch-box {
+  background: color-mix(in srgb, var(--dd-bg) 55%, black);
+}
+
+.dd-rr-arch-box h5 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dd-text);
+  margin-bottom: 4px;
+}
+
+.dd-rr-arch-box p {
+  font-size: 12px;
+  color: var(--dd-body);
+}
+
+@media (max-width: 900px) {
+  .dd-rr-arch-grid {
+    grid-template-columns: 1fr;
+  }
+}

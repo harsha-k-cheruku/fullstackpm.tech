@@ -1,0 +1,49 @@
+<section id="architecture" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 5</span>
+    <h2>Architecture Deep Dive</h2>
+    <p>Reliable review systems are data pipelines: collection, authenticity enforcement, aggregation, and ranking integration.</p>
+  </div>
+
+  <div class="dd-architecture">
+    <div class="dd-arch-layer">
+      <h4>Layer 1: Review Collection &amp; Ingestion</h4>
+      <p>Post-transaction triggers and prompt schedulers collect structured review input at the right time.</p>
+      <div class="dd-rr-arch-grid">
+        <div class="dd-rr-arch-box"><h5>Prompt Scheduler</h5><p>Timing experiments tune when to ask for highest-quality response.</p></div>
+        <div class="dd-rr-arch-box"><h5>Submission Pipeline</h5><p>Stars/text/photos ingestion with basic spam pre-filters.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 2: Moderation &amp; Authenticity</h4>
+      <p>Models and heuristics score review legitimacy based on text patterns, account signals, and transaction proof.</p>
+      <div class="dd-rr-arch-grid">
+        <div class="dd-rr-arch-box"><h5>Spam + Linguistic Detection</h5><p>Auto-generated text and repetitive boilerplate detection.</p></div>
+        <div class="dd-rr-arch-box"><h5>Reviewer Authenticity</h5><p>Cross-check identity, account age, and purchase verification.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 3: Aggregation &amp; Storage</h4>
+      <p>Raw reviews and moderation outputs roll into score distributions, trend stats, and cacheable summary signals.</p>
+      <div class="dd-rr-arch-grid">
+        <div class="dd-rr-arch-box"><h5>Aggregation Engine</h5><p>Computes average, volume, and star-distribution by item/time.</p></div>
+        <div class="dd-rr-arch-box"><h5>Trend Analytics</h5><p>Tracks shifts that may indicate manipulation or quality decay.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 4: Ranking Integration &amp; Feedback</h4>
+      <p>Review scores and quality signals feed search/recommendation models and UI ranking logic.</p>
+      <div class="dd-rr-arch-grid">
+        <div class="dd-rr-arch-box"><h5>Ranking API</h5><p>Exposes weighted review features to retrieval and ranking services.</p></div>
+        <div class="dd-rr-arch-box"><h5>Helpfulness Loop</h5><p>Crowd-voted review usefulness tunes sorting and weighting policies.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Hidden cost:</strong> review moderation at scale requires both ML and human spot-checking. Budget explicitly for ongoing operations, not just feature launch.
+  </div>
+</section>

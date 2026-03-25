@@ -1,0 +1,98 @@
+/* Payments & Checkout Deep Dive Styles */
+
+:root {
+  --dd-pc-primary: #16a34a;
+  --dd-pc-secondary: #15803d;
+  --dd-pc-accent: #4ade80;
+  --dd-pc-bg: #f0fdf4;
+  --dd-pc-border: #86efac;
+  --dd-pc-text: #15803d;
+  --dd-pc-muted: #475569;
+  --dd-pc-node-bg: #ffffff;
+  --dd-pc-node-border: #86efac;
+  --dd-pc-connector: #94a3b8;
+}
+
+.dark {
+  --dd-pc-primary: #22c55e;
+  --dd-pc-secondary: #16a34a;
+  --dd-pc-accent: #4ade80;
+  --dd-pc-bg: #052e16;
+  --dd-pc-border: #166534;
+  --dd-pc-text: #86efac;
+  --dd-pc-muted: #94a3b8;
+  --dd-pc-node-bg: #1e293b;
+  --dd-pc-node-border: #166534;
+  --dd-pc-connector: #475569;
+}
+
+.dd-payments-checkout {
+  --dd-primary: var(--dd-pc-primary);
+  --dd-secondary: var(--dd-pc-secondary);
+  --dd-accent: var(--dd-pc-accent);
+  --dd-bg: var(--dd-pc-bg);
+  --dd-border: var(--dd-pc-border);
+  --dd-text: var(--dd-pc-text);
+  --dd-muted: var(--dd-pc-muted);
+  --dd-node-bg: var(--dd-pc-node-bg);
+  --dd-node-border: var(--dd-pc-node-border);
+  --dd-connector: var(--dd-pc-connector);
+}
+
+.dd-pc-node-caption {
+  font-size: 10px;
+  fill: var(--dd-muted);
+  text-anchor: middle;
+}
+
+.dd-pc-feedback-arrow {
+  stroke: var(--dd-secondary);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 6 4;
+}
+
+.dd-pc-feedback-label {
+  font-size: 11px;
+  fill: var(--dd-secondary);
+  font-weight: 700;
+}
+
+.dd-pc-path-secure { border-left: 4px solid #16a34a; }
+.dd-pc-path-fast { border-left: 4px solid #0ea5e9; }
+
+.dd-pc-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dd-pc-arch-box {
+  border: 1.5px solid var(--dd-border);
+  border-radius: 10px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--dd-bg) 65%, white);
+}
+
+.dark .dd-pc-arch-box {
+  background: color-mix(in srgb, var(--dd-bg) 55%, black);
+}
+
+.dd-pc-arch-box h5 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dd-text);
+  margin-bottom: 4px;
+}
+
+.dd-pc-arch-box p {
+  font-size: 12px;
+  color: var(--dd-body);
+}
+
+@media (max-width: 900px) {
+  .dd-pc-arch-grid {
+    grid-template-columns: 1fr;
+  }
+}

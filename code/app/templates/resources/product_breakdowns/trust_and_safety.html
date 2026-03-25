@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Trust & Safety — PM Visual Guide | fullstackpm.tech{% endblock %}
+{% block description %}Product deep dive into Trust & Safety: risk detection pipelines, cross-model differences, metrics, architecture, and operational playbooks from Stripe, Airbnb, X, and Okta.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/deep-dive-base.css">
+<link rel="stylesheet" href="/static/css/dd-trust-safety.css">
+{% endblock %}
+
+{% block content %}
+<div class="dd-trust-safety">
+  <nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+    <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+    <span class="mx-1">›</span>
+    <a href="/resources/product-breakdowns" class="hover:underline" style="color: var(--color-text-tertiary);">Product Breakdowns</a>
+    <span class="mx-1">›</span>
+    <span style="color: var(--color-text-primary);">Trust &amp; Safety</span>
+  </nav>
+
+  <header class="mb-2">
+    <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Trust &amp; Safety — Product Deep Dive</h1>
+    <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 760px;">
+      The bouncer, the referee, and the insurance adjuster. This deep dive maps how platforms detect abuse, enforce policy fairly, and recover trust when incidents still happen.
+    </p>
+  </header>
+
+  {% include "resources/partials/dd_ts_subnav.html" %}
+
+  <div class="dd-page">
+    {% include "resources/partials/dd_ts_what_and_why.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_ts_how_it_works.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_ts_across_models.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_ts_metrics.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_ts_architecture.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_ts_challenges.html" %}
+    <hr class="dd-divider">
+    {% include "resources/partials/dd_ts_patterns.html" %}
+  </div>
+
+  <div class="dd-footer-note">
+    Product Deep Dives Series · Trust &amp; Safety · fullstackpm.tech · 2026
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const ddSections = ['what-and-why', 'how-it-works', 'across-models', 'metrics', 'architecture', 'challenges', 'patterns'];
+  const ddNavLinks = document.querySelectorAll('.dd-subnav-link');
+
+  function updateDdActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+    ddNavLinks.forEach(link => link.classList.remove('active'));
+
+    for (let i = ddSections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(ddSections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        ddNavLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + ddSections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateDdActiveLink, { passive: true });
+  ddNavLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      ddNavLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+  updateDdActiveLink();
+</script>
+{% endblock %}
