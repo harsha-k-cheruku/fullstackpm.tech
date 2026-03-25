@@ -6,61 +6,70 @@
   </div>
 
   <div class="dd-flow-wrap">
-    <svg class="dd-flow-svg" viewBox="0 0 1200 360" role="img" aria-label="Search and discovery pipeline flow">
+    <svg class="dd-flow-svg" viewBox="0 0 1100 420" role="img" aria-label="Search and discovery pipeline flow">
       <defs>
         <marker id="dd-sd-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
           <polygon points="0 0, 10 4, 0 8" fill="currentColor"></polygon>
         </marker>
       </defs>
 
-      <!-- Nodes -->
-      <rect class="dd-flow-node pulse-1" x="20" y="40" width="145" height="72" rx="12"></rect>
-      <text class="dd-flow-label" x="92" y="76">User Query</text>
-      <text class="dd-sd-node-caption" x="92" y="94">keyword / intent input</text>
+      <!-- Top row nodes (y=40) -->
+      <rect class="dd-flow-node pulse-1" x="20" y="40" width="140" height="68" rx="12"></rect>
+      <text class="dd-flow-label" x="90" y="72">User Query</text>
+      <text class="dd-sd-node-caption" x="90" y="90">keyword / intent</text>
 
-      <rect class="dd-flow-node pulse-2" x="190" y="40" width="145" height="72" rx="12"></rect>
-      <text class="dd-flow-label" x="262" y="76">Query Understanding</text>
-      <text class="dd-sd-node-caption" x="262" y="94">tokenize · correct · classify</text>
+      <rect class="dd-flow-node pulse-2" x="240" y="40" width="140" height="68" rx="12"></rect>
+      <text class="dd-flow-label" x="310" y="72">Query Understanding</text>
+      <text class="dd-sd-node-caption" x="310" y="90">tokenize · classify</text>
 
-      <rect class="dd-flow-node pulse-3" x="360" y="40" width="145" height="72" rx="12"></rect>
-      <text class="dd-flow-label" x="432" y="76">Candidate Retrieval</text>
-      <text class="dd-sd-node-caption" x="432" y="94">inverted + vector index</text>
+      <rect class="dd-flow-node pulse-3" x="460" y="40" width="140" height="68" rx="12"></rect>
+      <text class="dd-flow-label" x="530" y="72">Candidate Retrieval</text>
+      <text class="dd-sd-node-caption" x="530" y="90">indexes + ranking</text>
 
-      <rect class="dd-flow-node pulse-4" x="530" y="40" width="145" height="72" rx="12"></rect>
-      <text class="dd-flow-label" x="602" y="76">Ranking</text>
-      <text class="dd-sd-node-caption" x="602" y="94">relevance + business signals</text>
+      <!-- Middle node (y=160) -->
+      <rect class="dd-flow-node pulse-4" x="680" y="140" width="140" height="68" rx="12"></rect>
+      <text class="dd-flow-label" x="750" y="172">Ranking</text>
+      <text class="dd-sd-node-caption" x="750" y="190">relevance + signals</text>
 
-      <rect class="dd-flow-node pulse-5" x="700" y="40" width="145" height="72" rx="12"></rect>
-      <text class="dd-flow-label" x="772" y="76">Filtering</text>
-      <text class="dd-sd-node-caption" x="772" y="94">facets · eligibility · stock</text>
+      <!-- Bottom row nodes (y=280) -->
+      <rect class="dd-flow-node pulse-5" x="460" y="280" width="140" height="68" rx="12"></rect>
+      <text class="dd-flow-label" x="530" y="312">Filtering</text>
+      <text class="dd-sd-node-caption" x="530" y="330">facets · eligibility</text>
 
-      <rect class="dd-flow-node pulse-6" x="870" y="40" width="145" height="72" rx="12"></rect>
-      <text class="dd-flow-label" x="942" y="76">Re-ranking</text>
-      <text class="dd-sd-node-caption" x="942" y="94">personalization + freshness</text>
+      <rect class="dd-flow-node pulse-6" x="680" y="280" width="140" height="68" rx="12"></rect>
+      <text class="dd-flow-label" x="750" y="312">Re-ranking</text>
+      <text class="dd-sd-node-caption" x="750" y="330">personalization +</text>
 
-      <rect class="dd-flow-node pulse-7" x="1040" y="40" width="145" height="72" rx="12"></rect>
-      <text class="dd-flow-label" x="1112" y="76">Results Page</text>
-      <text class="dd-sd-node-caption" x="1112" y="94">layout + snippets + prompts</text>
+      <!-- Results node (right) -->
+      <rect class="dd-flow-node pulse-7" x="900" y="140" width="140" height="68" rx="12"></rect>
+      <text class="dd-flow-label" x="970" y="172">Results Page</text>
+      <text class="dd-sd-node-caption" x="970" y="190">layout + snippets</text>
 
-      <!-- Paths -->
-      <path id="sd-path-1" class="dd-flow-path" d="M165,76 C176,76 178,76 190,76"></path>
-      <path id="sd-path-2" class="dd-flow-path" d="M335,76 C346,76 348,76 360,76"></path>
-      <path id="sd-path-3" class="dd-flow-path" d="M505,76 C516,76 518,76 530,76"></path>
-      <path id="sd-path-4" class="dd-flow-path" d="M675,76 C686,76 688,76 700,76"></path>
-      <path id="sd-path-5" class="dd-flow-path" d="M845,76 C856,76 858,76 870,76"></path>
-      <path id="sd-path-6" class="dd-flow-path" d="M1015,76 C1026,76 1028,76 1040,76"></path>
+      <!-- Paths (longer, curved) -->
+      <!-- 1: User Query → Query Understanding (horizontal) -->
+      <path id="sd-path-1" class="dd-flow-path" d="M160,74 Q200,74 240,74"></path>
+      <!-- 2: Query Understanding → Candidate Retrieval (horizontal) -->
+      <path id="sd-path-2" class="dd-flow-path" d="M380,74 Q420,74 460,74"></path>
+      <!-- 3: Candidate Retrieval → Ranking (diagonal down-right, LONG!) -->
+      <path id="sd-path-3" class="dd-flow-path" d="M600,74 Q640,100 680,140"></path>
+      <!-- 4: Ranking → Filtering (diagonal down-left, LONG!) -->
+      <path id="sd-path-4" class="dd-flow-path" d="M720,208 Q650,240 600,280"></path>
+      <!-- 5: Filtering → Re-ranking (horizontal) -->
+      <path id="sd-path-5" class="dd-flow-path" d="M600,314 Q640,314 680,314"></path>
+      <!-- 6: Re-ranking → Results (diagonal up-right, LONG!) -->
+      <path id="sd-path-6" class="dd-flow-path" d="M820,314 Q860,250 900,174"></path>
 
-      <!-- Feedback loop -->
-      <path class="dd-sd-feedback-arrow" d="M1112,116 C1112,230 602,230 602,116" marker-end="url(#dd-sd-arrow)"></path>
-      <text class="dd-sd-feedback-label" x="855" y="250">Feedback loop: clicks, conversions, dwell time → model tuning</text>
+      <!-- Feedback loop (Results → Ranking, curved down and back) -->
+      <path class="dd-sd-feedback-arrow" d="M970,208 Q970,360 750,360 Q750,200 750,208" marker-end="url(#dd-sd-arrow)"></path>
+      <text class="dd-sd-feedback-label" x="750" y="385" text-anchor="middle">Feedback: clicks, conversions, dwell → model tuning</text>
 
-      <!-- Animated dots -->
-      <circle class="dd-flow-dot" r="5"><animateMotion dur="8s" repeatCount="indefinite" begin="0s"><mpath href="#sd-path-1"></mpath></animateMotion></circle>
-      <circle class="dd-flow-dot" r="5"><animateMotion dur="8s" repeatCount="indefinite" begin="1s"><mpath href="#sd-path-2"></mpath></animateMotion></circle>
-      <circle class="dd-flow-dot" r="5"><animateMotion dur="8s" repeatCount="indefinite" begin="2s"><mpath href="#sd-path-3"></mpath></animateMotion></circle>
-      <circle class="dd-flow-dot" r="5"><animateMotion dur="8s" repeatCount="indefinite" begin="3s"><mpath href="#sd-path-4"></mpath></animateMotion></circle>
-      <circle class="dd-flow-dot" r="5"><animateMotion dur="8s" repeatCount="indefinite" begin="4s"><mpath href="#sd-path-5"></mpath></animateMotion></circle>
-      <circle class="dd-flow-dot" r="5"><animateMotion dur="8s" repeatCount="indefinite" begin="5s"><mpath href="#sd-path-6"></mpath></animateMotion></circle>
+      <!-- Animated dots (longer durations so you can see them) -->
+      <circle class="dd-flow-dot" r="6"><animateMotion dur="12s" repeatCount="indefinite" begin="0s"><mpath href="#sd-path-1"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="6"><animateMotion dur="12s" repeatCount="indefinite" begin="2s"><mpath href="#sd-path-2"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="6"><animateMotion dur="12s" repeatCount="indefinite" begin="4s"><mpath href="#sd-path-3"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="6"><animateMotion dur="12s" repeatCount="indefinite" begin="6s"><mpath href="#sd-path-4"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="6"><animateMotion dur="12s" repeatCount="indefinite" begin="8s"><mpath href="#sd-path-5"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="6"><animateMotion dur="12s" repeatCount="indefinite" begin="10s"><mpath href="#sd-path-6"></mpath></animateMotion></circle>
     </svg>
 
     <div class="dd-flow-legend">
