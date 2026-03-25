@@ -77,7 +77,26 @@ Projects tightly coupled to the portfolio site. Deployed with main app.
 
 ---
 
-### 4. Blog + Comments System
+### 4. Resources Hub — Ecosystem Maps Series
+**Status:** 🟢 Live (Financial Ecosystem shipped Mar 24, 2026)
+**URL:** /resources/ecosystem-maps
+**Tech:** FastAPI + Jinja2 + Custom CSS (CSS variables + dark mode)
+**Features shipped:**
+- Financial Ecosystem map — 7 interactive diagrams (Layer Map, 4 Lending Models, Loan Flow tabbed, Lending vs Payments, Data Flywheel, Money Flow, User Journeys)
+- Sticky subnav with active-state pill tracking scroll position
+- Full dark mode support via semantic CSS variable system
+- Site navbar/footer integrated (previously was standalone FileResponse)
+
+**Backlog:** `ideas_evaluated/2026-03-24-ecosystem-maps-backlog.md`
+- Tier 1 next: Adtech/Programmatic, Two-Sided Marketplace
+- Tier 2: US Healthcare, Payments Infrastructure, AI/LLM Ecosystem
+- Tier 3: Mortgage, Crypto, InsurTech, Brokerage, E-commerce Fulfillment
+
+**When to Extract:** Never (core content series, stays integrated)
+
+---
+
+### 5. Blog + Comments System
 **Status:** 🟢 Live
 **URL:** /blog
 **Tech:** Markdown + SQLite (comments)
