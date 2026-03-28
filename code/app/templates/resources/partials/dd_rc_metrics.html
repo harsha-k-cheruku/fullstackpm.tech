@@ -1,0 +1,22 @@
+<section id="metrics" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 4</span>
+    <h2>Key Metrics</h2>
+    <p>Recommendation quality requires balancing accuracy and exploration. Precision-only dashboards usually hide long-term decay.</p>
+  </div>
+
+  <div class="dd-metric-grid">
+    <article class="dd-metric-card"><h3>Recommendation CTR</h3><p class="dd-metric-row"><strong>Formula:</strong> Clicks on recommendations / recommendation impressions</p><p class="dd-metric-row"><strong>Benchmark:</strong> 5-20%</p><p class="dd-metric-row"><strong>Why:</strong> Core relevance readout.</p></article>
+    <article class="dd-metric-card"><h3>Conversion from Recommendations</h3><p class="dd-metric-row"><strong>Formula:</strong> Recommended items purchased/viewed/completed / recommendation clicks</p><p class="dd-metric-row"><strong>Benchmark:</strong> 2-8%</p><p class="dd-metric-row"><strong>Why:</strong> Business impact over vanity engagement.</p></article>
+    <article class="dd-metric-card"><h3>Coverage</h3><p class="dd-metric-row"><strong>Formula:</strong> Catalog items appearing in recommendations / total catalog</p><p class="dd-metric-row"><strong>Benchmark:</strong> 50-80%</p><p class="dd-metric-row"><strong>Why:</strong> Guards against long-tail starvation.</p></article>
+    <article class="dd-metric-card"><h3>Diversity</h3><p class="dd-metric-row"><strong>Formula:</strong> Recommended items spanning distinct categories/creators / total recommendations</p><p class="dd-metric-row"><strong>Benchmark:</strong> 40-60% diverse</p><p class="dd-metric-row"><strong>Why:</strong> Prevents repetitive feeds and engagement fatigue.</p></article>
+    <article class="dd-metric-card"><h3>Serendipity Score</h3><p class="dd-metric-row"><strong>Formula:</strong> Successful recommendations user likely wouldn’t find unaided / successful recommendations</p><p class="dd-metric-row"><strong>Benchmark:</strong> 30-50%</p><p class="dd-metric-row"><strong>Why:</strong> Captures discovery value beyond relevance.</p></article>
+    <article class="dd-metric-card"><h3>Cold Start Performance</h3><p class="dd-metric-row"><strong>Formula:</strong> New-user recommendation conversion / warm-user recommendation conversion</p><p class="dd-metric-row"><strong>Benchmark:</strong> 50-70%</p><p class="dd-metric-row"><strong>Why:</strong> Indicates onboarding recommendation health.</p></article>
+    <article class="dd-metric-card"><h3>Filter Bubble Score</h3><p class="dd-metric-row"><strong>Formula:</strong> Similarity of recommended set to user’s historical profile</p><p class="dd-metric-row"><strong>Benchmark:</strong> Moderate target (not too high, not too low)</p><p class="dd-metric-row"><strong>Why:</strong> Detects over-personalization lock-in.</p></article>
+    <article class="dd-metric-card"><h3>Model Latency (P95)</h3><p class="dd-metric-row"><strong>Formula:</strong> 95th percentile recommendation response time</p><p class="dd-metric-row"><strong>Benchmark:</strong> &lt;200ms real-time use cases</p><p class="dd-metric-row"><strong>Why:</strong> Slow systems lose interaction windows.</p></article>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Most overlooked metric:</strong> serendipity. A system can score high CTR while still collapsing user discovery and long-term retention.
+  </div>
+</section>

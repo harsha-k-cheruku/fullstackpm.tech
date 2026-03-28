@@ -1,0 +1,39 @@
+<section id="across-models" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 3</span>
+    <h2>Across Business Models</h2>
+    <p>Recommendation systems share architecture, but optimize for different outcomes: engagement, revenue, retention, or feature adoption.</p>
+  </div>
+
+  <div class="dd-comparison-wrap">
+    <table class="dd-comparison-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Social (TikTok)</th>
+          <th>E-commerce (Amazon)</th>
+          <th>SaaS (Notion)</th>
+          <th>Fintech (Square)</th>
+          <th>Streaming (Spotify)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>What’s recommended</td><td>Videos</td><td>Products</td><td>Templates</td><td>Features</td><td>Songs/playlists</td></tr>
+        <tr><td>Recommendation driver</td><td>Watch time + engagement</td><td>Purchase history + browsing</td><td>Template usage patterns</td><td>Merchant profile + sales data</td><td>Listening history + taste</td></tr>
+        <tr><td>Algorithm scale</td><td>Millions/sec</td><td>Thousands/sec</td><td>Hundreds/min</td><td>Tens/min</td><td>Millions/sec</td></tr>
+        <tr><td>Cold start pressure</td><td>Extreme</td><td>High</td><td>Medium</td><td>Low</td><td>Medium</td></tr>
+        <tr><td>Ranking signal #1</td><td>Watch time</td><td>Purchase likelihood</td><td>Template downloads</td><td>Revenue potential</td><td>Audio feature affinity</td></tr>
+        <tr><td>Ranking signal #2</td><td>Report rates</td><td>Product rating</td><td>Creator reputation</td><td>Merchant segment fit</td><td>User similarity</td></tr>
+        <tr><td>Ranking signal #3</td><td>Follower virality</td><td>Price/discount</td><td>Recency</td><td>Historical performance</td><td>Explicit ratings</td></tr>
+        <tr><td>Personalization depth</td><td>Extreme</td><td>High</td><td>Medium</td><td>Low</td><td>High</td></tr>
+        <tr><td>Latency target</td><td>&lt;100ms</td><td>&lt;500ms</td><td>&lt;1s</td><td>&lt;1s</td><td>&lt;500ms</td></tr>
+        <tr><td>Retraining cadence</td><td>Daily</td><td>Weekly</td><td>Monthly</td><td>Quarterly</td><td>Daily</td></tr>
+        <tr><td>False positive cost</td><td>Medium</td><td>Medium</td><td>Low</td><td>Low</td><td>Low</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Tradeoff pattern:</strong> TikTok optimizes watch-time (engagement), Amazon optimizes purchase likelihood (revenue), and streaming products optimize completion/retention — same machinery, different objective functions.
+  </div>
+</section>

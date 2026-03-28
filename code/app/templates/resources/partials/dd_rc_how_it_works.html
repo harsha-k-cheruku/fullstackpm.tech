@@ -1,0 +1,69 @@
+<section id="how-it-works" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 2</span>
+    <h2>How It Works</h2>
+    <p>Recommendation pipelines transform behavior into ranked suggestions through feature engineering, model scoring, and continuous feedback learning.</p>
+  </div>
+
+  <div class="dd-flow-wrap">
+    <svg class="dd-flow-svg" viewBox="0 0 1200 360" role="img" aria-label="Recommendation model pipeline">
+      <defs>
+        <marker id="dd-rc-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+          <polygon points="0 0, 10 4, 0 8" fill="currentColor"></polygon>
+        </marker>
+      </defs>
+
+      <rect class="dd-flow-node pulse-1" x="20" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="100" y="80">Behavior Observation</text>
+      <text class="dd-rc-node-caption" x="100" y="98">views, clicks, purchases</text>
+
+      <rect class="dd-flow-node pulse-2" x="200" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="280" y="80">Feature Extraction</text>
+      <text class="dd-rc-node-caption" x="280" y="98">user/item vectors</text>
+
+      <rect class="dd-flow-node pulse-3" x="380" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="460" y="80">Model Training</text>
+      <text class="dd-rc-node-caption" x="460" y="98">CF + content + hybrid</text>
+
+      <rect class="dd-flow-node pulse-4" x="560" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="640" y="80">Scoring</text>
+      <text class="dd-rc-node-caption" x="640" y="98">predict user preference</text>
+
+      <rect class="dd-flow-node pulse-5" x="740" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="820" y="80">Ranking & Filtering</text>
+      <text class="dd-rc-node-caption" x="820" y="98">business + diversity rules</text>
+
+      <rect class="dd-flow-node pulse-6" x="920" y="44" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="1000" y="80">Serving</text>
+      <text class="dd-rc-node-caption" x="1000" y="98">top N delivered to UI</text>
+
+      <rect class="dd-flow-node pulse-7" x="920" y="220" width="160" height="72" rx="12"></rect>
+      <text class="dd-flow-label" x="1000" y="256">Feedback Loop</text>
+      <text class="dd-rc-node-caption" x="1000" y="274">retrain from outcomes</text>
+
+      <path id="rc-path-1" class="dd-flow-path" d="M180,80 C190,80 192,80 200,80"></path>
+      <path id="rc-path-2" class="dd-flow-path" d="M360,80 C370,80 372,80 380,80"></path>
+      <path id="rc-path-3" class="dd-flow-path" d="M540,80 C550,80 552,80 560,80"></path>
+      <path id="rc-path-4" class="dd-flow-path" d="M720,80 C730,80 732,80 740,80"></path>
+      <path id="rc-path-5" class="dd-flow-path" d="M900,80 C910,80 912,80 920,80"></path>
+      <path id="rc-path-6" class="dd-flow-path" d="M1000,116 C1000,150 1000,190 1000,220"></path>
+
+      <path class="dd-rc-feedback-arrow" d="M920,256 C700,350 340,340 280,116" marker-end="url(#dd-rc-arrow)"></path>
+      <text class="dd-rc-feedback-label" x="600" y="348">Recommendation outcomes tune features, model weights, and exploration policies</text>
+
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="0s"><mpath href="#rc-path-1"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="2s"><mpath href="#rc-path-2"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="4s"><mpath href="#rc-path-3"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="6s"><mpath href="#rc-path-4"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="8s"><mpath href="#rc-path-5"></mpath></animateMotion></circle>
+      <circle class="dd-flow-dot" r="5"><animateMotion dur="12s" repeatCount="indefinite" begin="10s"><mpath href="#rc-path-6"></mpath></animateMotion></circle>
+    </svg>
+
+    <div class="dd-flow-legend">
+      <div class="dd-flow-legend-item"><strong>Behavior signals:</strong> explicit ratings are useful, but implicit behavior often drives scale.</div>
+      <div class="dd-flow-legend-item"><strong>Scoring:</strong> models predict preference probability over huge candidate sets.</div>
+      <div class="dd-flow-legend-item"><strong>Ranking:</strong> relevance gets tempered by business rules and diversity constraints.</div>
+      <div class="dd-flow-legend-item"><strong>Feedback:</strong> every click/skip/conversion updates future recommendation quality.</div>
+    </div>
+  </div>
+</section>

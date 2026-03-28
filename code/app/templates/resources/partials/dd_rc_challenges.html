@@ -1,0 +1,20 @@
+<section id="challenges" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 6</span>
+    <h2>Common Challenges</h2>
+    <p>Recommendation systems fail predictably around sparse data, feedback amplification, and unfair exposure dynamics.</p>
+  </div>
+
+  <div class="dd-challenge-grid">
+    <article class="dd-challenge-card"><span class="dd-chip">Cold Start</span><h3>No history, no signal</h3><p><strong>Problem:</strong> New users and items lack interaction data for model confidence.</p><p><strong>Solution:</strong> Combine popularity baselines, contextual hints, and content features until behavior data matures.</p><p><strong>Pattern:</strong> Bootstrap with robust defaults, then quickly personalize.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Filter Bubbles</span><h3>Over-personalization trap</h3><p><strong>Problem:</strong> Feeds become repetitive and narrow, hurting discovery and long-term engagement.</p><p><strong>Solution:</strong> Inject novelty and diversity constraints with explicit exploration budgets.</p><p><strong>Pattern:</strong> Controlled surprise beats pure similarity.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Latency</span><h3>Great model, slow experience</h3><p><strong>Problem:</strong> Heavy models violate interaction time budgets.</p><p><strong>Solution:</strong> Use approximate nearest-neighbor retrieval, caching, and batch precompute layers.</p><p><strong>Pattern:</strong> Fast-enough relevance usually wins over perfect-but-late predictions.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Data Sparsity</span><h3>Most user-item pairs unseen</h3><p><strong>Problem:</strong> Sparse matrices make preference inference unstable.</p><p><strong>Solution:</strong> Add side information (metadata/demographics) and propagate collaborative signals across neighborhoods.</p><p><strong>Pattern:</strong> Hybrid models are practical, not optional.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Feedback Loops</span><h3>Recommendations create trends</h3><p><strong>Problem:</strong> Exposure bias amplifies already-shown items, producing artificial popularity.</p><p><strong>Solution:</strong> Use exploration policies, causal analysis, and counterfactual evaluation.</p><p><strong>Pattern:</strong> Separate observed popularity from recommendation-caused popularity.</p></article>
+    <article class="dd-challenge-card"><span class="dd-chip">Fairness</span><h3>Creator/merchant visibility imbalance</h3><p><strong>Problem:</strong> Large incumbents dominate exposure while smaller creators/items get buried.</p><p><strong>Solution:</strong> Apply fairness constraints, minimum exposure programs, and diversity quotas.</p><p><strong>Pattern:</strong> Exposure allocation is a product policy decision, not just a model output.</p></article>
+  </div>
+
+  <div class="dd-callout">
+    <strong>System risk:</strong> unbounded feedback loops can make the recommender look “accurate” while steadily reducing ecosystem health and creator diversity.
+  </div>
+</section>

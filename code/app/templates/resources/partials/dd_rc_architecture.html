@@ -1,0 +1,49 @@
+<section id="architecture" class="dd-section">
+  <div class="dd-section-header">
+    <span class="dd-tag">Section 5</span>
+    <h2>Architecture Deep Dive</h2>
+    <p>Recommendation architecture separates signal collection, feature pipelines, model computation, and low-latency serving/ranking.</p>
+  </div>
+
+  <div class="dd-architecture">
+    <div class="dd-arch-layer">
+      <h4>Layer 1: Behavior Collection</h4>
+      <p>Event streams capture views, clicks, purchases, skips, and other interaction signals with user context.</p>
+      <div class="dd-rc-arch-grid">
+        <div class="dd-rc-arch-box"><h5>Event Stream</h5><p>Real-time ingestion of interaction telemetry.</p></div>
+        <div class="dd-rc-arch-box"><h5>User Context Store</h5><p>Demographics, preferences, and session state features.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 2: Feature Engineering</h4>
+      <p>User/item embeddings and interaction features are computed and refreshed for downstream models.</p>
+      <div class="dd-rc-arch-grid">
+        <div class="dd-rc-arch-box"><h5>User Profiles</h5><p>Dense vectors from behavior and inferred affinity signals.</p></div>
+        <div class="dd-rc-arch-box"><h5>Item Features</h5><p>Metadata/content descriptors for cold-start and similarity reasoning.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 3: Model Training</h4>
+      <p>Collaborative, content-based, and hybrid models learn preference structure and ranking behavior.</p>
+      <div class="dd-rc-arch-grid">
+        <div class="dd-rc-arch-box"><h5>Model Families</h5><p>Collaborative filtering, content-based scoring, and hybrid blends.</p></div>
+        <div class="dd-rc-arch-box"><h5>Training Orchestration</h5><p>Scheduled retraining and model version tracking.</p></div>
+      </div>
+    </div>
+
+    <div class="dd-arch-layer">
+      <h4>Layer 4: Serving &amp; Ranking</h4>
+      <p>Low-latency inference with ranking constraints for diversity, business policy, and freshness.</p>
+      <div class="dd-rc-arch-grid">
+        <div class="dd-rc-arch-box"><h5>Feature Store + Inference</h5><p>Fast retrieval and prediction via Redis/Tensor serving-style systems.</p></div>
+        <div class="dd-rc-arch-box"><h5>Ranking Pipeline</h5><p>Applies business and diversity rules before final recommendation set display.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dd-callout">
+    <strong>Reality check:</strong> model quality is useless without serving discipline. Latency and ranking guardrails often determine user-perceived quality more than raw offline accuracy.
+  </div>
+</section>

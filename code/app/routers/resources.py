@@ -100,6 +100,19 @@ async def payments_and_checkout(request: Request) -> HTMLResponse:
     )
 
 
+@router.get("/resources/product-breakdowns/recommendations-personalization", response_class=HTMLResponse)
+async def recommendations_personalization(request: Request) -> HTMLResponse:
+    """Serve the Recommendations & Personalization deep dive."""
+    return templates.TemplateResponse(
+        "resources/product_breakdowns/recommendations_and_personalization.html",
+        _ctx(
+            request,
+            title="Recommendations & Personalization — PM Visual Guide | fullstackpm.tech",
+            current_page="/resources/product-breakdowns",
+        ),
+    )
+
+
 @router.get("/resources/ecosystem-maps", response_class=HTMLResponse)
 async def ecosystem_maps(request: Request) -> HTMLResponse:
     """Ecosystem Maps gallery page."""

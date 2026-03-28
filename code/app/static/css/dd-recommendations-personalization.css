@@ -1,0 +1,98 @@
+/* Recommendations & Personalization Deep Dive Styles */
+
+:root {
+  --dd-rc-primary: #7e22ce;
+  --dd-rc-secondary: #6d28d9;
+  --dd-rc-accent: #c084fc;
+  --dd-rc-bg: #faf5ff;
+  --dd-rc-border: #d8b4fe;
+  --dd-rc-text: #5b21b6;
+  --dd-rc-muted: #475569;
+  --dd-rc-node-bg: #ffffff;
+  --dd-rc-node-border: #d8b4fe;
+  --dd-rc-connector: #a78bfa;
+}
+
+.dark {
+  --dd-rc-primary: #a855f7;
+  --dd-rc-secondary: #7e22ce;
+  --dd-rc-accent: #c084fc;
+  --dd-rc-bg: #2e1065;
+  --dd-rc-border: #6d28d9;
+  --dd-rc-text: #e9d5ff;
+  --dd-rc-muted: #94a3b8;
+  --dd-rc-node-bg: #1e293b;
+  --dd-rc-node-border: #6d28d9;
+  --dd-rc-connector: #7c3aed;
+}
+
+.dd-recommendations-personalization {
+  --dd-primary: var(--dd-rc-primary);
+  --dd-secondary: var(--dd-rc-secondary);
+  --dd-accent: var(--dd-rc-accent);
+  --dd-bg: var(--dd-rc-bg);
+  --dd-border: var(--dd-rc-border);
+  --dd-text: var(--dd-rc-text);
+  --dd-muted: var(--dd-rc-muted);
+  --dd-node-bg: var(--dd-rc-node-bg);
+  --dd-node-border: var(--dd-rc-node-border);
+  --dd-connector: var(--dd-rc-connector);
+}
+
+.dd-rc-node-caption {
+  font-size: 10px;
+  fill: var(--dd-muted);
+  text-anchor: middle;
+}
+
+.dd-rc-feedback-arrow {
+  stroke: var(--dd-secondary);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 6 4;
+}
+
+.dd-rc-feedback-label {
+  font-size: 11px;
+  fill: var(--dd-secondary);
+  font-weight: 700;
+}
+
+.dd-rc-mode-history { border-left: 4px solid #7e22ce; }
+.dd-rc-mode-explore { border-left: 4px solid #0ea5e9; }
+
+.dd-rc-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.dd-rc-arch-box {
+  border: 1.5px solid var(--dd-border);
+  border-radius: 10px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--dd-bg) 65%, white);
+}
+
+.dark .dd-rc-arch-box {
+  background: color-mix(in srgb, var(--dd-bg) 55%, black);
+}
+
+.dd-rc-arch-box h5 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dd-text);
+  margin-bottom: 4px;
+}
+
+.dd-rc-arch-box p {
+  font-size: 12px;
+  color: var(--dd-body);
+}
+
+@media (max-width: 900px) {
+  .dd-rc-arch-grid {
+    grid-template-columns: 1fr;
+  }
+}
