@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace Clearing Simulator — Upstart Model</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg:#f8fafc; --surface:#fff; --border:#e2e8f0;
+      --text:#1e293b; --muted:#64748b;
+      --blue:#3b82f6; --blue-l:#dbeafe;
+      --green:#10b981; --green-l:#d1fae5;
+      --amber:#f59e0b; --amber-l:#fef3c7;
+      --orange:#f97316; --orange-l:#ffedd5;
+      --red:#ef4444; --red-l:#fee2e2;
+      --purple:#8b5cf6; --purple-l:#ede9fe;
+      --gray:#94a3b8; --gray-l:#f1f5f9;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+
+    /* ── HEADER ── */
+    .hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 20px 0}
+    .hdr-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-bottom:12px}
+    .hdr h1{font-size:16px;font-weight:700}
+    .hdr p{font-size:11px;color:var(--muted);margin-top:1px}
+    .scenario-btns{display:flex;gap:6px;flex-wrap:wrap}
+    .sc-btn{padding:5px 10px;border:1px solid var(--border);border-radius:5px;background:var(--surface);cursor:pointer;font-size:11px;font-weight:600;color:var(--muted);transition:all .12s}
+    .sc-btn:hover{background:var(--gray-l);color:var(--text)}
+    .sc-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+    /* ── TABS ── */
+    .tabs{display:flex;gap:0;border-top:1px solid var(--border)}
+    .tab-btn{padding:9px 16px;font-size:12px;font-weight:600;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all .12s}
+    .tab-btn:hover{color:var(--text)}
+    .tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+    .tab-pane{display:none}
+    .tab-pane.active{display:block}
+
+    /* ── SIMULATOR LAYOUT ── */
+    .sim-wrap{display:grid;grid-template-columns:268px 1fr;height:calc(100vh - 104px);overflow:hidden}
+    .ctrl-panel{background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:14px}
+    .res-panel{overflow-y:auto;padding:14px}
+    .sec-ttl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border)}
+    .ctrl-sec{margin-bottom:18px}
+    .ctrl-row{margin-bottom:10px}
+    .ctrl-lbl{display:flex;justify-content:space-between;font-size:12px;font-weight:500;margin-bottom:3px}
+    .ctrl-v{font-weight:700;color:var(--blue);font-size:12px}
+    input[type=range]{width:100%;accent-color:var(--blue)}
+    .model-tgl{display:flex;border:1px solid var(--border);border-radius:5px;overflow:hidden;margin-bottom:8px}
+    .model-opt{flex:1;padding:6px 4px;text-align:center;font-size:11px;font-weight:600;cursor:pointer;background:var(--surface);border:none;color:var(--muted);transition:all .12s}
+    .model-opt.active{background:var(--blue);color:#fff}
+    .model-note{font-size:10px;color:var(--muted);line-height:1.45}
+    .p-row{display:flex;align-items:center;gap:7px;margin-bottom:5px;padding:6px 8px;border:1px solid var(--border);border-radius:5px;cursor:pointer;transition:background .1s}
+    .p-row:hover{background:var(--gray-l)}
+    .p-row.off{opacity:.35}
+    .p-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .p-info{flex:1;min-width:0}
+    .p-name{font-size:11px;font-weight:600}
+    .p-meta{font-size:10px;color:var(--muted)}
+    .p-chk{font-size:13px;color:var(--green)}
+    .run-btn{display:block;width:100%;padding:9px;background:var(--blue);color:#fff;border:none;border-radius:5px;font-size:13px;font-weight:700;cursor:pointer;margin-top:14px}
+    .run-btn:hover{opacity:.88}
+    #insights{margin-bottom:12px}
+    .ins{padding:9px 12px;border-radius:5px;font-size:12px;margin-bottom:6px;border-left:3px solid;line-height:1.5}
+    .ins.good{background:var(--green-l);border-color:var(--green);color:#14532d}
+    .ins.warn{background:var(--amber-l);border-color:var(--amber);color:#92400e}
+    .ins.bad{background:var(--red-l);border-color:var(--red);color:#991b1b}
+    .ins.info{background:var(--blue-l);border-color:var(--blue);color:#1e40af}
+    .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+    .kpi{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:11px 13px}
+    .kpi-lbl{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+    .kpi-v{font-size:26px;font-weight:800;line-height:1.1}
+    .kpi-v.good{color:var(--green)}.kpi-v.warn{color:var(--amber)}.kpi-v.bad{color:var(--red)}
+    .kpi-s{font-size:10px;color:var(--muted);margin-top:2px}
+    .ch-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+    .ch-card{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:13px}
+    .ch-ttl{font-size:12px;font-weight:700;margin-bottom:2px}
+    .ch-sub{font-size:10px;color:var(--muted);margin-bottom:10px}
+    .ch-wrap{position:relative;height:168px}
+    .sc-card{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:13px;margin-bottom:12px}
+    .sc-wrap{position:relative;height:260px}
+    .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:10px;color:var(--muted);margin-bottom:10px}
+    .leg{display:flex;align-items:center;gap:4px}
+    .leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+    /* ── CONTENT PAGES (journeys, engine, notes) ── */
+    .page{padding:24px;max-width:1200px;margin:0 auto;overflow-y:auto;height:calc(100vh - 104px)}
+    .page-hdr{margin-bottom:24px}
+    .page-hdr h2{font-size:20px;font-weight:800;margin-bottom:4px}
+    .page-hdr p{font-size:13px;color:var(--muted);line-height:1.6;max-width:760px}
+
+    /* ── JOURNEY FLOW ── */
+    .flow{display:flex;align-items:flex-start;overflow-x:auto;padding-bottom:12px;gap:0;margin-bottom:28px}
+    .step{flex:0 0 188px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;position:relative}
+    .step-arr{flex:0 0 28px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:18px;margin-top:28px;flex-shrink:0}
+    .step-num{font-size:10px;font-weight:800;color:var(--muted);margin-bottom:4px;letter-spacing:.04em}
+    .step-badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+    .badge-acq{background:var(--blue-l);color:#1e40af}
+    .badge-uw{background:var(--purple-l);color:#5b21b6}
+    .badge-clr{background:var(--green-l);color:#065f46}
+    .badge-life{background:var(--gray-l);color:#374151}
+    .badge-setup{background:var(--amber-l);color:#78350f}
+    .badge-active{background:var(--green-l);color:#065f46}
+    .badge-review{background:var(--blue-l);color:#1e40af}
+    .badge-reg{background:var(--purple-l);color:#5b21b6}
+    .badge-ops{background:var(--blue-l);color:#1e40af}
+    .badge-econ{background:var(--green-l);color:#065f46}
+    .step-icon{font-size:22px;margin-bottom:6px}
+    .step-title{font-size:12px;font-weight:700;margin-bottom:5px}
+    .step-body{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+    .step-detail summary{font-size:10px;font-weight:700;color:var(--blue);cursor:pointer;margin-bottom:4px;list-style:none}
+    .step-detail summary::-webkit-details-marker{display:none}
+    .step-detail[open] summary::before{content:'▾ '}
+    .step-detail summary::before{content:'▸ '}
+    .step-detail-body{font-size:10px;color:var(--muted);line-height:1.55;padding-top:4px}
+    .step-detail-body ul{padding-left:12px;margin-top:4px}
+    .step-detail-body li{margin-bottom:2px}
+    .step-friction{font-size:10px;background:var(--red-l);color:#991b1b;padding:5px 7px;border-radius:4px;border-left:2px solid var(--red);margin-top:6px}
+    .step-conv{font-size:10px;background:var(--green-l);color:#065f46;padding:4px 7px;border-radius:4px;margin-top:4px;font-weight:600}
+
+    /* ── PROFILE CARDS ── */
+    .profile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+    .profile-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px}
+    .profile-card h4{font-size:12px;font-weight:700;margin-bottom:4px}
+    .profile-card p{font-size:11px;color:var(--muted);line-height:1.5}
+    .profile-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;margin-bottom:8px}
+    .profile-row{font-size:11px;margin-bottom:3px}
+    .profile-key{color:var(--muted);font-weight:500}
+    .profile-val{font-weight:700}
+
+    /* ── WHY BOX ── */
+    .why-box{background:var(--surface);border:2px solid var(--blue);border-radius:10px;padding:20px 24px;margin-bottom:28px}
+    .why-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:var(--blue)}
+    .why-box p{font-size:13px;color:var(--text);line-height:1.65;margin-bottom:8px}
+    .why-box ul{padding-left:18px}
+    .why-box li{font-size:12px;color:var(--muted);margin-bottom:4px;line-height:1.5}
+
+    /* ── CLEARING ENGINE DIAGRAM ── */
+    .engine-wrap{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-bottom:28px}
+    .engine-flow{display:flex;flex-direction:column;gap:0}
+    .eng-node{border:2px solid;border-radius:10px;padding:16px 18px}
+    .eng-input{border-color:var(--gray);background:var(--gray-l)}
+    .eng-l1{border-color:var(--blue);background:var(--blue-l)}
+    .eng-l2{border-color:var(--purple);background:var(--purple-l)}
+    .eng-l3{border-color:var(--green);background:var(--green-l)}
+    .eng-output{border-color:var(--amber);background:var(--amber-l)}
+    .eng-arr{text-align:center;font-size:22px;color:var(--gray);margin:4px 0;position:relative}
+    .eng-fail{position:absolute;right:-100px;top:-10px;font-size:10px;color:var(--red);background:var(--red-l);border:1px solid var(--red);padding:3px 7px;border-radius:4px;white-space:nowrap;border-left:2px solid var(--red)}
+    .eng-node h4{font-size:12px;font-weight:800;margin-bottom:6px}
+    .eng-node .eng-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px}
+    .eng-checks{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+    .eng-check{font-size:10px;padding:2px 7px;border-radius:10px;background:rgba(255,255,255,0.7);font-weight:600;border:1px solid rgba(0,0,0,0.08)}
+    .eng-out{font-size:11px;color:var(--muted);margin-top:6px;padding-top:6px;border-top:1px dashed rgba(0,0,0,0.1)}
+    .eng-out b{color:var(--text)}
+    .failure-grid{display:grid;grid-template-columns:1fr;gap:8px}
+    .fail-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:6px;padding:12px}
+    .fail-card h5{font-size:12px;font-weight:700;margin-bottom:4px}
+    .fail-card p{font-size:11px;color:var(--muted);line-height:1.5}
+    .fail-fix{font-size:10px;color:#065f46;background:var(--green-l);padding:3px 7px;border-radius:4px;margin-top:6px;display:inline-block}
+
+    /* ── NOTES / ASSUMPTIONS ── */
+    .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .notes-section{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px}
+    .notes-section h3{font-size:13px;font-weight:800;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    .note-item{display:flex;gap:10px;margin-bottom:10px;font-size:12px;line-height:1.55}
+    .note-n{font-size:10px;font-weight:800;color:var(--muted);flex-shrink:0;width:18px;padding-top:1px}
+    .note-t{color:var(--text)}
+    .note-t span{color:var(--muted)}
+    .note-item.correct .note-n{color:var(--green)}
+    .note-item.simplified .note-n{color:var(--amber)}
+
+    /* ── SECTION DIVIDERS ── */
+    .section-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+    .info-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px}
+    .info-card h4{font-size:13px;font-weight:700;margin-bottom:8px}
+    .info-card p{font-size:12px;color:var(--muted);line-height:1.6}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<div class="hdr">
+  <div class="hdr-top">
+    <div>
+      <h1>Marketplace Clearing Simulator — Upstart Model</h1>
+      <p>Interactive model of how borrowers, bank partners, capital partners, and Upstart's AI clearing engine interact</p>
+    </div>
+    <div id="sc-btns" class="scenario-btns">
+      <button class="sc-btn active" onclick="loadScenario('healthy',this)">Healthy Market</button>
+      <button class="sc-btn" onclick="loadScenario('crunch',this)">Capital Crunch (2022)</button>
+      <button class="sc-btn" onclick="loadScenario('model18',this)">Model 18 Impact</button>
+      <button class="sc-btn" onclick="loadScenario('demand_surge',this)">Demand Surge</button>
+      <button class="sc-btn" onclick="loadScenario('constraint_shift',this)">Constraint Shift</button>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="simulator" onclick="showTab('simulator',this)">⚙ Simulator</button>
+    <button class="tab-btn" data-tab="borrower" onclick="showTab('borrower',this)">🙋 Borrower Journey</button>
+    <button class="tab-btn" data-tab="capital" onclick="showTab('capital',this)">📊 Capital Partner</button>
+    <button class="tab-btn" data-tab="bank" onclick="showTab('bank',this)">🏦 Bank Partner</button>
+    <button class="tab-btn" data-tab="engine" onclick="showTab('engine',this)">⚡ Clearing Engine</button>
+    <button class="tab-btn" data-tab="notes" onclick="showTab('notes',this)">📋 Assumptions & Notes</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 1: SIMULATOR ═══════════════════════ -->
+<div id="tab-simulator" class="tab-pane active">
+  <div class="sim-wrap">
+    <div class="ctrl-panel">
+      <div class="ctrl-sec">
+        <div class="sec-ttl">Borrower Population</div>
+        <div class="ctrl-row">
+          <div class="ctrl-lbl"><span>Volume</span><span class="ctrl-v" id="lbl-vol">500 loans</span></div>
+          <input type="range" id="sl-vol" min="100" max="800" value="500" step="50" oninput="document.getElementById('lbl-vol').textContent=this.value+' loans'">
+        </div>
+        <div class="ctrl-row">
+          <div class="ctrl-lbl"><span>Avg Credit Quality</span><span class="ctrl-v" id="lbl-cq">FICO 660</span></div>
+          <input type="range" id="sl-cq" min="600" max="740" value="660" step="10" oninput="document.getElementById('lbl-cq').textContent='FICO '+this.value">
+        </div>
+        <div class="ctrl-row">
+          <div class="ctrl-lbl"><span>APR Sensitivity</span><span class="ctrl-v" id="lbl-sens">Medium</span></div>
+          <input type="range" id="sl-sens" min="1" max="3" value="2" step="1" oninput="document.getElementById('lbl-sens').textContent=['','Low','Medium','High'][this.value]">
+        </div>
+      </div>
+      <div class="ctrl-sec">
+        <div class="sec-ttl">Underwriting Model</div>
+        <div class="model-tgl">
+          <button class="model-opt" id="btn-classic" onclick="setModel('classic')">Classic FICO</button>
+          <button class="model-opt active" id="btn-ai" onclick="setModel('ai')">AI — Model 18</button>
+        </div>
+        <div class="model-note"><b>Model 18:</b> APR fed back into risk model as a feature — finds near-prime borrowers underpriced by FICO alone. Upstart reports 101% more approvals, 38% lower avg APR vs. traditional models.</div>
+      </div>
+      <div class="ctrl-sec">
+        <div class="sec-ttl">Capital Partners</div>
+        <div id="partner-list"></div>
+        <div style="font-size:10px;color:var(--muted);margin-top:6px;">Balance sheet is always last resort. Click to toggle a partner.</div>
+      </div>
+      <button class="run-btn" onclick="runSim()">▶ Run Simulation</button>
+    </div>
+    <div class="res-panel">
+      <div id="insights"></div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-lbl">Clearing Rate</div><div class="kpi-v" id="kv-cr">—</div><div class="kpi-s" id="ks-cr"></div></div>
+        <div class="kpi"><div class="kpi-lbl">Avg Cleared APR</div><div class="kpi-v" id="kv-apr">—</div><div class="kpi-s" id="ks-apr"></div></div>
+        <div class="kpi"><div class="kpi-lbl">Balance Sheet Exp.</div><div class="kpi-v" id="kv-bs">—</div><div class="kpi-s" id="ks-bs"></div></div>
+        <div class="kpi"><div class="kpi-lbl">Volume Cleared</div><div class="kpi-v" id="kv-vol">—</div><div class="kpi-s" id="ks-vol"></div></div>
+      </div>
+      <div class="ch-row">
+        <div class="ch-card">
+          <div class="ch-ttl">Waterfall Distribution</div>
+          <div class="ch-sub">Where funded loans come from</div>
+          <div class="ch-wrap"><canvas id="ch-wf"></canvas></div>
+        </div>
+        <div class="ch-card">
+          <div class="ch-ttl">Capital Partner Utilization</div>
+          <div class="ch-sub">% of committed capacity deployed</div>
+          <div class="ch-wrap"><canvas id="ch-util"></canvas></div>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="ch-ttl">Loan Distribution: FICO vs APR</div>
+        <div class="ch-sub">Each dot = one borrower. Color = where it cleared or why it didn't.</div>
+        <div class="legend">
+          <span class="leg"><span class="leg-dot" style="background:#10b981"></span>Forward-flow</span>
+          <span class="leg"><span class="leg-dot" style="background:#3b82f6"></span>Bank partner</span>
+          <span class="leg"><span class="leg-dot" style="background:#f59e0b"></span>Spot market</span>
+          <span class="leg"><span class="leg-dot" style="background:#f97316"></span>Balance sheet</span>
+          <span class="leg"><span class="leg-dot" style="background:#ef4444"></span>APR rejected</span>
+          <span class="leg"><span class="leg-dot" style="background:#cbd5e1"></span>No eligible partner</span>
+        </div>
+        <div class="sc-wrap"><canvas id="ch-sc"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 2: BORROWER JOURNEY ═══════════════════════ -->
+<div id="tab-borrower" class="tab-pane">
+  <div class="page">
+    <div class="page-hdr">
+      <h2>Borrower Journey</h2>
+      <p>From first Google search to final payment — 9 stages, each with a different product, data requirement, and failure mode. Most borrowers don't experience all 9 in sequence; the drop-offs at each stage define the funnel that the Marketplace Optimization team owns.</p>
+    </div>
+
+    <div class="section-label">9-Stage Journey</div>
+    <div class="flow">
+      <!-- Step 1 -->
+      <div class="step">
+        <div class="step-num">STAGE 01</div>
+        <div class="step-badge badge-acq">Acquisition</div>
+        <div class="step-icon">🔍</div>
+        <div class="step-title">Discovery</div>
+        <div class="step-body">Borrower searches for "personal loan" or "debt consolidation." Finds Upstart via SEO, NerdWallet/Credit Karma affiliate, or direct referral.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>~45% of traffic from organic search</li>
+              <li>~30% from affiliate/referral partners</li>
+              <li>~25% direct or paid</li>
+              <li>No data collected yet</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Trust gap — borrowers may not know Upstart vs. big banks</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 2 -->
+      <div class="step">
+        <div class="step-num">STAGE 02</div>
+        <div class="step-badge badge-acq">Acquisition</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Pre-Qualification</div>
+        <div class="step-body">Borrower enters: loan amount, purpose, name, address, income, employment. Upstart runs a soft credit pull — no credit impact.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Soft pull = no FICO impact (key trust signal)</li>
+              <li>Data: SSN partial, employment type, self-reported income</li>
+              <li>1800+ signals begin loading from bureau file</li>
+              <li>Takes ~2 minutes to complete</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Form drop-off; confusion about "soft vs hard pull"</div>
+        <div class="step-conv">~65% reach this stage from landing</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <div class="step-num">STAGE 03</div>
+        <div class="step-badge badge-uw">Underwriting</div>
+        <div class="step-icon">🤖</div>
+        <div class="step-title">AI Risk Assessment</div>
+        <div class="step-body">Model 18 runs. APR is fed back as a feature — finds the lowest APR where P(default|borrower, APR) satisfies capital partner return floors.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>1M+ predictions per borrower per Upstart</li>
+              <li>Model tests multiple APR scenarios</li>
+              <li>Hidden-prime borrowers identified here</li>
+              <li>~91% of loans fully automated (no human review)</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ ~35% of borrowers don't qualify or are priced out</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 4 -->
+      <div class="step">
+        <div class="step-num">STAGE 04</div>
+        <div class="step-badge badge-uw">Underwriting</div>
+        <div class="step-icon">💬</div>
+        <div class="step-title">Rate Offer Display</div>
+        <div class="step-body">Borrower sees their personalized APR, term options (36 or 60 months), and monthly payment. Multiple options shown simultaneously.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>If APR &gt; borrower's tolerance: they leave (APR rejection)</li>
+              <li>Borrower may comparison-shop at this point</li>
+              <li>Payment calculator shown for each term</li>
+              <li>No credit impact yet — still reversible</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Rate-sensitive borrowers shop LendingTree/competitors</div>
+        <div class="step-conv">~70% who receive an offer view it seriously</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 5 -->
+      <div class="step">
+        <div class="step-num">STAGE 05</div>
+        <div class="step-badge badge-uw">Underwriting</div>
+        <div class="step-icon">✅</div>
+        <div class="step-title">Acceptance (Hard Pull)</div>
+        <div class="step-body">Borrower accepts terms. Hard credit inquiry filed — now on their credit report. This is the commitment point. ~60% of offer recipients accept.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Hard pull: FICO impact of ~5 points, fades in 12 months</li>
+              <li>Borrower shown explicit consent language</li>
+              <li>APR locked at this point</li>
+              <li>Marketplace now begins clearing process</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-conv">~60% of offer recipients accept</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 6 -->
+      <div class="step">
+        <div class="step-num">STAGE 06</div>
+        <div class="step-badge badge-clr">Verification</div>
+        <div class="step-icon">🔗</div>
+        <div class="step-title">Income & Identity Verification</div>
+        <div class="step-body">Borrower connects bank account via Plaid (preferred) or uploads pay stubs/tax docs. Identity verified via ID scan.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Plaid: instant, real-time income + cash flow signals</li>
+              <li>Pay stub upload: adds 1-3 day processing lag</li>
+              <li>~12-15% of applications fail or delay here</li>
+              <li>Fraud scoring runs in parallel</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Highest-friction step; Plaid failures cause abandonment</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 7 -->
+      <div class="step">
+        <div class="step-num">STAGE 07</div>
+        <div class="step-badge badge-clr">Clearing</div>
+        <div class="step-icon">⚡</div>
+        <div class="step-title">Marketplace Clearing</div>
+        <div class="step-body">Loan routed through eligibility matrix → pricing engine → waterfall router. Matched to a capital partner in seconds. Bank originates.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Eligibility matrix: which partners can fund this loan?</li>
+              <li>Waterfall: forward-flow first, then spot, then balance sheet</li>
+              <li>Bank partner is lender of record for origination</li>
+              <li>Bank immediately sells to capital partner</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-conv">~91% auto-cleared; ~9% to manual review</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 8 -->
+      <div class="step">
+        <div class="step-num">STAGE 08</div>
+        <div class="step-badge badge-clr">Clearing</div>
+        <div class="step-icon">💸</div>
+        <div class="step-title">Disbursement</div>
+        <div class="step-body">Loan funds deposited to borrower's bank account via ACH (1–3 days) or RTP (same-day, if available). Welcome email + payment setup prompt sent.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>ACH: standard, 1-3 business days</li>
+              <li>RTP (Real-Time Payments): instant, growing coverage</li>
+              <li>Auto-pay setup: reduces delinquency risk</li>
+              <li>~80% of funded borrowers enroll in auto-pay</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-conv">~95% who clear verification get funded</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <!-- Step 9 -->
+      <div class="step">
+        <div class="step-num">STAGE 09</div>
+        <div class="step-badge badge-life">Lifecycle</div>
+        <div class="step-icon">📅</div>
+        <div class="step-title">Repayment (36–60 months)</div>
+        <div class="step-body">Monthly payments via ACH. Serviced by Upstart. Capital partner earns interest. Early Payment Default (EPD) in first 90 days is the fastest model quality signal.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>EPD = default within 90 days → signals model error</li>
+              <li>Upstart services loan throughout (collects, reports)</li>
+              <li>Hardship deferral options reduce default rate</li>
+              <li>Post-payoff: re-engagement flow for repeat loan</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ EPD spike = fastest signal that something broke in underwriting</div>
+      </div>
+    </div>
+
+    <div class="section-label">Key Funnel Conversion Rates (Illustrative)</div>
+    <div class="two-col">
+      <div class="info-card">
+        <h4>Approval & Acceptance Funnel</h4>
+        <p style="font-size:12px;line-height:1.8">
+          100% — visit rate check page<br>
+          <span style="color:var(--muted)">↓ 65%</span> — complete pre-qualification<br>
+          <span style="color:var(--muted)">↓ 45%</span> — receive a rate offer (qualify)<br>
+          <span style="color:var(--muted)">↓ 27%</span> — accept offer (hard pull)<br>
+          <span style="color:var(--muted)">↓ 24%</span> — complete verification<br>
+          <span style="color:var(--muted)">↓ 23%</span> — funded ← <b>this is what you optimize</b>
+        </p>
+      </div>
+      <div class="info-card">
+        <h4>Where Does the Simulator Fit?</h4>
+        <p>The simulator models Stages 03–07: AI assessment → offer → acceptance → clearing. It does not model acquisition (traffic), verification friction, or the repayment lifecycle. Those stages are equally important — just owned by different teams. The Marketplace Optimization PM owns the clearing mechanism at the center of this funnel.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 3: CAPITAL PARTNER ═══════════════════════ -->
+<div id="tab-capital" class="tab-pane">
+  <div class="page">
+    <div class="page-hdr">
+      <h2>Capital Partner Journey</h2>
+      <p>Capital partners are the supply side of the marketplace. They provide the funding that makes every loan possible. There are four structural types — each with different incentives, risk tolerances, and relationship dynamics. The Marketplace Optimization team must simultaneously satisfy all of them.</p>
+    </div>
+
+    <div class="section-label">Capital Partner Types</div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <div class="profile-tag" style="background:var(--green-l);color:#065f46">Forward-Flow</div>
+        <h4>Eltura / Aperture</h4>
+        <p>Pre-committed volume. Get first allocation in waterfall. Upstart's most stable capital source.</p>
+        <div style="margin-top:10px">
+          <div class="profile-row"><span class="profile-key">Target return: </span><span class="profile-val">7–9% net</span></div>
+          <div class="profile-row"><span class="profile-key">Commitment: </span><span class="profile-val">$500M–$600M</span></div>
+          <div class="profile-row"><span class="profile-key">Contract: </span><span class="profile-val">12–24 months</span></div>
+          <div class="profile-row"><span class="profile-key">Priority: </span><span class="profile-val">1st in waterfall</span></div>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-tag" style="background:var(--blue-l);color:#1e40af">Spot Market</div>
+        <h4>Hedge Funds / Asset Mgrs</h4>
+        <p>No commitment — buy individual loans on demand. Require higher APR floor to compensate for no volume guarantee.</p>
+        <div style="margin-top:10px">
+          <div class="profile-row"><span class="profile-key">Target return: </span><span class="profile-val">9–12% net</span></div>
+          <div class="profile-row"><span class="profile-key">Commitment: </span><span class="profile-val">None (bid-by-bid)</span></div>
+          <div class="profile-row"><span class="profile-key">FICO floor: </span><span class="profile-val">680+</span></div>
+          <div class="profile-row"><span class="profile-key">Priority: </span><span class="profile-val">3rd in waterfall</span></div>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-tag" style="background:var(--amber-l);color:#78350f">Bank Partner</div>
+        <h4>Regional Banks / CUs</h4>
+        <p>Lower cost of capital (deposit funded). Higher FICO requirements. CRA credit benefit for serving underbanked.</p>
+        <div style="margin-top:10px">
+          <div class="profile-row"><span class="profile-key">Target return: </span><span class="profile-val">6–8% net</span></div>
+          <div class="profile-row"><span class="profile-key">Commitment: </span><span class="profile-val">$100M–$200M</span></div>
+          <div class="profile-row"><span class="profile-key">FICO floor: </span><span class="profile-val">660+</span></div>
+          <div class="profile-row"><span class="profile-key">Priority: </span><span class="profile-val">2nd in waterfall</span></div>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-tag" style="background:var(--purple-l);color:#5b21b6">ABS / Securitization</div>
+        <h4>Structured Credit Investors</h4>
+        <p>Buy rated bonds backed by loan pools. Require pool size, rating, and credit enhancement. Longer setup time.</p>
+        <div style="margin-top:10px">
+          <div class="profile-row"><span class="profile-key">Target return: </span><span class="profile-val">5–8% (rated)</span></div>
+          <div class="profile-row"><span class="profile-key">Pool size: </span><span class="profile-val">$100M+ per deal</span></div>
+          <div class="profile-row"><span class="profile-key">Setup: </span><span class="profile-val">2–4 months</span></div>
+          <div class="profile-row"><span class="profile-key">Priority: </span><span class="profile-val">4th (pool-based)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">6-Phase Capital Partner Journey</div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-num">PHASE 01</div>
+        <div class="step-badge badge-setup">Setup</div>
+        <div class="step-icon">🔬</div>
+        <div class="step-title">Due Diligence</div>
+        <div class="step-body">Partner reviews Upstart's model back-tests, vintage performance (actual vs. predicted defaults), and regulatory structure.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Back-test: how did model predict vs. actual for 2019–2024 cohorts?</li>
+              <li>Stress test: how did loans perform in 2022 rate shock?</li>
+              <li>Model explainability: can risk team understand what drives the score?</li>
+              <li>Timeline: 1–3 months</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Black-box models scare risk committees — explainability matters</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 02</div>
+        <div class="step-badge badge-setup">Setup</div>
+        <div class="step-icon">📝</div>
+        <div class="step-title">Agreement Structure</div>
+        <div class="step-body">Negotiate structure: forward-flow commitment vs. spot purchase. Define return floors, EPD provisions, repurchase obligations.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Forward-flow: commit $X at return floor Y% for Z months</li>
+              <li>EPD clause: Upstart repurchases loans defaulting &lt;90 days</li>
+              <li>Performance trigger: if actual default &gt; predicted by X%, partner can exit</li>
+              <li>40–100 page purchase agreement</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 03</div>
+        <div class="step-badge badge-setup">Setup</div>
+        <div class="step-icon">⚙️</div>
+        <div class="step-title">Eligibility Config</div>
+        <div class="step-body">Partner specifies their criteria: minimum FICO, APR floor, loan size range, geography, loan purpose. Live volume preview shown.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Narrow criteria = fewer loans, more targeted exposure</li>
+              <li>Wide criteria = more volume, more variance</li>
+              <li>Preview: "X loans/month at these criteria historically"</li>
+              <li>Today often manual (opportunity: self-serve configurator)</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Config errors cause adverse selection — test before going live</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 04</div>
+        <div class="step-badge badge-active">Active</div>
+        <div class="step-icon">💰</div>
+        <div class="step-title">Active Deployment</div>
+        <div class="step-body">Loans allocated per waterfall priority. Partner receives matching loans in real-time. Dashboards show deployed capital and loan detail.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Forward-flow: first look at matching loans</li>
+              <li>Daily reconciliation of funded loans</li>
+              <li>Capacity tracking: pacing toward commitment</li>
+              <li>Whole loan detail available for due diligence</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-conv">Healthy: 80–95% commitment utilization pace</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 05</div>
+        <div class="step-badge badge-review">Review</div>
+        <div class="step-icon">📈</div>
+        <div class="step-title">Performance Monitoring</div>
+        <div class="step-body">Monthly: actual default rate vs. model-predicted. EPD tracked at 30/60/90 days. Cohort-by-cohort attribution. Partner gets full reporting access.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>EPD = strongest early signal of model quality issue</li>
+              <li>If actual &gt; predicted by &gt;15%: escalation required</li>
+              <li>Partner can request segment rebalancing</li>
+              <li>Benchmark: compare vs. comparable credit products</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Opacity = trust erosion. Partners who can't see performance leave.</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 06</div>
+        <div class="step-badge badge-review">Review</div>
+        <div class="step-icon">🔄</div>
+        <div class="step-title">Renewal / Expansion</div>
+        <div class="step-body">6 months before commitment expiry, renewal negotiation begins. Outperformers expand. Underperformers renegotiate structure or exit.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Upstart presents: actual return vs. target, cohort by cohort</li>
+              <li>If outperforming: partner typically expands commitment 20–50%</li>
+              <li>If underperforming: negotiate remedies, partial repurchase, model fix timeline</li>
+              <li>Net revenue retention of capital partners is a key business health metric</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-conv">Healthy renewal rate: &gt;80% of forward-flow partners renew</div>
+      </div>
+    </div>
+
+    <div class="section-label">What Capital Partners Fear Most</div>
+    <div class="two-col">
+      <div class="info-card">
+        <h4>Adverse Selection</h4>
+        <p>Being routed the worst loans while better loans go to spot market buyers. This happens when waterfall routing logic is misconfigured. The fix: transparent eligibility matrices + balanced allocation across tiers. If a partner suspects adverse selection, they leave — and they tell others.</p>
+      </div>
+      <div class="info-card">
+        <h4>Model Deterioration</h4>
+        <p>When actual default rates diverge upward from predicted. Can happen from: model drift (borrower population shifted), channel mix change (riskier acquisition), or macro shock (rate spike). EPD is the fastest signal — loans defaulting within 90 days are the strongest model quality indicator.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 4: BANK PARTNER ═══════════════════════ -->
+<div id="tab-bank" class="tab-pane">
+  <div class="page">
+    <div class="page-hdr">
+      <h2>Bank Partner Journey</h2>
+      <p>The bank is not optional — it's structurally required by US banking law. Understanding why, and what the bank actually does in each transaction, is essential for understanding why Upstart's marketplace is built the way it is.</p>
+    </div>
+
+    <div class="why-box">
+      <h3>🏛 Why the Bank Is Always Required</h3>
+      <p>In the United States, <b>only a federally or state-chartered bank can legally originate a consumer loan</b>. A hedge fund, investment firm, or fintech platform — no matter how sophisticated — cannot make a loan directly to a consumer. They can <i>own</i> loans. They cannot <i>make</i> them.</p>
+      <p>The second reason is even more important for marketplace economics: <b>a national bank can "export" its home state's interest rate laws to any borrower in any state</b> (the "valid when made" doctrine, from a 1978 Supreme Court case). Upstart partners with banks chartered in states with no usury cap (APR ceiling). This lets Upstart's AI model operate as one unified marketplace with consistent pricing across all 50 states. Without bank partners:</p>
+      <ul>
+        <li>Upstart would face different APR caps in every state — some as low as 10%</li>
+        <li>Their AI model might price a loan at 28% for a near-prime borrower in a strict-cap state and be legally unable to make it</li>
+        <li>The marketplace would fragment into 50 separate state products — killing the data flywheel</li>
+      </ul>
+      <p style="margin-top:8px"><b>The bank is not a rubber stamp.</b> It must genuinely underwrite and approve each loan, maintain fair lending documentation, and is subject to regulatory examination on its third-party lending program. It earns an origination fee (~1–3% of loan amount) and has zero credit risk — it sells the loan immediately.</p>
+    </div>
+
+    <div class="section-label">5-Phase Bank Partner Journey</div>
+    <div class="flow">
+      <div class="step">
+        <div class="step-num">PHASE 01</div>
+        <div class="step-badge badge-reg">Regulatory</div>
+        <div class="step-icon">📜</div>
+        <div class="step-title">Third-Party Program Setup</div>
+        <div class="step-body">Bank applies for regulatory approval to offer Upstart-powered loans. OCC or FDIC reviews the third-party lending program before any loans are made.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Bank submits credit policy to regulator for approval</li>
+              <li>BSA/AML (fraud + money laundering) procedures documented</li>
+              <li>Third-party risk management framework required</li>
+              <li>Timeline: 3–6 months for new bank partners</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Regulatory approval is the biggest barrier to adding new bank partners fast</div>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 02</div>
+        <div class="step-badge badge-ops">Operations</div>
+        <div class="step-icon">✍️</div>
+        <div class="step-title">Origination</div>
+        <div class="step-body">Each loan application is reviewed and approved by the bank under its approved credit policy. Bank's name appears on the promissory note — it is the legal lender.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Bank may delegate approval to Upstart within defined policy guardrails</li>
+              <li>All TILA (Truth in Lending Act) disclosures issued by bank</li>
+              <li>Fair lending documentation maintained per ECOA requirements</li>
+              <li>Each loan carries bank's name and routing/account info</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 03</div>
+        <div class="step-badge badge-ops">Operations</div>
+        <div class="step-icon">💸</div>
+        <div class="step-title">Funding</div>
+        <div class="step-body">Bank disburses loan proceeds from its own accounts to the borrower. Holds loan on its balance sheet for hours to a few days — never intended to hold long-term.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>ACH disbursement: 1–3 business days</li>
+              <li>RTP (Real-Time Payments): instant settlement, growing availability</li>
+              <li>Bank's balance sheet exposure is brief — measured in days</li>
+              <li>Credit risk clock starts ticking at disbursement</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 04</div>
+        <div class="step-badge badge-ops">Operations</div>
+        <div class="step-icon">📦</div>
+        <div class="step-title">Whole Loan Sale</div>
+        <div class="step-body">Bank sells the loan to a capital partner (or Upstart's balance sheet). Transfer is near-immediate. Bank receives principal + origination fee and exits credit exposure.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>Whole loan sale: capital partner buys the entire loan</li>
+              <li>Upstart handles all servicing post-sale (collections, reporting)</li>
+              <li>Bank retains: representations and warranties on loan quality</li>
+              <li>EPD repurchase obligation: if loan defaults within 90 days, bank may need to repurchase</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <div class="step-arr">→</div>
+
+      <div class="step">
+        <div class="step-num">PHASE 05</div>
+        <div class="step-badge badge-econ">Economics</div>
+        <div class="step-icon">💼</div>
+        <div class="step-title">Ongoing Fee Income</div>
+        <div class="step-body">Bank earns: origination fee per loan (1–3%), CRA credit for underbanked lending, growth without balance sheet risk. Regulatory obligations continue.</div>
+        <details class="step-detail">
+          <summary>Details</summary>
+          <div class="step-detail-body">
+            <ul>
+              <li>CRA = Community Reinvestment Act: regulators reward banks for lending to underserved communities</li>
+              <li>Bank must file periodic exam reports on third-party program</li>
+              <li>If regulator flags issues: bank can wind down with 90-day notice</li>
+              <li>Exit risk: bank regulatory pressure is Upstart's #1 supply-side concentration risk</li>
+            </ul>
+          </div>
+        </details>
+        <div class="step-friction">⚠ Bank partner exit due to regulatory pressure = origination capacity gap, hard to replace quickly</div>
+      </div>
+    </div>
+
+    <div class="section-label">Bank vs. Capital Partner — Key Distinction</div>
+    <div class="two-col">
+      <div class="info-card">
+        <h4>Bank Partner (Lender of Record)</h4>
+        <p><b>Role:</b> Legally makes the loan. Issues disclosures. Holds briefly.<br><br><b>Earns:</b> Origination fee (1–3% per loan). Zero credit risk.<br><br><b>Regulated by:</b> OCC, FDIC, CFPB. Subject to exam.<br><br><b>Cares about:</b> Regulatory compliance, not losing charter, fair lending documentation.</p>
+      </div>
+      <div class="info-card">
+        <h4>Capital Partner (Loan Buyer)</h4>
+        <p><b>Role:</b> Buys the loan from the bank. Takes on credit risk. Earns interest over 36–60 months.<br><br><b>Earns:</b> Interest income minus defaults. Net 7–11% target return.<br><br><b>Regulated by:</b> SEC (if fund). Not subject to banking regulation.<br><br><b>Cares about:</b> Model accuracy, adverse selection, EPD rates, consistent volume.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 5: CLEARING ENGINE ═══════════════════════ -->
+<div id="tab-engine" class="tab-pane">
+  <div class="page">
+    <div class="page-hdr">
+      <h2>The Clearing Engine</h2>
+      <p>This is what the Marketplace Optimization PM owns. Three layers — eligibility, pricing, routing — each with distinct logic, distinct failure modes, and distinct PM levers. A loan must pass all three to clear.</p>
+    </div>
+
+    <div class="engine-wrap">
+      <div class="engine-flow">
+        <!-- Input -->
+        <div class="eng-node eng-input">
+          <div class="eng-lbl">Input</div>
+          <h4>Loan Application + Signals</h4>
+          <div class="eng-checks">
+            <span class="eng-check">FICO + tradelines</span>
+            <span class="eng-check">Plaid income signals</span>
+            <span class="eng-check">Employment history</span>
+            <span class="eng-check">Cash flow patterns</span>
+            <span class="eng-check">Loan amount + purpose</span>
+          </div>
+          <div class="eng-out"><b>1,800+ features</b> passed to Layer 1</div>
+        </div>
+        <div class="eng-arr">↓</div>
+
+        <!-- Layer 1 -->
+        <div class="eng-node eng-l1" style="position:relative">
+          <div class="eng-lbl">Layer 1 — Deterministic Rules</div>
+          <h4>Eligibility Matrix</h4>
+          <p style="font-size:11px;color:#1e40af;margin-bottom:8px">Which capital partners can fund this loan? Binary checks — no ML here.</p>
+          <div class="eng-checks">
+            <span class="eng-check">FICO ≥ partner minimum?</span>
+            <span class="eng-check">Loan size in range?</span>
+            <span class="eng-check">Purpose allowed?</span>
+            <span class="eng-check">Geography approved?</span>
+            <span class="eng-check">Capacity remaining?</span>
+          </div>
+          <div class="eng-out"><b>Output:</b> List of eligible capital partners for this loan. If empty → loan cannot proceed regardless of APR.</div>
+          <div class="eng-fail">✗ Fail: No eligible partner → rejected (no_partner)</div>
+        </div>
+        <div class="eng-arr" style="position:relative">↓</div>
+
+        <!-- Layer 2 -->
+        <div class="eng-node eng-l2" style="position:relative">
+          <div class="eng-lbl">Layer 2 — AI Optimization (Model 18)</div>
+          <h4>Pricing Engine — APR as a Feature</h4>
+          <p style="font-size:11px;color:#5b21b6;margin-bottom:8px">Novel: APR is fed <i>back into</i> the risk model as an input, not just an output.</p>
+          <div class="eng-checks">
+            <span class="eng-check">P(default | borrower, APR) for multiple APR scenarios</span>
+            <span class="eng-check">Lower APR → lower payment → lower P(default)</span>
+            <span class="eng-check">Find APR where risk-adj. return ≥ partner floor</span>
+            <span class="eng-check">AND borrower accepts (APR ≤ max tolerance)</span>
+          </div>
+          <div class="eng-out"><b>Output:</b> Optimal clearing APR — the lowest price where both sides agree. Hidden-prime borrowers get significantly lower APRs than FICO alone would suggest.</div>
+          <div class="eng-fail" style="right:-110px">✗ Fail: No APR clears both sides → apr_too_high</div>
+        </div>
+        <div class="eng-arr">↓</div>
+
+        <!-- Layer 3 -->
+        <div class="eng-node eng-l3">
+          <div class="eng-lbl">Layer 3 — Waterfall Routing</div>
+          <h4>Allocation Engine</h4>
+          <p style="font-size:11px;color:#065f46;margin-bottom:8px">Given a clearing APR, which capital partner gets this loan? Priority-based routing.</p>
+          <div class="eng-checks">
+            <span class="eng-check">① Forward-flow (Eltura, Aperture) — committed, first access</span>
+            <span class="eng-check">② Bank programs (WestBank etc.) — lower cost of capital</span>
+            <span class="eng-check">③ Spot market — no commitment, higher APR floor</span>
+            <span class="eng-check">④ Balance sheet — last resort, Upstart funds it</span>
+          </div>
+          <div class="eng-out"><b>Output:</b> Partner assignment + loan funded. Clearing rate = % of loans that reach this output successfully.</div>
+        </div>
+        <div class="eng-arr">↓</div>
+
+        <!-- Output -->
+        <div class="eng-node" style="border:2px solid var(--amber);background:var(--amber-l)">
+          <div class="eng-lbl">Post-Clearance</div>
+          <h4>Funded Loan + Feedback Loop</h4>
+          <div class="eng-checks">
+            <span class="eng-check">Bank disburses via ACH/RTP</span>
+            <span class="eng-check">Bank sells to capital partner</span>
+            <span class="eng-check">Upstart earns platform fee</span>
+            <span class="eng-check">EPD monitoring starts (day 1)</span>
+            <span class="eng-check">Actual vs. predicted tracking begins</span>
+          </div>
+          <div class="eng-out"><b>Data flywheel:</b> repayment outcomes feed back into model calibration → better predictions → lower APRs → more loans clear → more data.</div>
+        </div>
+      </div>
+
+      <!-- Failure Modes sidebar -->
+      <div>
+        <div class="section-label">5 Failure Modes</div>
+        <div class="failure-grid">
+          <div class="fail-card">
+            <h5>APR Too High for Borrower</h5>
+            <p>Model prices loan at 28% APR. Borrower's tolerance is 24%. Loan doesn't clear — borrower rejects. Demand-side failure.</p>
+            <div class="fail-fix">PM fix: Improve model accuracy (APR-as-feature finds lower clearing price)</div>
+          </div>
+          <div class="fail-card">
+            <h5>No Eligible Capital Partner</h5>
+            <p>Borrower's FICO (610) or loan purpose (small business) doesn't meet any partner's criteria. Supply-side failure — no price fixes this.</p>
+            <div class="fail-fix">PM fix: Onboard partners with broader criteria or lower FICO floors</div>
+          </div>
+          <div class="fail-card">
+            <h5>Forward-Flow Capacity Exhausted</h5>
+            <p>Eltura hits their monthly commitment cap. Loan falls to spot market (higher APR required) or balance sheet. Clearing rate doesn't drop — but quality of placement does.</p>
+            <div class="fail-fix">PM fix: Pacing alerts; expand commitment or diversify partners</div>
+          </div>
+          <div class="fail-card">
+            <h5>Bank Policy Rejection</h5>
+            <p>Upstart model approves the loan. Bank partner's own credit policy rejects it. Creates "late decline" — worst UX (borrower thought they were approved).</p>
+            <div class="fail-fix">PM fix: Align Upstart model + bank policy criteria; earlier bank-policy pre-check</div>
+          </div>
+          <div class="fail-card">
+            <h5>Adverse Selection Cascade</h5>
+            <p>Routing error sends worst-performing loans to forward-flow partners, best to spot market. Partners see EPD spike. Begin exit process. Capital supply collapses.</p>
+            <div class="fail-fix">PM fix: Balanced allocation testing; segment-level performance monitoring per partner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 6: ASSUMPTIONS & NOTES ═══════════════════════ -->
+<div id="tab-notes" class="tab-pane">
+  <div class="page">
+    <div class="page-hdr">
+      <h2>Assumptions & Notes</h2>
+      <p>What this simulator models accurately, what it simplifies, and what real Upstart does differently. Knowing the gap between a model and reality is as important as knowing what the model shows.</p>
+    </div>
+
+    <div class="notes-grid">
+      <div class="notes-section">
+        <h3>⚠ What This Simulator Simplifies</h3>
+        <div class="note-item simplified"><div class="note-n">1</div><div class="note-t"><b>Borrower population uses normal distribution</b> <span>— Real data has complex bimodal clusters (prime and near-prime) with different behavioral patterns.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">2</div><div class="note-t"><b>"Hidden prime" is a binary flag</b> <span>— Real Model 18 uses continuous risk scoring across 1,800+ signals including income volatility, employment tenure, geographic cash flow patterns.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">3</div><div class="note-t"><b>APR is FICO-band lookup + offset</b> <span>— Real Model 18 is a gradient boosting model with non-linear interactions between hundreds of features. APR-as-feature means it runs iterative scenarios, not a lookup table.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">4</div><div class="note-t"><b>Eligibility is FICO floor + APR floor only</b> <span>— Real partners specify loan purpose, geography, debt-to-income ratio, employment type, and dozens of other segment criteria.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">5</div><div class="note-t"><b>Clearing is instantaneous</b> <span>— Real marketplace has timing windows: forward-flow partners get first-look periods (hours), spot market runs in batches, some loans wait overnight for bids.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">6</div><div class="note-t"><b>No income verification step</b> <span>— Real system: ~12–15% of accepted applications fail or delay at Plaid/income verification, reducing actual funded rate from simulated rate.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">7</div><div class="note-t"><b>No fraud detection layer</b> <span>— Real system runs parallel fraud scoring that declines applications post-offer. Affects near-prime segment disproportionately.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">8</div><div class="note-t"><b>Single APR per borrower</b> <span>— Real system offers 36-month and 60-month options simultaneously. Borrower choice affects actual default risk (shorter term → higher payment → different risk profile).</span></div></div>
+        <div class="note-item simplified"><div class="note-n">9</div><div class="note-t"><b>Static capital partner preferences</b> <span>— Real partners update eligibility criteria frequently based on portfolio performance, macro conditions, and capital availability. This is a dynamic, not static, supply.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">10</div><div class="note-t"><b>No macro factors</b> <span>— Fed rate changes directly affect capital partner return requirements. A +100bps rate increase can shift all partner APR floors upward, collapsing clearing rate for near-prime borrowers within weeks (this is exactly what happened in 2022).</span></div></div>
+        <div class="note-item simplified"><div class="note-n">11</div><div class="note-t"><b>No EPD feedback loop</b> <span>— Real system feeds EPD data back into model calibration within 30–90 days. The data flywheel is not represented; simulator is a static snapshot, not a dynamic system.</span></div></div>
+        <div class="note-item simplified"><div class="note-n">12</div><div class="note-t"><b>Balance sheet is always open</b> <span>— Real Upstart's balance sheet capacity is constrained by its own capital position. During 2022–2023, Upstart's balance sheet grew to ~$1B+ because it had to fund loans it couldn't place — creating real financial risk.</span></div></div>
+      </div>
+
+      <div>
+        <div class="notes-section" style="margin-bottom:16px">
+          <h3>✅ What This Simulator Correctly Models</h3>
+          <div class="note-item correct"><div class="note-n">1</div><div class="note-t"><b>Three-sided marketplace tension</b> — borrower APR tolerance, capital partner return floor, and Upstart's clearing rate must all align simultaneously.</div></div>
+          <div class="note-item correct"><div class="note-n">2</div><div class="note-t"><b>APR-as-feature concept</b> — AI model finds a lower clearing price for hidden-prime borrowers; these loans fail in classic model but succeed in Model 18.</div></div>
+          <div class="note-item correct"><div class="note-n">3</div><div class="note-t"><b>Waterfall routing priority</b> — forward-flow before bank before spot before balance sheet, with capacity constraints at each tier.</div></div>
+          <div class="note-item correct"><div class="note-n">4</div><div class="note-t"><b>Supply vs. demand constraint distinction</b> — the two failure modes (APR too high vs. no eligible partner) have different causes and different PM responses.</div></div>
+          <div class="note-item correct"><div class="note-n">5</div><div class="note-t"><b>Capital crunch dynamics</b> — removing forward-flow partners forces overflow to spot/balance sheet, raising APRs and reducing clearing rate.</div></div>
+          <div class="note-item correct"><div class="note-n">6</div><div class="note-t"><b>Balance sheet as a cost signal</b> — high balance sheet exposure is a leading indicator that the marketplace is not clearing efficiently.</div></div>
+          <div class="note-item correct"><div class="note-n">7</div><div class="note-t"><b>Commitment capacity exhaustion</b> — forward-flow partners hit their caps and overflow to lower-priority tiers, which is a real operational pattern.</div></div>
+        </div>
+
+        <div class="notes-section">
+          <h3>📐 Key Parameters Used</h3>
+          <div class="note-item"><div class="note-n">—</div><div class="note-t"><b>FICO distribution:</b> Normal(mean=creditQualitySlider, σ=65), clamped 520–820</div></div>
+          <div class="note-item"><div class="note-n">—</div><div class="note-t"><b>Loan amount:</b> Log-normal(μ=$12K, σ=0.45), clamped $2K–$45K</div></div>
+          <div class="note-item"><div class="note-n">—</div><div class="note-t"><b>Hidden prime rate:</b> 28% of FICO 580–720 borrowers have "hidden prime" flag</div></div>
+          <div class="note-item"><div class="note-n">—</div><div class="note-t"><b>APR reduction (Model 18 for hidden prime):</b> Normal(μ=8.5%, σ=1.5%) below classic FICO pricing</div></div>
+          <div class="note-item"><div class="note-n">—</div><div class="note-t"><b>Classic FICO APR bands:</b> 780+=10.5%, 740+=13%, 700+=16.5%, 660+=21.5%, 620+=27.5%, 580+=33%, &lt;580=38%</div></div>
+          <div class="note-item"><div class="note-n">—</div><div class="note-t"><b>Borrower max APR:</b> Decreases with FICO; hidden prime borrowers are 5% more rate-sensitive (they know their true risk)</div></div>
+          <div class="note-item"><div class="note-n">—</div><div class="note-t"><b>Capital partner capacities:</b> Eltura $4M, Aperture $3M, WestBank $2M, SpotFund = unlimited in simulation (represents deep spot market)</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ JAVASCRIPT ═══════════════════════ -->
+<script>
+// ── TAB SWITCHING ────────────────────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('sc-btns').style.display = id==='simulator' ? 'flex' : 'none';
+}
+
+// ── CAPITAL PARTNER DATA ─────────────────────────────────────────────────────
+const PARTNERS = [
+  {id:'eltura',    name:'Eltura',     type:'ff',   color:'#10b981', cap:4000000, minFICO:620, minAPR:15.5, pri:1, on:true},
+  {id:'aperture',  name:'Aperture',   type:'ff',   color:'#34d399', cap:3000000, minFICO:640, minAPR:16.0, pri:2, on:true},
+  {id:'westbank',  name:'WestBank',   type:'bank', color:'#3b82f6', cap:2000000, minFICO:660, minAPR:13.0, pri:3, on:true},
+  {id:'spotfund_a',name:'SpotFund A', type:'spot', color:'#f59e0b', cap:null,    minFICO:680, minAPR:17.5, pri:4, on:true},
+  {id:'spotfund_b',name:'SpotFund B', type:'spot', color:'#fbbf24', cap:null,    minFICO:700, minAPR:19.0, pri:5, on:true},
+];
+const BS = {id:'balance_sheet',name:'Balance Sheet',type:'bs',color:'#f97316',minFICO:560,minAPR:0,pri:99};
+let simState = {model:'ai', partners: Object.fromEntries(PARTNERS.map(p=>[p.id,p.on]))};
+let charts = {};
+
+// ── MATH ─────────────────────────────────────────────────────────────────────
+function gauss(m,s){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return m+s*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function lognorm(m,s){return Math.exp(Math.log(m)+s*gauss(0,1))}
+
+function classicAPR(f){
+  if(f>=780)return 10.5;if(f>=740)return 13;if(f>=700)return 16.5;
+  if(f>=660)return 21.5;if(f>=620)return 27.5;if(f>=580)return 33;return 38;
+}
+function aiAPR(b){
+  const base=classicAPR(b.fico);
+  if(b.hp)return clamp(base-clamp(gauss(8.5,1.5),5,12),9,40);
+  return clamp(base-clamp(gauss(1,0.8),0,3),9,40);
+}
+function borrowerMaxAPR(f,sens,hp){
+  let base;
+  if(f>=780)base=14;else if(f>=740)base=18;else if(f>=700)base=23;
+  else if(f>=660)base=29;else if(f>=620)base=33;else if(f>=580)base=37;else base=42;
+  if(hp)base-=5;
+  return clamp(base+(sens-2)*(-3)+gauss(0,2),9,50);
+}
+
+// ── GENERATION + CLEARING ────────────────────────────────────────────────────
+function makeBorrowers(n,cq,sens){
+  return Array.from({length:n},(_,i)=>{
+    const f=Math.round(clamp(gauss(cq,65),520,820));
+    const hp=f<720&&Math.random()<0.28;
+    const amt=Math.round(clamp(lognorm(12000,0.45),2000,45000)/100)*100;
+    return{id:i,fico:f,amount:amt,hp,maxAPR:borrowerMaxAPR(f,sens,hp)};
+  });
+}
+
+function clearLoans(borrowers,pids,model){
+  const caps={};PARTNERS.forEach(p=>{caps[p.id]=p.cap||Infinity});caps.balance_sheet=Infinity;
+  const alloc={};[...PARTNERS,BS].forEach(p=>{alloc[p.id]={count:0,vol:0,cap:p.cap||Infinity,name:p.name,type:p.type}});
+  const loans=[];let cleared=0,notCleared=0,reasons={apr_high:0,no_partner:0};
+
+  for(const b of borrowers){
+    const offered=Math.round((model==='classic'?classicAPR(b.fico)+gauss(0,0.4):aiAPR(b))*10)/10;
+    if(offered>b.maxAPR){loans.push({...b,offered,outcome:'nc',reason:'apr_high'});notCleared++;reasons.apr_high++;continue}
+    let placed=false;
+    const ordered=PARTNERS.filter(p=>pids.includes(p.id)).sort((a,b)=>a.pri-b.pri);
+    for(const p of ordered){
+      if(caps[p.id]<b.amount||b.fico<p.minFICO||offered<p.minAPR)continue;
+      caps[p.id]-=b.amount;alloc[p.id].count++;alloc[p.id].vol+=b.amount;
+      loans.push({...b,offered,outcome:'cleared',pid:p.id,ptype:p.type});cleared++;placed=true;break;
+    }
+    if(!placed){
+      if(b.fico>=BS.minFICO&&offered>=BS.minAPR){alloc.balance_sheet.count++;alloc.balance_sheet.vol+=b.amount;loans.push({...b,offered,outcome:'cleared',pid:'balance_sheet',ptype:'bs'});cleared++;}
+      else{loans.push({...b,offered,outcome:'nc',reason:'no_partner'});notCleared++;reasons.no_partner++;}
+    }
+  }
+  const cl=loans.filter(l=>l.outcome==='cleared');
+  const totalVol=cl.reduce((s,l)=>s+l.amount,0);
+  const avgAPR=cl.length?cl.reduce((s,l)=>s+l.offered,0)/cl.length:0;
+  return{loans,cleared,notCleared,total:cleared+notCleared,alloc,totalVol,avgAPR,reasons};
+}
+
+// ── SIMULATION RUNNER ────────────────────────────────────────────────────────
+function runSim(){
+  const n=+document.getElementById('sl-vol').value;
+  const cq=+document.getElementById('sl-cq').value;
+  const sens=+document.getElementById('sl-sens').value;
+  const pids=PARTNERS.filter(p=>simState.partners[p.id]).map(p=>p.id);
+  const borrowers=makeBorrowers(n,cq,sens);
+  const res=clearLoans(borrowers,pids,simState.model);
+  renderKPIs(res);renderWF(res);renderUtil(res,pids);renderScatter(res);renderInsights(res,pids);
+}
+
+// ── KPIS ─────────────────────────────────────────────────────────────────────
+function renderKPIs(r){
+  const cr=r.total>0?r.cleared/r.total*100:0;
+  const bsVol=r.alloc.balance_sheet.vol;
+  const bsPct=r.totalVol>0?bsVol/r.totalVol*100:0;
+  setKPI('kv-cr',cr.toFixed(1)+'%',cr>=85?'good':cr>=70?'warn':'bad','ks-cr',`${r.cleared} of ${r.total} loans funded`);
+  setKPI('kv-apr',r.avgAPR.toFixed(1)+'%',r.avgAPR<=18?'good':r.avgAPR<=24?'warn':'bad','ks-apr','avg across cleared loans');
+  setKPI('kv-bs',bsPct.toFixed(1)+'%',bsPct<=5?'good':bsPct<=15?'warn':'bad','ks-bs','$'+(bsVol/1000).toFixed(0)+'K on Upstart books');
+  setKPI('kv-vol','$'+(r.totalVol/1e6).toFixed(1)+'M',null,'ks-vol',r.cleared+' loans funded');
+}
+function setKPI(vid,vt,vcls,sid,st){
+  const v=document.getElementById(vid);v.textContent=vt;if(vcls)v.className='kpi-v '+vcls;
+  document.getElementById(sid).textContent=st;
+}
+
+// ── WATERFALL CHART ──────────────────────────────────────────────────────────
+function renderWF(r){
+  let ff=0,bank=0,spot=0,bs=0;
+  for(const[pid,d]of Object.entries(r.alloc)){
+    if(pid==='eltura'||pid==='aperture')ff+=d.vol;
+    else if(pid==='westbank')bank+=d.vol;
+    else if(pid==='spotfund_a'||pid==='spotfund_b')spot+=d.vol;
+    else if(pid==='balance_sheet')bs+=d.vol;
+  }
+  const t=ff+bank+spot+bs||1;const p=v=>Math.round(v/t*100);
+  const data={labels:['Forward-Flow','Bank Partner','Spot Market','Balance Sheet'],datasets:[{data:[p(ff),p(bank),p(spot),p(bs)],backgroundColor:['#10b981','#3b82f6','#f59e0b','#f97316'],borderWidth:0}]};
+  const opts={responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:6,boxWidth:9}},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw}%`}}}};
+  if(charts.wf){charts.wf.data=data;charts.wf.update();}else charts.wf=new Chart(document.getElementById('ch-wf'),{type:'doughnut',data,options:opts});
+}
+
+// ── UTILIZATION CHART ────────────────────────────────────────────────────────
+function renderUtil(r,pids){
+  const fps=PARTNERS.filter(p=>pids.includes(p.id)&&p.cap);
+  const data={labels:fps.map(p=>p.name),datasets:[{data:fps.map(p=>Math.min(100,Math.round(r.alloc[p.id].vol/p.cap*100))),backgroundColor:fps.map(p=>p.color),borderWidth:0,borderRadius:3}]};
+  const opts={indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw}% capacity used`}}},scales:{x:{min:0,max:100,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f1f5f9'}},y:{ticks:{font:{size:10}},grid:{display:false}}}};
+  if(charts.util){charts.util.data=data;charts.util.update();}else charts.util=new Chart(document.getElementById('ch-util'),{type:'bar',data,options:opts});
+}
+
+// ── SCATTER CHART ─────────────────────────────────────────────────────────────
+function renderScatter(r){
+  const loans=r.loans.length>600?r.loans.filter((_,i)=>i%Math.ceil(r.loans.length/600)===0):r.loans;
+  const ds=[
+    {label:'Forward-flow',data:[],bg:'rgba(16,185,129,0.6)'},
+    {label:'Bank',data:[],bg:'rgba(59,130,246,0.6)'},
+    {label:'Spot',data:[],bg:'rgba(245,158,11,0.65)'},
+    {label:'Balance sheet',data:[],bg:'rgba(249,115,22,0.75)'},
+    {label:'APR rejected',data:[],bg:'rgba(239,68,68,0.6)',ps:'crossRot'},
+    {label:'No partner',data:[],bg:'rgba(203,213,225,0.7)',ps:'crossRot'},
+  ];
+  for(const l of loans){
+    const pt={x:l.fico,y:l.offered};
+    if(l.outcome==='cleared'){
+      if(l.ptype==='ff')ds[0].data.push(pt);
+      else if(l.ptype==='bank')ds[1].data.push(pt);
+      else if(l.ptype==='spot')ds[2].data.push(pt);
+      else ds[3].data.push(pt);
+    }else{if(l.reason==='apr_high')ds[4].data.push(pt);else ds[5].data.push(pt);}
+  }
+  const datasets=ds.map(d=>({label:d.label,data:d.data,backgroundColor:d.bg,pointRadius:3.5,pointStyle:d.ps||'circle',borderWidth:0}));
+  const opts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` FICO ${c.raw.x} · APR ${c.raw.y}%`}}},scales:{x:{title:{display:true,text:'FICO Score',font:{size:11}},min:520,max:820,ticks:{font:{size:10}},grid:{color:'#f1f5f9'}},y:{title:{display:true,text:'APR (%)',font:{size:11}},min:8,max:44,ticks:{callback:v=>v+'%',font:{size:10}},grid:{color:'#f1f5f9'}}}};
+  if(charts.sc){charts.sc.data={datasets};charts.sc.update();}else charts.sc=new Chart(document.getElementById('ch-sc'),{type:'scatter',data:{datasets},options:opts});
+}
+
+// ── INSIGHTS ──────────────────────────────────────────────────────────────────
+function renderInsights(r,pids){
+  const cr=r.total>0?r.cleared/r.total*100:0;
+  const bsVol=r.alloc.balance_sheet.vol;const bsPct=r.totalVol>0?bsVol/r.totalVol*100:0;
+  const ffActive=PARTNERS.filter(p=>p.type==='ff'&&pids.includes(p.id)).length;
+  const ins=[];
+  if(simState.model==='ai'){const hp=r.loans.filter(l=>l.outcome==='cleared'&&l.hp).length;if(hp>0)ins.push({t:'info',m:`<b>Model 18 found ${hp} hidden-prime borrowers</b> — FICO alone would have priced them out. AI-adjusted APR brought them within partner requirements and borrower acceptance.`});}
+  if(ffActive===0)ins.push({t:'bad',m:`<b>No forward-flow partners active — capital crunch mode.</b> All capital sourced from spot or balance sheet. Clearing rate and APRs are significantly worse. This is what 2022 looked like.`});
+  if(cr<70){const why=r.reasons.apr_high>r.reasons.no_partner?'borrowers rejecting APR (demand-side)':'no eligible capital partner (supply-side)';ins.push({t:'bad',m:`<b>Clearing rate critical: ${cr.toFixed(1)}%.</b> Primary driver: ${why}. ${r.reasons.apr_high} APR rejections, ${r.reasons.no_partner} unmatched.`});}
+  else if(cr<83)ins.push({t:'warn',m:`<b>Clearing rate below target: ${cr.toFixed(1)}%.</b> ${r.reasons.apr_high} APR rejections + ${r.reasons.no_partner} unmatched loans.`});
+  if(bsPct>15)ins.push({t:'bad',m:`<b>Balance sheet exposure: ${bsPct.toFixed(1)}%.</b> Upstart holding $${(bsVol/1000).toFixed(0)}K on its own books — unsustainable for asset-light model.`});
+  else if(bsPct>6)ins.push({t:'warn',m:`<b>Balance sheet elevated: ${bsPct.toFixed(1)}%.</b> Forward-flow capacity may be exhausting. Check utilization.`});
+  if(cr>=87&&bsPct<=5&&ins.filter(i=>i.t!=='info').length===0)ins.push({t:'good',m:`<b>Marketplace healthy.</b> Clearing rate ${cr.toFixed(1)}%, balance sheet exposure ${bsPct.toFixed(1)}%. Forward-flow absorbing committed volume. Capital and demand balanced.`});
+  if(r.reasons.no_partner>r.reasons.apr_high&&r.notCleared>r.total*.08)ins.push({t:'warn',m:`<b>Supply-side constraint.</b> ${r.reasons.no_partner} loans have no eligible partner. Lever: add partners, lower FICO floors, expand commitments.`});
+  else if(r.reasons.apr_high>r.reasons.no_partner&&r.notCleared>r.total*.08)ins.push({t:'warn',m:`<b>Demand-side constraint.</b> ${r.reasons.apr_high} borrowers rejecting APR. Lever: Model 18 accuracy improvement or shift toward higher-FICO segments.`});
+  document.getElementById('insights').innerHTML=ins.map(i=>`<div class="ins ${i.t}">${i.m}</div>`).join('');
+}
+
+// ── PARTNER LIST ──────────────────────────────────────────────────────────────
+function renderPartners(){
+  document.getElementById('partner-list').innerHTML=PARTNERS.map(p=>{
+    const on=simState.partners[p.id];
+    const tl=p.type==='ff'?'Forward-Flow':p.type==='bank'?'Bank':'Spot Market';
+    const cl=p.cap?'$'+(p.cap/1e6).toFixed(0)+'M committed':'Unlimited';
+    return`<div class="p-row ${on?'':'off'}" onclick="toggleP('${p.id}')"><div class="p-dot" style="background:${p.color}"></div><div class="p-info"><div class="p-name">${p.name}</div><div class="p-meta">${tl} · FICO ${p.minFICO}+ · APR ${p.minAPR}%+ floor · ${cl}</div></div><span class="p-chk">${on?'✓':'○'}</span></div>`;
+  }).join('');
+}
+function toggleP(id){simState.partners[id]=!simState.partners[id];renderPartners();}
+function setModel(m){simState.model=m;document.getElementById('btn-classic').classList.toggle('active',m==='classic');document.getElementById('btn-ai').classList.toggle('active',m==='ai');}
+
+// ── SCENARIOS ─────────────────────────────────────────────────────────────────
+function setSliders(v,cq,s){
+  document.getElementById('sl-vol').value=v;document.getElementById('lbl-vol').textContent=v+' loans';
+  document.getElementById('sl-cq').value=cq;document.getElementById('lbl-cq').textContent='FICO '+cq;
+  document.getElementById('sl-sens').value=s;document.getElementById('lbl-sens').textContent=['','Low','Medium','High'][s];
+}
+function loadScenario(name,btn){
+  document.querySelectorAll('.sc-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  const allOn=()=>PARTNERS.forEach(p=>simState.partners[p.id]=true);
+  const allOff=()=>PARTNERS.forEach(p=>simState.partners[p.id]=false);
+  if(name==='healthy'){setSliders(500,660,2);setModel('ai');allOn();}
+  else if(name==='crunch'){setSliders(500,645,2);setModel('classic');allOff();simState.partners.westbank=true;simState.partners.spotfund_a=true;simState.partners.spotfund_b=true;}
+  else if(name==='model18'){setSliders(500,635,2);setModel('ai');allOn();}
+  else if(name==='demand_surge'){setSliders(800,645,2);setModel('ai');allOn();}
+  else if(name==='constraint_shift'){setSliders(600,685,3);setModel('ai');allOn();}
+  renderPartners();runSim();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+renderPartners();
+runSim();
+</script>
+</body>
+</html>

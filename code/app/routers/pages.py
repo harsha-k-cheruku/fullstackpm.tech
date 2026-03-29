@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
@@ -56,6 +56,12 @@ async def resume(request: Request) -> HTMLResponse:
         "resume.html",
         _ctx(request, title="Resume — fullstackpm.tech", current_page="/resume"),
     )
+
+
+@router.get("/tools/marketplace-simulator", response_class=HTMLResponse)
+async def marketplace_simulator(request: Request) -> FileResponse:
+    """Serve the self-contained Marketplace Clearing Simulator."""
+    return FileResponse(str(settings.static_dir / "tools" / "marketplace_simulator.html"))
 
 
 @router.get("/@fullstackpm", response_class=HTMLResponse)
