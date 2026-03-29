@@ -163,3 +163,16 @@ async def two_sided_marketplace(request: Request) -> HTMLResponse:
             current_page="/resources/ecosystem-maps",
         ),
     )
+
+
+@router.get("/resources/ecosystem-maps/adtech-ecosystem", response_class=HTMLResponse)
+async def adtech_ecosystem(request: Request) -> HTMLResponse:
+    """Serve the Adtech / Programmatic ecosystem visual map."""
+    return templates.TemplateResponse(
+        "resources/adtech_ecosystem.html",
+        _ctx(
+            request,
+            title="Adtech / Programmatic Ecosystem — PM Visual Guide | fullstackpm.tech",
+            current_page="/resources/ecosystem-maps",
+        ),
+    )

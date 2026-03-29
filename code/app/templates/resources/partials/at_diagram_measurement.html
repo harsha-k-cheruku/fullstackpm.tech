@@ -1,0 +1,53 @@
+<section id="measurement" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 6</span>
+    <h2>Measurement &amp; Attribution Models</h2>
+    <p>Attribution choice changes budget allocation behavior as much as targeting model choice does.</p>
+  </div>
+
+  <div class="at-card-grid-4">
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-demand-bg); color:var(--at-demand-text);">Last-Click Attribution</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Final clicked ad gets 100% conversion credit.</p>
+        <p><strong>Pros:</strong> Simple and deterministic.</p>
+        <p><strong>Cons:</strong> Ignores awareness assist touches.</p>
+        <p><strong>Used by:</strong> Smaller advertisers, default channel reports.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-exchange-bg); color:var(--at-exchange-text);">Multi-Touch Attribution (MTA)</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Credit is distributed across touchpoints (linear/time-decay/position).</p>
+        <p><strong>Pros:</strong> Better journey visibility than single-touch models.</p>
+        <p><strong>Cons:</strong> Data heavy, privacy-constrained, modeling fragile.</p>
+        <p><strong>Used by:</strong> Sophisticated brands and agencies.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-supply-bg); color:var(--at-supply-text);">Media Mix Modeling (MMM)</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Statistical model estimates channel contribution at aggregate spend level.</p>
+        <p><strong>Pros:</strong> Privacy-safe and includes offline media.</p>
+        <p><strong>Cons:</strong> Slow cadence; weak for intraday optimization.</p>
+        <p><strong>Used by:</strong> Large enterprise advertisers.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-verify-bg); color:var(--at-verify-text);">Incrementality Testing</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Holdout A/B design compares exposed vs control conversion outcomes.</p>
+        <p><strong>Pros:</strong> Causal signal, not just correlation.</p>
+        <p><strong>Cons:</strong> Operationally expensive and slower to run.</p>
+        <p><strong>Used by:</strong> Advanced teams (often with platform-native experiments).</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="at-callout">
+    <p><strong>Practical stack:</strong> many mature teams run MMM for strategic budget setting, MTA for tactical optimization, and incrementality tests to validate both.</p>
+  </div>
+</section>

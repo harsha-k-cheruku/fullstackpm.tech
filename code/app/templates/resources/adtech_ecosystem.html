@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Adtech / Programmatic Ecosystem — PM Visual Guide | fullstackpm.tech{% endblock %}
+{% block description %}Visual map of the adtech ecosystem: programmatic stack, real-time bidding sequence, identity alternatives, adtech take rates, and attribution models.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/adtech-ecosystem.css">
+{% endblock %}
+
+{% block content %}
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">Adtech / Programmatic</span>
+</nav>
+
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Adtech / Programmatic Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 760px;">
+    Six diagrams covering how ad impressions are bought and sold in milliseconds: DSPs, exchanges, SSPs, identity shifts, revenue splits, and attribution models.
+  </p>
+</header>
+
+{% include "resources/partials/at_subnav.html" %}
+
+<div class="at-page">
+  {% include "resources/partials/at_diagram_stack.html" %}
+  <hr class="at-divider">
+  {% include "resources/partials/at_diagram_rtb.html" %}
+  <hr class="at-divider">
+  {% include "resources/partials/at_diagram_identity.html" %}
+  <hr class="at-divider">
+  {% include "resources/partials/at_diagram_revenue.html" %}
+  <hr class="at-divider">
+  {% include "resources/partials/at_diagram_perspectives.html" %}
+  <hr class="at-divider">
+  {% include "resources/partials/at_diagram_measurement.html" %}
+</div>
+
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  Adtech / Programmatic Ecosystem Visual Guide · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function showAtRevenueView(id, btn) {
+    document.querySelectorAll('.at-revenue-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.at-toggle button').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('at-revenue-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  const sections = ['stack', 'rtb', 'identity', 'revenue', 'perspectives', 'measurement'];
+  const navLinks = document.querySelectorAll('.at-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  updateActiveLink();
+</script>
+{% endblock %}

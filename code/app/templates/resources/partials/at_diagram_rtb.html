@@ -1,0 +1,71 @@
+<section id="rtb" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 2</span>
+    <h2>Real-Time Bidding (RTB) Sequence</h2>
+    <p>One impression clears in about 100–150ms: request fan-out, bidding, auction, render, then async verification.</p>
+  </div>
+
+  <div class="at-sequence">
+    <div class="at-participants">
+      <div class="at-participant">User</div>
+      <div class="at-participant">Publisher</div>
+      <div class="at-participant">SSP</div>
+      <div class="at-participant">Exchange</div>
+      <div class="at-participant">DSP</div>
+      <div class="at-participant">Advertiser</div>
+    </div>
+
+    <div class="at-step-label">0-15ms · Request fan-out</div>
+    <div class="at-step">
+      <div class="at-cell active user">Loads page (0ms)</div>
+      <div class="at-cell active pub">Ad tag fires, bid request (5ms)</div>
+      <div class="at-cell active ssp">Forwards to exchanges (10ms)</div>
+      <div class="at-cell active ex">Distributes to DSPs + user signals (15ms)</div>
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+    </div>
+
+    <div class="at-step-label">20-60ms · Bid computation + auction</div>
+    <div class="at-step">
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+      <div class="at-cell active ex">Collects bid responses, runs auction (55ms)</div>
+      <div class="at-cell active dsp">Evaluates user, computes bid, responds (20-50ms)</div>
+      <div class="at-cell active adv">Campaign constraints + budgets pre-configured</div>
+    </div>
+
+    <div class="at-step-label">60-100ms · Render + post-render verification</div>
+    <div class="at-step">
+      <div class="at-cell active user">Sees ad by ~100ms</div>
+      <div class="at-cell active pub">Renders winning creative (70ms)</div>
+      <div class="at-cell active ssp">Returns winner + creative URL (60ms)</div>
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+      <div class="at-cell active adv">Conversion may happen later (hours/days)</div>
+    </div>
+  </div>
+
+  <div class="at-rtb-table-wrap">
+    <table class="at-rtb-table">
+      <thead>
+        <tr><th>Step</th><th>Actor</th><th>Action</th><th>Time</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>User</td><td>Loads page</td><td>0ms</td></tr>
+        <tr><td>2</td><td>Publisher</td><td>Ad tag sends bid request to SSP</td><td>5ms</td></tr>
+        <tr><td>3</td><td>SSP</td><td>Forwards bid request to exchanges</td><td>10ms</td></tr>
+        <tr><td>4</td><td>Exchange</td><td>Sends requests to DSPs with user signals</td><td>15ms</td></tr>
+        <tr><td>5</td><td>DSP</td><td>Scores user and computes bid</td><td>20-50ms</td></tr>
+        <tr><td>6</td><td>Exchange</td><td>Runs auction, selects winner</td><td>55ms</td></tr>
+        <tr><td>7</td><td>SSP/Publisher</td><td>Winner returned and creative rendered</td><td>60-70ms</td></tr>
+        <tr><td>8</td><td>User</td><td>Ad visible</td><td>~100ms</td></tr>
+        <tr><td>9</td><td>Verification</td><td>Viewability + brand safety checks</td><td>200ms+</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="at-callout">
+    <p><strong>Hero constraint:</strong> each participant steals from the same latency budget. If your step is slow, someone else’s optimization work gets canceled by user abandonment.</p>
+  </div>
+</section>
