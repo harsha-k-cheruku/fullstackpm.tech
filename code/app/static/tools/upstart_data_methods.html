@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data & Methods — Upstart Clearing Simulator</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="/tools/borrower_generation.js"></script>
   <style>
     :root {
       --bg:#f8fafc; --surface:#fff; --border:#e2e8f0;
@@ -60,6 +61,11 @@
     <div class="dm-header">
       <h1>Data & Methods — Upstart Clearing Simulator</h1>
       <p>How the simulator was built, where the data comes from, and how borrowers flow through the risk model.</p>
+      <p style="margin-top:6px;font-size:13px;">
+        These borrowers use the <b>exact same generation algorithm</b> as the
+        <a href="/tools/upstart-clearing-simulator" style="color:var(--blue);font-weight:700;">simulator</a>.
+        Export from either page and compare results side-by-side.
+      </p>
     </div>
 
     <div class="dm-tabs">
@@ -243,27 +249,11 @@ function lognorm(m, s) {
       btn.classList.add('active');
     }
 
-    function gauss(m,s){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return m+s*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
-    function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-    function lognorm(m,s){return Math.exp(Math.log(m)+s*gauss(0,1))}
-    function classicAPR(f){
-      if(f>=780)return 10.5;if(f>=740)return 13;if(f>=700)return 16.5;
-      if(f>=660)return 21.5;if(f>=620)return 27.5;if(f>=580)return 33;return 38;
-    }
-    function borrowerMaxAPR(f,sens,hp){
-      let base;
-      if(f>=780)base=14;else if(f>=740)base=18;else if(f>=700)base=23;
-      else if(f>=660)base=29;else if(f>=620)base=33;else if(f>=580)base=37;else base=42;
-      if(hp)base-=5;
-      return clamp(base+(sens-2)*(-3)+gauss(0,2),9,50);
-    }
-
-    function calculateRiskScore(fico){ return (850-fico)/850; }
-    function calculatePDefault(fico, hp){
-      let p = calculateRiskScore(fico) * 0.18 + 0.02;
-      if(hp) p -= 0.02;
-      return clamp(p, 0.01, 0.15);
-    }
+    function gauss(m,s){return borrowerGeneration.gauss(m,s)}
+    function clamp(v,a,b){return borrowerGeneration.clamp(v,a,b)}
+    function lognorm(m,s){return borrowerGeneration.lognorm(m,s)}
+    function classicAPR(f){return borrowerGeneration.classicAPR(f)}
+    function borrowerMaxAPR(f,sens,hp){return borrowerGeneration.borrowerMaxAPR(f,sens,hp)}
 
     function partnerLoanRange(p){ if(p.type==='ff') return [3000,40000]; if(p.type==='bank') return [5000,35000]; return [2000,50000]; }
     function choosePurpose(i){
@@ -272,50 +262,41 @@ function lognorm(m, s) {
     }
 
     function generateBorrowers(n=25, creditQuality=667, hidden_prime_rate=0.28){
-      const baseNames=['Maria','James','Priya','Carlos','Devon'];
-      const out=[];
-      for(let i=1;i<=n;i++){
-        const fico = Math.round(clamp(gauss(creditQuality,65),520,820));
-        const amount = Math.round(clamp(lognorm(12000,0.45),2000,45000)/100)*100;
-        const purpose = choosePurpose(i);
-        const hp = fico>=580 && fico<=720 && Math.random() < hidden_prime_rate;
-        const income = Math.round(clamp((fico-500)*850 + gauss(22000,12000) + amount*2.2, 30000, 180000)/1000)*1000;
-        const risk = calculateRiskScore(fico);
-        const pDef = calculatePDefault(fico, hp);
-        const classic = classicAPR(fico);
-        const ai = hp ? clamp(classic - clamp(gauss(8.5,1.5),5,12), 9, 40) : classic;
-        const maxApr = borrowerMaxAPR(fico,2,hp);
-        const clearing = ai <= maxApr ? Number(ai.toFixed(1)) : null;
+      const generated = borrowerGeneration.generateBorrowerFull(n, creditQuality, hidden_prime_rate).map((b, idx)=>(
+        {
+          ...b,
+          name: ['Maria','James','Priya','Carlos','Devon'][idx % 5] + ' ' + (idx + 1),
+          hidden_prime: b.hiddenPrime,
+          loan_amount: b.amount,
+          risk_score: b.riskScore,
+          p_default: b.pDefault,
+          clearing_apr: b.clearingApr,
+        }
+      ));
 
-        // eligibility + routing
+      return generated.map((b)=>{
         const eligible = PARTNERS.filter(p=>{
           const [mn,mx]=partnerLoanRange(p);
-          return purpose!=='Small Business' && fico>=p.minFICO && amount>=mn && amount<=mx;
-        }).sort((a,b)=>a.pri-b.pri);
+          return b.purpose!=='Small Business' && b.fico>=p.minFICO && b.loan_amount>=mn && b.loan_amount<=mx;
+        }).sort((a,bp)=>a.pri-bp.pri);
 
         let outcome='FAILED', matched='None';
         if(eligible.length===0){ outcome='NO_ELIGIBLE_PARTNER'; }
-        else if(clearing===null){ outcome='APR_REJECTED'; }
+        else if(b.clearing_apr===null){ outcome='APR_REJECTED'; }
         else {
-          const m = eligible.find(p=>clearing>=p.minAPR);
+          const m = eligible.find(p=>b.clearing_apr>=p.minAPR);
           if(m){ outcome='CLEARED'; matched=m.name; }
           else { outcome='BALANCE_SHEET'; matched='Upstart Balance Sheet'; }
         }
 
-        out.push({
-          id:i,
-          name: baseNames[(i-1)%baseNames.length] + ' ' + i,
-          fico, income, loan_amount: amount, purpose,
-          hidden_prime: hp,
-          risk_score: Number(risk.toFixed(3)),
-          p_default: Number(pDef.toFixed(3)),
-          clearing_apr: clearing,
+        return {
+          ...b,
           outcome,
           matched_partner: matched,
-          trace:{classic_apr:classic, ai_apr:Number(ai.toFixed(1)), max_apr:Number(maxApr.toFixed(1)), eligible_count:eligible.length}
-        });
-      }
-      return out;
+          matchedPartner: matched,
+          trace:{classic_apr:b.classicApr, ai_apr:b.aiApr, max_apr:b.maxApr, eligible_count:eligible.length}
+        };
+      });
     }
 
     function updateFeatureRows(){
@@ -401,31 +382,21 @@ function lognorm(m, s) {
     }
 
     function exportJSON(dataset){
-      const payload = {
-        metadata:{
-          generated_date:new Date().toISOString().slice(0,10),
-          sample_size:dataset.length,
-          parameters:{avg_credit_quality:667, hidden_prime_rate:0.28, distribution_type:'box_muller_gaussian'}
-        },
-        borrowers:dataset
-      };
-      const blob = new Blob([JSON.stringify(payload,null,2)], {type:'application/json'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `upstart_borrower_sample_${new Date().toISOString().slice(0,10)}.json`;
-      a.click();
-      URL.revokeObjectURL(a.href);
+      const content = borrowerGeneration.exportDataset(dataset, 'json');
+      borrowerGeneration.downloadFile(
+        content,
+        `upstart_borrower_sample_${new Date().toISOString().slice(0,10)}.json`,
+        'application/json',
+      );
     }
 
     function exportCSV(dataset){
-      const cols=['id','name','fico','income','loan_amount','purpose','hidden_prime','risk_score','p_default','clearing_apr','outcome','matched_partner'];
-      const rows = [cols.join(',')].concat(dataset.map(d=>cols.map(k=>JSON.stringify(d[k]??'')).join(',')));
-      const blob = new Blob([rows.join('\n')], {type:'text/csv;charset=utf-8;'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `upstart_borrower_sample_${new Date().toISOString().slice(0,10)}.csv`;
-      a.click();
-      URL.revokeObjectURL(a.href);
+      const content = borrowerGeneration.exportDataset(dataset, 'csv');
+      borrowerGeneration.downloadFile(
+        content,
+        `upstart_borrower_sample_${new Date().toISOString().slice(0,10)}.csv`,
+        'text/csv',
+      );
     }
 
     function init(){
@@ -434,7 +405,7 @@ function lognorm(m, s) {
       renderLoanHist();
       DATASET = generateBorrowers(25, 667, 0.28);
       renderDatasetTable(DATASET);
-      document.getElementById('codeRef').textContent = `function gauss(m,s){let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return m+s*Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}\n\nfunction lognorm(m,s){return Math.exp(Math.log(m)+s*gauss(0,1))}\n\nfunction classicAPR(f){\n  if(f>=780)return 10.5;if(f>=740)return 13;if(f>=700)return 16.5;\n  if(f>=660)return 21.5;if(f>=620)return 27.5;if(f>=580)return 33;return 38;\n}\n\nfunction borrowerMaxAPR(f,sens,hp){\n  let base;\n  if(f>=780)base=14;else if(f>=740)base=18;else if(f>=700)base=23;\n  else if(f>=660)base=29;else if(f>=620)base=33;else if(f>=580)base=37;else base=42;\n  if(hp)base-=5;\n  return clamp(base+(sens-2)*(-3)+gauss(0,2),9,50);\n}`;
+      document.getElementById('codeRef').textContent = `// Shared module: /tools/borrower_generation.js\nfunction gauss(m,s){ return borrowerGeneration.gauss(m,s); }\nfunction lognorm(m,s){ return borrowerGeneration.lognorm(m,s); }\nfunction classicAPR(f){ return borrowerGeneration.classicAPR(f); }\nfunction borrowerMaxAPR(f,sens,hp){ return borrowerGeneration.borrowerMaxAPR(f,sens,hp); }\n\n// Unified borrower generation used by BOTH pages:\nconst borrowers = borrowerGeneration.generateBorrowerFull(25, 667, 0.28);`;
     }
 
     window.addEventListener('DOMContentLoaded', init);
