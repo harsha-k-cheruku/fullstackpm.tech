@@ -37,6 +37,8 @@
   {% include "resources/partials/hc_diagram_healthtech.html" %}
 </div>
 
+{% include "resources/partials/hc_explainers.html" %}
+
 <div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
   US Healthcare Ecosystem Visual Guide · PM Prep Papers Series · fullstackpm.tech · March 2026
 </div>
@@ -51,7 +53,7 @@
     btn.classList.add('active');
   }
 
-  const sections = ['participants', 'claims', 'priorauth', 'ffs-vbc', 'healthtech'];
+  const sections = ['participants', 'claims', 'priorauth', 'ffs-vbc', 'healthtech', 'components'];
   const navLinks = document.querySelectorAll('.hc-subnav-link');
 
   function updateActiveLink() {

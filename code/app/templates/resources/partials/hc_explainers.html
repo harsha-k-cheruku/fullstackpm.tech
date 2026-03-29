@@ -1,0 +1,40 @@
+<section id="components" class="hc-section" style="margin-top: 48px; padding-top: 32px; border-top: 2px solid var(--hc-card-border);">
+  <div class="section-header">
+    <span class="section-tag">Reference</span>
+    <h2>Healthcare Components — PM Lens</h2>
+    <p>For healthcare PM interviews: focus on admin burden, clinical outcomes, and payment incentives — not just app features.</p>
+  </div>
+
+  <div class="hc-card-grid-3">
+    <article class="hc-model-card">
+      <div class="hc-model-head hc-payer">Claims Adjudication Platform</div>
+      <div class="hc-model-body">
+        <p><strong>What it does:</strong> Applies contract logic, coverage rules, and coding policies to price and approve claims.</p>
+        <p><strong>PM metrics:</strong> First-pass resolution, denial rate, rework volume, adjudication cycle time.</p>
+        <p><strong>Pitfall:</strong> Rule complexity scales faster than teams expect, causing provider abrasion and appeal backlog.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head hc-provider">Prior Auth Orchestration</div>
+      <div class="hc-model-body">
+        <p><strong>What it does:</strong> Routes authorization requests across payers, policies, and documentation requirements.</p>
+        <p><strong>PM metrics:</strong> Approval latency, auto-approval rate, fax/manual touch rate, abandonment due to delays.</p>
+        <p><strong>Pitfall:</strong> Faster submission UX without payer integration still leaves outcomes unchanged.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head hc-infra">Interoperability & Data Exchange</div>
+      <div class="hc-model-body">
+        <p><strong>What it does:</strong> Connects EHR, payer APIs, clearinghouses, labs, and pharmacies through standards (FHIR/EDI).</p>
+        <p><strong>PM metrics:</strong> Data completeness, integration uptime, normalized record accuracy, retrieval latency.</p>
+        <p><strong>Pitfall:</strong> Integration count looks good on slides, but low data quality kills automation gains.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="hc-callout" style="margin-top: 20px;">
+    <p><strong>Interview shortcut:</strong> structure healthcare answers around <strong>time-to-treatment</strong>, <strong>administrative cost</strong>, and <strong>outcome quality</strong>. If your feature improves all three, that’s product gold. If it improves one while worsening the others, call out the tradeoff explicitly.</p>
+  </div>
+</section>

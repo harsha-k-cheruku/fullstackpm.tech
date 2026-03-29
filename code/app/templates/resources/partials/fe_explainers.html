@@ -1,0 +1,61 @@
+<section id="components" class="fe-section" style="margin-top: 48px; padding-top: 32px; border-top: 2px solid var(--fe-card-border);">
+  <div class="section-header">
+    <span class="section-tag">Reference</span>
+    <h2>Financial Components — PM Lens</h2>
+    <p>Core systems PMs actually need to reason about: where risk accumulates, where margins live, and where product decisions change unit economics.</p>
+  </div>
+
+  <div class="models-grid">
+    <article class="model-col">
+      <div class="model-head mh-lg">
+        <span class="model-num">Core Engine</span>
+        Risk Decisioning & Underwriting
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Evaluates default risk, fraud risk, and expected lifetime value before approving capital.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Approval rate, first-payment default, expected loss %, contribution margin per funded account.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Growth team pushes approvals up, losses spike 1-2 quarters later.</div>
+      </div>
+    </article>
+
+    <article class="model-col">
+      <div class="model-head mh-pr">
+        <span class="model-num">Core Engine</span>
+        Servicing & Collections
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Payment reminders, delinquency handling, hardship workflows, and recovery orchestration.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Roll rates (30→60→90 DPD), cure rate, recovery %, servicing cost per account.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Too aggressive collections hurts brand/trust; too soft policy hurts loss performance.</div>
+      </div>
+    </article>
+
+    <article class="model-col">
+      <div class="model-head mh-up">
+        <span class="model-num">Core Engine</span>
+        Ledger, Reconciliation & Controls
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Keeps the ground truth of balances, transactions, fees, payouts, and adjustments.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Break rate, reconciliation latency, unresolved exceptions, financial close timeline.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Operational complexity explodes; teams can’t trust numbers; audit pain arrives fast.</div>
+      </div>
+    </article>
+
+    <article class="model-col">
+      <div class="model-head mh-sf">
+        <span class="model-num">Core Engine</span>
+        Capital & Funding Management
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Matches product demand with warehouse lines, bank partners, deposits, or securitization windows.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Cost of funds, capacity utilization, take rate net of funding, velocity to deploy capital.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Great UX but no funding headroom = hard growth ceiling.</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="fe-callout" style="margin-top: 20px;">
+    <p><strong>Interview shortcut:</strong> when asked about fintech strategy, split the answer into <strong>distribution</strong> (acquisition), <strong>decisioning</strong> (risk + approvals), and <strong>balance sheet mechanics</strong> (funding + losses). Most candidates stop at UX; strong PMs speak in unit economics.</p>
+  </div>
+</section>

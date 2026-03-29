@@ -39,6 +39,8 @@
   {% include "resources/partials/at_diagram_measurement.html" %}
 </div>
 
+{% include "resources/partials/at_explainers.html" %}
+
 <div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
   Adtech / Programmatic Ecosystem Visual Guide · PM Prep Papers Series · fullstackpm.tech · March 2026
 </div>
@@ -53,7 +55,7 @@
     btn.classList.add('active');
   }
 
-  const sections = ['stack', 'rtb', 'identity', 'revenue', 'perspectives', 'measurement'];
+  const sections = ['stack', 'rtb', 'identity', 'revenue', 'perspectives', 'measurement', 'components'];
   const navLinks = document.querySelectorAll('.at-subnav-link');
 
   function updateActiveLink() {

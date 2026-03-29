@@ -45,6 +45,8 @@
   {% include "resources/partials/fe_diagram_user_journeys.html" %}
 </div>
 
+{% include "resources/partials/fe_explainers.html" %}
+
 <!-- Footer attribution -->
 <div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
   Financial Ecosystem Visual Guide v2 (Generic) · PM Prep Papers Series · fullstackpm.tech · March 2026
@@ -61,7 +63,7 @@
   }
 
   // Update active nav link based on scroll position or click
-  const sections = ['ecosystem', 'models', 'sequence', 'vs', 'flywheel', 'moneyflow', 'journeys'];
+  const sections = ['ecosystem', 'models', 'sequence', 'vs', 'flywheel', 'moneyflow', 'journeys', 'components'];
   const navLinks = document.querySelectorAll('.fe-subnav-link');
 
   function updateActiveLink() {
