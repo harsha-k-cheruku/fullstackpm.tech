@@ -58,10 +58,10 @@ async def resume(request: Request) -> HTMLResponse:
     )
 
 
-@router.get("/tools/marketplace-simulator", response_class=HTMLResponse)
-async def marketplace_simulator(request: Request) -> FileResponse:
-    """Serve the self-contained Marketplace Clearing Simulator."""
-    return FileResponse(str(settings.static_dir / "tools" / "marketplace_simulator.html"))
+@router.get("/tools/upstart-clearing-simulator", response_class=HTMLResponse)
+async def upstart_clearing_simulator(request: Request) -> FileResponse:
+    """Serve the Upstart Clearing Simulator — interactive tool for marketplace clearing mechanics."""
+    return FileResponse(str(settings.static_dir / "tools" / "upstart_clearing_simulator.html"))
 
 
 @router.get("/@fullstackpm", response_class=HTMLResponse)
