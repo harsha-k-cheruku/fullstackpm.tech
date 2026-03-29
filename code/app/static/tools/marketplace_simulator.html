@@ -177,6 +177,71 @@
     .info-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px}
     .info-card h4{font-size:13px;font-weight:700;margin-bottom:8px}
     .info-card p{font-size:12px;color:var(--muted);line-height:1.6}
+
+    /* ── LOAN WALKTHROUGH TAB ── */
+    .wt-wrap{display:grid;grid-template-columns:260px 1fr 240px;height:calc(100vh - 104px);background:var(--surface)}
+    .wt-left{border-right:1px solid var(--border);padding:14px;overflow-y:auto}
+    .wt-center{padding:16px;overflow-y:auto}
+    .wt-right{border-left:1px solid var(--border);padding:12px;overflow-y:auto;background:#fcfdff}
+    .wt-sec-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+    .stepper{display:flex;align-items:center;gap:8px;margin-bottom:14px;overflow-x:auto;padding-bottom:4px}
+    .step-line{height:2px;background:var(--border);width:34px;flex-shrink:0}
+    .step-line.done{background:var(--green)}
+    .step-node{display:flex;align-items:center;gap:6px;min-width:max-content}
+    .step-node .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--gray);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gray);background:#fff}
+    .step-node .lbl{font-size:11px;font-weight:600;color:var(--muted)}
+    .step-node.done .dot{background:var(--green);border-color:var(--green);color:#fff}
+    .step-node.done .lbl{color:#065f46}
+    .step-node.active .dot{background:var(--blue);border-color:var(--blue);color:#fff}
+    .step-node.active .lbl{color:var(--blue)}
+    .step-node.pending .dot{background:#fff;border-color:#cbd5e1;color:#94a3b8}
+    .step-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+    .step-card-title{font-size:16px;font-weight:800;margin-bottom:4px}
+    .step-card-sub{font-size:12px;color:var(--muted);margin-bottom:12px}
+    .partner-check-card{border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px;background:#fff}
+    .rule-row{display:grid;grid-template-columns:1.3fr .9fr .9fr .35fr;gap:8px;font-size:11px;padding:3px 0;border-bottom:1px dashed #eef2f7}
+    .rule-row:last-child{border-bottom:none}
+    .rule-row .muted{color:var(--muted)}
+    .rule-pass{color:var(--green);font-weight:700}
+    .rule-fail{color:var(--red);font-weight:700}
+    .result-badge{display:inline-block;border-radius:999px;padding:3px 8px;font-size:10px;font-weight:800;letter-spacing:.04em}
+    .result-eligible{background:var(--green-l);color:#065f46;border:1px solid #86efac}
+    .result-ineligible{background:var(--red-l);color:#991b1b;border:1px solid #fca5a5}
+    .result-warn{background:var(--amber-l);color:#92400e;border:1px solid #fcd34d}
+    .model-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .model-col{border:1px solid var(--border);border-radius:8px;padding:12px;background:#fff}
+    .model-col.ai{border:2px solid var(--blue);background:#f8fbff}
+    .model-metric{font-size:12px;margin-bottom:4px}
+    .waterfall-node{border:1px solid var(--border);border-radius:8px;padding:11px;margin-bottom:8px;background:#fff}
+    .waterfall-matched{border:2px solid var(--green);background:var(--green-l)}
+    .waterfall-skip{border-color:#fcd34d;background:#fffbeb}
+    .funded-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .log-step-label{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:10px 0 6px}
+    .log-entry{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+    .log-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
+    .log-content{font-size:11px;line-height:1.5;color:var(--text)}
+    .persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+    .persona-card{border:1px solid var(--border);border-radius:8px;padding:10px;background:#fff}
+    .persona-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+    .avatar{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+    .persona-desc{font-size:11px;color:var(--muted);margin-bottom:7px}
+    .badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+    .mini-badge{font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:999px;background:#f8fafc;color:#475569}
+    .teaser{font-size:10px;padding:4px 7px;border-radius:5px;margin-bottom:7px}
+    .teaser.pass{background:var(--green-l);color:#065f46}
+    .teaser.fail{background:var(--red-l);color:#991b1b}
+    .teaser.edge{background:var(--amber-l);color:#92400e}
+    .small-link{font-size:11px;color:var(--blue);cursor:pointer;text-decoration:underline;background:none;border:none;padding:0}
+    .callout{font-size:11px;padding:10px 11px;border-radius:7px;border-left:3px solid var(--blue);background:#eff6ff;color:#1e3a8a;margin-bottom:10px}
+    .insight-box{font-size:11px;padding:10px 11px;border-radius:7px;border-left:3px solid var(--green);background:var(--green-l);color:#065f46;margin-top:10px}
+    .divider{font-size:10px;color:var(--muted);text-align:center;margin:10px 0}
+    .wt-field{margin-bottom:10px}
+    .wt-field label{display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:3px}
+    .wt-field select,.wt-field button{width:100%}
+    .wt-select{width:100%;padding:7px;border:1px solid var(--border);border-radius:6px;font-size:12px;background:#fff}
+    .wt-begin{padding:9px;border:none;border-radius:6px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;cursor:pointer}
+    .wt-begin:disabled{opacity:.5;cursor:not-allowed}
+    @media (max-width: 1140px){.wt-wrap{grid-template-columns:1fr}.wt-right,.wt-left{border:none;border-bottom:1px solid var(--border)}.funded-grid,.model-compare{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -202,6 +267,7 @@
     <button class="tab-btn" data-tab="capital" onclick="showTab('capital',this)">📊 Capital Partner</button>
     <button class="tab-btn" data-tab="bank" onclick="showTab('bank',this)">🏦 Bank Partner</button>
     <button class="tab-btn" data-tab="engine" onclick="showTab('engine',this)">⚡ Clearing Engine</button>
+    <button class="tab-btn" data-tab="walkthrough" onclick="showTab('walkthrough',this)">🔬 Loan Walkthrough</button>
     <button class="tab-btn" data-tab="notes" onclick="showTab('notes',this)">📋 Assumptions & Notes</button>
   </div>
 </div>
@@ -966,7 +1032,22 @@
   </div>
 </div>
 
-<!-- ═══════════════════════ TAB 6: ASSUMPTIONS & NOTES ═══════════════════════ -->
+<!-- ═══════════════════════ TAB 6: LOAN WALKTHROUGH ═══════════════════════ -->
+<div id="tab-walkthrough" class="tab-pane">
+  <div class="wt-wrap">
+    <div class="wt-left" id="wt-left"></div>
+    <div class="wt-center">
+      <div class="stepper" id="wt-stepper"></div>
+      <div id="wt-step-content"></div>
+    </div>
+    <div class="wt-right">
+      <div class="wt-sec-title">Decision Log</div>
+      <div id="wt-log"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ TAB 7: ASSUMPTIONS & NOTES ═══════════════════════ -->
 <div id="tab-notes" class="tab-pane">
   <div class="page">
     <div class="page-hdr">
@@ -1221,7 +1302,403 @@ function loadScenario(name,btn){
   renderPartners();runSim();
 }
 
+// ── LOAN WALKTHROUGH ──────────────────────────────────────────────────────────
+const PERSONAS = [
+  { id:'maria', name:'Maria', desc:'Nurse, $78K income, thin credit file', fico:650, amount:14000, purpose:'Debt Consolidation', stateCap:'Favorable', hp:true, color:'#8b5cf6', outcome:'edge',
+    s1:'Maria applied via NerdWallet affiliate. She has 3 tradelines, all in good standing. Thin file, not bad file.',
+    s2:'Maria\'s Plaid data shows 18 months of consistent rent payments and $400/month net positive cash flow — signals not captured by FICO. Model 18 prices her risk lower.',
+    s2after:'Classic model would likely quote above her tolerance. Model 18 can find a clearing APR — borrower served, fee earned.',
+    s3:'Eltura\'s forward-flow agreement prioritizes near-prime borrowers like Maria — this is the exact segment it underwrites for.' },
+  { id:'james', name:'James', desc:'Software engineer, $140K income', fico:790, amount:25000, purpose:'Home Improvement', stateCap:'Favorable', hp:false, color:'#10b981', outcome:'pass',
+    s1:'James has a straightforward profile: deep bureau history, high FICO, stable W2 income.', s2:'Little model ambiguity here — both classic and AI should clear cleanly.' },
+  { id:'priya', name:'Priya', desc:'Gig worker, irregular income', fico:610, amount:5000, purpose:'Emergency/Medical', stateCap:'Favorable', hp:false, color:'#f59e0b', outcome:'edge',
+    s1:'Priya needs urgent liquidity. Thin and variable income profile increases pricing pressure.' },
+  { id:'carlos', name:'Carlos', desc:'Sole proprietor, 8 years', fico:590, amount:20000, purpose:'Small Business', stateCap:'Favorable', hp:false, color:'#ef4444', outcome:'fail',
+    s1:'Carlos runs a real business and has repayment intent — but product eligibility can still fail him.' },
+  { id:'devon', name:'Devon', desc:'Recent grad, high utilization', fico:680, amount:18000, purpose:'Debt Consolidation', stateCap:'Favorable', hp:true, color:'#3b82f6', outcome:'pass',
+    s1:'Devon has strong income trajectory but utilization-heavy credit file from student debt.',
+    s2:'Alternative cash-flow signals help AI tighten risk estimate and lower APR.',
+    s2after:'Both models can approve, but AI typically offers better borrower economics.' },
+];
+
+let wt = {
+  step: 0,
+  fico: 640,
+  amount: 12000,
+  purpose: 'Debt Consolidation',
+  stateCap: 'Favorable',
+  hiddenPrime: false,
+  eligiblePartners: [],
+  clearingAPR: null,
+  matchedPartner: null,
+  pricing: null,
+  personaId: null,
+};
+
+function usd(v){return '$'+Number(v).toLocaleString()}
+function capLabel(c){return c===null?'No Cap':c+'% cap'}
+function typeBadge(t){return t==='ff'?'FF':t==='bank'?'Bank':'Spot'}
+function typeName(t){return t==='ff'?'Forward-Flow':t==='bank'?'Bank':'Spot Market'}
+function stateCapValue(sc){if(sc==='Moderate')return 36;if(sc==='Restrictive')return 18;return null}
+function partnerLoanRange(p){if(p.type==='ff')return [3000,40000]; if(p.type==='bank')return [5000,35000]; return [2000,50000]}
+function getPersona(){return PERSONAS.find(p=>p.id===wt.personaId)||null}
+
+function renderWalkthrough(){
+  renderWtLeft();
+  renderStepper();
+  if(wt.step===0)renderStep0();
+  else if(wt.step===1)renderStep1();
+  else if(wt.step===2)renderStep2();
+  else if(wt.step===3)renderStep3();
+  else renderStep4();
+}
+
+function renderStepper(){
+  const steps=[['Eligibility',1],['Pricing',2],['Routing',3],['Funded',4]];
+  let html='';
+  steps.forEach((s,i)=>{
+    const cls = wt.step>s[1]?'done':wt.step===s[1]?'active':'pending';
+    html += `<div class="step-node ${cls}"><div class="dot">${s[1]}</div><div class="lbl">${s[0]}</div></div>`;
+    if(i<steps.length-1) html += `<div class="step-line ${wt.step>s[1]?'done':''}"></div>`;
+  });
+  document.getElementById('wt-stepper').innerHTML=html;
+}
+
+function renderWtLeft(){
+  const left=document.getElementById('wt-left');
+  if(wt.step===0){
+    left.innerHTML=`
+      <div class="wt-sec-title">Borrower Config</div>
+      <div class="wt-field"><label>FICO <span id="wt-fico-v">${wt.fico}</span></label><input type="range" min="520" max="820" step="10" value="${wt.fico}" oninput="wt.fico=+this.value;document.getElementById('wt-fico-v').textContent=this.value"></div>
+      <div class="wt-field"><label>Loan Amount <span id="wt-amt-v">${usd(wt.amount)}</span></label><input type="range" min="2000" max="45000" step="500" value="${wt.amount}" oninput="wt.amount=+this.value;document.getElementById('wt-amt-v').textContent=usd(this.value)"></div>
+      <div class="wt-field"><label>Loan Purpose</label>
+        <select class="wt-select" onchange="wt.purpose=this.value">
+          ${['Debt Consolidation','Emergency/Medical','Home Improvement','Auto Refinance','Small Business'].map(o=>`<option ${wt.purpose===o?'selected':''}>${o}</option>`).join('')}
+        </select>
+      </div>
+      <div class="wt-field"><label>State APR cap</label>
+        <select class="wt-select" onchange="wt.stateCap=this.value">
+          <option ${wt.stateCap==='Favorable'?'selected':''}>Favorable</option>
+          <option ${wt.stateCap==='Moderate'?'selected':''}>Moderate</option>
+          <option ${wt.stateCap==='Restrictive'?'selected':''}>Restrictive</option>
+        </select>
+      </div>
+      <div class="wt-field"><label><span>Hidden prime signal</span><span><input type="checkbox" ${wt.hiddenPrime?'checked':''} onchange="wt.hiddenPrime=this.checked"></span></label><div style="font-size:11px;color:var(--muted)">AI detects hidden-prime signal (lower risk than FICO suggests)</div></div>
+      <button class="wt-begin" onclick="initWalkthrough(wt.fico,wt.amount,wt.purpose,wt.stateCap,wt.hiddenPrime)">→ Begin Clearing</button>
+
+      <div class="wt-sec-title" style="margin-top:14px">Capital Partners</div>
+      ${PARTNERS.sort((a,b)=>a.pri-b.pri).map(p=>`<div class="p-row" style="cursor:default"><div class="p-dot" style="background:${p.color}"></div><div class="p-info"><div class="p-name">${p.name} <span class="result-badge" style="background:#f1f5f9;color:#475569;border:1px solid var(--border)">${typeBadge(p.type)}</span></div><div class="p-meta">minFICO ${p.minFICO} · minAPR ${p.minAPR}% · cap $${(p.cap/1e6).toFixed(1)}M</div></div></div>`).join('')}
+    `;
+    return;
+  }
+
+  left.innerHTML=`
+    <div class="wt-sec-title">Locked Borrower</div>
+    <div class="step-card">
+      <div style="font-size:12px;line-height:1.7">
+        <div><b>FICO:</b> ${wt.fico}</div>
+        <div><b>Loan:</b> ${usd(wt.amount)}</div>
+        <div><b>Purpose:</b> ${wt.purpose}</div>
+        <div><b>State Cap:</b> ${capLabel(stateCapValue(wt.stateCap))}</div>
+        <div><b>Hidden Prime:</b> ${wt.hiddenPrime?'ON':'OFF'}</div>
+        ${wt.personaId?`<div><b>Persona:</b> ${getPersona().name}</div>`:''}
+      </div>
+      <button class="small-link" onclick="resetWalkthrough()">↺ Start Over</button>
+    </div>
+    <div class="wt-sec-title">Capital Partners</div>
+    ${PARTNERS.sort((a,b)=>a.pri-b.pri).map(p=>`<div class="p-row" style="cursor:default"><div class="p-dot" style="background:${p.color}"></div><div class="p-info"><div class="p-name">${p.name} <span class="result-badge" style="background:#f1f5f9;color:#475569;border:1px solid var(--border)">${typeBadge(p.type)}</span></div><div class="p-meta">minFICO ${p.minFICO} · minAPR ${p.minAPR}% · cap $${(p.cap/1e6).toFixed(1)}M</div></div></div>`).join('')}
+  `;
+}
+
+function personaCard(p, idx){
+  const teaser = p.outcome==='pass'?'Clears ✓':p.outcome==='fail'?'Fails ✗':'Interesting edge case';
+  return `<div class="persona-card" style="${idx===4?'grid-column:1 / -1':''}">
+    <div class="persona-head"><div class="avatar" style="background:${p.color}">${p.name[0]}</div><div><div style="font-size:12px;font-weight:800">${p.name}</div></div></div>
+    <div class="persona-desc">${p.desc}</div>
+    <div class="badge-row">
+      <span class="mini-badge">FICO ${p.fico}</span>
+      <span class="mini-badge">${usd(p.amount)}</span>
+      <span class="mini-badge">${p.purpose}</span>
+    </div>
+    <div class="teaser ${p.outcome}">${teaser}</div>
+    <button class="wt-begin" style="padding:7px;font-size:11px" onclick="loadPersona('${p.id}')">Walk through this loan →</button>
+  </div>`;
+}
+
+function renderStep0(){
+  document.getElementById('wt-step-content').innerHTML=`
+    <div class="step-card" style="text-align:center">
+      <div class="step-card-title">Configure a borrower on the left to begin the clearing walkthrough.</div>
+      <div class="step-card-sub">Choose a persona to load realistic profile data instantly.</div>
+      <div class="persona-grid">${PERSONAS.map((p,i)=>personaCard(p,i)).join('')}</div>
+      <div class="divider">— or configure your own borrower —</div>
+      <div style="font-size:12px;color:var(--muted)">Use the left panel sliders and click <b>→ Begin Clearing</b>.</div>
+    </div>
+  `;
+}
+
+function loadPersona(id){
+  const p=PERSONAS.find(x=>x.id===id);
+  wt.personaId=id;
+  initWalkthrough(p.fico,p.amount,p.purpose,p.stateCap,p.hp);
+}
+
+function initWalkthrough(fico, amount, purpose, stateCap, hp){
+  wt.fico=+fico; wt.amount=+amount; wt.purpose=purpose; wt.stateCap=stateCap; wt.hiddenPrime=!!hp;
+  wt.step=1; wt.eligiblePartners=[]; wt.clearingAPR=null; wt.matchedPartner=null; wt.pricing=null;
+  document.getElementById('wt-log').innerHTML='';
+  renderWalkthrough();
+}
+
+function advanceStep(){
+  if(wt.step<4)wt.step+=1;
+  renderWalkthrough();
+}
+
+function evalEligibility(p){
+  const [mn,mx]=partnerLoanRange(p);
+  const rules=[];
+  const ficoPass=wt.fico>=p.minFICO;
+  const sizePass=wt.amount>=mn && wt.amount<=mx;
+  const purposePass=wt.purpose!=='Small Business';
+  const capPass=true;
+  rules.push({name:'FICO floor', req:p.minFICO, val:wt.fico, ok:ficoPass});
+  rules.push({name:'Loan size', req:`${usd(mn)}–${usd(mx)}`, val:usd(wt.amount), ok:sizePass});
+  rules.push({name:'Purpose allowed', req:'Not Small Business', val:wt.purpose, ok:purposePass});
+  rules.push({name:'Capacity', req:`$${(p.cap/1e6).toFixed(1)}M`, val:'Available', ok:capPass});
+  const ok=rules.every(r=>r.ok);
+  let reason='All rules pass';
+  if(!purposePass)reason='Purpose not supported (Small Business blocked)';
+  else if(!ficoPass)reason='FICO below minimum';
+  else if(!sizePass)reason='Loan amount outside range';
+  return {ok,rules,reason};
+}
+
+function renderStep1(){
+  const persona=getPersona();
+  const checks=PARTNERS.sort((a,b)=>a.pri-b.pri).map(p=>({p,...evalEligibility(p)}));
+  wt.eligiblePartners=checks.filter(c=>c.ok).map(c=>c.p);
+  const cards=checks.map(c=>`
+    <div class="partner-check-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px"><b>${c.p.pri}. ${c.p.name}</b><span class="result-badge" style="background:#f1f5f9;color:#475569;border:1px solid var(--border)">${typeBadge(c.p.type)}</span></div>
+      ${c.rules.map(r=>`<div class="rule-row"><div>${r.name}</div><div class="muted">${r.req}</div><div>${r.val}</div><div class="${r.ok?'rule-pass':'rule-fail'}">${r.ok?'✅':'❌'}</div></div>`).join('')}
+      <div style="margin-top:8px;display:flex;justify-content:space-between;align-items:center"><span class="result-badge ${c.ok?'result-eligible':'result-ineligible'}">${c.ok?'ELIGIBLE':'INELIGIBLE'}</span><span style="font-size:11px;color:var(--muted)">${c.reason}</span></div>
+    </div>
+  `).join('');
+
+  const summary = wt.eligiblePartners.length===0
+    ? `<div class="ins bad"><b>No eligible partners.</b> This loan cannot clear at any price. PM fix: expand eligibility criteria.</div>
+       ${wt.purpose==='Small Business'?`<div class="ins info"><b>PM Insight:</b> ${persona&&persona.id==='carlos'?'Carlos is creditworthy by many measures, but no partner accepts small business purpose. This is a product gap, not borrower failure.':'No capital partner currently accepts Small Business purpose. Product gap > borrower gap.'}</div>`:''}`
+    : `<div class="ins good"><b>${wt.eligiblePartners.length} of 5 partners eligible.</b> Clearing engine proceeds to pricing.</div>`;
+
+  document.getElementById('wt-step-content').innerHTML=`
+    <div class="step-card">
+      <div class="step-card-title">Layer 1: Eligibility Matrix</div>
+      <div class="step-card-sub">Binary rules only — no ML. Which capital partners can fund this loan?</div>
+      ${persona&&persona.s1?`<div class="callout">${persona.s1}</div>`:''}
+      ${cards}
+      ${summary}
+      <button class="wt-begin" onclick="advanceStep()">Next: Pricing Engine →</button>
+    </div>
+  `;
+
+  appendLog('Step 1', checks.map(c=>({
+    color: c.ok?'green':'red',
+    text: `<b>${c.p.name}</b> ${c.ok?'✅':'❌'}${c.ok?'':' — '+c.reason}`
+  })));
+}
+
+function pricingEval(apr, hpForMax){
+  const pd = (850 - wt.fico) / 850 * 0.18 + 0.02;
+  const expReturn = (apr/100) * (1-pd) - pd*0.60;
+  const partnerFloor = expReturn >= 0.08;
+  const stateCap = stateCapValue(wt.stateCap);
+  const stateCapPass = stateCap===null ? true : apr<=stateCap;
+  let maxApr = borrowerMaxAPR(wt.fico,2,hpForMax);
+  if(wt.purpose==='Debt Consolidation') maxApr -= 2;
+  if(wt.purpose==='Emergency/Medical') maxApr += 1;
+  if(wt.purpose==='Home Improvement') maxApr -= 1;
+  maxApr = clamp(maxApr, 9, 50);
+  const borrowerPass = apr<=maxApr;
+  let reason='';
+  if(!stateCapPass)reason='state APR cap';
+  else if(!partnerFloor)reason='partner return floor';
+  else if(!borrowerPass)reason='borrower max APR';
+  return {apr,pd,expReturn,partnerFloor,borrowerPass,stateCapPass,maxApr,pass:partnerFloor&&borrowerPass&&stateCapPass,reason};
+}
+
+function renderStep2(){
+  const persona=getPersona();
+  const classic = pricingEval(classicAPR(wt.fico), false);
+  const aiAprReduction = wt.hiddenPrime ? clamp(gauss(8.5,1.5),5,12) : 0;
+  const aiApr = wt.hiddenPrime ? classic.apr - aiAprReduction : classic.apr;
+  const ai = pricingEval(clamp(aiApr,9,40), wt.hiddenPrime);
+
+  wt.pricing={classic,ai};
+  if(ai.pass && wt.eligiblePartners.length>0) wt.clearingAPR = Number(ai.apr.toFixed(1));
+  else wt.clearingAPR=null;
+
+  let banner='';
+  if(!classic.pass && ai.pass) banner=`<div class="ins good">🎯 <b>Model 18 unlocks this loan.</b> Classic scoring would have rejected it. This is hidden-prime discovery.</div>`;
+  else if(classic.pass && ai.pass) banner=`<div class="ins info"><b>Both models approve.</b> Model 18 offers lower APR (better for borrower).</div>`;
+  else banner=`<div class="ins bad"><b>This loan cannot clear at any APR.</b> Root cause: ${wt.eligiblePartners.length===0?'eligibility issue':'APR/cap constraints'}.</div>`;
+
+  const whatHappened = persona && ['maria','devon'].includes(persona.id) && Math.abs(classic.apr-ai.apr)>=1
+    ? `<div class="insight-box"><b>What just happened:</b> ${persona.s2after||'Classic and AI diverged materially — AI found a lower clearing APR.'}</div>` : '';
+
+  document.getElementById('wt-step-content').innerHTML=`
+    <div class="step-card">
+      <div class="step-card-title">Layer 2: Pricing Engine — APR as a Feature</div>
+      <div class="step-card-sub">Find the lowest APR where both sides agree: capital partner return floor met AND borrower accepts.</div>
+      ${persona&&wt.hiddenPrime&&persona.s2?`<div class="callout">${persona.s2}</div>`:''}
+      <div class="model-compare">
+        <div class="model-col">
+          <h4>📊 Classic FICO</h4>
+          <div class="model-metric">APR = <b>${classic.apr.toFixed(1)}%</b></div>
+          <div class="model-metric">P(default) = ${(classic.pd*100).toFixed(2)}%</div>
+          <div class="model-metric">Expected return = ${(classic.expReturn*100).toFixed(2)}%</div>
+          <div class="model-metric">Partner floor (≥8%): ${classic.partnerFloor?'✅':'❌'}</div>
+          <div class="model-metric">State cap: ${classic.stateCapPass?'✅':'❌'}</div>
+          <div class="model-metric">Borrower max APR (${classic.maxApr.toFixed(1)}%): ${classic.borrowerPass?'✅':'❌'}</div>
+          <div style="margin-top:8px" class="result-badge ${classic.pass?'result-eligible':'result-ineligible'}">${classic.pass?`CLEARS at ${classic.apr.toFixed(1)}% APR`:`FAILS — ${classic.reason}`}</div>
+        </div>
+        <div class="model-col ai">
+          <h4>🤖 Model 18 (APR-as-Feature)</h4>
+          <div class="model-metric">APR = <b>${ai.apr.toFixed(1)}%</b> ${wt.hiddenPrime?`<span style="color:var(--green)">(−${aiAprReduction.toFixed(1)}%)</span>`:''}</div>
+          <div class="model-metric">P(default) = ${(ai.pd*100).toFixed(2)}%</div>
+          <div class="model-metric">Expected return = ${(ai.expReturn*100).toFixed(2)}%</div>
+          <div class="model-metric">Partner floor (≥8%): ${ai.partnerFloor?'✅':'❌'}</div>
+          <div class="model-metric">State cap: ${ai.stateCapPass?'✅':'❌'}</div>
+          <div class="model-metric">Borrower max APR (${ai.maxApr.toFixed(1)}%): ${ai.borrowerPass?'✅':'❌'}</div>
+          <div class="callout" style="margin-top:8px">APR is an input to the risk model, not just an output. Lower APR → lower payment → lower P(default). The model iterates to find the lowest clearing price.</div>
+          <div class="result-badge ${ai.pass?'result-eligible':'result-ineligible'}">${ai.pass?`CLEARS at ${ai.apr.toFixed(1)}% APR`:`FAILS — ${ai.reason}`}</div>
+        </div>
+      </div>
+      ${banner}
+      ${whatHappened}
+      <button class="wt-begin" ${wt.eligiblePartners.length===0||!ai.pass?'disabled':''} onclick="advanceStep()">Next: Waterfall Routing →</button>
+    </div>
+  `;
+
+  appendLog('Step 2', [{
+    color: ai.pass?'green':'amber',
+    text:`Classic: ${classic.pass?'PASS':'FAIL'} @ ${classic.apr.toFixed(1)}% · AI: ${ai.pass?'PASS':'FAIL'} @ ${ai.apr.toFixed(1)}% · model used: ${ai.pass?'Model 18':'none'}`
+  }]);
+}
+
+function renderStep3(){
+  const persona=getPersona();
+  const eligible=wt.eligiblePartners.sort((a,b)=>a.pri-b.pri);
+  let matched=null;
+  let nodes='';
+  for(const p of eligible){
+    const aprPass = wt.clearingAPR>=p.minAPR;
+    const capPass = true;
+    if(aprPass&&capPass&&!matched){
+      matched=p;
+      nodes += `<div class="waterfall-node waterfall-matched"><div><b>Tier ${p.pri}: ${p.name}</b></div><div style="font-size:11px;margin-top:4px">APR check: ✅ meets return floor (${wt.clearingAPR.toFixed(1)}% ≥ ${p.minAPR}%)</div><div style="font-size:11px">Capacity: ✅ available</div><div class="result-badge result-eligible" style="margin-top:6px">→ MATCHED</div></div>`;
+      break;
+    }
+    nodes += `<div class="waterfall-node waterfall-skip"><div><b>Tier ${p.pri}: ${p.name}</b></div><div style="font-size:11px;margin-top:4px">APR check: ${aprPass?'✅':'❌ APR too low'} (${wt.clearingAPR.toFixed(1)}% vs min ${p.minAPR}%)</div><div style="font-size:11px">Capacity: ✅ available</div><div class="result-badge result-warn" style="margin-top:6px">→ SKIP (${aprPass?'already matched above':'APR below floor'})</div></div>`;
+  }
+
+  wt.matchedPartner = matched || BS;
+  const idx = matched ? eligible.findIndex(p=>p.id===matched.id) : -1;
+  const nextTier = matched && eligible[idx+1] ? eligible[idx+1] : null;
+  const whatIf = matched ? `<details class="step-card" style="padding:10px;margin-top:8px"><summary style="cursor:pointer;font-size:12px;font-weight:700">What if this partner was at capacity?</summary><div style="font-size:11px;color:var(--muted);margin-top:6px">${nextTier?`Loan would flow to <b>${nextTier.name}</b> (Tier ${nextTier.pri}) if APR floor still passes.`:'No further eligible tier. Loan would fall to balance sheet.'}</div></details>`:'';
+
+  document.getElementById('wt-step-content').innerHTML=`
+    <div class="step-card">
+      <div class="step-card-title">Layer 3: Waterfall Router</div>
+      <div class="step-card-sub">Given the clearing APR, which capital partner gets this loan? Priority-based — first eligible tier wins.</div>
+      <div class="result-badge" style="background:var(--blue-l);color:#1e40af;border:1px solid #93c5fd;margin-bottom:10px">Clearing APR: ${wt.clearingAPR?.toFixed(1) || '—'}%</div>
+      ${persona&&matched&&persona.s3?`<div class="callout">${persona.s3}</div>`:''}
+      ${nodes || `<div class="ins bad">No eligible partner route available.</div>`}
+      ${!matched?`<div class="ins bad"><b>BALANCE SHEET</b> — Upstart funds this loan. Cost signal: marketplace not clearing efficiently.</div>`:''}
+      ${whatIf}
+      <button class="wt-begin" onclick="advanceStep()">Next: Funded →</button>
+    </div>
+  `;
+
+  appendLog('Step 3', [{
+    color: matched?'green':'amber',
+    text: matched ? `<b>${matched.name}</b> matched — first eligible tier meeting APR floor.` : `No partner met APR floor; routed to <b>Balance Sheet</b>.`
+  }]);
+}
+
+function renderStep4(){
+  const fee = wt.amount*0.03;
+  const partnerName = wt.matchedPartner ? wt.matchedPartner.name : 'Balance Sheet';
+  document.getElementById('wt-step-content').innerHTML=`
+    <div class="step-card">
+      <div class="step-card-title">✅ Loan Cleared</div>
+      <div class="funded-grid">
+        <div class="model-col">
+          <h4>Loan details</h4>
+          <div class="model-metric">FICO: <b>${wt.fico}</b></div>
+          <div class="model-metric">Amount: <b>${usd(wt.amount)}</b></div>
+          <div class="model-metric">Purpose: <b>${wt.purpose}</b></div>
+          <div class="model-metric">Clearing APR: <b>${wt.clearingAPR?.toFixed(1)}%</b></div>
+        </div>
+        <div class="model-col">
+          <h4>Flow of funds</h4>
+          <div class="model-metric">Bank (Cross River) → originates → borrower receives ${usd(wt.amount)}</div>
+          <div class="model-metric">Bank → sells loan → <b>${partnerName}</b></div>
+          <div class="model-metric">Upstart earns platform fee: <b>${usd(fee.toFixed(0))}</b> (3%)</div>
+        </div>
+        <div class="model-col">
+          <h4>What happens next</h4>
+          <div class="model-metric">EPD monitoring: Day 1–90</div>
+          <div class="model-metric">Model feedback queued for recalibration</div>
+          <div class="model-metric">Data flywheel: +1 data point for Model 18 training</div>
+        </div>
+      </div>
+      <div class="ins info" style="margin-top:10px"><b>The Data Flywheel:</b> Every funded loan generates a repayment outcome. Over 30–90 days, Upstart's model updates based on actual vs. predicted default. This is why Model 18 has 1,800+ features — each funded loan makes the next prediction more accurate.</div>
+      <button class="wt-begin" onclick="resetWalkthrough()">↺ Try Another Borrower</button>
+    </div>
+  `;
+
+  appendLog('Step 4', [{
+    color:'green',
+    text:`Final: ${usd(wt.amount)} @ ${wt.clearingAPR?.toFixed(1)}% funded via <b>${partnerName}</b>.`
+  }]);
+}
+
+function appendLog(step, entries){
+  const log=document.getElementById('wt-log');
+  if(!log)return;
+  const sec=document.createElement('div');
+  sec.className='log-step-label';
+  sec.textContent=step;
+  log.appendChild(sec);
+  entries.forEach(e=>{
+    const row=document.createElement('div');
+    row.className='log-entry';
+    row.innerHTML=`<div class="log-dot" style="background:${e.color==='green'?'#10b981':e.color==='red'?'#ef4444':'#f59e0b'}"></div><div class="log-content">${e.text}</div>`;
+    log.appendChild(row);
+  });
+}
+
+function resetWalkthrough(){
+  wt = {
+    step: 0,
+    fico: 640,
+    amount: 12000,
+    purpose: 'Debt Consolidation',
+    stateCap: 'Favorable',
+    hiddenPrime: false,
+    eligiblePartners: [],
+    clearingAPR: null,
+    matchedPartner: null,
+    pricing: null,
+    personaId: null,
+  };
+  document.getElementById('wt-log').innerHTML='';
+  renderWalkthrough();
+}
+
 // ── INIT ──────────────────────────────────────────────────────────────────────
+renderWalkthrough();
 renderPartners();
 runSim();
 </script>
