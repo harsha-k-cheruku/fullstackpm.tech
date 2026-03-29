@@ -1,49 +1,83 @@
 <section id="participants" class="hc-section">
   <div class="section-header">
     <span class="section-tag">Diagram 1</span>
-    <h2>Healthcare Participant Map</h2>
-    <p>The US healthcare system is a negotiated network of incentives across patients, providers, payers, PBMs, infrastructure vendors, pharma, and regulators.</p>
+    <h2>Healthcare Participant Flow — Incentive Relay</h2>
+    <p>Horizontal map of how value, authorization, and payment decisions move across participants from member demand to regulated supply and oversight.</p>
   </div>
 
-  <div class="hc-stack">
-    <div class="hc-layer hc-patient">
-      <h3>Patients / Consumers</h3>
-      <p>End users paying premiums, deductibles, copays, and coinsurance — often with limited control over plan selection.</p>
-      <div class="hc-chip-row"><span class="hc-chip">Individuals</span><span class="hc-chip">Families</span><span class="hc-chip">Employer-covered members</span></div>
+  <div class="hc-relay">
+    <div class="hc-relay-grid">
+      <article class="hc-relay-col hc-patient">
+        <h3>Demand: Patients / Members</h3>
+        <p>Members initiate care demand and absorb premium, deductible, copay, and access friction.</p>
+        <div class="hc-chip-row">
+          <span class="hc-chip">Individuals</span>
+          <span class="hc-chip">Families</span>
+          <span class="hc-chip">Employer Plans</span>
+        </div>
+      </article>
+
+      <div class="hc-relay-arrow" aria-hidden="true">→</div>
+
+      <div class="hc-relay-mid">
+        <article class="hc-layer hc-provider">
+          <h3>Care Delivery: Providers</h3>
+          <p>Hospitals and clinicians deliver treatment, document codes, and submit claims for payment.</p>
+          <div class="hc-chip-row">
+            <span class="hc-chip">Hospitals</span>
+            <span class="hc-chip">Physicians</span>
+            <span class="hc-chip">Labs</span>
+            <span class="hc-chip">Pharmacies</span>
+          </div>
+        </article>
+
+        <article class="hc-layer hc-payer">
+          <h3>Decision Layer: Payers</h3>
+          <p>Coverage policy, network contracts, utilization controls, and adjudication logic sit here.</p>
+          <div class="hc-chip-row">
+            <span class="hc-chip">Commercial Plans</span>
+            <span class="hc-chip">Medicare / Medicaid</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="hc-relay-arrow" aria-hidden="true">→</div>
+
+      <article class="hc-relay-col hc-infra">
+        <h3>Execution Infrastructure</h3>
+        <p>EHR, clearinghouse, and interoperability rails route data and claims across fragmented institutions.</p>
+        <div class="hc-chip-row">
+          <span class="hc-chip">Epic / Cerner</span>
+          <span class="hc-chip">Change / Availity</span>
+          <span class="hc-chip">HL7 / FHIR / EDI</span>
+        </div>
+      </article>
     </div>
 
-    <div class="hc-layer hc-provider">
-      <h3>Providers</h3>
-      <p>Hospitals, clinics, physicians, and labs deliver care and submit coded claims for reimbursement.</p>
-      <div class="hc-chip-row"><span class="hc-chip">Hospitals</span><span class="hc-chip">Physicians</span><span class="hc-chip">Labs</span><span class="hc-chip">Pharmacies</span></div>
-    </div>
+    <article class="hc-layer hc-pbm" style="margin-top: 12px;">
+      <h3>Pharmacy & Drug Economics (Cross-Cutting)</h3>
+      <p>PBMs and manufacturers influence formulary access, rebate economics, and patient out-of-pocket burden.</p>
+      <div class="hc-chip-row">
+        <span class="hc-chip">Express Scripts</span>
+        <span class="hc-chip">CVS Caremark</span>
+        <span class="hc-chip">OptumRx</span>
+        <span class="hc-chip">Drug Manufacturers</span>
+      </div>
+    </article>
 
-    <div class="hc-layer hc-payer">
-      <h3>Payers (Insurance)</h3>
-      <p>Commercial and government plans adjudicate claims, set reimbursement terms, and manage utilization controls.</p>
-      <div class="hc-chip-row"><span class="hc-chip">Commercial: UHC/Anthem/Cigna/Aetna</span><span class="hc-chip">Government: Medicare/Medicaid/VA</span></div>
-    </div>
-
-    <div class="hc-layer hc-pbm">
-      <h3>Pharmacy Benefit Managers (PBMs)</h3>
-      <p>PBMs manage formulary design and pharmacy claim adjudication, negotiating rebates with manufacturers.</p>
-      <div class="hc-chip-row"><span class="hc-chip">Express Scripts</span><span class="hc-chip">CVS Caremark</span><span class="hc-chip">OptumRx</span></div>
-    </div>
-
-    <div class="hc-layer hc-infra">
-      <h3>Infrastructure</h3>
-      <p>EHRs, clearinghouses, and standards power data exchange and claims routing across fragmented providers and payers.</p>
-      <div class="hc-chip-row"><span class="hc-chip">EHR: Epic/Cerner</span><span class="hc-chip">Claims: Change/Availity</span><span class="hc-chip">Standards: HL7/FHIR</span></div>
-    </div>
-
-    <div class="hc-layer hc-pharma">
-      <h3>Pharma &amp; Device Manufacturers + Regulators</h3>
-      <p>Manufacturers set product pricing and rebate contracts; FDA/CMS/HHS/state bodies define safety, reimbursement, and privacy constraints.</p>
-      <div class="hc-chip-row"><span class="hc-chip">Drug & Device Makers</span><span class="hc-chip">FDA</span><span class="hc-chip">CMS</span><span class="hc-chip">HHS / State DOI</span></div>
-    </div>
+    <article class="hc-layer hc-pharma" style="margin-top: 12px;">
+      <h3>Regulatory Guardrails (System Constraints)</h3>
+      <p>FDA, CMS, HHS, and state regulators constrain product speed and define compliance boundaries.</p>
+      <div class="hc-chip-row">
+        <span class="hc-chip">FDA</span>
+        <span class="hc-chip">CMS</span>
+        <span class="hc-chip">HHS</span>
+        <span class="hc-chip">State DOI</span>
+      </div>
+    </article>
   </div>
 
   <div class="hc-callout">
-    <p><strong>System reality:</strong> no single actor controls the full journey. PMs win by designing workflows that reduce coordination friction across institutions with conflicting incentives.</p>
+    <p><strong>System reality:</strong> no single actor controls the full journey. PM leverage comes from reducing handoff friction between care delivery, coverage decisions, and infrastructure constraints.</p>
   </div>
 </section>

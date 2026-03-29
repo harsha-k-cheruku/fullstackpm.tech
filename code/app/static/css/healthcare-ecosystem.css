@@ -81,8 +81,9 @@ html { scroll-padding-top: 120px; }
   border-radius: 20px;
   padding: 4px 10px;
   margin-bottom: 8px;
-  background: color-mix(in srgb, var(--hc-card-border) 45%, white);
-  color: var(--hc-muted);
+  background: var(--hc-heading);
+  color: var(--hc-card-bg);
+  border: 1px solid var(--hc-heading);
 }
 .section-header h2 { font-size: 26px; font-weight: 700; color: var(--hc-heading); }
 .section-header p { margin-top: 6px; color: var(--hc-muted); font-size: 15px; max-width: 760px; }
@@ -122,6 +123,39 @@ html { scroll-padding-top: 120px; }
 .hc-subnav-link.active { background: var(--color-accent, #2E8ECE); color: white; font-weight: 600; }
 
 /* Participant map */
+.hc-relay {
+  border: 2px solid var(--hc-card-border);
+  border-radius: 14px;
+  background: var(--hc-card-bg);
+  padding: 14px;
+}
+.hc-relay-grid {
+  display: grid;
+  grid-template-columns: 1fr 72px 1.2fr 72px 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
+.hc-relay-col {
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 12px;
+}
+.hc-relay-col h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.hc-relay-col p { font-size: 12px; color: var(--hc-body); margin-bottom: 8px; }
+.hc-relay-mid { display: grid; gap: 10px; }
+.hc-relay-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--hc-faint);
+  font-weight: 700;
+}
+@media (max-width: 980px) {
+  .hc-relay-grid { grid-template-columns: 1fr; }
+  .hc-relay-arrow { transform: rotate(90deg); font-size: 24px; }
+}
+
 .hc-stack { display: flex; flex-direction: column; gap: 12px; }
 .hc-layer {
   border: 2px solid;

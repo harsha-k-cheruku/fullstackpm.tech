@@ -235,8 +235,9 @@ html { scroll-padding-top: 120px; }
 .section-header h2 { font-size: 26px; font-weight: 700; color: var(--fe-heading); }
 .section-header p { color: var(--fe-muted); margin-top: 6px; font-size: 15px; max-width: 700px; }
 .section-tag {
-  display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .06em;
-  text-transform: uppercase; background: var(--fe-tag-bg); color: var(--fe-tag-text);
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; background: var(--fe-heading); color: var(--fe-card-bg);
+  border: 1px solid var(--fe-heading);
   padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
 }
 .fe-divider { border: none; border-top: 1px solid var(--fe-card-border); margin: 48px 0; }
