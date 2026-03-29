@@ -121,6 +121,11 @@ html { scroll-padding-top: 120px; }
 }
 .hc-subnav-link:hover { background: var(--color-bg-tertiary, #f1f5f9); color: var(--color-text-primary, #0f172a); }
 .hc-subnav-link.active { background: var(--color-accent, #2E8ECE); color: white; font-weight: 600; }
+.hc-subnav-link:focus-visible,
+.hc-tab:focus-visible {
+  outline: 3px solid var(--color-accent, #2E8ECE);
+  outline-offset: 2px;
+}
 
 /* Participant map */
 .hc-relay {
@@ -258,6 +263,20 @@ html { scroll-padding-top: 120px; }
 .hc-prior-card ul { margin: 0; padding-left: 18px; }
 .hc-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
 @media (max-width: 900px) { .hc-stats { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .hc-chip,
+  .hc-step-label,
+  .hc-stat span,
+  .hc-participant { font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
 .hc-stat { border: 2px solid var(--hc-card-border); border-radius: 10px; padding: 10px; background: var(--hc-card-bg); }
 .hc-stat strong { display: block; font-size: 18px; color: var(--hc-heading); margin-bottom: 2px; }
 .hc-stat span { font-size: 11px; color: var(--hc-muted); }

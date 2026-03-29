@@ -145,6 +145,11 @@ html { scroll-padding-top: 120px; }
   color: white;
   font-weight: 600;
 }
+.at-subnav-link:focus-visible,
+.at-toggle button:focus-visible {
+  outline: 3px solid var(--color-accent, #2E8ECE);
+  outline-offset: 2px;
+}
 
 /* Diagram 1: Horizontal relay map */
 .at-relay {
@@ -305,6 +310,20 @@ html { scroll-padding-top: 120px; }
 @media (max-width: 760px) {
   .at-flow-row { grid-template-columns: 1fr; gap: 6px; }
   .at-flow-value { text-align: left; }
+}
+@media (max-width: 640px) {
+  .at-pill,
+  .at-step-label,
+  .at-flow-label,
+  .at-flow-value { font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* PM parity blocks (components deepening) */
