@@ -41,4 +41,34 @@
   <div class="hc-callout" style="margin-top: 20px;">
     <p><strong>Interview shortcut:</strong> structure healthcare answers around <strong>time-to-treatment</strong>, <strong>administrative cost</strong>, and <strong>outcome quality</strong>. If your feature improves all three, that’s product gold. If it improves one while worsening the others, call out the tradeoff explicitly.</p>
   </div>
+
+  <h3 class="pm-subhead">Common PM Failure Patterns</h3>
+  <div class="pm-grid pm-grid-4">
+    <article class="pm-card"><h4>Workflow-only fix</h4><p>Improving provider UI without payer-side integration leaves real approval latency unchanged.</p></article>
+    <article class="pm-card"><h4>Automation without data quality</h4><p>Decision automation fails when clinical/coding data is incomplete or non-normalized.</p></article>
+    <article class="pm-card"><h4>Ignoring incentives</h4><p>Feature assumptions break when reimbursement model rewards volume over outcomes.</p></article>
+    <article class="pm-card"><h4>Compliance as afterthought</h4><p>Late HIPAA/regulatory integration causes rework, launch delays, and trust damage.</p></article>
+  </div>
+
+  <h3 class="pm-subhead">Decision Matrix — What to Optimize For</h3>
+  <div class="pm-matrix-wrap">
+    <table class="pm-matrix">
+      <thead>
+        <tr><th>Situation</th><th>Optimize For</th><th>Guardrail Metrics</th><th>Avoid</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>High prior-auth backlog</td><td>Latency reduction + auto-approval logic</td><td>TAT, auto-approval %, denial overturn rate</td><td>Manual ops headcount as only fix</td></tr>
+        <tr><td>Provider abrasion spikes</td><td>Administrative simplicity</td><td>Rework rate, touch count per request</td><td>Adding docs requirements without evidence</td></tr>
+        <tr><td>Value-based contract rollout</td><td>Outcome visibility + risk adjustment</td><td>Readmission, quality scores, total cost of care</td><td>FFS-era metrics as primary KPI set</td></tr>
+        <tr><td>Interoperability initiative</td><td>Data completeness + reliability</td><td>Record match rate, integration uptime, retrieval latency</td><td>Counting integrations instead of usable data</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="pm-subhead">Interview Scenarios + Strong Answer Angles</h3>
+  <div class="pm-scenarios">
+    <article class="pm-scenario"><h4>“Prior auth takes 9 days. How would you improve it?”</h4><p><strong>Angle:</strong> map top denial pathways, pre-fill required clinical data, implement payer-priority integrations, and track turnaround by service line.</p></article>
+    <article class="pm-scenario"><h4>“Providers complain your tool adds clicks.”</h4><p><strong>Angle:</strong> optimize for touch reduction per episode, embed in existing EHR flow, and tie changes to measurable time saved.</p></article>
+    <article class="pm-scenario"><h4>“Leadership wants VBC outcomes in 1 quarter.”</h4><p><strong>Angle:</strong> set phased targets (process → intermediate clinical → financial outcomes) and align incentives before forcing outcome accountability.</p></article>
+  </div>
 </section>

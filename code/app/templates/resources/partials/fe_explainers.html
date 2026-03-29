@@ -62,4 +62,34 @@
   <div class="fe-callout" style="margin-top: 20px;">
     <p><strong>Interview shortcut:</strong> when asked about fintech strategy, split the answer into <strong>distribution</strong> (acquisition), <strong>decisioning</strong> (risk + approvals), and <strong>balance sheet mechanics</strong> (funding + losses). Most candidates stop at UX; strong PMs speak in unit economics.</p>
   </div>
+
+  <h3 class="pm-subhead">Common PM Failure Patterns</h3>
+  <div class="pm-grid pm-grid-4">
+    <article class="pm-card"><h4>Approval-rate vanity</h4><p>Chasing top-line approvals without tracking 90-day loss cohorts creates delayed blowups.</p></article>
+    <article class="pm-card"><h4>Unit economics blind spot</h4><p>Teams optimize conversion while ignoring cost of funds, servicing cost, and charge-off trajectory.</p></article>
+    <article class="pm-card"><h4>Reconciliation debt</h4><p>Shipping money movement features fast without ledger controls creates exception backlog and trust erosion.</p></article>
+    <article class="pm-card"><h4>Collections policy whiplash</h4><p>Frequent policy swings confuse ops and customers, hurting both recovery and NPS.</p></article>
+  </div>
+
+  <h3 class="pm-subhead">Decision Matrix — What to Optimize For</h3>
+  <div class="pm-matrix-wrap">
+    <table class="pm-matrix">
+      <thead>
+        <tr><th>Situation</th><th>Optimize For</th><th>Guardrail Metrics</th><th>Avoid</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Early growth phase</td><td>Acquisition velocity + fast approvals</td><td>FPD, fraud rate, CAC payback</td><td>Loose underwriting with no cohort gating</td></tr>
+        <tr><td>Rising delinquencies</td><td>Portfolio quality + recovery execution</td><td>30/60/90 DPD roll rates, cure rate</td><td>Rate hikes only (without servicing fixes)</td></tr>
+        <tr><td>Funding pressure</td><td>Margin durability + capital efficiency</td><td>Net take rate, cost of funds, utilization</td><td>Unprofitable promo-led growth</td></tr>
+        <tr><td>Audit/compliance heat</td><td>Control integrity + traceability</td><td>Break rate, unresolved exceptions, close time</td><td>Bypassing ledger/process controls</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="pm-subhead">Interview Scenarios + Strong Answer Angles</h3>
+  <div class="pm-scenarios">
+    <article class="pm-scenario"><h4>“Approval dropped 12 points after model update. What do you do?”</h4><p><strong>Angle:</strong> segment by risk band + channel, run champion/challenger rollback logic, protect loss guardrails before restoring volume.</p></article>
+    <article class="pm-scenario"><h4>“Delinquency is rising but growth target is fixed.”</h4><p><strong>Angle:</strong> propose dual-track plan: tighten thin-file bands + improve repayment UX/collections ops, align execs on risk-adjusted growth.</p></article>
+    <article class="pm-scenario"><h4>“Finance says numbers don’t match dashboards.”</h4><p><strong>Angle:</strong> establish single ledger truth, reconciliation SLA, and incident taxonomy before adding new reporting layers.</p></article>
+  </div>
 </section>

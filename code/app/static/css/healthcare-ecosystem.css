@@ -282,6 +282,24 @@ html { scroll-padding-top: 120px; }
   padding: 10px;
 }
 
+/* PM parity blocks (components deepening) */
+.pm-subhead { font-size: 20px; font-weight: 700; color: var(--hc-heading); margin: 30px 0 12px; }
+.pm-grid { display: grid; gap: 12px; }
+.pm-grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) { .pm-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .pm-grid-4 { grid-template-columns: 1fr; } }
+.pm-card { border: 2px solid var(--hc-card-border); border-radius: 12px; background: var(--hc-card-bg); padding: 12px; }
+.pm-card h4 { font-size: 14px; font-weight: 700; color: var(--hc-heading); margin-bottom: 6px; }
+.pm-card p { font-size: 12px; color: var(--hc-body); }
+.pm-matrix-wrap { border: 2px solid var(--hc-card-border); border-radius: 12px; overflow: auto; background: var(--hc-card-bg); }
+.pm-matrix { width: 100%; border-collapse: collapse; min-width: 760px; }
+.pm-matrix th, .pm-matrix td { border: 1px solid var(--hc-card-border); padding: 10px; font-size: 12px; text-align: left; color: var(--hc-body); vertical-align: top; }
+.pm-matrix th { background: color-mix(in srgb, var(--hc-card-border) 45%, white); color: var(--hc-heading); font-weight: 700; }
+.pm-scenarios { display: grid; gap: 10px; }
+.pm-scenario { border: 2px solid var(--hc-card-border); border-radius: 12px; background: var(--hc-card-bg); padding: 12px; }
+.pm-scenario h4 { font-size: 14px; font-weight: 700; color: var(--hc-heading); margin-bottom: 6px; }
+.pm-scenario p { font-size: 12px; color: var(--hc-body); }
+
 /* Healthtech models */
 .hc-card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 @media (max-width: 1000px) { .hc-card-grid-3 { grid-template-columns: repeat(2, 1fr); } }
