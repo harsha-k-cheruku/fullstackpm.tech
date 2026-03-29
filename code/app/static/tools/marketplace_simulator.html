@@ -1498,7 +1498,10 @@ function renderStep1(){
       ${persona&&persona.s1?`<div class="callout">${persona.s1}</div>`:''}
       ${cards}
       ${summary}
-      <button class="wt-begin" onclick="advanceStep()">Next: Pricing Engine →</button>
+      ${wt.eligiblePartners.length===0
+        ? `<button class="wt-begin" style="background:#94a3b8;cursor:not-allowed" disabled>Pricing Engine Blocked (No Eligible Partners)</button><button class="wt-begin" onclick="resetWalkthrough()" style="background:var(--text);margin-top:8px">↺ Try Another Borrower</button>`
+        : `<button class="wt-begin" onclick="advanceStep()">Next: Pricing Engine →</button>`
+      }
     </div>
   `;
 
@@ -1576,7 +1579,10 @@ function renderStep2(){
       </div>
       ${banner}
       ${whatHappened}
-      <button class="wt-begin" ${wt.eligiblePartners.length===0||!ai.pass?'disabled':''} onclick="advanceStep()">Next: Waterfall Routing →</button>
+      ${wt.eligiblePartners.length===0||!ai.pass
+        ? `<button class="wt-begin" style="background:#94a3b8;cursor:not-allowed" disabled>Waterfall Routing Blocked (No Clearing APR)</button><button class="wt-begin" onclick="resetWalkthrough()" style="background:var(--text);margin-top:8px">↺ Try Another Borrower</button>`
+        : `<button class="wt-begin" onclick="advanceStep()">Next: Waterfall Routing →</button>`
+      }
     </div>
   `;
 
