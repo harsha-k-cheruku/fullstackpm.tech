@@ -176,3 +176,16 @@ async def adtech_ecosystem(request: Request) -> HTMLResponse:
             current_page="/resources/ecosystem-maps",
         ),
     )
+
+
+@router.get("/resources/ecosystem-maps/healthcare-ecosystem", response_class=HTMLResponse)
+async def healthcare_ecosystem(request: Request) -> HTMLResponse:
+    """Serve the US Healthcare ecosystem visual map."""
+    return templates.TemplateResponse(
+        "resources/healthcare_ecosystem.html",
+        _ctx(
+            request,
+            title="US Healthcare Ecosystem — PM Visual Guide | fullstackpm.tech",
+            current_page="/resources/ecosystem-maps",
+        ),
+    )

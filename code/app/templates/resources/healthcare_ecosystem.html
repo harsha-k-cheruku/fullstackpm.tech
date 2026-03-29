@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}US Healthcare Ecosystem — PM Visual Guide | fullstackpm.tech{% endblock %}
+{% block description %}Visual map of the US healthcare ecosystem: payer-provider relationships, claims and prior authorization flows, value-based care models, and healthtech business models.{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/healthcare-ecosystem.css">
+{% endblock %}
+
+{% block content %}
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">US Healthcare Ecosystem</span>
+</nav>
+
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">US Healthcare Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 760px;">
+    Five diagrams covering participants, claims flow, prior authorization, care payment model shifts, and core healthtech business model patterns.
+  </p>
+</header>
+
+{% include "resources/partials/hc_subnav.html" %}
+
+<div class="hc-page">
+  {% include "resources/partials/hc_diagram_participants.html" %}
+  <hr class="hc-divider">
+  {% include "resources/partials/hc_diagram_claims.html" %}
+  <hr class="hc-divider">
+  {% include "resources/partials/hc_diagram_priorauth.html" %}
+  <hr class="hc-divider">
+  {% include "resources/partials/hc_diagram_ffs_vbc.html" %}
+  <hr class="hc-divider">
+  {% include "resources/partials/hc_diagram_healthtech.html" %}
+</div>
+
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  US Healthcare Ecosystem Visual Guide · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function showHcClaims(id, btn) {
+    document.querySelectorAll('.hc-claims-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.hc-tab').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('hc-claims-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  const sections = ['participants', 'claims', 'priorauth', 'ffs-vbc', 'healthtech'];
+  const navLinks = document.querySelectorAll('.hc-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+    navLinks.forEach(link => link.classList.remove('active'));
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  updateActiveLink();
+</script>
+{% endblock %}

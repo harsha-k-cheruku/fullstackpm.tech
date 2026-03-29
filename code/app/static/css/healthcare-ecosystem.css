@@ -1,0 +1,259 @@
+/* US Healthcare Ecosystem — Dedicated CSS */
+
+:root {
+  --hc-patient-bg: #eff6ff;
+  --hc-patient-border: #93c5fd;
+  --hc-patient-text: #1e40af;
+
+  --hc-provider-bg: #f0fdf4;
+  --hc-provider-border: #86efac;
+  --hc-provider-text: #15803d;
+
+  --hc-payer-bg: #faf5ff;
+  --hc-payer-border: #d8b4fe;
+  --hc-payer-text: #7e22ce;
+
+  --hc-pbm-bg: #fff7ed;
+  --hc-pbm-border: #fdba74;
+  --hc-pbm-text: #9a3412;
+
+  --hc-infra-bg: #f1f5f9;
+  --hc-infra-border: #cbd5e1;
+  --hc-infra-text: #334155;
+
+  --hc-pharma-bg: #fff1f2;
+  --hc-pharma-border: #fda4af;
+  --hc-pharma-text: #9f1239;
+
+  --hc-card-bg: #ffffff;
+  --hc-card-border: #e2e8f0;
+  --hc-heading: #0f172a;
+  --hc-body: #475569;
+  --hc-muted: #64748b;
+  --hc-faint: #94a3b8;
+}
+
+.dark {
+  --hc-patient-bg: #172554;
+  --hc-patient-border: #3b82f6;
+  --hc-patient-text: #93c5fd;
+
+  --hc-provider-bg: #052e16;
+  --hc-provider-border: #16a34a;
+  --hc-provider-text: #86efac;
+
+  --hc-payer-bg: #2e1065;
+  --hc-payer-border: #7e22ce;
+  --hc-payer-text: #d8b4fe;
+
+  --hc-pbm-bg: #431407;
+  --hc-pbm-border: #c2410c;
+  --hc-pbm-text: #fdba74;
+
+  --hc-infra-bg: #1e293b;
+  --hc-infra-border: #475569;
+  --hc-infra-text: #cbd5e1;
+
+  --hc-pharma-bg: #4c0519;
+  --hc-pharma-border: #be123c;
+  --hc-pharma-text: #fda4af;
+
+  --hc-card-bg: var(--color-bg-secondary);
+  --hc-card-border: #334155;
+  --hc-heading: #f1f5f9;
+  --hc-body: #94a3b8;
+  --hc-muted: #94a3b8;
+  --hc-faint: #64748b;
+}
+
+html { scroll-padding-top: 120px; }
+.hc-page { max-width: 1200px; margin: 0 auto; padding: 40px 0; }
+.hc-section { padding-bottom: 12px; }
+.hc-divider { border: none; border-top: 1px solid var(--hc-card-border); margin: 48px 0; }
+
+.section-header { margin-bottom: 24px; }
+.section-tag {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 4px 10px;
+  margin-bottom: 8px;
+  background: color-mix(in srgb, var(--hc-card-border) 45%, white);
+  color: var(--hc-muted);
+}
+.section-header h2 { font-size: 26px; font-weight: 700; color: var(--hc-heading); }
+.section-header p { margin-top: 6px; color: var(--hc-muted); font-size: 15px; max-width: 760px; }
+
+.hc-callout {
+  margin-top: 16px;
+  border: 2px solid var(--hc-pbm-border);
+  background: color-mix(in srgb, var(--hc-pbm-bg) 75%, white);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.hc-callout p { font-size: 13px; color: var(--hc-pbm-text); line-height: 1.6; }
+.hc-callout strong { color: var(--hc-heading); }
+
+/* Subnav */
+.hc-subnav {
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  background: var(--color-bg-secondary, #f8fafc);
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+.hc-subnav-link {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary, #64748b);
+  border-radius: 20px;
+  padding: 6px 14px;
+  white-space: nowrap;
+}
+.hc-subnav-link:hover { background: var(--color-bg-tertiary, #f1f5f9); color: var(--color-text-primary, #0f172a); }
+.hc-subnav-link.active { background: var(--color-accent, #2E8ECE); color: white; font-weight: 600; }
+
+/* Participant map */
+.hc-stack { display: flex; flex-direction: column; gap: 12px; }
+.hc-layer {
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 14px;
+}
+.hc-layer h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.hc-layer p { font-size: 13px; color: var(--hc-body); margin-bottom: 8px; }
+.hc-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.hc-chip {
+  font-size: 11px;
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 4px 9px;
+  font-weight: 600;
+}
+.hc-patient { background: var(--hc-patient-bg); border-color: var(--hc-patient-border); }
+.hc-patient h3, .hc-patient .hc-chip { color: var(--hc-patient-text); border-color: var(--hc-patient-border); }
+.hc-provider { background: var(--hc-provider-bg); border-color: var(--hc-provider-border); }
+.hc-provider h3, .hc-provider .hc-chip { color: var(--hc-provider-text); border-color: var(--hc-provider-border); }
+.hc-payer { background: var(--hc-payer-bg); border-color: var(--hc-payer-border); }
+.hc-payer h3, .hc-payer .hc-chip { color: var(--hc-payer-text); border-color: var(--hc-payer-border); }
+.hc-pbm { background: var(--hc-pbm-bg); border-color: var(--hc-pbm-border); }
+.hc-pbm h3, .hc-pbm .hc-chip { color: var(--hc-pbm-text); border-color: var(--hc-pbm-border); }
+.hc-infra { background: var(--hc-infra-bg); border-color: var(--hc-infra-border); }
+.hc-infra h3, .hc-infra .hc-chip { color: var(--hc-infra-text); border-color: var(--hc-infra-border); }
+.hc-pharma { background: var(--hc-pharma-bg); border-color: var(--hc-pharma-border); }
+.hc-pharma h3, .hc-pharma .hc-chip { color: var(--hc-pharma-text); border-color: var(--hc-pharma-border); }
+
+/* Claims tabbed sequence */
+.hc-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.hc-tab {
+  border: 2px solid var(--hc-card-border);
+  background: color-mix(in srgb, var(--hc-card-border) 35%, white);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--hc-heading);
+}
+.hc-tab.active { background: #0f172a; border-color: #0f172a; color: #f8fafc; }
+.hc-sequence {
+  border: 2px solid var(--hc-card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--hc-card-bg);
+}
+.hc-participants {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background: #0f172a;
+  gap: 1px;
+}
+.hc-participant {
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 8px;
+}
+.hc-step-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--hc-muted);
+  padding: 6px 12px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  background: color-mix(in srgb, var(--hc-card-border) 45%, white);
+  border-bottom: 1px solid var(--hc-card-border);
+}
+.hc-step {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  min-height: 50px;
+  border-bottom: 1px solid var(--hc-card-border);
+}
+.hc-step:last-child { border-bottom: none; }
+.hc-cell {
+  padding: 10px 8px;
+  font-size: 12px;
+  color: var(--hc-body);
+  border-right: 1px dashed var(--hc-card-border);
+}
+.hc-cell:last-child { border-right: none; }
+.hc-cell.active { font-weight: 600; }
+.hc-cell.patient { background: color-mix(in srgb, var(--hc-patient-bg) 75%, white); color: var(--hc-patient-text); }
+.hc-cell.provider { background: color-mix(in srgb, var(--hc-provider-bg) 75%, white); color: var(--hc-provider-text); }
+.hc-cell.clear { background: color-mix(in srgb, var(--hc-infra-bg) 75%, white); color: var(--hc-infra-text); }
+.hc-cell.payer { background: color-mix(in srgb, var(--hc-payer-bg) 75%, white); color: var(--hc-payer-text); }
+.hc-cell.pbm { background: color-mix(in srgb, var(--hc-pbm-bg) 75%, white); color: var(--hc-pbm-text); }
+.hc-cell.bank { background: color-mix(in srgb, var(--hc-pharma-bg) 75%, white); color: var(--hc-pharma-text); }
+
+/* Prior auth */
+.hc-prior-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 900px) { .hc-prior-grid { grid-template-columns: 1fr; } }
+.hc-prior-card { border: 2px solid var(--hc-card-border); border-radius: 12px; padding: 12px; background: var(--hc-card-bg); }
+.hc-prior-card h4 { font-size: 14px; font-weight: 700; color: var(--hc-heading); margin-bottom: 6px; }
+.hc-prior-card p, .hc-prior-card li { font-size: 12px; color: var(--hc-body); }
+.hc-prior-card ul { margin: 0; padding-left: 18px; }
+.hc-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 14px; }
+@media (max-width: 900px) { .hc-stats { grid-template-columns: repeat(2, 1fr); } }
+.hc-stat { border: 2px solid var(--hc-card-border); border-radius: 10px; padding: 10px; background: var(--hc-card-bg); }
+.hc-stat strong { display: block; font-size: 18px; color: var(--hc-heading); margin-bottom: 2px; }
+.hc-stat span { font-size: 11px; color: var(--hc-muted); }
+
+/* FFS vs VBC */
+.hc-vbc-grid { display: grid; grid-template-columns: 1fr 120px 1fr; gap: 12px; }
+@media (max-width: 900px) { .hc-vbc-grid { grid-template-columns: 1fr; } }
+.hc-vbc-panel { border: 2px solid var(--hc-card-border); border-radius: 12px; padding: 14px; background: var(--hc-card-bg); }
+.hc-vbc-panel h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.hc-vbc-panel ul { margin: 0; padding-left: 18px; }
+.hc-vbc-panel li { font-size: 12px; color: var(--hc-body); margin-bottom: 6px; }
+.hc-vbc-mid {
+  border: 2px dashed var(--hc-card-border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--hc-muted);
+  padding: 10px;
+}
+
+/* Healthtech models */
+.hc-card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 1000px) { .hc-card-grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .hc-card-grid-3 { grid-template-columns: 1fr; } }
+.hc-model-card { border: 2px solid var(--hc-card-border); border-radius: 12px; background: var(--hc-card-bg); overflow: hidden; }
+.hc-model-head { padding: 12px 14px; font-size: 13px; font-weight: 700; border-bottom: 2px solid var(--hc-card-border); }
+.hc-model-body { padding: 12px 14px; }
+.hc-model-body p { font-size: 12px; color: var(--hc-body); margin-bottom: 8px; }
+.hc-model-body p strong { color: var(--hc-heading); }

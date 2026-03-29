@@ -1,0 +1,88 @@
+<section id="claims" class="hc-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 2</span>
+    <h2>Claims Flow — How a Medical Bill Gets Paid</h2>
+    <p>Medical and pharmacy claims share actors but have radically different latency: weeks for medical adjudication, seconds for pharmacy.</p>
+  </div>
+
+  <div class="hc-tabs">
+    <button class="hc-tab active" onclick="showHcClaims('medical', this)">Medical Claim (30-90 days)</button>
+    <button class="hc-tab" onclick="showHcClaims('pharmacy', this)">Pharmacy Claim (~2 seconds)</button>
+  </div>
+
+  <div id="hc-claims-medical" class="hc-claims-panel">
+    <div class="hc-sequence">
+      <div class="hc-participants">
+        <div class="hc-participant">Patient</div>
+        <div class="hc-participant">Provider</div>
+        <div class="hc-participant">Clearinghouse</div>
+        <div class="hc-participant">Payer</div>
+        <div class="hc-participant">PBM (Rx)</div>
+        <div class="hc-participant">Bank</div>
+      </div>
+
+      <div class="hc-step-label">Care delivery and claim submission</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Receives care</div>
+        <div class="hc-cell active provider">Documents encounter in EHR + coding</div>
+        <div class="hc-cell active clear">Scrubs/validates CMS-1500 or UB-04 claim</div>
+        <div class="hc-cell"></div><div class="hc-cell"></div><div class="hc-cell"></div>
+      </div>
+
+      <div class="hc-step-label">Adjudication and benefit calculation</div>
+      <div class="hc-step">
+        <div class="hc-cell"></div><div class="hc-cell"></div>
+        <div class="hc-cell active clear">Forwards clean claim to payer</div>
+        <div class="hc-cell active payer">Eligibility + allowed amount + member cost share</div>
+        <div class="hc-cell"></div><div class="hc-cell"></div>
+      </div>
+
+      <div class="hc-step-label">Payment and patient billing</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Receives EOB and later balance bill</div>
+        <div class="hc-cell active provider">Posts ERA payment, bills patient remainder</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active payer">Sends EOB + remittance (835)</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active bank">Transfers settlement funds</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hc-claims-pharmacy" class="hc-claims-panel" style="display:none;">
+    <div class="hc-sequence">
+      <div class="hc-participants">
+        <div class="hc-participant">Patient</div>
+        <div class="hc-participant">Provider/Pharmacy</div>
+        <div class="hc-participant">Clearinghouse</div>
+        <div class="hc-participant">Payer</div>
+        <div class="hc-participant">PBM</div>
+        <div class="hc-participant">Bank</div>
+      </div>
+
+      <div class="hc-step-label">Point-of-sale adjudication</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Presents prescription</div>
+        <div class="hc-cell active provider">Pharmacy submits NCPDP transaction</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active pbm">Checks formulary, tier, copay in ~2s</div>
+        <div class="hc-cell"></div>
+      </div>
+
+      <div class="hc-step-label">Copay collection and reimbursement</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Pays copay at counter</div>
+        <div class="hc-cell active provider">Dispenses medication</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active pbm">Returns response + reimburses pharmacy later</div>
+        <div class="hc-cell active bank">Settlement and rebate cash movement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hc-callout">
+    <p><strong>Architecture implication:</strong> medical claims systems optimize batch accuracy and denial management; pharmacy systems optimize sub-second reliability and uptime at checkout.</p>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<section id="priorauth" class="hc-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 3</span>
+    <h2>Prior Authorization Sequence</h2>
+    <p>Prior auth is a pre-approval gate for selected treatments, often causing delays even when care is ultimately approved.</p>
+  </div>
+
+  <div class="hc-prior-grid">
+    <article class="hc-prior-card">
+      <h4>Decision Flow</h4>
+      <ul>
+        <li>Provider orders treatment/procedure.</li>
+        <li>Check payer rules: prior auth required?</li>
+        <li><strong>No:</strong> proceed and submit normal claim.</li>
+        <li><strong>Yes:</strong> submit PA request with clinical documentation.</li>
+        <li>Payer reviews medical necessity criteria.</li>
+        <li><strong>Approved:</strong> treatment proceeds.</li>
+        <li><strong>Denied:</strong> accept, appeal, or external review.</li>
+        <li><strong>Pending:</strong> more documents requested; delays continue.</li>
+      </ul>
+    </article>
+
+    <article class="hc-prior-card">
+      <h4>Operational Paths</h4>
+      <p><strong>Standard review:</strong> typically 3-14 days.</p>
+      <p><strong>Urgent review:</strong> 24-72 hours for acute scenarios.</p>
+      <p><strong>Appeal path:</strong> provider peer-to-peer review with payer medical director, then external independent review if unresolved.</p>
+      <p><strong>Outcome reality:</strong> many denials are reversed, implying workflow friction is often administrative rather than clinical.</p>
+    </article>
+  </div>
+
+  <div class="hc-stats">
+    <div class="hc-stat"><strong>34%</strong><span>Initial prior auth denial rate</span></div>
+    <div class="hc-stat"><strong>82%</strong><span>Denials overturned on appeal</span></div>
+    <div class="hc-stat"><strong>7 days</strong><span>Average delay window</span></div>
+    <div class="hc-stat"><strong>~25%</strong><span>Share of care delays tied to PA</span></div>
+  </div>
+
+  <div class="hc-callout">
+    <p><strong>Core tension:</strong> prior auth aims to control unnecessary utilization, but high reversal rates suggest many requests are delayed rather than genuinely inappropriate.</p>
+  </div>
+</section>
