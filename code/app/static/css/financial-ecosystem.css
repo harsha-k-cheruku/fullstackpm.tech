@@ -275,12 +275,12 @@ html { scroll-padding-top: 120px; }
 .seq-participant .p-icon { font-size: 24px; display: block; margin-bottom: 4px; }
 .seq-step { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--fe-neutral-light); min-height: 56px; }
 .seq-step:last-child { border-bottom: none; }
-.seq-cell { padding: 12px 10px; font-size: 12px; color: var(--fe-body); border-right: 1px dashed var(--fe-card-border); }
+.seq-cell { padding: 12px 10px; font-size: 12px; color: var(--fe-heading); border-right: 1px dashed var(--fe-card-border); }
 .seq-cell:last-child { border-right: none; }
 .seq-cell.active { background: var(--fe-seq-active-bg); font-weight: 600; color: var(--fe-seq-active-text); }
 .seq-cell.sending { background: var(--fe-seq-sending-bg); font-weight: 600; color: var(--fe-seq-sending-text); }
 .seq-cell.decision { background: var(--fe-seq-decision-bg); font-weight: 600; color: var(--fe-seq-decision-text); }
-.seq-step-label { font-size: 11px; color: var(--fe-faint); font-weight: 600; padding: 6px 14px; background: var(--fe-neutral-bg); border-bottom: 1px solid var(--fe-card-border); letter-spacing: .04em; text-transform: uppercase; }
+.seq-step-label { font-size: 11px; color: var(--fe-heading); font-weight: 700; padding: 6px 14px; background: var(--fe-neutral-bg); border-bottom: 1px solid var(--fe-card-border); letter-spacing: .04em; text-transform: uppercase; }
 
 /* Model Tabs (Diagram 3) */
 .model-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -387,7 +387,7 @@ html { scroll-padding-top: 120px; }
 .j-step.decision { border-left-color: var(--fe-bnpl-border); }
 .j-step.decision::before { background: var(--fe-bnpl-text); color: #fff; }
 .j-step-content { flex: 1; }
-.j-step-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--fe-muted); margin-bottom: 2px; }
+.j-step-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--fe-heading); margin-bottom: 2px; }
 .j-step-what { font-size: 13px; color: var(--fe-heading); margin-bottom: 4px; }
 .j-step-rail { margin-top: 4px; }
 .journey-footer { padding: 14px 20px; background: var(--fe-neutral-bg); border-top: 1px solid var(--fe-card-border); font-size: 12px; color: var(--fe-muted); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }

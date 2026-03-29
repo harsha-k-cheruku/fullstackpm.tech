@@ -161,11 +161,13 @@ html { scroll-padding-top: 120px; }
 .seq-participant .p-icon { font-size: 24px; display: block; margin-bottom: 4px; }
 .seq-step { display: grid; grid-template-columns: repeat(6, 1fr); border-bottom: 1px solid var(--tsm-neutral-light); min-height: 56px; }
 .seq-step:last-child { border-bottom: none; }
-.seq-cell { padding: 12px 10px; font-size: 12px; color: var(--tsm-body); border-right: 1px dashed var(--tsm-card-border); }
+.seq-cell { padding: 12px 10px; font-size: 12px; color: var(--tsm-heading); border-right: 1px dashed var(--tsm-card-border); }
 .seq-cell:last-child { border-right: none; }
 .seq-cell.active { background: var(--tsm-supply-bg); font-weight: 600; color: var(--tsm-supply-text); }
 .seq-cell.sending { background: var(--tsm-demand-bg); font-weight: 600; color: var(--tsm-demand-text); }
 .seq-cell.decision { background: var(--tsm-platform-bg); font-weight: 600; color: var(--tsm-platform-text); }
+
+.seq-step-label { font-size: 11px; color: var(--tsm-heading); font-weight: 700; padding: 6px 14px; background: var(--tsm-neutral-bg); border-bottom: 1px solid var(--tsm-card-border); letter-spacing: .04em; text-transform: uppercase; }
 
 /* ── Types Grid (Diagram 4) ── */
 .types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -225,7 +227,7 @@ html { scroll-padding-top: 120px; }
 .j-step.decision { border-left-color: var(--tsm-platform-border); }
 .j-step.decision::before { background: var(--tsm-platform-text); color: #fff; }
 .j-step-content { flex: 1; }
-.j-step-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--tsm-muted); margin-bottom: 2px; }
+.j-step-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--tsm-heading); margin-bottom: 2px; }
 .j-step-what { font-size: 13px; color: var(--tsm-heading); margin-bottom: 4px; }
 .journey-footer { padding: 14px 20px; background: var(--tsm-neutral-bg); border-top: 1px solid var(--tsm-card-border); font-size: 12px; color: var(--tsm-muted); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .journey-footer strong { color: var(--tsm-heading); }

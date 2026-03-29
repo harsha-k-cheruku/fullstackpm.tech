@@ -220,7 +220,7 @@ html { scroll-padding-top: 120px; }
 .hc-step-label {
   font-size: 11px;
   font-weight: 700;
-  color: var(--hc-muted);
+  color: var(--hc-heading);
   padding: 6px 12px;
   text-transform: uppercase;
   letter-spacing: .06em;
@@ -237,7 +237,7 @@ html { scroll-padding-top: 120px; }
 .hc-cell {
   padding: 10px 8px;
   font-size: 12px;
-  color: var(--hc-body);
+  color: var(--hc-heading);
   border-right: 1px dashed var(--hc-card-border);
 }
 .hc-cell:last-child { border-right: none; }

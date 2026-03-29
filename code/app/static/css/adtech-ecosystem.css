@@ -238,7 +238,7 @@ html { scroll-padding-top: 120px; }
   letter-spacing: .05em;
   padding: 6px 14px;
   background: color-mix(in srgb, var(--at-card-border) 45%, white);
-  color: var(--at-muted);
+  color: var(--at-heading);
   border-bottom: 1px solid var(--at-card-border);
 }
 .at-step {
@@ -251,7 +251,7 @@ html { scroll-padding-top: 120px; }
 .at-cell {
   padding: 10px 8px;
   font-size: 12px;
-  color: var(--at-body);
+  color: var(--at-heading);
   border-right: 1px dashed var(--at-card-border);
 }
 .at-cell:last-child { border-right: none; }
