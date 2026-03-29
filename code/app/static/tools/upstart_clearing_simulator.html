@@ -252,6 +252,10 @@
     <div>
       <h1>Marketplace Clearing Simulator — Upstart Model</h1>
       <p>Interactive model of how borrowers, bank partners, capital partners, and Upstart's AI clearing engine interact</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px;">
+        <a href="/tools/upstart-data-methods" style="color:var(--blue);font-weight:600;">📊 See Data & Methods</a>
+        for sources, data generation logic, and case studies.
+      </p>
     </div>
     <div id="sc-btns" class="scenario-btns">
       <button class="sc-btn active" onclick="loadScenario('healthy',this)">Healthy Market</button>
@@ -307,6 +311,11 @@
       <button class="run-btn" onclick="runSim()">▶ Run Simulation</button>
     </div>
     <div class="res-panel">
+      <div class="callout" style="background:var(--blue-l);border-left:3px solid var(--blue);padding:12px;margin-bottom:16px;border-radius:4px;font-size:12px;color:#1e40af">
+        <b>📊 Semi-Realistic Synthetic Data:</b> This simulator uses borrower populations generated from statistical distributions
+        calibrated to Upstart's public disclosures (S-1 filing, earnings calls, investor presentations).
+        See <a href="/tools/upstart-data-methods" style="color:#1d4ed8;font-weight:700;">Data & Methods</a> for complete sources and methodology.
+      </div>
       <div id="insights"></div>
       <div class="kpi-row">
         <div class="kpi"><div class="kpi-lbl">Clearing Rate</div><div class="kpi-v" id="kv-cr">—</div><div class="kpi-s" id="ks-cr"></div></div>
@@ -339,6 +348,15 @@
         </div>
         <div class="sc-wrap"><canvas id="ch-sc"></canvas></div>
       </div>
+      <details style="margin-top:12px;padding:12px;border:1px solid var(--border);border-radius:4px;background:var(--surface)">
+        <summary style="cursor:pointer;font-weight:700;color:var(--blue)">📚 Key Sources</summary>
+        <div style="margin-top:8px;font-size:12px;color:var(--muted);line-height:1.6">
+          <p><b>Upstart:</b> S-1 filing (Dec 2020), Q1–Q2 2022 earnings calls</p>
+          <p><b>Industry:</b> Federal Reserve consumer credit, TransUnion research</p>
+          <p><b>Academic:</b> XGBoost (Chen &amp; Guestrin 2016), Fairness in ML (Barocas et al. 2021)</p>
+          <p><b>Full details:</b> <a href="/tools/upstart-data-methods" style="color:var(--blue);font-weight:600;">See Data &amp; Methods page →</a></p>
+        </div>
+      </details>
     </div>
   </div>
 </div>

@@ -64,6 +64,12 @@ async def upstart_clearing_simulator(request: Request) -> FileResponse:
     return FileResponse(str(settings.static_dir / "tools" / "upstart_clearing_simulator.html"))
 
 
+@router.get("/tools/upstart-data-methods", response_class=HTMLResponse)
+async def upstart_data_methods(request: Request) -> FileResponse:
+    """Serve Data & Methods companion page for the Upstart Clearing Simulator."""
+    return FileResponse(str(settings.static_dir / "tools" / "upstart_data_methods.html"))
+
+
 @router.get("/@fullstackpm", response_class=HTMLResponse)
 async def fullstackpm_page(request: Request) -> HTMLResponse:
     """Personal brand page — consolidated about/contact/career."""
