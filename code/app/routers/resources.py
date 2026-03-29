@@ -113,6 +113,19 @@ async def recommendations_personalization(request: Request) -> HTMLResponse:
     )
 
 
+@router.get("/resources/product-breakdowns/onboarding-activation", response_class=HTMLResponse)
+async def onboarding_activation(request: Request) -> HTMLResponse:
+    """Serve the Onboarding & Activation deep dive."""
+    return templates.TemplateResponse(
+        "resources/product_breakdowns/onboarding_and_activation.html",
+        _ctx(
+            request,
+            title="Onboarding & Activation — PM Visual Guide | fullstackpm.tech",
+            current_page="/resources/product-breakdowns",
+        ),
+    )
+
+
 @router.get("/resources/ecosystem-maps", response_class=HTMLResponse)
 async def ecosystem_maps(request: Request) -> HTMLResponse:
     """Ecosystem Maps gallery page."""
