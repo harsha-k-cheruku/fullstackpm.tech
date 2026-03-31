@@ -1,6 +1,6 @@
 ---
 title: "2031 — Part 5: Who Does It Work For?"
-date: 2026-03-30
+date: 2026-04-13
 author: "Harsha Cheruku"
 tags: ["AI", "agent-economy", "fiction", "economics", "future-of-work"]
 excerpt: "The final part. Kai considers switching agents but the switching cost is too high. The window to regulate is open. But it won't stay open. What can individuals, builders, and society actually do?"
