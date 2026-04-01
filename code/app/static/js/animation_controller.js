@@ -129,12 +129,14 @@
       return;
     }
 
+    let lastSnapshot = null;
     for (let m = state.month + 1; m <= target; m++) {
       const stepped = lifecycleEngine.stepMonth(state.portfolio, m, state.lifecycleConfig);
-      state.snapshots = [...state.portfolio.snapshots];
       state.month = m;
-      if (m === target) notify(stepped.snapshot);
+      if (m === target) lastSnapshot = stepped.snapshot;
     }
+    state.snapshots = [...state.portfolio.snapshots];
+    if (lastSnapshot) notify(lastSnapshot);
   }
 
   function reset() {
