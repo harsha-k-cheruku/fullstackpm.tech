@@ -1,5 +1,5 @@
 <!-- app/templates/partials/project_card.html -->
-<a href="{{ project.live_url if project.live_url and project.status == 'live' else '/projects/' + project.slug }}"
+<a href="/projects/{{ project.slug }}"
    class="block rounded-xl border transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2"
    style="background-color: var(--color-bg-secondary); border-color: var(--color-border); cursor: pointer;"
    onmouseover="this.style.borderColor='var(--color-border-hover)'; this.style.boxShadow='0 1px 3px 0 rgb(0 0 0 / 0.1)'"
