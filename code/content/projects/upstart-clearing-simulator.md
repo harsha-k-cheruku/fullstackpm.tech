@@ -1,70 +1,67 @@
 ---
-title: "Upstart Clearing Simulator"
-description: "Interactive simulator of Upstart's marketplace clearing engine—borrower applications, capital partner matching, APR optimization, and waterfall routing with real numbers."
-tech_stack: [FastAPI, Python, Pandas, Interactive Tables, HTMX, Tailwind CSS]
+title: "Upstart Lifecycle Simulator"
+description: "Full loan lifecycle simulator for Upstart's capital marketplace — pipeline generation, three-layer clearing engine, animated 36-month portfolio performance, capital partner health monitoring, and mid-simulation intervention testing."
+tech_stack: [Vanilla JS, Chart.js, Tailwind CSS, Jinja2, FastAPI]
 status: "live"
 featured: true
 display_order: 2
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
-live_url: "/tools/upstart-clearing-simulator"
-problem: "Upstart's clearing mechanism is the core of their marketplace—how borrowers get matched to capital partners at optimal APRs. But it's a black box to most people. Understanding it requires reading 30-page SEC filings or reverse-engineering the logic from press releases."
-approach: "Build an interactive step-by-step simulator that walks through the entire clearing process with real borrower profiles, capital partner constraints, APR optimization (Model 18), and waterfall routing decisions. Make the invisible visible."
-solution: "An interactive tool with pre-loaded scenarios that show exactly how borrowers route through the system, how APR gets set, which capital partner wins each loan, and what the waterfall looks like. Includes companion methodology page with data sources and calculations."
+live_url: "/tools/lifecycle-simulator"
+problem: "Marketplace clearing decisions have a 90-day feedback delay — a PM changes partner eligibility today but doesn't see the EPD impact for months. The 2022 capital crunch showed what happens when this delay prevents preventive action: Upstart held $1B+ on its balance sheet."
+approach: "Build an interactive lifecycle simulator that compresses 36 months of portfolio evolution into 3 minutes. Generate synthetic borrowers, clear them through a three-layer engine, then watch month-by-month performance with live capital partner metrics — including the ability to intervene mid-simulation and see downstream effects."
+solution: "A browser-based sandbox with 5 connected views: Pipeline & Clearing (generate + match 100 loans), Portfolio Timeline (animated month-by-month with intervention), Marketplace Analytics (three-stakeholder health dashboard), Loan Deep Dive (step-by-step borrower walkthrough), and Re-Application Funnel (product roadmap framing). All client-side JS — no backend computation."
 ---
 
 ## What
 
-An interactive simulator that walks you through Upstart's marketplace clearing engine step-by-step. See how borrowers route to capital partners, how APRs are optimized, and how the waterfall works—with real data and actual constraints.
+A full lifecycle simulator for Upstart's capital marketplace. Not just the clearing moment — the entire journey from borrower pipeline through 36 months of portfolio performance.
 
 **Features:**
-- **Borrower Pool** — Pre-loaded borrower profiles with credit scores, loan amounts, and risk grades (A–E)
-- **Capital Partner Setup** — Available capital partners with funding capacity, APR bands, and risk preferences
-- **Matching Engine** — Step through how each borrower gets matched based on constraints and optimization rules
-- **APR Optimization** — See Model 18 in action: how Upstart sets APRs to maximize conversion while respecting partner constraints
-- **Waterfall Routing** — Visualize how loans flow through the waterfall when the primary partner is full
-- **Real Numbers** — Data-driven scenarios based on Upstart's actual filing disclosures and public statements
-- **Methodology Companion** — Linked page explaining data sources, calculation logic, and assumptions
+- **Pipeline & Clearing** — Generate 100 synthetic borrowers, run them through eligibility → pricing (Classic vs Model 18) → waterfall routing across 5 capital partners
+- **Animated Portfolio Timeline** — Watch loans perform month-by-month: payments, delinquencies, defaults, early payoffs. Partner metrics update live.
+- **Mid-Simulation Intervention** — Pause at any month, tighten a partner's eligibility or capacity, resume and see the downstream impact immediately
+- **Three-Stakeholder Analytics** — Borrower Health, Upstart Platform Health, and Capital Partner Health dashboards with traffic-light indicators
+- **Loan Deep Dive** — Click any borrower to walk through their clearing decision step-by-step, plus payment history if lifecycle has run
+- **Scenario Presets** — Healthy Market, Capital Crunch (2022), Rate Spike — each tells a different marketplace story
+- **Hidden-Prime Discovery** — See Model 18 unlock borrowers that FICO undervalues, with side-by-side pricing comparison
 
 ## Why
 
-Upstart is one of the most technically sophisticated fintech companies—their marketplace clearing engine is a work of product engineering. But for PM candidates, founders, and investors, it's hard to understand how the pieces fit together.
+Upstart's capital marketplace is one of the most sophisticated clearing engines in fintech — but the feedback loops are invisible. A PM adjusting partner eligibility today doesn't see the EPD impact for 90 days. This simulator makes the causal chain visible:
 
-This simulator solves that by:
-- **Making the mechanism transparent** — Every step is visible and explainable
-- **Building intuition at scale** — See how individual borrower-partner matches aggregate into business metrics
-- **Demonstrating PM thinking** — The tradeoffs between borrower conversion, partner satisfaction, and company take-rate are all embedded in the design
-- **Enabling learning through play** — You can adjust parameters and see outcomes change in real-time
+- **Compress time** — 36 months of portfolio evolution in 3 minutes
+- **Make tradeoffs tangible** — See clearing rate vs. partner EPD vs. balance sheet exposure in real-time
+- **Test interventions safely** — What if you tighten Aperture's FICO floor at Month 8 vs. Month 14? Run both scenarios.
+- **Three-stakeholder thinking** — Borrower experience, platform economics, and partner returns all in one view
+- **Model 18 intuition** — See exactly how APR-as-feature discovers hidden-prime borrowers and creates marketplace value
 
-It's designed for PM candidates preparing for Upstart interviews, fintech founders building marketplace engines, and anyone curious about how loan marketplaces actually work.
+Built for PM candidates, marketplace operators, and anyone curious about how lending marketplaces actually work.
 
 ## How
 
 **Architecture:**
-- **Backend:** FastAPI routes serve the simulator interface and handle real-time matching/routing calculations
-- **Data:** Deterministic borrower profiles and capital partner constraints based on Upstart's public filings
-- **Frontend:** Interactive step-by-step flow with tables, status indicators, and real-time results
-- **Styling:** Tailwind CSS with consistent design tokens (currently basic—will be refined to match site design language)
+- **Computation:** Entirely client-side JavaScript — no backend API calls, no database, no network latency
+- **Rendering:** Chart.js for animated charts, Tailwind CSS + Jinja2 templates (extends site base.html)
+- **Modules:** 4 JS files — `borrower_generation.js` (synthetic data), `clearing_engine.js` (eligibility + pricing + routing), `lifecycle_engine.js` (month-by-month simulation), `animation_controller.js` (play/pause/resume + Chart.js updates)
+- **Scale:** 100 borrowers × 5 partners × 36 months = 3,600 state transitions per simulation. Runs in <200ms total.
 
 **The flow:**
-1. Start with a borrower pool and capital partner setup
-2. Step through the matching engine decision for each borrower
-3. See APR optimization logic applied
-4. Watch waterfall routing when capacity constraints kick in
-5. Review final outcomes and key metrics
-6. Access companion methodology page for deeper understanding
+1. Select a scenario (Healthy Market, Capital Crunch, Rate Spike) or configure custom parameters
+2. Generate 100 borrowers and run them through the three-layer clearing engine
+3. Review clearing results — KPIs, borrower table, filter by outcome
+4. Play the portfolio timeline — watch metrics evolve month by month, animated
+5. Pause → adjust partner eligibility → resume → see the intervention's impact
+6. Switch to Analytics dashboard — identify at-risk partners, check platform health
+7. Deep dive into any individual borrower's clearing decision and payment history
 
 **Data sources:**
-- Upstart S-1 (2021) — Revenue by capital partner, loan volume, take-rate evolution
-- Quarterly earnings calls (2021–2026) — Capital partner names, market dynamics, platform changes
-- Public blog posts & product releases — Feature announcements, algorithm improvements
-- Fintech research reports — Market positioning, competitor comparisons
+- Transition probabilities based on industry personal lending data (configurable)
+- Partner structures inspired by Upstart's public filings (names obfuscated)
+- Credit score distributions reflect market reality for near-prime personal lending
+- All data synthetic — clear disclaimer displayed
 
-**Assumptions & Limitations:**
-- Model simplified for clarity—real Upstart system is far more complex
-- Capital partner data obfuscated (names changed, capacity adjusted for privacy)
-- APR optimization model is an approximation of Model 18, not the actual proprietary formula
-- Borrower profiles are synthetic, though credit score/loan amount distributions reflect market reality
-
----
-
-**Companion page:** [Upstart Data & Methods](/tools/upstart-data-methods) — Full methodology, data sources, calculations, and limitations.
+**Limitations:**
+- Simplified lifecycle model (Markov chain, not vintage-calibrated)
+- 100-borrower scale (sufficient for demo, not for statistical analysis)
+- No persistence — simulation state resets on page refresh
+- Re-application stage is a product roadmap stub, not simulated

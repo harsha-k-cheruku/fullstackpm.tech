@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Request
-from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
+from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse, Response
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
@@ -68,6 +68,24 @@ async def upstart_clearing_simulator(request: Request) -> FileResponse:
 async def upstart_data_methods(request: Request) -> FileResponse:
     """Serve Data & Methods companion page for the Upstart Clearing Simulator."""
     return FileResponse(str(settings.static_dir / "tools" / "upstart_data_methods.html"))
+
+
+@router.get("/tools/borrower_generation.js")
+async def borrower_generation_js(request: Request) -> Response:
+    """Serve shared borrower generation module for simulator + data & methods pages."""
+    return FileResponse(
+        str(settings.static_dir / "tools" / "borrower_generation.js"),
+        media_type="application/javascript",
+    )
+
+
+@router.get("/tools/lifecycle-simulator", response_class=HTMLResponse)
+async def lifecycle_simulator(request: Request) -> HTMLResponse:
+    """Lifecycle simulator for Upstart capital marketplace (5-tab interactive tool)."""
+    return templates.TemplateResponse(
+        "lifecycle_simulator.html",
+        _ctx(request, title="Upstart Lifecycle Simulator — fullstackpm.tech", current_page="/tools/lifecycle-simulator"),
+    )
 
 
 @router.get("/@fullstackpm", response_class=HTMLResponse)
