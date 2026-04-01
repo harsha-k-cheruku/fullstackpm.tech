@@ -116,5 +116,6 @@ PM candidates learning marketplace dynamics, marketplace operators stress-testin
 
 ### Documentation
 
-- **[PRFAQ](https://github.com/harsha-k-cheruku/fullstackpm.tech/blob/main/linkedin_job_search/March2026%20applications/Upstart/15_Simulator_PRFAQ.md)** — Press release, customer FAQ, and internal context
-- **[BRD](https://github.com/harsha-k-cheruku/fullstackpm.tech/blob/main/linkedin_job_search/March2026%20applications/Upstart/17_Simulator_BRD.md)** — Business requirements, success metrics, and strategic context
+This is part of a larger PM portfolio. Product strategy documents (PRFAQ, BRD) are available on request.
+- **PRFAQ** — Press release, customer FAQ, and internal context
+- **BRD** — Business requirements, success metrics, and strategic context
