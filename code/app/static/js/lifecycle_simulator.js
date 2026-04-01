@@ -391,6 +391,24 @@
     $('reapp-reapply').textContent = String(reapply);
   }
 
+  function setModelActive(modelType) {
+    document.querySelectorAll('.model-btn').forEach((b) => {
+      const active = b.dataset.model === modelType;
+      b.style.backgroundColor = active ? '#2563eb' : '';
+      b.style.color = active ? 'white' : '';
+      b.style.borderColor = active ? '#2563eb' : '';
+    });
+  }
+
+  function setScenarioActive(key) {
+    document.querySelectorAll('.scenario-btn').forEach((b) => {
+      const active = b.dataset.scn === key;
+      b.style.backgroundColor = active ? '#1d4ed8' : '';
+      b.style.color = active ? 'white' : '';
+      b.style.borderColor = active ? '#1d4ed8' : '';
+    });
+  }
+
   function applyScenario(key) {
     const s = SCENARIOS[key];
     if (!s) return;
@@ -398,23 +416,44 @@
     $('fico-value').textContent = String(s.ficoMean);
     SIM.modelType = s.modelType;
     SIM.lifecycleConfig = { ...s.lifecycle };
-    document.querySelectorAll('.model-btn').forEach((b) => {
-      b.classList.toggle('active', b.dataset.model === SIM.modelType);
-      b.classList.toggle('bg-blue-600', b.dataset.model === SIM.modelType);
-      b.classList.toggle('text-white', b.dataset.model === SIM.modelType);
-    });
+    setModelActive(SIM.modelType);
+    setScenarioActive(key);
   }
 
   function bindScenarios() {
     $('scenario-buttons').innerHTML = Object.entries(SCENARIOS)
-      .map(([k, v]) => `<button class="px-3 py-1 rounded border text-xs" data-scn="${k}">${v.label}</button>`)
+      .map(([k, v]) => `<button class="px-3 py-1 rounded border text-xs scenario-btn" data-scn="${k}">${v.label}</button>`)
       .join('');
     $('scenario-buttons').querySelectorAll('[data-scn]').forEach((btn) => btn.addEventListener('click', () => applyScenario(btn.dataset.scn)));
     applyScenario('healthy');
   }
 
-  function generateAndClear() {
+  function generatePipeline() {
     SIM.borrowers = borrowerGeneration.generateBorrowerFull(100, Number($('fico-slider').value), 0.28);
+    SIM.results = null;
+    SIM.filter = 'all';
+
+    $('pipeline-empty').style.display = 'none';
+    $('pipeline-results').style.display = 'block';
+    $('kpi-cards').innerHTML = `<div class="col-span-4 text-xs text-gray-500 dark:text-gray-400 py-1">${SIM.borrowers.length} borrowers in pipeline — click ⚡ Run Clearing to process</div>`;
+    $('filter-buttons').innerHTML = '';
+
+    $('borrower-table-body').innerHTML = SIM.borrowers
+      .map((loan, idx) => `<tr class="border-b border-gray-100 dark:border-gray-700">
+        <td class="px-3 py-2">${idx + 1}</td><td class="px-3 py-2">${loan.fico}</td><td class="px-3 py-2">${money(loan.amount)}</td><td class="px-3 py-2">${loan.purpose}</td>
+        <td class="px-3 py-2">${loan.hiddenPrime ? '★' : ''}</td><td class="px-3 py-2 text-gray-400">—</td>
+        <td class="px-3 py-2 text-gray-400 italic">Pending</td><td class="px-3 py-2 text-gray-400">—</td><td class="px-3 py-2"></td></tr>`)
+      .join('');
+    $('table-count').textContent = `${SIM.borrowers.length} borrowers generated — awaiting clearing`;
+
+    const clearBtn = $('clear-btn');
+    clearBtn.disabled = false;
+    clearBtn.style.opacity = '1';
+    clearBtn.style.cursor = 'pointer';
+  }
+
+  function runClearing() {
+    if (!SIM.borrowers.length) return;
     SIM.results = clearingEngine.runClearing(SIM.borrowers, PARTNERS, SIM.modelType);
     SIM.portfolio = lifecycleEngine.initPortfolio(SIM.results.loans, PARTNERS);
     lifecycleEngine.stepMonth(SIM.portfolio, 0, SIM.lifecycleConfig);
@@ -427,11 +466,9 @@
     SIM.filter = 'all';
     renderFilters();
     renderTable();
-    $('pipeline-empty').style.display = 'none';
-    $('pipeline-results').style.display = 'block';
     bindDeepDiveSelect();
     updateReapp();
-    logTimeline('Initialized lifecycle portfolio from clearing output');
+    logTimeline('Clearing complete — lifecycle portfolio initialized');
   }
 
   function bindEvents() {
@@ -439,14 +476,11 @@
     $('fico-slider').addEventListener('input', (e) => ($('fico-value').textContent = e.target.value));
     document.querySelectorAll('.model-btn').forEach((btn) => btn.addEventListener('click', () => {
       SIM.modelType = btn.dataset.model;
-      document.querySelectorAll('.model-btn').forEach((b) => {
-        b.classList.toggle('active', b.dataset.model === SIM.modelType);
-        b.classList.toggle('bg-blue-600', b.dataset.model === SIM.modelType);
-        b.classList.toggle('text-white', b.dataset.model === SIM.modelType);
-      });
+      setModelActive(SIM.modelType);
     }));
 
-    $('gen-clear-btn').addEventListener('click', generateAndClear);
+    $('gen-btn').addEventListener('click', generatePipeline);
+    $('clear-btn').addEventListener('click', runClearing);
     $('timeline-play').addEventListener('click', () => { animationController.play(); logTimeline('Play timeline'); });
     $('timeline-pause').addEventListener('click', () => animationController.pause());
     $('timeline-resume').addEventListener('click', () => { animationController.resume(); logTimeline('Resume timeline'); });

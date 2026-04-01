@@ -32,26 +32,30 @@
 
   <div role="tabpanel" id="tab-pipeline" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
     <div class="md:col-span-1 bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
-      <h3 class="text-sm font-bold uppercase text-gray-600 dark:text-gray-400 mb-4">Borrower Generation</h3>
+      <h3 class="text-sm font-bold uppercase text-gray-600 dark:text-gray-400 mb-4">Pipeline Controls</h3>
       <div class="space-y-4">
         <div>
           <label class="text-xs font-semibold text-gray-600 dark:text-gray-400">FICO Mean: <span class="font-bold text-blue-600 dark:text-blue-400" id="fico-value">680</span></label>
           <input type="range" id="fico-slider" min="620" max="740" value="680" class="w-full">
         </div>
         <div>
-          <label class="text-xs font-semibold text-gray-600 dark:text-gray-400">Model</label>
+          <label class="text-xs font-semibold text-gray-600 dark:text-gray-400">Pricing Model</label>
           <div class="flex gap-2 mt-1">
-            <button class="flex-1 px-2 py-1 text-xs font-semibold rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 model-btn active" data-model="model18">Model 18</button>
-            <button class="flex-1 px-2 py-1 text-xs font-semibold rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 model-btn" data-model="classic">Classic</button>
+            <button class="flex-1 px-2 py-1 text-xs font-semibold rounded border border-gray-300 dark:border-gray-600 model-btn" data-model="model18">Model 18</button>
+            <button class="flex-1 px-2 py-1 text-xs font-semibold rounded border border-gray-300 dark:border-gray-600 model-btn" data-model="classic">Classic</button>
           </div>
         </div>
-        <button id="gen-clear-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded">▶ Generate &amp; Clear</button>
+        <div class="space-y-2 pt-1">
+          <button id="gen-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded text-sm">▶ Generate Pipeline</button>
+          <button id="clear-btn" class="w-full text-white font-bold py-2 rounded text-sm" style="background:#16a34a;opacity:0.4;cursor:not-allowed" disabled>⚡ Run Clearing</button>
+        </div>
+        <p class="text-[10px] text-gray-400 dark:text-gray-500">Step 1: generate borrowers → Step 2: run clearing engine</p>
       </div>
     </div>
 
     <div class="md:col-span-3">
       <div id="pipeline-empty" class="text-center py-12 text-gray-500 dark:text-gray-400">
-        <p class="text-sm">Click "Generate &amp; Clear" to start</p>
+        <p class="text-sm">Click "Generate Pipeline" to load borrowers, then "Run Clearing" to process them</p>
       </div>
       <div id="pipeline-results" style="display:none" class="space-y-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="kpi-cards"></div>
