@@ -305,7 +305,7 @@
 
   function setupAnimationController() {
     animationController.init(SIM.portfolio, {
-      speedMs: Number($('timeline-speed').value || 500),
+      speedMs: 500,
       maxMonths: 36,
       lifecycleConfig: SIM.lifecycleConfig,
       onTick: (_, m) => {
