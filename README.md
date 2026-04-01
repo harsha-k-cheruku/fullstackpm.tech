@@ -89,7 +89,7 @@ fullstackpm.tech/                    ← You are here
 | Project | Status | URL | Tech |
 |---------|--------|-----|------|
 | **PM Interview Coach** | 🟢 Live | /tools/interview-coach | FastAPI + OpenAI + HTMX |
-| **Marketplace Analytics** | 🟢 Live | /tools/marketplace-analytics | FastAPI + Pandas + Chart.js |
+| **Marketplace Analytics** | 🟡 In Progress | /tools/marketplace-analytics | FastAPI + Pandas + Chart.js |
 | **Blog** | 🟢 Live | /blog | Markdown + SQLite comments |
 | **Projects Portfolio** | 🟢 Live | /projects | Markdown content |
 | **PM Tech Companion** | 🟡 In Dev | `/tools/pm-tech-companion` | FastAPI + OpenAI |

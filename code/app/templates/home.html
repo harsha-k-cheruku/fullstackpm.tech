@@ -163,12 +163,16 @@
 
       <!-- Badge -->
       <div class="mb-3">
-        {% if project.status == "In Progress" %}
-        <span class="badge badge-warning">{{ project.status }}</span>
-        {% elif project.status == "Live" %}
-        <span class="badge badge-success">{{ project.status }}</span>
+        {% if project.status == "in_progress" %}
+        <span class="badge badge-warning">In Progress</span>
+        {% elif project.status == "live" %}
+        <span class="badge badge-success">Live</span>
+        {% elif project.status == "alpha_testing" %}
+        <span class="badge badge-warning">Alpha Testing</span>
+        {% elif project.status == "case_study" %}
+        <span class="badge badge-info">Case Study</span>
         {% else %}
-        <span class="badge badge-info">{{ project.status }}</span>
+        <span class="badge badge-info">Planned</span>
         {% endif %}
       </div>
 
