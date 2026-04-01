@@ -20,6 +20,12 @@
     <div class="flex gap-2" id="scenario-buttons"></div>
   </div>
 
+  <div class="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-700 rounded p-3 mb-4">
+    <p class="text-sm text-blue-900 dark:text-blue-100" id="scenario-description">
+      <b id="scenario-title">Healthy Market</b>: Baseline conditions, Model 18 pricing enabled, all capital partners active.
+    </p>
+  </div>
+
   <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
     <nav class="flex gap-0 overflow-x-auto" role="tablist">
       <button role="tab" data-tab="pipeline" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn active">Pipeline &amp; Clearing</button>
@@ -43,13 +49,6 @@
           <label class="text-xs font-semibold text-gray-600 dark:text-gray-400">Portfolio Size: <span class="font-bold text-blue-600 dark:text-blue-400" id="count-value">100</span> loans</label>
           <input type="range" id="count-slider" min="1" max="100" value="100" class="w-full">
         </div>
-        <div>
-          <label class="text-xs font-semibold text-gray-600 dark:text-gray-400">Pricing Model</label>
-          <div class="flex gap-2 mt-1">
-            <button class="flex-1 px-2 py-1 text-xs font-semibold rounded border border-gray-300 dark:border-gray-600 model-btn" data-model="model18">Model 18</button>
-            <button class="flex-1 px-2 py-1 text-xs font-semibold rounded border border-gray-300 dark:border-gray-600 model-btn" data-model="classic">Classic</button>
-          </div>
-        </div>
         <div class="space-y-2 pt-1">
           <button id="gen-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded text-sm">▶ Generate Pipeline</button>
           <button id="clear-btn" class="w-full text-white font-bold py-2 rounded text-sm" style="background:#16a34a;opacity:0.4;cursor:not-allowed" disabled>⚡ Run Clearing</button>
@@ -66,22 +65,28 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="kpi-cards"></div>
         <div class="flex gap-2 flex-wrap" id="filter-buttons"></div>
         <div class="bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 overflow-x-auto">
-          <table class="w-full text-xs">
-            <thead class="bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
-              <tr>
-                <th class="px-3 py-2 text-left">#</th>
-                <th class="px-3 py-2 text-left">FICO</th>
-                <th class="px-3 py-2 text-left">Amount</th>
-                <th class="px-3 py-2 text-left">Purpose</th>
-                <th class="px-3 py-2 text-left">HP</th>
-                <th class="px-3 py-2 text-left">APR</th>
-                <th class="px-3 py-2 text-left">Outcome</th>
-                <th class="px-3 py-2 text-left">Partner</th>
-                <th class="px-3 py-2 text-left"></th>
-              </tr>
-            </thead>
-            <tbody id="borrower-table-body"></tbody>
-          </table>
+          <div style="overflow-x: auto;">
+            <table class="w-full text-xs whitespace-nowrap">
+              <thead class="bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600 sticky top-0">
+                <tr>
+                  <th class="px-2 py-1 text-left">#</th>
+                  <th class="px-2 py-1 text-left">FICO</th>
+                  <th class="px-2 py-1 text-left">M18 Score</th>
+                  <th class="px-2 py-1 text-left">Amount</th>
+                  <th class="px-2 py-1 text-left">Purpose</th>
+                  <th class="px-2 py-1 text-left">HP</th>
+                  <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e;font-weight:600">M18-APR</th>
+                  <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e;font-weight:600">M18-Outcome</th>
+                  <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e;font-weight:600">M18-Partner</th>
+                  <th class="px-2 py-1 text-left" style="background:#f3e8ff;color:#581c87;font-weight:600">Classic-APR</th>
+                  <th class="px-2 py-1 text-left" style="background:#f3e8ff;color:#581c87;font-weight:600">Classic-Outcome</th>
+                  <th class="px-2 py-1 text-left" style="background:#f3e8ff;color:#581c87;font-weight:600">Classic-Partner</th>
+                  <th class="px-2 py-1 text-left"></th>
+                </tr>
+              </thead>
+              <tbody id="borrower-table-body"></tbody>
+            </table>
+          </div>
         </div>
         <div class="text-xs text-gray-500 dark:text-gray-400" id="table-count"></div>
       </div>
@@ -105,19 +110,6 @@
 
       <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300" id="timeline-ready-summary"></div>
 
-      <details class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
-        <summary class="text-xs font-semibold uppercase text-gray-600 dark:text-gray-400 cursor-pointer">Advanced: Autoplay & Interventions</summary>
-        <div class="flex flex-wrap items-end gap-2 mt-3">
-          <button id="timeline-play" class="px-3 py-2 rounded bg-green-600 text-white text-xs font-semibold">Play</button>
-          <button id="timeline-pause" class="px-3 py-2 rounded bg-amber-500 text-white text-xs font-semibold">Pause</button>
-          <button id="timeline-resume" class="px-3 py-2 rounded bg-sky-600 text-white text-xs font-semibold">Resume</button>
-          <button id="timeline-reset" class="px-3 py-2 rounded border border-gray-300 dark:border-gray-600 text-xs font-semibold">Reset</button>
-          <div><label class="text-[10px] uppercase text-gray-500">Speed</label><select id="timeline-speed" class="block mt-1 text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"><option value="1000">0.5x</option><option value="500" selected>1x</option><option value="250">2x</option></select></div>
-          <div><label class="text-[10px] uppercase text-gray-500">Partner</label><select id="intervention-partner" class="block mt-1 text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"><option value="eltura">Eltura</option><option value="aperture">Aperture</option><option value="westbank">WestBank</option><option value="spotfund_a">SpotFund A</option><option value="spotfund_b">SpotFund B</option></select></div>
-          <div><label class="text-[10px] uppercase text-gray-500">FICO Floor</label><input id="intervention-fico" type="number" min="580" max="800" value="700" class="block mt-1 w-24 text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-2 py-1" /></div>
-          <button id="timeline-apply-intervention" class="px-3 py-2 rounded bg-purple-600 text-white text-xs font-semibold">Intervene</button>
-        </div>
-      </details>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="bg-white dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700"><h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">Portfolio Health (Stacked)</h4><canvas id="timeline-health-chart" height="170"></canvas></div>
         <div class="bg-white dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700"><h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">Loss / Delinquency Trend</h4><canvas id="timeline-loss-chart" height="170"></canvas></div>

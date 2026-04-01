@@ -22,9 +22,27 @@
   ];
 
   const SCENARIOS = {
-    healthy: { label: 'Healthy Market', ficoMean: 680, modelType: 'model18', lifecycle: { baseDefaultRate: 1, earlyPayoffRate: 1, recoveryRate: 1 } },
-    crunch: { label: 'Capital Crunch', ficoMean: 645, modelType: 'classic', lifecycle: { baseDefaultRate: 1.5, earlyPayoffRate: 0.5, recoveryRate: 0.7 } },
-    spike: { label: 'Rate Spike', ficoMean: 700, modelType: 'model18', lifecycle: { baseDefaultRate: 1.2, earlyPayoffRate: 1.8, recoveryRate: 0.9 } },
+    healthy: {
+      label: 'Healthy Market',
+      description: 'Baseline conditions, Model 18 pricing enabled, all capital partners active.',
+      ficoMean: 680,
+      modelType: 'model18',
+      lifecycle: { baseDefaultRate: 1, earlyPayoffRate: 1, recoveryRate: 1 }
+    },
+    crunch: {
+      label: 'Capital Crunch',
+      description: 'Limited capital availability, Classic pricing only, partners with strict capacity constraints.',
+      ficoMean: 645,
+      modelType: 'classic',
+      lifecycle: { baseDefaultRate: 1.5, earlyPayoffRate: 0.5, recoveryRate: 0.7 }
+    },
+    spike: {
+      label: 'Rate Spike',
+      description: 'Rising rates environment, Model 18 enabled with higher APR floors, partner minimums increased.',
+      ficoMean: 700,
+      modelType: 'model18',
+      lifecycle: { baseDefaultRate: 1.2, earlyPayoffRate: 1.8, recoveryRate: 0.9 }
+    },
   };
 
   const PERSONA_RULES = {
@@ -36,6 +54,13 @@
   const $ = (id) => document.getElementById(id);
   const money = (n) => '$' + Number(n || 0).toLocaleString();
   const pct = (n) => (n || 0).toFixed(1) + '%';
+
+  function calculateModel18Score(borrower) {
+    const baseScore = borrower.fico || 650;
+    const isHP = borrower.hiddenPrime || borrower.hidden_prime || borrower.hp || false;
+    const boost = isHP ? 50 : 0;
+    return Math.min(baseScore + boost, 850);
+  }
 
   function switchTab(tab) {
     document.querySelectorAll('[role="tabpanel"]').forEach((p) => (p.style.display = 'none'));
@@ -66,9 +91,9 @@
   function filteredLoans() {
     if (!SIM.results) return [];
     const loans = SIM.results.loans;
-    if (SIM.filter === 'cleared') return loans.filter((l) => l.outcome === 'CLEARED' || l.outcome === 'BALANCE_SHEET');
-    if (SIM.filter === 'apr_rejected') return loans.filter((l) => l.outcome === 'APR_REJECTED');
-    if (SIM.filter === 'no_partner') return loans.filter((l) => l.outcome === 'NO_PARTNER');
+    if (SIM.filter === 'cleared') return loans.filter((l) => l.m18Outcome === 'CLEARED' || l.m18Outcome === 'BALANCE_SHEET');
+    if (SIM.filter === 'apr_rejected') return loans.filter((l) => l.m18Outcome === 'APR_REJECTED');
+    if (SIM.filter === 'no_partner') return loans.filter((l) => l.m18Outcome === 'NO_PARTNER');
     return loans;
   }
 
@@ -98,11 +123,20 @@
     const rows = filteredLoans();
     $('borrower-table-body').innerHTML = rows
       .map(
-        (loan, idx) => `<tr class="border-b border-gray-100 dark:border-gray-700">
-      <td class="px-3 py-2">${idx + 1}</td><td class="px-3 py-2">${loan.fico}</td><td class="px-3 py-2">${money(loan.amount)}</td><td class="px-3 py-2">${loan.purpose}</td>
-      <td class="px-3 py-2">${loan.hiddenPrime || loan.hidden_prime || loan.hp ? '★' : ''}</td><td class="px-3 py-2">${loan.offeredApr ? pct(loan.offeredApr) : '—'}</td>
-      <td class="px-3 py-2 ${outcomeClass(loan.outcome)}">${loan.outcome}</td><td class="px-3 py-2">${loan.matchedPartner || '—'}</td>
-      <td class="px-3 py-2"><button class="px-2 py-1 rounded border border-purple-500 text-purple-600" data-walk="${loan.id}">Walk</button></td></tr>`,
+        (loan, idx) => `<tr class="border-b border-gray-100 dark:border-gray-700 text-xs">
+      <td class="px-2 py-1">${idx + 1}</td>
+      <td class="px-2 py-1">${loan.fico}</td>
+      <td class="px-2 py-1 font-semibold text-blue-600">${loan.model18Score || loan.fico}</td>
+      <td class="px-2 py-1">${money(loan.amount)}</td>
+      <td class="px-2 py-1">${loan.purpose}</td>
+      <td class="px-2 py-1">${loan.hiddenPrime ? '★' : ''}</td>
+      <td class="px-2 py-1">${loan.m18Apr ? pct(loan.m18Apr) : '—'}</td>
+      <td class="px-2 py-1 ${outcomeClass(loan.m18Outcome)}">${loan.m18Outcome || '—'}</td>
+      <td class="px-2 py-1">${loan.m18Partner || '—'}</td>
+      <td class="px-2 py-1">${loan.classicApr ? pct(loan.classicApr) : '—'}</td>
+      <td class="px-2 py-1 ${outcomeClass(loan.classicOutcome)}">${loan.classicOutcome || '—'}</td>
+      <td class="px-2 py-1">${loan.classicPartner || '—'}</td>
+      <td class="px-2 py-1"><button class="px-1 py-0 text-[10px] rounded border border-purple-500 text-purple-600" data-walk="${loan.id}">Walk</button></td></tr>`,
       )
       .join('');
 
@@ -417,8 +451,10 @@
     $('fico-value').textContent = String(s.ficoMean);
     SIM.modelType = s.modelType;
     SIM.lifecycleConfig = { ...s.lifecycle };
-    setModelActive(SIM.modelType);
     setScenarioActive(key);
+    // Update scenario description
+    $('scenario-title').textContent = s.label;
+    $('scenario-description').innerHTML = `<b>${s.label}</b>: ${s.description}`;
   }
 
   function bindScenarios() {
@@ -455,8 +491,37 @@
 
   function runClearing() {
     if (!SIM.borrowers.length) return;
-    SIM.results = clearingEngine.runClearing(SIM.borrowers, PARTNERS, SIM.modelType);
-    SIM.portfolio = lifecycleEngine.initPortfolio(SIM.results.loans, PARTNERS);
+
+    // Run both models and merge results
+    const m18Results = clearingEngine.runClearing(SIM.borrowers, PARTNERS, 'model18');
+    const classicResults = clearingEngine.runClearing(SIM.borrowers, PARTNERS, 'classic');
+
+    // Merge loan data side-by-side
+    const mergedLoans = SIM.borrowers.map((b, idx) => {
+      const m18Loan = m18Results.loans.find(l => l.id === b.id);
+      const classicLoan = classicResults.loans.find(l => l.id === b.id);
+      return {
+        ...b,
+        id: b.id,
+        fico: b.fico,
+        model18Score: calculateModel18Score(b),
+        amount: b.amount,
+        purpose: b.purpose,
+        hiddenPrime: b.hiddenPrime || b.hidden_prime || b.hp || false,
+        m18Apr: m18Loan?.offeredApr,
+        m18Outcome: m18Loan?.outcome,
+        m18Partner: m18Loan?.matchedPartner,
+        classicApr: classicLoan?.offeredApr,
+        classicOutcome: classicLoan?.outcome,
+        classicPartner: classicLoan?.matchedPartner,
+      };
+    });
+
+    // Use Model 18 results for lifecycle (primary model)
+    SIM.results = m18Results;
+    SIM.results.loans = mergedLoans;
+
+    SIM.portfolio = lifecycleEngine.initPortfolio(m18Results.loans, PARTNERS);
     lifecycleEngine.stepMonth(SIM.portfolio, 0, SIM.lifecycleConfig);
 
     $('timeline-locked').style.display = 'none';
@@ -469,7 +534,7 @@
     renderTable();
     bindDeepDiveSelect();
     updateReapp();
-    logTimeline('Clearing complete — lifecycle portfolio initialized');
+    logTimeline('Clearing complete — both models evaluated');
   }
 
   function bindEvents() {
@@ -479,10 +544,6 @@
       SIM.borrowerCount = Number(e.target.value);
       $('count-value').textContent = String(SIM.borrowerCount);
     });
-    document.querySelectorAll('.model-btn').forEach((btn) => btn.addEventListener('click', () => {
-      SIM.modelType = btn.dataset.model;
-      setModelActive(SIM.modelType);
-    }));
 
     $('gen-btn').addEventListener('click', generatePipeline);
     $('clear-btn').addEventListener('click', runClearing);
@@ -512,13 +573,6 @@
         updateReapp();
       }
     });
-    $('timeline-play').addEventListener('click', () => { animationController.play(); logTimeline('Play timeline'); });
-    $('timeline-pause').addEventListener('click', () => animationController.pause());
-    $('timeline-resume').addEventListener('click', () => { animationController.resume(); logTimeline('Resume timeline'); });
-    $('timeline-run-36').addEventListener('click', () => runLifecycleMonths(36));
-    $('timeline-reset').addEventListener('click', resetLifecycle);
-    $('timeline-apply-intervention').addEventListener('click', applyTimelineIntervention);
-    $('timeline-speed').addEventListener('change', (e) => { animationController.setSpeed(Number(e.target.value)); logTimeline(`Speed set to ${e.target.selectedOptions[0].text}`); });
 
   }
 
