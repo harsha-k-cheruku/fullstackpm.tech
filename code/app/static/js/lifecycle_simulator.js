@@ -4,6 +4,7 @@
   const SIM = {
     modelType: 'model18',
     filter: 'all',
+    borrowerCount: 100,
     borrowers: [],
     results: null,
     portfolio: null,
@@ -429,7 +430,7 @@
   }
 
   function generatePipeline() {
-    SIM.borrowers = borrowerGeneration.generateBorrowerFull(100, Number($('fico-slider').value), 0.28);
+    SIM.borrowers = borrowerGeneration.generateBorrowerFull(SIM.borrowerCount, Number($('fico-slider').value), 0.28);
     SIM.results = null;
     SIM.filter = 'all';
 
@@ -474,6 +475,10 @@
   function bindEvents() {
     document.querySelectorAll('[role="tab"]').forEach((b) => b.addEventListener('click', () => switchTab(b.dataset.tab)));
     $('fico-slider').addEventListener('input', (e) => ($('fico-value').textContent = e.target.value));
+    $('count-slider').addEventListener('input', (e) => {
+      SIM.borrowerCount = Number(e.target.value);
+      $('count-value').textContent = String(SIM.borrowerCount);
+    });
     document.querySelectorAll('.model-btn').forEach((btn) => btn.addEventListener('click', () => {
       SIM.modelType = btn.dataset.model;
       setModelActive(SIM.modelType);
