@@ -340,7 +340,7 @@
       return `<tr><td class="px-2 py-1">${p.name}</td><td class="px-2 py-1">${f}</td><td class="px-2 py-1">${a}</td><td class="px-2 py-1">${purp}</td><td class="px-2 py-1">${cap}</td><td class="px-2 py-1">${result}</td></tr>`;
     }).join('');
 
-    $('deepdive-step1').innerHTML = `<h4 class="font-semibold mb-2">Step 1: Eligibility Matrix</h4><table class="w-full text-xs"><thead><tr><th class="px-2 py-1 text-left">Partner</th><th>FICO</th><th>Loan</th><th>Purpose</th><th>Cap</th><th>Result</th></tr></thead><tbody>${partnerRows}</tbody></table>`;
+    $('deepdive-step1').innerHTML = `<h4 class="font-semibold mb-2">Step 1: Eligibility Matrix</h4><table class="w-full text-xs"><thead><tr><th class="px-2 py-1 text-left">Partner</th><th class="px-2 py-1 text-left">FICO</th><th class="px-2 py-1 text-left">Min Amount</th><th class="px-2 py-1 text-left">Purpose</th><th class="px-2 py-1 text-left">Cap</th><th class="px-2 py-1 text-left">Result</th></tr></thead><tbody>${partnerRows}</tbody></table>`;
 
     const classic = clearingEngine.priceLoan(loan, 'classic');
     const model18 = clearingEngine.priceLoan(loan, 'model18');
