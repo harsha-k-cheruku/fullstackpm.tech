@@ -16,52 +16,105 @@ solution: "A browser-based sandbox with 5 connected views: Pipeline & Clearing (
 
 A full lifecycle simulator for Upstart's capital marketplace. Not just the clearing moment — the entire journey from borrower pipeline through 36 months of portfolio performance.
 
-**Features:**
-- **Pipeline & Clearing** — Generate 100 synthetic borrowers, run them through eligibility → pricing (Classic vs Model 18) → waterfall routing across 5 capital partners
-- **Animated Portfolio Timeline** — Watch loans perform month-by-month: payments, delinquencies, defaults, early payoffs. Partner metrics update live.
-- **Mid-Simulation Intervention** — Pause at any month, tighten a partner's eligibility or capacity, resume and see the downstream impact immediately
-- **Three-Stakeholder Analytics** — Borrower Health, Upstart Platform Health, and Capital Partner Health dashboards with traffic-light indicators
-- **Loan Deep Dive** — Click any borrower to walk through their clearing decision step-by-step, plus payment history if lifecycle has run
-- **Scenario Presets** — Healthy Market, Capital Crunch (2022), Rate Spike — each tells a different marketplace story
-- **Hidden-Prime Discovery** — See Model 18 unlock borrowers that FICO undervalues, with side-by-side pricing comparison
+### Five Core Views
+
+**1. Pipeline & Clearing**
+Generate 100 synthetic borrowers and run them through the three-layer engine: eligibility → pricing (Classic vs Model 18 side-by-side) → waterfall routing across 5 capital partners. See clearing outcomes for each model and compare.
+
+**2. Marketplace Performance**
+Real-time aggregated health dashboard showing total loan amount, average APR, default rates, and partner utilization. Compare "Total Marketplace" vs individual partners, or Partner A vs Partner B.
+
+**3. Portfolio Timeline**
+Scrub through 36 months of loan performance: payments, delinquencies, defaults, early payoffs. Charts show portfolio health evolution and loss trends.
+
+**4. Loan Deep Dive**
+Click any borrower in Pipeline to walk through their clearing decision step-by-step (eligibility → pricing → routing → funded), with payment history if lifecycle has run.
+
+**5. Re-Application Funnel**
+Product roadmap stub showing how lifecycle data can predict re-applications and lower CAC for returning borrowers.
+
+### Key Features
+
+- **Side-by-side Model Comparison** — See Model 18 vs Classic outcomes for the same borrower
+- **Scenario Presets** — Healthy Market, Capital Crunch (2022), Rate Spike — each with different clearing rules
+- **Hidden-Prime Discovery** — Model 18 Score shows effective FICO (FICO + 50 if hidden-prime) for easy comparison
+- **Dynamic Updates** — Change a scenario and run clearing again; all metrics in Marketplace Performance update instantly
 
 ## Why
 
 Upstart's capital marketplace is one of the most sophisticated clearing engines in fintech — but the feedback loops are invisible. A PM adjusting partner eligibility today doesn't see the EPD impact for 90 days. This simulator makes the causal chain visible:
 
-- **Compress time** — 36 months of portfolio evolution in 3 minutes
-- **Make tradeoffs tangible** — See clearing rate vs. partner EPD vs. balance sheet exposure in real-time
-- **Test interventions safely** — What if you tighten Aperture's FICO floor at Month 8 vs. Month 14? Run both scenarios.
-- **Three-stakeholder thinking** — Borrower experience, platform economics, and partner returns all in one view
-- **Model 18 intuition** — See exactly how APR-as-feature discovers hidden-prime borrowers and creates marketplace value
+### The Problem
+- **90-day feedback delay** — Changes to clearing rules or partner eligibility take months to show in portfolio performance
+- **2022 lesson** — Capital crunch happened partly because decision-makers couldn't see the compounding effect of tighter partner capacity in real-time
+- **Black box clearing** — Few people outside the team understand how FICO pricing → Model 18 → partner routing → marketplace economics all connect
 
-Built for PM candidates, marketplace operators, and anyone curious about how lending marketplaces actually work.
+### What This Solves
+**Compress time:** 36 months of portfolio evolution in 3 minutes
+
+**Make tradeoffs tangible:** See clearing rate ↔ partner EPD ↔ balance sheet exposure in real-time
+
+**Test interventions safely:** What if you tighten Aperture's FICO floor at Month 8? Month 14? Run both, compare outcomes.
+
+**Three-stakeholder thinking:** Borrower experience, platform economics, and partner returns all in one view
+
+**Model 18 intuition:** See exactly how APR-as-feature discovers hidden-prime borrowers and creates marketplace value — not just hear about it
+
+### Who It's For
+PM candidates learning marketplace dynamics, marketplace operators stress-testing decisions, data scientists understanding the pipeline, anyone curious how lending marketplaces actually work.
 
 ## How
 
-**Architecture:**
-- **Computation:** Entirely client-side JavaScript — no backend API calls, no database, no network latency
-- **Rendering:** Chart.js for animated charts, Tailwind CSS + Jinja2 templates (extends site base.html)
-- **Modules:** 4 JS files — `borrower_generation.js` (synthetic data), `clearing_engine.js` (eligibility + pricing + routing), `lifecycle_engine.js` (month-by-month simulation), `animation_controller.js` (play/pause/resume + Chart.js updates)
-- **Scale:** 100 borrowers × 5 partners × 36 months = 3,600 state transitions per simulation. Runs in <200ms total.
+### Technical Architecture
 
-**The flow:**
-1. Select a scenario (Healthy Market, Capital Crunch, Rate Spike) or configure custom parameters
-2. Generate 100 borrowers and run them through the three-layer clearing engine
-3. Review clearing results — KPIs, borrower table, filter by outcome
-4. Play the portfolio timeline — watch metrics evolve month by month, animated
-5. Pause → adjust partner eligibility → resume → see the intervention's impact
-6. Switch to Analytics dashboard — identify at-risk partners, check platform health
-7. Deep dive into any individual borrower's clearing decision and payment history
+**Client-Side Computation**
+- Entirely browser-based JavaScript — no backend API calls, no database, no network latency
+- 100 borrowers × 5 partners × 36 months = 3,600 state transitions per simulation
+- Completes in <200ms total
 
-**Data sources:**
-- Transition probabilities based on industry personal lending data (configurable)
-- Partner structures inspired by Upstart's public filings (names obfuscated)
-- Credit score distributions reflect market reality for near-prime personal lending
-- All data synthetic — clear disclaimer displayed
+**Tech Stack**
+- **Rendering:** Chart.js (time-series charts), Tailwind CSS + Jinja2 (template inheritance from site base.html)
+- **Modules:** 4 self-contained JS files
+  - `borrower_generation.js` — Synthetic borrower creation with realistic FICO/purpose distributions
+  - `clearing_engine.js` — Three-layer engine: eligibility → pricing → waterfall routing
+  - `lifecycle_engine.js` — 36-month Markov chain loan performance simulation
+  - `animation_controller.js` — Slider-based timeline control + Chart.js updates
 
-**Limitations:**
-- Simplified lifecycle model (Markov chain, not vintage-calibrated)
-- 100-borrower scale (sufficient for demo, not for statistical analysis)
-- No persistence — simulation state resets on page refresh
-- Re-application stage is a product roadmap stub, not simulated
+### User Flow
+
+1. **Select Scenario** — Choose Healthy Market, Capital Crunch, or Rate Spike (or customize parameters)
+2. **Generate Pipeline** — Create 100 synthetic borrowers
+3. **Run Clearing** — Process through eligibility → pricing (Classic vs Model 18) → partner routing
+4. **Review Results** — See KPIs, borrower table with side-by-side model comparison, filter by outcome
+5. **Explore Timeline** — Scrub through 36 months; watch portfolio health and loss trends
+6. **Compare Partners** — Switch to Marketplace Performance tab to see Total vs individual partner metrics
+7. **Deep Dive** — Click any borrower to walk through clearing logic and payment history
+
+### Data & Modeling
+
+**Borrower Generation**
+- FICO score distribution reflects near-prime market (620–740 mean)
+- 28% hidden-prime rate (non-traditional credit strength)
+- Loan amounts: $2K–$40K; purposes: debt consolidation, home improvement, etc.
+
+**Lifecycle Model**
+- Markov chain with grade-based transition probabilities (Grade A–E)
+- Grade-specific 30DPD→60DPD→90DPD→default recovery rates
+- Hidden-prime borrowers transition one grade better under Model 18
+
+**Partner Configuration**
+- 5 partners with FICO floors, APR minimums, capacity caps
+- Forward-flow, bank, and spot-fund types (inspired by real fintech partners)
+- All names obfuscated; structures based on public filings
+
+### Limitations
+
+- **Simplified model** — Markov chain is illustrative, not vintage-calibrated or econometrically precise
+- **Scale** — 100-borrower demos show dynamics, not statistical significance
+- **Statefulness** — No persistence; page refresh resets simulation
+- **Stub feature** — Re-application stage is product roadmap framing, not full simulation
+
+### Documentation
+
+- **[PRFAQ](https://github.com/harsha-k-cheruku/fullstackpm.tech/blob/main/linkedin_job_search/March2026%20applications/Upstart/15_Simulator_PRFAQ.md)** — Press release, customer FAQ, and internal context
+- **[BRD](https://github.com/harsha-k-cheruku/fullstackpm.tech/blob/main/linkedin_job_search/March2026%20applications/Upstart/17_Simulator_BRD.md)** — Business requirements, success metrics, and strategic context
