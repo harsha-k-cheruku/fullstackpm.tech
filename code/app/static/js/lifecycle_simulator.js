@@ -497,9 +497,6 @@
       updateReapp();
     });
 
-    $('persona-maria').addEventListener('click', () => { const p = personaPick('maria'); if (p) walkLoan(p.id); });
-    $('persona-carlos').addEventListener('click', () => { const p = personaPick('carlos'); if (p) walkLoan(p.id); });
-    $('persona-james').addEventListener('click', () => { const p = personaPick('james'); if (p) walkLoan(p.id); });
   }
 
   window.SIM = window.SIM || {};

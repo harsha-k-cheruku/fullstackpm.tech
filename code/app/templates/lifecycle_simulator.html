@@ -26,6 +26,7 @@
       <button role="tab" data-tab="timeline" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Portfolio Timeline</button>
       <button role="tab" data-tab="analytics" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Marketplace Analytics</button>
       <button role="tab" data-tab="deepdive" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Loan Deep Dive</button>
+      <button role="tab" data-tab="personas" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Personas</button>
       <button role="tab" data-tab="reapp" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Re-Application</button>
     </nav>
   </div>
@@ -128,15 +129,68 @@
     <div id="deepdive-empty" class="text-center py-12 text-gray-500 dark:text-gray-400"><p class="text-sm">Click "Walk" on any borrower in Pipeline tab</p></div>
     <div id="deepdive-content" style="display:none" class="space-y-3">
       <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
-        <div class="flex flex-wrap items-end gap-3">
-          <div><label class="text-[10px] uppercase text-gray-500">Borrower</label><select id="deepdive-borrower" class="block mt-1 text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"></select></div>
-          <div class="flex gap-2"><button class="px-2 py-1 text-xs rounded border" id="persona-maria">Maria</button><button class="px-2 py-1 text-xs rounded border" id="persona-carlos">Carlos</button><button class="px-2 py-1 text-xs rounded border" id="persona-james">James</button></div>
-        </div>
+        <label class="text-[10px] uppercase text-gray-500">Borrower</label>
+        <select id="deepdive-borrower" class="block mt-1 w-full text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"></select>
       </div>
       <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="deepdive-step1"></div>
       <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="deepdive-step2"></div>
       <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="deepdive-step3"></div>
       <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="deepdive-step4"></div>
+    </div>
+  </div>
+
+  <div role="tabpanel" id="tab-personas" style="display:none" class="space-y-4">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded border border-gray-200 dark:border-gray-700">
+      <h2 class="text-lg font-bold dark:text-white mb-4">Borrower Personas</h2>
+      <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">These three personas are archetypes embedded in the borrower generation model. When you click "Generate Pipeline", each of the 100 borrowers is created by sampling from distributions of borrower attributes. These personas represent realistic risk/opportunity segments in the market.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="border border-gray-200 dark:border-gray-700 rounded p-4" style="background-color: var(--color-bg-secondary);">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">👩‍💼</span>
+            <h3 class="font-semibold" style="color: var(--color-text-primary);">Maria</h3>
+          </div>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-3"><b>Hidden-Prime Opportunity</b></p>
+          <ul class="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+            <li>• FICO: 640–670 (near-prime)</li>
+            <li>• Hidden prime flag: Yes</li>
+            <li>• Model 18 advantage: ~8.2% APR reduction</li>
+            <li>• Use: Shows power of alternative risk models</li>
+          </ul>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-700 rounded p-4" style="background-color: var(--color-bg-secondary);">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">👨‍🏫</span>
+            <h3 class="font-semibold" style="color: var(--color-text-primary);">Carlos</h3>
+          </div>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-3"><b>Ineligible / Subprime</b></p>
+          <ul class="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+            <li>• FICO: <620 or outcomes in NO_PARTNER</li>
+            <li>• Partner mismatch: Fails all eligibility rules</li>
+            <li>• APR: Too high to profitably fund</li>
+            <li>• Use: Shows limitations of capital partners</li>
+          </ul>
+        </div>
+
+        <div class="border border-gray-200 dark:border-gray-700 rounded p-4" style="background-color: var(--color-bg-secondary);">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">👔</span>
+            <h3 class="font-semibold" style="color: var(--color-text-primary);">James</h3>
+          </div>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-3"><b>Prime / Balance Sheet</b></p>
+          <ul class="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+            <li>• FICO: ≥760 (prime) or outcomes marked balance sheet</li>
+            <li>• Low risk: Qualifies for best rates</li>
+            <li>• Funding: Often reserved for balance sheet</li>
+            <li>• Use: Shows portfolio quality and mix</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 p-4 rounded" style="background-color: var(--color-bg-tertiary);">
+        <p class="text-xs text-gray-600 dark:text-gray-400"><b>Quick Action:</b> Go to "Loan Deep Dive" tab and use the borrower dropdown to walk through any loan's 4-step journey (Eligibility → Pricing → Routing → Lifecycle).</p>
+      </div>
     </div>
   </div>
 
