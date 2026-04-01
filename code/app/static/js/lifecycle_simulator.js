@@ -486,6 +486,27 @@
 
     $('gen-btn').addEventListener('click', generatePipeline);
     $('clear-btn').addEventListener('click', runClearing);
+
+    $('timeline-month-slider').addEventListener('input', (e) => {
+      const month = Number(e.target.value || 0);
+      animationController.pause();
+      animationController.seekTo(month);
+      $('timeline-month').textContent = `Month ${month}`;
+      renderTimelineSummary();
+      renderAnalytics(month);
+      updateReapp();
+    });
+
+    $('analytics-month-slider').addEventListener('input', (e) => {
+      const month = Number(e.target.value || 0);
+      animationController.pause();
+      animationController.seekTo(month);
+      $('timeline-month-slider').value = String(month);
+      $('timeline-month').textContent = `Month ${month}`;
+      renderTimelineSummary();
+      renderAnalytics(month);
+      updateReapp();
+    });
     $('timeline-play').addEventListener('click', () => { animationController.play(); logTimeline('Play timeline'); });
     $('timeline-pause').addEventListener('click', () => animationController.pause());
     $('timeline-resume').addEventListener('click', () => { animationController.resume(); logTimeline('Resume timeline'); });
@@ -493,14 +514,6 @@
     $('timeline-reset').addEventListener('click', resetLifecycle);
     $('timeline-apply-intervention').addEventListener('click', applyTimelineIntervention);
     $('timeline-speed').addEventListener('change', (e) => { animationController.setSpeed(Number(e.target.value)); logTimeline(`Speed set to ${e.target.selectedOptions[0].text}`); });
-    $('analytics-month-slider').addEventListener('input', (e) => {
-      const month = Number(e.target.value || 0);
-      animationController.pause();
-      animationController.seekTo(month);
-      renderTimelineSummary();
-      renderAnalytics(month);
-      updateReapp();
-    });
 
   }
 
