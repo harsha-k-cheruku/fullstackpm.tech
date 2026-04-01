@@ -453,8 +453,10 @@
     SIM.lifecycleConfig = { ...s.lifecycle };
     setScenarioActive(key);
     // Update scenario description
-    $('scenario-title').textContent = s.label;
-    $('scenario-description').innerHTML = `<b>${s.label}</b>: ${s.description}`;
+    const descEl = $('scenario-description');
+    if (descEl) {
+      descEl.innerHTML = `<b id="scenario-title">${s.label}</b>: ${s.description}`;
+    }
   }
 
   function bindScenarios() {
