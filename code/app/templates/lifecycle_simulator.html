@@ -124,7 +124,10 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="timeline-metrics"></div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="timeline-partner-cards"></div>
-      <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700 text-xs" id="timeline-log"></div>
+      <details class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700 text-xs">
+        <summary class="text-xs font-semibold uppercase text-gray-600 dark:text-gray-400 cursor-pointer">Simulation Log</summary>
+        <div id="timeline-log" class="mt-3 max-h-32 overflow-y-auto text-gray-500 dark:text-gray-400"></div>
+      </details>
     </div>
   </div>
 

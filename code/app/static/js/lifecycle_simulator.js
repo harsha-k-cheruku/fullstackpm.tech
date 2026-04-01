@@ -489,23 +489,28 @@
 
     $('timeline-month-slider').addEventListener('input', (e) => {
       const month = Number(e.target.value || 0);
-      animationController.pause();
-      animationController.seekTo(month);
-      $('timeline-month').textContent = `Month ${month}`;
-      renderTimelineSummary();
-      renderAnalytics(month);
-      updateReapp();
+      if (animationController) animationController.pause();
+      // Directly update without seekTo to avoid animation controller interference
+      const snap = SIM.portfolio?.snapshots?.find((s) => s.month === month);
+      if (snap) {
+        $('timeline-month').textContent = `Month ${month}`;
+        renderTimelineSummary();
+        renderAnalytics(month);
+        updateReapp();
+      }
     });
 
     $('analytics-month-slider').addEventListener('input', (e) => {
       const month = Number(e.target.value || 0);
-      animationController.pause();
-      animationController.seekTo(month);
+      if (animationController) animationController.pause();
       $('timeline-month-slider').value = String(month);
-      $('timeline-month').textContent = `Month ${month}`;
-      renderTimelineSummary();
-      renderAnalytics(month);
-      updateReapp();
+      const snap = SIM.portfolio?.snapshots?.find((s) => s.month === month);
+      if (snap) {
+        $('timeline-month').textContent = `Month ${month}`;
+        renderTimelineSummary();
+        renderAnalytics(month);
+        updateReapp();
+      }
     });
     $('timeline-play').addEventListener('click', () => { animationController.play(); logTimeline('Play timeline'); });
     $('timeline-pause').addEventListener('click', () => animationController.pause());
