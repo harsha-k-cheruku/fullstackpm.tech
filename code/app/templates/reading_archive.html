@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-3xl mx-auto px-6">
+    <a href="/" class="text-small" style="color: var(--color-accent); text-decoration: none;">&larr; Back to home</a>
+    <div style="margin-top: 14px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <h1 class="text-h2" style="color: var(--color-text-primary);">PM Reading Stack Archive</h1>
+      {% if archive.last_updated %}
+      <span style="font-size:12px;color:var(--color-text-tertiary);padding:4px 12px;border-radius:999px;border:1px solid var(--color-border);background-color:var(--color-bg-primary);">
+        Archived snapshot: {{ archive.last_updated }}
+      </span>
+      {% endif %}
+    </div>
+    <p class="text-body" style="color: var(--color-text-secondary); margin-top: 8px;">
+      Old reading stack snapshots live here so I can revisit what was shaping my thinking at different points in time.
+    </p>
+  </div>
+</section>
+
+<section style="padding: 2.5rem 0;">
+  <div class="max-w-3xl mx-auto px-6">
+    {% if archive.picks %}
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      {% for pick in archive.picks %}
+      <a href="{{ pick.url }}" target="_blank" rel="noopener noreferrer"
+         class="card-hover"
+         style="display:block;border-radius:12px;border:1px solid var(--color-border);padding:20px 22px;background-color:var(--color-bg-secondary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-bg-tertiary);color:var(--color-text-tertiary);">{{ pick.type | title }}</span>
+          <span class="text-small" style="color:var(--color-text-tertiary);">{{ pick.source }}</span>
+        </div>
+        <h4 style="font-size:1rem;font-weight:600;color:var(--color-text-primary);line-height:1.4;margin-bottom:0;">{{ pick.title }}</h4>
+        {% if pick.note %}
+        <p class="text-small" style="color:var(--color-text-secondary);font-style:italic;border-left:2px solid var(--color-accent);padding-left:10px;margin-top:12px;line-height:1.6;">{{ pick.note }}</p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-body" style="color:var(--color-text-tertiary);font-style:italic;">No archived items available yet.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

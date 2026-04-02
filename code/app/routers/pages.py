@@ -1,5 +1,6 @@
 # app/routers/pages.py
 from datetime import datetime
+import json
 
 from fastapi import APIRouter, Request
 from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse, Response
@@ -85,6 +86,27 @@ async def lifecycle_simulator(request: Request) -> HTMLResponse:
     return templates.TemplateResponse(
         "lifecycle_simulator.html",
         _ctx(request, title="Upstart Lifecycle Simulator — fullstackpm.tech", current_page="/tools/lifecycle-simulator"),
+    )
+
+
+@router.get("/reading/archive", response_class=HTMLResponse)
+async def reading_archive(request: Request) -> HTMLResponse:
+    """Archive view for previous PM reading stacks."""
+    archive_file = settings.static_dir / "data" / "archives" / "reading_stack_2026_03.json"
+    archive_data = {"last_updated": "", "picks": []}
+    try:
+        archive_data = json.loads(archive_file.read_text())
+    except Exception:
+        pass
+
+    return templates.TemplateResponse(
+        "reading_archive.html",
+        _ctx(
+            request,
+            title="Reading Stack Archive — fullstackpm.tech",
+            current_page="/reading/archive",
+            archive=archive_data,
+        ),
     )
 
 
