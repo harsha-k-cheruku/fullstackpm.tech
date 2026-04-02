@@ -26,7 +26,9 @@
 
   <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
     <nav class="flex gap-0 overflow-x-auto" role="tablist">
-      <button role="tab" data-tab="pipeline" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn active">Pipeline &amp; Clearing</button>
+      <button role="tab" data-tab="prfaq" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn active">PRFAQ</button>
+      <button role="tab" data-tab="manual" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">User Manual</button>
+      <button role="tab" data-tab="pipeline" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Pipeline &amp; Clearing</button>
       <button role="tab" data-tab="analytics" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Marketplace Performance</button>
       <button role="tab" data-tab="deepdive" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Loan Deep Dive</button>
       <button role="tab" data-tab="personas" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Personas</button>
@@ -34,7 +36,137 @@
     </nav>
   </div>
 
-  <div role="tabpanel" id="tab-pipeline" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+  <!-- PRFAQ Tab -->
+  <div role="tabpanel" id="tab-prfaq" class="max-w-4xl">
+    <div class="bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 overflow-hidden">
+
+      <!-- Press Release -->
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div class="text-[10px] uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wide mb-2">Press Release</div>
+        <h2 class="text-lg font-bold dark:text-white mb-3">Upstart Launches Lifecycle Simulator to Make Marketplace Clearing Decisions Visible</h2>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-3"><i>San Mateo, CA</i> — Upstart, the AI lending marketplace, today released an internal lifecycle simulator that lets product managers, data scientists, and capital markets operators see the full downstream impact of clearing decisions — from borrower pipeline through 36 months of portfolio performance — in under 3 minutes.</p>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">The simulator addresses a critical blind spot: when a PM adjusts partner eligibility or pricing thresholds, the actual impact on early payment defaults (EPD), loss rates, and balance sheet exposure doesn't materialize for 90+ days. During the 2022 capital crunch, this feedback delay contributed to Upstart holding over $1B on its balance sheet — because decision-makers couldn't see the compounding effect of tighter partner capacity in real-time.</p>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">"The clearing engine is one of the most sophisticated systems in fintech, but fewer than 10 people in the company could explain how a FICO change flows through to partner EPD," said the product team. "This simulator makes the causal chain transparent and testable."</p>
+        <p class="text-sm text-gray-700 dark:text-gray-300">The tool generates synthetic borrower pipelines, runs them through a three-layer clearing engine (eligibility → pricing → waterfall routing) with side-by-side Model 18 vs Classic comparison, then simulates 36 months of loan performance across five capital partners under different market scenarios.</p>
+      </div>
+
+      <!-- Customer FAQ -->
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div class="text-[10px] uppercase font-bold text-green-600 dark:text-green-400 tracking-wide mb-3">Customer FAQ</div>
+        <div class="space-y-4 text-sm">
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-gray-200">Q: Who is this for?</p>
+            <p class="text-gray-600 dark:text-gray-400 mt-1">PM candidates learning marketplace dynamics, marketplace operators stress-testing clearing rules, data scientists validating model assumptions, and anyone curious how lending marketplaces actually work.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-gray-200">Q: What can I test with it?</p>
+            <p class="text-gray-600 dark:text-gray-400 mt-1">Three market scenarios (Healthy, Capital Crunch, Rate Spike), variable pipeline sizes (1–100 borrowers), FICO distribution shifts, and side-by-side Model 18 vs Classic pricing outcomes. The Marketplace Performance tab shows how the same 100-loan baseline performs under each scenario.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-gray-200">Q: How accurate is the simulation?</p>
+            <p class="text-gray-600 dark:text-gray-400 mt-1">It's directionally correct — the clearing logic mirrors Upstart's three-layer engine and the lifecycle model uses grade-based Markov chains. But it's illustrative, not econometrically calibrated. Partner names are obfuscated and structures are inspired by public filings.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-gray-200">Q: Why does Model 18 matter?</p>
+            <p class="text-gray-600 dark:text-gray-400 mt-1">Classic FICO-based pricing misses "hidden-prime" borrowers — people with thin credit files but strong repayment capacity. Model 18 uses APR-as-feature to discover these borrowers, reducing their offered APR by ~8% and expanding the fundable pool without increasing partner risk.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internal FAQ -->
+      <div class="p-6">
+        <div class="text-[10px] uppercase font-bold text-purple-600 dark:text-purple-400 tracking-wide mb-3">Internal FAQ</div>
+        <div class="space-y-4 text-sm">
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-gray-200">Q: What problem does this solve that existing tools don't?</p>
+            <p class="text-gray-600 dark:text-gray-400 mt-1">Existing dashboards show historical performance — what happened. This simulator shows <i>what would happen</i> — compressing 36 months into seconds so operators can test hypotheses before committing to clearing rule changes.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-gray-200">Q: What's the technical risk?</p>
+            <p class="text-gray-600 dark:text-gray-400 mt-1">Low. The simulator runs entirely client-side in the browser — no backend computation, no database, no API calls. It's a standalone sandbox with zero infrastructure footprint.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800 dark:text-gray-200">Q: What would a v2 look like?</p>
+            <p class="text-gray-600 dark:text-gray-400 mt-1">Calibrate the Markov chain against real vintage curves, add mid-simulation interventions (change partner FICO floors at Month 8 and compare outcomes), and connect to a re-application prediction model to close the full borrower lifecycle loop.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Manual Tab -->
+  <div role="tabpanel" id="tab-manual" style="display:none" class="max-w-4xl">
+    <div class="bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 overflow-hidden">
+
+      <!-- Methodology -->
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-lg font-bold dark:text-white mb-4">Methodology</h2>
+        <div class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+          <div>
+            <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-1">Borrower Generation</h3>
+            <p>Synthetic borrowers are sampled from configurable FICO distributions (620–740 mean, adjustable via slider). Each borrower gets a FICO score, loan amount ($2K–$40K), loan purpose, and a 28% chance of being flagged as "hidden-prime" — borrowers with non-traditional credit strength that FICO alone doesn't capture. A seeded PRNG ensures deterministic output for the same parameters.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-1">Three-Layer Clearing Engine</h3>
+            <p><b>Layer 1 — Eligibility:</b> Each borrower is checked against 5 capital partners' rules: FICO floor, loan amount range (varies by partner type), purpose restrictions, and remaining capacity. Partners are evaluated in priority order.</p>
+            <p class="mt-1"><b>Layer 2 — Pricing:</b> Two models price every loan. Classic uses FICO-based APR. Model 18 applies an APR reduction (~8.2% for hidden-prime, ~1% for others) using APR-as-feature. The borrower has a maximum acceptable APR — if the offered rate exceeds it, the loan is rejected.</p>
+            <p class="mt-1"><b>Layer 3 — Waterfall Routing:</b> Eligible, priced loans are routed through partners in priority order. The first partner whose APR minimum is met and has remaining capacity gets the loan. If no partner matches, the loan goes to Upstart's balance sheet.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-1">Lifecycle Simulation</h3>
+            <p>Funded loans enter a 36-month Markov chain. Each loan is assigned a risk grade (A–E) based on FICO, with hidden-prime borrowers promoted one grade under Model 18. Monthly transitions: current → 30DPD → 60DPD → 90DPD → default, with grade-specific recovery and early payoff probabilities. Scenario presets (Healthy, Crunch, Spike) modify default rates, recovery rates, and early payoff rates.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-1">Marketplace Performance Baseline</h3>
+            <p>A fixed set of 100 pre-cleared loans (20 per partner) is generated on page load and run through all 36 months under each of the three scenarios. This provides a stable comparison baseline independent of the Pipeline & Clearing tab's user-generated runs.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to Use -->
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-lg font-bold dark:text-white mb-4">How to Use</h2>
+        <div class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+          <div class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center">1</span>
+            <div><b>Select a scenario</b> — Pick Healthy Market, Capital Crunch, or Rate Spike from the buttons at the top. This sets the FICO distribution and lifecycle parameters. The blue callout bar shows what each scenario means.</div>
+          </div>
+          <div class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center">2</span>
+            <div><b>Generate Pipeline</b> — Go to Pipeline & Clearing. Adjust FICO mean and portfolio size (1–100 loans), then click "Generate Pipeline." You'll see borrowers in a pending state.</div>
+          </div>
+          <div class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center">3</span>
+            <div><b>Run Clearing</b> — Click "Run Clearing." Both Model 18 and Classic process every loan simultaneously. The table fills with side-by-side results: APR, outcome, and matched partner for each model. Use the filter buttons (All / Cleared / APR Rejected / No Partner) to focus.</div>
+          </div>
+          <div class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center">4</span>
+            <div><b>Deep Dive</b> — Click "Walk" on any borrower to see their 4-step journey: eligibility matrix → pricing comparison → waterfall routing → funding & payment history. NO_PARTNER outcomes show exactly why no partner matched.</div>
+          </div>
+          <div class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-bold flex items-center justify-center">5</span>
+            <div><b>Marketplace Performance</b> — This tab runs independently. A fixed 100-loan baseline is compared across all three scenarios. Use the month slider (1–36) and partner filter to explore how different market conditions affect yield, loss, EPD, and default rates over time.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Disclaimers -->
+      <div class="p-6 bg-gray-50 dark:bg-gray-900">
+        <h2 class="text-sm font-bold uppercase text-gray-500 dark:text-gray-400 mb-3">Disclaimers & Limitations</h2>
+        <ul class="space-y-2 text-xs text-gray-600 dark:text-gray-400">
+          <li><b>Illustrative, not production-grade.</b> The Markov chain lifecycle model is directionally correct but not calibrated against real vintage curves. Transition probabilities are simplified for demonstration purposes.</li>
+          <li><b>Small sample size.</b> 100-borrower pipelines show marketplace dynamics and clearing mechanics, not statistically significant outcomes. Real portfolios operate at 10,000x this scale.</li>
+          <li><b>No persistence.</b> All simulation state lives in the browser. Refreshing the page resets everything. There is no backend, no database, and no saved sessions.</li>
+          <li><b>Obfuscated partners.</b> Partner names (Eltura, Aperture, WestBank, SpotFund A/B) are fictional. Structures and eligibility rules are inspired by publicly available information about fintech capital marketplace arrangements.</li>
+          <li><b>Simplified capacity model.</b> Partner capacity is consumed sequentially in the waterfall — earlier loans in the pipeline fill caps first. Real clearing engines use more sophisticated allocation and priority logic.</li>
+          <li><b>Re-Application tab is a product roadmap stub</b> — it frames the concept but does not simulate re-application behavior.</li>
+          <li><b>No real borrower data is used.</b> All borrowers are synthetically generated. No PII, no real credit data, no Upstart proprietary models.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div role="tabpanel" id="tab-pipeline" style="display:none" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
     <div class="md:col-span-1 bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 h-fit">
       <h3 class="text-sm font-bold uppercase text-gray-600 dark:text-gray-400 mb-4">Pipeline Controls</h3>
       <div class="space-y-4">
