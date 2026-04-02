@@ -9,7 +9,6 @@
     results: null,
     portfolio: null,
     lifecycleConfig: { baseDefaultRate: 1, earlyPayoffRate: 1, recoveryRate: 1 },
-    timeline: { healthChart: null, lossChart: null, interventionMonths: [] },
     selectedBorrower: null,
   };
 
@@ -43,12 +42,6 @@
       modelType: 'model18',
       lifecycle: { baseDefaultRate: 1.2, earlyPayoffRate: 1.8, recoveryRate: 0.9 }
     },
-  };
-
-  const PERSONA_RULES = {
-    maria: (l) => l.hiddenPrime && l.fico >= 640 && l.fico <= 670,
-    carlos: (l) => l.outcome === 'NO_PARTNER' || l.fico < 620,
-    james: (l) => l.partnerType === 'bs' || l.fico >= 760,
   };
 
   const $ = (id) => document.getElementById(id);
@@ -155,206 +148,167 @@
     return '🟢';
   }
 
-  function findSnapshot(month) {
-    if (!SIM.portfolio?.snapshots?.length) return null;
-    return SIM.portfolio.snapshots.find((s) => s.month === month) || SIM.portfolio.snapshots[SIM.portfolio.snapshots.length - 1];
+  // ── Marketplace Performance: fixed 100-loan baseline ──
+
+  function seededRand(seed) {
+    let t = seed;
+    return function () {
+      t += 0x6d2b79f5;
+      let x = Math.imul(t ^ (t >>> 15), 1 | t);
+      x ^= x + Math.imul(x ^ (x >>> 7), 61 | x);
+      return ((x ^ (x >>> 14)) >>> 0) / 4294967296;
+    };
   }
 
-  function renderPartnerCards(snapshot) {
-    $('timeline-partner-cards').innerHTML = (snapshot.partnerMetrics || [])
-      .map(
-        (p) => `<div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">${p.partnerName}</div>
-      <div class="mt-1 text-xs">Yield: <b>${pct(p.annualizedYield)}</b></div><div class="text-xs">EPD: <b>${pct(p.epdRate)}</b></div><div class="text-xs">Loss: <b>${pct(p.lossRate)}</b></div></div>`,
-      )
-      .join('');
+  function generateBaseline() {
+    // Generate 100 loans, 20 per partner, pre-cleared with deterministic attributes
+    const rand = seededRand(42);
+    const baselineLoans = [];
+    let id = 9000;
+    PARTNERS.forEach((partner) => {
+      for (let i = 0; i < 20; i++) {
+        const fico = partner.minFICO + Math.floor(rand() * 80);
+        const hp = rand() < 0.28;
+        const amount = 5000 + Math.floor(rand() * 30000);
+        const purposes = ['Debt Consolidation', 'Home Improvement', 'Medical', 'Auto', 'Education'];
+        const purpose = purposes[Math.floor(rand() * purposes.length)];
+        const apr = partner.minAPR + rand() * 6;
+        baselineLoans.push({
+          id: id++,
+          fico,
+          hiddenPrime: hp,
+          hidden_prime: hp,
+          hp,
+          amount,
+          purpose,
+          outcome: 'CLEARED',
+          offeredApr: apr,
+          matchedPartner: partner.name,
+          matchedPartnerId: partner.id,
+          partnerType: partner.type === 'bank' ? 'bank' : (partner.type === 'spot' ? 'spot' : 'ff'),
+        });
+      }
+    });
+    return baselineLoans;
   }
 
-  function renderTimelineSummary() {
-    if (!SIM.portfolio?.snapshots?.length) return;
-    const latest = SIM.portfolio.snapshots[SIM.portfolio.snapshots.length - 1];
-    const s = latest.statusCounts || {};
-    const hp = SIM.portfolio.loans.filter((l) => l.hiddenPrime);
-    const non = SIM.portfolio.loans.filter((l) => !l.hiddenPrime);
-    const hpRate = hp.length ? (hp.filter((l) => l.status === 'default').length / hp.length) * 100 : 0;
-    const nonRate = non.length ? (non.filter((l) => l.status === 'default').length / non.length) * 100 : 0;
+  function runBaselineScenarios() {
+    const baselineLoans = generateBaseline();
+    SIM.baseline = {};
 
-    $('timeline-ready-summary').innerHTML = `<div class="font-semibold mb-1">Lifecycle engine ready ✅ (Month ${latest.month})</div>
-      <div>Active: ${(s.current || 0) + (s['30dpd'] || 0) + (s['60dpd'] || 0) + (s['90dpd'] || 0)} · Defaults: ${s.default || 0} · Paid off: ${(s.paid_off || 0) + (s.early_payoff || 0)}</div>
-      <div class="text-xs text-gray-500 mt-1">Borrower delinquency: ${pct(latest.borrowerMetrics.delinquentRatePct)} · Upstart BS exposure: ${pct(latest.upstartMetrics.bsExposurePct)} · Model accuracy: ${pct(latest.upstartMetrics.modelAccuracy)}</div>`;
-    $('timeline-month').textContent = `${latest.month} / 36`;
-    $('timeline-metrics').innerHTML = `<div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">HP Default Rate</div><div class="text-xl font-bold mt-1">${pct(hpRate)}</div></div>
-      <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Non-HP Default Rate</div><div class="text-xl font-bold mt-1">${pct(nonRate)}</div></div>
-      <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Gap (Non-HP - HP)</div><div class="text-xl font-bold mt-1">${pct(nonRate - hpRate)}</div></div>`;
-    renderPartnerCards(latest);
+    Object.entries(SCENARIOS).forEach(([key, scenario]) => {
+      const portfolio = lifecycleEngine.initPortfolio(baselineLoans, PARTNERS);
+      for (let m = 0; m <= 36; m++) {
+        lifecycleEngine.stepMonth(portfolio, m, scenario.lifecycle);
+      }
+      SIM.baseline[key] = portfolio;
+    });
   }
 
-  function renderAnalytics(month) {
-    const snap = findSnapshot(month);
-    if (!snap) return;
-    const locked = $('analytics-locked');
-    const ready = $('analytics-ready');
-    if (snap.month >= 1) {
-      locked.style.display = 'none';
-      ready.style.display = 'block';
-    } else {
-      locked.style.display = 'block';
-      ready.style.display = 'none';
-    }
-
-    $('analytics-month-label').textContent = `Month ${snap.month}`;
-    const slider = $('analytics-month-slider');
-    slider.max = String(SIM.portfolio.snapshots[SIM.portfolio.snapshots.length - 1].month);
-    slider.value = String(snap.month);
-
-    const b = snap.borrowerMetrics;
-    const u = snap.upstartMetrics;
-    const pms = snap.partnerMetrics || [];
-    const epdAvg = pms.length ? pms.reduce((a, p) => a + (p.epdRate || 0), 0) / pms.length : 0;
-    const lossAvg = pms.length ? pms.reduce((a, p) => a + (p.lossRate || 0), 0) / pms.length : 0;
-
-    $('analytics-borrower-panel').innerHTML = `<h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">Borrower Health</h4>
-      <div class="text-sm">${metricLight(b.delinquentRatePct, 5, 8, true)} Delinquency: <b>${pct(b.delinquentRatePct)}</b></div>
-      <div class="text-sm">${metricLight(b.defaultRatePct, 4, 7, true)} Default Rate: <b>${pct(b.defaultRatePct)}</b></div>
-      <div class="text-sm">${metricLight(b.completionRatePct, 70, 55, false)} Completion: <b>${pct(b.completionRatePct)}</b></div>`;
-
-    $('analytics-upstart-panel').innerHTML = `<h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">Upstart Platform</h4>
-      <div class="text-sm">${metricLight(u.bsExposurePct, 8, 15, true)} BS Exposure: <b>${pct(u.bsExposurePct)}</b></div>
-      <div class="text-sm">${metricLight(u.modelAccuracy, 90, 80, false)} Model Accuracy: <b>${pct(u.modelAccuracy)}</b></div>
-      <div class="text-sm">Fees: <b>${money(u.cumulativeFees)}</b></div>`;
-
-    $('analytics-partner-panel').innerHTML = `<h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">Capital Partners</h4>
-      <div class="text-sm">${metricLight(epdAvg, 3, 4.5, true)} Avg EPD: <b>${pct(epdAvg)}</b></div>
-      <div class="text-sm">${metricLight(lossAvg, 5, 8, true)} Avg Loss: <b>${pct(lossAvg)}</b></div>`;
-
-    const atRisk = pms.filter((p) => (p.epdRate || 0) > 4.5 || (p.lossRate || 0) > 8);
-    $('analytics-atrisk').innerHTML = atRisk.length
-      ? `<h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">At-Risk Partner Callouts</h4>${atRisk.map((p) => `<div class="text-sm">🔴 <b>${p.partnerName}</b> — EPD ${pct(p.epdRate)}, Loss ${pct(p.lossRate)}</div>`).join('')}`
-      : '<div class="text-sm">🟢 No at-risk partners at this month.</div>';
+  function getBaselineSnapshot(scenarioKey, month) {
+    const portfolio = SIM.baseline?.[scenarioKey];
+    if (!portfolio?.snapshots?.length) return null;
+    return portfolio.snapshots.find((s) => s.month === month) || portfolio.snapshots[portfolio.snapshots.length - 1];
   }
 
-  function logTimeline(msg) {
-    $('timeline-log').innerHTML = `<div class="text-gray-500">[${new Date().toLocaleTimeString()}] ${msg}</div>` + $('timeline-log').innerHTML;
-  }
+  function renderMarketplacePerformance() {
+    const month = Number($('mp-month-slider').value) || 1;
+    const filterPartner = $('mp-partner-filter').value;
 
-  const interventionMarkerPlugin = {
-    id: 'interventionMarkers',
-    afterDraw(chart) {
-      const months = SIM.timeline.interventionMonths || [];
-      const x = chart.scales.x;
-      const y = chart.scales.y;
-      if (!months.length || !x || !y) return;
-      const ctx = chart.ctx;
-      ctx.save();
-      ctx.setLineDash([5, 5]);
-      ctx.strokeStyle = '#9333ea';
-      months.forEach((m) => {
-        const px = x.getPixelForValue(`M${m}`);
-        if (!Number.isFinite(px)) return;
-        ctx.beginPath();
-        ctx.moveTo(px, y.top);
-        ctx.lineTo(px, y.bottom);
-        ctx.stroke();
+    $('mp-month-label').textContent = `Month ${month}`;
+
+    const scenarioMeta = {
+      healthy: { label: 'Healthy Market', color: '#2563eb', bg: '#e0f2fe', border: '#93c5fd' },
+      crunch: { label: 'Capital Crunch', color: '#d97706', bg: '#fef3c7', border: '#fcd34d' },
+      spike: { label: 'Rate Spike', color: '#db2777', bg: '#fce7f3', border: '#f9a8d4' },
+    };
+
+    // Render scenario KPI cards (3 columns)
+    let cardsHTML = '';
+    Object.entries(scenarioMeta).forEach(([key, meta]) => {
+      const snap = getBaselineSnapshot(key, month);
+      if (!snap) return;
+
+      let pms = snap.partnerMetrics || [];
+      if (filterPartner !== 'all') {
+        pms = pms.filter((p) => p.partnerId === filterPartner);
+      }
+
+      const b = snap.borrowerMetrics;
+      const u = snap.upstartMetrics;
+      const epdAvg = pms.length ? pms.reduce((a, p) => a + (p.epdRate || 0), 0) / pms.length : 0;
+      const lossAvg = pms.length ? pms.reduce((a, p) => a + (p.lossRate || 0), 0) / pms.length : 0;
+      const yieldAvg = pms.length ? pms.reduce((a, p) => a + (p.annualizedYield || 0), 0) / pms.length : 0;
+      const totalFunded = pms.reduce((a, p) => a + (p.totalFunded || 0), 0);
+      const activeCount = pms.reduce((a, p) => a + (p.activeCount || 0), 0);
+      const defaultedCount = pms.reduce((a, p) => a + (p.defaultedCount || 0), 0);
+
+      cardsHTML += `<div class="bg-white dark:bg-gray-800 p-4 rounded border-2" style="border-color:${meta.border}">
+        <div class="flex items-center gap-2 mb-3">
+          <div class="w-3 h-3 rounded-full" style="background:${meta.color}"></div>
+          <h4 class="text-sm font-bold" style="color:${meta.color}">${meta.label}</h4>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Avg Yield</div><div class="text-lg font-bold mt-1">${pct(yieldAvg)}</div></div>
+          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Avg Loss</div><div class="text-lg font-bold mt-1">${metricLight(lossAvg, 5, 8, true)} ${pct(lossAvg)}</div></div>
+          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Avg EPD</div><div class="text-lg font-bold mt-1">${metricLight(epdAvg, 3, 4.5, true)} ${pct(epdAvg)}</div></div>
+          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Default Rate</div><div class="text-lg font-bold mt-1">${metricLight(b.defaultRatePct, 4, 7, true)} ${pct(b.defaultRatePct)}</div></div>
+          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Active</div><div class="text-lg font-bold mt-1">${activeCount}</div></div>
+          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Defaulted</div><div class="text-lg font-bold mt-1">${defaultedCount}</div></div>
+        </div>
+        <div class="mt-2 text-xs text-gray-500">Total Funded: ${money(totalFunded)} · Delinquency: ${pct(b.delinquentRatePct)} · Completion: ${pct(b.completionRatePct)}</div>
+      </div>`;
+    });
+    $('mp-scenario-cards').innerHTML = cardsHTML;
+
+    // Render partner breakdown table
+    const partnerList = filterPartner === 'all' ? PARTNERS : PARTNERS.filter((p) => p.id === filterPartner);
+    let tableRows = '';
+    partnerList.forEach((partner) => {
+      let cells = `<td class="px-2 py-1 font-semibold">${partner.name}</td>`;
+      ['healthy', 'crunch', 'spike'].forEach((key) => {
+        const snap = getBaselineSnapshot(key, month);
+        const pm = snap?.partnerMetrics?.find((p) => p.partnerId === partner.id);
+        if (pm) {
+          cells += `<td class="px-2 py-1">${pct(pm.annualizedYield)}</td>`;
+          cells += `<td class="px-2 py-1">${metricLight(pm.lossRate, 5, 8, true)} ${pct(pm.lossRate)}</td>`;
+          cells += `<td class="px-2 py-1">${metricLight(pm.epdRate, 3, 4.5, true)} ${pct(pm.epdRate)}</td>`;
+        } else {
+          cells += '<td class="px-2 py-1 text-gray-400">—</td>'.repeat(3);
+        }
       });
-      ctx.restore();
-    },
-  };
-
-  function buildTimelineCharts() {
-    if (SIM.timeline.healthChart) SIM.timeline.healthChart.destroy();
-    if (SIM.timeline.lossChart) SIM.timeline.lossChart.destroy();
-
-    SIM.timeline.healthChart = new Chart($('timeline-health-chart'), {
-      type: 'line',
-      data: { labels: [], datasets: [
-        { label: 'Current', data: [], borderColor: '#16a34a', backgroundColor: 'rgba(22,163,74,0.25)', fill: true, stack: 'status' },
-        { label: 'Delinquent', data: [], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.25)', fill: true, stack: 'status' },
-        { label: 'Default', data: [], borderColor: '#dc2626', backgroundColor: 'rgba(220,38,38,0.25)', fill: true, stack: 'status' },
-        { label: 'Paid', data: [], borderColor: '#2563eb', backgroundColor: 'rgba(37,99,235,0.25)', fill: true, stack: 'status' },
-      ] },
-      options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }, plugins: { legend: { position: 'bottom' } } },
-      plugins: [interventionMarkerPlugin],
+      tableRows += `<tr class="border-b border-gray-100 dark:border-gray-700">${cells}</tr>`;
     });
 
-    SIM.timeline.lossChart = new Chart($('timeline-loss-chart'), {
-      type: 'line',
-      data: { labels: [], datasets: [
-        { label: 'Loss Rate %', data: [], borderColor: '#ef4444', tension: 0.2 },
-        { label: 'Delinquency %', data: [], borderColor: '#f59e0b', tension: 0.2 },
-      ] },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: { y: { beginAtZero: true } } },
-      plugins: [interventionMarkerPlugin],
+    // Add totals row
+    let totCells = '<td class="px-2 py-1 font-bold">Total</td>';
+    ['healthy', 'crunch', 'spike'].forEach((key) => {
+      const snap = getBaselineSnapshot(key, month);
+      const pms = snap?.partnerMetrics || [];
+      const yieldAvg = pms.length ? pms.reduce((a, p) => a + (p.annualizedYield || 0), 0) / pms.length : 0;
+      const lossAvg = pms.length ? pms.reduce((a, p) => a + (p.lossRate || 0), 0) / pms.length : 0;
+      const epdAvg = pms.length ? pms.reduce((a, p) => a + (p.epdRate || 0), 0) / pms.length : 0;
+      totCells += `<td class="px-2 py-1 font-bold">${pct(yieldAvg)}</td>`;
+      totCells += `<td class="px-2 py-1 font-bold">${pct(lossAvg)}</td>`;
+      totCells += `<td class="px-2 py-1 font-bold">${pct(epdAvg)}</td>`;
     });
+    tableRows += `<tr class="border-t-2 border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-700">${totCells}</tr>`;
 
-    animationController.registerChart('health', SIM.timeline.healthChart, (_, __, snaps) => {
-      SIM.timeline.healthChart.data.labels = snaps.map((s) => `M${s.month}`);
-      SIM.timeline.healthChart.data.datasets[0].data = snaps.map((s) => s.statusCounts.current || 0);
-      SIM.timeline.healthChart.data.datasets[1].data = snaps.map((s) => (s.statusCounts['30dpd'] || 0) + (s.statusCounts['60dpd'] || 0) + (s.statusCounts['90dpd'] || 0));
-      SIM.timeline.healthChart.data.datasets[2].data = snaps.map((s) => s.statusCounts.default || 0);
-      SIM.timeline.healthChart.data.datasets[3].data = snaps.map((s) => (s.statusCounts.paid_off || 0) + (s.statusCounts.early_payoff || 0));
+    $('mp-partner-table-body').innerHTML = tableRows;
+
+    // At-risk callouts (across all scenarios)
+    let atRiskHTML = '';
+    ['healthy', 'crunch', 'spike'].forEach((key) => {
+      const snap = getBaselineSnapshot(key, month);
+      const pms = snap?.partnerMetrics || [];
+      const atRisk = pms.filter((p) => (p.epdRate || 0) > 4.5 || (p.lossRate || 0) > 8);
+      if (atRisk.length) {
+        atRiskHTML += atRisk.map((p) => `<div class="text-sm">🔴 <b>${scenarioMeta[key].label}</b> — ${p.partnerName}: EPD ${pct(p.epdRate)}, Loss ${pct(p.lossRate)}</div>`).join('');
+      }
     });
-
-    animationController.registerChart('loss', SIM.timeline.lossChart, (_, __, snaps) => {
-      SIM.timeline.lossChart.data.labels = snaps.map((s) => `M${s.month}`);
-      SIM.timeline.lossChart.data.datasets[0].data = snaps.map((s) => {
-        const p = s.partnerMetrics || [];
-        return p.length ? Number((p.reduce((a, m) => a + (m.lossRate || 0), 0) / p.length).toFixed(2)) : 0;
-      });
-      SIM.timeline.lossChart.data.datasets[1].data = snaps.map((s) => Number((s.borrowerMetrics?.delinquentRatePct || 0).toFixed(2)));
-    });
-  }
-
-  function setupAnimationController() {
-    animationController.init(SIM.portfolio, {
-      speedMs: 500,
-      maxMonths: 36,
-      lifecycleConfig: SIM.lifecycleConfig,
-      onTick: (_, m) => {
-        renderTimelineSummary();
-        renderAnalytics(m);
-        if ($('analytics-ready').style.display !== 'none') $('analytics-month-slider').value = String(m);
-      },
-      onPause: (_, m) => logTimeline(`Paused at Month ${m}`),
-      onComplete: (_, m) => {
-        renderTimelineSummary();
-        renderAnalytics(m);
-        logTimeline('Simulation reached Month 36');
-      },
-    });
-    buildTimelineCharts();
-    animationController.seekTo(0);
-    renderTimelineSummary();
-    renderAnalytics(0);
-  }
-
-  function runLifecycleMonths(m = 36) {
-    animationController.seekTo(m);
-    renderTimelineSummary();
-    renderAnalytics(m);
-    logTimeline(`Ran deterministic simulation through Month ${m}`);
-  }
-
-  function resetLifecycle() {
-    SIM.portfolio = lifecycleEngine.initPortfolio(SIM.results.loans, PARTNERS);
-    lifecycleEngine.stepMonth(SIM.portfolio, 0, SIM.lifecycleConfig);
-    SIM.timeline.interventionMonths = [];
-    setupAnimationController();
-    logTimeline('Lifecycle reset to Month 0');
-  }
-
-  function applyTimelineIntervention() {
-    if (animationController.getState().playing) return logTimeline('Pause before intervening (Zen puppy rule).');
-    const partnerId = $('intervention-partner').value;
-    const fico = Number($('intervention-fico').value || 700);
-    lifecycleEngine.applyIntervention(SIM.portfolio, partnerId, { ficoFloor: fico });
-    SIM.timeline.interventionMonths.push(SIM.portfolio.month);
-    renderTimelineSummary();
-    renderAnalytics(SIM.portfolio.month);
-    logTimeline(`Applied intervention at Month ${SIM.portfolio.month}: ${partnerId} ficoFloor → ${fico}`);
-  }
-
-  function personaPick(name) {
-    const list = SIM.results?.loans || [];
-    return list.find(PERSONA_RULES[name]) || list[0] || null;
+    $('mp-atrisk').innerHTML = atRiskHTML
+      ? `<h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">At-Risk Partner Callouts</h4>${atRiskHTML}`
+      : '<div class="text-sm">🟢 No at-risk partners at this month across any scenario.</div>';
   }
 
   function renderDeepDive(loanId) {
@@ -382,15 +336,28 @@
     const hpCallout = loan.hiddenPrime ? `<div class="text-xs text-blue-600 mt-1">Hidden-prime detected: APR reduced by ${(classic.offeredApr - model18.offeredApr).toFixed(1)} pts under Model 18.</div>` : '';
     $('deepdive-step2').innerHTML = `<h4 class="font-semibold mb-2">Step 2: Pricing Engine</h4><div class="grid md:grid-cols-2 gap-3 text-sm"><div class="kpi-card"><div class="font-semibold">Classic</div><div>APR: <b>${pct(classic.offeredApr)}</b></div><div>P(default): <b>${pct(classic.pDefault * 100)}</b></div><div>Borrower max APR: <b>${pct(classic.maxApr)}</b></div></div><div class="kpi-card"><div class="font-semibold">Model 18</div><div>APR: <b>${pct(model18.offeredApr)}</b></div><div>P(default): <b>${pct(model18.pDefault * 100)}</b></div><div>Borrower max APR: <b>${pct(model18.maxApr)}</b></div></div></div><div class="text-xs mt-2">Winner: <b>${winner}</b>${hpCallout}</div>`;
 
-    const waterfall = PARTNERS.sort((a, b) => a.pri - b.pri)
-      .map((p) => `<div class="text-xs py-1">${p.name} → ${loan.matchedPartnerId === p.id ? '<b class="text-green-600">MATCH</b>' : 'SKIP'}</div>`)
-      .join('');
-    const bsLine = loan.partnerType === 'bs' ? '<div class="text-xs py-1"><b class="text-amber-600">Balance Sheet fallback</b></div>' : '';
-    $('deepdive-step3').innerHTML = `<h4 class="font-semibold mb-2">Step 3: Waterfall Routing</h4>${waterfall}${bsLine}`;
+    const sortedPartners = [...PARTNERS].sort((a, b) => a.pri - b.pri);
+    const waterfallRows = sortedPartners
+      .map((p) => {
+        const m18Match = loan.m18Partner === p.name;
+        const classicMatch = loan.classicPartner === p.name;
+        return `<tr>
+          <td class="px-2 py-1">${p.name}</td>
+          <td class="px-2 py-1 ${m18Match ? 'text-green-600 font-bold' : 'text-gray-400'}">${m18Match ? 'MATCH' : 'SKIP'}</td>
+          <td class="px-2 py-1 ${classicMatch ? 'text-green-600 font-bold' : 'text-gray-400'}">${classicMatch ? 'MATCH' : 'SKIP'}</td>
+        </tr>`;
+      }).join('');
+    $('deepdive-step3').innerHTML = `<h4 class="font-semibold mb-2">Step 3: Waterfall Routing</h4>
+      <table class="w-full text-xs"><thead><tr>
+        <th class="px-2 py-1 text-left">Partner</th>
+        <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">Model 18</th>
+        <th class="px-2 py-1 text-left" style="background:#f3e8ff;color:#581c87">Classic</th>
+      </tr></thead><tbody>${waterfallRows}</tbody></table>
+      <div class="text-xs mt-2 text-gray-500">M18: ${loan.m18Outcome || '—'} · Classic: ${loan.classicOutcome || '—'}</div>`;
 
     const lifeLoan = SIM.portfolio?.loans?.find((l) => l.id === loan.id);
     if (!lifeLoan) {
-      $('deepdive-step4').innerHTML = '<h4 class="font-semibold mb-2">Step 4: Funding & Lifecycle</h4><div class="text-sm text-gray-500">Run timeline first to view payment history strip.</div>';
+      $('deepdive-step4').innerHTML = '<h4 class="font-semibold mb-2">Step 4: Funding & Lifecycle</h4><div class="text-sm text-gray-500">No lifecycle data available for this loan.</div>';
     } else {
       const strip = (lifeLoan.paymentHistory || []).slice(0, 36).map((s) => {
         const c = s === 'current' ? 'bg-green-500' : s.includes('dpd') ? 'bg-yellow-400' : s === 'default' ? 'bg-red-500' : 'bg-blue-500';
@@ -405,7 +372,7 @@
   function bindDeepDiveSelect() {
     const sel = $('deepdive-borrower');
     if (!sel || !SIM.results) return;
-    sel.innerHTML = SIM.results.loans.map((l) => `<option value="${l.id}">#${l.id} · FICO ${l.fico} · ${l.purpose} · ${l.outcome}</option>`).join('');
+    sel.innerHTML = SIM.results.loans.map((l) => `<option value="${l.id}">#${l.id} · FICO ${l.fico} · ${l.purpose} · M18: ${l.m18Outcome || '—'} · Classic: ${l.classicOutcome || '—'}</option>`).join('');
     sel.addEventListener('change', () => renderDeepDive(Number(sel.value)));
   }
 
@@ -424,15 +391,6 @@
     $('reapp-funded').textContent = String(funded);
     $('reapp-completed').textContent = String(completed);
     $('reapp-reapply').textContent = String(reapply);
-  }
-
-  function setModelActive(modelType) {
-    document.querySelectorAll('.model-btn').forEach((b) => {
-      const active = b.dataset.model === modelType;
-      b.style.backgroundColor = active ? '#2563eb' : '';
-      b.style.color = active ? 'white' : '';
-      b.style.borderColor = active ? '#2563eb' : '';
-    });
   }
 
   function setScenarioActive(key) {
@@ -478,10 +436,20 @@
     $('filter-buttons').innerHTML = '';
 
     $('borrower-table-body').innerHTML = SIM.borrowers
-      .map((loan, idx) => `<tr class="border-b border-gray-100 dark:border-gray-700">
-        <td class="px-3 py-2">${idx + 1}</td><td class="px-3 py-2">${loan.fico}</td><td class="px-3 py-2">${money(loan.amount)}</td><td class="px-3 py-2">${loan.purpose}</td>
-        <td class="px-3 py-2">${loan.hiddenPrime ? '★' : ''}</td><td class="px-3 py-2 text-gray-400">—</td>
-        <td class="px-3 py-2 text-gray-400 italic">Pending</td><td class="px-3 py-2 text-gray-400">—</td><td class="px-3 py-2"></td></tr>`)
+      .map((loan, idx) => `<tr class="border-b border-gray-100 dark:border-gray-700 text-xs">
+        <td class="px-2 py-1">${idx + 1}</td>
+        <td class="px-2 py-1">${loan.fico}</td>
+        <td class="px-2 py-1 text-gray-400">—</td>
+        <td class="px-2 py-1">${money(loan.amount)}</td>
+        <td class="px-2 py-1">${loan.purpose}</td>
+        <td class="px-2 py-1">${loan.hiddenPrime ? '★' : ''}</td>
+        <td class="px-2 py-1 text-gray-400">—</td>
+        <td class="px-2 py-1 text-gray-400 italic">Pending</td>
+        <td class="px-2 py-1 text-gray-400">—</td>
+        <td class="px-2 py-1 text-gray-400">—</td>
+        <td class="px-2 py-1 text-gray-400 italic">Pending</td>
+        <td class="px-2 py-1 text-gray-400">—</td>
+        <td class="px-2 py-1"></td></tr>`)
       .join('');
     $('table-count').textContent = `${SIM.borrowers.length} borrowers generated — awaiting clearing`;
 
@@ -524,19 +492,17 @@
     SIM.results.loans = mergedLoans;
 
     SIM.portfolio = lifecycleEngine.initPortfolio(m18Results.loans, PARTNERS);
-    lifecycleEngine.stepMonth(SIM.portfolio, 0, SIM.lifecycleConfig);
+    // Run all 36 months of lifecycle simulation upfront
+    for (let m = 0; m <= 36; m++) {
+      lifecycleEngine.stepMonth(SIM.portfolio, m, SIM.lifecycleConfig);
+    }
 
-    $('timeline-locked').style.display = 'none';
-    $('timeline-ready').style.display = 'block';
-
-    setupAnimationController();
     renderKPIs(SIM.results.summary);
     SIM.filter = 'all';
     renderFilters();
     renderTable();
     bindDeepDiveSelect();
     updateReapp();
-    logTimeline('Clearing complete — both models evaluated');
   }
 
   function bindEvents() {
@@ -550,42 +516,16 @@
     $('gen-btn').addEventListener('click', generatePipeline);
     $('clear-btn').addEventListener('click', runClearing);
 
-    $('timeline-month-slider').addEventListener('input', (e) => {
-      const month = Number(e.target.value || 0);
-      if (animationController) animationController.pause();
-      // Directly update without seekTo to avoid animation controller interference
-      const snap = SIM.portfolio?.snapshots?.find((s) => s.month === month);
-      if (snap) {
-        $('timeline-month').textContent = `Month ${month}`;
-        renderTimelineSummary();
-        renderAnalytics(month);
-        updateReapp();
-      }
-    });
-
-    $('analytics-month-slider').addEventListener('input', (e) => {
-      const month = Number(e.target.value || 0);
-      if (animationController) animationController.pause();
-      $('timeline-month-slider').value = String(month);
-      const snap = SIM.portfolio?.snapshots?.find((s) => s.month === month);
-      if (snap) {
-        $('timeline-month').textContent = `Month ${month}`;
-        renderTimelineSummary();
-        renderAnalytics(month);
-        updateReapp();
-      }
-    });
-
+    $('mp-month-slider').addEventListener('input', () => renderMarketplacePerformance());
+    $('mp-partner-filter').addEventListener('change', () => renderMarketplacePerformance());
   }
 
   window.SIM = window.SIM || {};
-  window.SIM.showPersona = (name) => {
-    const p = personaPick(name);
-    if (p) walkLoan(p.id);
-  };
 
   document.addEventListener('DOMContentLoaded', () => {
     bindScenarios();
     bindEvents();
+    runBaselineScenarios();
+    renderMarketplacePerformance();
   });
 })();

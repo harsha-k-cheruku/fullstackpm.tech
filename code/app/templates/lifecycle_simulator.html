@@ -2,11 +2,9 @@
 {% block title %}Upstart Lifecycle Simulator{% endblock %}
 
 {% block head %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="/tools/borrower_generation.js"></script>
 <script src="/static/js/clearing_engine.js"></script>
 <script src="/static/js/lifecycle_engine.js"></script>
-<script src="/static/js/animation_controller.js"></script>
 <link rel="stylesheet" href="/static/css/simulator.css">
 {% endblock %}
 
@@ -29,7 +27,6 @@
   <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
     <nav class="flex gap-0 overflow-x-auto" role="tablist">
       <button role="tab" data-tab="pipeline" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn active">Pipeline &amp; Clearing</button>
-      <button role="tab" data-tab="timeline" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Portfolio Timeline</button>
       <button role="tab" data-tab="analytics" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Marketplace Performance</button>
       <button role="tab" data-tab="deepdive" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Loan Deep Dive</button>
       <button role="tab" data-tab="personas" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Personas</button>
@@ -93,47 +90,58 @@
     </div>
   </div>
 
-  <div role="tabpanel" id="tab-timeline" style="display:none" class="space-y-4">
-    <div id="timeline-locked" class="bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">Run clearing simulation first → Timeline will unlock.</div>
-    <div id="timeline-ready" style="display:none" class="space-y-3">
-      <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
-        <div class="flex flex-wrap items-center gap-4">
-          <div class="flex-1">
-            <label class="text-[10px] uppercase text-gray-500">Portfolio Month (Scrub to explore)</label>
-            <div class="flex items-center gap-3 mt-2">
-              <input type="range" id="timeline-month-slider" min="0" max="36" value="0" class="flex-1">
-              <div id="timeline-month" class="text-sm font-bold w-16 text-right">Month 0</div>
-            </div>
-          </div>
+  <div role="tabpanel" id="tab-analytics" style="display:none" class="space-y-4">
+    <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded p-3 text-sm text-gray-700 dark:text-gray-300">
+      <b>Fixed Baseline:</b> 100 pre-cleared loans (20 per partner) run through 36-month lifecycle under each scenario. Compare partner performance across market conditions.
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+      <div class="flex flex-wrap items-center gap-6">
+        <div class="flex items-center gap-3">
+          <label class="text-xs font-semibold uppercase text-gray-500">Month</label>
+          <input type="range" id="mp-month-slider" min="1" max="36" value="1" class="w-40">
+          <div id="mp-month-label" class="text-sm font-bold w-20">Month 1</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-xs font-semibold uppercase text-gray-500">View</label>
+          <select id="mp-partner-filter" class="text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-2 py-1">
+            <option value="all">Total Marketplace</option>
+            <option value="eltura">Eltura</option>
+            <option value="aperture">Aperture</option>
+            <option value="westbank">WestBank</option>
+            <option value="spotfund_a">SpotFund A</option>
+            <option value="spotfund_b">SpotFund B</option>
+          </select>
         </div>
       </div>
-
-      <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300" id="timeline-ready-summary"></div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div class="bg-white dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700"><h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">Portfolio Health (Stacked)</h4><canvas id="timeline-health-chart" height="170"></canvas></div>
-        <div class="bg-white dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700"><h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">Loss / Delinquency Trend</h4><canvas id="timeline-loss-chart" height="170"></canvas></div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="timeline-metrics"></div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="timeline-partner-cards"></div>
-      <details class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700 text-xs">
-        <summary class="text-xs font-semibold uppercase text-gray-600 dark:text-gray-400 cursor-pointer">Simulation Log</summary>
-        <div id="timeline-log" class="mt-3 max-h-32 overflow-y-auto text-gray-500 dark:text-gray-400"></div>
-      </details>
     </div>
-  </div>
 
-  <div role="tabpanel" id="tab-analytics" style="display:none" class="space-y-4">
-    <div id="analytics-locked" class="bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">Run timeline at least to Month 1 to unlock Marketplace Performance.</div>
-    <div id="analytics-ready" style="display:none" class="space-y-3">
-      <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700"><div class="flex flex-wrap items-center gap-3"><label class="text-xs font-semibold uppercase text-gray-500">Month Selector</label><input type="range" id="analytics-month-slider" min="0" max="36" value="0" class="w-56"><div id="analytics-month-label" class="text-sm font-bold">Month 0</div></div></div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="analytics-borrower-panel"></div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="analytics-upstart-panel"></div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="analytics-partner-panel"></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="mp-scenario-cards"></div>
+
+    <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
+      <h4 class="text-xs font-semibold uppercase text-gray-500 mb-3">Partner Breakdown at Selected Month</h4>
+      <div style="overflow-x:auto">
+        <table class="w-full text-xs whitespace-nowrap">
+          <thead class="bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
+            <tr>
+              <th class="px-2 py-1 text-left">Partner</th>
+              <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">Healthy — Yield</th>
+              <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">Loss</th>
+              <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">EPD</th>
+              <th class="px-2 py-1 text-left" style="background:#fef3c7;color:#78350f">Crunch — Yield</th>
+              <th class="px-2 py-1 text-left" style="background:#fef3c7;color:#78350f">Loss</th>
+              <th class="px-2 py-1 text-left" style="background:#fef3c7;color:#78350f">EPD</th>
+              <th class="px-2 py-1 text-left" style="background:#fce7f3;color:#831843">Spike — Yield</th>
+              <th class="px-2 py-1 text-left" style="background:#fce7f3;color:#831843">Loss</th>
+              <th class="px-2 py-1 text-left" style="background:#fce7f3;color:#831843">EPD</th>
+            </tr>
+          </thead>
+          <tbody id="mp-partner-table-body"></tbody>
+        </table>
       </div>
-      <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="analytics-atrisk"></div>
     </div>
+
+    <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700" id="mp-atrisk"></div>
   </div>
 
   <div role="tabpanel" id="tab-deepdive" style="display:none" class="space-y-4">

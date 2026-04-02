@@ -78,7 +78,7 @@ PM candidates learning marketplace dynamics, marketplace operators stress-testin
   - `borrower_generation.js` — Synthetic borrower creation with realistic FICO/purpose distributions
   - `clearing_engine.js` — Three-layer engine: eligibility → pricing → waterfall routing
   - `lifecycle_engine.js` — 36-month Markov chain loan performance simulation
-  - `animation_controller.js` — Slider-based timeline control + Chart.js updates
+  - `lifecycle_simulator.js` — Main coordinator: pipeline controls, side-by-side model comparison, deep dive walkthrough
 
 ### User Flow
 
