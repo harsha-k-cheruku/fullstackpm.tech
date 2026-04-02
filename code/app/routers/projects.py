@@ -40,6 +40,19 @@ async def projects(request: Request) -> HTMLResponse:
     )
 
 
+@router.get("/projects/upstart-clearing-simulator/prfaq", response_class=HTMLResponse)
+async def upstart_lifecycle_prfaq(request: Request) -> HTMLResponse:
+    """PRFAQ page for Upstart Lifecycle Simulator."""
+    return templates.TemplateResponse(
+        "projects/upstart_prfaq.html",
+        _ctx(
+            request,
+            title="Upstart Lifecycle Simulator PRFAQ — fullstackpm.tech",
+            current_page="/projects",
+        ),
+    )
+
+
 @router.get("/projects/{slug}", response_class=HTMLResponse)
 async def project_detail(request: Request, slug: str) -> HTMLResponse:
     content_service = request.app.state.content_service

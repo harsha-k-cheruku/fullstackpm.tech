@@ -32,6 +32,25 @@
 
       <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">{{ project.description }}</p>
 
+      {% if project.slug == "upstart-clearing-simulator" %}
+      <div class="mb-6 rounded-lg border p-4" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="text-xs uppercase tracking-wide font-semibold" style="color: var(--color-text-tertiary);">Product Artifact</div>
+            <div class="text-sm font-semibold" style="color: var(--color-text-primary);">PRFAQ — Upstart Lifecycle Simulator</div>
+            <div class="text-sm" style="color: var(--color-text-secondary);">Amazon-style press release + customer/internal FAQ used for product framing.</div>
+          </div>
+          <a href="/projects/upstart-clearing-simulator/prfaq"
+             class="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors"
+             style="background-color: var(--color-accent);"
+             onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+             onmouseout="this.style.backgroundColor='var(--color-accent)'">
+            View PRFAQ
+          </a>
+        </div>
+      </div>
+      {% endif %}
+
       <div class="flex flex-wrap gap-2 mb-6">
         {% for tech in project.tech_stack %}
         <span class="text-xs rounded-full px-3 py-1 font-medium"

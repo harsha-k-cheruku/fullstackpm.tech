@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-12 lg:py-16">
+  <div class="max-w-4xl mx-auto">
+    <a href="/projects/upstart-clearing-simulator"
+       class="inline-flex items-center gap-2 text-small font-medium transition-colors"
+       style="color: var(--color-accent);"
+       onmouseover="this.style.color='var(--color-accent-hover)'"
+       onmouseout="this.style.color='var(--color-accent)'">
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+      Back to Upstart Lifecycle Simulator
+    </a>
+
+    <div class="mt-6 rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+        <h1 class="text-h1" style="color: var(--color-text-primary);">PRFAQ — Upstart Lifecycle Simulator</h1>
+        <a href="/tools/lifecycle-simulator"
+           class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
+           style="background-color: var(--color-accent);"
+           onmouseover="this.style.backgroundColor='var(--color-accent-hover)'"
+           onmouseout="this.style.backgroundColor='var(--color-accent)'">
+          Open Simulator
+        </a>
+      </div>
+      <p class="text-body" style="color: var(--color-text-secondary);">Amazon-style PRFAQ used as both interview artifact and product definition document.</p>
+    </div>
+
+    <article class="prose max-w-none mt-8">
+      <h2>Press Release</h2>
+      <h3>Upstart Launches Full Lifecycle Simulator for Capital Marketplace Operations</h3>
+      <p><strong>San Mateo, CA</strong> — Upstart, the leading AI lending marketplace, today announced an internal lifecycle simulator that gives marketplace operations teams real-time visibility into how loan origination decisions cascade through capital partner portfolios over 36 months. The simulator enables Principal PMs and marketplace operators to test pricing strategies, partner eligibility configurations, and intervention timing before deploying changes to production — reducing the risk of unintended partner impact and improving clearing rate resilience.</p>
+
+      <p><strong>The problem:</strong> Marketplace decisions are made with incomplete forward-looking visibility. A PM can change a partner's eligibility criteria or adjust pricing, but downstream effects on partner portfolio yield, EPD rates, and balance sheet exposure become visible months later. During the 2022 capital crunch, this delay amplified balance sheet risk.</p>
+
+      <p><strong>The solution:</strong> The Lifecycle Simulator generates a synthetic borrower pipeline, runs it through a three-layer clearing engine (eligibility → pricing → waterfall routing), then simulates month-by-month portfolio performance — including payment behavior, delinquency cascades, defaults, and early payoffs. Capital partner metrics (yield, EPD, cumulative loss rate, utilization) update in real-time.</p>
+
+      <p>The key differentiator: operators can <strong>pause at any month, adjust partner eligibility or capacity, and resume</strong> to observe downstream impact immediately. This compresses months of observation into minutes of insight.</p>
+
+      <h4>Key capabilities</h4>
+      <ul>
+        <li><strong>100-borrower pipeline</strong> with configurable credit quality and hidden-prime behavior</li>
+        <li><strong>Animated 36-month timeline</strong> at 0.5x, 1x, or 2x</li>
+        <li><strong>Interventions</strong> with chart markers and post-change impact visibility</li>
+        <li><strong>Three-stakeholder analytics</strong> (Borrower, Upstart Platform, Capital Partners)</li>
+        <li><strong>Scenario presets</strong> (Healthy Market, Capital Crunch, Rate Spike)</li>
+        <li><strong>Loan deep dive</strong> for step-by-step clearing and lifecycle walkthrough</li>
+      </ul>
+
+      <blockquote>“The PM lever in a lending marketplace isn't just clearing rate — it's understanding how today's clearing decisions create tomorrow's portfolio risk. This simulator makes that causal chain visible and testable.”</blockquote>
+
+      <h2>Customer FAQ</h2>
+      <h3>Who is this for?</h3>
+      <p>Marketplace PMs, operations leaders, capital partner managers, and data science teams who need to reason about operational and portfolio effects before shipping production changes.</p>
+
+      <h3>What problem does this solve?</h3>
+      <ol>
+        <li><strong>Delayed feedback loops:</strong> 36 months compressed into ~3 minutes</li>
+        <li><strong>Intervention timing:</strong> compare early vs late action</li>
+        <li><strong>Scenario planning:</strong> evaluate partner pullback/rate changes/model shift quickly</li>
+      </ol>
+
+      <h3>How does lifecycle simulation work?</h3>
+      <p>Funded loans transition monthly through states: current, 30DPD, 60DPD, 90DPD, default, and payoff. Transition probabilities depend on risk grade and hidden-prime adjustment. Users can tune default, recovery, and early-payoff multipliers.</p>
+
+      <h3>How accurate is it?</h3>
+      <p>Directionally accurate rather than precisely calibrated. It is built for decision support and scenario testing, not forecasting exact realized portfolio outcomes.</p>
+
+      <h3>Scenario presets</h3>
+      <table>
+        <thead><tr><th>Scenario</th><th>What it models</th><th>Expected dynamics</th></tr></thead>
+        <tbody>
+          <tr><td>Healthy Market</td><td>Normal conditions</td><td>High clearing, balanced utilization, low BS exposure</td></tr>
+          <tr><td>Capital Crunch (2022)</td><td>Partner pullback</td><td>Lower clearing, higher BS exposure, elevated defaults</td></tr>
+          <tr><td>Rate Spike</td><td>Rising rate environment</td><td>Lower acceptance, higher return floors, early prime exits</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Can I intervene during simulation?</h3>
+      <p>Yes. Pause, modify partner criteria/capacity/status, resume, and inspect impact. Intervention points are drawn directly on timeline charts.</p>
+
+      <h3>What metrics are tracked?</h3>
+      <p><strong>Borrower:</strong> approval/clearing/APR/hidden-prime/delinquency distribution.<br>
+      <strong>Upstart:</strong> cumulative fees, BS exposure, revenue per loan, model accuracy proxy.<br>
+      <strong>Partners:</strong> yield, EPD, loss rate, utilization, concentration risk.</p>
+
+      <h3>What about re-application?</h3>
+      <p>The current implementation includes a roadmap stub with framework logic, not a full simulation stage. It is intentionally framed as next-phase product development.</p>
+
+      <h2>Internal FAQ</h2>
+      <h3>Why not only production data?</h3>
+      <p>Production data explains what happened. Simulation helps test what <em>would happen</em> under controlled scenario and intervention conditions.</p>
+
+      <h3>Why client-side architecture?</h3>
+      <p>Simple deployment, fast execution, and portable demos. Current scale (100 borrowers × 36 months) is trivial for browser execution.</p>
+
+      <h3>Why 100 borrowers?</h3>
+      <p>Large enough for convincing dynamics, small enough to keep interactions instant and borrower-level inspection practical.</p>
+
+      <h3>Key risks</h3>
+      <ul>
+        <li><strong>Oversimplification:</strong> Transition matrix is intentionally simplified; frame as directional insight.</li>
+        <li><strong>Demo complexity:</strong> Use a tight narrative to avoid cognitive overload.</li>
+        <li><strong>Interpretation risk:</strong> Clarify that outputs are scenario exploration, not point forecasts.</li>
+      </ul>
+
+      <h3>Relation to old clearing simulator</h3>
+      <p>The old simulator was a point-in-time clearing snapshot. Lifecycle Simulator subsumes it by including clearing plus post-funding portfolio evolution.</p>
+
+      <h3>Maintenance cost</h3>
+      <p>Low: client-side modules with config-driven updates, no backend service dependency for simulation execution.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}
