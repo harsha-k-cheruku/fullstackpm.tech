@@ -369,10 +369,10 @@
           const vB = pmB?.[m] ?? 0;
           const better = m === 'annualizedYield' ? vA > vB : vA < vB;
           const worse = m === 'annualizedYield' ? vA < vB : vA > vB;
-          const bgA = better ? 'background:#dcfce7' : worse ? 'background:#fee2e2' : '';
-          const bgB = !better && !worse ? '' : better ? 'background:#fee2e2' : 'background:#dcfce7';
-          cmpHTML += `<td class="px-3 py-2 text-right" style="${bgA}"><b>${pct(vA)}</b></td>`;
-          cmpHTML += `<td class="px-3 py-2 text-right" style="${bgB}"><b>${pct(vB)}</b></td>`;
+          const iconA = better ? ' 🟢' : worse ? ' 🔴' : '';
+          const iconB = !better && !worse ? '' : better ? ' 🔴' : ' 🟢';
+          cmpHTML += `<td class="px-3 py-2 text-right"><b>${pct(vA)}</b>${iconA}</td>`;
+          cmpHTML += `<td class="px-3 py-2 text-right"><b>${pct(vB)}</b>${iconB}</td>`;
         });
         cmpHTML += '</tr>';
       });
