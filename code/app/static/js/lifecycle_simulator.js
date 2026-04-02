@@ -318,17 +318,34 @@
     $('deepdive-empty').style.display = 'none';
     $('deepdive-content').style.display = 'block';
 
-    const detail = clearingEngine.walkthrough ? clearingEngine.walkthrough(loan, PARTNERS, SIM.modelType, {}) : null;
+    const isNoPartner = loan.m18Outcome === 'NO_PARTNER' && loan.classicOutcome === 'NO_PARTNER';
+
+    // Build eligibility matrix with failure reasons
     const partnerRows = PARTNERS.map((p) => {
+      const RANGES = { ff: [3000, 40000], bank: [5000, 35000], spot: [2000, 50000] };
+      const [minAmt, maxAmt] = RANGES[p.type] || [2000, 50000];
       const f = loan.fico >= p.minFICO ? '✅' : '❌';
-      const a = loan.amount >= 2000 ? '✅' : '❌';
+      const a = (loan.amount >= minAmt && loan.amount <= maxAmt) ? '✅' : '❌';
       const purp = loan.purpose === 'Small Business' ? '❌' : '✅';
       const cap = p.cap == null ? '✅' : (loan.amount <= p.cap ? '✅' : '❌');
-      const result = f === '✅' && a === '✅' && purp === '✅' && cap === '✅' ? 'Eligible' : 'Ineligible';
-      return `<tr><td class="px-2 py-1">${p.name}</td><td class="px-2 py-1">${f}</td><td class="px-2 py-1">${a}</td><td class="px-2 py-1">${purp}</td><td class="px-2 py-1">${cap}</td><td class="px-2 py-1">${result}</td></tr>`;
+      const eligible = f === '✅' && a === '✅' && purp === '✅' && cap === '✅';
+      const reasons = [];
+      if (f === '❌') reasons.push(`FICO ${loan.fico} < ${p.minFICO}`);
+      if (a === '❌') reasons.push(`Amount outside ${money(minAmt)}–${money(maxAmt)}`);
+      if (purp === '❌') reasons.push('Small Business excluded');
+      if (cap === '❌') reasons.push('Exceeds partner cap');
+      const resultCell = eligible
+        ? '<span class="text-green-600 font-semibold">Eligible</span>'
+        : `<span class="text-red-600 font-semibold">Ineligible</span>`;
+      const reasonNote = !eligible && reasons.length ? `<div class="text-[10px] text-red-500 mt-0.5">${reasons.join(', ')}</div>` : '';
+      return `<tr><td class="px-2 py-1">${p.name}</td><td class="px-2 py-1">${f}</td><td class="px-2 py-1">${a}</td><td class="px-2 py-1">${purp}</td><td class="px-2 py-1">${cap}</td><td class="px-2 py-1">${resultCell}${reasonNote}</td></tr>`;
     }).join('');
 
-    $('deepdive-step1').innerHTML = `<h4 class="font-semibold mb-2">Step 1: Eligibility Matrix</h4><table class="w-full text-xs"><thead><tr><th class="px-2 py-1 text-left">Partner</th><th class="px-2 py-1 text-left">FICO</th><th class="px-2 py-1 text-left">Min Amount</th><th class="px-2 py-1 text-left">Purpose</th><th class="px-2 py-1 text-left">Cap</th><th class="px-2 py-1 text-left">Result</th></tr></thead><tbody>${partnerRows}</tbody></table>`;
+    const noPartnerCallout = isNoPartner
+      ? `<div class="mt-3 p-3 rounded bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 text-sm text-red-800 dark:text-red-200"><b>No Partner Match:</b> This borrower was ineligible for all partners or eligible partners had exhausted their capacity by the time this loan was processed in the waterfall. Capacity is consumed sequentially — earlier loans in the pipeline fill partner caps first.</div>`
+      : '';
+
+    $('deepdive-step1').innerHTML = `<h4 class="font-semibold mb-2">Step 1: Eligibility Matrix</h4><table class="w-full text-xs"><thead><tr><th class="px-2 py-1 text-left">Partner</th><th class="px-2 py-1 text-left">FICO</th><th class="px-2 py-1 text-left">Min Amount</th><th class="px-2 py-1 text-left">Purpose</th><th class="px-2 py-1 text-left">Cap</th><th class="px-2 py-1 text-left">Result</th></tr></thead><tbody>${partnerRows}</tbody></table>${noPartnerCallout}`;
 
     const classic = clearingEngine.priceLoan(loan, 'classic');
     const model18 = clearingEngine.priceLoan(loan, 'model18');
@@ -353,11 +370,11 @@
         <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">Model 18</th>
         <th class="px-2 py-1 text-left" style="background:#f3e8ff;color:#581c87">Classic</th>
       </tr></thead><tbody>${waterfallRows}</tbody></table>
-      <div class="text-xs mt-2 text-gray-500">M18: ${loan.m18Outcome || '—'} · Classic: ${loan.classicOutcome || '—'}</div>`;
+      <div class="text-xs mt-2 text-gray-500">M18: ${loan.m18Outcome || '—'} · Classic: ${loan.classicOutcome || '—'}</div>${isNoPartner ? '<div class="mt-2 p-2 rounded bg-red-50 dark:bg-red-900 text-xs text-red-700 dark:text-red-200">All partners skipped — either ineligible or capacity exhausted during waterfall processing.</div>' : ''}`;
 
     const lifeLoan = SIM.portfolio?.loans?.find((l) => l.id === loan.id);
     if (!lifeLoan) {
-      $('deepdive-step4').innerHTML = '<h4 class="font-semibold mb-2">Step 4: Funding & Lifecycle</h4><div class="text-sm text-gray-500">No lifecycle data available for this loan.</div>';
+      $('deepdive-step4').innerHTML = `<h4 class="font-semibold mb-2">Step 4: Funding & Lifecycle</h4><div class="text-sm text-gray-500">${isNoPartner ? 'Loan was not funded — no partner match, so no lifecycle to simulate.' : 'No lifecycle data available for this loan.'}</div>`;
     } else {
       const strip = (lifeLoan.paymentHistory || []).slice(0, 36).map((s) => {
         const c = s === 'current' ? 'bg-green-500' : s.includes('dpd') ? 'bg-yellow-400' : s === 'default' ? 'bg-red-500' : 'bg-blue-500';
