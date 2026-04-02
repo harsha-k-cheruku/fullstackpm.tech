@@ -240,9 +240,9 @@
   function renderMarketplacePerformance() {
     const month = Number($('mp-month-slider').value) || 1;
     const filterPartner = $('mp-partner-filter').value;
-    const filterLabel = filterPartner === 'all' ? 'Total Marketplace' : PARTNERS.find((p) => p.id === filterPartner)?.name || filterPartner;
+    const comparePartner = $('mp-compare-filter').value;
 
-    $('mp-month-label').textContent = `Month ${month}`;
+    $('mp-month-label').textContent = String(month);
 
     const scenarioMeta = {
       healthy: { label: 'Healthy Market', color: '#2563eb', bg: '#e0f2fe', border: '#93c5fd' },
@@ -333,6 +333,88 @@
     $('mp-atrisk').innerHTML = atRiskHTML
       ? `<h4 class="text-xs font-semibold uppercase text-gray-500 mb-2">At-Risk Partner Callouts</h4>${atRiskHTML}`
       : '<div class="text-sm">🟢 No at-risk partners at this month across any scenario.</div>';
+
+    // Partner vs Partner comparison
+    const cmpSection = $('mp-compare-section');
+    if (comparePartner !== 'none' && filterPartner !== 'all' && comparePartner !== filterPartner) {
+      cmpSection.style.display = '';
+      const pA = PARTNERS.find(p => p.id === filterPartner);
+      const pB = PARTNERS.find(p => p.id === comparePartner);
+      $('mp-compare-title').textContent = `${pA?.name || filterPartner} vs ${pB?.name || comparePartner} — Month ${month}`;
+
+      const metrics = ['annualizedYield', 'lossRate', 'epdRate'];
+      const metricLabels = { annualizedYield: 'Yield', lossRate: 'Loss Rate', epdRate: 'EPD Rate' };
+
+      let cmpHTML = '<table class="w-full text-xs" style="border-collapse:separate;border-spacing:0"><thead><tr>' +
+        '<th class="px-3 py-2 text-left bg-gray-50 dark:bg-gray-700 border-b">Scenario</th>';
+      metrics.forEach(m => {
+        cmpHTML += `<th class="px-3 py-1 text-right border-b" style="background:#f3e8ff;color:#6b21a8" colspan="2">${metricLabels[m]}</th>`;
+      });
+      cmpHTML += '</tr><tr class="text-[10px] uppercase text-gray-500"><th class="px-3 py-1"></th>';
+      metrics.forEach(() => {
+        cmpHTML += `<th class="px-3 py-1 text-right" style="background:#faf5ff">${pA?.name}</th>`;
+        cmpHTML += `<th class="px-3 py-1 text-right" style="background:#faf5ff">${pB?.name}</th>`;
+      });
+      cmpHTML += '</tr></thead><tbody>';
+
+      Object.entries(scenarioMeta).forEach(([key, meta]) => {
+        const snapA = getPartnerScoped(SIM.baseline[key], month, filterPartner);
+        const snapB = getPartnerScoped(SIM.baseline[key], month, comparePartner);
+        const pmA = snapA?.partnerMetrics?.[0];
+        const pmB = snapB?.partnerMetrics?.[0];
+        cmpHTML += `<tr class="border-b border-gray-100 dark:border-gray-700">`;
+        cmpHTML += `<td class="px-3 py-2 font-semibold" style="color:${meta.color}">${meta.label}</td>`;
+        metrics.forEach(m => {
+          const vA = pmA?.[m] ?? 0;
+          const vB = pmB?.[m] ?? 0;
+          const better = m === 'annualizedYield' ? vA > vB : vA < vB;
+          const worse = m === 'annualizedYield' ? vA < vB : vA > vB;
+          const bgA = better ? 'background:#dcfce7' : worse ? 'background:#fee2e2' : '';
+          const bgB = !better && !worse ? '' : better ? 'background:#fee2e2' : 'background:#dcfce7';
+          cmpHTML += `<td class="px-3 py-2 text-right" style="${bgA}"><b>${pct(vA)}</b></td>`;
+          cmpHTML += `<td class="px-3 py-2 text-right" style="${bgB}"><b>${pct(vB)}</b></td>`;
+        });
+        cmpHTML += '</tr>';
+      });
+      cmpHTML += '</tbody></table>';
+
+      // Add borrower-level comparison
+      const bA = getPartnerScoped(SIM.baseline.healthy, month, filterPartner)?.borrowerMetrics;
+      const bB = getPartnerScoped(SIM.baseline.healthy, month, comparePartner)?.borrowerMetrics;
+      if (bA && bB) {
+        cmpHTML += `<div class="mt-3 grid grid-cols-2 gap-3 text-xs">`;
+        cmpHTML += `<div class="p-2 rounded bg-gray-50 dark:bg-gray-700"><b>${pA?.name}</b> (Healthy):<br>Default ${pct(bA.defaultRatePct)} · Delinquent ${pct(bA.delinquentRatePct)} · Completed ${pct(bA.completionRatePct)}</div>`;
+        cmpHTML += `<div class="p-2 rounded bg-gray-50 dark:bg-gray-700"><b>${pB?.name}</b> (Healthy):<br>Default ${pct(bB.defaultRatePct)} · Delinquent ${pct(bB.delinquentRatePct)} · Completed ${pct(bB.completionRatePct)}</div>`;
+        cmpHTML += '</div>';
+      }
+
+      $('mp-compare-body').innerHTML = cmpHTML;
+    } else if (comparePartner !== 'none' && filterPartner === 'all') {
+      // When "Total Marketplace" selected as primary, compare two partners directly
+      cmpSection.style.display = '';
+      const pB = PARTNERS.find(p => p.id === comparePartner);
+      $('mp-compare-title').textContent = `Spotlight: ${pB?.name || comparePartner} — Month ${month}`;
+
+      let spotHTML = '<div class="grid grid-cols-1 md:grid-cols-3 gap-3">';
+      Object.entries(scenarioMeta).forEach(([key, meta]) => {
+        const scoped = getPartnerScoped(SIM.baseline[key], month, comparePartner);
+        const pm = scoped?.partnerMetrics?.[0];
+        const b = scoped?.borrowerMetrics;
+        spotHTML += `<div class="p-3 rounded border-l-4" style="border-left-color:${meta.color};border:1px solid var(--color-border);border-left:4px solid ${meta.color}">
+          <div class="text-[10px] uppercase font-bold mb-2" style="color:${meta.color}">${meta.label}</div>
+          <div class="space-y-1 text-xs">
+            <div>Yield: <b>${pct(pm?.annualizedYield)}</b></div>
+            <div>Loss: ${metricLight(pm?.lossRate || 0, 5, 8, true)} <b>${pct(pm?.lossRate)}</b></div>
+            <div>EPD: ${metricLight(pm?.epdRate || 0, 3, 4.5, true)} <b>${pct(pm?.epdRate)}</b></div>
+            <div>Default: <b>${pct(b?.defaultRatePct)}</b> · Delinquent: <b>${pct(b?.delinquentRatePct)}</b></div>
+          </div>
+        </div>`;
+      });
+      spotHTML += '</div>';
+      $('mp-compare-body').innerHTML = spotHTML;
+    } else {
+      cmpSection.style.display = 'none';
+    }
   }
 
   function renderDeepDive(loanId) {
@@ -559,6 +641,7 @@
 
     $('mp-month-slider').addEventListener('input', () => renderMarketplacePerformance());
     $('mp-partner-filter').addEventListener('change', () => renderMarketplacePerformance());
+    $('mp-compare-filter').addEventListener('change', () => renderMarketplacePerformance());
   }
 
   window.SIM = window.SIM || {};

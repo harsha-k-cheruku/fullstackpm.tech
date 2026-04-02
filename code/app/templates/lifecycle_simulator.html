@@ -46,7 +46,7 @@
         <div class="text-[10px] uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wide mb-2">Press Release</div>
         <h2 class="text-lg font-bold dark:text-white mb-3">Upstart Launches Lifecycle Simulator to Make Marketplace Clearing Decisions Visible</h2>
         <p class="text-sm text-gray-700 dark:text-gray-300 mb-3"><i>San Mateo, CA</i> — Upstart, the AI lending marketplace, today released an internal lifecycle simulator that lets product managers, data scientists, and capital markets operators see the full downstream impact of clearing decisions — from borrower pipeline through 36 months of portfolio performance — in under 3 minutes.</p>
-        <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">The simulator addresses a critical blind spot: when a PM adjusts partner eligibility or pricing thresholds, the actual impact on early payment defaults (EPD), loss rates, and balance sheet exposure doesn't materialize for 90+ days. During the 2022 capital crunch, this feedback delay contributed to Upstart holding over $1B on its balance sheet — because decision-makers couldn't see the compounding effect of tighter partner capacity in real-time.</p>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">The simulator addresses a critical blind spot: when a PM adjusts partner eligibility or pricing thresholds, the actual impact on early payment defaults (EPD), loss rates, and balance sheet exposure doesn't materialize for 90+ days. During the 2022 capital crunch, this feedback delay contributed to Upstart holding hundreds of millions in loans on its balance sheet — because decision-makers couldn't see the compounding effect of tighter partner capacity in real-time.</p>
         <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">"The clearing engine is one of the most sophisticated systems in fintech, but fewer than 10 people in the company could explain how a FICO change flows through to partner EPD," said the product team. "This simulator makes the causal chain transparent and testable."</p>
         <p class="text-sm text-gray-700 dark:text-gray-300">The tool generates synthetic borrower pipelines, runs them through a three-layer clearing engine (eligibility → pricing → waterfall routing) with side-by-side Model 18 vs Classic comparison, then simulates 36 months of loan performance across five capital partners under different market scenarios.</p>
       </div>
@@ -162,6 +162,7 @@
           <li><b>Simplified capacity model.</b> Partner capacity is consumed sequentially in the waterfall — earlier loans in the pipeline fill caps first. Real clearing engines use more sophisticated allocation and priority logic.</li>
           <li><b>Re-Application tab is a product roadmap stub</b> — it frames the concept but does not simulate re-application behavior.</li>
           <li><b>No real borrower data is used.</b> All borrowers are synthetically generated. No PII, no real credit data, no Upstart proprietary models.</li>
+          <li><b>Scrappy build, not polished product.</b> This simulator was built in roughly 4–6 hours as a portfolio demonstration. The UI/UX is functional but not refined — expect rough edges, minimal styling, and no mobile optimization. The goal is to show marketplace thinking, not production design.</li>
         </ul>
       </div>
     </div>
@@ -229,16 +230,26 @@
     </div>
 
     <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
-      <div class="flex flex-wrap items-center gap-6">
-        <div class="flex items-center gap-3">
-          <label class="text-xs font-semibold uppercase text-gray-500">Month</label>
-          <input type="range" id="mp-month-slider" min="1" max="36" value="1" class="w-40">
-          <div id="mp-month-label" class="text-sm font-bold w-20">Month 1</div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+        <div>
+          <label class="text-[10px] font-semibold uppercase text-gray-500 block mb-1">Month: <span id="mp-month-label" class="text-blue-600 dark:text-blue-400">1</span> / 36</label>
+          <input type="range" id="mp-month-slider" min="1" max="36" value="1" style="width:100%">
         </div>
-        <div class="flex items-center gap-2">
-          <label class="text-xs font-semibold uppercase text-gray-500">View</label>
-          <select id="mp-partner-filter" class="text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-2 py-1">
+        <div>
+          <label class="text-[10px] font-semibold uppercase text-gray-500 block mb-1">Partner View</label>
+          <select id="mp-partner-filter" class="w-full text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-2 py-1.5">
             <option value="all">Total Marketplace</option>
+            <option value="eltura">Eltura</option>
+            <option value="aperture">Aperture</option>
+            <option value="westbank">WestBank</option>
+            <option value="spotfund_a">SpotFund A</option>
+            <option value="spotfund_b">SpotFund B</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[10px] font-semibold uppercase text-gray-500 block mb-1">Compare Partner (optional)</label>
+          <select id="mp-compare-filter" class="w-full text-xs rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-2 py-1.5">
+            <option value="none">— None —</option>
             <option value="eltura">Eltura</option>
             <option value="aperture">Aperture</option>
             <option value="westbank">WestBank</option>
@@ -250,6 +261,12 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="mp-scenario-cards"></div>
+
+    <!-- Partner vs Partner comparison (hidden by default) -->
+    <div id="mp-compare-section" style="display:none" class="bg-white dark:bg-gray-800 p-4 rounded border-2 border-purple-300 dark:border-purple-700">
+      <h4 class="text-xs font-semibold uppercase text-purple-600 dark:text-purple-400 mb-3" id="mp-compare-title">Partner Comparison</h4>
+      <div id="mp-compare-body"></div>
+    </div>
 
     <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
       <h4 class="text-xs font-semibold uppercase text-gray-500 mb-3">Partner Breakdown at Selected Month</h4>
@@ -428,7 +445,7 @@
             <div class="space-y-3 text-sm text-blue-900 dark:text-blue-100">
               <p>The flywheel explains why Upstart's decisions aren't just about today's clearing rate — they're about which data you're generating for next quarter's model.</p>
               <p><b>Funding a marginal borrower today</b> has two costs: the immediate risk, and the data value of learning whether that segment performs. A PM who only optimizes for clearing rate misses the second-order effect.</p>
-              <p><b>The 2022 crunch broke the flywheel.</b> Partners tightened capacity → fewer loans funded → less data → model couldn't improve → partners stayed cautious. The simulator lets you see this dynamic play out in the Capital Crunch scenario.</p>
+              <p><b>The 2022 crunch illustrates what happens when the flywheel stalls.</b> As publicly reported in Upstart's earnings calls, partners tightened capacity → loan volume dropped → less performance data generated → model calibration slowed → partners remained cautious. The simulator lets you see this dynamic play out in the Capital Crunch scenario.</p>
               <p>The PM's job is to keep the flywheel spinning — balancing short-term partner risk tolerance against long-term model improvement.</p>
             </div>
           </div>
@@ -466,7 +483,7 @@
                   <li>Short-term: Route overflow to SpotFund partners (no caps) while accepting higher APR floor</li>
                   <li>Medium-term: Accelerate onboarding of a replacement forward-flow partner in the same tier</li>
                   <li>Strategic: Use this as leverage to negotiate better terms with Aperture — they get first pick of Eltura's overflow</li>
-                  <li>Never: Hold everything on balance sheet. That's how 2022 happened.</li>
+                  <li>Avoid: Absorbing all overflow onto the balance sheet — that path contributed to the 2022 crunch.</li>
                 </ul>
               </div>
             </div>

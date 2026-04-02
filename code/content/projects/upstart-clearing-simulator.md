@@ -7,7 +7,7 @@ featured: true
 display_order: 2
 github_url: "https://github.com/harsha-k-cheruku/fullstackpm.tech"
 live_url: "/tools/lifecycle-simulator"
-problem: "Marketplace clearing decisions have a 90-day feedback delay — a PM changes partner eligibility today but doesn't see the EPD impact for months. The 2022 capital crunch showed what happens when this delay prevents preventive action: Upstart held $1B+ on its balance sheet."
+problem: "Marketplace clearing decisions have a 90-day feedback delay — a PM changes partner eligibility today but doesn't see the EPD impact for months. The 2022 capital crunch showed what happens when this delay prevents preventive action: Upstart held hundreds of millions in loans on its balance sheet."
 approach: "Build an interactive lifecycle simulator that compresses 36 months of portfolio evolution into seconds. Generate synthetic borrowers, clear them through a three-layer engine with side-by-side model comparison, then compare performance across scenarios."
 solution: "A browser-based sandbox with 7 tabs: PRFAQ, User Manual, Pipeline & Clearing, Marketplace Performance, Loan Deep Dive, Personas, and Re-Application. All client-side JS — no backend computation, no database, no API calls."
 ---
