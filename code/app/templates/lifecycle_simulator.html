@@ -33,6 +33,7 @@
       <button role="tab" data-tab="deepdive" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Loan Deep Dive</button>
       <button role="tab" data-tab="personas" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Personas</button>
       <button role="tab" data-tab="reapp" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Re-Application</button>
+      <button role="tab" data-tab="flywheel" class="px-4 py-2 font-semibold border-b-2 border-transparent dark:text-gray-400 tab-btn">Flywheel &amp; Scenarios</button>
     </nav>
   </div>
 
@@ -369,6 +370,206 @@
         <li>Loan purpose affinity (debt consolidation → home improvement)</li>
       </ol>
       <blockquote class="border-l-4 border-blue-500 pl-3 text-sm text-gray-600 dark:text-gray-300">This is a roadmap item, not current production behavior. PM framing: lifecycle data can predict re-applications without extra collection, lowering CAC for returning borrowers by ~60%.</blockquote>
+    </div>
+  </div>
+
+  <!-- Flywheel & Scenarios Tab -->
+  <div role="tabpanel" id="tab-flywheel" style="display:none" class="max-w-4xl">
+    <div class="bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 overflow-hidden">
+
+      <!-- The Flywheel -->
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-lg font-bold dark:text-white mb-2">The Upstart Marketplace Flywheel</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5">Upstart's competitive moat isn't the model — it's the data flywheel the model creates. Each stage reinforces the next.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+          <!-- Flywheel diagram as connected cards -->
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-sm font-bold flex items-center justify-center">1</div>
+              <div>
+                <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">Better Models</div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">Model 18 identifies hidden-prime borrowers that FICO misses. Lower APRs for the same risk = more borrowers accept offers.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-sm font-bold flex items-center justify-center">2</div>
+              <div>
+                <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">Higher Volume</div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">More borrowers accepting = more funded loans = more repayment data flowing back into the model.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 text-sm font-bold flex items-center justify-center">3</div>
+              <div>
+                <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">Better Partner Returns</div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">Partners see lower EPD and loss rates on hidden-prime borrowers. Better returns = partners expand capacity and loosen constraints.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 text-sm font-bold flex items-center justify-center">4</div>
+              <div>
+                <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">More Capital Supply</div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">Expanded partner capacity + new partners joining = more loans can be funded off balance sheet = lower Upstart risk.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 text-sm font-bold flex items-center justify-center">5</div>
+              <div>
+                <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">More Data</div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">More funded loans across more segments = richer training data = the model gets better. The cycle accelerates.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key insight -->
+          <div class="bg-blue-50 dark:bg-blue-900 rounded-lg p-5 border border-blue-200 dark:border-blue-700">
+            <div class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400 tracking-wide mb-3">Why This Matters for PM</div>
+            <div class="space-y-3 text-sm text-blue-900 dark:text-blue-100">
+              <p>The flywheel explains why Upstart's decisions aren't just about today's clearing rate — they're about which data you're generating for next quarter's model.</p>
+              <p><b>Funding a marginal borrower today</b> has two costs: the immediate risk, and the data value of learning whether that segment performs. A PM who only optimizes for clearing rate misses the second-order effect.</p>
+              <p><b>The 2022 crunch broke the flywheel.</b> Partners tightened capacity → fewer loans funded → less data → model couldn't improve → partners stayed cautious. The simulator lets you see this dynamic play out in the Capital Crunch scenario.</p>
+              <p>The PM's job is to keep the flywheel spinning — balancing short-term partner risk tolerance against long-term model improvement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strategic Scenarios -->
+      <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+        <h2 class="text-lg font-bold dark:text-white mb-2">Strategic Scenarios</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300 mb-5">Each scenario below represents a real decision a marketplace PM would face. The analysis shows the tradeoffs, second-order effects, and the framework for thinking through them.</p>
+
+        <div class="space-y-5">
+
+          <!-- Scenario 1 -->
+          <div class="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="px-5 py-3 bg-gray-50 dark:bg-gray-700">
+              <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200">Scenario 1: Your Largest Partner Cuts Capacity by 50%</h3>
+            </div>
+            <div class="p-5 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <div>
+                <span class="text-xs font-bold uppercase text-gray-500">Situation:</span>
+                <span> Eltura (priority 1, $4M cap) announces they're reducing to $2M next quarter due to macro concerns.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-red-500">First-order impact:</span>
+                <span> ~15-20% of previously cleared loans now have no partner match. Clearing rate drops. Balance sheet exposure rises immediately.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-amber-600">Second-order effects:</span>
+                <span> Loans that overflow to lower-priority partners may get higher APRs (those partners have higher minimums). Borrower acceptance rates drop. Volume decreases → less data → model improvement slows. Other partners may interpret Eltura's pullback as a signal and tighten too.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-green-600">PM response framework:</span>
+                <ul class="mt-1 ml-4 list-disc space-y-1">
+                  <li>Short-term: Route overflow to SpotFund partners (no caps) while accepting higher APR floor</li>
+                  <li>Medium-term: Accelerate onboarding of a replacement forward-flow partner in the same tier</li>
+                  <li>Strategic: Use this as leverage to negotiate better terms with Aperture — they get first pick of Eltura's overflow</li>
+                  <li>Never: Hold everything on balance sheet. That's how 2022 happened.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario 2 -->
+          <div class="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="px-5 py-3 bg-gray-50 dark:bg-gray-700">
+              <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200">Scenario 2: Model 18 EPD is 2x Higher Than Predicted for a Segment</h3>
+            </div>
+            <div class="p-5 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <div>
+                <span class="text-xs font-bold uppercase text-gray-500">Situation:</span>
+                <span> Three months after launch, hidden-prime borrowers with FICO 620-640 are defaulting at 2x the rate Model 18 predicted. Partners are asking questions.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-red-500">First-order impact:</span>
+                <span> Partner trust erodes. If EPD exceeds contractual thresholds, forward-flow partners can trigger buyback provisions. Direct financial exposure.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-amber-600">Second-order effects:</span>
+                <span> Temptation is to turn off Model 18 for this segment entirely. But that throws away the data learning. The model may be right about the segment and wrong about the magnitude — or the segment definition may be too broad.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-green-600">PM response framework:</span>
+                <ul class="mt-1 ml-4 list-disc space-y-1">
+                  <li>Diagnose: Is it the model or the segment definition? Split 620-640 into sub-segments and check if the problem is concentrated</li>
+                  <li>Tighten, don't kill: Raise the FICO floor for hidden-prime from 620 to 640 temporarily, preserving the 640-700 hidden-prime segment where the model is accurate</li>
+                  <li>Partner communication: Share the analysis proactively. "We found the issue, here's the fix, here's why the rest of the portfolio is fine." Trust is rebuilt through transparency, not silence</li>
+                  <li>Feed back: Use the default data to retrain — this is exactly the data that makes the next model version better</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario 3 -->
+          <div class="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="px-5 py-3 bg-gray-50 dark:bg-gray-700">
+              <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200">Scenario 3: A Bank Partner Wants Exclusive Access to Hidden-Prime</h3>
+            </div>
+            <div class="p-5 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <div>
+                <span class="text-xs font-bold uppercase text-gray-500">Situation:</span>
+                <span> WestBank offers to double their capacity ($2M → $4M) and lower their APR floor if they get first-look at all hidden-prime borrowers above FICO 660.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-red-500">The trap:</span>
+                <span> More capital sounds great. But exclusivity on your highest-quality segment means other partners get worse loan quality → their returns drop → they tighten or leave → you become dependent on WestBank.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-amber-600">Marketplace health risk:</span>
+                <span> A healthy marketplace needs multiple competing partners. Concentration in one partner creates fragility — exactly what happened when macro conditions tightened in 2022 and single-partner dependencies became existential risks.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-green-600">PM response framework:</span>
+                <ul class="mt-1 ml-4 list-disc space-y-1">
+                  <li>Counter-offer: Priority (not exclusivity) on hidden-prime for 660+, with a volume commitment from WestBank</li>
+                  <li>Protect the marketplace: Cap any single partner at 30-35% of total volume. Concentration above that is a platform risk</li>
+                  <li>Create the right incentive: Partners who perform well (low buyback rate) get priority in the next quarter's waterfall — earned, not granted</li>
+                  <li>Long game: The goal is to make hidden-prime segment so large that no single partner can absorb it all. That's when you have pricing power</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenario 4 -->
+          <div class="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="px-5 py-3 bg-gray-50 dark:bg-gray-700">
+              <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200">Scenario 4: The Re-Application Opportunity</h3>
+            </div>
+            <div class="p-5 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+              <div>
+                <span class="text-xs font-bold uppercase text-gray-500">Situation:</span>
+                <span> Data shows 15% of completed borrowers re-apply within 18 months. These borrowers have 60% lower CAC and 40% lower default rates than new borrowers. No one is systematically capturing this.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-amber-600">The insight:</span>
+                <span> Every funded loan is both a revenue event and a customer acquisition event for the next loan. The lifecycle doesn't end at payoff — it loops. A borrower who completes a debt consolidation loan and re-applies for home improvement is the highest-LTV customer in the marketplace.</span>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-green-600">PM response framework:</span>
+                <ul class="mt-1 ml-4 list-disc space-y-1">
+                  <li>Build a re-application prediction model using payment history, income trajectory, and time-since-completion</li>
+                  <li>Pre-approve returning borrowers before they start shopping — intercept them before they go to a competitor</li>
+                  <li>Offer returning borrowers their Model 18 rate from day one (no friction, no re-underwriting) — the data already exists</li>
+                  <li>Track re-application rate as a product metric. If it drops, something upstream is broken (bad experience, pricing too high, competitors outbidding)</li>
+                </ul>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase text-purple-600">Flywheel connection:</span>
+                <span> Re-applicants are the purest expression of the flywheel. They prove the model works (they paid off), they bring zero CAC, and they generate the richest data (two full loan cycles for the same borrower).</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- The Meta Point -->
+      <div class="p-6 bg-gray-50 dark:bg-gray-900">
+        <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200 mb-2">The Meta Point</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Every decision in this marketplace has at least three stakeholders (borrower, platform, partner) and at least two time horizons (this quarter's metrics, next year's model quality). The PM's job isn't to optimize one metric — it's to find the move that improves the system. The simulator exists because you can't find that move if you can't see the system.</p>
+      </div>
     </div>
   </div>
 </div>
