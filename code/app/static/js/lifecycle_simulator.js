@@ -211,9 +211,36 @@
     return portfolio.snapshots.find((s) => s.month === month) || portfolio.snapshots[portfolio.snapshots.length - 1];
   }
 
+  function getPartnerScoped(portfolio, month, partnerId) {
+    // Compute metrics scoped to a specific partner's loans
+    const snap = portfolio?.snapshots?.find((s) => s.month === month) || portfolio?.snapshots?.[portfolio.snapshots.length - 1];
+    if (!snap) return null;
+    if (partnerId === 'all') return snap;
+
+    const pm = snap.partnerMetrics?.find((p) => p.partnerId === partnerId);
+    const loans = portfolio.loans.filter((l) => l.matchedPartnerId === partnerId);
+    const active = loans.filter((l) => ['current', '30dpd', '60dpd', '90dpd'].includes(l.status));
+    const delinquent = loans.filter((l) => ['30dpd', '60dpd', '90dpd'].includes(l.status));
+    const defaults = loans.filter((l) => l.status === 'default');
+    const paid = loans.filter((l) => l.status === 'paid_off' || l.status === 'early_payoff');
+
+    return {
+      ...snap,
+      borrowerMetrics: {
+        totalLoans: loans.length,
+        activeLoans: active.length,
+        delinquentRatePct: active.length ? (delinquent.length / active.length) * 100 : 0,
+        defaultRatePct: loans.length ? (defaults.length / loans.length) * 100 : 0,
+        completionRatePct: loans.length ? (paid.length / loans.length) * 100 : 0,
+      },
+      partnerMetrics: pm ? [pm] : [],
+    };
+  }
+
   function renderMarketplacePerformance() {
     const month = Number($('mp-month-slider').value) || 1;
     const filterPartner = $('mp-partner-filter').value;
+    const filterLabel = filterPartner === 'all' ? 'Total Marketplace' : PARTNERS.find((p) => p.id === filterPartner)?.name || filterPartner;
 
     $('mp-month-label').textContent = `Month ${month}`;
 
@@ -223,40 +250,34 @@
       spike: { label: 'Rate Spike', color: '#db2777', bg: '#fce7f3', border: '#f9a8d4' },
     };
 
-    // Render scenario KPI cards (3 columns)
+    // Render scenario summary cards (3 columns, no nested kpi-card)
     let cardsHTML = '';
     Object.entries(scenarioMeta).forEach(([key, meta]) => {
-      const snap = getBaselineSnapshot(key, month);
-      if (!snap) return;
+      const scoped = getPartnerScoped(SIM.baseline[key], month, filterPartner);
+      if (!scoped) return;
 
-      let pms = snap.partnerMetrics || [];
-      if (filterPartner !== 'all') {
-        pms = pms.filter((p) => p.partnerId === filterPartner);
-      }
-
-      const b = snap.borrowerMetrics;
-      const u = snap.upstartMetrics;
-      const epdAvg = pms.length ? pms.reduce((a, p) => a + (p.epdRate || 0), 0) / pms.length : 0;
-      const lossAvg = pms.length ? pms.reduce((a, p) => a + (p.lossRate || 0), 0) / pms.length : 0;
+      const pms = scoped.partnerMetrics || [];
+      const b = scoped.borrowerMetrics;
       const yieldAvg = pms.length ? pms.reduce((a, p) => a + (p.annualizedYield || 0), 0) / pms.length : 0;
+      const lossAvg = pms.length ? pms.reduce((a, p) => a + (p.lossRate || 0), 0) / pms.length : 0;
+      const epdAvg = pms.length ? pms.reduce((a, p) => a + (p.epdRate || 0), 0) / pms.length : 0;
       const totalFunded = pms.reduce((a, p) => a + (p.totalFunded || 0), 0);
       const activeCount = pms.reduce((a, p) => a + (p.activeCount || 0), 0);
       const defaultedCount = pms.reduce((a, p) => a + (p.defaultedCount || 0), 0);
 
-      cardsHTML += `<div class="bg-white dark:bg-gray-800 p-4 rounded border-2" style="border-color:${meta.border}">
-        <div class="flex items-center gap-2 mb-3">
-          <div class="w-3 h-3 rounded-full" style="background:${meta.color}"></div>
-          <h4 class="text-sm font-bold" style="color:${meta.color}">${meta.label}</h4>
+      cardsHTML += `<div class="bg-white dark:bg-gray-800 p-4 rounded-lg border-l-4" style="border-left-color:${meta.color};border-top:1px solid var(--color-border);border-right:1px solid var(--color-border);border-bottom:1px solid var(--color-border)">
+        <h4 class="text-xs font-bold uppercase mb-3" style="color:${meta.color}">${meta.label}</h4>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-gray-500">Yield</span><b>${pct(yieldAvg)}</b></div>
+          <div class="flex justify-between"><span class="text-gray-500">Loss Rate</span><span>${metricLight(lossAvg, 5, 8, true)} <b>${pct(lossAvg)}</b></span></div>
+          <div class="flex justify-between"><span class="text-gray-500">EPD Rate</span><span>${metricLight(epdAvg, 3, 4.5, true)} <b>${pct(epdAvg)}</b></span></div>
+          <div class="flex justify-between"><span class="text-gray-500">Default Rate</span><span>${metricLight(b.defaultRatePct, 4, 7, true)} <b>${pct(b.defaultRatePct)}</b></span></div>
+          <hr class="border-gray-200 dark:border-gray-600">
+          <div class="flex justify-between text-xs text-gray-500"><span>Active / Defaulted</span><span>${activeCount} / ${defaultedCount}</span></div>
+          <div class="flex justify-between text-xs text-gray-500"><span>Total Funded</span><span>${money(totalFunded)}</span></div>
+          <div class="flex justify-between text-xs text-gray-500"><span>Delinquency</span><span>${pct(b.delinquentRatePct)}</span></div>
+          <div class="flex justify-between text-xs text-gray-500"><span>Completion</span><span>${pct(b.completionRatePct)}</span></div>
         </div>
-        <div class="grid grid-cols-2 gap-2 text-xs">
-          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Avg Yield</div><div class="text-lg font-bold mt-1">${pct(yieldAvg)}</div></div>
-          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Avg Loss</div><div class="text-lg font-bold mt-1">${metricLight(lossAvg, 5, 8, true)} ${pct(lossAvg)}</div></div>
-          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Avg EPD</div><div class="text-lg font-bold mt-1">${metricLight(epdAvg, 3, 4.5, true)} ${pct(epdAvg)}</div></div>
-          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Default Rate</div><div class="text-lg font-bold mt-1">${metricLight(b.defaultRatePct, 4, 7, true)} ${pct(b.defaultRatePct)}</div></div>
-          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Active</div><div class="text-lg font-bold mt-1">${activeCount}</div></div>
-          <div class="kpi-card"><div class="text-[10px] uppercase text-gray-500">Defaulted</div><div class="text-lg font-bold mt-1">${defaultedCount}</div></div>
-        </div>
-        <div class="mt-2 text-xs text-gray-500">Total Funded: ${money(totalFunded)} · Delinquency: ${pct(b.delinquentRatePct)} · Completion: ${pct(b.completionRatePct)}</div>
       </div>`;
     });
     $('mp-scenario-cards').innerHTML = cardsHTML;
@@ -265,34 +286,36 @@
     const partnerList = filterPartner === 'all' ? PARTNERS : PARTNERS.filter((p) => p.id === filterPartner);
     let tableRows = '';
     partnerList.forEach((partner) => {
-      let cells = `<td class="px-2 py-1 font-semibold">${partner.name}</td>`;
+      let cells = `<td class="px-3 py-2 font-semibold">${partner.name}</td>`;
       ['healthy', 'crunch', 'spike'].forEach((key) => {
         const snap = getBaselineSnapshot(key, month);
         const pm = snap?.partnerMetrics?.find((p) => p.partnerId === partner.id);
         if (pm) {
-          cells += `<td class="px-2 py-1">${pct(pm.annualizedYield)}</td>`;
-          cells += `<td class="px-2 py-1">${metricLight(pm.lossRate, 5, 8, true)} ${pct(pm.lossRate)}</td>`;
-          cells += `<td class="px-2 py-1">${metricLight(pm.epdRate, 3, 4.5, true)} ${pct(pm.epdRate)}</td>`;
+          cells += `<td class="px-3 py-2 text-right">${pct(pm.annualizedYield)}</td>`;
+          cells += `<td class="px-3 py-2 text-right">${metricLight(pm.lossRate, 5, 8, true)} ${pct(pm.lossRate)}</td>`;
+          cells += `<td class="px-3 py-2 text-right">${metricLight(pm.epdRate, 3, 4.5, true)} ${pct(pm.epdRate)}</td>`;
         } else {
-          cells += '<td class="px-2 py-1 text-gray-400">—</td>'.repeat(3);
+          cells += '<td class="px-3 py-2 text-right text-gray-400">—</td>'.repeat(3);
         }
       });
       tableRows += `<tr class="border-b border-gray-100 dark:border-gray-700">${cells}</tr>`;
     });
 
-    // Add totals row
-    let totCells = '<td class="px-2 py-1 font-bold">Total</td>';
-    ['healthy', 'crunch', 'spike'].forEach((key) => {
-      const snap = getBaselineSnapshot(key, month);
-      const pms = snap?.partnerMetrics || [];
-      const yieldAvg = pms.length ? pms.reduce((a, p) => a + (p.annualizedYield || 0), 0) / pms.length : 0;
-      const lossAvg = pms.length ? pms.reduce((a, p) => a + (p.lossRate || 0), 0) / pms.length : 0;
-      const epdAvg = pms.length ? pms.reduce((a, p) => a + (p.epdRate || 0), 0) / pms.length : 0;
-      totCells += `<td class="px-2 py-1 font-bold">${pct(yieldAvg)}</td>`;
-      totCells += `<td class="px-2 py-1 font-bold">${pct(lossAvg)}</td>`;
-      totCells += `<td class="px-2 py-1 font-bold">${pct(epdAvg)}</td>`;
-    });
-    tableRows += `<tr class="border-t-2 border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-700">${totCells}</tr>`;
+    // Add totals row only when showing all partners
+    if (filterPartner === 'all') {
+      let totCells = '<td class="px-3 py-2 font-bold">Avg</td>';
+      ['healthy', 'crunch', 'spike'].forEach((key) => {
+        const snap = getBaselineSnapshot(key, month);
+        const pms = snap?.partnerMetrics || [];
+        const yieldAvg = pms.length ? pms.reduce((a, p) => a + (p.annualizedYield || 0), 0) / pms.length : 0;
+        const lossAvg = pms.length ? pms.reduce((a, p) => a + (p.lossRate || 0), 0) / pms.length : 0;
+        const epdAvg = pms.length ? pms.reduce((a, p) => a + (p.epdRate || 0), 0) / pms.length : 0;
+        totCells += `<td class="px-3 py-2 text-right font-bold">${pct(yieldAvg)}</td>`;
+        totCells += `<td class="px-3 py-2 text-right font-bold">${pct(lossAvg)}</td>`;
+        totCells += `<td class="px-3 py-2 text-right font-bold">${pct(epdAvg)}</td>`;
+      });
+      tableRows += `<tr class="border-t-2 border-gray-300 dark:border-gray-500 bg-gray-50 dark:bg-gray-700">${totCells}</tr>`;
+    }
 
     $('mp-partner-table-body').innerHTML = tableRows;
 
@@ -301,7 +324,8 @@
     ['healthy', 'crunch', 'spike'].forEach((key) => {
       const snap = getBaselineSnapshot(key, month);
       const pms = snap?.partnerMetrics || [];
-      const atRisk = pms.filter((p) => (p.epdRate || 0) > 4.5 || (p.lossRate || 0) > 8);
+      const relevant = filterPartner === 'all' ? pms : pms.filter((p) => p.partnerId === filterPartner);
+      const atRisk = relevant.filter((p) => (p.epdRate || 0) > 4.5 || (p.lossRate || 0) > 8);
       if (atRisk.length) {
         atRiskHTML += atRisk.map((p) => `<div class="text-sm">🔴 <b>${scenarioMeta[key].label}</b> — ${p.partnerName}: EPD ${pct(p.epdRate)}, Loss ${pct(p.lossRate)}</div>`).join('');
       }

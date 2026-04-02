@@ -121,19 +121,24 @@
     <div class="bg-white dark:bg-gray-800 p-4 rounded border border-gray-200 dark:border-gray-700">
       <h4 class="text-xs font-semibold uppercase text-gray-500 mb-3">Partner Breakdown at Selected Month</h4>
       <div style="overflow-x:auto">
-        <table class="w-full text-xs whitespace-nowrap">
-          <thead class="bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600">
+        <table class="w-full text-xs whitespace-nowrap" style="border-collapse:separate;border-spacing:0">
+          <thead>
             <tr>
-              <th class="px-2 py-1 text-left">Partner</th>
-              <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">Healthy — Yield</th>
-              <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">Loss</th>
-              <th class="px-2 py-1 text-left" style="background:#e0f2fe;color:#0c4a6e">EPD</th>
-              <th class="px-2 py-1 text-left" style="background:#fef3c7;color:#78350f">Crunch — Yield</th>
-              <th class="px-2 py-1 text-left" style="background:#fef3c7;color:#78350f">Loss</th>
-              <th class="px-2 py-1 text-left" style="background:#fef3c7;color:#78350f">EPD</th>
-              <th class="px-2 py-1 text-left" style="background:#fce7f3;color:#831843">Spike — Yield</th>
-              <th class="px-2 py-1 text-left" style="background:#fce7f3;color:#831843">Loss</th>
-              <th class="px-2 py-1 text-left" style="background:#fce7f3;color:#831843">EPD</th>
+              <th class="px-3 py-2 text-left bg-gray-50 dark:bg-gray-700 border-b border-gray-200 dark:border-gray-600" rowspan="2">Partner</th>
+              <th class="px-3 py-1 text-center border-b" style="background:#e0f2fe;color:#0c4a6e" colspan="3">Healthy Market</th>
+              <th class="px-3 py-1 text-center border-b" style="background:#fef3c7;color:#78350f" colspan="3">Capital Crunch</th>
+              <th class="px-3 py-1 text-center border-b" style="background:#fce7f3;color:#831843" colspan="3">Rate Spike</th>
+            </tr>
+            <tr class="text-[10px] uppercase text-gray-500">
+              <th class="px-3 py-1 text-right" style="background:#f0f9ff">Yield</th>
+              <th class="px-3 py-1 text-right" style="background:#f0f9ff">Loss</th>
+              <th class="px-3 py-1 text-right" style="background:#f0f9ff">EPD</th>
+              <th class="px-3 py-1 text-right" style="background:#fffbeb">Yield</th>
+              <th class="px-3 py-1 text-right" style="background:#fffbeb">Loss</th>
+              <th class="px-3 py-1 text-right" style="background:#fffbeb">EPD</th>
+              <th class="px-3 py-1 text-right" style="background:#fdf2f8">Yield</th>
+              <th class="px-3 py-1 text-right" style="background:#fdf2f8">Loss</th>
+              <th class="px-3 py-1 text-right" style="background:#fdf2f8">EPD</th>
             </tr>
           </thead>
           <tbody id="mp-partner-table-body"></tbody>
