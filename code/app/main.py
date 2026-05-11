@@ -10,7 +10,8 @@ from fastapi.templating import Jinja2Templates
 from app.config import settings
 from app.database import init_db
 from app.models.like import Like  # noqa: F401 — ensures table is created by init_db
-from app.routers import auth, blog, comments, interview_coach, likes, marketplace, newsletter, pages, pm_multiverse, projects, resources, sde_prep, seo
+from app.models.episode import Episode  # noqa: F401 — ensures table is created by init_db
+from app.routers import auth, blog, comments, daily_brief, interview_coach, likes, marketplace, newsletter, pages, pm_multiverse, podcast, projects, resources, sde_prep, seo
 from app.services.content import ContentService
 from app.services.reading_service import ReadingService
 
@@ -43,12 +44,14 @@ app.include_router(pages.router)
 app.include_router(pm_multiverse.router)
 app.include_router(projects.router)
 app.include_router(blog.router)
+app.include_router(podcast.router)
 app.include_router(comments.router)
 app.include_router(likes.router)
 app.include_router(newsletter.router)
 app.include_router(interview_coach.router)
 app.include_router(marketplace.router)
 app.include_router(resources.router)
+app.include_router(daily_brief.router)
 app.include_router(sde_prep.router)
 app.include_router(auth.router)
 app.include_router(seo.router)

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="max-w-4xl">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <p class="text-small mb-3" style="color: var(--color-text-secondary);">
+        <a href="/resources" style="color: var(--color-text-secondary);">Resources</a>
+        <span class="mx-2">·</span> Daily Brief
+      </p>
+      <h1 class="text-h1 mb-4" style="color: var(--color-text-primary);">Daily Brief</h1>
+      <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">
+        A daily audio briefing covering SPY options, global news, and PM analytics — auto-generated every morning at 5 AM.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">SPY &amp; Options</span>
+        <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Global News</span>
+        <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">PM &amp; Analytics</span>
+      </div>
+    </div>
+
+    <!-- Episode list -->
+    {% if episodes %}
+    <div class="flex flex-col gap-4">
+      {% for episode in episodes %}
+      <a href="/resources/daily-brief/{{ episode.slug }}"
+         class="group rounded-xl border p-6 transition-all block"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-mono" style="color: var(--color-text-secondary);">
+                Ep. {{ episode.episode_number }} · {{ episode.date }}
+              </span>
+              <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+                {{ episode.duration_human }}
+              </span>
+            </div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">{{ episode.title }}</h3>
+            <p class="text-body text-sm mb-3" style="color: var(--color-text-secondary);">
+              <strong>Today's lesson:</strong> {{ episode.curriculum_lesson }} ·
+              SPY {{ episode.spy_close }} ({{ "+" if episode.spy_pct_change > 0 else "" }}{{ "%.2f"|format(episode.spy_pct_change) }}%) ·
+              IV Rank {{ episode.iv_rank|int }}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {% for tag in episode.tags[:4] %}
+              <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          <svg class="h-5 w-5 flex-shrink-0 mt-1 transition-transform group-hover:translate-x-1"
+               style="color: var(--color-accent);"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </div>
+
+      </a>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <div class="rounded-xl border p-12 text-center" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <p class="text-body" style="color: var(--color-text-secondary);">No episodes yet — first brief drops tomorrow at 5 AM.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}
