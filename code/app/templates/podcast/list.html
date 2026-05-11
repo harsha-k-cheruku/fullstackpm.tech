@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="flex flex-col gap-4 mb-10">
+    <h1 class="text-h1" style="color: var(--color-text-primary);">Daily Brief</h1>
+    <p class="text-body-lg" style="color: var(--color-text-secondary);">Daily intelligence on SPY options, world news, and PM analytics.</p>
+    <div class="flex flex-wrap gap-3 items-center">
+      <a href="/podcast/feed.xml" class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white" style="background-color: var(--color-accent);">Subscribe via RSS</a>
+      {% for tag in tags %}
+      <span class="text-xs rounded-full px-3 py-1 font-medium" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if grouped_episodes %}
+    {% for group in grouped_episodes %}
+    <div class="flex items-center gap-4 mb-6 {% if not loop.first %}mt-14{% endif %}">
+      <span class="text-xs uppercase tracking-widest font-semibold whitespace-nowrap" style="color: var(--color-accent);">{{ group.month }}</span>
+      <div class="flex-1 h-px" style="background-color: var(--color-border);"></div>
+      <span class="text-xs font-medium" style="color: var(--color-text-tertiary);">{{ group.episodes|length }} episodes</span>
+    </div>
+    <div class="grid grid-cols-1 gap-5">
+      {% for episode in group.episodes %}
+      <article class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+          <div>
+            <h2 class="text-h3"><a href="/podcast/{{ episode.slug }}" style="color: var(--color-text-primary);">{{ episode.title }}</a></h2>
+            <p class="text-small" style="color: var(--color-text-tertiary);">{{ episode.date.strftime('%b %d, %Y') }} · {{ episode.duration_human }} · {{ episode.curriculum_lesson }}</p>
+          </div>
+        </div>
+        <audio controls preload="none" class="w-full">
+          <source src="{{ episode.audio_url }}" type="audio/mpeg">
+        </audio>
+      </article>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  {% else %}
+  <div class="rounded-xl border p-8 text-center" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+    <p class="text-body" style="color: var(--color-text-secondary);">No podcast episodes yet. The robot dog is still warming up.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

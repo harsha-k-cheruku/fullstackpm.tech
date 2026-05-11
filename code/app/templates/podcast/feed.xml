@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daily Brief — fullstackpm.tech</title>
+    <link>https://fullstackpm.tech/podcast</link>
+    <description>Daily intelligence on SPY options, global news, and PM analytics.</description>
+    <language>en-us</language>
+    <itunes:author>Harsha Cheruku</itunes:author>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <atom:link href="https://fullstackpm.tech/podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    {% for episode in episodes %}
+    <item>
+      <title>{{ episode.title }}</title>
+      <link>https://fullstackpm.tech/podcast/{{ episode.slug }}</link>
+      <guid>https://fullstackpm.tech/podcast/{{ episode.slug }}</guid>
+      <pubDate>{{ episode.published_at | rfc2822 }}</pubDate>
+      <itunes:duration>{{ episode.duration_human }}</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <enclosure url="{{ episode.audio_url }}" type="audio/mpeg" length="0"/>
+      <description>{{ episode.shownotes_html | striptags | truncate(500) }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-12 lg:py-16">
+  <div class="max-w-4xl mx-auto">
+    <a href="/podcast" class="inline-flex items-center gap-2 text-small font-medium" style="color: var(--color-accent);">← Back to Podcast</a>
+    <div class="mt-6 rounded-xl border p-8" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+      <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">{{ episode.title }}</h1>
+      <p class="text-body mb-6" style="color: var(--color-text-secondary);">{{ episode.date.strftime('%B %d, %Y') }} · {{ episode.duration_human }}</p>
+      <audio controls preload="metadata" class="w-full mb-6">
+        <source src="{{ episode.audio_url }}" type="audio/mpeg">
+      </audio>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="rounded-lg p-4" style="background-color: var(--color-bg-tertiary);">
+          <p class="text-xs uppercase tracking-wider" style="color: var(--color-text-tertiary);">SPY Close</p>
+          <p class="text-h4">{{ episode.spy_close }}</p>
+        </div>
+        <div class="rounded-lg p-4" style="background-color: var(--color-bg-tertiary);">
+          <p class="text-xs uppercase tracking-wider" style="color: var(--color-text-tertiary);">IV Rank</p>
+          <p class="text-h4">{{ episode.iv_rank }}</p>
+        </div>
+        <div class="rounded-lg p-4" style="background-color: var(--color-bg-tertiary);">
+          <p class="text-xs uppercase tracking-wider" style="color: var(--color-text-tertiary);">Lesson</p>
+          <p class="text-h4">{{ episode.curriculum_lesson }}</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-8">
+        {% for tag in tags %}
+        <span class="text-xs rounded-full px-3 py-1 font-medium" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="prose max-w-none">{{ episode.shownotes_html | safe }}</div>
+    </div>
+    <div class="mt-8 flex justify-between gap-4">
+      <div>{% if previous_episode %}<a href="/podcast/{{ previous_episode.slug }}" style="color: var(--color-accent);">← {{ previous_episode.title }}</a>{% endif %}</div>
+      <div>{% if next_episode %}<a href="/podcast/{{ next_episode.slug }}" style="color: var(--color-accent);">{{ next_episode.title }} →</a>{% endif %}</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
