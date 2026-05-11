@@ -11,6 +11,12 @@
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
     <atom:link href="https://fullstackpm.tech/podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <itunes:image href="https://www.fullstackpm.tech/static/img/FSPM.png"/>
+    <image>
+      <url>https://www.fullstackpm.tech/static/img/FSPM.png</url>
+      <title>Daily Brief — fullstackpm.tech</title>
+      <link>https://www.fullstackpm.tech/podcast</link>
+    </image>
     {% for episode in episodes %}
     <item>
       <title>{{ episode.title if episode.title is string else episode['title'] }}</title>
