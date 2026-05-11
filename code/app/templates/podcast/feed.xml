@@ -25,7 +25,7 @@
       <pubDate>{{ episode.date_dt | rfc2822 }}</pubDate>
       <itunes:duration>{{ episode.duration_human if episode.duration_human is string else episode['duration_human'] }}</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
-      <enclosure url="{{ episode.audio_url if episode.audio_url is string else episode['audio_url'] }}" type="audio/mpeg" length="0"/>
+      <enclosure url="{{ episode.audio_url if episode.audio_url is string else episode['audio_url'] }}" type="audio/mpeg" length="{{ episode.audio_length_bytes if episode.audio_length_bytes is defined else (episode.get('audio_length_bytes', 0) if episode is mapping else 0) }}"/>
       <description>{{ (episode.shownotes_html if episode.shownotes_html is string else episode.get('shownotes_html', '')) | striptags | truncate(500) }}</description>
     </item>
     {% endfor %}
