@@ -21,6 +21,14 @@ router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
 templates.env.filters["rfc2822"] = lambda value: format_datetime(value)
 AUDIO_DIR = settings.static_dir / "podcast" / "audio"
+EPISODES_FILE = settings.static_dir / "podcast" / "episodes.json"
+
+
+def _load_episodes_json() -> list[dict]:
+    """Load episodes from JSON file — source of truth until remote publish populates the DB."""
+    if not EPISODES_FILE.exists():
+        return []
+    return json.loads(EPISODES_FILE.read_text()).get("episodes", [])
 
 
 def _ctx(request: Request, **kwargs) -> dict:
@@ -50,19 +58,27 @@ def _parse_tags(raw_tags: Optional[str]) -> List[str]:
 
 
 @router.get("/podcast", response_class=HTMLResponse)
-async def podcast_list(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
-    episodes = db.query(Episode).order_by(Episode.date.desc()).all()
-    grouped = _group_by_month(episodes)
-    tags = sorted({tag for episode in episodes for tag in _parse_tags(episode.tags)}, key=str.lower)
+async def podcast_list(request: Request) -> HTMLResponse:
+    episodes = _load_episodes_json()
+    tags = sorted({tag for ep in episodes for tag in ep.get("tags", [])}, key=str.lower)
     return templates.TemplateResponse(
         "podcast/list.html",
-        _ctx(request, title="Daily Brief — fullstackpm.tech", current_page="/podcast", grouped_episodes=grouped, tags=tags),
+        _ctx(request, title="Daily Brief — fullstackpm.tech", current_page="/podcast", episodes=episodes, tags=tags),
     )
 
 
 @router.get("/podcast/feed.xml")
-async def podcast_feed(request: Request, db: Session = Depends(get_db)) -> Response:
-    episodes = db.query(Episode).order_by(Episode.published_at.desc()).limit(30).all()
+async def podcast_feed(request: Request) -> Response:
+    episodes = _load_episodes_json()
+    # Parse date strings into datetime objects for the RSS template
+    for ep in episodes:
+        if isinstance(ep.get("date"), str):
+            try:
+                ep["date_dt"] = datetime.fromisoformat(ep["date"])
+            except Exception:
+                ep["date_dt"] = datetime.now()
+        else:
+            ep["date_dt"] = datetime.now()
     xml = templates.get_template("podcast/feed.xml").render(
         _ctx(request, episodes=episodes, title="Daily Brief — fullstackpm.tech", current_page="/podcast")
     )
@@ -70,25 +86,22 @@ async def podcast_feed(request: Request, db: Session = Depends(get_db)) -> Respo
 
 
 @router.get("/podcast/{slug}", response_class=HTMLResponse)
-async def podcast_detail(request: Request, slug: str, db: Session = Depends(get_db)) -> HTMLResponse:
-    episode = db.query(Episode).filter(Episode.slug == slug).first()
+async def podcast_detail(request: Request, slug: str) -> HTMLResponse:
+    episodes = _load_episodes_json()
+    episode = next((e for e in episodes if e.get("slug") == slug), None)
     if not episode:
         return templates.TemplateResponse("404.html", _ctx(request, title="Page Not Found", current_page=""), status_code=404)
-
-    episodes = db.query(Episode).order_by(Episode.date.desc()).all()
-    index = next((i for i, item in enumerate(episodes) if item.slug == slug), 0)
-    previous_episode = episodes[index + 1] if index + 1 < len(episodes) else None
-    next_episode = episodes[index - 1] if index > 0 else None
+    index = next((i for i, e in enumerate(episodes) if e.get("slug") == slug), 0)
     return templates.TemplateResponse(
         "podcast/detail.html",
         _ctx(
             request,
-            title=f"{episode.title} — Podcast",
+            title=f"{episode['title']} — Daily Brief",
             current_page="/podcast",
             episode=episode,
-            previous_episode=previous_episode,
-            next_episode=next_episode,
-            tags=_parse_tags(episode.tags),
+            previous_episode=episodes[index + 1] if index + 1 < len(episodes) else None,
+            next_episode=episodes[index - 1] if index > 0 else None,
+            tags=episode.get("tags", []),
         ),
     )
 
