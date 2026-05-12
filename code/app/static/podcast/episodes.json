@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-05-12",
+      "slug": "daily-brief-2026-05-12",
+      "episode_number": 4,
+      "title": "Daily Brief \u2014 May 12, 2026",
+      "date": "2026-05-12",
+      "published_at": "2026-05-12T15:45:59",
+      "duration_seconds": 839,
+      "duration_human": "13:59",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/audio/2026-05-12.mp3",
+      "audio_length_bytes": 3355245,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 3,
+        "day": 1,
+        "topic": "Iron Condors on SPY",
+        "lesson": "Iron condor anatomy: selling two spreads at once"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Understanding Iron Condors on SPY",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: Spec-driven development: The AI engineering workflow at Notion | Ryan Nystrom",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 735.22,
+        "pct_change": -0.55,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "iron",
+        "condor",
+        "anatomy",
+        "selling",
+        "spreads",
+        "once"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-05-12</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Tensions Rise as Inflation Hits US and Leaders Gather in China</li>\n<li><strong>SPY learning:</strong> Understanding Iron Condors on SPY</li>\n<li><strong>Market brief:</strong> SPY Market Brief for May 12, 2026</li>\n<li><strong>PM/analytics:</strong> Spec-driven development: The AI engineering workflow at Notion | Ryan Nystrom</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, U.S. inflation has jumped to 3.8%, largely driven by surging energy costs amid the ongoing conflict in Iran. This spike is significant for consumers and could impact Federal Reserve policy moving forward. Over in Europe, UK politics is in turmoil as three ministers have resigned after Labour leader Keir Starmer affirmed he won&rsquo;t step down without a leadership challenge. This instability could hinder the government&rsquo;s ability to navigate economic challenges ahead. In Asia, U.S. President Trump is leading a delegation of executives to China as high-stakes talks commence amid tensions surrounding trade and technology. The outcomes of these discussions could influence market sentiment significantly. In India, there&rsquo;s been notable news as the first woman principal has been appointed at St Stephen&rsquo;s College in Delhi. While a positive change in leadership, it doesn&rsquo;t have immediate market implications. In the Middle East and Africa, Uganda&rsquo;s Yoweri Museveni has been sworn in for a seventh term amid reports of electoral intimidation. The prolonged rule raises concerns about stability and governance in the region. In the Asia Pacific region, Australia is addressing rising fuel prices in its annual budget, signaling a proactive approach to cost-of-living issues that could have broader economic implications.</p>\n<p>Imagine you&rsquo;re at a carnival, and there&rsquo;s a game where you can win prizes by guessing if a balloon will float higher or lower than a certain point. You pay a small fee to make your guess, and if you&rsquo;re right, you win a toy. If you think the balloon will stay somewhere in the middle, you can place a bet on that too. You can even place bets on both sides at the same time, covering all your bases, hoping to win no matter where that balloon goes. This way, you enjoy the thrill of the game without worrying too much about which way the balloon floats.</p>\n<p>Now, let\u2019s connect that carnival game to the world of trading. In options trading, an Iron Condor is like placing those bets on both sides of the balloon. Instead of guessing just one outcome, you\u2019re selling two spreads at once, hoping the price of SPY doesn\u2019t get too wild. Let\u2019s say SPY is currently at $735.22, and you think it will stay within a certain range. You might sell a lower spread, betting it won&rsquo;t drop below $730, and a higher spread, betting it won&rsquo;t rise above $740. This gives you a chance to collect the premiums from both trades as long as SPY stays between those two prices, just like collecting prizes if the balloon stays in the middle.</p>\n<p>Now, knowing how Iron Condors work can really change how you look at your trades. Today, SPY is trading at $735.22, with an implied volatility (IV) of 17.79, which is at a 100% rank. This means the market is expecting significant price movements soon, making it a prime time for an Iron Condor strategy. Higher IV typically means you can collect more premium when selling options, so you might consider setting your strikes at $730 and $740. Since SPY&rsquo;s price is fluctuating a bit, you can look at the current trend and see if the recent high was $737.22 and the low was $734.66. If you believe SPY will hover around $735 in the next month, you can set up your Iron Condor to maximize your potential profit while minimizing risk, as long as the market stays calm. Just remember, the beauty of this strategy is that you&rsquo;re taking advantage of the premium from both sides while betting on stability. So, as you think about your next move, keep an eye on that IV and the overall market sentiment, and you might just find the right moment to deploy your Iron Condor for some solid returns.</p>\n<p>Today, SPY closed at 735.22, down 0.55% from yesterday&rsquo;s close. It opened at 736.89 and reached a high of 737.22 before retreating. This decline is notable, especially considering the index had been on a slight upward trend earlier in the week, hitting a high of 739.30 just yesterday. The volume today was around 6.2 million shares, which is relatively average but indicates some cautious trading as we approach key economic data releases later this week. Overall, today\u2019s move feels significant as it breaks the momentum that SPY had been building, suggesting that traders are starting to reassess their positions ahead of upcoming events.</p>\n<p>When we look at sector performance, Healthcare (XLV) was the standout leader today, rising by 0.92% and contributing positively to SPY&rsquo;s performance. This sector&rsquo;s strength likely reflects ongoing investor interest in biotech and pharmaceutical stocks, particularly as the market anticipates new drug approvals and healthcare reforms. On the flip side, Technology (XLK) was the biggest laggard, falling 1.39%. This decline can be attributed to broader concerns about valuations in the tech space, especially after some high-profile earnings reports last week that didn\u2019t quite meet expectations. The tech sector&rsquo;s struggles are significant, given its weight in the SPY index, and they highlight the ongoing volatility in growth stocks.</p>\n<p>The macroeconomic backdrop is also playing a role in today\u2019s market dynamics. With inflation concerns still looming\u2014CPI year-over-year is reported at 3.95%\u2014investors are likely feeling jittery about the Fed&rsquo;s next moves. The current Fed funds rate stands at 3.64%, and with the upcoming CPI inflation release tomorrow, traders are bracing for potential shifts in monetary policy. This uncertainty is likely contributing to the elevated implied volatility we\u2019re seeing in the options market, with the current IV rank at a striking 100%. This suggests that options are relatively expensive right now, making it a tricky environment for those looking to sell premium.</p>\n<p>As for key price levels to watch, immediate support for SPY is around 734, which is close to today\u2019s low. If we break below that, we could see a test of the 730 level, which has been a psychological barrier in the past. On the resistance side, the 740 level is crucial, as it represents the recent highs and a potential area where sellers might step in again. Keeping an eye on these levels will be essential for options traders looking to make informed decisions.</p>\n<p>Looking ahead to the next 48 hours, we have some important economic data that could significantly impact market sentiment. Tomorrow, the CPI inflation report is set to be released, and given the current inflation rate, any surprises could lead to volatility. Additionally, on May 14th, we\u2019ll see the Freddie Mac mortgage rate update, which could also affect financials and housing-related stocks. These events are likely to keep traders on their toes, especially with the Fed meeting coming up on June 10th, where we might see further guidance on interest rates.</p>\n<p>For options traders considering their positions this week, it\u2019s crucial to be aware of the heightened implied volatility and the potential for sharp moves in either direction. Given the current environment, a cautious approach may be warranted, especially if you&rsquo;re looking to sell premium. With the market reacting to both sector-specific news and broader economic indicators, staying nimble and informed will be key to navigating the next few days. Keep those price levels in mind and prepare for the data releases ahead, as they could create opportunities or risks depending on how the market interprets the information.</p>\n<p>In a recent podcast episode featuring Ryan Nystrom from Notion, he dives into the concept of spec-driven development, which is a game-changer for product managers like you. Imagine this: instead of getting bogged down in the nitty-gritty of coding, you can focus on the strategic aspects of your project while AI handles the implementation. Nystrom explains how this workflow allows for automating mundane tasks, such as daily standups and even shipping pull requests with just a single comment. This means you can free up your time to think critically about the product rather than getting lost in technical details.</p>\n<p>A practical takeaway is to start integrating AI tools that can assist your development team. For instance, consider using AI to generate code snippets based on your specifications. This kind of automation not only speeds up the development process but also ensures that your team spends more time on innovation rather than repetitive tasks. Nystrom emphasizes that by embracing these tools, you can create an environment where your engineers act more like &lsquo;agents&rsquo; who are empowered to make decisions rather than just following orders.</p>\n<p>Additionally, Nystrom highlights the importance of clear and concise specifications. As a PM, you should work on crafting high-quality specs that outline what you want the product to achieve. This clarity helps the AI systems to generate accurate code that aligns with your vision. If you\u2019re unsure how to write effective specs, consider collaborating with your engineering team to gather insights on what information is most useful for them.</p>\n<p>Another point he makes is the value of feedback loops. As you implement this workflow, make sure to establish regular check-ins with your team to evaluate how well the AI is performing and whether the specifications are being met. This iterative process can help you refine your approach and ensure that both the AI and your team are aligned on project goals.</p>\n<p>Finally, don\u2019t shy away from experimenting with these new tools. Start small by introducing one or two AI-driven processes into your workflow and gauge the results. This hands-on experimentation will not only enhance your understanding of AI capabilities but also help you build a culture of innovation within your team. By adopting a spec-driven development approach, you&rsquo;re not just keeping up with the trends; you&rsquo;re setting your product up for success in a rapidly evolving tech landscape.</p>"
+    },
+    {
       "id": "2026-05-11",
       "slug": "daily-brief-2026-05-11",
       "episode_number": 3,
