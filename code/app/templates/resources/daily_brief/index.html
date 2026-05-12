@@ -43,9 +43,10 @@
             </div>
             <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">{{ episode.title }}</h3>
             <p class="text-body text-sm mb-3" style="color: var(--color-text-secondary);">
-              <strong>Today's lesson:</strong> {{ episode.curriculum_lesson }} ·
-              SPY {{ episode.spy_close }} ({{ "+" if episode.spy_pct_change > 0 else "" }}{{ "%.2f"|format(episode.spy_pct_change) }}%) ·
-              IV Rank {{ episode.iv_rank|int }}
+              <strong>Today's lesson:</strong> {{ episode.curriculum.lesson if episode.curriculum else "—" }} ·
+              SPY {{ episode.spy_stats.close if episode.spy_stats else "—" }}
+              {% if episode.spy_stats %}({{ "+" if episode.spy_stats.pct_change > 0 else "" }}{{ "%.2f"|format(episode.spy_stats.pct_change) }}%){% endif %} ·
+              IV Rank {{ episode.spy_stats.iv_rank|int if episode.spy_stats else "—" }}
             </p>
             <div class="flex flex-wrap gap-2">
               {% for tag in episode.tags[:4] %}

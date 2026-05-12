@@ -33,19 +33,21 @@
         <div class="rounded-lg px-4 py-2" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
           <p class="text-xs mb-1" style="color: var(--color-text-secondary);">SPY Close</p>
           <p class="text-body font-semibold" style="color: var(--color-text-primary);">
-            {{ episode.spy_close }}
-            <span style="color: {{ 'var(--color-accent)' if episode.spy_pct_change > 0 else '#ef4444' }};">
-              {{ "+" if episode.spy_pct_change > 0 else "" }}{{ "%.2f"|format(episode.spy_pct_change) }}%
+            {% if episode.spy_stats %}
+            {{ episode.spy_stats.close }}
+            <span style="color: {{ 'var(--color-accent)' if episode.spy_stats.pct_change > 0 else '#ef4444' }};">
+              {{ "+" if episode.spy_stats.pct_change > 0 else "" }}{{ "%.2f"|format(episode.spy_stats.pct_change) }}%
             </span>
+            {% else %}—{% endif %}
           </p>
         </div>
         <div class="rounded-lg px-4 py-2" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
           <p class="text-xs mb-1" style="color: var(--color-text-secondary);">IV Rank</p>
-          <p class="text-body font-semibold" style="color: var(--color-text-primary);">{{ episode.iv_rank|int }}</p>
+          <p class="text-body font-semibold" style="color: var(--color-text-primary);">{{ episode.spy_stats.iv_rank|int if episode.spy_stats else "—" }}</p>
         </div>
         <div class="rounded-lg px-4 py-2" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
           <p class="text-xs mb-1" style="color: var(--color-text-secondary);">Today's Lesson</p>
-          <p class="text-body font-semibold" style="color: var(--color-text-primary);">{{ episode.curriculum_lesson }}</p>
+          <p class="text-body font-semibold" style="color: var(--color-text-primary);">{{ episode.curriculum.lesson if episode.curriculum else "—" }}</p>
         </div>
       </div>
     </div>
