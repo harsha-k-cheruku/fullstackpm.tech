@@ -1,64 +1,268 @@
 {% extends "base.html" %}
+
 {% block content %}
 <section class="py-16 lg:py-20">
   <div class="max-w-3xl">
+
+    <!-- Breadcrumb -->
     <p class="text-small mb-8" style="color:var(--color-text-secondary);">
       <a href="/resources" style="color:var(--color-text-secondary);">Resources</a>
       <span class="mx-2">·</span>
       <a href="/resources/pm-prep" style="color:var(--color-text-secondary);">PM Prep</a>
       <span class="mx-2">·</span>
       <a href="/resources/pm-prep/{{ question.id }}"
-         style="color:var(--color-text-secondary);">{{ question.question[:45] }}…</a>
+         style="color:var(--color-text-secondary);">{{ question.question[:50] }}…</a>
     </p>
 
-    <div class="mb-8">
+    <!-- Header -->
+    <div class="mb-10">
       <span class="text-xs font-mono mb-2 block" style="color:var(--color-accent);">
         {{ episode.dimension_label }}
       </span>
-      <h1 class="text-h1 mb-3" style="color:var(--color-text-primary);">{{ episode.title }}</h1>
+      <h1 class="text-h1 mb-3" style="color:var(--color-text-primary);">
+        {{ episode.title }}
+      </h1>
       {% if episode.get('subtitle') %}
-      <p class="text-body-lg" style="color:var(--color-text-secondary);">{{ episode.subtitle }}</p>
+      <p class="text-body-lg" style="color:var(--color-text-secondary);">
+        {{ episode.subtitle }}
+      </p>
       {% endif %}
     </div>
 
-    <!-- Interactive experience (primary content) -->
-    <div class="rounded-xl border mb-8 overflow-hidden"
-         style="border-color:var(--color-border);">
-      <div class="px-4 py-2 flex items-center justify-between"
-           style="background:var(--color-bg-tertiary);">
-        <span class="text-xs font-mono" style="color:var(--color-text-secondary);">
-          Make choices · Get calibrated feedback
-        </span>
-        {% if episode.get('duration_human') %}
-        <span class="text-xs" style="color:var(--color-text-secondary);">
-          ~{{ episode.duration_human }}
-        </span>
-        {% endif %}
-      </div>
-      <iframe
-        src="/static/podcast/pm-prep/interactive/{{ episode.question_id }}_ep{{ episode.number }}.html"
-        style="width:100%;height:860px;border:0;background:#080c14;"
-        loading="lazy"
-        title="{{ episode.title }}">
-      </iframe>
+    <!-- Question callout -->
+    <div class="rounded-xl border p-5 mb-10"
+         style="background:var(--color-bg-secondary);border-color:var(--color-border);border-left:3px solid var(--color-accent);">
+      <p class="text-xs font-mono mb-1" style="color:var(--color-text-secondary);">THE QUESTION</p>
+      <p class="text-body font-medium" style="color:var(--color-text-primary);line-height:1.6;">
+        {{ question.question }}
+      </p>
     </div>
 
-    <!-- Episode nav -->
+    {% set ix = episode.get('interactive', {}) %}
+
+    {% if ix %}
+    <!-- Interactive exercise — native rendering, no iframe -->
+    <div id="interactive-section">
+
+      {% if ix.get('intro') %}
+      <p class="text-body mb-8" style="color:var(--color-text-secondary);line-height:1.8;">
+        {{ ix.intro }}
+      </p>
+      {% endif %}
+
+      <!-- Progress indicator -->
+      <div class="flex items-center gap-2 mb-8">
+        {% for dp in ix.get('decision_points', []) %}
+        <div id="prog-{{ loop.index0 }}"
+             class="h-1.5 flex-1 rounded-full transition-all duration-500"
+             style="background:var(--color-bg-tertiary);"></div>
+        {% endfor %}
+        <span class="text-xs ml-2" style="color:var(--color-text-secondary);">
+          {{ ix.get('decision_points', [])|length }} decisions
+        </span>
+      </div>
+
+      <!-- Decision points -->
+      {% for dp in ix.get('decision_points', []) %}
+      {% set dp_idx = loop.index0 %}
+      <div id="dp-{{ dp_idx }}" class="mb-6"
+           {% if dp_idx > 0 %}style="display:none;"{% endif %}>
+
+        <!-- Step label -->
+        <p class="text-xs font-mono mb-3" style="color:var(--color-text-secondary);">
+          DECISION {{ loop.index }} OF {{ ix.get('decision_points', [])|length }}
+        </p>
+
+        <!-- Prompt card -->
+        <div class="rounded-xl border p-6 mb-4"
+             style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+          <p class="text-body font-semibold mb-5"
+             style="color:var(--color-text-primary);line-height:1.5;font-size:1.05rem;">
+            {{ dp.prompt }}
+          </p>
+
+          <!-- Options -->
+          <div class="flex flex-col gap-3" id="opts-{{ dp_idx }}">
+            {% for opt in dp.options %}
+            <button
+              onclick="choose({{ dp_idx }}, {{ loop.index0 }}, {{ dp.options|tojson|e }})"
+              id="opt-{{ dp_idx }}-{{ loop.index0 }}"
+              class="text-left rounded-lg border px-4 py-3 transition-all w-full flex items-start gap-3"
+              style="background:var(--color-bg-tertiary);border-color:var(--color-border);color:var(--color-text-secondary);cursor:pointer;">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold mt-0.5"
+                    style="background:var(--color-bg-secondary);color:var(--color-text-secondary);"
+                    id="marker-{{ dp_idx }}-{{ loop.index0 }}">
+                {{ ['A','B','C','D'][loop.index0] }}
+              </span>
+              <span style="line-height:1.6;">{{ opt.label }}</span>
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Feedback (hidden until choice) -->
+        <div id="fb-{{ dp_idx }}"
+             class="rounded-xl border p-6 mb-4"
+             style="display:none;background:var(--color-bg-secondary);border-color:var(--color-border);">
+          <p class="text-sm font-semibold mb-3" style="color:var(--color-accent);"
+             id="fb-short-{{ dp_idx }}"></p>
+          <p class="text-body" style="color:var(--color-text-secondary);line-height:1.8;"
+             id="fb-reveal-{{ dp_idx }}"></p>
+          {% if not loop.last %}
+          <button onclick="showNext({{ dp_idx + 1 }})"
+                  class="mt-4 text-sm font-semibold px-4 py-2 rounded-lg transition-all"
+                  style="background:var(--color-accent);color:#fff;border:none;cursor:pointer;">
+            Next →
+          </button>
+          {% else %}
+          <button onclick="showResult()"
+                  class="mt-4 text-sm font-semibold px-4 py-2 rounded-lg transition-all"
+                  style="background:var(--color-accent);color:#fff;border:none;cursor:pointer;">
+            See how you did →
+          </button>
+          {% endif %}
+        </div>
+
+      </div>
+      {% endfor %}
+
+      <!-- Result card (hidden until all done) -->
+      <div id="result-card" class="rounded-xl border p-6 mb-10" style="display:none;border-color:var(--color-border);background:var(--color-bg-secondary);">
+        <p class="text-xs font-mono mb-2" style="color:var(--color-text-secondary);">YOUR RESULT</p>
+        <p class="text-h3 mb-3" style="color:var(--color-text-primary);" id="result-level"></p>
+        <p class="text-body mb-4" style="color:var(--color-text-secondary);line-height:1.8;" id="result-msg"></p>
+        <div class="rounded-lg p-4" style="background:var(--color-bg-tertiary);">
+          <p class="text-xs font-mono mb-1" style="color:var(--color-accent);">WHAT PUSHES YOU FURTHER</p>
+          <p class="text-sm" style="color:var(--color-text-secondary);line-height:1.7;" id="result-next"></p>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+    const calibration = {{ ix.get('calibration', {})|tojson }};
+    const totalDPs = {{ ix.get('decision_points', [])|length }};
+    let scores = [];
+
+    function choose(dpIdx, optIdx, options) {
+      const opt = options[optIdx];
+      scores[dpIdx] = opt.level;
+
+      // Style options — selected vs dimmed
+      const btns = document.querySelectorAll(`#opts-${dpIdx} button`);
+      btns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === optIdx) {
+          b.style.borderColor = 'var(--color-accent)';
+          b.style.background = 'var(--color-bg-secondary)';
+          b.style.color = 'var(--color-text-primary)';
+          const marker = document.getElementById(`marker-${dpIdx}-${i}`);
+          marker.style.background = 'var(--color-accent)';
+          marker.style.color = '#fff';
+        } else {
+          b.style.opacity = '0.35';
+          b.style.cursor = 'default';
+        }
+      });
+
+      // Level pill
+      const levelColors = {
+        mid:    { bg: '#1e3a5f', text: '#60a5fa' },
+        senior: { bg: '#1a3a1a', text: '#4ade80' },
+        staff:  { bg: '#3a1a3a', text: '#c084fc' }
+      };
+      const lc = levelColors[opt.level] || levelColors.mid;
+      const pill = `<span style="display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:${lc.bg};color:${lc.text};margin-left:8px;">${opt.level}</span>`;
+
+      document.getElementById(`fb-short-${dpIdx}`).innerHTML = opt.feedback_short + pill;
+      document.getElementById(`fb-reveal-${dpIdx}`).textContent = opt.feedback_reveal;
+      document.getElementById(`fb-${dpIdx}`).style.display = 'block';
+
+      // Update progress bar
+      const prog = document.getElementById(`prog-${dpIdx}`);
+      if (prog) prog.style.background = 'var(--color-accent)';
+    }
+
+    function showNext(nextIdx) {
+      const next = document.getElementById(`dp-${nextIdx}`);
+      if (next) {
+        next.style.display = 'block';
+        next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function showResult() {
+      const seniorCount = scores.filter(s => s === 'senior' || s === 'staff').length;
+      const ratio = scores.length > 0 ? seniorCount / scores.length : 0;
+      let level, msg, next;
+      if (ratio >= 0.67) {
+        level = 'Senior-level thinking';
+        msg = calibration.strong || '';
+        next = 'In the Metrics episode, connect these into a full measurement framework — accuracy, utility, and trust — and define what threshold in each metric should trigger a product change.';
+      } else if (ratio >= 0.34) {
+        level = 'Developing senior thinking';
+        msg = calibration.developing || '';
+        next = 'The reframe that unlocks the next level: always ask what the feature claims before asking how to measure it. The claim defines the measurement.';
+      } else {
+        level = 'Building the foundation';
+        msg = calibration.early || '';
+        next = 'Focus on this pattern: prediction features require accuracy metrics first, engagement second. Engagement without accuracy measures the wrong thing.';
+      }
+      document.getElementById('result-level').textContent = level;
+      document.getElementById('result-msg').textContent = msg;
+      document.getElementById('result-next').textContent = next;
+      const card = document.getElementById('result-card');
+      card.style.display = 'block';
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    </script>
+
+    {% else %}
+    <!-- No interactive data — fallback -->
+    <div class="rounded-xl border p-8 text-center mb-10"
+         style="border-color:var(--color-border);background:var(--color-bg-secondary);">
+      <p style="color:var(--color-text-secondary);">Interactive content coming soon.</p>
+    </div>
+    {% endif %}
+
+    <!-- Takeaways -->
+    {% set s = question.get('saraswati', {}) %}
+    {% if s.get('takeaways') %}
+    <div class="rounded-xl border p-6 mb-10"
+         style="background:#1a1800;border-color:#3a3200;">
+      <h3 class="text-sm font-semibold mb-4" style="color:#facc15;">Key Takeaways</h3>
+      <div class="flex flex-col gap-3">
+        {% for t in s.takeaways %}
+        <div class="flex gap-3">
+          <span class="text-xs font-bold flex-shrink-0 mt-0.5" style="color:#facc15;">0{{ loop.index }}</span>
+          <p class="text-sm" style="color:#aaa;line-height:1.7;">{{ t }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Episode navigation -->
     <div class="flex gap-4 mb-8">
       {% if prev_ep %}
       <a href="/resources/pm-prep/{{ question.id }}/ep{{ prev_ep.number }}"
-         class="flex-1 rounded-lg border p-4 block"
-         style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+         class="flex-1 rounded-lg border p-4 block transition-all"
+         style="background:var(--color-bg-secondary);border-color:var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'"
+         onmouseout="this.style.borderColor='var(--color-border)'">
         <p class="text-xs mb-1" style="color:var(--color-text-secondary);">← {{ prev_ep.dimension_label }}</p>
-        <p class="text-sm font-medium" style="color:var(--color-text-primary);">{{ prev_ep.title[:50] }}…</p>
+        <p class="text-sm font-medium" style="color:var(--color-text-primary);">{{ prev_ep.title[:52] }}…</p>
       </a>
       {% else %}<div class="flex-1"></div>{% endif %}
+
       {% if next_ep %}
       <a href="/resources/pm-prep/{{ question.id }}/ep{{ next_ep.number }}"
-         class="flex-1 rounded-lg border p-4 block text-right"
-         style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+         class="flex-1 rounded-lg border p-4 block text-right transition-all"
+         style="background:var(--color-bg-secondary);border-color:var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'"
+         onmouseout="this.style.borderColor='var(--color-border)'">
         <p class="text-xs mb-1" style="color:var(--color-text-secondary);">{{ next_ep.dimension_label }} →</p>
-        <p class="text-sm font-medium" style="color:var(--color-text-primary);">{{ next_ep.title[:50] }}…</p>
+        <p class="text-sm font-medium" style="color:var(--color-text-primary);">{{ next_ep.title[:52] }}…</p>
       </a>
       {% else %}<div class="flex-1"></div>{% endif %}
     </div>
@@ -67,6 +271,7 @@
        class="text-sm" style="color:var(--color-accent);">
       ← All episodes for this question
     </a>
+
   </div>
 </section>
 {% endblock %}

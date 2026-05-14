@@ -35,7 +35,86 @@
             "prediction features",
             "PM interview",
             "metrics_investigation"
-          ]
+          ],
+          "interactive": {
+            "intro": "The way you answer this question reveals how you think about prediction features. Make a choice at each step \u2014 the reasoning unlocks after you commit.",
+            "decision_points": [
+              {
+                "prompt": "Before defining any metrics \u2014 what's the first thing you'd want to know about the Hot Home feature?",
+                "options": [
+                  {
+                    "label": "How many users are clicking Hot Home listings vs non-Hot listings",
+                    "level": "mid",
+                    "feedback_short": "Engagement first \u2014 that's mid-level thinking.",
+                    "feedback_reveal": "Click-through rate tells you the badge draws attention. It doesn't tell you whether the badge is worth acting on. A visible but unreliable badge can have great CTR right up until users stop trusting it. Engagement is a proxy for attention, not value."
+                  },
+                  {
+                    "label": "Whether homes labelled Hot are actually selling faster than unlabelled ones",
+                    "level": "senior",
+                    "feedback_short": "Prediction accuracy first \u2014 that's the senior move.",
+                    "feedback_reveal": "Before any engagement metric makes sense, you need to know if the prediction is correct. Hot Home claims a home will sell quickly. The ground truth is whether it did. If the accuracy is 40%, every engagement metric is measuring how effectively you're misleading buyers. Accuracy is the foundation \u2014 everything else layers on top."
+                  },
+                  {
+                    "label": "Who decided what 'Hot' means and whether that definition should be questioned",
+                    "level": "staff",
+                    "feedback_short": "Questioning the definition \u2014 that's staff-level thinking.",
+                    "feedback_reveal": "What exactly makes a home 'Hot'? Is it the algorithm's confidence score? Time-to-offer historically? The definition of Hot determines what the feature can ever measure. If the definition is fuzzy, the feature will never have a clean success metric. Staff PMs question the premise before measuring anything."
+                  }
+                ]
+              },
+              {
+                "prompt": "You've established that accuracy matters. Whose success are you measuring \u2014 the feature serves multiple stakeholders.",
+                "options": [
+                  {
+                    "label": "Buyers primarily \u2014 they're the ones acting on the badge to schedule tours faster",
+                    "level": "mid",
+                    "feedback_short": "Buyers only \u2014 reasonable but incomplete.",
+                    "feedback_reveal": "Buyers are the primary actors on the Hot Home signal. But sellers also have a stake in the label \u2014 a seller whose home is not marked Hot may list with a competitor. If you ignore seller perception, you'll miss a churn signal that shows up in listing supply, not buyer behaviour."
+                  },
+                  {
+                    "label": "Both buyers and sellers \u2014 and their success metrics can conflict with each other",
+                    "level": "senior",
+                    "feedback_short": "Both stakeholders, with the tension named \u2014 that's the senior answer.",
+                    "feedback_reveal": "More homes labelled Hot makes sellers happier and reduces listing churn. But it dilutes the signal for buyers and reduces prediction accuracy. A senior PM makes this tension explicit and proposes measuring both sides with the understanding that optimising one can hurt the other."
+                  },
+                  {
+                    "label": "Redfin's transaction rate is the only metric that ultimately matters \u2014 the others are proxies",
+                    "level": "staff",
+                    "feedback_short": "Transaction rate as north star \u2014 provocative and partially right.",
+                    "feedback_reveal": "Redfin makes money on closed transactions. Ultimately, if Hot Home drives more completed deals faster, it's succeeding. But this is a lagging metric \u2014 you only see it after months. A staff PM uses transaction rate as the north star while building leading indicators to detect success or failure faster."
+                  }
+                ]
+              },
+              {
+                "prompt": "What's the metric most likely to tell you the feature is failing \u2014 before it shows up in transaction data?",
+                "options": [
+                  {
+                    "label": "Declining click-through rate on Hot Home badges over time",
+                    "level": "mid",
+                    "feedback_short": "CTR decline \u2014 visible but too late.",
+                    "feedback_reveal": "Declining CTR is real but lagging. By the time aggregate CTR drops, trust has been eroding for weeks. Users don't stop clicking all at once \u2014 they stop trusting gradually and the aggregate only catches it after the damage is done."
+                  },
+                  {
+                    "label": "The gap between how fast Hot Home listings sell vs non-Hot listings is narrowing",
+                    "level": "senior",
+                    "feedback_short": "Narrowing accuracy gap \u2014 strong leading indicator.",
+                    "feedback_reveal": "If Hot Home listings are selling only marginally faster than non-Hot listings, the prediction is losing its edge. The gap in days-to-offer between Hot and non-Hot homes is a leading indicator of whether the feature still has informational value \u2014 and it shows up before CTR changes."
+                  },
+                  {
+                    "label": "Repeat user behaviour \u2014 buyers who previously acted on Hot Home badges are now ignoring them",
+                    "level": "staff",
+                    "feedback_short": "Repeat trust decay \u2014 the earliest and most accurate signal.",
+                    "feedback_reveal": "A buyer who acted on a Hot Home badge last month and got burned will not act on the next one. Cohort-level repeat action rate \u2014 users who previously engaged and whether they engage again \u2014 detects trust erosion before it appears in any aggregate metric. This is the canary in the coal mine."
+                  }
+                ]
+              }
+            ],
+            "calibration": {
+              "strong": "You're thinking at senior or staff level consistently. The next step is connecting these metrics into a decision framework \u2014 not just measuring, but defining what threshold in each metric should trigger a product change.",
+              "developing": "Good instincts. The reframe that unlocks senior-level thinking: always ask what the feature claims before asking how to measure it. The claim defines the measurement.",
+              "early": "You're building the right foundation. Focus on this pattern: prediction features require accuracy metrics first, engagement metrics second. Engagement without accuracy measures the wrong thing."
+            }
+          }
         },
         {
           "number": 2,
