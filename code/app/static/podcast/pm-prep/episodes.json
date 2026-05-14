@@ -1,0 +1,83 @@
+{
+  "questions": [
+    {
+      "id": "q001",
+      "question": "How do you measure success of the Hot Home feature in Redfin?",
+      "category": "metrics_investigation",
+      "difficulty": "senior",
+      "slug": "redfin-hot-home-success-metrics",
+      "published_at": "2026-05-13T20:12:20.662953",
+      "saraswati": {
+        "real_test": "The interviewer is testing whether you understand that measuring success of a prediction feature requires evaluating the prediction itself, not just user engagement with it.",
+        "senior_distinction": "A mid-level PM proposes engagement metrics. A senior PM starts by asking what the prediction accuracy is and whether it's being tracked at all \u2014 then builds the measurement framework from accuracy upward.",
+        "takeaways": [
+          "For prediction features, measure accuracy of the prediction before engagement with it \u2014 engagement without accuracy is a vanity metric.",
+          "Separate stakeholder success metrics \u2014 buyer utility and seller satisfaction can conflict, and blending them hides the tension.",
+          "Measure trust decay through repeat behaviour \u2014 trust erodes slowly then breaks suddenly."
+        ]
+      },
+      "episodes": [
+        {
+          "number": 1,
+          "dimension": "product_thinking",
+          "dimension_label": "Product Thinking",
+          "title": "Measuring Redfin's Hot Home: Start Here, Not There",
+          "subtitle": "Before you pick a metric, you need to understand what the feature actually claims \u2014 and why that changes everything.",
+          "slug": "redfin-hot-home-start-here-not-there",
+          "duration_seconds": 0,
+          "duration_human": "~8 min",
+          "audio_url": "",
+          "interactive_url": "/resources/pm-prep/q001/ep1",
+          "youtube_description": "Most PMs jump straight to click-through rate and tour bookings when asked to measure Redfin's Hot Home feature. This episode shows why that's the wrong starting point \u2014 and what question you should ask first about any prediction feature.",
+          "tags": [
+            "redfin",
+            "product metrics",
+            "prediction features",
+            "PM interview",
+            "metrics_investigation"
+          ]
+        },
+        {
+          "number": 2,
+          "dimension": "metrics",
+          "dimension_label": "Metrics & Measurement",
+          "title": "The Three Metrics Redfin's Hot Home Actually Needs",
+          "subtitle": "Accuracy, utility, and trust \u2014 why you need all three and why most measurement frameworks only get one.",
+          "slug": "redfin-hot-home-three-metrics",
+          "duration_seconds": 0,
+          "duration_human": "~8 min",
+          "audio_url": "",
+          "interactive_url": "/resources/pm-prep/q001/ep2",
+          "youtube_description": "A prediction feature has three independent success conditions: the prediction is accurate, it drives value-creating behaviour, and it builds lasting trust. Most dashboards track one. This episode shows you how to design for all three.",
+          "tags": [
+            "redfin",
+            "product metrics",
+            "north star metric",
+            "PM interview",
+            "senior PM"
+          ]
+        },
+        {
+          "number": 3,
+          "dimension": "execution",
+          "dimension_label": "Execution & Trade-offs",
+          "title": "What to Build First When the Hot Home Badge Is Failing",
+          "subtitle": "The explicit call most candidates avoid \u2014 what to instrument first and what to cut.",
+          "slug": "redfin-hot-home-what-to-build-first",
+          "duration_seconds": 0,
+          "duration_human": "~9 min",
+          "audio_url": "",
+          "interactive_url": "/resources/pm-prep/q001/ep3",
+          "youtube_description": "You've diagnosed the problem. Now what do you actually build? This episode walks through the prioritisation decision for a prediction feature \u2014 what to instrument first, what to cut, and the framework that works across any recommendation or prediction product.",
+          "tags": [
+            "redfin",
+            "product execution",
+            "prioritisation",
+            "PM interview",
+            "senior PM"
+          ]
+        }
+      ]
+    }
+  ]
+}

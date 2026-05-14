@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measuring Redfin's Hot Home: Start Here, Not There</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; background: #080c14; color: #f0f0f0; line-height: 1.7; padding: 0 0 80px; }
+.container { max-width: 760px; margin: 0 auto; padding: 48px 24px; }
+.ep-tag { font-size: 10px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #e94560; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.ep-tag::after { content: ''; height: 1px; flex: 1; max-width: 120px; background: linear-gradient(90deg, #e94560, transparent); }
+.ep-title { font-size: 30px; font-weight: 800; color: #f8fafc; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+.ep-subtitle { font-size: 16px; color: #64748b; margin-bottom: 20px; }
+.ep-question { font-size: 15px; color: #475569; font-style: italic; border-left: 3px solid #1e293b; padding-left: 16px; margin-bottom: 28px; }
+.audio-wrap { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 16px 20px; margin-bottom: 40px; }
+.audio-label { font-size: 11px; color: #475569; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+audio { width: 100%; accent-color: #e94560; }
+.progress-dots { display: flex; gap: 8px; margin-bottom: 40px; align-items: center; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #1e293b; transition: background 0.3s; }
+.dot.active { background: #e94560; }
+.dot.done { background: #334155; }
+.progress-label { font-size: 11px; color: #334155; margin-left: 8px; letter-spacing: 0.06em; }
+.section { margin: 32px 0; }
+.section-text { font-size: 17px; color: #94a3b8; line-height: 1.85; margin-bottom: 24px; }
+.section-text .hi { color: #f0f0f0; font-weight: 600; }
+.section-text .accent { color: #e94560; font-weight: 700; }
+.dp { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 28px; margin: 36px 0; }
+.dp-prompt { font-size: 17px; font-weight: 600; color: #f0f0f0; margin-bottom: 20px; line-height: 1.5; }
+.dp-options { display: flex; flex-direction: column; gap: 10px; }
+.dp-option { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 16px 20px; cursor: pointer; transition: all 0.2s ease; font-size: 15px; color: #cbd5e1; text-align: left; display: flex; align-items: center; gap: 14px; width: 100%; }
+.dp-option:hover:not([disabled]) { border-color: #e94560; background: #1a0f18; color: #f0f0f0; }
+.dp-option.selected { border-color: #e94560; background: #1a0f18; color: #f0f0f0; }
+.dp-option.dimmed { opacity: 0.35; cursor: default; }
+.opt-marker { width: 28px; height: 28px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; color: #94a3b8; transition: all 0.2s; }
+.dp-option.selected .opt-marker { background: #e94560; color: #fff; }
+.dp-feedback { display: none; margin-top: 20px; border-top: 1px solid #1e293b; padding-top: 20px; }
+.dp-feedback.visible { display: block; }
+.fb-short { font-size: 14px; font-weight: 600; color: #e94560; margin-bottom: 10px; }
+.fb-reveal { font-size: 15px; color: #94a3b8; line-height: 1.75; }
+.fb-reveal .hi { color: #f0f0f0; font-weight: 600; }
+.level-pill { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 9px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
+.level-mid { background: #1e3a5f; color: #60a5fa; }
+.level-senior { background: #1a3a1a; color: #4ade80; }
+.level-staff { background: #3a1a3a; color: #c084fc; }
+.continue-btn { display: none; margin-top: 20px; background: #e94560; color: #fff; border: none; border-radius: 8px; padding: 12px 24px; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+.continue-btn:hover { opacity: 0.85; }
+.continue-btn.visible { display: inline-block; }
+.locked { display: none; }
+.locked.unlocked { display: block; }
+.takeaways { background: #1a1800; border: 1px solid #3a3200; border-radius: 12px; padding: 24px; margin: 36px 0; }
+.takeaways-label { font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #facc15; margin-bottom: 18px; }
+.t-item { display: flex; gap: 16px; margin-bottom: 16px; }
+.t-item:last-child { margin-bottom: 0; }
+.t-num { font-size: 11px; font-weight: 900; color: #facc15; min-width: 24px; padding-top: 3px; }
+.t-text { font-size: 15px; color: #e2e8f0; line-height: 1.6; }
+.result { background: #0f172a; border: 1px solid #1e293b; border-radius: 14px; padding: 28px; margin: 40px 0; display: none; }
+.result.visible { display: block; }
+.result-label { font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #94a3b8; margin-bottom: 16px; }
+.result-level { font-size: 22px; font-weight: 700; color: #f8fafc; margin-bottom: 12px; }
+.result-message { font-size: 15px; color: #94a3b8; line-height: 1.75; }
+.result-next { margin-top: 16px; padding-top: 16px; border-top: 1px solid #1e293b; font-size: 14px; color: #64748b; }
+.result-next strong { color: #e94560; }
+.ep-nav { display: flex; gap: 12px; margin-top: 48px; flex-wrap: wrap; }
+.ep-nav a { font-size: 13px; padding: 10px 18px; border-radius: 8px; text-decoration: none; border: 1px solid #1e293b; color: #94a3b8; background: #0f172a; transition: all 0.2s; }
+.ep-nav a:hover { border-color: #e94560; color: #f0f0f0; }
+.ep-nav a.next { background: #e94560; border-color: #e94560; color: #fff; }
+.watermark { font-size: 12px; color: #1e293b; text-align: center; margin-top: 48px; letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="ep-tag">Product Thinking</div>
+  <h1 class="ep-title">Measuring Redfin's Hot Home: Start Here, Not There</h1>
+  <p class="ep-subtitle">Before you pick a metric, you need to understand what the feature actually claims — and why that changes everything.</p>
+  <p class="ep-question">"How do you measure success of the Hot Home feature in Redfin?"</p>
+
+  <div class="audio-wrap">
+    <div class="audio-label">Listen while you work through it</div>
+    <audio controls>
+      <source src="/podcast/pm-prep/audio/q001_ep1.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="progress-dots">
+    <div class="dot active" id="dot0"></div>
+    <div class="dot" id="dot1"></div>
+    <div class="dot" id="dot2"></div>
+    <div class="dot" id="dot3"></div>
+    <span class="progress-label">3 decisions · ~8 min</span>
+  </div>
+
+  <!-- Intro section -->
+  <div class="section">
+    <p class="section-text">
+      Redfin's Hot Home feature places a badge on listings predicted to sell quickly.
+      It sounds like a straightforward product metrics question — but there's a
+      <span class="hi">hidden layer</span> that most PMs miss in the first 30 seconds.
+    </p>
+    <p class="section-text">
+      The way you answer this reveals something about how you think about
+      <span class="accent">prediction features</span> vs regular product features.
+      Let's find out where your instincts take you.
+    </p>
+  </div>
+
+  <!-- DECISION POINT 1 -->
+  <div class="dp" id="dp0">
+    <div class="dp-prompt">Before defining any metrics — what's the first thing you'd want to know about the Hot Home feature?</div>
+    <div class="dp-options">
+      <button class="dp-option" onclick="choose(0,0)" data-level="mid">
+        <div class="opt-marker">A</div>
+        <span>How many users are clicking on Hot Home listings vs non-Hot Home listings</span>
+      </button>
+      <button class="dp-option" onclick="choose(0,1)" data-level="senior">
+        <div class="opt-marker">B</div>
+        <span>Whether homes labelled "Hot" are actually selling faster than unlabelled ones</span>
+      </button>
+      <button class="dp-option" onclick="choose(0,2)" data-level="staff">
+        <div class="opt-marker">C</div>
+        <span>Who decided what "Hot" means and whether that definition should be questioned</span>
+      </button>
+    </div>
+    <div class="dp-feedback" id="fb0">
+      <div class="fb-short" id="fb-short0"></div>
+      <div class="fb-reveal" id="fb-reveal0"></div>
+      <button class="continue-btn" id="cont0" onclick="unlock(1)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- Section 1 — unlocked after DP1 -->
+  <div class="locked" id="section1">
+    <div class="section">
+      <p class="section-text">
+        Hot Home makes a <span class="hi">prediction</span>: this home will sell quickly.
+        That is fundamentally different from a feature like a saved search or a price
+        estimate. A recommendation feature can succeed by making users feel good.
+        A <span class="accent">prediction feature succeeds only if the prediction is correct</span>.
+      </p>
+      <p class="section-text">
+        This distinction changes the entire measurement framework. The primary metric
+        is not engagement — it's <span class="hi">predictive accuracy</span>: the percentage
+        of homes labelled Hot that actually sold within the predicted window, versus
+        homes not labelled Hot. Without this, every other metric is measuring noise.
+      </p>
+    </div>
+
+    <!-- DECISION POINT 2 -->
+    <div class="dp" id="dp1">
+      <div class="dp-prompt">You've established that accuracy matters. Now — whose success are you measuring? The feature serves multiple stakeholders.</div>
+      <div class="dp-options">
+        <button class="dp-option" onclick="choose(1,0)" data-level="mid">
+          <div class="opt-marker">A</div>
+          <span>Buyers primarily — they're the ones acting on the badge to schedule tours faster</span>
+        </button>
+        <button class="dp-option" onclick="choose(1,1)" data-level="senior">
+          <div class="opt-marker">B</div>
+          <span>Both buyers and sellers, and their success metrics can conflict with each other</span>
+        </button>
+        <button class="dp-option" onclick="choose(1,2)" data-level="staff">
+          <div class="opt-marker">C</div>
+          <span>Redfin's transaction rate is the only metric that ultimately matters — the others are proxies</span>
+        </button>
+      </div>
+      <div class="dp-feedback" id="fb1">
+        <div class="fb-short" id="fb-short1"></div>
+        <div class="fb-reveal" id="fb-reveal1"></div>
+        <button class="continue-btn" id="cont1" onclick="unlock(2)">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="locked" id="section2">
+    <div class="section">
+      <p class="section-text">
+        The stakeholder tension is real. <span class="hi">Sellers want their home to be Hot</span>
+        — it signals desirability and can drive urgency among buyers. If Redfin widens
+        the criteria to label more homes as Hot (to please more sellers), accuracy
+        drops. Buyers who trust the badge will act on false signals, tour homes that
+        don't sell quickly, and <span class="accent">slowly lose trust in the feature</span>.
+      </p>
+      <p class="section-text">
+        So you end up with two utility metrics: buyer tour-to-offer rate on Hot Home listings
+        (did the badge help buyers act on real opportunities?), and seller satisfaction with
+        listing status (do sellers feel represented fairly?). These must be tracked
+        <span class="hi">separately</span> — a single blended metric would mask the tension.
+      </p>
+    </div>
+
+    <!-- DECISION POINT 3 -->
+    <div class="dp" id="dp2">
+      <div class="dp-prompt">You're building the measurement framework. What's the metric most likely to tell you the feature is failing — before it shows up in transaction data?</div>
+      <div class="dp-options">
+        <button class="dp-option" onclick="choose(2,0)" data-level="mid">
+          <div class="opt-marker">A</div>
+          <span>Declining click-through rate on Hot Home badges over time</span>
+        </button>
+        <button class="dp-option" onclick="choose(2,1)" data-level="senior">
+          <div class="opt-marker">B</div>
+          <span>The gap between how fast Hot Home listings sell vs non-Hot listings is narrowing</span>
+        </button>
+        <button class="dp-option" onclick="choose(2,2)" data-level="staff">
+          <div class="opt-marker">C</div>
+          <span>Repeat user behaviour — buyers who previously acted on Hot Home badges are now ignoring them</span>
+        </button>
+      </div>
+      <div class="dp-feedback" id="fb2">
+        <div class="fb-short" id="fb-short2"></div>
+        <div class="fb-reveal" id="fb-reveal2"></div>
+        <button class="continue-btn" id="cont2" onclick="unlock(3)">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final section + takeaways -->
+  <div class="locked" id="section3">
+    <div class="section">
+      <p class="section-text">
+        Trust decay is the <span class="accent">lagging failure signal</span> that looks fine
+        in weekly dashboards right up until it collapses. Buyers don't announce when they
+        stop trusting a badge — they just stop acting on it. The early signal is in
+        <span class="hi">repeat behaviour</span>: users who acted on Hot Home badges last month
+        and whether they're acting on them again this month. A declining repeat action rate,
+        before any change in aggregate CTR, is your canary.
+      </p>
+    </div>
+
+    <div class="takeaways">
+      <div class="takeaways-label">Key takeaways</div>
+      <div class="t-item">
+        <div class="t-num">01</div>
+        <div class="t-text">For prediction features, measure accuracy of the prediction before engagement with it — engagement without accuracy is a vanity metric that masks a failing product.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-num">02</div>
+        <div class="t-text">Separate stakeholder success metrics — features that serve buyers and sellers can satisfy one group at the cost of the other. Blending them hides the conflict.</div>
+      </div>
+      <div class="t-item">
+        <div class="t-num">03</div>
+        <div class="t-text">Measure trust decay through repeat behaviour, not just current engagement — trust erodes slowly then breaks suddenly, and it shows up in cohort behaviour before aggregate metrics.</div>
+      </div>
+    </div>
+
+    <div class="result" id="result">
+      <div class="result-label">How you did</div>
+      <div class="result-level" id="result-level"></div>
+      <div class="result-message" id="result-msg"></div>
+      <div class="result-next"><strong>What pushes you to the next level:</strong> <span id="result-next-text"></span></div>
+    </div>
+
+    <div class="ep-nav">
+      <a href="/resources/pm-prep/q001">← All episodes</a>
+      <a href="/resources/pm-prep/q001/ep2" class="next">Metrics & Measurement →</a>
+    </div>
+  </div>
+
+  <div class="watermark">fullstackpm.tech</div>
+</div>
+
+<script>
+const decisions = [
+  {
+    options: [
+      { level: "mid", short: "Engagement first — mid-level thinking.", reveal: "Click-through rate tells you the badge is visible and draws attention. It does not tell you whether the badge is <strong style='color:#f0f0f0'>worth clicking on</strong>. A highly-visible, unreliable badge can have great CTR right up until users stop trusting it. Engagement is a proxy for attention, not value." },
+      { level: "senior", short: "Prediction accuracy first — that's the senior move.", reveal: "Before any user behaviour metric makes sense, you need to know if the prediction is <strong style='color:#f0f0f0'>correct</strong>. Hot Home claims a home will sell quickly. Ground truth is whether it did. If the prediction accuracy is 40%, every engagement metric is measuring how effectively you're misleading buyers. Accuracy is the foundation — everything else layers on top." },
+      { level: "staff", short: "Questioning the definition — staff-level thinking.", reveal: "This is the deepest reframe. What exactly makes a home 'Hot'? Is it the algorithm's confidence score? Time-to-offer historically? Price-to-listing-date ratio? The definition of Hot <strong style='color:#f0f0f0'>determines what the feature can ever measure</strong>. If the definition is fuzzy, the feature will never have a clean success metric. Staff PMs question the premise before measuring anything." }
+    ]
+  },
+  {
+    options: [
+      { level: "mid", short: "Buyers only — reasonable but incomplete.", reveal: "Buyers are the primary actors on the Hot Home signal — they tour faster and make offers faster. But sellers <strong style='color:#f0f0f0'>also have a stake in the label</strong>. A seller whose home is not marked Hot may list with a competitor. If you ignore seller perception, you'll miss a churn signal that shows up in listing supply, not buyer behaviour." },
+      { level: "senior", short: "Both stakeholders, with acknowledged tension — this is the senior answer.", reveal: "The insight is that <strong style='color:#f0f0f0'>their success metrics can conflict</strong>. More homes labelled Hot makes sellers happier and reduces listing churn. But it dilutes the signal for buyers and reduces prediction accuracy. A senior PM makes this tension explicit and proposes measuring both sides with the understanding that optimising one can hurt the other." },
+      { level: "staff", short: "Transaction rate as the only real metric — provocative, and partially right.", reveal: "Redfin makes money on closed transactions. Ultimately, if Hot Home drives more completed deals faster, it's succeeding — regardless of which stakeholder is happier. But this is a lagging metric: you only see it after months of data. A staff PM uses transaction rate as the <strong style='color:#f0f0f0'>north star</strong> while building leading indicators (accuracy, buyer action rate, trust signals) to detect success or failure faster." }
+    ]
+  },
+  {
+    options: [
+      { level: "mid", short: "CTR decline — visible but too late.", reveal: "Declining CTR is a real signal but it's a lagging one. By the time aggregate CTR drops, trust has already been eroding for weeks. Users don't stop clicking all at once — <strong style='color:#f0f0f0'>they stop trusting gradually</strong> and the aggregate only catches it after the damage is done. You need an earlier signal." },
+      { level: "senior", short: "Narrowing accuracy gap — strong leading indicator.", reveal: "If Hot Home listings are selling only marginally faster than non-Hot listings, the prediction is losing its edge — either because the algorithm is degrading, the criteria widened, or the market changed. <strong style='color:#f0f0f0'>The gap in days-to-offer between Hot and non-Hot homes</strong> is a leading indicator of whether the feature still has informational value, and it will show up before CTR changes." },
+      { level: "staff", short: "Repeat user trust decay — the earliest and most accurate signal.", reveal: "A buyer who acted on a Hot Home badge last month and got burned (toured a home that didn't sell quickly, or lost it anyway) will not act on the next badge. <strong style='color:#f0f0f0'>Cohort-level repeat action rate</strong> — users who previously engaged with Hot Home and whether they engage again — detects trust erosion before it appears in any aggregate metric. This is the canary in the coal mine, and most candidates don't think to measure it." }
+    ]
+  }
+];
+
+const calibration = {
+  strong: "You're thinking at senior or staff level consistently. The next step is connecting these metrics into a decision framework — not just measuring, but defining what threshold in each metric should trigger a product change.",
+  developing: "You have good instincts. The reframe that unlocks senior-level thinking here: always ask what the feature claims before asking how to measure it. The claim defines the measurement.",
+  early: "You're building the right foundation. Focus on this pattern: prediction features require accuracy metrics first, engagement metrics second. Engagement without accuracy is measuring the wrong thing."
+};
+
+let scores = [];
+
+function choose(dpIndex, optIndex) {
+  const opt = decisions[dpIndex].options[optIndex];
+  scores.push(opt.level);
+  const btns = document.querySelectorAll(`#dp${dpIndex} .dp-option`);
+  btns.forEach((b, i) => { b.classList.toggle('selected', i===optIndex); b.classList.toggle('dimmed', i!==optIndex); b.disabled=true; });
+  const levelHTML = `<span class="level-pill level-${opt.level}">${opt.level}</span>`;
+  document.getElementById(`fb-short${dpIndex}`).innerHTML = opt.short + levelHTML;
+  document.getElementById(`fb-reveal${dpIndex}`).innerHTML = opt.reveal;
+  document.getElementById(`fb${dpIndex}`).classList.add('visible');
+  document.getElementById(`cont${dpIndex}`).classList.add('visible');
+  document.getElementById(`dot${dpIndex}`).classList.remove('active');
+  document.getElementById(`dot${dpIndex}`).classList.add('done');
+  if (dpIndex+1 < 3) document.getElementById(`dot${dpIndex+1}`).classList.add('active');
+}
+
+function unlock(nextIndex) {
+  document.getElementById(`cont${nextIndex-1}`).classList.remove('visible');
+  const s = document.getElementById(`section${nextIndex}`);
+  if (s) s.classList.add('unlocked');
+  if (nextIndex >= 3) {
+    document.getElementById('dot3').classList.add('done');
+    showResult();
+  }
+}
+
+function showResult() {
+  const seniorCount = scores.filter(s => s==='senior'||s==='staff').length;
+  const r = seniorCount / scores.length;
+  let level, msg;
+  if (r >= 0.67) { level = "Senior-level thinking"; msg = calibration.strong; }
+  else if (r >= 0.34) { level = "Developing senior thinking"; msg = calibration.developing; }
+  else { level = "Building the foundation"; msg = calibration.early; }
+  document.getElementById('result-level').textContent = level;
+  document.getElementById('result-msg').textContent = msg;
+  document.getElementById('result-next-text').textContent = "In the Metrics episode, we go deeper on how to structure the full measurement framework — accuracy, utility, and trust — and which to instrument first.";
+  document.getElementById('result').classList.add('visible');
+}
+
+// Init
+document.getElementById('section1') && null; // sections start locked
+</script>
+</body>
+</html>

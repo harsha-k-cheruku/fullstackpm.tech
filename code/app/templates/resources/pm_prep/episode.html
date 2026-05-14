@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="max-w-3xl">
+    <p class="text-small mb-8" style="color:var(--color-text-secondary);">
+      <a href="/resources" style="color:var(--color-text-secondary);">Resources</a>
+      <span class="mx-2">·</span>
+      <a href="/resources/pm-prep" style="color:var(--color-text-secondary);">PM Prep</a>
+      <span class="mx-2">·</span>
+      <a href="/resources/pm-prep/{{ question.id }}"
+         style="color:var(--color-text-secondary);">{{ question.question[:45] }}…</a>
+    </p>
+
+    <div class="mb-8">
+      <span class="text-xs font-mono mb-2 block" style="color:var(--color-accent);">
+        {{ episode.dimension_label }}
+      </span>
+      <h1 class="text-h1 mb-3" style="color:var(--color-text-primary);">{{ episode.title }}</h1>
+      {% if episode.get('subtitle') %}
+      <p class="text-body-lg" style="color:var(--color-text-secondary);">{{ episode.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Interactive experience (primary content) -->
+    <div class="rounded-xl border mb-8 overflow-hidden"
+         style="border-color:var(--color-border);">
+      <div class="px-4 py-2 flex items-center justify-between"
+           style="background:var(--color-bg-tertiary);">
+        <span class="text-xs font-mono" style="color:var(--color-text-secondary);">
+          Make choices · Get calibrated feedback
+        </span>
+        {% if episode.get('duration_human') %}
+        <span class="text-xs" style="color:var(--color-text-secondary);">
+          ~{{ episode.duration_human }}
+        </span>
+        {% endif %}
+      </div>
+      <iframe
+        src="/static/podcast/pm-prep/interactive/{{ episode.question_id }}_ep{{ episode.number }}.html"
+        style="width:100%;height:860px;border:0;background:#080c14;"
+        loading="lazy"
+        title="{{ episode.title }}">
+      </iframe>
+    </div>
+
+    <!-- Episode nav -->
+    <div class="flex gap-4 mb-8">
+      {% if prev_ep %}
+      <a href="/resources/pm-prep/{{ question.id }}/ep{{ prev_ep.number }}"
+         class="flex-1 rounded-lg border p-4 block"
+         style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+        <p class="text-xs mb-1" style="color:var(--color-text-secondary);">← {{ prev_ep.dimension_label }}</p>
+        <p class="text-sm font-medium" style="color:var(--color-text-primary);">{{ prev_ep.title[:50] }}…</p>
+      </a>
+      {% else %}<div class="flex-1"></div>{% endif %}
+      {% if next_ep %}
+      <a href="/resources/pm-prep/{{ question.id }}/ep{{ next_ep.number }}"
+         class="flex-1 rounded-lg border p-4 block text-right"
+         style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+        <p class="text-xs mb-1" style="color:var(--color-text-secondary);">{{ next_ep.dimension_label }} →</p>
+        <p class="text-sm font-medium" style="color:var(--color-text-primary);">{{ next_ep.title[:50] }}…</p>
+      </a>
+      {% else %}<div class="flex-1"></div>{% endif %}
+    </div>
+
+    <a href="/resources/pm-prep/{{ question.id }}"
+       class="text-sm" style="color:var(--color-accent);">
+      ← All episodes for this question
+    </a>
+  </div>
+</section>
+{% endblock %}

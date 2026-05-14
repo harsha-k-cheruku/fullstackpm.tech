@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="max-w-4xl">
+    <p class="text-small mb-8" style="color:var(--color-text-secondary);">
+      <a href="/resources" style="color:var(--color-text-secondary);">Resources</a>
+      <span class="mx-2">·</span>
+      <a href="/resources/pm-prep" style="color:var(--color-text-secondary);">PM Prep</a>
+      <span class="mx-2">·</span>
+      {{ (question.category or '') | replace('_',' ') | title }}
+    </p>
+
+    <div class="mb-10">
+      <div class="flex gap-2 mb-4">
+        <span class="text-xs rounded px-2 py-0.5 font-mono"
+              style="background:var(--color-bg-tertiary);color:var(--color-text-secondary);">
+          {{ (question.category or '') | replace('_',' ') | title }}
+        </span>
+        <span class="text-xs rounded px-2 py-0.5"
+              style="background:var(--color-bg-tertiary);color:var(--color-text-secondary);">
+          {{ (question.difficulty or 'senior') | title }}
+        </span>
+      </div>
+      <h1 class="text-h1 mb-4" style="color:var(--color-text-primary);">
+        {{ question.question }}
+      </h1>
+    </div>
+
+    {% set s = question.get('saraswati', {}) %}
+    {% if s %}
+    <details class="mb-8 rounded-xl border p-6"
+             style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+      <summary class="cursor-pointer text-sm font-semibold"
+               style="color:var(--color-accent);">What this question is really testing ↓</summary>
+      <div class="mt-4 space-y-3">
+        {% if s.get('real_test') %}
+        <p class="text-sm" style="color:var(--color-text-secondary);line-height:1.7;">
+          <strong style="color:var(--color-text-primary);">The real test:</strong> {{ s.real_test }}
+        </p>
+        {% endif %}
+        {% if s.get('senior_distinction') %}
+        <p class="text-sm" style="color:var(--color-text-secondary);line-height:1.7;">
+          <strong style="color:var(--color-text-primary);">Senior distinction:</strong> {{ s.senior_distinction }}
+        </p>
+        {% endif %}
+      </div>
+    </details>
+    {% endif %}
+
+    <div class="flex flex-col gap-4 mb-10">
+      {% for ep in question.get('episodes', []) %}
+      <div class="rounded-xl border p-6"
+           style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <span class="text-xs font-mono mb-1 block" style="color:var(--color-accent);">
+              {{ ep.dimension_label }}
+            </span>
+            <h3 class="font-semibold" style="color:var(--color-text-primary);font-size:1.0rem;line-height:1.4;">
+              {{ ep.title }}
+            </h3>
+            {% if ep.get('subtitle') %}
+            <p class="text-sm mt-1" style="color:var(--color-text-secondary);">{{ ep.subtitle }}</p>
+            {% endif %}
+          </div>
+          {% if ep.get('duration_human') %}
+          <span class="text-xs flex-shrink-0 mt-1" style="color:var(--color-text-secondary);">
+            {{ ep.duration_human }}
+          </span>
+          {% endif %}
+        </div>
+
+        {% if ep.get('audio_url') %}
+        <audio controls class="w-full mb-3" style="accent-color:var(--color-accent);">
+          <source src="{{ ep.audio_url }}" type="audio/mpeg">
+        </audio>
+        {% endif %}
+
+        <a href="/resources/pm-prep/{{ question.id }}/ep{{ ep.number }}"
+           class="inline-block text-xs rounded px-3 py-1.5 transition-colors"
+           style="background:var(--color-accent);color:#fff;">
+          Work through it interactively →
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if s.get('takeaways') %}
+    <div class="rounded-xl border p-6 mb-10"
+         style="background:#1a1800;border-color:#3a3200;">
+      <h3 class="text-sm font-semibold mb-4" style="color:#facc15;">Key Takeaways</h3>
+      <div class="space-y-3">
+        {% for t in s.takeaways %}
+        <div class="flex gap-3">
+          <span class="text-xs font-bold flex-shrink-0 mt-0.5" style="color:#facc15;">0{{ loop.index }}</span>
+          <p class="text-sm" style="color:#aaa;line-height:1.65;">{{ t }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="flex justify-between text-sm">
+      {% if next_question %}
+      <a href="/resources/pm-prep/{{ next_question.id }}" style="color:var(--color-accent);">← Previous</a>
+      {% else %}<span></span>{% endif %}
+      {% if prev_question %}
+      <a href="/resources/pm-prep/{{ prev_question.id }}" style="color:var(--color-accent);">Next →</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

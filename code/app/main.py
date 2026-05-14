@@ -11,7 +11,7 @@ from app.config import settings
 from app.database import init_db
 from app.models.like import Like  # noqa: F401 — ensures table is created by init_db
 from app.models.episode import Episode  # noqa: F401 — ensures table is created by init_db
-from app.routers import auth, blog, comments, daily_brief, interview_coach, likes, marketplace, newsletter, pages, pm_multiverse, podcast, projects, resources, sde_prep, seo
+from app.routers import auth, blog, comments, daily_brief, interview_coach, likes, marketplace, newsletter, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
 from app.services.content import ContentService
 from app.services.reading_service import ReadingService
 
@@ -53,6 +53,7 @@ app.include_router(marketplace.router)
 app.include_router(resources.router)
 app.include_router(daily_brief.router)
 app.include_router(sde_prep.router)
+app.include_router(pm_prep.router)
 app.include_router(auth.router)
 app.include_router(seo.router)
 
