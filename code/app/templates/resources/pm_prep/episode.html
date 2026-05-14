@@ -281,20 +281,71 @@
     </div>
     {% endif %}
 
-    <!-- Takeaways -->
+    <!-- Playbook — rich takeaway section -->
+    {% set pb = ix.get('playbook', {}) if ix else {} %}
     {% set s = question.get('saraswati', {}) %}
-    {% if s.get('takeaways') %}
-    <div class="rounded-xl border p-6 mb-10"
-         style="background:#1a1800;border-color:#3a3200;">
-      <h3 class="text-sm font-semibold mb-4" style="color:#facc15;">Key Takeaways</h3>
-      <div class="flex flex-col gap-3">
-        {% for t in s.takeaways %}
-        <div class="flex gap-3">
-          <span class="text-xs font-bold flex-shrink-0 mt-0.5" style="color:#facc15;">0{{ loop.index }}</span>
-          <p class="text-sm" style="color:#aaa;line-height:1.7;">{{ t }}</p>
-        </div>
-        {% endfor %}
+    {% if pb or s.get('takeaways') %}
+    <div class="mb-10 mt-4">
+
+      <p class="text-xs font-mono mb-6" style="color:var(--color-text-secondary);letter-spacing:0.15em;">
+        THE PLAYBOOK
+      </p>
+
+      <!-- Recap -->
+      {% if pb.get('recap') %}
+      <div class="rounded-xl border p-5 mb-4"
+           style="background:var(--color-bg-secondary);border-color:var(--color-border);border-left:3px solid var(--color-accent);">
+        <p class="text-xs font-mono mb-2" style="color:var(--color-accent);">WHAT THIS QUESTION IS REALLY ASKING</p>
+        <p class="text-body" style="color:var(--color-text-primary);line-height:1.7;">{{ pb.recap }}</p>
       </div>
+      {% endif %}
+
+      <!-- How to think -->
+      {% if pb.get('how_to_think') %}
+      <div class="rounded-xl border p-5 mb-4"
+           style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+        <p class="text-xs font-mono mb-2" style="color:var(--color-text-secondary);">HOW TO THINK ABOUT IT</p>
+        <p class="text-body" style="color:var(--color-text-secondary);line-height:1.8;">{{ pb.how_to_think }}</p>
+      </div>
+      {% endif %}
+
+      <!-- Sticky analogy -->
+      {% if pb.get('sticky_analogy') %}
+      <div class="rounded-xl border p-5 mb-4"
+           style="background:#1a1800;border-color:#3a3200;">
+        <p class="text-xs font-mono mb-2" style="color:#facc15;">THE ANALOGY</p>
+        <p class="text-body font-medium" style="color:#e2e8f0;line-height:1.7;font-style:italic;">
+          "{{ pb.sticky_analogy }}"
+        </p>
+      </div>
+      {% endif %}
+
+      <!-- Hook -->
+      {% if pb.get('hook') %}
+      <div class="rounded-xl border p-5 mb-4"
+           style="background:var(--color-bg-secondary);border-color:var(--color-border);">
+        <p class="text-xs font-mono mb-2" style="color:var(--color-text-secondary);">EXPLORE FURTHER</p>
+        <p class="text-body" style="color:var(--color-text-secondary);line-height:1.8;">{{ pb.hook }}</p>
+        <a href="/resources/pm-prep" class="inline-block mt-3 text-sm font-semibold"
+           style="color:var(--color-accent);">See more questions →</a>
+      </div>
+      {% endif %}
+
+      <!-- Fallback: original 3 takeaways if no playbook -->
+      {% if not pb and s.get('takeaways') %}
+      <div class="rounded-xl border p-6" style="background:#1a1800;border-color:#3a3200;">
+        <p class="text-xs font-mono mb-4" style="color:#facc15;">KEY TAKEAWAYS</p>
+        <div class="flex flex-col gap-3">
+          {% for t in s.takeaways %}
+          <div class="flex gap-3">
+            <span class="text-xs font-bold flex-shrink-0 mt-0.5" style="color:#facc15;">0{{ loop.index }}</span>
+            <p class="text-sm" style="color:#aaa;line-height:1.7;">{{ t }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
     </div>
     {% endif %}
 

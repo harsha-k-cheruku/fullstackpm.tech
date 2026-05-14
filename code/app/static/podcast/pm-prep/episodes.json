@@ -113,6 +113,12 @@
               "strong": "You're thinking at senior or staff level consistently. The next step is connecting these metrics into a decision framework \u2014 not just measuring, but defining what threshold in each metric should trigger a product change.",
               "developing": "Good instincts. The reframe that unlocks senior-level thinking: always ask what the feature claims before asking how to measure it. The claim defines the measurement.",
               "early": "You're building the right foundation. Focus on this pattern: prediction features require accuracy metrics first, engagement metrics second. Engagement without accuracy measures the wrong thing."
+            },
+            "playbook": {
+              "recap": "This question is really asking whether you know the difference between measuring a feature and validating a claim \u2014 Hot Home makes a prediction, and most PMs skip straight to engagement metrics without checking if the prediction is any good.",
+              "how_to_think": "When you see any prediction or recommendation feature, resist the pull toward engagement metrics. Ask first: what is the feature claiming, and is that claim correct? Accuracy is the foundation \u2014 every other metric is noise until you know the prediction works. Then ask separately for each stakeholder whether accuracy is actually creating value for them.",
+              "sticky_analogy": "Measuring engagement on a prediction feature is like rating a weather app by how often people open it \u2014 not by whether the forecasts were right.",
+              "hook": "Once you can measure a prediction feature well, the harder version is: what do you do when accuracy is good but engagement is still low? That's the trust problem \u2014 and it shows up in LinkedIn's connection suggestions, Spotify's Discover Weekly, and anywhere a recommendation engine has to earn belief before it can create behaviour."
             }
           }
         },
@@ -134,7 +140,69 @@
             "north star metric",
             "PM interview",
             "senior PM"
-          ]
+          ],
+          "interactive": {
+            "intro": "You've established that accuracy matters. Now the question shifts to what success looks like for each stakeholder \u2014 and why their definitions can pull in opposite directions.",
+            "decision_points": [
+              {
+                "prompt": "You're designing the measurement framework. What's your north star metric for Hot Home?",
+                "options": [
+                  {
+                    "label": "Click-through rate on Hot Home badges \u2014 shows the feature is driving buyer action",
+                    "level": "mid",
+                    "feedback_short": "A proxy metric \u2014 engagement without validation.",
+                    "feedback_reveal": "Click-through rate measures attention, not value. A buyer who clicks a Hot Home badge out of FOMO and then loses the house to another buyer hasn't been served well. This metric optimises for the feature looking busy, not for it being useful."
+                  },
+                  {
+                    "label": "Days-to-offer gap between Hot Home and non-Hot Home listings",
+                    "level": "senior",
+                    "feedback_short": "Strong north star \u2014 this measures the prediction's actual value.",
+                    "feedback_reveal": "If Hot Home listings close meaningfully faster than comparable non-Hot listings, the feature is doing its job: helping buyers act on real urgency signals. Building on the accuracy-first framing from the Product Thinking episode, this metric directly operationalises prediction validity \u2014 it's accuracy measured through outcomes, not through a separate test."
+                  },
+                  {
+                    "label": "Completed transactions attributable to Hot Home-influenced behaviour",
+                    "level": "staff",
+                    "feedback_short": "The right north star, but too lagging for fast iteration.",
+                    "feedback_reveal": "Transaction rate is ultimately what Redfin cares about. But it lags by months \u2014 you can't course-correct a feature in weekly sprints if your success metric takes a quarter to move. Staff PMs use this as the ultimate arbiter while building faster-moving leading indicators like the days-to-offer gap to make the feedback loop usable."
+                  }
+                ]
+              },
+              {
+                "prompt": "Your north star drops by 15% week over week. What's your first diagnostic move?",
+                "options": [
+                  {
+                    "label": "Check if total Hot Home badge volume changed \u2014 maybe fewer listings are being labelled",
+                    "level": "mid",
+                    "feedback_short": "Volume first is a reasonable instinct, but it skips the most important question.",
+                    "feedback_reveal": "Volume changes explain the how, not the why. If fewer listings are labelled Hot, you still need to know whether that's a labelling threshold change, a market slowdown, or an algorithm shift. Building on the north star thinking from the last question \u2014 a drop in the days-to-offer gap needs to be traced to whether the prediction model drifted, not just whether fewer badges were shown."
+                  },
+                  {
+                    "label": "Separate the drop by buyer cohort \u2014 new users vs returning users behaving differently",
+                    "level": "senior",
+                    "feedback_short": "Cohort separation is the senior diagnostic move.",
+                    "feedback_reveal": "New users don't have a trust baseline for Hot Home \u2014 their behaviour is driven by the badge's face value. Returning users who've acted on Hot Home before have a learned response based on whether it worked for them. If returning users are driving the drop, that's a trust erosion signal. If new users are driving it, that's a discoverability or awareness problem. Same aggregate number, completely different root causes."
+                  },
+                  {
+                    "label": "Check if the underlying prediction model accuracy has changed in the same period",
+                    "level": "staff",
+                    "feedback_short": "Root cause first \u2014 this is the staff-level diagnostic instinct.",
+                    "feedback_reveal": "If prediction accuracy dropped before the north star dropped, you have a model drift problem and everything downstream is a symptom. Checking accuracy first means you're diagnosing the mechanism, not the symptom. This is the same discipline from the Product Thinking episode applied to diagnosis: the feature makes a claim, and the claim's validity is always the first thing to verify."
+                  }
+                ]
+              }
+            ],
+            "calibration": {
+              "strong": "You're thinking at senior or staff level \u2014 you're measuring outcomes, not activity, and diagnosing at the mechanism level. In the Execution episode, we'll turn this into a prioritisation framework for what to actually build first.",
+              "developing": "Good instincts on the measurement side. The shift that unlocks the next level: always trace metrics back to the claim the feature is making. Does your metric actually test whether the claim is correct?",
+              "early": "You're building the foundation. The pattern to internalise: engagement metrics measure activity, not value. For prediction features, value means the prediction is accurate and users act on it correctly."
+            },
+            "playbook": {
+              "recap": "This question is really asking whether you can design a measurement system that tests the feature's core claim \u2014 not just tracks how much it's used.",
+              "how_to_think": "Build your metric stack in layers: accuracy at the base (is the prediction correct?), utility in the middle (does accuracy create value for each stakeholder?), and trust at the top (does repeated accuracy build lasting behaviour change?). Diagnostic questions flow down the stack \u2014 when a top-level metric drops, start by checking the layer below it.",
+              "sticky_analogy": "A good metrics framework for a prediction feature is like a diagnostic tree for a car engine warning light \u2014 you don't fix the light, you trace the signal to its source.",
+              "hook": "Once you can measure a prediction feature well, the harder version is designing the feedback loop so the model improves over time \u2014 how does user behaviour become training signal without creating a filter bubble?"
+            }
+          }
         },
         {
           "number": 3,
@@ -154,7 +222,69 @@
             "prioritisation",
             "PM interview",
             "senior PM"
-          ]
+          ],
+          "interactive": {
+            "intro": "You've defined success and built the measurement framework. Now the hardest question: given real constraints, what do you actually build first \u2014 and what do you explicitly cut?",
+            "decision_points": [
+              {
+                "prompt": "You have 2 engineers and one quarter. The prediction accuracy is reasonable but trust metrics show buyers are losing confidence over time. What do you build first?",
+                "options": [
+                  {
+                    "label": "Improve the Hot Home algorithm to increase prediction accuracy",
+                    "level": "mid",
+                    "feedback_short": "Improving accuracy is valuable \u2014 but it may not solve the trust problem.",
+                    "feedback_reveal": "Better accuracy helps if inaccuracy is the root cause of eroding trust. But if buyers have lost confidence because they can't tell HOW confident the model is \u2014 not just whether it's right \u2014 then a more accurate opaque model won't rebuild trust. You're solving the right problem only if you've correctly diagnosed why trust is dropping."
+                  },
+                  {
+                    "label": "Add a confidence signal to the badge \u2014 show buyers how strong the prediction is",
+                    "level": "senior",
+                    "feedback_short": "This addresses trust directly, not just accuracy.",
+                    "feedback_reveal": "Building on the trust layer from the metrics work \u2014 buyers don't just need accurate predictions, they need enough information to calibrate their own confidence. A strong/moderate/weak signal (or a predicted days-to-offer range) turns a binary badge into a navigational tool. This is a product change, not a model change, and it can be shipped with 2 engineers in a quarter. It also creates better training signal because buyers who see confidence levels self-select, improving the feedback loop."
+                  },
+                  {
+                    "label": "Build seller-facing transparency \u2014 show sellers why their home was or wasn't labelled Hot",
+                    "level": "staff",
+                    "feedback_short": "Addresses the supply-side trust problem most candidates miss.",
+                    "feedback_reveal": "The metrics framework surfaced a seller tension: homes not labelled Hot may churn to competitors. Seller transparency \u2014 'your home wasn't labelled Hot because days-on-market in your zip code averages 45 days, and Hot requires under 14' \u2014 reduces the perception that the label is arbitrary or biased. This is lower priority than the buyer confidence signal unless seller churn is measurably accelerating, but a staff PM would name the cut explicitly: 'I'm deferring seller transparency until we confirm buyer trust is the dominant problem.'"
+                  }
+                ]
+              },
+              {
+                "prompt": "What's the one thing you would explicitly NOT build this quarter, and why?",
+                "options": [
+                  {
+                    "label": "A 'Watch List' feature letting buyers save Hot Home alerts for later review",
+                    "level": "mid",
+                    "feedback_short": "Reasonable cut \u2014 but the reasoning matters more than the answer.",
+                    "feedback_reveal": "Cutting a Watch List is defensible if the current problem is trust erosion, not feature gap. But if you're cutting it because 'it's not the priority,' you haven't really defended the cut \u2014 you've just deferred the decision. The senior version of this answer names the specific opportunity cost: 'A Watch List optimises for engagement, and we've established that engagement without accuracy is measuring the wrong thing.'"
+                  },
+                  {
+                    "label": "A/B testing framework for comparing badge variants",
+                    "level": "senior",
+                    "feedback_short": "Correct cut, and the reasoning is structurally sound.",
+                    "feedback_reveal": "A/B testing infrastructure is generically valuable but it's a platform investment, not a trust fix. The constraint here is two engineers and one quarter \u2014 that's not enough to build reliable experimentation infrastructure AND ship the confidence signal. Name the cut clearly: 'I'm deferring A/B infrastructure because we need a trust signal faster than experimentation overhead will allow. We'll validate the confidence signal with a holdout and commit to building test infrastructure next quarter.'"
+                  },
+                  {
+                    "label": "Expanding Hot Home to more listing categories (rentals, new construction)",
+                    "level": "staff",
+                    "feedback_short": "Strong cut \u2014 you're protecting the core before expanding the surface area.",
+                    "feedback_reveal": "Expanding scope when the existing feature has a trust problem is how products accumulate surface area without depth. A staff PM makes this cut and defends it with a principle: 'We shouldn't expand the blast radius of a feature whose prediction validity we can't yet fully explain to users. Fix the trust loop on the existing surface first, then expand.' This is the staff-level pattern \u2014 knowing when NOT to grow."
+                  }
+                ]
+              }
+            ],
+            "calibration": {
+              "strong": "You're making explicit cuts with principled reasoning \u2014 not just prioritising, but defending what gets deferred and why. That's the senior-to-staff transition in execution thinking.",
+              "developing": "Your instincts on what to build are sound. The upgrade: make the cut explicit every time. Senior PMs don't just say what they're building \u2014 they name what they're NOT building and defend the decision.",
+              "early": "Good foundation. The pattern to build: every prioritisation decision has two parts \u2014 what you're doing, and what you're deliberately not doing. The second part is where judgment lives."
+            },
+            "playbook": {
+              "recap": "This question is really asking whether you can make a defensible prioritisation call under real constraints \u2014 and whether you have the clarity to name what you're cutting and why.",
+              "how_to_think": "When you face an execution question, start from the diagnosis you've already done. What does the measurement framework tell you the root cause is? Build toward that root cause, not toward the most visible symptom. Then name one explicit cut \u2014 not because it's unimportant, but because the constraint forces a choice and pretending otherwise isn't a strategy.",
+              "sticky_analogy": "Prioritisation without explicit cuts is like packing for a trip by listing everything you want to bring \u2014 the discipline is in what you leave behind, not what you include.",
+              "hook": "Once you can make defensible cuts in a single-feature context, the harder version is cross-team prioritisation \u2014 when the cut you're making affects another team's roadmap. How do you make that call without authority?"
+            }
+          }
         }
       ]
     }
