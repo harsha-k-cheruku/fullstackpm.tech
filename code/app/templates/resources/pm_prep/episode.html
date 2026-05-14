@@ -85,7 +85,7 @@
           <div class="flex flex-col gap-3" id="opts-{{ dp_idx }}">
             {% for opt in dp.options %}
             <button
-              onclick="choose({{ dp_idx }}, {{ loop.index0 }}, {{ dp.options|tojson|e }})"
+              onclick="choose({{ dp_idx }}, {{ loop.index0 }})"
               id="opt-{{ dp_idx }}-{{ loop.index0 }}"
               class="text-left rounded-lg border px-4 py-3 transition-all w-full flex items-start gap-3"
               style="background:var(--color-bg-tertiary);border-color:var(--color-border);color:var(--color-text-secondary);cursor:pointer;">
@@ -140,78 +140,69 @@
     </div>
 
     <script>
-    const calibration = {{ ix.get('calibration', {})|tojson }};
-    const totalDPs = {{ ix.get('decision_points', [])|length }};
-    let scores = [];
+    // All decision data stored here — avoids HTML-escaping issues with inline onclick
+    const DECISIONS = {{ ix.get('decision_points', [])|tojson }};
+    const CALIBRATION = {{ ix.get('calibration', {})|tojson }};
+    const scores = [];
 
-    function choose(dpIdx, optIdx, options) {
-      const opt = options[optIdx];
+    function choose(dpIdx, optIdx) {
+      const opt = DECISIONS[dpIdx].options[optIdx];
       scores[dpIdx] = opt.level;
 
-      // Style options — selected vs dimmed
-      const btns = document.querySelectorAll(`#opts-${dpIdx} button`);
-      btns.forEach((b, i) => {
+      // Style buttons
+      document.querySelectorAll('#opts-' + dpIdx + ' button').forEach(function(b, i) {
         b.disabled = true;
         if (i === optIdx) {
           b.style.borderColor = 'var(--color-accent)';
           b.style.background = 'var(--color-bg-secondary)';
           b.style.color = 'var(--color-text-primary)';
-          const marker = document.getElementById(`marker-${dpIdx}-${i}`);
-          marker.style.background = 'var(--color-accent)';
-          marker.style.color = '#fff';
+          var marker = document.getElementById('marker-' + dpIdx + '-' + i);
+          if (marker) { marker.style.background = 'var(--color-accent)'; marker.style.color = '#fff'; }
         } else {
-          b.style.opacity = '0.35';
+          b.style.opacity = '0.3';
           b.style.cursor = 'default';
         }
       });
 
-      // Level pill
-      const levelColors = {
-        mid:    { bg: '#1e3a5f', text: '#60a5fa' },
-        senior: { bg: '#1a3a1a', text: '#4ade80' },
-        staff:  { bg: '#3a1a3a', text: '#c084fc' }
-      };
-      const lc = levelColors[opt.level] || levelColors.mid;
-      const pill = `<span style="display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:${lc.bg};color:${lc.text};margin-left:8px;">${opt.level}</span>`;
+      // Level pill colours
+      var lc = { mid: ['#1e3a5f','#60a5fa'], senior: ['#1a3a1a','#4ade80'], staff: ['#3a1a3a','#c084fc'] }[opt.level] || ['#1e3a5f','#60a5fa'];
+      var pill = '<span style="display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-left:8px;background:' + lc[0] + ';color:' + lc[1] + ';">' + opt.level + '</span>';
 
-      document.getElementById(`fb-short-${dpIdx}`).innerHTML = opt.feedback_short + pill;
-      document.getElementById(`fb-reveal-${dpIdx}`).textContent = opt.feedback_reveal;
-      document.getElementById(`fb-${dpIdx}`).style.display = 'block';
+      document.getElementById('fb-short-' + dpIdx).innerHTML = opt.feedback_short + pill;
+      document.getElementById('fb-reveal-' + dpIdx).textContent = opt.feedback_reveal;
+      document.getElementById('fb-' + dpIdx).style.display = 'block';
 
-      // Update progress bar
-      const prog = document.getElementById(`prog-${dpIdx}`);
+      // Fill progress bar for this step
+      var prog = document.getElementById('prog-' + dpIdx);
       if (prog) prog.style.background = 'var(--color-accent)';
     }
 
     function showNext(nextIdx) {
-      const next = document.getElementById(`dp-${nextIdx}`);
-      if (next) {
-        next.style.display = 'block';
-        next.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      var el = document.getElementById('dp-' + nextIdx);
+      if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     }
 
     function showResult() {
-      const seniorCount = scores.filter(s => s === 'senior' || s === 'staff').length;
-      const ratio = scores.length > 0 ? seniorCount / scores.length : 0;
-      let level, msg, next;
+      var seniorCount = scores.filter(function(s){ return s === 'senior' || s === 'staff'; }).length;
+      var ratio = scores.length > 0 ? seniorCount / scores.length : 0;
+      var level, msg, next;
       if (ratio >= 0.67) {
         level = 'Senior-level thinking';
-        msg = calibration.strong || '';
+        msg = CALIBRATION.strong || '';
         next = 'In the Metrics episode, connect these into a full measurement framework — accuracy, utility, and trust — and define what threshold in each metric should trigger a product change.';
       } else if (ratio >= 0.34) {
         level = 'Developing senior thinking';
-        msg = calibration.developing || '';
+        msg = CALIBRATION.developing || '';
         next = 'The reframe that unlocks the next level: always ask what the feature claims before asking how to measure it. The claim defines the measurement.';
       } else {
         level = 'Building the foundation';
-        msg = calibration.early || '';
+        msg = CALIBRATION.early || '';
         next = 'Focus on this pattern: prediction features require accuracy metrics first, engagement second. Engagement without accuracy measures the wrong thing.';
       }
       document.getElementById('result-level').textContent = level;
       document.getElementById('result-msg').textContent = msg;
       document.getElementById('result-next').textContent = next;
-      const card = document.getElementById('result-card');
+      var card = document.getElementById('result-card');
       card.style.display = 'block';
       card.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
