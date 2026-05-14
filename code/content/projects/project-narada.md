@@ -14,7 +14,9 @@ solution: "✅ A 15-20 min daily audio brief published to fullstackpm.tech with 
 
 ## What
 
-Project Narada is a fully automated daily intelligence pipeline named after the divine sage-messenger of Hindu mythology. Every morning at 7 AM PT, it fetches live SPY options data, global news across 6 regions, and macro indicators — distills everything into a structured podcast script — and generates a 15-20 minute audio episode published to fullstackpm.tech and the Apple Podcasts RSS feed.
+Project Narada is a fully automated daily intelligence pipeline named after the divine sage-messenger of Hindu mythology. In the Mahabharata and Puranas, Narada travels ceaselessly between the heavens and the mortal realm — never settling, always carrying information between worlds. This pipeline does the same: running before dawn, pulling from markets, news feeds, and macro data across continents, and distilling it into something you can hear while making coffee. The name felt right the moment it came up.
+
+Every morning at 7 AM PT, it fetches live SPY options data, global news across 6 regions, and macro indicators — distills everything into a structured podcast script — and generates a 15-20 minute audio episode published to fullstackpm.tech and the Apple Podcasts RSS feed.
 
 ## Architecture
 

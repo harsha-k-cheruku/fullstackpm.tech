@@ -14,7 +14,9 @@ solution: "✅ Two automated runs daily (9 AM and 12:15 PM PT). Recommender hand
 
 ## What
 
-Project Artha (Sanskrit for wealth and purpose) is a paper-trading simulation for SPY options. It runs twice per day via launchd, fetches live market data, recommends one defined-risk options setup (or no trade), and records the decision in a structured learning journal.
+Project Artha is a paper-trading simulation for SPY options. In Vedic philosophy, Artha is one of the four Purusharthas — the fundamental aims of human life. Where Dharma is about duty and Moksha about liberation, Artha is about doing: building, earning, and creating the material foundation that makes everything else possible. It's not wealth for its own sake — it's the means. That framing fit perfectly for a project that's entirely about building financial foundation through deliberate practice, not excitement. Not trading to win. Learning to understand.
+
+It runs twice per day via launchd, fetches live market data, recommends one defined-risk options setup (or no trade), and records the decision in a structured learning journal.
 
 One contract. No real money. Goal: build options intuition through systematic simulation and deliberate journaling.
 
