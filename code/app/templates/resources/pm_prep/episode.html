@@ -65,6 +65,7 @@
       <!-- Decision points -->
       {% for dp in ix.get('decision_points', []) %}
       {% set dp_idx = loop.index0 %}
+      {% set is_last = loop.last %}
       <div id="dp-{{ dp_idx }}" class="mb-6"
            {% if dp_idx > 0 %}style="display:none;"{% endif %}>
 
@@ -100,27 +101,38 @@
           </div>
         </div>
 
-        <!-- Feedback (hidden until choice) -->
+        <!-- Feedback (hidden until choice made) -->
         <div id="fb-{{ dp_idx }}"
              class="rounded-xl border p-6 mb-4"
              style="display:none;background:var(--color-bg-secondary);border-color:var(--color-border);">
           <p class="text-sm font-semibold mb-3" style="color:var(--color-accent);"
              id="fb-short-{{ dp_idx }}"></p>
-          <p class="text-body" style="color:var(--color-text-secondary);line-height:1.8;"
+          <p class="text-body mb-5" style="color:var(--color-text-secondary);line-height:1.8;"
              id="fb-reveal-{{ dp_idx }}"></p>
-          {% if not loop.last %}
-          <button onclick="showNext({{ dp_idx + 1 }})"
-                  class="mt-4 text-sm font-semibold px-4 py-2 rounded-lg transition-all"
-                  style="background:var(--color-accent);color:#fff;border:none;cursor:pointer;">
-            Next →
-          </button>
-          {% else %}
-          <button onclick="showResult()"
-                  class="mt-4 text-sm font-semibold px-4 py-2 rounded-lg transition-all"
-                  style="background:var(--color-accent);color:#fff;border:none;cursor:pointer;">
-            See how you did →
-          </button>
-          {% endif %}
+
+          <!-- Back + Next/Result row -->
+          <div class="flex items-center gap-3 flex-wrap">
+            {% if dp_idx > 0 %}
+            <button onclick="goBack({{ dp_idx }})"
+                    class="text-sm px-4 py-2 rounded-lg transition-all"
+                    style="background:var(--color-bg-tertiary);border:1px solid var(--color-border);color:var(--color-text-secondary);cursor:pointer;">
+              ← Change answer
+            </button>
+            {% endif %}
+            {% if not is_last %}
+            <button onclick="showNext({{ dp_idx + 1 }})"
+                    class="text-sm font-semibold px-4 py-2 rounded-lg transition-all"
+                    style="background:var(--color-accent);color:#fff;border:none;cursor:pointer;">
+              Next →
+            </button>
+            {% else %}
+            <button onclick="showResult()"
+                    class="text-sm font-semibold px-4 py-2 rounded-lg transition-all"
+                    style="background:var(--color-accent);color:#fff;border:none;cursor:pointer;">
+              See how you did →
+            </button>
+            {% endif %}
+          </div>
         </div>
 
       </div>
@@ -146,16 +158,17 @@
     const scores = [];
 
     function choose(dpIdx, optIdx) {
-      const opt = DECISIONS[dpIdx].options[optIdx];
+      var opt = DECISIONS[dpIdx].options[optIdx];
       scores[dpIdx] = opt.level;
 
-      // Style buttons
+      // Style buttons — selected highlighted, others faded
       document.querySelectorAll('#opts-' + dpIdx + ' button').forEach(function(b, i) {
         b.disabled = true;
         if (i === optIdx) {
           b.style.borderColor = 'var(--color-accent)';
           b.style.background = 'var(--color-bg-secondary)';
           b.style.color = 'var(--color-text-primary)';
+          b.style.opacity = '1';
           var marker = document.getElementById('marker-' + dpIdx + '-' + i);
           if (marker) { marker.style.background = 'var(--color-accent)'; marker.style.color = '#fff'; }
         } else {
@@ -164,7 +177,7 @@
         }
       });
 
-      // Level pill colours
+      // Level pill
       var lc = { mid: ['#1e3a5f','#60a5fa'], senior: ['#1a3a1a','#4ade80'], staff: ['#3a1a3a','#c084fc'] }[opt.level] || ['#1e3a5f','#60a5fa'];
       var pill = '<span style="display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-left:8px;background:' + lc[0] + ';color:' + lc[1] + ';">' + opt.level + '</span>';
 
@@ -172,9 +185,61 @@
       document.getElementById('fb-reveal-' + dpIdx).textContent = opt.feedback_reveal;
       document.getElementById('fb-' + dpIdx).style.display = 'block';
 
-      // Fill progress bar for this step
+      // Progress bar — fill this step
       var prog = document.getElementById('prog-' + dpIdx);
       if (prog) prog.style.background = 'var(--color-accent)';
+    }
+
+    function goBack(dpIdx) {
+      // Clear this decision point's answer
+      scores[dpIdx] = undefined;
+
+      // Reset buttons to clickable
+      document.querySelectorAll('#opts-' + dpIdx + ' button').forEach(function(b, i) {
+        b.disabled = false;
+        b.style.borderColor = 'var(--color-border)';
+        b.style.background = 'var(--color-bg-tertiary)';
+        b.style.color = 'var(--color-text-secondary)';
+        b.style.opacity = '1';
+        b.style.cursor = 'pointer';
+        var marker = document.getElementById('marker-' + dpIdx + '-' + i);
+        if (marker) { marker.style.background = 'var(--color-bg-secondary)'; marker.style.color = 'var(--color-text-secondary)'; }
+      });
+
+      // Hide feedback
+      document.getElementById('fb-' + dpIdx).style.display = 'none';
+
+      // Reset progress bar for this step
+      var prog = document.getElementById('prog-' + dpIdx);
+      if (prog) prog.style.background = 'var(--color-bg-tertiary)';
+
+      // Hide any subsequent decision points that may have been unlocked
+      for (var i = dpIdx + 1; i < DECISIONS.length; i++) {
+        var next = document.getElementById('dp-' + i);
+        if (next) next.style.display = 'none';
+        scores[i] = undefined;
+        // Also reset their feedback + progress
+        var fb = document.getElementById('fb-' + i);
+        if (fb) fb.style.display = 'none';
+        var pg = document.getElementById('prog-' + i);
+        if (pg) pg.style.background = 'var(--color-bg-tertiary)';
+        document.querySelectorAll('#opts-' + i + ' button').forEach(function(b, j) {
+          b.disabled = false;
+          b.style.borderColor = 'var(--color-border)';
+          b.style.background = 'var(--color-bg-tertiary)';
+          b.style.color = 'var(--color-text-secondary)';
+          b.style.opacity = '1';
+          b.style.cursor = 'pointer';
+        });
+      }
+
+      // Hide result card if it was shown
+      var rc = document.getElementById('result-card');
+      if (rc) rc.style.display = 'none';
+
+      // Scroll back to this decision point
+      var el = document.getElementById('dp-' + dpIdx);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function showNext(nextIdx) {
