@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
   xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-  xmlns:atom="http://www.w3.org/2005/Atom">
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Daily Brief — fullstackpm.tech</title>
-    <link>https://fullstackpm.tech/podcast</link>
-    <description>Daily intelligence on SPY options, global news, and PM analytics.</description>
+    <link>https://www.fullstackpm.tech/podcast</link>
+    <description>Daily intelligence on SPY options, global news, and PM analytics. Auto-generated every morning at 7 AM.</description>
     <language>en-us</language>
+    <copyright>fullstackpm.tech</copyright>
     <itunes:author>Harsha Cheruku</itunes:author>
+    <itunes:owner>
+      <itunes:name>Harsha Cheruku</itunes:name>
+      <itunes:email>harsha.kaundinya@gmail.com</itunes:email>
+    </itunes:owner>
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
-    <atom:link href="https://fullstackpm.tech/podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <itunes:category text="Business">
+      <itunes:category text="Investing"/>
+    </itunes:category>
+    <itunes:category text="Education"/>
+    <atom:link href="https://www.fullstackpm.tech/podcast/feed.xml" rel="self" type="application/rss+xml"/>
     <itunes:image href="https://www.fullstackpm.tech/static/img/FSPM.png"/>
     <image>
       <url>https://www.fullstackpm.tech/static/img/FSPM.png</url>
@@ -18,15 +28,23 @@
       <link>https://www.fullstackpm.tech/podcast</link>
     </image>
     {% for episode in episodes %}
+    {% set ep = episode if episode is mapping else {} %}
     <item>
-      <title>{{ episode.title if episode.title is string else episode['title'] }}</title>
-      <link>https://fullstackpm.tech/podcast/{{ episode.slug if episode.slug is string else episode['slug'] }}</link>
-      <guid>https://fullstackpm.tech/podcast/{{ episode.slug if episode.slug is string else episode['slug'] }}</guid>
+      <title>{{ ep.get('title', 'Daily Brief') }}</title>
+      <link>https://www.fullstackpm.tech/podcast/{{ ep.get('slug', '') }}</link>
+      <guid isPermaLink="false">https://www.fullstackpm.tech/podcast/{{ ep.get('slug', '') }}</guid>
       <pubDate>{{ episode.date_dt | rfc2822 }}</pubDate>
-      <itunes:duration>{{ episode.duration_human if episode.duration_human is string else episode['duration_human'] }}</itunes:duration>
+      <itunes:episode>{{ ep.get('episode_number', 1) }}</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:duration>{{ ep.get('duration_human', '00:00') }}</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
-      <enclosure url="{{ episode.audio_url if episode.audio_url is string else episode['audio_url'] }}" type="audio/mpeg" length="{{ episode.audio_length_bytes if episode.audio_length_bytes is defined else (episode.get('audio_length_bytes', 0) if episode is mapping else 0) }}"/>
-      <description>{{ (episode.shownotes_html if episode.shownotes_html is string else episode.get('shownotes_html', '')) | striptags | truncate(500) }}</description>
+      <itunes:image href="https://www.fullstackpm.tech/static/img/FSPM.png"/>
+      <enclosure
+        url="https://www.fullstackpm.tech/podcast/audio/{{ ep.get('date', '') }}.mp3"
+        type="audio/mpeg"
+        length="{{ ep.get('audio_length_bytes', 0) }}"/>
+      <itunes:summary>{{ (ep.get('shownotes_html', '') | striptags | truncate(500)).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') }}</itunes:summary>
+      <description>{{ (ep.get('shownotes_html', '') | striptags | truncate(500)).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') }}</description>
     </item>
     {% endfor %}
   </channel>

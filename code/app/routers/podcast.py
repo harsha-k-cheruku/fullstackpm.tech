@@ -70,19 +70,83 @@ async def podcast_list(request: Request) -> HTMLResponse:
 @router.get("/podcast/feed.xml")
 async def podcast_feed(request: Request) -> Response:
     episodes = _load_episodes_json()
-    # Parse date strings into datetime objects for the RSS template
+    from datetime import timezone
     for ep in episodes:
         if isinstance(ep.get("date"), str):
             try:
-                ep["date_dt"] = datetime.fromisoformat(ep["date"])
+                # Use published_at if available for accurate pubDate, else fall back to date
+                pub = ep.get("published_at") or ep["date"]
+                dt = datetime.fromisoformat(pub)
+                # Always attach UTC so format_datetime emits +0000 not -0000
+                ep["date_dt"] = dt.replace(tzinfo=timezone.utc)
             except Exception:
-                ep["date_dt"] = datetime.now()
+                ep["date_dt"] = datetime.now(timezone.utc)
         else:
-            ep["date_dt"] = datetime.now()
+            ep["date_dt"] = datetime.now(timezone.utc)
+        # Ensure length is always an integer (Apple validates this)
+        ep["audio_length_bytes"] = int(ep.get("audio_length_bytes") or 0)
+        # Ensure duration_human is never None
+        if not ep.get("duration_human"):
+            secs = ep.get("duration_seconds") or 0
+            ep["duration_human"] = f"{int(secs)//60}:{int(secs)%60:02d}"
     xml = templates.get_template("podcast/feed.xml").render(
         _ctx(request, episodes=episodes, title="Daily Brief — fullstackpm.tech", current_page="/podcast")
     )
-    return Response(content=xml, media_type="application/rss+xml")
+    return Response(
+        content=xml,
+        media_type="application/rss+xml",
+        headers={"Cache-Control": "no-cache"},
+    )
+
+
+@router.get("/podcast/audio/{filename}")
+async def stream_audio(filename: str, request: Request) -> Response:
+    """
+    Serve podcast audio with explicit range-request support.
+    Apple Podcasts streams via HTTP byte-range — without this it shows
+    episodes as 'not playable' even though browser <audio> works fine.
+    """
+    import re as _re
+    audio_path = AUDIO_DIR / filename
+    if not audio_path.exists() or not filename.endswith(".mp3"):
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Audio file not found")
+
+    file_size = audio_path.stat().st_size
+    range_header = request.headers.get("Range")
+
+    if range_header:
+        match = _re.match(r"bytes=(\d+)-(\d*)", range_header)
+        if match:
+            start = int(match.group(1))
+            end = int(match.group(2)) if match.group(2) else file_size - 1
+            end = min(end, file_size - 1)
+            chunk_size = end - start + 1
+            with open(audio_path, "rb") as f:
+                f.seek(start)
+                data = f.read(chunk_size)
+            return Response(
+                content=data,
+                status_code=206,
+                media_type="audio/mpeg",
+                headers={
+                    "Content-Range": f"bytes {start}-{end}/{file_size}",
+                    "Accept-Ranges": "bytes",
+                    "Content-Length": str(chunk_size),
+                    "Cache-Control": "public, max-age=86400",
+                },
+            )
+
+    # Full file request
+    return Response(
+        content=audio_path.read_bytes(),
+        media_type="audio/mpeg",
+        headers={
+            "Accept-Ranges": "bytes",
+            "Content-Length": str(file_size),
+            "Cache-Control": "public, max-age=86400",
+        },
+    )
 
 
 @router.get("/podcast/{slug}", response_class=HTMLResponse)
