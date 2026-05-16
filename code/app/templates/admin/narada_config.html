@@ -4,11 +4,11 @@
 <section class="py-16 lg:py-20">
   <div class="max-w-2xl">
 
-    <div class="mb-10">
+    <div class="mb-8">
       <p class="text-small mb-3" style="color: var(--color-text-secondary);">Admin</p>
       <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">Narada Config</h1>
       <p class="text-body" style="color: var(--color-text-secondary);">
-        Configure tomorrow's episode. The pipeline reads this before each run.
+        Configure the next episode for each pipeline. Changes are picked up at runtime.
       </p>
     </div>
 
@@ -17,36 +17,55 @@
       Saved — pipeline will pick this up on the next run.
     </div>
     {% endif %}
-
     {% if error == "wrong_password" %}
     <div class="mb-6 rounded-lg px-4 py-3 text-sm" style="background-color: #7f1d1d22; color: #f87171; border: 1px solid #f8717144;">
       Wrong password.
     </div>
     {% endif %}
 
+    <!-- Tabs -->
+    <div class="flex gap-1 mb-6 rounded-lg p-1" style="background-color: var(--color-bg-secondary);">
+      {% for t, label in [("morning", "Morning Brief"), ("afternoon", "Learning Brief"), ("weekend", "The Backstory")] %}
+      <a href="/admin/narada?tab={{ t }}"
+         class="flex-1 text-center text-sm rounded-md px-3 py-2 transition-all"
+         style="{% if tab == t %}background-color: var(--color-accent); color: #000; font-weight: 500;{% else %}color: var(--color-text-secondary);{% endif %}">
+        {{ label }}
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- ── MORNING / AFTERNOON shared form ── -->
+    {% if tab in ("morning", "afternoon") %}
+    {% set pipe_row = morning if tab == "morning" else afternoon %}
+
     <form method="POST" action="/admin/narada/save" class="flex flex-col gap-6">
-      <input type="hidden" name="pipeline" value="morning">
+      <input type="hidden" name="pipeline" value="{{ tab }}">
 
       <!-- Password -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-        <label class="block text-sm font-medium mb-2" style="color: var(--color-text-primary);">Password</label>
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <label class="block text-xs font-medium mb-2" style="color: var(--color-text-secondary);">Password</label>
         <input type="password" name="password" required
           class="w-full rounded-lg px-3 py-2 text-sm outline-none"
           style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);"
           placeholder="NARADA_ADMIN_PASSWORD">
       </div>
 
+      <!-- Next up preview -->
+      {% if tab == "morning" %}
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <h2 class="text-sm font-medium mb-3" style="color: var(--color-text-secondary);">Next up — SPY Learning</h2>
+        <p class="text-sm" style="color: var(--color-text-primary);">
+          Week {{ next_spy.week }}, Day {{ next_spy.day }} — {{ next_spy.topic }}
+        </p>
+        <p class="text-xs mt-1" style="color: var(--color-text-secondary);">{{ next_spy.lesson }}</p>
+      </div>
+      {% endif %}
+
       <!-- Segment toggles -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-        <h2 class="text-h3 mb-4" style="color: var(--color-text-primary);">Segments</h2>
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <h2 class="text-sm font-medium mb-4" style="color: var(--color-text-primary);">Segments</h2>
         <div class="flex flex-col gap-3">
-          {% set segments = [
-            ("global_news_enabled",  "Global News Roundup",  morning.global_news_enabled),
-            ("spy_learning_enabled", "SPY Learning",          morning.spy_learning_enabled),
-            ("market_brief_enabled", "Market Brief",          morning.market_brief_enabled),
-            ("analytics_pm_enabled", "PM / Analytics",        morning.analytics_pm_enabled),
-          ] %}
-          {% for name, label, checked in segments %}
+          {% for name, label, checked in pipe_segments %}
           <label class="flex items-center gap-3 cursor-pointer">
             <input type="checkbox" name="{{ name }}" {% if checked %}checked{% endif %}
               class="h-4 w-4 rounded" style="accent-color: var(--color-accent);">
@@ -57,23 +76,15 @@
       </div>
 
       <!-- Editorial notes -->
-      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-        <h2 class="text-h3 mb-1" style="color: var(--color-text-primary);">Editorial Notes</h2>
-        <p class="text-sm mb-5" style="color: var(--color-text-secondary);">
-          Add context, trade setups, or events to watch. Fed into the distiller as guidance.
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <h2 class="text-sm font-medium mb-1" style="color: var(--color-text-primary);">Editorial Notes</h2>
+        <p class="text-xs mb-4" style="color: var(--color-text-secondary);">
+          Context, trade setups, or events to watch. Fed into the distiller before it runs.
         </p>
-
-        {% set notes_fields = [
-          ("notes_general", "General / Today's Focus",  morning.notes_general,  "e.g. Big FOMC day, watch 4:30 PM statement"),
-          ("notes_news",    "Global News",               morning.notes_news,     "e.g. Focus on US-China trade, skip India local stories"),
-          ("notes_spy",     "SPY / Options",             morning.notes_spy,      "e.g. IV spike — explain gamma risk, avoid selling spreads"),
-          ("notes_market",  "Market Brief",              morning.notes_market,   "e.g. Watch XLF — financials leading, yields rising"),
-          ("notes_pm",      "PM / Analytics",            morning.notes_pm,       "e.g. Focus on discovery frameworks, skip career advice posts"),
-        ] %}
-        <div class="flex flex-col gap-4">
-          {% for name, label, value, placeholder in notes_fields %}
+        <div class="flex flex-col gap-3">
+          {% for name, label, value, placeholder in pipe_notes %}
           <div>
-            <label class="block text-xs font-medium mb-1" style="color: var(--color-text-secondary);">{{ label }}</label>
+            <label class="block text-xs mb-1" style="color: var(--color-text-secondary);">{{ label }}</label>
             <textarea name="{{ name }}" rows="2" placeholder="{{ placeholder }}"
               class="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none"
               style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);">{{ value or "" }}</textarea>
@@ -82,23 +93,87 @@
         </div>
       </div>
 
-      <!-- Last updated + Save -->
+      <!-- Save -->
       <div class="flex items-center justify-between">
-        {% if morning.updated_at %}
         <span class="text-xs" style="color: var(--color-text-secondary);">
-          Last saved: {{ morning.updated_at.strftime("%b %d, %Y %H:%M") }} UTC
+          {% if pipe_row.updated_at %}Last saved: {{ pipe_row.updated_at.strftime("%b %d, %Y %H:%M") }} UTC{% endif %}
         </span>
-        {% else %}
-        <span></span>
-        {% endif %}
         <button type="submit"
           class="rounded-lg px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
           style="background-color: var(--color-accent); color: #000;">
           Save
         </button>
       </div>
-
     </form>
+    {% endif %}
+
+    <!-- ── WEEKEND tab ── -->
+    {% if tab == "weekend" %}
+    <form method="POST" action="/admin/narada/save" class="flex flex-col gap-6">
+      <input type="hidden" name="pipeline" value="weekend">
+
+      <!-- Password -->
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <label class="block text-xs font-medium mb-2" style="color: var(--color-text-secondary);">Password</label>
+        <input type="password" name="password" required
+          class="w-full rounded-lg px-3 py-2 text-sm outline-none"
+          style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);"
+          placeholder="NARADA_ADMIN_PASSWORD">
+      </div>
+
+      <!-- Next episode preview -->
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <div class="flex items-start justify-between mb-3">
+          <h2 class="text-sm font-medium" style="color: var(--color-text-primary);">Next episode</h2>
+          <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+            {{ next_backstory.index + 1 }} / {{ next_backstory.total }}
+          </span>
+        </div>
+        <p class="text-sm font-medium mb-1" style="color: var(--color-text-primary);">{{ next_backstory.title }}</p>
+        <p class="text-xs mb-2" style="color: var(--color-text-secondary);">
+          {{ next_backstory.theme | replace("_", " ") | title }} · {{ next_backstory.era }}
+        </p>
+        <p class="text-xs italic" style="color: var(--color-text-secondary);">{{ next_backstory.hook }}</p>
+      </div>
+
+      <!-- Override -->
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <h2 class="text-sm font-medium mb-1" style="color: var(--color-text-primary);">Override (optional)</h2>
+        <p class="text-xs mb-4" style="color: var(--color-text-secondary);">
+          Leave blank to use the scheduled topic. Provide a topic or URL to override this weekend.
+        </p>
+        <div class="flex flex-col gap-3">
+          <div>
+            <label class="block text-xs mb-1" style="color: var(--color-text-secondary);">Topic override</label>
+            <input type="text" name="topic_override" value="{{ weekend.topic_override or '' }}"
+              placeholder="e.g. The story of how index funds were invented"
+              class="w-full rounded-lg px-3 py-2 text-sm outline-none"
+              style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);">
+          </div>
+          <div>
+            <label class="block text-xs mb-1" style="color: var(--color-text-secondary);">URL override</label>
+            <input type="url" name="url_override" value="{{ weekend.url_override or '' }}"
+              placeholder="https://youtube.com/... or https://blog.example.com/..."
+              class="w-full rounded-lg px-3 py-2 text-sm outline-none"
+              style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);">
+          </div>
+        </div>
+      </div>
+
+      <!-- Save -->
+      <div class="flex items-center justify-between">
+        <span class="text-xs" style="color: var(--color-text-secondary);">
+          {% if weekend.updated_at %}Last saved: {{ weekend.updated_at.strftime("%b %d, %Y %H:%M") }} UTC{% endif %}
+        </span>
+        <button type="submit"
+          class="rounded-lg px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+          style="background-color: var(--color-accent); color: #000;">
+          Save
+        </button>
+      </div>
+    </form>
+    {% endif %}
+
   </div>
 </section>
 {% endblock %}
