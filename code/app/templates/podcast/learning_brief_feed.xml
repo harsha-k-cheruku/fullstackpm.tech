@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Learning Brief — fullstackpm.tech</title>
+    <link>https://www.fullstackpm.tech/resources/learning-brief</link>
+    <description>A daily afternoon briefing on AI developments, PM news, and one deep-dive PM concept — auto-generated at 1:30 PM PT on weekdays. For senior product managers building systematic learning habits.</description>
+    <language>en-us</language>
+    <copyright>fullstackpm.tech</copyright>
+    <itunes:author>Harsha Cheruku</itunes:author>
+    <itunes:owner>
+      <itunes:name>Harsha Cheruku</itunes:name>
+      <itunes:email>harsha.kaundinya@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <itunes:category text="Education">
+      <itunes:category text="How To"/>
+    </itunes:category>
+    <itunes:category text="Business">
+      <itunes:category text="Management"/>
+    </itunes:category>
+    <atom:link href="https://www.fullstackpm.tech/podcast/learning-brief/feed.xml" rel="self" type="application/rss+xml"/>
+    <itunes:image href="https://www.fullstackpm.tech/static/img/FSPM.png"/>
+    <image>
+      <url>https://www.fullstackpm.tech/static/img/FSPM.png</url>
+      <title>Learning Brief — fullstackpm.tech</title>
+      <link>https://www.fullstackpm.tech/resources/learning-brief</link>
+    </image>
+    {% for episode in episodes %}
+    {% set ep = episode if episode is mapping else {} %}
+    <item>
+      <title>{{ ep.get('title', 'Learning Brief') }}</title>
+      <link>https://www.fullstackpm.tech/resources/learning-brief/{{ ep.get('slug', '') }}</link>
+      <guid isPermaLink="false">https://www.fullstackpm.tech/resources/learning-brief/{{ ep.get('slug', '') }}</guid>
+      <pubDate>{{ episode.date_dt | rfc2822 }}</pubDate>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:duration>{{ ep.get('duration_human', '00:00') }}</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:image href="https://www.fullstackpm.tech/static/img/FSPM.png"/>
+      <enclosure
+        url="{{ ep.get('audio_url', '') }}"
+        type="audio/mpeg"
+        length="{{ ep.get('audio_length_bytes', 0) }}"/>
+      <description>{{ ep.get('title', '') }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

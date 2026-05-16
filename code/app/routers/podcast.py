@@ -22,6 +22,8 @@ templates = Jinja2Templates(directory=str(settings.templates_dir))
 templates.env.filters["rfc2822"] = lambda value: format_datetime(value)
 AUDIO_DIR = settings.static_dir / "podcast" / "audio"
 EPISODES_FILE = settings.static_dir / "podcast" / "episodes.json"
+LEARNING_BRIEF_FILE = settings.static_dir / "podcast" / "learning-brief" / "episodes.json"
+BACKSTORY_FILE = settings.static_dir / "podcast" / "the-backstory" / "episodes.json"
 
 
 def _load_episodes_json() -> list[dict]:
@@ -97,6 +99,40 @@ async def podcast_feed(request: Request) -> Response:
         media_type="application/rss+xml",
         headers={"Cache-Control": "no-cache"},
     )
+
+
+@router.get("/podcast/learning-brief/feed.xml")
+async def learning_brief_feed(request: Request) -> Response:
+    from datetime import timezone
+    episodes = json.loads(LEARNING_BRIEF_FILE.read_text()).get("episodes", []) if LEARNING_BRIEF_FILE.exists() else []
+    for ep in episodes:
+        pub = ep.get("published_at") or ep.get("date", "")
+        try:
+            ep["date_dt"] = datetime.fromisoformat(pub).replace(tzinfo=timezone.utc)
+        except Exception:
+            ep["date_dt"] = datetime.now(timezone.utc)
+        ep["audio_length_bytes"] = int(ep.get("audio_length_bytes") or 0)
+    xml = templates.get_template("podcast/learning_brief_feed.xml").render(
+        _ctx(request, episodes=episodes)
+    )
+    return Response(content=xml, media_type="application/rss+xml", headers={"Cache-Control": "no-cache"})
+
+
+@router.get("/podcast/the-backstory/feed.xml")
+async def backstory_feed(request: Request) -> Response:
+    from datetime import timezone
+    episodes = json.loads(BACKSTORY_FILE.read_text()).get("episodes", []) if BACKSTORY_FILE.exists() else []
+    for ep in episodes:
+        pub = ep.get("published_at") or ep.get("date", "")
+        try:
+            ep["date_dt"] = datetime.fromisoformat(pub).replace(tzinfo=timezone.utc)
+        except Exception:
+            ep["date_dt"] = datetime.now(timezone.utc)
+        ep["audio_length_bytes"] = int(ep.get("audio_length_bytes") or 0)
+    xml = templates.get_template("podcast/backstory_feed.xml").render(
+        _ctx(request, episodes=episodes)
+    )
+    return Response(content=xml, media_type="application/rss+xml", headers={"Cache-Control": "no-cache"})
 
 
 @router.get("/podcast/audio/{filename}")
