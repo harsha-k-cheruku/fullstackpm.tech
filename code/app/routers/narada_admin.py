@@ -160,6 +160,7 @@ async def narada_admin_save(request: Request, db: Session = Depends(get_db)):
         row.notes_spy     = str(form.get("notes_spy", "")).strip()
         row.notes_market  = str(form.get("notes_market", "")).strip()
         row.notes_pm      = str(form.get("notes_pm", "")).strip()
+        row.source_url    = str(form.get("source_url", "")).strip()
 
     if pipeline == "weekend":
         row.topic_override = str(form.get("topic_override", "")).strip()
@@ -201,6 +202,7 @@ async def narada_config_api(request: Request, db: Session = Depends(get_db)):
                 "today_focus":  row.notes_market or "",
                 "pm_analytics": row.notes_pm or "",
             },
+            "source_url": row.source_url or "",
         })
 
     if pipeline == "weekend":
@@ -210,3 +212,16 @@ async def narada_config_api(request: Request, db: Session = Depends(get_db)):
         })
 
     return JSONResponse(base)
+
+
+@router.post("/api/narada/clear-source-url")
+async def narada_clear_source_url(request: Request, db: Session = Depends(get_db)):
+    """Called by the pipeline after successfully consuming source_url."""
+    if not _check_api_key(request):
+        raise HTTPException(status_code=401, detail="Unauthorized")
+    pipeline = request.query_params.get("pipeline", "morning")
+    row = _get_or_create(db, pipeline)
+    row.source_url = ""
+    row.updated_at = datetime.utcnow()
+    db.commit()
+    return JSONResponse({"cleared": True})

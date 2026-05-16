@@ -34,6 +34,10 @@ class NaradaOverride(Base):
     notes_market = Column(Text, default="")
     notes_pm = Column(Text, default="")
 
+    # Today's source URL — YouTube or article to inject as context into this pipeline's episode
+    # Cleared automatically by the pipeline after use.
+    source_url = Column(Text, default="")
+
     # Weekend / on-demand overrides
     topic_override = Column(Text, default="")   # override the next curriculum topic title
     url_override = Column(Text, default="")     # use this URL instead of curriculum topic

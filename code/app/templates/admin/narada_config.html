@@ -93,6 +93,18 @@
         </div>
       </div>
 
+      <!-- Source URL -->
+      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <h2 class="text-sm font-medium mb-1" style="color: var(--color-text-primary);">Today's source URL <span style="color: var(--color-text-secondary); font-weight: 400;">(optional)</span></h2>
+        <p class="text-xs mb-3" style="color: var(--color-text-secondary);">
+          YouTube video or article URL. The pipeline will fetch the transcript or text and weave it into tomorrow's episode as additional context. Auto-clears after use.
+        </p>
+        <input type="url" name="source_url" value="{{ pipe_row.source_url or '' }}"
+          placeholder="https://youtube.com/watch?v=... or https://article.com/..."
+          class="w-full rounded-lg px-3 py-2 text-sm outline-none"
+          style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);">
+      </div>
+
       <!-- Save -->
       <div class="flex items-center justify-between">
         <span class="text-xs" style="color: var(--color-text-secondary);">
