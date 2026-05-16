@@ -11,6 +11,7 @@ from app.config import settings
 from app.database import init_db
 from app.models.like import Like  # noqa: F401 — ensures table is created by init_db
 from app.models.episode import Episode  # noqa: F401 — ensures table is created by init_db
+from app.models.narada_override import NaradaOverride  # noqa: F401 — ensures table is created by init_db
 from app.routers import auth, blog, comments, daily_brief, interview_coach, likes, marketplace, narada_admin, newsletter, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
 from app.services.content import ContentService
 from app.services.reading_service import ReadingService
