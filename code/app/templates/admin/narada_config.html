@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="max-w-2xl">
+
+    <div class="mb-10">
+      <p class="text-small mb-3" style="color: var(--color-text-secondary);">Admin</p>
+      <h1 class="text-h1 mb-2" style="color: var(--color-text-primary);">Narada Config</h1>
+      <p class="text-body" style="color: var(--color-text-secondary);">
+        Configure tomorrow's episode. The pipeline reads this before each run.
+      </p>
+    </div>
+
+    {% if saved %}
+    <div class="mb-6 rounded-lg px-4 py-3 text-sm" style="background-color: #14532d22; color: #4ade80; border: 1px solid #4ade8044;">
+      Saved — pipeline will pick this up on the next run.
+    </div>
+    {% endif %}
+
+    {% if error == "wrong_password" %}
+    <div class="mb-6 rounded-lg px-4 py-3 text-sm" style="background-color: #7f1d1d22; color: #f87171; border: 1px solid #f8717144;">
+      Wrong password.
+    </div>
+    {% endif %}
+
+    <form method="POST" action="/admin/narada/save" class="flex flex-col gap-6">
+      <input type="hidden" name="pipeline" value="morning">
+
+      <!-- Password -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <label class="block text-sm font-medium mb-2" style="color: var(--color-text-primary);">Password</label>
+        <input type="password" name="password" required
+          class="w-full rounded-lg px-3 py-2 text-sm outline-none"
+          style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);"
+          placeholder="NARADA_ADMIN_PASSWORD">
+      </div>
+
+      <!-- Segment toggles -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <h2 class="text-h3 mb-4" style="color: var(--color-text-primary);">Segments</h2>
+        <div class="flex flex-col gap-3">
+          {% set segments = [
+            ("global_news_enabled",  "Global News Roundup",  morning.global_news_enabled),
+            ("spy_learning_enabled", "SPY Learning",          morning.spy_learning_enabled),
+            ("market_brief_enabled", "Market Brief",          morning.market_brief_enabled),
+            ("analytics_pm_enabled", "PM / Analytics",        morning.analytics_pm_enabled),
+          ] %}
+          {% for name, label, checked in segments %}
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" name="{{ name }}" {% if checked %}checked{% endif %}
+              class="h-4 w-4 rounded" style="accent-color: var(--color-accent);">
+            <span class="text-sm" style="color: var(--color-text-primary);">{{ label }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Editorial notes -->
+      <div class="rounded-xl border p-6" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+        <h2 class="text-h3 mb-1" style="color: var(--color-text-primary);">Editorial Notes</h2>
+        <p class="text-sm mb-5" style="color: var(--color-text-secondary);">
+          Add context, trade setups, or events to watch. Fed into the distiller as guidance.
+        </p>
+
+        {% set notes_fields = [
+          ("notes_general", "General / Today's Focus",  morning.notes_general,  "e.g. Big FOMC day, watch 4:30 PM statement"),
+          ("notes_news",    "Global News",               morning.notes_news,     "e.g. Focus on US-China trade, skip India local stories"),
+          ("notes_spy",     "SPY / Options",             morning.notes_spy,      "e.g. IV spike — explain gamma risk, avoid selling spreads"),
+          ("notes_market",  "Market Brief",              morning.notes_market,   "e.g. Watch XLF — financials leading, yields rising"),
+          ("notes_pm",      "PM / Analytics",            morning.notes_pm,       "e.g. Focus on discovery frameworks, skip career advice posts"),
+        ] %}
+        <div class="flex flex-col gap-4">
+          {% for name, label, value, placeholder in notes_fields %}
+          <div>
+            <label class="block text-xs font-medium mb-1" style="color: var(--color-text-secondary);">{{ label }}</label>
+            <textarea name="{{ name }}" rows="2" placeholder="{{ placeholder }}"
+              class="w-full rounded-lg px-3 py-2 text-sm outline-none resize-none"
+              style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); color: var(--color-text-primary);">{{ value or "" }}</textarea>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Last updated + Save -->
+      <div class="flex items-center justify-between">
+        {% if morning.updated_at %}
+        <span class="text-xs" style="color: var(--color-text-secondary);">
+          Last saved: {{ morning.updated_at.strftime("%b %d, %Y %H:%M") }} UTC
+        </span>
+        {% else %}
+        <span></span>
+        {% endif %}
+        <button type="submit"
+          class="rounded-lg px-5 py-2 text-sm font-medium transition-opacity hover:opacity-80"
+          style="background-color: var(--color-accent); color: #000;">
+          Save
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
+{% endblock %}

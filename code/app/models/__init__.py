@@ -1,9 +1,11 @@
 # app/models/__init__.py
 """Database models."""
 from app.models.comment import Comment
+from app.models.narada_override import NaradaOverride
 from app.models.interview_session import InterviewSession, InterviewAttempt
 from app.models.user import User
 from app.models.pm_multiverse import PmmVote
+from app.models.episode import Episode
 from app.models.sde_prep import (
     LeetCodeProblem,
     PracticeSession,
@@ -20,6 +22,7 @@ __all__ = [
     "InterviewSession",
     "InterviewAttempt",
     "User",
+    "Episode",
     "LeetCodeProblem",
     "PracticeSession",
     "SystemDesignTopic",
@@ -27,4 +30,5 @@ __all__ = [
     "WeekPlan",
     "DailyTask",
     "DailyLog",
+    "NaradaOverride",
 ]
