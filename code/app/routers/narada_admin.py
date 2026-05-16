@@ -18,7 +18,6 @@ router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
 
 BACKSTORY_CURRICULUM = Path("/Users/sidc/Projects/claude_code/project_narada/curriculum/backstory_curriculum.yaml")
-SPY_CURRICULUM = Path("/Users/sidc/Projects/claude_code/project_narada/curriculum/spy_curriculum.yaml")
 
 
 def _get_or_create(db: Session, pipeline: str) -> NaradaOverride:
@@ -62,19 +61,6 @@ def _next_backstory() -> dict:
         return {"index": 0, "total": 0, "title": "—", "hook": "", "theme": "", "era": ""}
 
 
-def _next_spy_lesson() -> dict:
-    """Return the next SPY curriculum lesson."""
-    try:
-        data = yaml.safe_load(SPY_CURRICULUM.read_text()) or {}
-        week = int(data.get("current_week", 1))
-        day = int(data.get("current_day", 1))
-        weeks = data.get("weeks", {})
-        week_data = weeks.get(week) or weeks.get(str(week)) or {}
-        days = week_data.get("days", {})
-        lesson = days.get(day) or days.get(str(day)) or "—"
-        return {"week": week, "day": day, "topic": week_data.get("topic", ""), "lesson": lesson}
-    except Exception:
-        return {"week": 1, "day": 1, "topic": "", "lesson": "—"}
 
 
 # ── Admin UI ──────────────────────────────────────────────────────────────────
@@ -133,7 +119,6 @@ async def narada_admin_page(request: Request, db: Session = Depends(get_db)):
         "pipe_segments": _pipe_segments(tab, pipe_row),
         "pipe_notes": _pipe_notes(tab, pipe_row),
         "next_backstory": _next_backstory(),
-        "next_spy": _next_spy_lesson(),
         "saved": request.query_params.get("saved"),
         "error": request.query_params.get("error"),
     })

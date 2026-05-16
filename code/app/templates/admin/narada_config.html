@@ -50,17 +50,6 @@
           placeholder="NARADA_ADMIN_PASSWORD">
       </div>
 
-      <!-- Next up preview -->
-      {% if tab == "morning" %}
-      <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
-        <h2 class="text-sm font-medium mb-3" style="color: var(--color-text-secondary);">Next up — SPY Learning</h2>
-        <p class="text-sm" style="color: var(--color-text-primary);">
-          Week {{ next_spy.week }}, Day {{ next_spy.day }} — {{ next_spy.topic }}
-        </p>
-        <p class="text-xs mt-1" style="color: var(--color-text-secondary);">{{ next_spy.lesson }}</p>
-      </div>
-      {% endif %}
-
       <!-- Segment toggles -->
       <div class="rounded-xl border p-5" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
         <h2 class="text-sm font-medium mb-4" style="color: var(--color-text-primary);">Segments</h2>
