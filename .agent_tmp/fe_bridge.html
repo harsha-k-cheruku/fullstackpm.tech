@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Ecosystem — PM Visual Guide | fullstackpm.tech</title>
+  <meta name="description" content="Interactive visual guide to the financial ecosystem: lending models, payment rails, data flywheels, and user journeys — built for product managers.">
+  <meta name="author" content="Harsha Cheruku">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://fullstackpm.tech/resources/ecosystem-maps/financial-ecosystem">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Financial Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta property="og:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fullstackpm.tech/resources/ecosystem-maps/financial-ecosystem">
+  <meta property="og:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:site_name" content="fullstackpm.tech">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fullstackpmtech">
+  <meta name="twitter:creator" content="@fullstackpmtech">
+  <meta name="twitter:title" content="Financial Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta name="twitter:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta name="twitter:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/img/FSPM.png?v=3">
+  <link rel="apple-touch-icon" href="/static/img/FSPM.png?v=3">
+  <meta name="msapplication-TileImage" content="/static/img/FSPM.png?v=3">
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Design System Tokens -->
+  <link rel="stylesheet" href="/static/css/custom.css">
+
+  <!-- Dark mode: apply before paint to prevent flash -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  
+<link rel="stylesheet" href="/static/css/financial-ecosystem.css">
+
+</head>
+<body class="min-h-screen font-sans antialiased"
+      style="background-color: var(--color-bg-primary); color: var(--color-text-primary);">
+
+  <!-- Navigation -->
+  <!-- partials/navbar.html -->
+<nav aria-label="Main navigation"
+     class="sticky top-0 z-50 h-16 border-b"
+     style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+  <div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 sm:px-6">
+
+    <!-- Site name + logo -->
+    <a href="/"
+       class="flex items-center gap-2 text-lg font-bold transition-colors"
+       style="color: var(--color-text-primary);">
+      <img src="/static/img/FSPM.png?v=3" alt="fullstackpm.tech logo" class="h-8 w-8 rounded-full">
+      fullstackpm.tech
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden items-center gap-1 md:flex">
+      
+      
+      <a href="/"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Home
+        
+      </a>
+      
+      <a href="/projects"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Projects
+        
+      </a>
+      
+      <a href="/blog"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Blog
+        
+      </a>
+      
+      <a href="/resources"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Resources
+        
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        @fullstackpm
+        
+      </a>
+      
+    </div>
+
+    <!-- Right side: theme toggle + mobile menu button -->
+    <div class="flex items-center gap-2">
+
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="rounded-lg p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg id="theme-icon-sun" class="hidden h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg id="theme-icon-moon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              class="rounded-lg p-2 transition-colors md:hidden focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu"
+       class="hidden border-b md:hidden"
+       style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+    <div class="mx-auto max-w-[1200px] px-4 py-3 sm:px-6">
+      
+      <a href="/"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Home
+      </a>
+      
+      <a href="/projects"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Projects
+      </a>
+      
+      <a href="/blog"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Blog
+      </a>
+      
+      <a href="/resources"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Resources
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        @fullstackpm
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <!-- Main content -->
+  <main class="mx-auto max-w-[1200px] px-4 sm:px-6">
+    
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">Financial Ecosystem</span>
+</nav>
+
+<!-- Page Header -->
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Financial Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 780px;">
+    Seven interconnected diagrams plus a PM components playbook: how money moves, where risk concentrates, where margin leaks, and which product levers actually change unit economics.
+  </p>
+</header>
+
+<!-- Sticky subnav -->
+<!-- Financial Ecosystem — Sticky diagram navigation -->
+<nav class="fe-subnav" aria-label="Diagram navigation">
+  <a href="#ecosystem" class="fe-subnav-link active">Layer Map</a>
+  <a href="#models" class="fe-subnav-link">4 Lending Models</a>
+  <a href="#sequence" class="fe-subnav-link">Loan Flow</a>
+  <a href="#vs" class="fe-subnav-link">Lending vs Payments</a>
+  <a href="#flywheel" class="fe-subnav-link">Data Flywheel</a>
+  <a href="#moneyflow" class="fe-subnav-link">Money Flow</a>
+  <a href="#journeys" class="fe-subnav-link">User Journeys</a>
+  <a href="#components" class="fe-subnav-link">PM Components</a>
+</nav>
+
+<!-- Diagrams -->
+<div class="fe-page">
+  <!-- Diagram 1 — Concentric Layer Map -->
+<section id="ecosystem" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 1</span>
+    <h2>The Financial Ecosystem — Concentric Layer Map</h2>
+    <p>Banks sit at the center because all money ultimately lives in bank accounts. Every other layer is built on top of that foundation. Outer rings depend on everything inside them — not the reverse.</p>
+  </div>
+
+  <div class="eco-container">
+
+    <!-- Left: nested boxes -->
+    <div class="eco-outer">
+
+      <span class="eco-layer-tag" style="background:var(--fe-users-chip-bg);color:var(--fe-users-text);">End Users</span>
+      <div class="eco-user-chips">
+        <span class="eco-user-chip">Borrowers</span>
+        <span class="eco-user-chip">Merchants</span>
+        <span class="eco-user-chip">Shoppers</span>
+      </div>
+
+      <div class="eco-products-wrap">
+        <span class="eco-layer-tag" style="background:var(--fe-tag-bg);color:var(--fe-tag-text);">Layer 3 · Financial Products</span>
+
+        <div class="eco-product-cols">
+          <div class="eco-product-box eco-lending">
+            <div class="pb-tag">Lending</div>
+            <div class="pb-title">Credit Products</div>
+            <ul class="pb-list">
+              <li>AI Underwriting</li>
+              <li>Marketplace Banks</li>
+              <li>Lead Generation</li>
+              <li>P2P / Institutional</li>
+            </ul>
+          </div>
+          <div class="eco-product-box eco-payments">
+            <div class="pb-tag">Payments</div>
+            <div class="pb-title">Payment Products</div>
+            <ul class="pb-list">
+              <li>Online Processing</li>
+              <li>In-store / POS</li>
+              <li>B2B Payments</li>
+              <li>Consumer Wallets</li>
+            </ul>
+          </div>
+          <div class="eco-product-box eco-bnpl">
+            <div class="pb-tag">Embedded Credit / BNPL</div>
+            <div class="pb-title">Buy Now Pay Later</div>
+            <ul class="pb-list">
+              <li>Pay in 4 installments</li>
+              <li>3–36 month financing</li>
+              <li>Credit at point of sale</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="eco-infra-wrap">
+          <span class="eco-layer-tag" style="background:var(--fe-chip-l2-bg);color:var(--fe-infra-text);">Layer 2 · Infrastructure APIs</span>
+          <div class="eco-inline-items">
+            <div class="eco-inline-item">
+              <strong>Bank Data APIs</strong>Income &amp; account verification
+            </div>
+            <div class="eco-inline-item">
+              <strong>Card Issuing APIs</strong>Virtual &amp; physical cards
+            </div>
+            <div class="eco-inline-item">
+              <strong>Money Movement APIs</strong>ACH · Wire · RTP orchestration
+            </div>
+          </div>
+
+          <div class="eco-rails-wrap">
+            <span class="eco-layer-tag" style="background:var(--fe-tag-bg);color:var(--fe-tag-text);">Layer 1 · Payment Rails</span>
+            <div class="eco-inline-items">
+              <div class="eco-inline-item">
+                <strong>Large-Value Wire</strong>Same-day (Fedwire)
+              </div>
+              <div class="eco-inline-item">
+                <strong>Card Networks</strong>~1.5s (Visa · MC)
+              </div>
+              <div class="eco-inline-item">
+                <strong>Bank Transfers</strong>1–2 days (ACH)
+              </div>
+              <div class="eco-inline-item">
+                <strong>Real-Time Payments</strong>Instant (RTP)
+              </div>
+            </div>
+
+            <div class="eco-banks-core">
+              <span class="eco-layer-tag" style="background:var(--fe-users-chip-bg);color:var(--fe-users-text);">Core Foundation</span>
+              <h3>Banks &amp; Regulated Institutions</h3>
+              <p>All money ultimately lives in bank accounts · Fed master accounts<br>Direct access to all rails · Lender of record in loan origination</p>
+            </div>
+
+          </div><!-- end rails -->
+        </div><!-- end infra -->
+      </div><!-- end products -->
+    </div><!-- end outer -->
+
+    <!-- Right: Capital Sources -->
+    <div class="eco-capital-panel">
+      <h4>Capital Sources</h4>
+      <div class="cp-sub">Funding relationship — not a technology layer. Connects directly to banks at the center, bypassing all middleware.</div>
+      <div class="eco-capital-item">
+        <strong>Bank Partners</strong>
+        <span>Lender of record in AI platform model</span>
+      </div>
+      <div class="eco-capital-item">
+        <strong>Institutional Investors</strong>
+        <span>Buy loan pools for yield above Treasuries</span>
+      </div>
+      <div class="eco-capital-item">
+        <strong>Forward-Flow Partners</strong>
+        <span>Pre-committed volume buyers</span>
+      </div>
+      <div class="eco-capital-item">
+        <strong>Depositors</strong>
+        <span>Low-cost funding for marketplace banks</span>
+      </div>
+      <div class="eco-capital-connect">
+        Connect directly to banks via <strong>Fedwire</strong> and <strong>ACH</strong> — they ARE regulated institutions, so no Layer 2 middleware is needed.
+      </div>
+    </div>
+
+  </div><!-- end eco-container -->
+
+  <div class="fe-callout" style="margin-top:20px;">
+    <p><strong>How to read this:</strong> Start at the center and move outward. Banks are the foundation — all money lives in bank accounts and they have direct access to every payment rail. Each outer layer depends on everything inside it: Infrastructure APIs abstract the rails for fintechs. Financial products are built on those APIs. End users consume the products. Capital sources sit outside entirely — they're a funding relationship that connects straight to the banking center, not a technology dependency.</p>
+  </div>
+</section>
+  <hr class="fe-divider">
+  <!-- Diagram 2 — Four Lending Business Models -->
+<section id="models" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 2</span>
+    <h2>The Four Lending Business Models</h2>
+    <p>Same end result (borrower gets a loan), but the money takes a completely different path depending on the model. The model determines margins, risk exposure, and what a PM actually owns.</p>
+  </div>
+
+  <div class="models-grid">
+    <div class="model-col">
+      <div class="model-head mh-lg">
+        <span class="model-num">Model 1</span>
+        Lead Generation
+        <div class="model-co">e.g. LendingTree, Credible</div>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>Borrower</strong>Fills out one form — loan amount, purpose, credit estimate</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Platform</strong>Matches borrower to relevant lenders. Sells the lead to each.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Multiple Lenders</strong>Each underwrites independently and makes an offer</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Borrower picks</strong>Completes full application with chosen lender. Platform exits.</div>
+      </div>
+      <div class="earn-badge">Earns: Per-lead fee — regardless of whether borrower takes a loan</div>
+      <div class="risk-card" style="margin: 0 16px 14px; border-radius:8px;">
+        <h4>Key PM challenge</h4>
+        <div class="risk-item">Lead quality — bad leads mean lenders stop paying</div>
+        <div class="risk-item">No control over the downstream experience</div>
+        <div class="risk-item">Borrower trust with shared financial data</div>
+      </div>
+    </div>
+
+    <div class="model-col">
+      <div class="model-head mh-pr">
+        <span class="model-num">Model 2</span>
+        P2P / Institutional Marketplace
+        <div class="model-co">e.g. Prosper, LendingClub (pre-bank)</div>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>Borrower</strong>Applies directly on the platform</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Platform</strong>Underwrites loan, lists it on marketplace</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Investors</strong>Fund the loan (retail originally, now institutional)</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Platform services loan</strong>Collects payments, forwards to investors</div>
+      </div>
+      <div class="earn-badge">Earns: Origination fee (upfront) + servicing fee (ongoing)</div>
+      <div class="risk-card" style="margin: 0 16px 14px; border-radius:8px;">
+        <h4>Key PM challenge</h4>
+        <div class="risk-item">Investor confidence — model performance must be visible</div>
+        <div class="risk-item">Two-sided marketplace liquidity</div>
+        <div class="risk-item">Adverse selection if institutional capital dries up</div>
+      </div>
+    </div>
+
+    <div class="model-col">
+      <div class="model-head mh-up">
+        <span class="model-num">Model 3</span>
+        AI Underwriting Platform
+        <div class="model-co">e.g. Upstart</div>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>Borrower</strong>Applies via platform or bank partner's white-label</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>AI Model</strong>Runs 1,000+ signals — outputs risk score + APR</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Bank Partner</strong>Lender of record — funds and owns the loan initially</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Capital Partner</strong>Buys the loan. Now holds credit risk and earns interest.</div>
+      </div>
+      <div class="earn-badge">Earns: Referral + platform fees. Never holds loans on balance sheet.</div>
+      <div class="risk-card" style="margin: 0 16px 14px; border-radius:8px;">
+        <h4>Key PM challenge</h4>
+        <div class="risk-item">Three-sided market must all agree simultaneously</div>
+        <div class="risk-item">Model accuracy — errors affect all parties</div>
+        <div class="risk-item">Capital market dependency — exposure to rate cycles</div>
+      </div>
+    </div>
+
+    <div class="model-col">
+      <div class="model-head mh-sf">
+        <span class="model-num">Model 4</span>
+        Digital Marketplace Bank
+        <div class="model-co">e.g. SoFi, LendingClub (post-bank)</div>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>Depositors</strong>Put money in checking/savings. This is the low-cost funding.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Borrower applies</strong>Directly with the bank — no third-party needed</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Bank underwrites</strong>Own models. Often targets prime/super-prime.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><strong>Bank funds from deposits</strong>Earns interest spread. May sell some loans to market.</div>
+      </div>
+      <div class="earn-badge">Earns: Interest spread (deposit rate vs. loan APR) + fees + cross-sell</div>
+      <div class="risk-card" style="margin: 0 16px 14px; border-radius:8px;">
+        <h4>Key PM challenge</h4>
+        <div class="risk-item">Full regulatory complexity (bank regulator + CFPB)</div>
+        <div class="risk-item">Cross-sell — getting members to use multiple products</div>
+        <div class="risk-item">Holds credit risk directly on balance sheet</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <hr class="fe-divider">
+  <!-- Diagram 3 — How a Loan Clears (All 4 Models, Tabbed) -->
+<section id="sequence" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 3</span>
+    <h2>How a Loan Clears — All Four Models</h2>
+    <p>Each lending business model has a distinct clearing sequence — different participants, different handoffs, different fee moments. Select a model to trace the flow from application to funded.</p>
+  </div>
+
+  <div class="model-tabs">
+    <button class="model-tab active" onclick="showSeqModel('m1', this)">
+      <span class="mt-num">Model 1</span>
+      <span class="mt-name">Lead Gen</span>
+    </button>
+    <button class="model-tab" onclick="showSeqModel('m2', this)">
+      <span class="mt-num">Model 2</span>
+      <span class="mt-name">P2P / Institutional</span>
+    </button>
+    <button class="model-tab" onclick="showSeqModel('m3', this)">
+      <span class="mt-num">Model 3</span>
+      <span class="mt-name">AI Platform</span>
+    </button>
+    <button class="model-tab" onclick="showSeqModel('m4', this)">
+      <span class="mt-num">Model 4</span>
+      <span class="mt-name">Marketplace Bank</span>
+    </button>
+  </div>
+
+  <!-- Model 1: Lead Gen -->
+  <div id="seq-m1" class="seq-panel">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The platform is a matchmaker only. It sells the borrower's lead to multiple lenders and exits. It never underwrites, never holds credit risk, never disburses funds. Revenue is earned per lead sold — regardless of whether the borrower gets a loan.
+    </div>
+    <div class="sequence">
+      <div class="seq-participants seq-4col">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🌐</span>Lead Gen Platform</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span>Matched Lenders (3–5)</div>
+        <div class="seq-participant"><span class="p-icon">✅</span>Chosen Lender</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Single Form Submitted</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Fills one form — loan amount, purpose, rough credit estimate. One form reaches many lenders.</div>
+        <div class="seq-cell sending">Receives lead. Validates data quality. Sells lead to matched lenders simultaneously.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Platform Earns Fee Here (before any loan is made)</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Earns per-lead fee — collected at this point, regardless of loan outcome. Platform's financial interest ends here.</div>
+        <div class="seq-cell active">Each lender independently underwrites the borrower's lead and prices an offer</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Competing Offers Returned to Platform</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Sees multiple offers displayed side by side — different APRs, terms, lenders. Compares and picks.</div>
+        <div class="seq-cell sending">Aggregates and displays competing offers. Platform's operational role ends here.</div>
+        <div class="seq-cell sending">Returns approved offer to platform for display to borrower</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — Borrower Chooses a Lender (Platform Exits)</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Picks best offer. Redirected to chosen lender's site to complete full application — hard pull, e-signature.</div>
+        <div class="seq-cell">Platform is out. No further involvement in the transaction.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Borrower completes full application directly. Lender runs own hard pull and final underwriting.</div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Loan Funded Directly by Chosen Lender</div>
+      <div class="seq-step seq-4col">
+        <div class="seq-cell active">Funds arrive in bank account directly from chosen lender (1–3 days)</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Funds loan from own balance sheet or its own capital sources. Earns interest spread over loan life.</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border); color:var(--fe-lending-text);">
+      Platform earns: <strong>Per-lead fee</strong> — collected when lead is sold. No dependency on loan outcome, no ongoing revenue, no balance sheet exposure.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Chosen lender earns: <strong>Interest spread</strong> over loan life.
+    </div>
+  </div>
+
+  <!-- Model 2: P2P / Institutional -->
+  <div id="seq-m2" class="seq-panel" style="display:none;">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The platform originates and underwrites loans, then lists them for investors to fund. The platform never holds loans on its own balance sheet — investors bear the credit risk. Revenue comes from origination fees (upfront, one-time) and servicing fees (ongoing, percentage of outstanding balance).
+    </div>
+    <div class="sequence">
+      <div class="seq-participants seq-5col">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🌐</span>Platform</div>
+        <div class="seq-participant"><span class="p-icon">📋</span>Credit Bureau</div>
+        <div class="seq-participant"><span class="p-icon">📊</span>Institutional Investors</div>
+        <div class="seq-participant"><span class="p-icon">🏧</span>Payment Rails</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Application & Underwriting</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Applies directly on platform — submits full application, connects bank account</div>
+        <div class="seq-cell sending">Pulls credit file. Runs own underwriting models. Assigns risk grade and yield.</div>
+        <div class="seq-cell active">Returns credit file, FICO score, full tradeline history</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Loan Listed on Investor Marketplace</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Sees approved offer — APR, term, amount. Decides to accept.</div>
+        <div class="seq-cell sending">Lists loan on investor marketplace: risk grade, expected yield, term, borrower profile. Earns origination fee.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Reviews loan listing. Evaluates risk grade and historical default rates for that grade. Commits capital.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Investor Funding Committed</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Confirms full funding. Originates loan. Becomes loan servicer for the life of the loan.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Commits capital to fund loan. Becomes beneficial owner. Now holds credit risk.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — Disbursement to Borrower</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Funds arrive in bank account (1–2 days)</div>
+        <div class="seq-cell sending">Initiates disbursement from investor-committed funds</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Routes funds from investor account to borrower account via ACH</div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Ongoing Servicing (monthly, for full loan term)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Makes monthly repayment to platform</div>
+        <div class="seq-cell decision">Collects payment. Deducts servicing fee. Forwards net amount to investors. Earns servicing fee monthly.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives net repayment (principal + interest, minus servicing fee). Earns yield on investment.</div>
+        <div class="seq-cell active">Routes monthly repayment from borrower account</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-users-bg); border-color:var(--fe-users-border); color:var(--fe-users-text);">
+      Platform earns: <strong>Origination fee</strong> (1–5% of loan, upfront) + <strong>Servicing fee</strong> (~0.25–1% annually on outstanding balance).
+      &nbsp;&nbsp;|&nbsp;&nbsp;Investors earn: <strong>Yield</strong> on funded loans. They hold all credit risk.
+    </div>
+  </div>
+
+  <!-- Model 3: AI Platform -->
+  <div id="seq-m3" class="seq-panel" style="display:none;">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The platform provides the AI underwriting brain — it never originates or holds loans. A bank partner is the legal lender of record; a capital partner buys the loan after funding. The platform earns fees from both sides without touching the balance sheet. Three parties must align simultaneously for every loan.
+    </div>
+    <div class="sequence">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🌐</span>AI Platform</div>
+        <div class="seq-participant"><span class="p-icon">📋</span>Credit Bureau</div>
+        <div class="seq-participant"><span class="p-icon">🔗</span>Bank Data API</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span>Bank Partner</div>
+        <div class="seq-participant"><span class="p-icon">📊</span>Capital Partner</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Pre-qualification (Soft Pull — No Credit Impact)</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Enters loan amount, purpose, income estimate</div>
+        <div class="seq-cell sending">Receives data. Runs soft credit inquiry.</div>
+        <div class="seq-cell active">Returns credit snapshot — no hard pull yet</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Pre-qual Offer Shown</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Sees estimated APR range. Decides to continue.</div>
+        <div class="seq-cell decision">Shows soft offer — APR range, not yet locked</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Full Application (Hard Pull — Credit Impact)</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Submits full application. Connects bank account. Agrees to hard pull.</div>
+        <div class="seq-cell sending">Pulls full credit file. Connects to bank data API for income.</div>
+        <div class="seq-cell active">Returns full tradeline history, payment record, credit score</div>
+        <div class="seq-cell active">Returns bank account cash flow, income deposits</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — AI Model Runs (Probabilistic — hundreds to thousands of signals)</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">AI model processes all signals → outputs risk score + specific APR. Majority of decisions fully automated.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Firm Offer Presented</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Sees firm offer: exact APR, monthly payment, term, origination fee. Locked — not an estimate.</div>
+        <div class="seq-cell sending">Displays offer. Starts offer expiry clock (typically 30 days).</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 6 — Borrower Accepts</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Accepts offer. E-signs loan agreement.</div>
+        <div class="seq-cell sending">Confirms final underwriting. Routes loan to bank partner.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives loan file. Reviews compliance. Becomes lender of record.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 7 — Funding (via ACH or RTP)</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Money arrives in bank account (1–3 days ACH, or same-day RTP)</div>
+        <div class="seq-cell sending">Confirms disbursement. Earns referral + platform fee.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Disburses funds via payment rails. Earns origination fee.</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 8 — Loan Sold to Capital Market</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Earns platform fee from capital partner transaction.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Sells loan (whole loan sale) to capital partner via Fedwire.</div>
+        <div class="seq-cell active">Buys loan. Now holds credit risk. Earns interest payments over loan life.</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-bnpl-bg); border-color:var(--fe-bnpl-border); color:var(--fe-bnpl-text);">
+      Platform earns: <strong>Referral fee</strong> (from bank) + <strong>platform fee</strong> (from capital partner). Never holds loans on balance sheet.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Bank earns: <strong>Origination fee</strong>.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Capital partner earns: <strong>Interest</strong> over loan life.
+    </div>
+  </div>
+
+  <!-- Model 4: Marketplace Bank -->
+  <div id="seq-m4" class="seq-panel" style="display:none;">
+    <div class="seq-model-note">
+      <strong>How it works:</strong> The bank and the platform are the same entity — fully vertically integrated. The bank funds loans from its own deposit base. No bank partner, no capital marketplace. The bank holds credit risk directly on its balance sheet and earns the full interest spread (loan APR minus deposit rate).
+    </div>
+    <div class="sequence">
+      <div class="seq-participants seq-5col">
+        <div class="seq-participant"><span class="p-icon">🙋</span>Borrower</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span>Bank (= Platform)</div>
+        <div class="seq-participant"><span class="p-icon">📋</span>Credit Bureau</div>
+        <div class="seq-participant"><span class="p-icon">🔗</span>Bank Data API</div>
+        <div class="seq-participant"><span class="p-icon">💰</span>Depositors (Funding)</div>
+      </div>
+
+      <div class="seq-step-label">Step 0 — Funding Source Already Exists (passive, always-on)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Holds deposit balances. Pays depositors a savings rate. Deploys these deposits as loans to earn the spread.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Hold checking/savings at the bank. This is the bank's low-cost funding capital — no external capital market needed.</div>
+      </div>
+
+      <div class="seq-step-label">Step 1 — Application (No Third Party Involved)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Applies directly with the bank — often an existing account holder</div>
+        <div class="seq-cell sending">Pulls credit file. May pre-fill application data from existing account relationship.</div>
+        <div class="seq-cell active">Returns full credit file, FICO score, tradelines</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2 — Income Verification</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Connects external accounts or verifies income via payroll data</div>
+        <div class="seq-cell sending">Connects to bank data API for external income signals. May also use internal account transaction history directly.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Returns cash flow data and income deposit patterns from external accounts</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3 — Bank Underwrites (Own Models, Full Control)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Runs own underwriting model. Full control over risk appetite, approval criteria, and APR pricing. Approves or declines.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4 — Offer Shown, Borrower Accepts</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Sees firm offer — APR, monthly payment, term. Accepts and e-signs loan agreement.</div>
+        <div class="seq-cell sending">Originates loan. Funds directly from deposit pool. No third-party approvals needed.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5 — Funding (often same-day for existing account holders)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Funds arrive — ACH (1–2 days) or internal transfer (same-day if existing account)</div>
+        <div class="seq-cell sending">Disburses via ACH or internal book transfer. Records loan on balance sheet. Earns origination fee.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 6 — Ongoing Repayment + Spread (monthly, for full loan term)</div>
+      <div class="seq-step seq-5col">
+        <div class="seq-cell active">Makes monthly repayment to bank</div>
+        <div class="seq-cell decision">Receives repayment. Earns interest spread (loan APR minus deposit rate) on every payment for the full term. May cross-sell other products.</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives interest on their deposits — the return the bank pays for using their capital</div>
+      </div>
+    </div>
+    <div class="seq-earn-bar" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border); color:var(--fe-capital-text);">
+      Bank earns: <strong>Interest spread</strong> (loan APR minus deposit rate, held for full loan life) + <strong>Origination fee</strong> + <strong>Cross-sell</strong> from existing banking relationships.
+      &nbsp;&nbsp;|&nbsp;&nbsp;Risk: Bank holds <strong>full credit risk</strong> on balance sheet — no external party absorbs defaults.
+    </div>
+  </div>
+</section>
+  <hr class="fe-divider">
+  <!-- Diagram 4 — Lending vs Payments vs BNPL -->
+<section id="vs" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 4</span>
+    <h2>Lending vs. Payments vs. BNPL — The Core Distinction</h2>
+    <p>These three categories all deal with money, but they solve fundamentally different problems. Understanding this distinction explains why a payments PM and a lending PM need completely different mental models.</p>
+  </div>
+
+  <!-- Concept callout -->
+  <div class="vs-concept-row">
+    <div class="vs-concept-box" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+      <strong style="color:var(--fe-lending-text);">Money through TIME</strong>
+      <em>The borrower keeps the money — but trades a future obligation for it today. The lender gives up liquidity now and earns it back slowly, with interest, over months or years. The core question is: <strong>will the future happen as predicted?</strong> Risk is invisible at origination and only reveals itself 12–24 months later.</em>
+    </div>
+    <div class="vs-concept-box" style="background:var(--fe-payments-bg); border-color:var(--fe-payments-border);">
+      <strong style="color:var(--fe-payments-dark);">Money through SPACE</strong>
+      <em>Money teleports from one account to another — same moment, different location. No credit extension, no time horizon, no repayment. The core question is: <strong>did this transaction actually happen, and was it authorized?</strong> Risk is immediate (fraud, failed auth) and resolves in seconds.</em>
+    </div>
+    <div class="vs-concept-box" style="background:var(--fe-bnpl-bg); border-color:var(--fe-bnpl-border);">
+      <strong style="color:var(--fe-bnpl-text);">Both simultaneously</strong>
+      <em>BNPL moves money through space immediately (pays merchant now) and through time concurrently (shopper repays over weeks). It is a payment method and a credit product in a single transaction. Both risks exist at once: fraud at the point of sale + credit risk on repayment.</em>
+    </div>
+  </div>
+
+  <div class="vs-grid">
+    <div class="vs-card" style="border-color:var(--fe-lending-border);">
+      <div class="vs-head" style="background:var(--fe-lending-bg);">
+        Lending
+        <small>Money through <strong>TIME</strong></small>
+      </div>
+      <div class="vs-body">
+        <div class="vs-flow">
+          <div class="vs-node" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border);"><strong>Today</strong><br>Lender gives borrower a lump sum</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border);"><strong>Months 1–60</strong><br>Borrower pays back in installments</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border);"><strong>Lender earns</strong><br>Original principal + interest over time</div>
+        </div>
+        <div class="vs-risk" style="background:var(--fe-lending-bg); border:1.5px solid var(--fe-lending-border); color:var(--fe-lending-text);">
+          Core risk: <strong>Credit risk</strong> — will they repay? Shows up 12–24 months later.
+        </div>
+        <div class="vs-examples"><strong>Key metric:</strong> Default rate, vintage performance, APR spread</div>
+        <div class="vs-layers-label">Layers activated</div>
+        <div class="vs-chips">
+          <span class="vs-chip vc-eu"><span class="chip-num">EU</span> Borrower</span>
+          <span class="vs-chip vc-l3a"><span class="chip-num">L3A</span> Lending Products</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Bank Data API</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Money Movement</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> ACH / Fedwire</span>
+          <span class="vs-chip vc-cap">Capital Sources</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-card" style="border-color:var(--fe-payments-border);">
+      <div class="vs-head" style="background:var(--fe-payments-bg);">
+        Payments
+        <small>Money through <strong>SPACE</strong></small>
+      </div>
+      <div class="vs-body">
+        <div class="vs-flow">
+          <div class="vs-node" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border);"><strong>Shopper taps card</strong><br>at merchant terminal</div>
+          <div class="vs-arrow">↓ (~1.5 seconds)</div>
+          <div class="vs-node" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border);"><strong>Network routes it</strong><br>Card network → acquiring bank → issuing bank</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border);"><strong>Merchant receives</strong><br>Purchase amount minus processing fee</div>
+        </div>
+        <div class="vs-risk" style="background:var(--fe-payments-bg); border:1.5px solid var(--fe-payments-border); color:var(--fe-payments-dark);">
+          Core risk: <strong>Fraud + settlement risk</strong> — did this transaction actually happen?
+        </div>
+        <div class="vs-examples"><strong>Key metric:</strong> Authorization rate, fraud rate, transaction volume</div>
+        <div class="vs-layers-label">Layers activated</div>
+        <div class="vs-chips">
+          <span class="vs-chip vc-eu"><span class="chip-num">EU</span> Shopper + Merchant</span>
+          <span class="vs-chip vc-l3b"><span class="chip-num">L3B</span> Payments</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Card Issuing</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> Card Networks</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> ACH (settlement)</span>
+          <span class="vs-chip" style="background:var(--fe-neutral-bg); border-color:var(--fe-card-border); color:var(--fe-faint); font-style:italic;">No capital sources</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-card" style="border-color:var(--fe-bnpl-border);">
+      <div class="vs-head" style="background:var(--fe-bnpl-bg);">
+        BNPL
+        <small>Both — payment <strong>method</strong> + credit <strong>product</strong></small>
+      </div>
+      <div class="vs-body">
+        <div class="vs-flow">
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>Shopper checks out</strong><br>Selects installment option at checkout</div>
+          <div class="vs-arrow">↓ (milliseconds)</div>
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>BNPL underwrites in real-time</strong><br>Credit decision in under 1 second</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>Merchant paid immediately</strong><br>BNPL absorbs the credit risk</div>
+          <div class="vs-arrow">↓</div>
+          <div class="vs-node" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border);"><strong>Shopper repays in installments</strong><br>Often 4 payments, often 0% APR</div>
+        </div>
+        <div class="vs-risk" style="background:var(--fe-bnpl-bg); border:1.5px solid var(--fe-bnpl-border); color:var(--fe-bnpl-text);">
+          Both risks: <strong>Fraud</strong> at point of sale + <strong>Credit risk</strong> on repayment
+        </div>
+        <div class="vs-examples"><strong>Key metric:</strong> Merchant fee rate, repayment rate, repeat usage</div>
+        <div class="vs-layers-label">Layers activated</div>
+        <div class="vs-chips">
+          <span class="vs-chip vc-eu"><span class="chip-num">EU</span> Shopper + Merchant</span>
+          <span class="vs-chip vc-l3c"><span class="chip-num">L3C</span> BNPL</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Bank Data API</span>
+          <span class="vs-chip vc-l2"><span class="chip-num">L2</span> Money Movement</span>
+          <span class="vs-chip vc-l1"><span class="chip-num">L1</span> ACH / Card Networks</span>
+          <span class="vs-chip vc-cap">Capital Sources (BNPL warehouse)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <hr class="fe-divider">
+  <!-- Diagram 5 — Data Flywheel -->
+<section id="flywheel" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 5</span>
+    <h2>The Data Flywheel — Why the Market Leader Keeps Winning</h2>
+    <p>More loans → more repayment data → better model → better outcomes → more loans. This virtuous cycle compounds over years and becomes the primary competitive moat in AI-driven lending.</p>
+  </div>
+
+  <div class="seq-model-note" style="margin-bottom:24px;">
+    <strong>Scope: Models 3 &amp; 4 only (AI Platform and Marketplace Bank).</strong> This flywheel only exists where the platform does its own underwriting and accumulates labeled outcome data. Model 1 (Lead Gen) has no flywheel — it never underwrites, so it collects no repayment signal. Model 2 (P2P/Institutional) has a weak version — the platform underwrites and learns, but typically uses coarser risk grades rather than continuous ML signals, and institutional investors increasingly do their own analysis. The flywheel as described here — where proprietary signals compound across millions of loans — is specific to platforms that own the full underwriting stack.
+  </div>
+
+  <div class="flywheel-wrap">
+    <div class="flywheel-steps">
+      <div class="fw-step highlight" data-num="1">
+        <div class="fw-step-content">
+          <h4>More loan originations</h4>
+          <p>Each approved and funded loan generates a new repayment stream — a live experiment on whether the model priced risk correctly.</p>
+        </div>
+      </div>
+      <div class="fw-step" data-num="2">
+        <div class="fw-step-content">
+          <h4>More repayment data collected</h4>
+          <p>Who paid on time? Who defaulted? Under what economic conditions? Across which borrower segments? This labeled data is the raw material for model improvement.</p>
+        </div>
+      </div>
+      <div class="fw-step" data-num="3">
+        <div class="fw-step-content">
+          <h4>Better model calibration</h4>
+          <p>More outcome data → signals can be weighted more precisely → the model improves its ability to distinguish good risk from bad risk within similar credit profiles.</p>
+        </div>
+      </div>
+      <div class="fw-step" data-num="4">
+        <div class="fw-step-content">
+          <h4>More accurate underwriting</h4>
+          <p>Lower false positives (bad borrowers approved) and fewer false negatives (creditworthy borrowers rejected). Approval rates rise. Loss rates fall.</p>
+        </div>
+      </div>
+      <div class="fw-step highlight" data-num="5">
+        <div class="fw-step-content">
+          <h4>Better outcomes for all parties</h4>
+          <p>Borrowers get lower APRs. Capital partners earn better risk-adjusted returns. More capital partners join. More committed volume. Platform fees stay stable.</p>
+        </div>
+      </div>
+      <div class="fw-step highlight" data-num="6">
+        <div class="fw-step-content">
+          <h4>More borrowers accept → back to Step 1</h4>
+          <p>Better offers → higher acceptance rate → more originations → more training data. The cycle accelerates with scale.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flywheel-insight">
+      <h3>Why this matters for PMs</h3>
+      <div class="insight-item">
+        <span class="insight-icon">🔒</span>
+        <div class="insight-text"><strong>The moat is the data, not the algorithm.</strong> A competitor can hire the same ML engineers and use the same architecture. They cannot replicate years of loan performance data across millions of loans in every economic condition.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">⚠️</span>
+        <div class="insight-text"><strong>The flywheel can run backwards.</strong> Bad model → adverse selection → capital partners lose money → they pull back → fewer loans → less data → worse model. This failure mode has played out at multiple AI lenders during rate cycles.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">⏱️</span>
+        <div class="insight-text"><strong>Feedback is delayed 12–24 months.</strong> You won't know if today's model changes were right until loans from today mature. Early Payment Default (EPD) rate is the best leading indicator — defaults within 30–90 days signal problems early.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">🆕</span>
+        <div class="insight-text"><strong>New segments temporarily break the flywheel.</strong> Expanding to a new borrower segment (prime borrowers, auto loans) means less historical data on that segment. Expansion trades near-term model accuracy for long-term data accumulation.</div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">📊</span>
+        <div class="insight-text"><strong>Capital partners are the external validator.</strong> If they keep committing capital, the flywheel is healthy. If they pull back, the model's performance isn't meeting their return expectations — often a leading indicator before internal metrics show it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+  <hr class="fe-divider">
+  <!-- Diagram 6 — Money Flow & Rails -->
+<section id="moneyflow" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 6</span>
+    <h2>How Money Actually Moves — Technology Stack vs. Capital Flow</h2>
+    <p>Capital sources are not a technology layer — they're a funding relationship. They connect directly to payment rails as regulated financial institutions, bypassing the middleware that regular fintechs need.</p>
+  </div>
+
+  <div class="money-flow-grid">
+    <div class="flow-panel">
+      <div class="flow-panel-head" style="background:var(--fe-infra-bg); border-color:var(--fe-infra-border);">
+        How Fintechs Reach the Rails
+        <div>A company without a bank charter uses Layer 2 APIs to access Layer 1 rails.</div>
+      </div>
+      <div class="flow-panel-body">
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+            <div class="fn-label">Fintech Product (Layer 3)</div>
+            <div class="fn-name">Lending / Payments / BNPL App</div>
+            <div class="fn-desc">Needs to disburse a loan or settle a payment — but has no Fed master account or direct rail access.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge api">API call</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-infra-bg); border-color:var(--fe-infra-border);">
+            <div class="fn-label">Infrastructure API (Layer 2)</div>
+            <div class="fn-name">Money Movement / Card Issuing / Data</div>
+            <div class="fn-desc">Translates the API call into rail-specific commands. Handles compliance, routing, error handling, reconciliation.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge ach">ACH file / card authorization / wire</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-neutral-bg); border-color:var(--fe-faint);">
+            <div class="fn-label">Payment Rails (Layer 1)</div>
+            <div class="fn-name">ACH / Fedwire / RTP / Card Networks</div>
+            <div class="fn-desc">The actual infrastructure that moves money between bank accounts. Regulated by the Federal Reserve, Nacha, and card networks.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge ach">1–3 days (ACH) · Instant (RTP) · 1.5s (Card)</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-users-bg); border-color:var(--fe-users-border);">
+            <div class="fn-label">End User</div>
+            <div class="fn-name">Borrower / Merchant / Shopper</div>
+            <div class="fn-desc">Money arrives in their bank account. They never see the infrastructure layers that made it happen.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-panel">
+      <div class="flow-panel-head" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+        How Capital Moves (Institutional Flow)
+        <div>Capital sources are regulated institutions — they already have direct rail access. No Layer 2 needed.</div>
+      </div>
+      <div class="flow-panel-body">
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+            <div class="fn-label">Capital Source</div>
+            <div class="fn-name">Institutional Investor / Hedge Fund</div>
+            <div class="fn-desc">Holds a custodian bank account with direct Fedwire access. Wires purchase price for whole loan acquisitions.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge wire">Fedwire — same-day, large-value</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+            <div class="fn-label">Bank Partner (lender of record)</div>
+            <div class="fn-name">Licensed Bank or Credit Union</div>
+            <div class="fn-desc">Receives wire. Transfers loan ownership. Uses deposit pool to fund new loans. Earns origination fee before selling.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↓</div><span class="rail-badge ach">ACH (1–3 days) or RTP (instant)</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-users-bg); border-color:var(--fe-users-border);">
+            <div class="fn-label">Borrower</div>
+            <div class="fn-name">Loan Recipient</div>
+            <div class="fn-desc">Loan proceeds arrive in bank account. Monthly repayments leave via ACH pull, collected by servicer, forwarded to loan owner.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↑</div><span class="rail-badge ach">ACH pull — monthly over 3–7 year loan life</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+            <div class="fn-label">Capital Partner (loan owner)</div>
+            <div class="fn-name">Receives Principal + Interest</div>
+            <div class="fn-desc">Servicer collects and forwards repayments. Capital partner earns yield above Treasuries over the life of the loan.</div>
+          </div>
+        </div>
+        <div class="flow-conn"><div class="flow-conn-arrow">↕</div><span class="rail-badge dtcc">DTCC — if loans are securitized into ABS</span></div>
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background:var(--fe-neutral-bg); border-color:var(--fe-faint);">
+            <div class="fn-label">Optional — Securitization</div>
+            <div class="fn-name">Asset-Backed Securities Market</div>
+            <div class="fn-desc">Loan pools can be bundled into ABS and sold to bond investors. Settlement via DTCC — entirely different infrastructure from payment rails.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="money-flow-insight">
+    <div class="icon">💡</div>
+    <div>
+      <strong>Why capital sources bypass Layer 2:</strong> Infrastructure APIs (Layer 2) exist because most fintechs are NOT banks — they don't have a Fed master account or direct rail connections. Capital sources (hedge funds, insurance companies, bank partners) ARE licensed financial institutions with direct Fedwire and ACH access. They're peers of the rails, not customers of them. The technology stack describes how fintechs access the financial system. Capital flow is a separate axis — it describes who funds the products those fintechs offer.
+    </div>
+  </div>
+</section>
+  <hr class="fe-divider">
+  <!-- Diagram 7 — User Journeys -->
+<section id="journeys" class="fe-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 7</span>
+    <h2>User Journeys — Five Scenarios</h2>
+    <p>What actually happens at each step, from the user's perspective and behind the scenes. Green steps = money moves. Purple steps = a model or decision runs.</p>
+  </div>
+
+  <div class="journeys-grid">
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+        <div class="j-num">Journey 1</div>
+        <div class="j-title">Taking out a personal loan (AI Platform model)</div>
+        <div class="j-persona">Borrower applies online, AI underwrites, bank partner funds, capital partner buys</div>
+        <span class="j-time">Application: 5–10 min · Funds: 1–3 business days</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Enters loan amount, purpose, income estimate. Clicks "Check your rate" — no credit impact yet.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">AI Platform (soft pull)</div>
+            <div class="j-step-what">Pulls soft credit inquiry. Runs initial signals. Returns estimated APR range in seconds. No credit impact.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Sees APR range. Decides to continue. Connects bank account for income verification. Agrees to hard pull.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">AI Model + Bank Partner (hard pull)</div>
+            <div class="j-step-what">Full underwriting runs across hundreds of signals. Model outputs firm APR. Bank reviews compliance, becomes lender of record. Majority fully automated.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Receives firm offer: loan amount, APR, monthly payment, term. E-signs. Total process: ~8 minutes.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Bank Partner → Borrower's bank</div>
+            <div class="j-step-what">Bank disburses funds (minus origination fee) to borrower's bank account.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–3 business days</span></div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="7">
+          <div class="j-step-content">
+            <div class="j-step-who">Capital Partner → Bank Partner</div>
+            <div class="j-step-what">Bank sells loan (whole loan sale). Capital partner wires purchase price. Now holds credit risk and earns all future interest.</div>
+            <div class="j-step-rail"><span class="rail-badge wire">Fedwire — same-day</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (disbursement)</span>
+        <span class="rail-badge wire">Fedwire (loan sale)</span>
+        <span style="margin-left:4px;">Platform earns: referral + platform fee. No balance sheet risk.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-bnpl-bg); border-color:var(--fe-bnpl-border);">
+        <div class="j-num">Journey 2</div>
+        <div class="j-title">Buying with BNPL at checkout</div>
+        <div class="j-persona">Shopper selects installment option, BNPL underwrites in real-time, merchant paid same day</div>
+        <span class="j-time">Checkout decision: &lt;30 sec · Merchant paid: same day · Shopper pays over weeks</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Selects items, proceeds to checkout. Sees "Pay in 4" installment option. Selects it.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">BNPL provider (real-time underwriting)</div>
+            <div class="j-step-what">Runs soft credit check + proprietary signals in under 1 second. Approves installment plan. Merchant discount rate covers the 0% APR to shopper.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Sees approval. Confirms first payment + schedule. Quick verification step. 20 seconds total.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">BNPL provider → Merchant</div>
+            <div class="j-step-what">BNPL pays merchant the full purchase amount immediately, minus merchant discount rate (2–8%). Merchant takes zero credit risk.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–2 days to merchant</span></div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper → BNPL provider (x4)</div>
+            <div class="j-step-what">Payment pulled from shopper's bank every 2 weeks. 0% APR = no interest, but late fees apply for missed payments.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH pull — 4 installments</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (merchant payout + repayments)</span>
+        <span style="margin-left:4px;">BNPL earns: merchant fee (2–8%). Merchant earns: higher conversion. Shopper pays: $0 if on time.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-payments-bg); border-color:var(--fe-payments-border);">
+        <div class="j-num">Journey 3</div>
+        <div class="j-title">Paying for something with a card</div>
+        <div class="j-persona">Shopper enters card at checkout, card network routes it, merchant settles 2 days later</div>
+        <span class="j-time">Authorization: ~1.5 seconds · Settlement to merchant: 2 business days</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Enters card details at checkout. Clicks pay. Has no visibility into what happens next.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Payment processor (e.g. Stripe)</div>
+            <div class="j-step-what">Encrypts card data. Sends authorization request to card network. Handles PCI compliance — merchant never touches raw card data.</div>
+            <div class="j-step-rail"><span class="rail-badge api">API → Card network</span></div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Card network → Shopper's bank (issuer)</div>
+            <div class="j-step-what">Network routes request to shopper's issuing bank. Bank checks: sufficient funds? Fraud signals? Approves or declines. Total: ~1.5 seconds.</div>
+            <div class="j-step-rail"><span class="rail-badge visa">Card Network</span></div>
+          </div>
+        </div>
+        <div class="j-step" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Shopper</div>
+            <div class="j-step-what">Sees "Payment confirmed." Gets receipt. Charge shows as "pending" on bank statement. Transaction done from their perspective.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Card network settlement → Merchant</div>
+            <div class="j-step-what">Settlement runs overnight in batch. Merchant receives purchase amount minus processing fee (~3%). Charge finalizes on shopper's statement.</div>
+            <div class="j-step-rail"><span class="rail-badge visa">Card settlement + ACH — 2 business days</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge visa">Card network (auth + settlement)</span>
+        <span class="rail-badge ach">ACH (final bank transfer)</span>
+        <span style="margin-left:4px;">Processor earns: ~3% fee split across processor, card network, issuing bank.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-capital-bg); border-color:var(--fe-capital-border);">
+        <div class="j-num">Journey 4</div>
+        <div class="j-title">Depositor-funded lending (marketplace bank model)</div>
+        <div class="j-persona">One customer deposits savings, another takes a loan. Bank earns the interest rate spread between both.</div>
+        <span class="j-time">Deposit: 1–2 days · Loan approval: minutes · Funds: 1–2 days · Bank earns spread over years</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step money" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Depositor → Marketplace Bank</div>
+            <div class="j-step-what">Transfers savings into bank's high-yield account. Bank now has low-cost deposit funding — the core advantage of the bank charter model.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–2 business days</span></div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Applies for a loan directly with the bank. No third-party bank partner needed — the bank IS the lender of record.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Bank (underwriting)</div>
+            <div class="j-step-what">Runs credit check, income verification using own models. Often targets prime/super-prime borrowers. Approves loan. Will hold on balance sheet.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Bank → Borrower</div>
+            <div class="j-step-what">Funds loan from its deposit pool. Borrower receives proceeds (minus origination fee).</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–2 business days</span></div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower → Bank (monthly)</div>
+            <div class="j-step-what">Borrower repays monthly over the loan term. Bank earns loan APR (~10%), pays depositor savings rate (~4%). The ~6% spread is the margin.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH pull — monthly over loan term</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (deposit + disbursement + repayments)</span>
+        <span style="margin-left:4px;">Bank earns: interest spread. No capital marketplace needed — cleaner margin, but bank holds all credit risk.</span>
+      </div>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-head" style="background:var(--fe-lending-bg); border-color:var(--fe-lending-border);">
+        <div class="j-num">Journey 5</div>
+        <div class="j-title">Finding a loan via Lead Gen marketplace (Model 1)</div>
+        <div class="j-persona">Borrower submits one form, receives competing offers from multiple lenders, leaves the platform to complete their chosen loan</div>
+        <span class="j-time">Form: 2–3 min · Offers returned: seconds · Full application with lender: 5–10 min · Funds: 1–3 days</span>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Visits lead gen platform. Fills one short form — loan amount, purpose, rough credit estimate, contact info. No SSN yet. No credit impact.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Lead Gen Platform</div>
+            <div class="j-step-what">Validates lead quality. Matches borrower profile to relevant lenders. Sells the lead simultaneously to 3–5 matched lenders. Platform earns its fee here — before any loan decision.</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Matched Lenders (independently, in parallel)</div>
+            <div class="j-step-what">Each lender runs its own pre-qualification using the lead data — soft pull, internal scoring. Each returns an offer: APR range, loan amount, term. Lenders compete on rate.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower</div>
+            <div class="j-step-what">Sees a comparison table of offers — multiple lenders, different APRs and terms side by side. Picks the best one. Key difference from other models: borrower leaves the platform at this step.</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Borrower → Chosen Lender's website</div>
+            <div class="j-step-what">Redirected to the chosen lender to complete the full application — SSN, employment details, bank account. Hard pull runs here. E-sign loan agreement. Platform has no further role.</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Chosen Lender → Borrower</div>
+            <div class="j-step-what">Lender funds loan from its own capital sources. Disburses directly to borrower's bank. Platform never touched this money — it exited at Step 4.</div>
+            <div class="j-step-rail"><span class="rail-badge ach">ACH — 1–3 business days</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Rails:</strong>
+        <span class="rail-badge ach">ACH (disbursement by chosen lender only)</span>
+        <span style="margin-left:4px;">Platform earns: per-lead fee (Step 2). No credit risk. No ongoing relationship. The borrower's experience after Step 4 belongs entirely to the lender.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<section id="components" class="fe-section" style="margin-top: 48px; padding-top: 32px; border-top: 2px solid var(--fe-card-border);">
+  <div class="section-header">
+    <span class="section-tag">Reference</span>
+    <h2>Financial Components — PM Lens</h2>
+    <p>Core systems PMs actually need to reason about: where risk accumulates, where margins live, and where product decisions change unit economics.</p>
+  </div>
+
+  <div class="fe-callout" style="margin-bottom: 18px;">
+    <p><strong>How this connects to the diagrams:</strong> <a href="#ecosystem">Layer Map</a> shows where each engine lives, <a href="#sequence">Loan Flow</a> shows when it is invoked, and <a href="#moneyflow">Money Flow</a> shows how it impacts margin and cash timing. Use this section as the PM operating view.</p>
+  </div>
+
+  <div class="models-grid">
+    <article class="model-col">
+      <div class="model-head mh-lg">
+        <span class="model-num">Core Engine</span>
+        Risk Decisioning & Underwriting
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Evaluates default risk, fraud risk, and expected lifetime value before approving capital.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Approval rate, first-payment default, expected loss %, contribution margin per funded account.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Growth team pushes approvals up, losses spike 1-2 quarters later.</div>
+      </div>
+    </article>
+
+    <article class="model-col">
+      <div class="model-head mh-pr">
+        <span class="model-num">Core Engine</span>
+        Servicing & Collections
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Payment reminders, delinquency handling, hardship workflows, and recovery orchestration.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Roll rates (30→60→90 DPD), cure rate, recovery %, servicing cost per account.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Too aggressive collections hurts brand/trust; too soft policy hurts loss performance.</div>
+      </div>
+    </article>
+
+    <article class="model-col">
+      <div class="model-head mh-up">
+        <span class="model-num">Core Engine</span>
+        Ledger, Reconciliation & Controls
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Keeps the ground truth of balances, transactions, fees, payouts, and adjustments.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Break rate, reconciliation latency, unresolved exceptions, financial close timeline.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Operational complexity explodes; teams can’t trust numbers; audit pain arrives fast.</div>
+      </div>
+    </article>
+
+    <article class="model-col">
+      <div class="model-head mh-sf">
+        <span class="model-num">Core Engine</span>
+        Capital & Funding Management
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>What it does</strong>Matches product demand with warehouse lines, bank partners, deposits, or securitization windows.</div>
+        <div class="flow-step"><strong>PM metrics</strong>Cost of funds, capacity utilization, take rate net of funding, velocity to deploy capital.</div>
+        <div class="flow-step"><strong>Failure mode</strong>Great UX but no funding headroom = hard growth ceiling.</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="fe-callout" style="margin-top: 20px;">
+    <p><strong>Interview shortcut:</strong> when asked about fintech strategy, split the answer into <strong>distribution</strong> (acquisition), <strong>decisioning</strong> (risk + approvals), and <strong>balance sheet mechanics</strong> (funding + losses). Most candidates stop at UX; strong PMs speak in unit economics.</p>
+  </div>
+</section>
+
+<!-- Footer attribution -->
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  Financial Ecosystem Visual Guide v2 (Generic) · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <!-- partials/footer.html -->
+<footer class="border-t mt-16 py-12"
+        style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6">
+
+    <!-- Three-column grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+      <!-- Col 1: Site info -->
+      <div>
+        <a href="/" class="text-lg font-bold" style="color: var(--color-text-primary);">
+          fullstackpm.tech
+        </a>
+        <p class="text-small mt-2" style="color: var(--color-text-secondary);">
+          Full Stack AI Product Manager. Engineering Mind. Design Obsession.
+        </p>
+      </div>
+
+      <!-- Col 2: Quick links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Quick Links</h3>
+        <ul class="space-y-2">
+          
+          
+          <li>
+            <a href="/"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/@fullstackpm#contact"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <!-- Col 3: Social links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Connect</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://github.com/harsha-k-cheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/harshacheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="/feed.xml"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /></svg>
+              RSS Feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom attribution -->
+    <div class="mt-8 border-t pt-6 text-center" style="border-color: var(--color-border);">
+      <p class="text-xs" style="color: var(--color-text-tertiary);">
+        Built with FastAPI + HTMX &middot; &copy; 2026 Harsha Cheruku
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- HTMX (CDN) -->
+  <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwCXuE+cDVtAu2B3crQxD" crossorigin="anonymous"></script>
+
+  <!-- Site JS -->
+  <script src="/static/js/main.js"></script>
+
+  
+<script>
+  function showSeqModel(id, btn) {
+    document.querySelectorAll('.seq-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.model-tab').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('seq-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  // Update active nav link based on scroll position or click
+  const sections = ['ecosystem', 'models', 'sequence', 'vs', 'flywheel', 'moneyflow', 'journeys', 'components'];
+  const navLinks = document.querySelectorAll('.fe-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+
+    for (let link of navLinks) {
+      link.classList.remove('active');
+    }
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  // Update on scroll
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+  // Update on click
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Initialize on load
+  updateActiveLink();
+</script>
+
+</body>
+</html>

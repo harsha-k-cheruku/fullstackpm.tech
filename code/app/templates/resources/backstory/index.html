@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="max-w-4xl">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <p class="text-small mb-3" style="color: var(--color-text-secondary);">
+        <a href="/resources" style="color: var(--color-text-secondary);">Resources</a>
+        <span class="mx-2">·</span> The Backstory
+      </p>
+      <h1 class="text-h1 mb-4" style="color: var(--color-text-primary);">The Backstory</h1>
+      <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">
+        A weekend narrative podcast about market history, business history, and the investor letters that shaped how we think about money and decisions. One story. 20-25 minutes. Every Saturday and Sunday.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Market History</span>
+        <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Business History</span>
+        <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Investor Philosophy</span>
+        <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Weekends · 8 AM</span>
+      </div>
+    </div>
+
+    <!-- Episode list -->
+    {% if episodes %}
+    <div class="flex flex-col gap-4">
+      {% for episode in episodes %}
+      <a href="/resources/the-backstory/{{ episode.slug }}"
+         class="group rounded-xl border p-6 transition-all block"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-mono" style="color: var(--color-text-secondary);">
+                {{ episode.episode_id }} · {{ episode.date }}
+              </span>
+              <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+                {{ episode.duration_human }}
+              </span>
+            </div>
+            <h3 class="text-h3 mb-1" style="color: var(--color-text-primary);">{{ episode.title }}</h3>
+            {% if episode.hook %}
+            <p class="text-sm mb-2" style="color: var(--color-text-secondary);">{{ episode.hook }}</p>
+            {% endif %}
+            <div class="flex flex-wrap gap-2 mt-2">
+              {% if episode.theme %}
+              <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">{{ episode.theme }}</span>
+              {% endif %}
+              {% if episode.era %}
+              <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">{{ episode.era }}</span>
+              {% endif %}
+            </div>
+          </div>
+          <svg class="h-5 w-5 flex-shrink-0 mt-1 transition-transform group-hover:translate-x-1"
+               style="color: var(--color-accent);"
+               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </div>
+
+      </a>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <div class="rounded-xl border p-12 text-center" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <p class="text-body" style="color: var(--color-text-secondary);">Episodes publish weekend mornings — check back Saturday.</p>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two-Sided Marketplace Ecosystem — PM Visual Guide | fullstackpm.tech</title>
+  <meta name="description" content="Interactive visual guide to two-sided marketplaces: business models, clearing mechanics, network effects, and user journeys — built for product managers.">
+  <meta name="author" content="Harsha Cheruku">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://fullstackpm.tech/resources/ecosystem-maps/two-sided-marketplace">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Two-Sided Marketplace Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta property="og:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fullstackpm.tech/resources/ecosystem-maps/two-sided-marketplace">
+  <meta property="og:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:site_name" content="fullstackpm.tech">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fullstackpmtech">
+  <meta name="twitter:creator" content="@fullstackpmtech">
+  <meta name="twitter:title" content="Two-Sided Marketplace Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta name="twitter:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta name="twitter:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/img/FSPM.png?v=3">
+  <link rel="apple-touch-icon" href="/static/img/FSPM.png?v=3">
+  <meta name="msapplication-TileImage" content="/static/img/FSPM.png?v=3">
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Design System Tokens -->
+  <link rel="stylesheet" href="/static/css/custom.css">
+
+  <!-- Dark mode: apply before paint to prevent flash -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  
+<link rel="stylesheet" href="/static/css/two-sided-marketplace.css">
+
+</head>
+<body class="min-h-screen font-sans antialiased"
+      style="background-color: var(--color-bg-primary); color: var(--color-text-primary);">
+
+  <!-- Navigation -->
+  <!-- partials/navbar.html -->
+<nav aria-label="Main navigation"
+     class="sticky top-0 z-50 h-16 border-b"
+     style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+  <div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 sm:px-6">
+
+    <!-- Site name + logo -->
+    <a href="/"
+       class="flex items-center gap-2 text-lg font-bold transition-colors"
+       style="color: var(--color-text-primary);">
+      <img src="/static/img/FSPM.png?v=3" alt="fullstackpm.tech logo" class="h-8 w-8 rounded-full">
+      fullstackpm.tech
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden items-center gap-1 md:flex">
+      
+      
+      <a href="/"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Home
+        
+      </a>
+      
+      <a href="/projects"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Projects
+        
+      </a>
+      
+      <a href="/blog"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Blog
+        
+      </a>
+      
+      <a href="/resources"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Resources
+        
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        @fullstackpm
+        
+      </a>
+      
+    </div>
+
+    <!-- Right side: theme toggle + mobile menu button -->
+    <div class="flex items-center gap-2">
+
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="rounded-lg p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg id="theme-icon-sun" class="hidden h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg id="theme-icon-moon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              class="rounded-lg p-2 transition-colors md:hidden focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu"
+       class="hidden border-b md:hidden"
+       style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+    <div class="mx-auto max-w-[1200px] px-4 py-3 sm:px-6">
+      
+      <a href="/"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Home
+      </a>
+      
+      <a href="/projects"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Projects
+      </a>
+      
+      <a href="/blog"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Blog
+      </a>
+      
+      <a href="/resources"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Resources
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        @fullstackpm
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <!-- Main content -->
+  <main class="mx-auto max-w-[1200px] px-4 sm:px-6">
+    
+<!-- Breadcrumb -->
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">Two-Sided Marketplace</span>
+</nav>
+
+<!-- Page Header -->
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Two-Sided Marketplace Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 700px;">
+    Seven interconnected diagrams covering the complete marketplace architecture: how supply and demand connect, business model variations, clearing mechanics, network effects, financial flows, and user scenarios.
+  </p>
+</header>
+
+<!-- Sticky subnav -->
+<!-- Sticky navigation for Two-Sided Marketplace sections -->
+<nav class="tsm-subnav">
+  <a href="#layermap" class="tsm-subnav-link">Layer Map</a>
+  <a href="#models" class="tsm-subnav-link">Business Models</a>
+  <a href="#transaction" class="tsm-subnav-link">Transaction Flow</a>
+  <a href="#types" class="tsm-subnav-link">Marketplace Types</a>
+  <a href="#flywheel" class="tsm-subnav-link">Network Effects</a>
+  <a href="#moneyflow" class="tsm-subnav-link">Money & Value</a>
+  <a href="#journeys" class="tsm-subnav-link">User Journeys</a>
+  <a href="#components" class="tsm-subnav-link">Components</a>
+</nav>
+
+<!-- Diagrams -->
+<div class="tsm-page">
+  <!-- Diagram 1: Nested Layer Map — Supply/Platform/Demand/Trust/Products/End Users -->
+<section id="layermap" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 1</span>
+    <h2>Ecosystem Layer Map</h2>
+    <p>The nested structure of a two-sided marketplace. Supply and demand sides form concentric layers around the platform core, with trust, products, and network effects bridging them.</p>
+  </div>
+
+  <div class="tsm-layer-map">
+    <div class="tsm-layers-outer">
+      <!-- End Users Layer (outer) -->
+      <div class="tsm-layer" style="background: var(--tsm-demand-bg); border-color: var(--tsm-demand-border);">
+        <div class="tsm-layer-label" style="color: var(--tsm-demand-text);">End Users / Buyers</div>
+        <div class="tsm-layer-items">
+          <span class="tsm-layer-item" style="background: var(--tsm-demand-bg); border-color: var(--tsm-demand-text);">Consumers seeking goods/services</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-demand-bg); border-color: var(--tsm-demand-text);">Repeat purchase patterns</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-demand-bg); border-color: var(--tsm-demand-text);">Lower switching costs</span>
+        </div>
+      </div>
+
+      <!-- Products/UX Layer -->
+      <div class="tsm-layer" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-border);">
+        <div class="tsm-layer-label" style="color: var(--tsm-platform-text);">Platform Products</div>
+        <div class="tsm-layer-items">
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Search & discovery</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Ratings & reviews</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Messaging</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Checkout & transactions</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Listing & catalog mgmt</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Advertising / promoted</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Seller analytics</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Recommendations</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Notifications & CRM</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Onboarding flows</span>
+        </div>
+      </div>
+
+      <!-- Trust Layer -->
+      <div class="tsm-layer" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-border);">
+        <div class="tsm-layer-label" style="color: var(--tsm-trust-text);">Trust & Safety</div>
+        <div class="tsm-layer-items">
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Identity verification (KYC)</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Seller verification & quality</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Fraud prevention & detection</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Escrow / payment protection</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Dispute resolution & mediation</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Chargeback & refund handling</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Review moderation & authenticity</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-text);">Account suspension & enforcement</span>
+        </div>
+      </div>
+
+      <!-- Platform Core (innermost) -->
+      <div class="tsm-layer" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-border);">
+        <div class="tsm-layer-label" style="color: var(--tsm-platform-text);">Platform Core APIs</div>
+        <div class="tsm-layer-items">
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Matching algorithm</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Pricing engine</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Data analytics</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-text);">Payment gateway</span>
+        </div>
+      </div>
+
+      <!-- Supply Side -->
+      <div class="tsm-layer" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-border);">
+        <div class="tsm-layer-label" style="color: var(--tsm-supply-text);">Supply Providers / Sellers</div>
+        <div class="tsm-layer-items">
+          <span class="tsm-layer-item" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-text);">Individuals (gig workers, creators)</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-text);">Businesses (B2B, B2C)</span>
+          <span class="tsm-layer-item" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-text);">Quality assurance requirements</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capital Sources Panel -->
+    <div class="tsm-capital-panel">
+      <h4>Institutional Support</h4>
+      <div class="cp-note">Sources of funding, infrastructure, or governance enabling the marketplace to operate at scale.</div>
+      <div class="tsm-capital-item">
+        <strong>Payment Processors</strong>
+        <span>Stripe, Square, PayPal — clear settlements</span>
+      </div>
+      <div class="tsm-capital-item">
+        <strong>Escrow / Trust Accounts</strong>
+        <span>Bank partners holding buyer/seller funds</span>
+      </div>
+      <div class="tsm-capital-item">
+        <strong>Insurance Partners</strong>
+        <span>Seller protection, liability coverage</span>
+      </div>
+      <div class="tsm-capital-item">
+        <strong>Legal / Compliance</strong>
+        <span>Terms, user agreements, regulatory</span>
+      </div>
+      <div class="tsm-capital-item">
+        <strong>Infrastructure</strong>
+        <span>Cloud hosting, CDN, monitoring</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The marketplace is strongest when all layers are healthy: suppliers with good inventory, platform making discovery effortless, trust signals preventing fraud, and users with real buying intent. A breakdown in any layer ripples outward.</p>
+  </div>
+</section>
+  <hr class="tsm-divider">
+  <!-- Diagram 2: Four Business Models — Pure, Managed, Vertical, Services -->
+<section id="models" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 2</span>
+    <h2>Four Marketplace Business Models</h2>
+    <p>Marketplaces differ in how much the platform owns vs. allows the marketplace community to own. A spectrum from pure matching (Etsy) to fully managed (Amazon 3P) to vertical integration (Faire) to services (Thumbtack).</p>
+  </div>
+
+  <div class="model-grid">
+    <!-- Pure Marketplace -->
+    <div class="model-card">
+      <div class="model-head mh-pure">
+        <span class="model-num">Model 1</span>
+        Pure Marketplace
+        <span class="model-example">Etsy</span>
+      </div>
+      <div class="model-body">
+        <div class="model-step"><strong>Sellers list items</strong> themselves — photos, descriptions, pricing</div>
+        <div class="model-step"><strong>Platform matches</strong> buyers to listings via search</div>
+        <div class="model-step"><strong>Fulfillment handled</strong> by seller (shipping, packaging)</div>
+        <div class="model-step"><strong>Platform takes fee</strong> on transaction only</div>
+      </div>
+      <div style="padding: 0 16px 14px; font-size: 12px; color: var(--tsm-body); border-top: 1px solid var(--tsm-card-border); margin-top: 12px; padding-top: 12px;">
+        <strong style="color: var(--tsm-heading);">Strength:</strong> Low operational cost, high seller autonomy
+      </div>
+    </div>
+
+    <!-- Managed Marketplace -->
+    <div class="model-card">
+      <div class="model-head mh-managed">
+        <span class="model-num">Model 2</span>
+        Managed Marketplace
+        <span class="model-example">Amazon 3P</span>
+      </div>
+      <div class="model-body">
+        <div class="model-step"><strong>Sellers list items</strong> to Amazon specs</div>
+        <div class="model-step"><strong>Platform controls</strong> search, pricing suggestions</div>
+        <div class="model-step"><strong>FBA optional</strong> — platform handles fulfillment</div>
+        <div class="model-step"><strong>Platform takes</strong> fee + fulfillment fee</div>
+      </div>
+      <div style="padding: 0 16px 14px; font-size: 12px; color: var(--tsm-body); border-top: 1px solid var(--tsm-card-border); margin-top: 12px; padding-top: 12px;">
+        <strong style="color: var(--tsm-heading);">Strength:</strong> Better buyer experience, predictable quality
+      </div>
+    </div>
+
+    <!-- Vertical Marketplace -->
+    <div class="model-card">
+      <div class="model-head mh-vertical">
+        <span class="model-num">Model 3</span>
+        Vertical / B2B
+        <span class="model-example">Faire</span>
+      </div>
+      <div class="model-body">
+        <div class="model-step"><strong>Deep domain expertise</strong> in a single vertical</div>
+        <div class="model-step"><strong>Curated seller base</strong> — sellers vetted by platform</div>
+        <div class="model-step"><strong>Wholesale pricing</strong> enabled (B2B unit economics)</div>
+        <div class="model-step"><strong>Platform provides</strong> logistics, financing</div>
+      </div>
+      <div style="padding: 0 16px 14px; font-size: 12px; color: var(--tsm-body); border-top: 1px solid var(--tsm-card-border); margin-top: 12px; padding-top: 12px;">
+        <strong style="color: var(--tsm-heading);">Strength:</strong> Defensible moat, specific buyer needs
+      </div>
+    </div>
+
+    <!-- Services Marketplace -->
+    <div class="model-card">
+      <div class="model-head mh-services">
+        <span class="model-num">Model 4</span>
+        Services Marketplace
+        <span class="model-example">Thumbtack</span>
+      </div>
+      <div class="model-body">
+        <div class="model-step"><strong>Platform connects</strong> service seekers (buyers) to providers</div>
+        <div class="model-step"><strong>Fulfillment is bespoke</strong> — unique per engagement</div>
+        <div class="model-step"><strong>Quality assured</strong> by reviews, platform vetting</div>
+        <div class="model-step"><strong>Platform takes</strong> commission per booking</div>
+      </div>
+      <div style="padding: 0 16px 14px; font-size: 12px; color: var(--tsm-body); border-top: 1px solid var(--tsm-card-border); margin-top: 12px; padding-top: 12px;">
+        <strong style="color: var(--tsm-heading);">Strength:</strong> High trust requirement = defensible</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> "Pure" isn't better than "managed" — it depends on the category. High-trust services need platform involvement. Standardized goods work better with seller autonomy. The best marketplaces solve for their category's specific needs.</p>
+  </div>
+</section>
+  <hr class="tsm-divider">
+  <!-- Diagram 3: Transaction Sequence — Tabbed, one per business model -->
+<section id="transaction" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 3</span>
+    <h2>Transaction Sequence</h2>
+    <p>How a single transaction flows through the marketplace. The mechanics vary by model — click a tab to see the sequence for each approach.</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="transaction-tabs">
+    <button class="trans-tab active" onclick="showTransModel('etsy', this)">
+      <span class="tt-num">Pure</span>
+      <span class="tt-name">Etsy</span>
+    </button>
+    <button class="trans-tab" onclick="showTransModel('amazon', this)">
+      <span class="tt-num">Managed</span>
+      <span class="tt-name">Amazon 3P</span>
+    </button>
+    <button class="trans-tab" onclick="showTransModel('faire', this)">
+      <span class="tt-num">Vertical</span>
+      <span class="tt-name">Faire</span>
+    </button>
+    <button class="trans-tab" onclick="showTransModel('thumbtack', this)">
+      <span class="tt-num">Services</span>
+      <span class="tt-name">Thumbtack</span>
+    </button>
+  </div>
+
+  <!-- Etsy Transaction -->
+  <div id="trans-etsy" class="trans-panel" style="display: block;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">👤</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🎨</span> Seller</div>
+        <div class="seq-participant"><span class="p-icon">📱</span> Platform</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span> Payment Processor</div>
+        <div class="seq-participant"><span class="p-icon">🚚</span> Shipping</div>
+        <div class="seq-participant"><span class="p-icon">⭐</span> Feedback</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Discovery</div>
+      <div class="seq-step">
+        <div class="seq-cell">Searches for item</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Displays listings</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Purchase</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Clicks "Buy Now"</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Captures order</div>
+        <div class="seq-cell">Processes payment</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Fulfillment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Packs & ships</div>
+        <div class="seq-cell decision">Tracks shipment</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Receives & delivers</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Post-Delivery</div>
+      <div class="seq-step">
+        <div class="seq-cell">Receives package</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Payment held (7 days)</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Leaves review</div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Payout</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives $$ after 7d</div>
+        <div class="seq-cell sending">Deducts 5% fee</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-supply-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-supply-text);">
+      <strong>Seller earns:</strong> $95 (after Etsy's 5% commission) | <strong>Etsy earns:</strong> $5 flat fee
+    </div>
+  </div>
+
+  <!-- Amazon Transaction -->
+  <div id="trans-amazon" class="trans-panel" style="display: none;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">👤</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🏪</span> Seller</div>
+        <div class="seq-participant"><span class="p-icon">📦</span> FBA (Amazon)</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span> Payment</div>
+        <div class="seq-participant"><span class="p-icon">🚚</span> Logistics</div>
+        <div class="seq-participant"><span class="p-icon">💰</span> Payout</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Inbound Stock</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Ships inventory to FBA</div>
+        <div class="seq-cell sending">Receives & stores</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Purchase</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Clicks "Buy"</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Fulfillment triggered</div>
+        <div class="seq-cell">Captures $</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Fulfillment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Picks, packs, ships</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Amazon Logistics delivers</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Delivery & Review</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Receives 1-day</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Confirms receipt</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Payout</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Seller paid (~14 days)</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-platform-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-platform-text);">
+      <strong>Seller earns:</strong> 60-70% (referral fee 15%, FBA fee ~15%, other fees ~10-20%) | <strong>Amazon earns:</strong> 30-40%
+    </div>
+  </div>
+
+  <!-- Faire Transaction -->
+  <div id="trans-faire" class="trans-panel" style="display: none;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">🏪</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🏭</span> Seller</div>
+        <div class="seq-participant"><span class="p-icon">📱</span> Platform</div>
+        <div class="seq-participant"><span class="p-icon">💳</span> Payment</div>
+        <div class="seq-participant"><span class="p-icon">🚚</span> Logistics</div>
+        <div class="seq-participant"><span class="p-icon">💰</span> Settlement</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Wholesale Terms</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Buyer (retailer)</div>
+        <div class="seq-cell sending">Lists with MOQ</div>
+        <div class="seq-cell">Curates catalog</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Order Placement</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Places wholesale order</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Order confirmed</div>
+        <div class="seq-cell">Invoice generated</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Fulfillment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Manufactures & ships</div>
+        <div class="seq-cell">Logistics platform</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Delivery to buyer</div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Quality Check</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Verifies quality</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Holds payment (30 days)</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Payment</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Receives payment</div>
+        <div class="seq-cell sending">Deducts 8-10% fee</div>
+        <div class="seq-cell">ACH transfer</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-demand-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-demand-text);">
+      <strong>Seller earns:</strong> 90% (8-10% Faire fee) | <strong>Platform earns:</strong> 8-10% + financing revenue
+    </div>
+  </div>
+
+  <!-- Thumbtack Transaction -->
+  <div id="trans-thumbtack" class="trans-panel" style="display: none;">
+    <div class="transaction-seq">
+      <div class="seq-participants">
+        <div class="seq-participant"><span class="p-icon">👤</span> Buyer</div>
+        <div class="seq-participant"><span class="p-icon">🔧</span> Provider</div>
+        <div class="seq-participant"><span class="p-icon">📱</span> Platform</div>
+        <div class="seq-participant"><span class="p-icon">🏦</span> Escrow</div>
+        <div class="seq-participant"><span class="p-icon">👀</span> QA</div>
+        <div class="seq-participant"><span class="p-icon">💰</span> Payout</div>
+      </div>
+
+      <div class="seq-step-label">Step 1: Request</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Posts job request</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Sends leads</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 2: Bidding</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Provider bids</div>
+        <div class="seq-cell">Notifies buyer</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 3: Selection & Payment</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Accepts provider</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Facilitates payment</div>
+        <div class="seq-cell sending">Holds in escrow</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 4: Service Delivery</div>
+      <div class="seq-step">
+        <div class="seq-cell"></div>
+        <div class="seq-cell active">Performs service</div>
+        <div class="seq-cell">Communication hub</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell"></div>
+      </div>
+
+      <div class="seq-step-label">Step 5: Completion & Release</div>
+      <div class="seq-step">
+        <div class="seq-cell active">Approves work</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell sending">Releases escrow</div>
+        <div class="seq-cell"></div>
+        <div class="seq-cell decision">Marks complete</div>
+        <div class="seq-cell active">Receives payment</div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px 16px; background: var(--tsm-trust-bg); border-radius: 8px; font-size: 12px; color: var(--tsm-trust-text);">
+      <strong>Provider earns:</strong> 80% (after Thumbtack's 20% commission) | <strong>Platform earns:</strong> 20% per booking
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The transaction flow reveals where platform leverage exists. More platform involvement = more fees but better buyer trust. Pure marketplaces move faster but demand higher seller quality upfront.</p>
+  </div>
+</section>
+  <hr class="tsm-divider">
+  <!-- Diagram 4: Core Distinction — Goods vs Services vs Experiences vs Digital -->
+<section id="types" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 4</span>
+    <h2>Marketplace Types by Product Category</h2>
+    <p>The nature of what's being sold determines how the marketplace operates. The same playbook doesn't work for goods, services, experiences, and digital products.</p>
+  </div>
+
+  <div class="types-grid">
+    <!-- Goods -->
+    <div class="type-card">
+      <div class="type-head" style="background: var(--tsm-supply-bg); border-bottom-color: var(--tsm-supply-border); color: var(--tsm-supply-text);">
+        📦 Physical Goods
+      </div>
+      <div class="type-body">
+        <strong style="color: var(--tsm-supply-text);">Key Challenges:</strong>
+        <ul class="type-bullets">
+          <li>Inventory management</li>
+          <li>Shipping/logistics costs</li>
+          <li>Return/dispute rates</li>
+          <li>Fraud (counterfeits)</li>
+        </ul>
+        <strong style="color: var(--tsm-supply-text); margin-top: 12px;">Examples:</strong>
+        <ul class="type-bullets">
+          <li>Etsy, eBay</li>
+          <li>Amazon Marketplace</li>
+          <li>Mercari</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="type-card">
+      <div class="type-head" style="background: var(--tsm-platform-bg); border-bottom-color: var(--tsm-platform-border); color: var(--tsm-platform-text);">
+        🔧 Services
+      </div>
+      <div class="type-body">
+        <strong style="color: var(--tsm-platform-text);">Key Challenges:</strong>
+        <ul class="type-bullets">
+          <li>Quality is provider-dependent</li>
+          <li>No standardization</li>
+          <li>High trust requirement</li>
+          <li>Scheduling complexity</li>
+        </ul>
+        <strong style="color: var(--tsm-platform-text); margin-top: 12px;">Examples:</strong>
+        <ul class="type-bullets">
+          <li>Thumbtack</li>
+          <li>Care.com</li>
+          <li>Toptal</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Experiences -->
+    <div class="type-card">
+      <div class="type-head" style="background: var(--tsm-trust-bg); border-bottom-color: var(--tsm-trust-border); color: var(--tsm-trust-text);">
+        ✈️ Experiences
+      </div>
+      <div class="type-body">
+        <strong style="color: var(--tsm-trust-text);">Key Challenges:</strong>
+        <ul class="type-bullets">
+          <li>Regulatory (licensing)</li>
+          <li>Liability & insurance</li>
+          <li>Highly contextual reviews</li>
+          <li>Seasonal demand spikes</li>
+        </ul>
+        <strong style="color: var(--tsm-trust-text); margin-top: 12px;">Examples:</strong>
+        <ul class="type-bullets">
+          <li>Airbnb, Vrbo</li>
+          <li>Viator, Klook</li>
+          <li>Eventbrite</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Digital -->
+    <div class="type-card">
+      <div class="type-head" style="background: var(--tsm-network-bg); border-bottom-color: var(--tsm-network-border); color: var(--tsm-network-text);">
+        💻 Digital Products
+      </div>
+      <div class="type-body">
+        <strong style="color: var(--tsm-network-text);">Key Challenges:</strong>
+        <ul class="type-bullets">
+          <li>Piracy / IP protection</li>
+          <li>Instant delivery expectations</li>
+          <li>Creator payouts (revenue split)</li>
+          <li>Content moderation at scale</li>
+        </ul>
+        <strong style="color: var(--tsm-network-text); margin-top: 12px;">Examples:</strong>
+        <ul class="type-bullets">
+          <li>App Store, Play Store</li>
+          <li>Gumroad, Patreon</li>
+          <li>Substack</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px; padding: 16px; background: var(--tsm-neutral-bg); border-radius: 12px; border-left: 4px solid var(--tsm-platform-border);">
+    <h3 style="font-size: 14px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 12px;">Product Category Effects on Marketplace Dynamics</h3>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 13px; color: var(--tsm-body);">
+      <div>
+        <strong style="color: var(--tsm-heading); display: block; margin-bottom: 4px;">Fulfillment</strong>
+        Goods = logistics, Services = scheduling, Experiences = on-site, Digital = instant
+      </div>
+      <div>
+        <strong style="color: var(--tsm-heading); display: block; margin-bottom: 4px;">Quality Signal</strong>
+        Goods = reviews, Services = provider rep, Experiences = community, Digital = ratings
+      </div>
+      <div>
+        <strong style="color: var(--tsm-heading); display: block; margin-bottom: 4px;">Platform Control</strong>
+        Goods = low, Services = medium, Experiences = high, Digital = very high
+      </div>
+      <div>
+        <strong style="color: var(--tsm-heading); display: block; margin-bottom: 4px;">Reversibility</strong>
+        Goods = hard, Services = hard, Experiences = medium, Digital = easy
+      </div>
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The most successful marketplaces deeply understand their product category and design the marketplace mechanics around it. A "one-size-fits-all" marketplace platform fails because goods don't need scheduling but services do. Don't fight the category — lean into it.</p>
+  </div>
+</section>
+  <hr class="tsm-divider">
+  <!-- Diagram 5: Network Effects Flywheel -->
+<section id="flywheel" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 5</span>
+    <h2>Network Effects Flywheel</h2>
+    <p>How marketplace value compounds as both sides of the market grow. The core loop: more supply → better search → more demand → more data → better matching → even more supply.</p>
+  </div>
+
+  <div class="flywheel-wrap">
+    <div class="flywheel-steps">
+      <div class="fw-step" data-num="1">
+        <div class="fw-step-content">
+          <h4>More Sellers Join</h4>
+          <p>Initial growth from quality sellers attracted by early buyers. Word-of-mouth, press, GMV success stories.</p>
+        </div>
+      </div>
+
+      <div class="fw-step" data-num="2">
+        <div class="fw-step-content">
+          <h4>Inventory Grows</h4>
+          <p>More listings, more variety, more SKUs in every category. Search becomes richer, discovery improves.</p>
+        </div>
+      </div>
+
+      <div class="fw-step" data-num="3">
+        <div class="fw-step-content">
+          <h4>Buyers Find What They Want</h4>
+          <p>Better search results, lower "zero results" rate. Conversion improves. Repeat purchase increases.</p>
+        </div>
+      </div>
+
+      <div class="fw-step" data-num="4">
+        <div class="fw-step-content">
+          <h4>Demand Grows</h4>
+          <p>More buyers return, more transactions, higher daily active users, higher total GMV.</p>
+        </div>
+      </div>
+
+      <div class="fw-step" data-num="5">
+        <div class="fw-step-content">
+          <h4>More Data</h4>
+          <p>Each transaction generates signals: buyer behavior, seller quality, product affinity, demand patterns.</p>
+        </div>
+      </div>
+
+      <div class="fw-step highlight" data-num="6">
+        <div class="fw-step-content">
+          <h4>Matching Improves</h4>
+          <p>Better ranking models, better recommendations, better pricing suggestions. Quality of matches increases.</p>
+        </div>
+      </div>
+
+      <div class="fw-step" data-num="7">
+        <div class="fw-step-content">
+          <h4>Sellers Earn More</h4>
+          <p>Higher conversion per listing, faster sell-through, better pricing power. ROI for sellers improves.</p>
+        </div>
+      </div>
+
+      <div class="fw-step" data-num="8">
+        <div class="fw-step-content">
+          <h4>More Sellers Return</h4>
+          <p>Existing sellers increase inventory. New sellers see success and join. The cycle repeats.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flywheel-insight">
+      <h3>Why This Matters</h3>
+      <div class="insight-item">
+        <span class="insight-icon">🚀</span>
+        <div class="insight-text">
+          <strong>Compounding advantage.</strong> Early marketplaces grow slowly, then exponentially once the flywheel starts. That's why first-mover can have advantage.
+        </div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">⚠️</span>
+        <div class="insight-text">
+          <strong>Reverse flywheel risk.</strong> If network effects reverse (low quality, poor matching), the spiral is fast and hard to reverse.
+        </div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">🎯</span>
+        <div class="insight-text">
+          <strong>Activation is critical.</strong> Get to Step 3 (good matches) as fast as possible. Chicken-and-egg until matching works.
+        </div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">📊</span>
+        <div class="insight-text">
+          <strong>Data compound value.</strong> The longer a marketplace runs, the better its models get. Defensibility increases with time.
+        </div>
+      </div>
+      <div class="insight-item">
+        <span class="insight-icon">💡</span>
+        <div class="insight-text">
+          <strong>PM's job:</strong> Identify the constraint at each stage. Early on, it's supply. Later, it's matching quality. Later still, it's retention.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 28px;">
+    <h3 style="font-size: 16px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 16px;">Flywheel Constraints by Stage</h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+      <div style="background: var(--tsm-supply-bg); border: 2px solid var(--tsm-supply-border); border-radius: 12px; padding: 16px;">
+        <strong style="color: var(--tsm-supply-text); display: block; margin-bottom: 8px; font-size: 14px;">Stage 1: Cold Start</strong>
+        <p style="font-size: 13px; color: var(--tsm-body); line-height: 1.5;">Constraint: <strong>Supply quality.</strong> Can't find enough good sellers. Focus on curating first sellers and proving the model works.</p>
+      </div>
+      <div style="background: var(--tsm-demand-bg); border: 2px solid var(--tsm-demand-border); border-radius: 12px; padding: 16px;">
+        <strong style="color: var(--tsm-demand-text); display: block; margin-bottom: 8px; font-size: 14px;">Stage 2: Growth</strong>
+        <p style="font-size: 13px; color: var(--tsm-body); line-height: 1.5;">Constraint: <strong>Matching quality.</strong> Have supply and demand, but ranking/search isn't good yet. Focus on improving relevance.</p>
+      </div>
+      <div style="background: var(--tsm-platform-bg); border: 2px solid var(--tsm-platform-border); border-radius: 12px; padding: 16px;">
+        <strong style="color: var(--tsm-platform-text); display: block; margin-bottom: 8px; font-size: 14px;">Stage 3: Scale</strong>
+        <p style="font-size: 13px; color: var(--tsm-body); line-height: 1.5;">Constraint: <strong>Retention.</strong> Growth slowing, need repeat usage. Focus on reducing friction and building loyalty.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The biggest mistake young marketplaces make is trying to optimize the entire flywheel at once. You can't. Focus ruthlessly on unlocking the next step. Cold starts need supply curation, not algorithm complexity.</p>
+  </div>
+</section>
+  <hr class="tsm-divider">
+  <!-- Diagram 6: Money and Value Flow -->
+<section id="moneyflow" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 6</span>
+    <h2>Money and Value Flows</h2>
+    <p>How cash and value move through the marketplace. Left side: buyer payment flows. Right side: institutional support and financing.</p>
+  </div>
+
+  <div class="money-flow-grid">
+    <!-- Payment Waterfall -->
+    <div class="flow-panel">
+      <div class="flow-panel-head">Payment Waterfall</div>
+      <div class="flow-panel-body">
+        <!-- Buyer pays -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-demand-bg); border-color: var(--tsm-demand-border); color: var(--tsm-demand-text);">
+            <div class="fn-label" style="color: var(--tsm-demand-text);">Step 1</div>
+            <div class="fn-name" style="color: var(--tsm-demand-text);">Buyer Pays</div>
+            <div class="fn-desc">Platform captures payment</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">↓</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Payment Processor (Stripe, Square)</span>
+        </div>
+
+        <!-- Platform holds -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-border); color: var(--tsm-trust-text);">
+            <div class="fn-label" style="color: var(--tsm-trust-text);">Step 2</div>
+            <div class="fn-name" style="color: var(--tsm-trust-text);">Hold Period</div>
+            <div class="fn-desc">7-30 days (Buyer protection, dispute resolution)</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">↓</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Escrow / Reserve Account</span>
+        </div>
+
+        <!-- Platform takes fee -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-takerate-bg); border-color: var(--tsm-takerate-border); color: var(--tsm-takerate-text);">
+            <div class="fn-label" style="color: var(--tsm-takerate-text);">Step 3</div>
+            <div class="fn-name" style="color: var(--tsm-takerate-text);">Platform Fee</div>
+            <div class="fn-desc">5-30% deducted (commission, transaction fee, payment fee)</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">↓</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Seller Payout Account</span>
+        </div>
+
+        <!-- Seller receives -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-border); color: var(--tsm-supply-text);">
+            <div class="fn-label" style="color: var(--tsm-supply-text);">Step 4</div>
+            <div class="fn-name" style="color: var(--tsm-supply-text);">Seller Paid</div>
+            <div class="fn-desc">ACH or instant transfer to seller bank account</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Institutional Flows -->
+    <div class="flow-panel">
+      <div class="flow-panel-head">Institutional Support</div>
+      <div class="flow-panel-body">
+        <!-- Processor -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-neutral-bg); border-color: var(--tsm-card-border);">
+            <div class="fn-label">Infrastructure</div>
+            <div class="fn-name" style="font-size: 13px;">Payment Processor</div>
+            <div class="fn-desc" style="font-size: 11px;">Stripe, PayPal charge 2-3% per transaction. Money flow through their rails.</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">←→</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Settlement Bank (ACH, Wire, RTP)</span>
+        </div>
+
+        <!-- Trust Account -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-trust-bg); border-color: var(--tsm-trust-border); color: var(--tsm-trust-text);">
+            <div class="fn-label" style="color: var(--tsm-trust-text);">Risk Mitigation</div>
+            <div class="fn-name" style="color: var(--tsm-trust-text);">Escrow / Trust Account</div>
+            <div class="fn-desc" style="font-size: 11px;">Bank partner holds buyer funds during dispute window. Protects both sides.</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">←→</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Held in Bank Account (Earning Float Interest)</span>
+        </div>
+
+        <!-- Insurance -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-supply-bg); border-color: var(--tsm-supply-border); color: var(--tsm-supply-text);">
+            <div class="fn-label" style="color: var(--tsm-supply-text);">Liability</div>
+            <div class="fn-name" style="color: var(--tsm-supply-text);">Insurance / Bond</div>
+            <div class="fn-desc" style="font-size: 11px;">Covers seller fraud, chargebacks, disputes. Platform pays premium.</div>
+          </div>
+        </div>
+        <div class="flow-conn">
+          <div class="flow-conn-arrow">→</div>
+          <span style="font-size: 11px; color: var(--tsm-muted); font-weight: 600;">Claims Pool</span>
+        </div>
+
+        <!-- Financing -->
+        <div class="flow-node-row">
+          <div class="flow-node-box" style="background: var(--tsm-platform-bg); border-color: var(--tsm-platform-border); color: var(--tsm-platform-text);">
+            <div class="fn-label" style="color: var(--tsm-platform-text);">Capital Support</div>
+            <div class="fn-name" style="color: var(--tsm-platform-text);">Marketplace Financing</div>
+            <div class="fn-desc" style="font-size: 11px;">Some platforms (Faire, Square Cash) offer seller loans. Monetize GMV.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 16px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 16px;">Marketplace Revenue Streams</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 16px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 12px;">Direct Revenue (Transaction-Based)</h4>
+        <ul style="list-style: none; font-size: 13px; color: var(--tsm-body); line-height: 1.8;">
+          <li><strong style="color: var(--tsm-heading);">Commission/take-rate:</strong> 5-30% of transaction value (most markets)</li>
+          <li><strong style="color: var(--tsm-heading);">Transaction fee:</strong> $0.50-$2 fixed fee per transaction</li>
+          <li><strong style="color: var(--tsm-heading);">Payment processing:</strong> 2-3% pass-through (Stripe, PayPal)</li>
+          <li><strong style="color: var(--tsm-heading);">Listing fees:</strong> $0.20-$5 per item listed (some markets)</li>
+        </ul>
+      </div>
+
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 16px;">
+        <h4 style="font-size: 14px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 12px;">Indirect Revenue (Platform Services)</h4>
+        <ul style="list-style: none; font-size: 13px; color: var(--tsm-body); line-height: 1.8;">
+          <li><strong style="color: var(--tsm-heading);">Advertising:</strong> Seller ads for better placement (eBay, Etsy promoted listings)</li>
+          <li><strong style="color: var(--tsm-heading);">Seller tools:</strong> Analytics, shipping integrations ($9-$100/mo)</li>
+          <li><strong style="color: var(--tsm-heading);">Financing:</strong> Lend to sellers at interest (3-15% APR)</li>
+          <li><strong style="color: var(--tsm-heading);">Logistics:</strong> Discounted shipping or fulfillment services</li>
+          <li><strong style="color: var(--tsm-heading);">Float interest:</strong> Interest earned on funds in escrow account</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The take-rate is what gets publicized, but smart marketplaces build a diversified revenue model. Transaction fees alone become a ceiling — advertising, seller tools, and financing unlock the full economics. Stripe earns 2.9% + $0.30 on payment processing, but makes more per transaction from connected services.</p>
+  </div>
+</section>
+  <hr class="tsm-divider">
+  <!-- Diagram 7: User Journeys — Four Scenarios -->
+<section id="journeys" class="tsm-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 7</span>
+    <h2>User Journeys</h2>
+    <p>Four distinct user scenarios in two-sided marketplaces. From first-time buyer to wholesale wholesaler to repeat services user — each has different needs, friction points, and drop-off risks.</p>
+  </div>
+
+  <div class="journeys-grid">
+    <!-- Journey 1: First-Time Buyer (Etsy) -->
+    <div class="journey-card">
+      <div class="journey-head">
+        <div class="j-num">Journey 1</div>
+        <div class="j-title">First-Time Buyer</div>
+        <div class="j-persona">Buyer discovering a marketplace for first time</div>
+        <div class="j-time">15–45 minutes</div>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step money" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Discovery</div>
+            <div class="j-step-what">Lands on marketplace (organic search, ad, referral)</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Browse</div>
+            <div class="j-step-what">Searches for product (handmade jewelry, vintage home, etc.)</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Decision</div>
+            <div class="j-step-what">Reads reviews + seller rating → builds trust</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Friction Point</div>
+            <div class="j-step-what">Account creation (email, password, shipping address)</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Payment</div>
+            <div class="j-step-what">Enters card or PayPal, completes purchase</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Fulfillment</div>
+            <div class="j-step-what">Receives shipping notification, awaits delivery (3-7 days)</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="7">
+          <div class="j-step-content">
+            <div class="j-step-who">Post-Purchase</div>
+            <div class="j-step-what">Item arrives, leaves review (or not). Likelihood of return?</div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Success metric:</strong> Review completion rate, repeat purchase within 30 days
+        <strong style="margin-left: 12px;">Drop-off risk:</strong> Account friction, long shipping time, unmet expectations
+      </div>
+    </div>
+
+    <!-- Journey 2: Seller Onboarding (Amazon 3P) -->
+    <div class="journey-card">
+      <div class="journey-head">
+        <div class="j-num">Journey 2</div>
+        <div class="j-title">Seller Onboarding</div>
+        <div class="j-persona">New seller setting up their first product</div>
+        <div class="j-time">30–90 minutes</div>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step money" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Awareness</div>
+            <div class="j-step-what">Seller learns about marketplace (press, competitor, word-of-mouth)</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Interest Check</div>
+            <div class="j-step-what">Reads seller success stories, economics page, fee breakdown</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Account Setup</div>
+            <div class="j-step-what">Creates seller account, tax/bank verification (identity check)</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Friction Point</div>
+            <div class="j-step-what">Compliance docs (ID, business license, tax docs) — can take days</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">First Listing</div>
+            <div class="j-step-what">Uploads product photos, descriptions, SKU, pricing</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Fulfillment Prep</div>
+            <div class="j-step-what">Chooses: FBA vs FBM, shipping settings, returns policy</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="7">
+          <div class="j-step-content">
+            <div class="j-step-who">Launch</div>
+            <div class="j-step-what">Listing goes live. Awaits first order.</div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Success metric:</strong> Seller listing 5+ products within 14 days, first order within 30 days
+        <strong style="margin-left: 12px;">Drop-off risk:</strong> Compliance delays, unclear onboarding, no early orders (motivation loss)
+      </div>
+    </div>
+
+    <!-- Journey 3: B2B Wholesale (Faire) -->
+    <div class="journey-card">
+      <div class="journey-head">
+        <div class="j-num">Journey 3</div>
+        <div class="j-title">B2B Wholesale Buyer</div>
+        <div class="j-persona">Retail buyer sourcing inventory from suppliers</div>
+        <div class="j-time">1–3 hours</div>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step money" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Sourcing Need</div>
+            <div class="j-step-what">Retailer needs 50 units of home décor products for upcoming season</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Curated Search</div>
+            <div class="j-step-what">Browses vetted suppliers on Faire (not a free-for-all like eBay)</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Comparison</div>
+            <div class="j-step-what">Compares 3-5 suppliers on price, MOQ, lead time, reviews</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Wholesale Pricing</div>
+            <div class="j-step-what">Gets wholesale rate (e.g., $8/unit vs $16 retail), sees tiered discounts</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Order Placement</div>
+            <div class="j-step-what">Places order for 50 units, enters shipping address (maybe warehouse)</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Payment & Fulfillment</div>
+            <div class="j-step-what">Pays via Faire (not seller directly). Supplier ships in bulk, 10–30 days</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="7">
+          <div class="j-step-content">
+            <div class="j-step-who">Repeat Cycle</div>
+            <div class="j-step-what">Next season, buyer returns to same suppliers (reduces friction)</div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Success metric:</strong> Repeat order rate, average order value growth, MRR per buyer
+        <strong style="margin-left: 12px;">Drop-off risk:</strong> No financing, long lead times, damaged goods on arrival
+      </div>
+    </div>
+
+    <!-- Journey 4: Services (Thumbtack) -->
+    <div class="journey-card">
+      <div class="journey-head">
+        <div class="j-num">Journey 4</div>
+        <div class="j-title">Service Booking</div>
+        <div class="j-persona">Consumer booking a service (home repair, freelancing)</div>
+        <div class="j-time">10–30 minutes</div>
+      </div>
+      <div class="journey-steps">
+        <div class="j-step money" data-n="1">
+          <div class="j-step-content">
+            <div class="j-step-who">Need Recognition</div>
+            <div class="j-step-what">Homeowner needs plumber for leaky faucet (emergency or planned)</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="2">
+          <div class="j-step-content">
+            <div class="j-step-who">Search for Pro</div>
+            <div class="j-step-what">Visits Thumbtack, enters service type + location</div>
+          </div>
+        </div>
+        <div class="j-step decision" data-n="3">
+          <div class="j-step-content">
+            <div class="j-step-who">Friction Point</div>
+            <div class="j-step-what">Receives multiple bids from providers (email/SMS)</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="4">
+          <div class="j-step-content">
+            <div class="j-step-who">Provider Review</div>
+            <div class="j-step-what">Reads ratings, response time, estimated cost for each</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="5">
+          <div class="j-step-content">
+            <div class="j-step-who">Messaging</div>
+            <div class="j-step-what">Exchanges messages to confirm details, schedule appointment</div>
+          </div>
+        </div>
+        <div class="j-step money" data-n="6">
+          <div class="j-step-content">
+            <div class="j-step-who">Service Delivery</div>
+            <div class="j-step-what">Provider arrives, completes work, collects payment (cash/card on-site)</div>
+          </div>
+        </div>
+        <div class="j-step" data-n="7">
+          <div class="j-step-content">
+            <div class="j-step-who">Feedback</div>
+            <div class="j-step-what">Buyer rates provider and service quality (both sides)</div>
+          </div>
+        </div>
+      </div>
+      <div class="journey-footer">
+        <strong>Success metric:</strong> Booking completion rate, repeat booking, NPS score
+        <strong style="margin-left: 12px;">Drop-off risk:</strong> Too many bids (paralysis), slow provider response, price shock at arrival
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 28px; padding: 16px; background: var(--tsm-neutral-bg); border-radius: 12px; border-left: 4px solid var(--tsm-platform-border);">
+    <h3 style="font-size: 14px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 12px;">PM Lessons from Journeys</h3>
+    <ul style="list-style: none; font-size: 13px; color: var(--tsm-body); display: flex; flex-direction: column; gap: 8px;">
+      <li><strong style="color: var(--tsm-heading);">Each journey has different friction.</strong> Buyer onboarding ≠ seller onboarding. Don't solve for the same UX for both sides.</li>
+      <li><strong style="color: var(--tsm-heading);">Decision points differ.</strong> Buyers decide on review signals. Sellers decide on economics. B2B buyers decide on bulk pricing and lead time.</li>
+      <li><strong style="color: var(--tsm-heading);">Repeat behavior is the goal.</strong> First transaction is marketing cost. Repeat is profit. Design for friction reduction on returns.</li>
+      <li><strong style="color: var(--tsm-heading);">Messaging and trust are critical for services.</strong> Products have reviews after purchase. Services need trust before. Chat, video calls, and guarantees matter.</li>
+      <li><strong style="color: var(--tsm-heading);">Payment structure changes by model.</strong> Consumer markets use immediate payment. B2B uses net-30/60. Services often split: upfront deposit + on-completion balance.</li>
+    </ul>
+  </div>
+
+  <div class="tsm-callout">
+    <p><strong>Key insight:</strong> The healthiest marketplaces optimize each journey independently, then look for patterns. A first-time buyer wants speed and trust signals. A B2B buyer wants terms and financing. A service customer wants live communication. Don't force one UX on all four.</p>
+  </div>
+</section>
+</div>
+
+<!-- Component Explainers -->
+<!-- Marketplace Components Explainers — Platform Products, Core APIs, Trust & Safety -->
+<section id="components" class="tsm-section" style="margin-top: 48px; padding-top: 32px; border-top: 2px solid var(--tsm-card-border);">
+
+  <!-- Section Header -->
+  <div class="section-header">
+    <span class="section-tag">Reference</span>
+    <h2>Marketplace Components — Deep Dives</h2>
+    <p>Every marketplace is built on the same core components. Here's what each one does, why it matters, and how to think about it as a PM.</p>
+  </div>
+
+  <!-- Platform Products -->
+  <div style="margin-bottom: 56px;">
+    <h3 style="font-size: 20px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 8px;">Platform Products</h3>
+    <p style="font-size: 14px; color: var(--tsm-muted); margin-bottom: 24px; max-width: 700px;">Every marketplace is built on these core product surfaces. Think of them as the organs of the marketplace body — each has a specific job, and if one fails, the whole system suffers.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <!-- Search & Discovery -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-platform-text); margin-bottom: 4px;">Search & Discovery</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          How buyers find what they want. Includes keyword search, category browsing, filters (price, location, rating), and personalized feeds.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The storefront window. If people can't find what they want in 10 seconds, they leave. Amazon's search handles 300M+ products — the algorithm IS the product.
+        </div>
+      </div>
+
+      <!-- Ratings & Reviews -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Ratings & Reviews</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Social proof that builds trust between strangers. Includes star ratings, written reviews, verified purchase badges, photo/video reviews, and seller response.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> Word of mouth, at scale. Without reviews, every transaction is a leap of faith. Airbnb found that listings with 10+ reviews convert 3x better than those without.
+        </div>
+      </div>
+
+      <!-- Messaging -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-platform-text); margin-bottom: 4px;">Messaging</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          In-platform communication between buyer and seller. Keeps conversations on-platform (preventing disintermediation), enables Q&A before purchase, and creates audit trail for disputes.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The sales counter conversation. Critical for services (Thumbtack: "Can you come Tuesday?") and custom goods (Etsy: "Can you make this in blue?"). Less important for standardized products.
+        </div>
+      </div>
+
+      <!-- Checkout & Transactions -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-supply-text); margin-bottom: 4px;">Checkout & Transactions</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          The payment flow: cart → checkout → payment capture → confirmation. Includes saved payment methods, guest checkout, multi-seller carts, tax calculation, and receipt generation.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The cash register. Every extra click loses ~7% of buyers. Amazon's 1-Click patent was worth billions because it removed friction at the exact moment of purchase intent.
+        </div>
+      </div>
+
+      <!-- Listing & Catalog Management -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-supply-text); margin-bottom: 4px;">Listing & Catalog Management</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Seller-facing tools for creating, editing, and managing inventory. Includes photo upload, description templates, variant management (size/color), inventory tracking, and bulk upload via CSV/API.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The back office. If listing a product takes 45 minutes, sellers won't list. Etsy sellers who list 50+ items earn 3x more — the tool must make listing fast and repeatable.
+        </div>
+      </div>
+
+      <!-- Advertising / Promoted Listings -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-network-text); margin-bottom: 4px;">Advertising / Promoted Listings</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Sellers pay for better placement in search results and category pages. Includes sponsored listings, display ads, featured seller spots, and bid-based auction systems for placement.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> Paying for the front shelf at a grocery store. This is often the marketplace's highest-margin revenue stream. Amazon's ad business ($47B/yr) is more profitable than AWS. Etsy Ads generated $300M+ in 2024.
+        </div>
+      </div>
+
+      <!-- Seller Analytics -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-takerate-text); margin-bottom: 4px;">Seller Analytics Dashboard</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Data tools for sellers: views, conversion rates, revenue trends, best-selling items, customer demographics, traffic sources, and competitive benchmarking. Some platforms offer pricing recommendations.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> A business consultant on your screen. Sellers who use analytics tools earn 2-4x more because they optimize listings based on data instead of guessing. This is also a retention lever — sellers who depend on your data can't easily leave.
+        </div>
+      </div>
+
+      <!-- Recommendation Engine -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-network-text); margin-bottom: 4px;">Recommendations</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          ML-powered suggestions: "Customers also bought", "Based on your browsing", "Trending in your area". Includes collaborative filtering, content-based filtering, and hybrid approaches. Drives 30-40% of e-commerce revenue.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> A personal shopper who remembers everything you've ever looked at. Amazon attributes 35% of revenue to recommendations. Netflix says 80% of watched content comes from recommendations. This is where data flywheel = revenue.
+        </div>
+      </div>
+
+      <!-- Notifications & CRM -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-demand-text); margin-bottom: 4px;">Notifications & CRM</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Re-engagement system: order updates, price drop alerts, abandoned cart nudges, review prompts, seller promotions, and lifecycle emails. Covers push notifications, email, SMS, and in-app alerts.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The follow-up call from a good salesperson. Abandoned cart emails recover 5-15% of lost revenue. Price drop alerts bring back window-shoppers. Without notifications, your marketplace is a one-visit website.
+        </div>
+      </div>
+
+      <!-- Onboarding Flows -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-card-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-supply-text); margin-bottom: 4px;">Onboarding Flows</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          First-time experience for both sides. Seller onboarding: identity verification, bank account linking, first listing wizard, compliance docs. Buyer onboarding: account creation, preference setting, first purchase guidance.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The first day at a new job. If it's confusing, people quit. Airbnb found that hosts who complete onboarding within 24 hours are 5x more likely to list long-term. Every friction point in onboarding = permanent supply loss.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Platform Core APIs -->
+  <div style="margin-bottom: 56px;">
+    <h3 style="font-size: 20px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 8px;">Platform Core APIs</h3>
+    <p style="font-size: 14px; color: var(--tsm-muted); margin-bottom: 24px; max-width: 700px;">These are the invisible systems that power everything above. Users never see them, but every product surface depends on them. If the products layer is the car dashboard, the core APIs are the engine.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <!-- Matching Algorithm -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-platform-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-platform-text); margin-bottom: 4px;">Matching Algorithm</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          The brain of the marketplace. Decides which sellers/listings to show each buyer based on relevance, quality, location, price, and predicted purchase probability. In services marketplaces, matches providers to requests based on availability, skill, and proximity.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> A matchmaker who knows both sides intimately. Uber's matching algorithm considers 100+ variables per ride request. A 1% improvement in match quality can drive millions in incremental GMV. This is the single highest-leverage system in any marketplace.
+        </div>
+      </div>
+
+      <!-- Pricing Engine -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-platform-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-platform-text); margin-bottom: 4px;">Pricing Engine</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Sets or suggests prices dynamically. In some marketplaces (Uber), the platform sets the price. In others (Etsy), the platform suggests competitive pricing. Includes surge pricing, dynamic discounting, fee calculation, tax computation, and currency conversion.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The auctioneer who knows exactly what the crowd will pay. Uber's surge pricing is controversial but effective — it balances supply and demand in real time. In lending marketplaces like Upstart, the pricing engine sets APR, which is both input and output of the model.
+        </div>
+      </div>
+
+      <!-- Data & Analytics Platform -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-platform-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-platform-text); margin-bottom: 4px;">Data & Analytics Platform</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          The internal data infrastructure: event tracking, data pipelines, feature stores, experiment frameworks, and business intelligence dashboards. Powers every ML model, every A/B test, and every executive decision.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The nervous system. You don't see it, but it connects everything. Without it, you can't measure what's working, can't run experiments, and can't improve. Companies with strong data platforms iterate 10x faster than those without.
+        </div>
+      </div>
+
+      <!-- Payment Gateway -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-platform-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-platform-text); margin-bottom: 4px;">Payment Gateway</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Moves money securely between buyers, the platform, and sellers. Handles card processing, bank transfers (ACH), digital wallets (Apple Pay, Google Pay), escrow holds, refunds, chargebacks, multi-currency, and seller payouts. Usually powered by Stripe Connect or Adyen for Platforms.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The plumbing. Nobody thinks about plumbing until it breaks. A failed payment = lost sale + angry customer + potential chargeback. Stripe processes $1T+ annually because marketplaces outsource this complexity. The platform earns float interest on money held between payment and payout.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust & Safety -->
+  <div>
+    <h3 style="font-size: 20px; font-weight: 700; color: var(--tsm-heading); margin-bottom: 8px;">Trust & Safety</h3>
+    <p style="font-size: 14px; color: var(--tsm-muted); margin-bottom: 24px; max-width: 700px;">The hidden infrastructure that makes strangers comfortable doing business together. Without trust systems, marketplaces don't scale beyond a few hundred users. These are the systems that let millions transact safely.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <!-- Identity Verification -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Identity Verification (KYC)</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Know Your Customer processes. Includes government ID verification, phone/email confirmation, address validation, and liveness checks. Required by law in some verticals (financial services, marketplace lending).
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> Checking ID at the door. Boring but essential. Stripe Identity, Jumio, and other KYC providers solve this. Without it, fraudsters create fake accounts instantly.
+        </div>
+      </div>
+
+      <!-- Seller Verification & Quality -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Seller Verification & Quality</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Seller screening: business registration checks, background checks, onboarding qualification, seller tier/badge systems (established seller, verified business, etc.). Ongoing quality scoring based on returns, complaints, and customer satisfaction.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> Restaurant health inspections. Buyers need confidence that sellers have met baseline standards. eBay's seller power rating, Amazon's A+ seller badge — these are trust signals that command 20-30% price premiums.
+        </div>
+      </div>
+
+      <!-- Fraud Prevention & Detection -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Fraud Prevention & Detection</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Real-time fraud detection: velocity checks (too many purchases in short time), geolocation anomalies, card testing, synthetic identity fraud, account takeover. ML models score transaction risk and can block/flag suspicious activity.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The casino's fraud team watching for card counters. Stripe Radar, Sift, and similar tools block $10M+ in fraud daily across their platforms. A 0.1% fraud rate is industry normal but still deadly at scale.
+        </div>
+      </div>
+
+      <!-- Escrow & Payment Protection -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Escrow / Payment Protection</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Money held by the platform between transaction and fulfillment. Buyer funds are protected until they confirm delivery/satisfaction. Seller gets paid once buyer releases escrow. Typical hold periods: 7-30 days depending on category.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The referee holding the betting pot. Without escrow, the buyer loses their money instantly and has no leverage. Escrow is why Etsy/Alibaba can operate at scale with 99%+ of transactions resolved fairly.
+        </div>
+      </div>
+
+      <!-- Dispute Resolution & Mediation -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Dispute Resolution & Mediation</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Processes for when buyer and seller disagree. Includes evidence submission (photos, messages), automatic mediation (suggested resolutions), escalation paths, and arbitration/third-party judgment as last resort.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> Small claims court, but instant and fair. eBay's Resolution Center resolves millions of disputes monthly. A fair resolution system = lower chargeback rates = lower payment processor fees = better unit economics.
+        </div>
+      </div>
+
+      <!-- Chargeback & Refund Handling -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Chargeback & Refund Handling</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Customer initiated refunds (buyer returns item or requests refund), and card network chargebacks (buyer's bank reverses the charge). Includes return logistics, refund policies, chargeback representment (gathering evidence to fight false chargebacks).
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The returns counter and the legal team combined. High chargeback rates (>1%) are a liability issue. Amazon's Alexa refund system and Shopify's chargeback defense tools let sellers fight false claims automatically.
+        </div>
+      </div>
+
+      <!-- Review Moderation & Authenticity -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Review Moderation & Authenticity</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Removing fake, spammy, or paid reviews. Includes NLP spam detection, verified purchase badges (only buyers can review), review voting systems (mark unhelpful reviews), and manual review for reported content.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> The newspaper fact-checkers. A single fake 1-star review can reduce conversion 5-10%. Amazon spends massive engineering effort on review authenticity because manipulated reviews destroy the signal.
+        </div>
+      </div>
+
+      <!-- Account Suspension & Enforcement -->
+      <div style="background: var(--tsm-card-bg); border: 2px solid var(--tsm-trust-border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--tsm-trust-text); margin-bottom: 4px;">Account Suspension & Enforcement</div>
+        <div style="font-size: 13px; color: var(--tsm-body); line-height: 1.6; margin-bottom: 10px;">
+          Removing bad actors. Temporary suspensions (violate terms), permanent bans (repeat fraud or policy violations), account deactivation (seller closes shop). Includes appeals process and evidence-based decision making.
+        </div>
+        <div style="font-size: 12px; color: var(--tsm-muted); background: var(--tsm-neutral-bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5;">
+          <strong style="color: var(--tsm-heading);">Analogy:</strong> Bar membership revocation. One bad seller can ruin a marketplace's reputation if not removed quickly. Airbnb's instant bans for unsafe behavior are why they maintain user trust despite rapid scale.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Footer attribution -->
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  Two-Sided Marketplace Ecosystem Guide v1 · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <!-- partials/footer.html -->
+<footer class="border-t mt-16 py-12"
+        style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6">
+
+    <!-- Three-column grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+      <!-- Col 1: Site info -->
+      <div>
+        <a href="/" class="text-lg font-bold" style="color: var(--color-text-primary);">
+          fullstackpm.tech
+        </a>
+        <p class="text-small mt-2" style="color: var(--color-text-secondary);">
+          Full Stack AI Product Manager. Engineering Mind. Design Obsession.
+        </p>
+      </div>
+
+      <!-- Col 2: Quick links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Quick Links</h3>
+        <ul class="space-y-2">
+          
+          
+          <li>
+            <a href="/"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/@fullstackpm#contact"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <!-- Col 3: Social links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Connect</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://github.com/harsha-k-cheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/harshacheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="/feed.xml"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /></svg>
+              RSS Feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom attribution -->
+    <div class="mt-8 border-t pt-6 text-center" style="border-color: var(--color-border);">
+      <p class="text-xs" style="color: var(--color-text-tertiary);">
+        Built with FastAPI + HTMX &middot; &copy; 2026 Harsha Cheruku
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- HTMX (CDN) -->
+  <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwCXuE+cDVtAu2B3crQxD" crossorigin="anonymous"></script>
+
+  <!-- Site JS -->
+  <script src="/static/js/main.js"></script>
+
+  
+<script>
+  function showTransModel(id, btn) {
+    document.querySelectorAll('.trans-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.trans-tab').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('trans-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  // Update active nav link based on scroll position or click
+  const sections = ['layermap', 'models', 'transaction', 'types', 'flywheel', 'moneyflow', 'journeys', 'components'];
+  const navLinks = document.querySelectorAll('.tsm-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+
+    for (let link of navLinks) {
+      link.classList.remove('active');
+    }
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  // Update on scroll
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+  // Update on click
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // Initialize on load
+  updateActiveLink();
+</script>
+
+</body>
+</html>

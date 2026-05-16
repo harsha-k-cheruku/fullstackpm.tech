@@ -42,8 +42,12 @@
     .dataset-table tr:hover { background: var(--gray-l); }
     .case-study { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
     .case-study h3 { font-size: 16px; font-weight: 800; margin:0 0 16px; color: var(--text); }
+    .case-study h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
     .case-box { background: #f8fbff; border-left: 3px solid var(--blue); padding: 12px; margin-bottom: 12px; font-size: 12px; }
     .case-box b { color: var(--blue); }
+    .case-box table { width: 100%; font-size: 11px; border-collapse: collapse; }
+    .case-box table tr { border-bottom: 1px solid var(--border); }
+    .case-box table th, .case-box table td { padding: 6px 4px; text-align: left; }
     .ref-section { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
     .ref-section h4 { font-size: 13px; font-weight: 700; margin:0 0 8px; }
     .tiny{font-size:11px;color:var(--muted)}
@@ -69,10 +73,10 @@
     </div>
 
     <div class="dm-tabs">
-      <button class="dm-tab-btn active" onclick="showTab('generation', this)">Data Generation</button>
-      <button class="dm-tab-btn" onclick="showTab('dataset', this)">Sample Dataset</button>
-      <button class="dm-tab-btn" onclick="showTab('cases', this)">Case Studies</button>
-      <button class="dm-tab-btn" onclick="showTab('refs', this)">References & Sources</button>
+      <button id="tab-btn-generation" class="dm-tab-btn active" onclick="showTab('generation', this)">Data Generation</button>
+      <button id="tab-btn-dataset" class="dm-tab-btn" onclick="showTab('dataset', this)">Sample Dataset</button>
+      <button id="tab-btn-cases" class="dm-tab-btn" onclick="showTab('cases', this)">Case Studies</button>
+      <button id="tab-btn-refs" class="dm-tab-btn" onclick="showTab('refs', this)">References & Sources</button>
     </div>
 
     <div id="tab-generation" class="dm-tab-pane active">
@@ -128,6 +132,19 @@ function lognorm(m, s) {
       </div>
 
       <div class="dm-card">
+        <h3>Generate Custom Dataset</h3>
+        <p>Use the FICO slider above to adjust average credit quality, then regenerate the sample dataset:</p>
+        <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+          <input type="range" id="customFicoInput" min="620" max="740" value="667" step="1" style="flex:1" oninput="updateCustomFicoLabel(+this.value)">
+          <span id="customFicoLabel" style="font-weight:700;color:var(--blue);min-width:70px;">FICO 667</span>
+        </div>
+        <button id="generateBtn" onclick="regenerateDataset()" class="btn primary" style="margin-top:12px;width:100%;padding:10px 16px">
+          🔄 Generate New Dataset (25 borrowers)
+        </button>
+        <p style="font-size:12px;color:var(--muted);margin-top:8px;"><b>Hidden-prime rate:</b> Fixed at 28% (near-prime realistic rate)</p>
+      </div>
+
+      <div class="dm-card">
         <h3>Code Reference</h3>
         <details>
           <summary style="cursor:pointer;font-weight:700">Show simulator math functions</summary>
@@ -164,24 +181,202 @@ function lognorm(m, s) {
     <div id="tab-cases" class="dm-tab-pane">
       <div class="case-study">
         <h3>Case Study 1: Maria — Hidden-Prime Discovery</h3>
-        <div class="case-box"><b>Borrower Profile:</b> FICO 650, Income $78K, Loan $14K, Debt Consolidation, hidden-prime ON.</div>
-        <div class="case-box"><b>Layer 1 (Eligibility):</b> Eligible partners: Eltura, Aperture. WestBank+ spots fail FICO floors.</div>
-        <div class="case-box"><b>Layer 2 (Pricing):</b> Classic ≈ 23.5%; Model 18 lowers APR materially using cash-flow-derived hidden-prime signal. Lower payment improves modeled default probability and still clears partner return floor.</div>
-        <div class="case-box"><b>Layer 3 (Routing):</b> Waterfall checks partner APR floors + capacity in priority order; first tier that passes receives the loan.</div>
+
+        <div class="case-box">
+          <h4>📋 Borrower Profile</h4>
+          <table>
+            <tr><td><b>Name:</b></td><td>Maria</td></tr>
+            <tr><td><b>FICO:</b></td><td>650</td></tr>
+            <tr><td><b>Income:</b></td><td>$78,000</td></tr>
+            <tr><td><b>Loan Amount:</b></td><td>$14,000</td></tr>
+            <tr><td><b>Purpose:</b></td><td>Debt Consolidation</td></tr>
+            <tr><td><b>Hidden-Prime Signal:</b></td><td>Yes</td></tr>
+            <tr><td><b>State APR Cap:</b></td><td>Favorable</td></tr>
+          </table>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 1: Eligibility Matrix</h4>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">Binary rules: FICO floor, loan size, purpose compatibility, and partner policy.</p>
+          <table>
+            <tr><th>Partner</th><th>FICO</th><th>Loan Size</th><th>Purpose</th><th>Result</th></tr>
+            <tr><td>Eltura</td><td>650 ≥ 620 ✅</td><td>$14K in range ✅</td><td>Allowed ✅</td><td style="color:#065f46;font-weight:700;">ELIGIBLE</td></tr>
+            <tr><td>Aperture</td><td>650 ≥ 640 ✅</td><td>$14K in range ✅</td><td>Allowed ✅</td><td style="color:#065f46;font-weight:700;">ELIGIBLE</td></tr>
+            <tr><td>WestBank</td><td>650 ≥ 660 ❌</td><td>$14K in range ✅</td><td>Allowed ✅</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+            <tr><td>SpotFund A</td><td>650 ≥ 680 ❌</td><td>$14K in range ✅</td><td>Allowed ✅</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+            <tr><td>SpotFund B</td><td>650 ≥ 700 ❌</td><td>$14K in range ✅</td><td>Allowed ✅</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+          </table>
+          <p style="font-size:12px;margin-top:8px;color:var(--muted);"><b>Outcome:</b> 2 of 5 partners eligible → proceed to pricing.</p>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 2: Pricing Engine — APR as a Feature</h4>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">Need both sides to accept: partner return floor and borrower willingness.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#f1f5f9;padding:10px;border-radius:6px;">
+              <h5 style="font-size:12px;margin-bottom:6px;">📊 Classic FICO</h5>
+              <div style="font-size:11px;line-height:1.6;">
+                <div><b>APR:</b> 23.5%</div>
+                <div><b>P(default):</b> 8.9%</div>
+                <div><b>Expected return:</b> 14.1%</div>
+                <div><b>Partner floor (≥8%):</b> ✅ PASS</div>
+                <div><b>Borrower max APR:</b> 24.0%</div>
+                <div style="margin-top:6px;padding:6px;background:#fee2e2;border-radius:4px;color:#991b1b;font-weight:700;">❌ Fails practical conversion at upper tolerance edge</div>
+              </div>
+            </div>
+            <div style="background:#f0fdf4;padding:10px;border-radius:6px;border:2px solid var(--blue);">
+              <h5 style="font-size:12px;margin-bottom:6px;">🤖 Model 18 (APR-as-Feature)</h5>
+              <div style="font-size:11px;line-height:1.6;">
+                <div><b>APR Reduction:</b> 8.2% (hidden-prime)</div>
+                <div><b>APR:</b> 23.5% − 8.2% = <b style="color:var(--green)">15.3%</b></div>
+                <div><b>P(default):</b> 6.8%</div>
+                <div><b>Expected return:</b> 12.8%</div>
+                <div><b>Partner floor:</b> ✅ PASS</div>
+                <div><b>Borrower max APR:</b> 24.0%</div>
+                <div style="margin-top:6px;padding:6px;background:#d1fae5;border-radius:4px;color:#065f46;font-weight:700;">✅ Clears at 15.3% APR</div>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:12px;margin-top:8px;background:var(--blue-l);padding:8px;border-radius:4px;border-left:3px solid var(--blue);color:#1e40af;"><b>🎯 Key Insight:</b> hidden-prime signal converts a near-miss borrower into a high-confidence funded loan.</p>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 3: Waterfall Routing</h4>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">Clearing APR: <b style="color:var(--blue)">15.3%</b></p>
+          <div style="font-size:11px;line-height:1.8;">
+            <div style="display:flex;gap:8px;margin-bottom:6px;"><div style="flex:0 0 48px;"><b>Tier 1:</b></div><div style="flex:1;"><b>Eltura</b> · 15.3% ≥ 15.5% ❌ → skip</div></div>
+            <div style="display:flex;gap:8px;margin-bottom:6px;"><div style="flex:0 0 48px;"><b>Tier 2:</b></div><div style="flex:1;"><b>Aperture</b> · 15.3% ≥ 16.0% ❌ → skip</div></div>
+            <div style="display:flex;gap:8px;background:#d1fae5;padding:8px;border-radius:4px;border-left:3px solid var(--green);"><div style="flex:0 0 48px;"><b>Tier 3:</b></div><div style="flex:1;"><b>WestBank</b> is selected on return-floor/capacity checks ✅</div></div>
+          </div>
+        </div>
+
+        <div class="case-box">
+          <h4>✅ Outcome & PM Insight</h4>
+          <p><b>Final Status:</b> ✅ CLEARED to WestBank at 15.3% APR</p>
+          <p style="margin-top:8px;color:var(--muted);"><b>Data flywheel:</b> funded loan → repayment outcomes → EPD monitoring → model recalibration in 30–90 days.</p>
+          <p style="margin-top:8px;background:var(--blue-l);padding:8px;border-radius:4px;border-left:3px solid var(--blue);color:#1e40af;"><b>🔍 Why this matters:</b> Model 18 captures non-bureau strength where classic FICO would under-serve borrowers.</p>
+        </div>
       </div>
 
       <div class="case-study">
         <h3>Case Study 2: Carlos — Supply-Side Failure</h3>
-        <div class="case-box"><b>Borrower Profile:</b> FICO 590, Income $92K, Loan $20K, Purpose: Small Business.</div>
-        <div class="case-box"><b>Layer 1 (Eligibility):</b> Small Business purpose is unsupported by marketplace partners in this simulation → 0/5 eligible.</div>
-        <div class="case-box"><b>Outcome:</b> Fails before pricing. PM implication: this is a product/inventory gap, not necessarily a borrower-quality problem.</div>
+
+        <div class="case-box">
+          <h4>📋 Borrower Profile</h4>
+          <table>
+            <tr><td><b>Name:</b></td><td>Carlos</td></tr>
+            <tr><td><b>FICO:</b></td><td>590</td></tr>
+            <tr><td><b>Income:</b></td><td>$92,000</td></tr>
+            <tr><td><b>Loan Amount:</b></td><td>$20,000</td></tr>
+            <tr><td><b>Purpose:</b></td><td>Small Business</td></tr>
+            <tr><td><b>Hidden-Prime Signal:</b></td><td>No</td></tr>
+            <tr><td><b>State APR Cap:</b></td><td>Favorable</td></tr>
+          </table>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 1: Eligibility Matrix</h4>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">All partners fail due to product-purpose mismatch and FICO floors.</p>
+          <table>
+            <tr><th>Partner</th><th>FICO</th><th>Loan Size</th><th>Purpose</th><th>Result</th></tr>
+            <tr><td>Eltura</td><td>590 ≥ 620 ❌</td><td>$20K ✅</td><td>Small Business ❌</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+            <tr><td>Aperture</td><td>590 ≥ 640 ❌</td><td>$20K ✅</td><td>Small Business ❌</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+            <tr><td>WestBank</td><td>590 ≥ 660 ❌</td><td>$20K ✅</td><td>Small Business ❌</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+            <tr><td>SpotFund A</td><td>590 ≥ 680 ❌</td><td>$20K ✅</td><td>Small Business ❌</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+            <tr><td>SpotFund B</td><td>590 ≥ 700 ❌</td><td>$20K ✅</td><td>Small Business ❌</td><td style="color:#991b1b;font-weight:700;">INELIGIBLE</td></tr>
+          </table>
+          <p style="font-size:12px;margin-top:8px;color:var(--muted);"><b>Outcome:</b> 0 of 5 eligible → loan fails before pricing.</p>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 2: Pricing Engine</h4>
+          <p style="font-size:12px;color:#991b1b;font-weight:700;">⛔ Skipped: no eligible supply. Pricing cannot rescue inventory absence.</p>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 3: Waterfall Routing</h4>
+          <p style="font-size:12px;color:#991b1b;font-weight:700;">⛔ Skipped: no partner enters the waterfall.</p>
+        </div>
+
+        <div class="case-box">
+          <h4>✅ Outcome & PM Insight</h4>
+          <p><b>Final Status:</b> ❌ NOT CLEARED (supply-side gap)</p>
+          <p style="margin-top:8px;background:var(--blue-l);padding:8px;border-radius:4px;border-left:3px solid var(--blue);color:#1e40af;"><b>🔍 Why this matters:</b> Carlos may be creditworthy by income, but marketplace inventory excludes SMB purpose. PM fix = onboard SMB-compatible capital.</p>
+        </div>
       </div>
 
       <div class="case-study">
-        <h3>Case Study 3: James — Clean Approval / Low-APR Placement</h3>
-        <div class="case-box"><b>Borrower Profile:</b> FICO 790, Income $140K, Loan $25K, Home Improvement, hidden-prime OFF.</div>
-        <div class="case-box"><b>Pricing:</b> Both models produce low APR because baseline risk is already low.</div>
-        <div class="case-box"><b>Routing Insight:</b> Extremely low APR can miss partner return floors, increasing probability of balance-sheet placement.</div>
+        <h3>Case Study 3: James — Too Good to Clear (Balance Sheet Paradox)</h3>
+
+        <div class="case-box">
+          <h4>📋 Borrower Profile</h4>
+          <table>
+            <tr><td><b>Name:</b></td><td>James</td></tr>
+            <tr><td><b>FICO:</b></td><td>790</td></tr>
+            <tr><td><b>Income:</b></td><td>$140,000</td></tr>
+            <tr><td><b>Loan Amount:</b></td><td>$25,000</td></tr>
+            <tr><td><b>Purpose:</b></td><td>Home Improvement</td></tr>
+            <tr><td><b>Hidden-Prime Signal:</b></td><td>No</td></tr>
+            <tr><td><b>State APR Cap:</b></td><td>Favorable</td></tr>
+          </table>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 1: Eligibility Matrix</h4>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">High-FICO profile qualifies everywhere on eligibility.</p>
+          <table>
+            <tr><th>Partner</th><th>FICO</th><th>Loan Size</th><th>Purpose</th><th>Result</th></tr>
+            <tr><td>Eltura</td><td>790 ≥ 620 ✅</td><td>$25K ✅</td><td>Allowed ✅</td><td style="color:#065f46;font-weight:700;">ELIGIBLE</td></tr>
+            <tr><td>Aperture</td><td>790 ≥ 640 ✅</td><td>$25K ✅</td><td>Allowed ✅</td><td style="color:#065f46;font-weight:700;">ELIGIBLE</td></tr>
+            <tr><td>WestBank</td><td>790 ≥ 660 ✅</td><td>$25K ✅</td><td>Allowed ✅</td><td style="color:#065f46;font-weight:700;">ELIGIBLE</td></tr>
+            <tr><td>SpotFund A</td><td>790 ≥ 680 ✅</td><td>$25K ✅</td><td>Allowed ✅</td><td style="color:#065f46;font-weight:700;">ELIGIBLE</td></tr>
+            <tr><td>SpotFund B</td><td>790 ≥ 700 ✅</td><td>$25K ✅</td><td>Allowed ✅</td><td style="color:#065f46;font-weight:700;">ELIGIBLE</td></tr>
+          </table>
+          <p style="font-size:12px;margin-top:8px;color:var(--muted);"><b>Outcome:</b> 5 of 5 eligible → pricing decides economics.</p>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 2: Pricing Engine — APR as a Feature</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:#f1f5f9;padding:10px;border-radius:6px;">
+              <h5 style="font-size:12px;margin-bottom:6px;">📊 Classic FICO</h5>
+              <div style="font-size:11px;line-height:1.6;">
+                <div><b>APR:</b> 10.5%</div>
+                <div><b>P(default):</b> 2.2%</div>
+                <div><b>Expected return:</b> 8.1%</div>
+                <div><b>Borrower acceptance:</b> ✅</div>
+              </div>
+            </div>
+            <div style="background:#f0fdf4;padding:10px;border-radius:6px;border:2px solid var(--blue);">
+              <h5 style="font-size:12px;margin-bottom:6px;">🤖 Model 18</h5>
+              <div style="font-size:11px;line-height:1.6;">
+                <div><b>APR:</b> 10.5% (similar; already prime)</div>
+                <div><b>P(default):</b> 2.1%</div>
+                <div><b>Expected return:</b> 8.0%</div>
+                <div><b>Borrower acceptance:</b> ✅</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-box">
+          <h4>Layer 3: Waterfall Routing</h4>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">Clearing APR: <b style="color:var(--blue)">10.5%</b> (too low for all partner floors)</p>
+          <div style="font-size:11px;line-height:1.8;">
+            <div>Tier 1 Eltura: 10.5% ≥ 15.5% ❌</div>
+            <div>Tier 2 Aperture: 10.5% ≥ 16.0% ❌</div>
+            <div>Tier 3 WestBank: 10.5% ≥ 13.0% ❌</div>
+            <div>Tier 4 SpotFund A: 10.5% ≥ 17.5% ❌</div>
+            <div>Tier 5 SpotFund B: 10.5% ≥ 19.0% ❌</div>
+            <div style="margin-top:6px;padding:8px;background:#ffedd5;border-radius:4px;border-left:3px solid #f97316;"><b>→ Falls to Balance Sheet</b> despite perfect borrower quality.</div>
+          </div>
+        </div>
+
+        <div class="case-box">
+          <h4>✅ Outcome & PM Insight</h4>
+          <p><b>Final Status:</b> ✅ FUNDED on Upstart balance sheet</p>
+          <p style="margin-top:8px;background:var(--blue-l);padding:8px;border-radius:4px;border-left:3px solid var(--blue);color:#1e40af;"><b>🔍 Why this matters:</b> ultra-prime borrowers can become unattractive to yield-constrained partners. Balance-sheet exposure can increase even when model quality is high.</p>
+        </div>
       </div>
     </div>
 
@@ -249,6 +444,11 @@ function lognorm(m, s) {
       btn.classList.add('active');
     }
 
+    function activateTab(tabName){
+      const btn = document.getElementById('tab-btn-'+tabName);
+      if(btn) showTab(tabName, btn);
+    }
+
     function gauss(m,s){return borrowerGeneration.gauss(m,s)}
     function clamp(v,a,b){return borrowerGeneration.clamp(v,a,b)}
     function lognorm(m,s){return borrowerGeneration.lognorm(m,s)}
@@ -297,6 +497,20 @@ function lognorm(m, s) {
           trace:{classic_apr:b.classicApr, ai_apr:b.aiApr, max_apr:b.maxApr, eligible_count:eligible.length}
         };
       });
+    }
+
+    function updateCustomFicoLabel(ficoValue){
+      const el = document.getElementById('customFicoLabel');
+      if(el) el.textContent = 'FICO ' + ficoValue;
+    }
+
+    function regenerateDataset(){
+      const slider = document.getElementById('customFicoInput');
+      const ficoMean = slider ? parseInt(slider.value, 10) : 667;
+      DATASET = generateBorrowers(25, ficoMean, 0.28);
+      renderDatasetTable(DATASET);
+      activateTab('dataset');
+      window.scrollTo(0, 0);
     }
 
     function updateFeatureRows(){
@@ -405,6 +619,7 @@ function lognorm(m, s) {
       renderLoanHist();
       DATASET = generateBorrowers(25, 667, 0.28);
       renderDatasetTable(DATASET);
+      updateCustomFicoLabel(667);
       document.getElementById('codeRef').textContent = `// Shared module: /tools/borrower_generation.js\nfunction gauss(m,s){ return borrowerGeneration.gauss(m,s); }\nfunction lognorm(m,s){ return borrowerGeneration.lognorm(m,s); }\nfunction classicAPR(f){ return borrowerGeneration.classicAPR(f); }\nfunction borrowerMaxAPR(f,sens,hp){ return borrowerGeneration.borrowerMaxAPR(f,sens,hp); }\n\n// Unified borrower generation used by BOTH pages:\nconst borrowers = borrowerGeneration.generateBorrowerFull(25, 667, 0.28);`;
     }
 

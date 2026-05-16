@@ -1,179 +1,153 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <section class="py-16 lg:py-20">
   <div class="max-w-4xl">
 
-    <!-- Hero -->
     <div class="mb-16">
-      <p class="text-small mb-3" style="color: var(--color-text-secondary);">
-        Resources
-      </p>
-      <h1 class="text-h1 mb-6" style="color: var(--color-text-primary);">
-        Resources
-      </h1>
-      <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">
-        Deep dives and visual maps for understanding how platforms actually work.
+      <p class="text-small mb-3" style="color: var(--color-text-secondary);">Resources</p>
+      <h1 class="text-h1 mb-4" style="color: var(--color-text-primary);">Resources</h1>
+      <p class="text-body-lg" style="color: var(--color-text-secondary);">
+        Three audio shows and a growing library of PM content — all generated and published automatically.
       </p>
     </div>
 
-    <!-- Daily Brief -->
-    <div class="mb-16">
-      <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">
-        Daily Brief
-      </h2>
+    <!-- ── 1. Daily Brief ─────────────────────────────────────────── -->
+    <div class="mb-14">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-h2" style="color: var(--color-text-primary);">Daily Brief</h2>
+        <span class="text-xs rounded-full px-3 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-accent);">Weekdays · 7 AM</span>
+      </div>
       <a href="/resources/daily-brief"
-         class="group rounded-xl border p-8 transition-all block"
+         class="group rounded-xl border p-7 transition-all block"
          style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
          onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
          onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
-
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">
-              Daily Brief — SPY, News &amp; PM
-            </h3>
-            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
-              A daily audio briefing covering SPY options education, global news, and PM analytics — auto-generated at 5 AM and published here with show notes.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">SPY &amp; Options</span>
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Global News</span>
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">PM &amp; Analytics</span>
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-accent);">Daily · 5 AM</span>
-            </div>
-          </div>
-        </div>
-
+        <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Market Intelligence Brief</h3>
+        <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+          SPY options education, global news with market connections, and daily sector analysis — auto-generated every weekday morning and published with show notes.
+        </p>
         <div class="flex items-center justify-between">
-          <span class="text-xs" style="color: var(--color-text-secondary);">Audio + Show Notes</span>
-          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1"
-               style="color: var(--color-accent);"
-               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">SPY & Options</span>
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Global News</span>
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Market Brief</span>
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">~30 min</span>
+          </div>
+          <svg class="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>
         </div>
-
       </a>
     </div>
 
-    <!-- PM Interview Prep -->
-    <div class="mb-16">
-      <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">
-        PM Interview Prep
-      </h2>
-      <a href="/resources/pm-prep"
-         class="group rounded-xl border p-8 transition-all block"
-         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
-         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
-         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+    <!-- ── 2. PM Learning ─────────────────────────────────────────── -->
+    <div class="mb-14">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-h2" style="color: var(--color-text-primary);">Product Management</h2>
+        <span class="text-xs rounded-full px-3 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-accent);">Weekdays · 1:30 PM</span>
+      </div>
+      <div class="grid gap-5 grid-cols-1 lg:grid-cols-2">
 
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">
-              PM Interview Prep
-            </h3>
-            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
-              One real PM interview question per week, broken into three interactive episodes — Product Thinking, Metrics, and Execution. Make choices, get calibrated feedback, learn how senior PMs actually think.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Product Thinking</span>
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Metrics & Measurement</span>
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Execution & Trade-offs</span>
-              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-accent);">Interactive</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <span class="text-xs" style="color: var(--color-text-secondary);">Interactive Episodes · Senior PM Level</span>
-          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1"
-               style="color: var(--color-accent);"
-               xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-          </svg>
-        </div>
-
-      </a>
-    </div>
-
-    <!-- Reference Materials -->
-    <div class="mb-20">
-      <h2 class="text-h2 mb-8" style="color: var(--color-text-primary);">
-        Reference Materials
-      </h2>
-      <div class="grid gap-6 grid-cols-1 lg:grid-cols-2">
-
-        <!-- Product Breakdowns Card -->
-        <a href="/resources/product-breakdowns"
-           class="group rounded-xl border p-8 transition-all"
+        <a href="/resources/learning-brief"
+           class="group rounded-xl border p-7 transition-all block"
            style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
            onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
            onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
-
-          <div class="flex items-start justify-between mb-4">
-            <div>
-              <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">
-                Product Breakdowns
-              </h3>
-              <p class="text-body mb-4" style="color: var(--color-text-secondary);">
-                Deep dives into how specific product features and flows actually work — coming soon.
-              </p>
-            </div>
-          </div>
-
+          <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Learning Brief</h3>
+          <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+            AI news with product implications, top PM stories, and one practical PM deep-dive — afternoon audio for your commute home.
+          </p>
           <div class="flex items-center justify-between">
-            <span class="text-xs rounded-md px-2.5 py-1"
-                  style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
-              Product Analysis
-            </span>
-            <svg class="h-5 w-5 transition-transform group-hover:translate-x-1"
-                 style="color: var(--color-accent);"
-                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">AI News</span>
+              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">PM Insights</span>
+              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">~30 min</span>
+            </div>
+            <svg class="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </div>
-
         </a>
 
-        <!-- Ecosystem Maps Card -->
-        <a href="/resources/ecosystem-maps"
-           class="group rounded-xl border p-8 transition-all"
+        <a href="/resources/pm-prep"
+           class="group rounded-xl border p-7 transition-all block"
            style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
            onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
            onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
-
-          <div class="flex items-start justify-between mb-4">
-            <div>
-              <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">
-                Ecosystem Maps
-              </h3>
-              <p class="text-body mb-4" style="color: var(--color-text-secondary);">
-                Visual maps of how complex ecosystems fit together — banks, platforms, infrastructure, and more.
-              </p>
-            </div>
-          </div>
-
+          <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">PM Interview Prep</h3>
+          <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+            One real PM interview question, broken into three interactive episodes — Product Thinking, Metrics, and Execution. Make decisions, get calibrated feedback.
+          </p>
           <div class="flex items-center justify-between">
-            <span class="text-xs rounded-md px-2.5 py-1"
-                  style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
-              Systems & Architecture
-            </span>
-            <svg class="h-5 w-5 transition-transform group-hover:translate-x-1"
-                 style="color: var(--color-accent);"
-                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Interactive</span>
+              <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Senior PM Level</span>
+            </div>
+            <svg class="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </div>
-
         </a>
 
       </div>
     </div>
 
+    <!-- ── 3. The Backstory ───────────────────────────────────────── -->
+    <div class="mb-14">
+      <div class="flex items-center gap-3 mb-6">
+        <h2 class="text-h2" style="color: var(--color-text-primary);">The Backstory</h2>
+        <span class="text-xs rounded-full px-3 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-accent);">Weekends · 8 AM</span>
+      </div>
+      <a href="/resources/the-backstory"
+         class="group rounded-xl border p-7 transition-all block"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+        <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Market &amp; Business History</h3>
+        <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+          One story per weekend — told as narrative, not lecture. LTCM, Black Monday, Soros vs the Bank of England, Bezos letters, the dot-com crash. Each episode ends with one lesson that applies to trading or product work today.
+        </p>
+        <div class="flex items-center justify-between">
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Market History</span>
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Investor Philosophy</span>
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Business History</span>
+            <span class="text-xs rounded px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">~25 min</span>
+          </div>
+          <svg class="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- ── Reference Materials ───────────────────────────────────── -->
+    <div class="mb-8">
+      <h2 class="text-h2 mb-6" style="color: var(--color-text-primary);">Reference</h2>
+      <div class="grid gap-5 grid-cols-1 lg:grid-cols-2">
+
+        <a href="/resources/product-breakdowns"
+           class="group rounded-xl border p-7 transition-all"
+           style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+           onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+           onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+          <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Product Breakdowns</h3>
+          <p class="text-body" style="color: var(--color-text-secondary);">Deep dives into how specific product features and flows actually work.</p>
+        </a>
+
+        <a href="/resources/ecosystem-maps"
+           class="group rounded-xl border p-7 transition-all"
+           style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+           onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+           onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+          <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Ecosystem Maps</h3>
+          <p class="text-body" style="color: var(--color-text-secondary);">Visual maps of how complex industries fit together — banks, platforms, infrastructure.</p>
+        </a>
+
+      </div>
+    </div>
 
   </div>
 </section>
-
 {% endblock %}

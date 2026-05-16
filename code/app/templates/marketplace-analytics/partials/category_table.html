@@ -11,8 +11,10 @@
             hx-get="/tools/marketplace-analytics/partials/dashboard"
             hx-target="#dashboard-content"
             hx-swap="innerHTML"
+            hx-push-url="true"
             hx-include="#marketplace-filters"
-            hx-vals='{"sort_by": "{{ key }}", "sort_dir": "{{ next_dir }}"}'>
+            hx-vals='{"sort_by": "{{ key }}", "sort_dir": "{{ next_dir }}"}'
+            onclick="document.getElementById('sort-by').value='{{ key }}';document.getElementById('sort-dir').value='{{ next_dir }}';">
       {{ label }}
       {% if sort_by == key %}
         <span>{% if sort_dir == 'desc' %}↓{% else %}↑{% endif %}</span>

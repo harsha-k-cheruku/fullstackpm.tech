@@ -4,7 +4,8 @@
       hx-get="/tools/marketplace-analytics/partials/dashboard"
       hx-target="#dashboard-content"
       hx-swap="innerHTML"
-      hx-trigger="change">
+      hx-push-url="true"
+      hx-trigger="change from:select">
   <div class="flex-1">
     <label class="text-small font-semibold" style="color: var(--color-text-tertiary);">Date Range</label>
     <select name="date_range" class="mt-2 w-full rounded-lg border px-3 py-2 text-sm"

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adtech / Programmatic Ecosystem — PM Visual Guide | fullstackpm.tech</title>
+  <meta name="description" content="Visual map of the adtech ecosystem: programmatic stack, real-time bidding sequence, identity alternatives, adtech take rates, and attribution models.">
+  <meta name="author" content="Harsha Cheruku">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://fullstackpm.tech/resources/ecosystem-maps/adtech-ecosystem">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Adtech / Programmatic Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta property="og:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fullstackpm.tech/resources/ecosystem-maps/adtech-ecosystem">
+  <meta property="og:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:site_name" content="fullstackpm.tech">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fullstackpmtech">
+  <meta name="twitter:creator" content="@fullstackpmtech">
+  <meta name="twitter:title" content="Adtech / Programmatic Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta name="twitter:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta name="twitter:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/img/FSPM.png?v=3">
+  <link rel="apple-touch-icon" href="/static/img/FSPM.png?v=3">
+  <meta name="msapplication-TileImage" content="/static/img/FSPM.png?v=3">
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Design System Tokens -->
+  <link rel="stylesheet" href="/static/css/custom.css">
+
+  <!-- Dark mode: apply before paint to prevent flash -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  
+<link rel="stylesheet" href="/static/css/adtech-ecosystem.css">
+
+</head>
+<body class="min-h-screen font-sans antialiased"
+      style="background-color: var(--color-bg-primary); color: var(--color-text-primary);">
+
+  <!-- Navigation -->
+  <!-- partials/navbar.html -->
+<nav aria-label="Main navigation"
+     class="sticky top-0 z-50 h-16 border-b"
+     style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+  <div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 sm:px-6">
+
+    <!-- Site name + logo -->
+    <a href="/"
+       class="flex items-center gap-2 text-lg font-bold transition-colors"
+       style="color: var(--color-text-primary);">
+      <img src="/static/img/FSPM.png?v=3" alt="fullstackpm.tech logo" class="h-8 w-8 rounded-full">
+      fullstackpm.tech
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden items-center gap-1 md:flex">
+      
+      
+      <a href="/"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Home
+        
+      </a>
+      
+      <a href="/projects"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Projects
+        
+      </a>
+      
+      <a href="/blog"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Blog
+        
+      </a>
+      
+      <a href="/resources"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Resources
+        
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        @fullstackpm
+        
+      </a>
+      
+    </div>
+
+    <!-- Right side: theme toggle + mobile menu button -->
+    <div class="flex items-center gap-2">
+
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="rounded-lg p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg id="theme-icon-sun" class="hidden h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg id="theme-icon-moon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              class="rounded-lg p-2 transition-colors md:hidden focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu"
+       class="hidden border-b md:hidden"
+       style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+    <div class="mx-auto max-w-[1200px] px-4 py-3 sm:px-6">
+      
+      <a href="/"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Home
+      </a>
+      
+      <a href="/projects"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Projects
+      </a>
+      
+      <a href="/blog"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Blog
+      </a>
+      
+      <a href="/resources"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Resources
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        @fullstackpm
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <!-- Main content -->
+  <main class="mx-auto max-w-[1200px] px-4 sm:px-6">
+    
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">Adtech / Programmatic</span>
+</nav>
+
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">Adtech / Programmatic Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 800px;">
+    Six diagrams plus a PM components playbook on auction quality, identity durability, supply trust, and attribution integrity — so this reads like an operating manual, not just a glossary.
+  </p>
+</header>
+
+<nav class="at-subnav" aria-label="Adtech diagram navigation">
+  <a href="#stack" class="at-subnav-link active">Programmatic Stack</a>
+  <a href="#rtb" class="at-subnav-link">Real-Time Bidding</a>
+  <a href="#identity" class="at-subnav-link">Cookie Death &amp; Identity</a>
+  <a href="#revenue" class="at-subnav-link">Revenue Flow</a>
+  <a href="#perspectives" class="at-subnav-link">Advertiser vs Publisher</a>
+  <a href="#measurement" class="at-subnav-link">Measurement &amp; Attribution</a>
+  <a href="#components" class="at-subnav-link">PM Components</a>
+</nav>
+
+<div class="at-page">
+  <section id="stack" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 1</span>
+    <h2>Programmatic Stack — Demand to Supply Relay</h2>
+    <p>Horizontal topology: demand on the left, exchange intelligence in the middle, and supply on the right with directional flow.</p>
+  </div>
+
+  <div class="at-relay">
+    <div class="at-relay-grid">
+      <article class="at-relay-col at-demand">
+        <h3>Demand Side (Left)</h3>
+        <p>Advertisers and agencies set goals and budgets; DSPs choose impressions and bid prices.</p>
+        <div class="at-pill-row">
+          <span class="at-pill">Brand / Agency</span>
+          <span class="at-pill">Trading Desk</span>
+          <span class="at-pill">DV360</span>
+          <span class="at-pill">The Trade Desk</span>
+          <span class="at-pill">Amazon DSP</span>
+        </div>
+      </article>
+
+      <div class="at-relay-arrow" aria-hidden="true">→</div>
+
+      <div class="at-relay-mid">
+        <article class="at-layer at-exchange">
+          <h3>Exchange Layer (Center)</h3>
+          <p>Marketplace auctions match bid demand with inventory supply and pick winners in milliseconds.</p>
+          <div class="at-pill-row">
+            <span class="at-pill">Google AdX</span>
+            <span class="at-pill">OpenX</span>
+            <span class="at-pill">Index Exchange</span>
+          </div>
+        </article>
+
+        <article class="at-layer" style="background:var(--at-data-bg); border-color:var(--at-data-border);">
+          <h3 style="color:var(--at-data-text);">Data &amp; Identity Signals</h3>
+          <p>Audience and contextual signals improve bid quality and targeting relevance.</p>
+          <div class="at-pill-row">
+            <span class="at-pill" style="color:var(--at-data-text); border-color:var(--at-data-border);">DMP / CDP</span>
+            <span class="at-pill" style="color:var(--at-data-text); border-color:var(--at-data-border);">Clean Rooms</span>
+            <span class="at-pill" style="color:var(--at-data-text); border-color:var(--at-data-border);">Contextual Models</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="at-relay-arrow" aria-hidden="true">→</div>
+
+      <article class="at-relay-col at-supply">
+        <h3>Supply Side (Right)</h3>
+        <p>SSPs package publisher inventory, run yield optimization, and return winning creatives for rendering.</p>
+        <div class="at-pill-row">
+          <span class="at-pill">Google Ad Manager</span>
+          <span class="at-pill">Magnite</span>
+          <span class="at-pill">PubMatic</span>
+          <span class="at-pill">Publisher Site/App</span>
+          <span class="at-pill">Ad Slot + User</span>
+        </div>
+      </article>
+    </div>
+
+    <article class="at-layer at-verify" style="margin-top: 12px;">
+      <h3>Verification &amp; Measurement (Cross-Cutting)</h3>
+      <p>Post-render systems verify viewability, brand safety, and invalid traffic across the whole chain.</p>
+      <div class="at-pill-row">
+        <span class="at-pill">IAS</span>
+        <span class="at-pill">DoubleVerify</span>
+        <span class="at-pill">MOAT</span>
+        <span class="at-pill">Nielsen / Comscore</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="at-callout">
+    <p><strong>PM lens:</strong> the middle layer (exchange + data + verification) is where optimization leverage and margin extraction both concentrate.</p>
+  </div>
+</section>
+  <hr class="at-divider">
+  <section id="rtb" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 2</span>
+    <h2>Real-Time Bidding (RTB) Sequence</h2>
+    <p>One impression clears in about 100–150ms: request fan-out, bidding, auction, render, then async verification.</p>
+  </div>
+
+  <div class="at-sequence">
+    <div class="at-participants">
+      <div class="at-participant">User</div>
+      <div class="at-participant">Publisher</div>
+      <div class="at-participant">SSP</div>
+      <div class="at-participant">Exchange</div>
+      <div class="at-participant">DSP</div>
+      <div class="at-participant">Advertiser</div>
+    </div>
+
+    <div class="at-step-label">0-15ms · Request fan-out</div>
+    <div class="at-step">
+      <div class="at-cell active user">Loads page (0ms)</div>
+      <div class="at-cell active pub">Ad tag fires, bid request (5ms)</div>
+      <div class="at-cell active ssp">Forwards to exchanges (10ms)</div>
+      <div class="at-cell active ex">Distributes to DSPs + user signals (15ms)</div>
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+    </div>
+
+    <div class="at-step-label">20-60ms · Bid computation + auction</div>
+    <div class="at-step">
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+      <div class="at-cell active ex">Collects bid responses, runs auction (55ms)</div>
+      <div class="at-cell active dsp">Evaluates user, computes bid, responds (20-50ms)</div>
+      <div class="at-cell active adv">Campaign constraints + budgets pre-configured</div>
+    </div>
+
+    <div class="at-step-label">60-100ms · Render + post-render verification</div>
+    <div class="at-step">
+      <div class="at-cell active user">Sees ad by ~100ms</div>
+      <div class="at-cell active pub">Renders winning creative (70ms)</div>
+      <div class="at-cell active ssp">Returns winner + creative URL (60ms)</div>
+      <div class="at-cell"></div>
+      <div class="at-cell"></div>
+      <div class="at-cell active adv">Conversion may happen later (hours/days)</div>
+    </div>
+  </div>
+
+  <div class="at-rtb-table-wrap">
+    <table class="at-rtb-table">
+      <thead>
+        <tr><th>Step</th><th>Actor</th><th>Action</th><th>Time</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>User</td><td>Loads page</td><td>0ms</td></tr>
+        <tr><td>2</td><td>Publisher</td><td>Ad tag sends bid request to SSP</td><td>5ms</td></tr>
+        <tr><td>3</td><td>SSP</td><td>Forwards bid request to exchanges</td><td>10ms</td></tr>
+        <tr><td>4</td><td>Exchange</td><td>Sends requests to DSPs with user signals</td><td>15ms</td></tr>
+        <tr><td>5</td><td>DSP</td><td>Scores user and computes bid</td><td>20-50ms</td></tr>
+        <tr><td>6</td><td>Exchange</td><td>Runs auction, selects winner</td><td>55ms</td></tr>
+        <tr><td>7</td><td>SSP/Publisher</td><td>Winner returned and creative rendered</td><td>60-70ms</td></tr>
+        <tr><td>8</td><td>User</td><td>Ad visible</td><td>~100ms</td></tr>
+        <tr><td>9</td><td>Verification</td><td>Viewability + brand safety checks</td><td>200ms+</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="at-callout">
+    <p><strong>Hero constraint:</strong> each participant steals from the same latency budget. If your step is slow, someone else’s optimization work gets canceled by user abandonment.</p>
+  </div>
+</section>
+  <hr class="at-divider">
+  <section id="identity" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 3</span>
+    <h2>Cookie Death &amp; Identity Alternatives</h2>
+    <p>As third-party cookies fade, targeting shifts to first-party data, identity graphs, and contextual signals.</p>
+  </div>
+
+  <div class="at-card-grid-4">
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-advertiser-bg); color:var(--at-advertiser-text);">Third-Party Cookie (Legacy)</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Browser cookie tracks behavior across sites for profile-based targeting.</p>
+        <p><strong>Pros:</strong> Universal, simple, cheap.</p>
+        <p><strong>Cons:</strong> Privacy backlash, browser blocks, unstable future.</p>
+        <p><strong>Status:</strong> Dying.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-publisher-bg); color:var(--at-publisher-text);">First-Party Data</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Logged-in publishers collect consented user data and activate through controlled environments.</p>
+        <p><strong>Pros:</strong> High quality, durable, consent-based.</p>
+        <p><strong>Cons:</strong> Hard for small publishers without authentication scale.</p>
+        <p><strong>Winners:</strong> Amazon, NYT, large logged-in platforms.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-exchange-bg); color:var(--at-exchange-text);">Identity Solutions (UID2, RampID)</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Hashed email identity passed across ecosystem as cookie alternative.</p>
+        <p><strong>Pros:</strong> Cross-site addressability with consent pathways.</p>
+        <p><strong>Cons:</strong> Fragmented standards and uneven adoption.</p>
+        <p><strong>Players:</strong> TTD (UID2), LiveRamp, Google PAIR.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-data-bg); color:var(--at-data-text);">Contextual Targeting</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Target by page/topic semantics instead of user-level tracking.</p>
+        <p><strong>Pros:</strong> Privacy-safe, broad scale, no personal identifiers required.</p>
+        <p><strong>Cons:</strong> Lower precision for niche intent targeting.</p>
+        <p><strong>Revival:</strong> GumGum, Peer39, NLP-based contextual providers.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="at-timeline">
+    <div class="at-tl-row"><div class="at-tl-year">2020</div><div class="at-tl-desc">Safari and Firefox enforce strict third-party cookie blocking.</div></div>
+    <div class="at-tl-row"><div class="at-tl-year">2024</div><div class="at-tl-desc">Chrome deprecation delayed again as ecosystem readiness lags.</div></div>
+    <div class="at-tl-row"><div class="at-tl-year">2025</div><div class="at-tl-desc">Further delay extends transition uncertainty for buyers and publishers.</div></div>
+    <div class="at-tl-row"><div class="at-tl-year">2026?</div><div class="at-tl-desc">Inevitable shift to hybrid identity + contextual stack regardless of exact sunset date.</div></div>
+  </div>
+</section>
+  <hr class="at-divider">
+  <section id="revenue" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 4</span>
+    <h2>Revenue Flow — Who Takes What</h2>
+    <p>For a $10 CPM buy, intermediaries often take half before the publisher sees revenue.</p>
+  </div>
+
+  <div class="at-toggle">
+    <button class="active" onclick="showAtRevenueView('open', this)">Programmatic Open Auction</button>
+    <button onclick="showAtRevenueView('pmp', this)">Private Marketplace (PMP)</button>
+    <button onclick="showAtRevenueView('direct', this)">Direct Deal</button>
+    <button onclick="showAtRevenueView('walled', this)">Walled Garden</button>
+  </div>
+
+  <div id="at-revenue-open" class="at-revenue-panel">
+    <div class="at-sankey">
+      <div class="at-flow-row"><div class="at-flow-label">Agency Fee</div><div class="at-flow-bar" style="width:15%;background:var(--at-advertiser-border);"></div><div class="at-flow-value">$1.50 (15%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">DSP Fee</div><div class="at-flow-bar" style="width:10%;background:var(--at-demand-border);"></div><div class="at-flow-value">$1.00 (10%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">Exchange/SSP Fee</div><div class="at-flow-bar" style="width:15%;background:var(--at-exchange-border);"></div><div class="at-flow-value">$1.50 (15%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">Verification Fee</div><div class="at-flow-bar" style="width:3%;background:var(--at-verify-border);"></div><div class="at-flow-value">$0.30 (3%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">Data Fee</div><div class="at-flow-bar" style="width:7%;background:var(--at-data-border);"></div><div class="at-flow-value">$0.70 (7%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">Publisher Receives</div><div class="at-flow-bar" style="width:50%;background:var(--at-publisher-border);"></div><div class="at-flow-value"><strong>$5.00 (50%)</strong></div></div>
+    </div>
+  </div>
+
+  <div id="at-revenue-pmp" class="at-revenue-panel" style="display:none;">
+    <div class="at-sankey">
+      <div class="at-flow-row"><div class="at-flow-label">Intermediaries Combined</div><div class="at-flow-bar" style="width:35%;background:var(--at-exchange-border);"></div><div class="at-flow-value">$3.50 (35%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">Publisher Receives</div><div class="at-flow-bar" style="width:65%;background:var(--at-publisher-border);"></div><div class="at-flow-value"><strong>$6.50 (65%)</strong></div></div>
+    </div>
+  </div>
+
+  <div id="at-revenue-direct" class="at-revenue-panel" style="display:none;">
+    <div class="at-sankey">
+      <div class="at-flow-row"><div class="at-flow-label">Sales Ops / Serving Overhead</div><div class="at-flow-bar" style="width:15%;background:var(--at-advertiser-border);"></div><div class="at-flow-value">$1.50 (15%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">Publisher Receives</div><div class="at-flow-bar" style="width:85%;background:var(--at-publisher-border);"></div><div class="at-flow-value"><strong>$8.50 (85%)</strong></div></div>
+    </div>
+  </div>
+
+  <div id="at-revenue-walled" class="at-revenue-panel" style="display:none;">
+    <div class="at-sankey">
+      <div class="at-flow-row"><div class="at-flow-label">Platform Keeps</div><div class="at-flow-bar" style="width:75%;background:var(--at-demand-border);"></div><div class="at-flow-value">$7.00-$8.00 (70-80%)</div></div>
+      <div class="at-flow-row"><div class="at-flow-label">External Publisher Share</div><div class="at-flow-bar" style="width:25%;background:var(--at-publisher-border);"></div><div class="at-flow-value">$2.00-$3.00 (20-30%)</div></div>
+    </div>
+  </div>
+
+  <div class="at-callout">
+    <p><strong>Ad tech tax:</strong> in open auction flows, publishers often receive only ~50% of advertiser spend. The other 50% is fragmented across intermediaries and service layers.</p>
+  </div>
+</section>
+  <hr class="at-divider">
+  <section id="perspectives" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 5</span>
+    <h2>Advertiser vs Publisher Perspective</h2>
+    <p>The same impression transaction looks efficient to one side and margin-destructive to the other.</p>
+  </div>
+
+  <div class="at-perspectives">
+    <article class="at-view" style="background:var(--at-advertiser-bg); border-color:var(--at-advertiser-border);">
+      <h3 style="color:var(--at-advertiser-text);">Advertiser View</h3>
+      <ul>
+        <li><strong>Goal:</strong> Reach the right user at the lowest cost.</li>
+        <li><strong>Sees:</strong> Impressions, clicks, conversions, ROAS dashboard.</li>
+        <li><strong>Cares about:</strong> Targeting precision, viewability, brand safety, fraud filters.</li>
+        <li><strong>Pain points:</strong> "Am I reaching real humans?" "Where did spend leak?"</li>
+        <li><strong>North-star metric:</strong> ROAS = Revenue / Ad Spend.</li>
+      </ul>
+    </article>
+
+    <div class="at-mid">Same $10 CPM transaction<br>two opposite value perceptions</div>
+
+    <article class="at-view" style="background:var(--at-publisher-bg); border-color:var(--at-publisher-border);">
+      <h3 style="color:var(--at-publisher-text);">Publisher View</h3>
+      <ul>
+        <li><strong>Goal:</strong> Maximize yield without hurting UX.</li>
+        <li><strong>Sees:</strong> Fill rate, CPM/eCPM, revenue per session, latency impact.</li>
+        <li><strong>Cares about:</strong> Yield optimization, ad quality, page speed, user trust.</li>
+        <li><strong>Pain points:</strong> "Why is CPM down?" "How much do intermediaries take?"</li>
+        <li><strong>North-star metric:</strong> eCPM = Revenue / Impressions × 1000.</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="at-callout">
+    <p><strong>Asymmetry:</strong> advertisers buy outcomes; publishers sell attention. Programmatic intermediaries arbitrate between those objectives and capture spread in the middle.</p>
+  </div>
+</section>
+  <hr class="at-divider">
+  <section id="measurement" class="at-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 6</span>
+    <h2>Measurement &amp; Attribution Models</h2>
+    <p>Attribution choice changes budget allocation behavior as much as targeting model choice does.</p>
+  </div>
+
+  <div class="at-card-grid-4">
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-demand-bg); color:var(--at-demand-text);">Last-Click Attribution</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Final clicked ad gets 100% conversion credit.</p>
+        <p><strong>Pros:</strong> Simple and deterministic.</p>
+        <p><strong>Cons:</strong> Ignores awareness assist touches.</p>
+        <p><strong>Used by:</strong> Smaller advertisers, default channel reports.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-exchange-bg); color:var(--at-exchange-text);">Multi-Touch Attribution (MTA)</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Credit is distributed across touchpoints (linear/time-decay/position).</p>
+        <p><strong>Pros:</strong> Better journey visibility than single-touch models.</p>
+        <p><strong>Cons:</strong> Data heavy, privacy-constrained, modeling fragile.</p>
+        <p><strong>Used by:</strong> Sophisticated brands and agencies.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-supply-bg); color:var(--at-supply-text);">Media Mix Modeling (MMM)</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Statistical model estimates channel contribution at aggregate spend level.</p>
+        <p><strong>Pros:</strong> Privacy-safe and includes offline media.</p>
+        <p><strong>Cons:</strong> Slow cadence; weak for intraday optimization.</p>
+        <p><strong>Used by:</strong> Large enterprise advertisers.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-verify-bg); color:var(--at-verify-text);">Incrementality Testing</div>
+      <div class="at-model-body">
+        <p><strong>How:</strong> Holdout A/B design compares exposed vs control conversion outcomes.</p>
+        <p><strong>Pros:</strong> Causal signal, not just correlation.</p>
+        <p><strong>Cons:</strong> Operationally expensive and slower to run.</p>
+        <p><strong>Used by:</strong> Advanced teams (often with platform-native experiments).</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="at-callout">
+    <p><strong>Practical stack:</strong> many mature teams run MMM for strategic budget setting, MTA for tactical optimization, and incrementality tests to validate both.</p>
+  </div>
+</section>
+</div>
+
+<section id="components" class="at-section" style="margin-top: 48px; padding-top: 32px; border-top: 2px solid var(--at-card-border);">
+  <div class="section-header">
+    <span class="section-tag">Reference</span>
+    <h2>Adtech Components — PM Lens</h2>
+    <p>Where product choices in adtech move revenue, margin, and trust: auction quality, identity strategy, and measurement credibility.</p>
+  </div>
+
+  <div class="at-callout" style="margin-bottom: 18px;">
+    <p><strong>How this connects to the diagrams:</strong> <a href="#stack">Programmatic Stack</a> defines control points, <a href="#rtb">RTB flow</a> shows real-time decisions, <a href="#revenue">Revenue Flow</a> quantifies take-rate impact, and <a href="#measurement">Measurement</a> reveals attribution risk. This section converts the map into a PM action model.</p>
+  </div>
+
+  <div class="at-card-grid-4">
+    <article class="at-model-card">
+      <div class="at-model-head at-demand">Auction & Bid Strategy</div>
+      <div class="at-model-body">
+        <p><strong>What it does:</strong> Decides which impressions to bid on and how aggressively to price each one.</p>
+        <p><strong>PM metrics:</strong> Win rate, CPM efficiency, cost per outcome (CPA/CPI), spend pacing vs budget.</p>
+        <p><strong>Pitfall:</strong> Optimizing only for cheap inventory often degrades downstream conversion quality.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head at-exchange">Supply Quality & Curation</div>
+      <div class="at-model-body">
+        <p><strong>What it does:</strong> Filters inventory for fraud, viewability, and contextual fit before buyers pay for it.</p>
+        <p><strong>PM metrics:</strong> Viewability %, IVT %, brand safety incidents, effective CPM lift for curated paths.</p>
+        <p><strong>Pitfall:</strong> Overly broad supply creates apparent scale but weak business outcomes.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head at-verify">Measurement & Attribution</div>
+      <div class="at-model-body">
+        <p><strong>What it does:</strong> Connects impression exposure to conversion outcomes with model assumptions.</p>
+        <p><strong>PM metrics:</strong> Attributed ROAS, incremental lift, modeled-vs-observed delta, reporting lag.</p>
+        <p><strong>Pitfall:</strong> Last-click comfort can hide incrementality collapse.</p>
+      </div>
+    </article>
+
+    <article class="at-model-card">
+      <div class="at-model-head" style="background:var(--at-data-bg);color:var(--at-data-text);border-bottom-color:var(--at-data-border);">Identity & Privacy Stack</div>
+      <div class="at-model-body">
+        <p><strong>What it does:</strong> Maintains targeting and frequency control as deterministic IDs become scarcer.</p>
+        <p><strong>PM metrics:</strong> Match rate, reachable audience %, frequency control error, consented signal coverage.</p>
+        <p><strong>Pitfall:</strong> Treating identity as a vendor checkbox instead of a product capability.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="at-callout" style="margin-top: 20px;">
+    <p><strong>Interview shortcut:</strong> frame adtech tradeoffs as <strong>efficiency vs control vs trust</strong>. Buyers chase outcomes, sellers chase yield, and regulators/users demand privacy. Great PM narratives show how your product balances all three instead of maximizing only one.</p>
+  </div>
+</section>
+
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  Adtech / Programmatic Ecosystem Visual Guide · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <!-- partials/footer.html -->
+<footer class="border-t mt-16 py-12"
+        style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6">
+
+    <!-- Three-column grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+      <!-- Col 1: Site info -->
+      <div>
+        <a href="/" class="text-lg font-bold" style="color: var(--color-text-primary);">
+          fullstackpm.tech
+        </a>
+        <p class="text-small mt-2" style="color: var(--color-text-secondary);">
+          Full Stack AI Product Manager. Engineering Mind. Design Obsession.
+        </p>
+      </div>
+
+      <!-- Col 2: Quick links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Quick Links</h3>
+        <ul class="space-y-2">
+          
+          
+          <li>
+            <a href="/"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/@fullstackpm#contact"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <!-- Col 3: Social links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Connect</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://github.com/harsha-k-cheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/harshacheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="/feed.xml"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /></svg>
+              RSS Feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom attribution -->
+    <div class="mt-8 border-t pt-6 text-center" style="border-color: var(--color-border);">
+      <p class="text-xs" style="color: var(--color-text-tertiary);">
+        Built with FastAPI + HTMX &middot; &copy; 2026 Harsha Cheruku
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- HTMX (CDN) -->
+  <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwCXuE+cDVtAu2B3crQxD" crossorigin="anonymous"></script>
+
+  <!-- Site JS -->
+  <script src="/static/js/main.js"></script>
+
+  
+<script>
+  function showAtRevenueView(id, btn) {
+    document.querySelectorAll('.at-revenue-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.at-toggle button').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('at-revenue-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  const sections = ['stack', 'rtb', 'identity', 'revenue', 'perspectives', 'measurement', 'components'];
+  const navLinks = document.querySelectorAll('.at-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  updateActiveLink();
+</script>
+
+</body>
+</html>

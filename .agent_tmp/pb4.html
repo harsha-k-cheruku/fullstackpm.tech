@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Breakdowns - fullstackpm.tech</title>
+  <meta name="description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta name="author" content="Harsha Cheruku">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://fullstackpm.tech/resources/product-breakdowns">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Product Breakdowns - fullstackpm.tech">
+  <meta property="og:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fullstackpm.tech/resources/product-breakdowns">
+  <meta property="og:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:site_name" content="fullstackpm.tech">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fullstackpmtech">
+  <meta name="twitter:creator" content="@fullstackpmtech">
+  <meta name="twitter:title" content="Product Breakdowns - fullstackpm.tech">
+  <meta name="twitter:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta name="twitter:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/img/FSPM.png?v=3">
+  <link rel="apple-touch-icon" href="/static/img/FSPM.png?v=3">
+  <meta name="msapplication-TileImage" content="/static/img/FSPM.png?v=3">
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Design System Tokens -->
+  <link rel="stylesheet" href="/static/css/custom.css">
+
+  <!-- Dark mode: apply before paint to prevent flash -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  
+</head>
+<body class="min-h-screen font-sans antialiased"
+      style="background-color: var(--color-bg-primary); color: var(--color-text-primary);">
+
+  <!-- Navigation -->
+  <!-- partials/navbar.html -->
+<nav aria-label="Main navigation"
+     class="sticky top-0 z-50 h-16 border-b"
+     style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+  <div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 sm:px-6">
+
+    <!-- Site name + logo -->
+    <a href="/"
+       class="flex items-center gap-2 text-lg font-bold transition-colors"
+       style="color: var(--color-text-primary);">
+      <img src="/static/img/FSPM.png?v=3" alt="fullstackpm.tech logo" class="h-8 w-8 rounded-full">
+      fullstackpm.tech
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden items-center gap-1 md:flex">
+      
+      
+      <a href="/"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Home
+        
+      </a>
+      
+      <a href="/projects"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Projects
+        
+      </a>
+      
+      <a href="/blog"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Blog
+        
+      </a>
+      
+      <a href="/resources"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Resources
+        
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        @fullstackpm
+        
+      </a>
+      
+    </div>
+
+    <!-- Right side: theme toggle + mobile menu button -->
+    <div class="flex items-center gap-2">
+
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="rounded-lg p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg id="theme-icon-sun" class="hidden h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg id="theme-icon-moon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              class="rounded-lg p-2 transition-colors md:hidden focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu"
+       class="hidden border-b md:hidden"
+       style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+    <div class="mx-auto max-w-[1200px] px-4 py-3 sm:px-6">
+      
+      <a href="/"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Home
+      </a>
+      
+      <a href="/projects"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Projects
+      </a>
+      
+      <a href="/blog"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Blog
+      </a>
+      
+      <a href="/resources"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Resources
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        @fullstackpm
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <!-- Main content -->
+  <main class="mx-auto max-w-[1200px] px-4 sm:px-6">
+    
+
+<section class="py-16 lg:py-20">
+  <div class="max-w-4xl">
+
+    <!-- Hero -->
+    <div class="mb-16">
+      <p class="text-small mb-3" style="color: var(--color-text-secondary);">
+        Resources
+      </p>
+      <h1 class="text-h1 mb-6" style="color: var(--color-text-primary);">
+        Product Breakdowns
+      </h1>
+      <p class="text-body-lg mb-6" style="color: var(--color-text-secondary);">
+        Deep dives into the horizontal product components every platform depends on — mechanics, metrics, architecture, and real-world company patterns.
+      </p>
+    </div>
+
+    <!-- Breakdown cards grid -->
+    <div class="grid gap-6">
+
+      <!-- Search & Discovery Card -->
+      <a href="/resources/product-breakdowns/search-and-discovery"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Search &amp; Discovery</h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              How platforms balance directed search and exploratory discovery, with deep dives into ranking pipelines, metrics, architecture, and company patterns.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Core Platform Component</span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+        </div>
+      </a>
+
+      <!-- Trust & Safety Card -->
+      <a href="/resources/product-breakdowns/trust-and-safety"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Trust &amp; Safety</h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              The bouncer, referee, and insurance adjuster model: risk detection, enforcement workflows, appeals, and trust recovery patterns across business models.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Trust Layer</span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+        </div>
+      </a>
+
+      <!-- Ratings & Reviews Card -->
+      <a href="/resources/product-breakdowns/ratings-and-reviews"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Ratings &amp; Reviews</h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              Word-of-mouth at scale: authenticity mechanics, ranking impact, anti-manipulation playbooks, and review system design patterns.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Reputation Layer</span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+        </div>
+      </a>
+
+      <!-- Payments & Checkout Card -->
+      <a href="/resources/product-breakdowns/payments-and-checkout"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Payments &amp; Checkout</h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              The cash register that also prevents robbery: checkout conversion, fraud-friction decisions, chargeback economics, and settlement architecture.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Money Movement Layer</span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+        </div>
+      </a>
+
+      <!-- Recommendations & Personalization Card -->
+      <a href="/resources/product-breakdowns/recommendations-personalization"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Recommendations &amp; Personalization</h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              The friend who knows your taste better than you do: ranking pipelines, relevance-vs-serendipity tradeoffs, and recommendation architecture patterns.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Growth &amp; Engagement Layer</span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+        </div>
+      </a>
+
+      <!-- Onboarding & Activation Card -->
+      <a href="/resources/product-breakdowns/onboarding-activation"
+         class="group rounded-xl border p-8 transition-all"
+         style="background-color: var(--color-bg-secondary); border-color: var(--color-border);"
+         onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)';"
+         onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none';">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-h3 mb-2" style="color: var(--color-text-primary);">Onboarding &amp; Activation</h3>
+            <p class="text-body mb-4" style="color: var(--color-text-secondary);">
+              The tour guide for your first visit: first-value design, activation funnels, retention handoff, and onboarding architecture patterns.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-xs rounded-md px-2.5 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">Growth &amp; Engagement Layer</span>
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" style="color: var(--color-accent);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- Footer -->
+  <!-- partials/footer.html -->
+<footer class="border-t mt-16 py-12"
+        style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6">
+
+    <!-- Three-column grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+      <!-- Col 1: Site info -->
+      <div>
+        <a href="/" class="text-lg font-bold" style="color: var(--color-text-primary);">
+          fullstackpm.tech
+        </a>
+        <p class="text-small mt-2" style="color: var(--color-text-secondary);">
+          Full Stack AI Product Manager. Engineering Mind. Design Obsession.
+        </p>
+      </div>
+
+      <!-- Col 2: Quick links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Quick Links</h3>
+        <ul class="space-y-2">
+          
+          
+          <li>
+            <a href="/"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/@fullstackpm#contact"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <!-- Col 3: Social links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Connect</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://github.com/harsha-k-cheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/harshacheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="/feed.xml"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /></svg>
+              RSS Feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom attribution -->
+    <div class="mt-8 border-t pt-6 text-center" style="border-color: var(--color-border);">
+      <p class="text-xs" style="color: var(--color-text-tertiary);">
+        Built with FastAPI + HTMX &middot; &copy; 2026 Harsha Cheruku
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- HTMX (CDN) -->
+  <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwCXuE+cDVtAu2B3crQxD" crossorigin="anonymous"></script>
+
+  <!-- Site JS -->
+  <script src="/static/js/main.js"></script>
+
+  
+</body>
+</html>

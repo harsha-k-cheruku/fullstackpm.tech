@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-16 lg:py-20">
+  <div class="max-w-3xl">
+
+    <!-- Breadcrumb -->
+    <p class="text-small mb-8" style="color: var(--color-text-secondary);">
+      <a href="/resources" style="color: var(--color-text-secondary);">Resources</a>
+      <span class="mx-2">·</span>
+      <a href="/resources/the-backstory" style="color: var(--color-text-secondary);">The Backstory</a>
+      <span class="mx-2">·</span>
+      {{ episode.date }}
+    </p>
+
+    <!-- Episode header -->
+    <div class="mb-8">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-xs font-mono" style="color: var(--color-text-secondary);">
+          {{ episode.episode_id }}
+        </span>
+        <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+          {{ episode.duration_human }}
+        </span>
+        <span class="text-xs rounded px-2 py-0.5" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">
+          {{ episode.date }}
+        </span>
+      </div>
+      <h1 class="text-h1 mb-4" style="color: var(--color-text-primary);">{{ episode.title }}</h1>
+
+      <!-- Era + Theme -->
+      <div class="flex flex-wrap gap-3 mb-2">
+        {% if episode.era %}
+        <div class="rounded-lg px-4 py-2" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <p class="text-xs mb-1" style="color: var(--color-text-secondary);">Era</p>
+          <p class="text-body font-semibold" style="color: var(--color-text-primary);">{{ episode.era }}</p>
+        </div>
+        {% endif %}
+        {% if episode.theme %}
+        <div class="rounded-lg px-4 py-2" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <p class="text-xs mb-1" style="color: var(--color-text-secondary);">Theme</p>
+          <p class="text-body font-semibold" style="color: var(--color-text-primary);">{{ episode.theme }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Audio Player -->
+    <div class="rounded-xl border p-6 mb-10" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="rounded-full p-2" style="background-color: var(--color-accent);">
+          <svg class="h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-body font-medium" style="color: var(--color-text-primary);">Listen to this episode</p>
+          <p class="text-xs" style="color: var(--color-text-secondary);">{{ episode.duration_human }} · Every Saturday and Sunday at 8 AM</p>
+        </div>
+      </div>
+      <audio controls class="w-full" style="accent-color: var(--color-accent);">
+        <source src="{{ episode.audio_url }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Show notes -->
+    <div class="prose max-w-none" style="color: var(--color-text-primary);">
+      <style>
+        .backstory-content h1, .backstory-content h2 { color: var(--color-text-primary); margin-top: 2rem; margin-bottom: 0.75rem; }
+        .backstory-content h2 { font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+        .backstory-content h3 { font-size: 1rem; font-weight: 600; color: var(--color-text-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .backstory-content p { color: var(--color-text-secondary); line-height: 1.75; margin-bottom: 1rem; }
+        .backstory-content ul { color: var(--color-text-secondary); padding-left: 1.5rem; margin-bottom: 1rem; }
+        .backstory-content li { margin-bottom: 0.4rem; }
+        .backstory-content strong { color: var(--color-text-primary); }
+        .backstory-content blockquote { border-left: 3px solid var(--color-accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--color-text-secondary); }
+      </style>
+      <div class="backstory-content">
+        {{ episode.shownotes_html | safe }}
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="mt-10 pt-8" style="border-top: 1px solid var(--color-border);">
+      <a href="/resources/the-backstory"
+         class="inline-flex items-center gap-2 text-sm"
+         style="color: var(--color-accent);">
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+        All episodes
+      </a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

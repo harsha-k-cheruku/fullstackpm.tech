@@ -82,15 +82,25 @@
     syncFilterState();
 
     const form = document.getElementById("marketplace-filters");
-    if (form) {
+    if (form && !form.dataset.bound) {
       form.addEventListener("change", updateExportLink);
+      form.dataset.bound = "true";
     }
   }
 
   document.addEventListener("DOMContentLoaded", init);
   document.body.addEventListener("htmx:afterSwap", (event) => {
-    if (event.target && event.target.id === "dashboard-content") {
+    if (!event.target) return;
+    if (event.target.id === "dashboard-content" || event.target.id === "dashboard-content-inner") {
       init();
+    }
+  });
+
+  document.body.addEventListener("htmx:afterRequest", (event) => {
+    if (!event.target) return;
+    const trigger = event.target;
+    if (trigger.closest && trigger.closest("#marketplace-filters")) {
+      updateExportLink();
     }
   });
 })();

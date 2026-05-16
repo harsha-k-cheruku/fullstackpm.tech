@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Healthcare Ecosystem — PM Visual Guide | fullstackpm.tech</title>
+  <meta name="description" content="Visual map of the US healthcare ecosystem: payer-provider relationships, claims and prior authorization flows, value-based care models, and healthtech business models.">
+  <meta name="author" content="Harsha Cheruku">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://fullstackpm.tech/resources/ecosystem-maps/healthcare-ecosystem">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="US Healthcare Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta property="og:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fullstackpm.tech/resources/ecosystem-maps/healthcare-ecosystem">
+  <meta property="og:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:site_name" content="fullstackpm.tech">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@fullstackpmtech">
+  <meta name="twitter:creator" content="@fullstackpmtech">
+  <meta name="twitter:title" content="US Healthcare Ecosystem — PM Visual Guide | fullstackpm.tech">
+  <meta name="twitter:description" content="Portfolio of Harsha Cheruku — Full Stack AI Product Manager">
+  <meta name="twitter:image" content="https://fullstackpm.tech/static/img/FSPM.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/static/img/FSPM.png?v=3">
+  <link rel="apple-touch-icon" href="/static/img/FSPM.png?v=3">
+  <meta name="msapplication-TileImage" content="/static/img/FSPM.png?v=3">
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Design System Tokens -->
+  <link rel="stylesheet" href="/static/css/custom.css">
+
+  <!-- Dark mode: apply before paint to prevent flash -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  
+<link rel="stylesheet" href="/static/css/healthcare-ecosystem.css">
+
+</head>
+<body class="min-h-screen font-sans antialiased"
+      style="background-color: var(--color-bg-primary); color: var(--color-text-primary);">
+
+  <!-- Navigation -->
+  <!-- partials/navbar.html -->
+<nav aria-label="Main navigation"
+     class="sticky top-0 z-50 h-16 border-b"
+     style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+  <div class="mx-auto flex h-full max-w-[1200px] items-center justify-between px-4 sm:px-6">
+
+    <!-- Site name + logo -->
+    <a href="/"
+       class="flex items-center gap-2 text-lg font-bold transition-colors"
+       style="color: var(--color-text-primary);">
+      <img src="/static/img/FSPM.png?v=3" alt="fullstackpm.tech logo" class="h-8 w-8 rounded-full">
+      fullstackpm.tech
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden items-center gap-1 md:flex">
+      
+      
+      <a href="/"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Home
+        
+      </a>
+      
+      <a href="/projects"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Projects
+        
+      </a>
+      
+      <a href="/blog"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Blog
+        
+      </a>
+      
+      <a href="/resources"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        Resources
+        
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="relative px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         
+         onmouseover="this.style.color='var(--color-text-primary)'"
+         onmouseout="this.style.color='var(--color-text-secondary)'">
+        @fullstackpm
+        
+      </a>
+      
+    </div>
+
+    <!-- Right side: theme toggle + mobile menu button -->
+    <div class="flex items-center gap-2">
+
+      <!-- Dark mode toggle -->
+      <button id="theme-toggle"
+              type="button"
+              aria-label="Toggle dark mode"
+              class="rounded-lg p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg id="theme-icon-sun" class="hidden h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg id="theme-icon-moon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+        </svg>
+      </button>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+              class="rounded-lg p-2 transition-colors md:hidden focus:outline-none focus:ring-2 focus:ring-offset-2"
+              style="color: var(--color-text-secondary); --tw-ring-color: var(--color-accent);"
+              onmouseover="this.style.color='var(--color-text-primary)'"
+              onmouseout="this.style.color='var(--color-text-secondary)'">
+        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu dropdown -->
+  <div id="mobile-menu"
+       class="hidden border-b md:hidden"
+       style="background-color: var(--color-bg-primary); border-color: var(--color-border);">
+    <div class="mx-auto max-w-[1200px] px-4 py-3 sm:px-6">
+      
+      <a href="/"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Home
+      </a>
+      
+      <a href="/projects"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Projects
+      </a>
+      
+      <a href="/blog"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Blog
+      </a>
+      
+      <a href="/resources"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        Resources
+      </a>
+      
+      <a href="/@fullstackpm"
+         class="block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+         style="color: var(--color-text-secondary);"
+         >
+        @fullstackpm
+      </a>
+      
+    </div>
+  </div>
+</nav>
+
+  <!-- Main content -->
+  <main class="mx-auto max-w-[1200px] px-4 sm:px-6">
+    
+<nav aria-label="Breadcrumb" class="py-4 text-sm" style="color: var(--color-text-tertiary);">
+  <a href="/resources" class="hover:underline" style="color: var(--color-text-tertiary);">Resources</a>
+  <span class="mx-1">›</span>
+  <a href="/resources/ecosystem-maps" class="hover:underline" style="color: var(--color-text-tertiary);">Ecosystem Maps</a>
+  <span class="mx-1">›</span>
+  <span style="color: var(--color-text-primary);">US Healthcare Ecosystem</span>
+</nav>
+
+<header class="mb-2">
+  <h1 class="text-3xl font-bold" style="color: var(--color-text-primary);">US Healthcare Ecosystem — PM Visual Guide</h1>
+  <p class="mt-2 text-sm" style="color: var(--color-text-tertiary); max-width: 800px;">
+    Five diagrams plus a PM components playbook: participant incentives, claims/prior-auth friction, payment model shifts, and the operational levers that reduce admin burden while protecting outcomes.
+  </p>
+</header>
+
+<nav class="hc-subnav" aria-label="Healthcare diagram navigation">
+  <a href="#participants" class="hc-subnav-link active">Participant Map</a>
+  <a href="#claims" class="hc-subnav-link">Claims Flow</a>
+  <a href="#priorauth" class="hc-subnav-link">Prior Authorization</a>
+  <a href="#ffs-vbc" class="hc-subnav-link">FFS vs VBC</a>
+  <a href="#healthtech" class="hc-subnav-link">HealthTech Models</a>
+  <a href="#components" class="hc-subnav-link">PM Components</a>
+</nav>
+
+<div class="hc-page">
+  <section id="participants" class="hc-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 1</span>
+    <h2>Healthcare Participant Flow — Incentive Relay</h2>
+    <p>Horizontal map of how value, authorization, and payment decisions move across participants from member demand to regulated supply and oversight.</p>
+  </div>
+
+  <div class="hc-relay">
+    <div class="hc-relay-grid">
+      <article class="hc-relay-col hc-patient">
+        <h3>Demand: Patients / Members</h3>
+        <p>Members initiate care demand and absorb premium, deductible, copay, and access friction.</p>
+        <div class="hc-chip-row">
+          <span class="hc-chip">Individuals</span>
+          <span class="hc-chip">Families</span>
+          <span class="hc-chip">Employer Plans</span>
+        </div>
+      </article>
+
+      <div class="hc-relay-arrow" aria-hidden="true">→</div>
+
+      <div class="hc-relay-mid">
+        <article class="hc-layer hc-provider">
+          <h3>Care Delivery: Providers</h3>
+          <p>Hospitals and clinicians deliver treatment, document codes, and submit claims for payment.</p>
+          <div class="hc-chip-row">
+            <span class="hc-chip">Hospitals</span>
+            <span class="hc-chip">Physicians</span>
+            <span class="hc-chip">Labs</span>
+            <span class="hc-chip">Pharmacies</span>
+          </div>
+        </article>
+
+        <article class="hc-layer hc-payer">
+          <h3>Decision Layer: Payers</h3>
+          <p>Coverage policy, network contracts, utilization controls, and adjudication logic sit here.</p>
+          <div class="hc-chip-row">
+            <span class="hc-chip">Commercial Plans</span>
+            <span class="hc-chip">Medicare / Medicaid</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="hc-relay-arrow" aria-hidden="true">→</div>
+
+      <article class="hc-relay-col hc-infra">
+        <h3>Execution Infrastructure</h3>
+        <p>EHR, clearinghouse, and interoperability rails route data and claims across fragmented institutions.</p>
+        <div class="hc-chip-row">
+          <span class="hc-chip">Epic / Cerner</span>
+          <span class="hc-chip">Change / Availity</span>
+          <span class="hc-chip">HL7 / FHIR / EDI</span>
+        </div>
+      </article>
+    </div>
+
+    <article class="hc-layer hc-pbm" style="margin-top: 12px;">
+      <h3>Pharmacy & Drug Economics (Cross-Cutting)</h3>
+      <p>PBMs and manufacturers influence formulary access, rebate economics, and patient out-of-pocket burden.</p>
+      <div class="hc-chip-row">
+        <span class="hc-chip">Express Scripts</span>
+        <span class="hc-chip">CVS Caremark</span>
+        <span class="hc-chip">OptumRx</span>
+        <span class="hc-chip">Drug Manufacturers</span>
+      </div>
+    </article>
+
+    <article class="hc-layer hc-pharma" style="margin-top: 12px;">
+      <h3>Regulatory Guardrails (System Constraints)</h3>
+      <p>FDA, CMS, HHS, and state regulators constrain product speed and define compliance boundaries.</p>
+      <div class="hc-chip-row">
+        <span class="hc-chip">FDA</span>
+        <span class="hc-chip">CMS</span>
+        <span class="hc-chip">HHS</span>
+        <span class="hc-chip">State DOI</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="hc-callout">
+    <p><strong>System reality:</strong> no single actor controls the full journey. PM leverage comes from reducing handoff friction between care delivery, coverage decisions, and infrastructure constraints.</p>
+  </div>
+</section>
+  <hr class="hc-divider">
+  <section id="claims" class="hc-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 2</span>
+    <h2>Claims Flow — How a Medical Bill Gets Paid</h2>
+    <p>Medical and pharmacy claims share actors but have radically different latency: weeks for medical adjudication, seconds for pharmacy.</p>
+  </div>
+
+  <div class="hc-tabs">
+    <button class="hc-tab active" onclick="showHcClaims('medical', this)">Medical Claim (30-90 days)</button>
+    <button class="hc-tab" onclick="showHcClaims('pharmacy', this)">Pharmacy Claim (~2 seconds)</button>
+  </div>
+
+  <div id="hc-claims-medical" class="hc-claims-panel">
+    <div class="hc-sequence">
+      <div class="hc-participants">
+        <div class="hc-participant">Patient</div>
+        <div class="hc-participant">Provider</div>
+        <div class="hc-participant">Clearinghouse</div>
+        <div class="hc-participant">Payer</div>
+        <div class="hc-participant">PBM (Rx)</div>
+        <div class="hc-participant">Bank</div>
+      </div>
+
+      <div class="hc-step-label">Care delivery and claim submission</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Receives care</div>
+        <div class="hc-cell active provider">Documents encounter in EHR + coding</div>
+        <div class="hc-cell active clear">Scrubs/validates CMS-1500 or UB-04 claim</div>
+        <div class="hc-cell"></div><div class="hc-cell"></div><div class="hc-cell"></div>
+      </div>
+
+      <div class="hc-step-label">Adjudication and benefit calculation</div>
+      <div class="hc-step">
+        <div class="hc-cell"></div><div class="hc-cell"></div>
+        <div class="hc-cell active clear">Forwards clean claim to payer</div>
+        <div class="hc-cell active payer">Eligibility + allowed amount + member cost share</div>
+        <div class="hc-cell"></div><div class="hc-cell"></div>
+      </div>
+
+      <div class="hc-step-label">Payment and patient billing</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Receives EOB and later balance bill</div>
+        <div class="hc-cell active provider">Posts ERA payment, bills patient remainder</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active payer">Sends EOB + remittance (835)</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active bank">Transfers settlement funds</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hc-claims-pharmacy" class="hc-claims-panel" style="display:none;">
+    <div class="hc-sequence">
+      <div class="hc-participants">
+        <div class="hc-participant">Patient</div>
+        <div class="hc-participant">Provider/Pharmacy</div>
+        <div class="hc-participant">Clearinghouse</div>
+        <div class="hc-participant">Payer</div>
+        <div class="hc-participant">PBM</div>
+        <div class="hc-participant">Bank</div>
+      </div>
+
+      <div class="hc-step-label">Point-of-sale adjudication</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Presents prescription</div>
+        <div class="hc-cell active provider">Pharmacy submits NCPDP transaction</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active pbm">Checks formulary, tier, copay in ~2s</div>
+        <div class="hc-cell"></div>
+      </div>
+
+      <div class="hc-step-label">Copay collection and reimbursement</div>
+      <div class="hc-step">
+        <div class="hc-cell active patient">Pays copay at counter</div>
+        <div class="hc-cell active provider">Dispenses medication</div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell"></div>
+        <div class="hc-cell active pbm">Returns response + reimburses pharmacy later</div>
+        <div class="hc-cell active bank">Settlement and rebate cash movement</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hc-callout">
+    <p><strong>Architecture implication:</strong> medical claims systems optimize batch accuracy and denial management; pharmacy systems optimize sub-second reliability and uptime at checkout.</p>
+  </div>
+</section>
+  <hr class="hc-divider">
+  <section id="priorauth" class="hc-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 3</span>
+    <h2>Prior Authorization Sequence</h2>
+    <p>Prior auth is a pre-approval gate for selected treatments, often causing delays even when care is ultimately approved.</p>
+  </div>
+
+  <div class="hc-prior-grid">
+    <article class="hc-prior-card">
+      <h4>Decision Flow</h4>
+      <ul>
+        <li>Provider orders treatment/procedure.</li>
+        <li>Check payer rules: prior auth required?</li>
+        <li><strong>No:</strong> proceed and submit normal claim.</li>
+        <li><strong>Yes:</strong> submit PA request with clinical documentation.</li>
+        <li>Payer reviews medical necessity criteria.</li>
+        <li><strong>Approved:</strong> treatment proceeds.</li>
+        <li><strong>Denied:</strong> accept, appeal, or external review.</li>
+        <li><strong>Pending:</strong> more documents requested; delays continue.</li>
+      </ul>
+    </article>
+
+    <article class="hc-prior-card">
+      <h4>Operational Paths</h4>
+      <p><strong>Standard review:</strong> typically 3-14 days.</p>
+      <p><strong>Urgent review:</strong> 24-72 hours for acute scenarios.</p>
+      <p><strong>Appeal path:</strong> provider peer-to-peer review with payer medical director, then external independent review if unresolved.</p>
+      <p><strong>Outcome reality:</strong> many denials are reversed, implying workflow friction is often administrative rather than clinical.</p>
+    </article>
+  </div>
+
+  <div class="hc-stats">
+    <div class="hc-stat"><strong>34%</strong><span>Initial prior auth denial rate</span></div>
+    <div class="hc-stat"><strong>82%</strong><span>Denials overturned on appeal</span></div>
+    <div class="hc-stat"><strong>7 days</strong><span>Average delay window</span></div>
+    <div class="hc-stat"><strong>~25%</strong><span>Share of care delays tied to PA</span></div>
+  </div>
+
+  <div class="hc-callout">
+    <p><strong>Core tension:</strong> prior auth aims to control unnecessary utilization, but high reversal rates suggest many requests are delayed rather than genuinely inappropriate.</p>
+  </div>
+</section>
+  <hr class="hc-divider">
+  <section id="ffs-vbc" class="hc-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 4</span>
+    <h2>Fee-for-Service vs Value-Based Care</h2>
+    <p>Payment model determines behavior. FFS rewards activity volume; VBC rewards outcomes and cost control.</p>
+  </div>
+
+  <div class="hc-vbc-grid">
+    <article class="hc-vbc-panel" style="background:var(--hc-pbm-bg); border-color:var(--hc-pbm-border);">
+      <h3 style="color:var(--hc-pbm-text);">Fee-for-Service (FFS)</h3>
+      <ul>
+        <li><strong>Mechanism:</strong> bill and get paid per service/procedure/test.</li>
+        <li><strong>Incentive:</strong> volume growth.</li>
+        <li><strong>Quality linkage:</strong> weak by default.</li>
+        <li><strong>Risk holder:</strong> payer bears most financial risk.</li>
+        <li><strong>Market share:</strong> still dominant (~60% of payments).</li>
+        <li><strong>Failure mode:</strong> overuse and cost inflation.</li>
+      </ul>
+    </article>
+
+    <div class="hc-vbc-mid">
+      FFS (volume) → Shared savings → Bundled payments → Capitation → VBC (outcomes)
+    </div>
+
+    <article class="hc-vbc-panel" style="background:var(--hc-provider-bg); border-color:var(--hc-provider-border);">
+      <h3 style="color:var(--hc-provider-text);">Value-Based Care (VBC)</h3>
+      <ul>
+        <li><strong>Mechanism:</strong> payment tied to outcomes and total cost improvement.</li>
+        <li><strong>Incentive:</strong> prevention and longitudinal health management.</li>
+        <li><strong>Quality linkage:</strong> explicit (readmissions, HEDIS, satisfaction).</li>
+        <li><strong>Risk holder:</strong> provider shares or assumes financial risk.</li>
+        <li><strong>Adoption:</strong> growing (~40%), accelerated by CMS policy.</li>
+        <li><strong>Challenge:</strong> requires strong data + risk adjustment infrastructure.</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="hc-callout">
+    <p><strong>PM takeaway:</strong> products designed for FFS claims optimization won’t automatically succeed in VBC environments that need population-level analytics and care coordination workflows.</p>
+  </div>
+</section>
+  <hr class="hc-divider">
+  <section id="healthtech" class="hc-section">
+  <div class="section-header">
+    <span class="section-tag">Diagram 5</span>
+    <h2>HealthTech Business Models</h2>
+    <p>Healthtech monetization varies by buyer (consumer, employer, payer, provider, pharma) and evidence burden.</p>
+  </div>
+
+  <div class="hc-card-grid-3">
+    <article class="hc-model-card">
+      <div class="hc-model-head" style="background:var(--hc-patient-bg); color:var(--hc-patient-text);">D2C Telehealth</div>
+      <div class="hc-model-body">
+        <p><strong>Model:</strong> Direct-to-consumer virtual care.</p>
+        <p><strong>Revenue:</strong> Subscription or per visit.</p>
+        <p><strong>Payer:</strong> Patient (cash or mixed insurance).</p>
+        <p><strong>Challenge:</strong> CAC and clinical quality scrutiny.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head" style="background:var(--hc-provider-bg); color:var(--hc-provider-text);">B2B2C Health Platform</div>
+      <div class="hc-model-body">
+        <p><strong>Model:</strong> Sell to employers/payers, serve members.</p>
+        <p><strong>Revenue:</strong> PEPM contracts.</p>
+        <p><strong>Payer:</strong> Employer or insurer.</p>
+        <p><strong>Challenge:</strong> Long sales cycles, ROI proof.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head" style="background:var(--hc-payer-bg); color:var(--hc-payer-text);">Digital Therapeutics (DTx)</div>
+      <div class="hc-model-body">
+        <p><strong>Model:</strong> Prescription-grade software treatment.</p>
+        <p><strong>Revenue:</strong> Per-prescription reimbursement.</p>
+        <p><strong>Payer:</strong> Insurance formularies.</p>
+        <p><strong>Challenge:</strong> FDA and coverage pathways.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head" style="background:var(--hc-infra-bg); color:var(--hc-infra-text);">EHR / Infrastructure</div>
+      <div class="hc-model-body">
+        <p><strong>Model:</strong> Core provider workflow software.</p>
+        <p><strong>Revenue:</strong> License + implementation + maintenance.</p>
+        <p><strong>Payer:</strong> Provider organizations.</p>
+        <p><strong>Challenge:</strong> Massive switching and integration costs.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head" style="background:var(--hc-pbm-bg); color:var(--hc-pbm-text);">Claims & Revenue Cycle</div>
+      <div class="hc-model-body">
+        <p><strong>Model:</strong> Denial prevention and payment acceleration.</p>
+        <p><strong>Revenue:</strong> Per-claim fee or subscription.</p>
+        <p><strong>Payer:</strong> Providers/health systems.</p>
+        <p><strong>Challenge:</strong> Integration and regulation complexity.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head" style="background:var(--hc-pharma-bg); color:var(--hc-pharma-text);">Health Data & Analytics</div>
+      <div class="hc-model-body">
+        <p><strong>Model:</strong> De-identified data + analytics licensing.</p>
+        <p><strong>Revenue:</strong> Data subscriptions and insight products.</p>
+        <p><strong>Payer:</strong> Pharma, payers, research orgs.</p>
+        <p><strong>Challenge:</strong> Privacy, data quality, consent governance.</p>
+      </div>
+    </article>
+  </div>
+</section>
+</div>
+
+<section id="components" class="hc-section" style="margin-top: 48px; padding-top: 32px; border-top: 2px solid var(--hc-card-border);">
+  <div class="section-header">
+    <span class="section-tag">Reference</span>
+    <h2>Healthcare Components — PM Lens</h2>
+    <p>For healthcare PM interviews: focus on admin burden, clinical outcomes, and payment incentives — not just app features.</p>
+  </div>
+
+  <div class="hc-callout" style="margin-bottom: 18px;">
+    <p><strong>How this connects to the diagrams:</strong> <a href="#participants">Participant Map</a> shows incentive conflicts, <a href="#claims">Claims Flow</a> and <a href="#priorauth">Prior Auth</a> show where delay is introduced, and <a href="#ffs-vbc">FFS vs VBC</a> explains why behavior differs by reimbursement model.</p>
+  </div>
+
+  <div class="hc-card-grid-3">
+    <article class="hc-model-card">
+      <div class="hc-model-head hc-payer">Claims Adjudication Platform</div>
+      <div class="hc-model-body">
+        <p><strong>What it does:</strong> Applies contract logic, coverage rules, and coding policies to price and approve claims.</p>
+        <p><strong>PM metrics:</strong> First-pass resolution, denial rate, rework volume, adjudication cycle time.</p>
+        <p><strong>Pitfall:</strong> Rule complexity scales faster than teams expect, causing provider abrasion and appeal backlog.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head hc-provider">Prior Auth Orchestration</div>
+      <div class="hc-model-body">
+        <p><strong>What it does:</strong> Routes authorization requests across payers, policies, and documentation requirements.</p>
+        <p><strong>PM metrics:</strong> Approval latency, auto-approval rate, fax/manual touch rate, abandonment due to delays.</p>
+        <p><strong>Pitfall:</strong> Faster submission UX without payer integration still leaves outcomes unchanged.</p>
+      </div>
+    </article>
+
+    <article class="hc-model-card">
+      <div class="hc-model-head hc-infra">Interoperability & Data Exchange</div>
+      <div class="hc-model-body">
+        <p><strong>What it does:</strong> Connects EHR, payer APIs, clearinghouses, labs, and pharmacies through standards (FHIR/EDI).</p>
+        <p><strong>PM metrics:</strong> Data completeness, integration uptime, normalized record accuracy, retrieval latency.</p>
+        <p><strong>Pitfall:</strong> Integration count looks good on slides, but low data quality kills automation gains.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="hc-callout" style="margin-top: 20px;">
+    <p><strong>Interview shortcut:</strong> structure healthcare answers around <strong>time-to-treatment</strong>, <strong>administrative cost</strong>, and <strong>outcome quality</strong>. If your feature improves all three, that’s product gold. If it improves one while worsening the others, call out the tradeoff explicitly.</p>
+  </div>
+
+  <h3 class="pm-subhead">Common PM Failure Patterns</h3>
+  <div class="pm-grid pm-grid-4">
+    <article class="pm-card"><h4>Workflow-only fix</h4><p>Improving provider UI without payer-side integration leaves real approval latency unchanged.</p></article>
+    <article class="pm-card"><h4>Automation without data quality</h4><p>Decision automation fails when clinical/coding data is incomplete or non-normalized.</p></article>
+    <article class="pm-card"><h4>Ignoring incentives</h4><p>Feature assumptions break when reimbursement model rewards volume over outcomes.</p></article>
+    <article class="pm-card"><h4>Compliance as afterthought</h4><p>Late HIPAA/regulatory integration causes rework, launch delays, and trust damage.</p></article>
+  </div>
+
+  <h3 class="pm-subhead">Decision Matrix — What to Optimize For</h3>
+  <div class="pm-matrix-wrap">
+    <table class="pm-matrix">
+      <thead>
+        <tr><th>Situation</th><th>Optimize For</th><th>Guardrail Metrics</th><th>Avoid</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>High prior-auth backlog</td><td>Latency reduction + auto-approval logic</td><td>TAT, auto-approval %, denial overturn rate</td><td>Manual ops headcount as only fix</td></tr>
+        <tr><td>Provider abrasion spikes</td><td>Administrative simplicity</td><td>Rework rate, touch count per request</td><td>Adding docs requirements without evidence</td></tr>
+        <tr><td>Value-based contract rollout</td><td>Outcome visibility + risk adjustment</td><td>Readmission, quality scores, total cost of care</td><td>FFS-era metrics as primary KPI set</td></tr>
+        <tr><td>Interoperability initiative</td><td>Data completeness + reliability</td><td>Record match rate, integration uptime, retrieval latency</td><td>Counting integrations instead of usable data</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="pm-subhead">Interview Scenarios + Strong Answer Angles</h3>
+  <div class="pm-scenarios">
+    <article class="pm-scenario"><h4>“Prior auth takes 9 days. How would you improve it?”</h4><p><strong>Angle:</strong> map top denial pathways, pre-fill required clinical data, implement payer-priority integrations, and track turnaround by service line.</p></article>
+    <article class="pm-scenario"><h4>“Providers complain your tool adds clicks.”</h4><p><strong>Angle:</strong> optimize for touch reduction per episode, embed in existing EHR flow, and tie changes to measurable time saved.</p></article>
+    <article class="pm-scenario"><h4>“Leadership wants VBC outcomes in 1 quarter.”</h4><p><strong>Angle:</strong> set phased targets (process → intermediate clinical → financial outcomes) and align incentives before forcing outcome accountability.</p></article>
+  </div>
+</section>
+
+<div class="text-center py-8 text-xs" style="color: var(--color-text-tertiary);">
+  US Healthcare Ecosystem Visual Guide · PM Prep Papers Series · fullstackpm.tech · March 2026
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <!-- partials/footer.html -->
+<footer class="border-t mt-16 py-12"
+        style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6">
+
+    <!-- Three-column grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+
+      <!-- Col 1: Site info -->
+      <div>
+        <a href="/" class="text-lg font-bold" style="color: var(--color-text-primary);">
+          fullstackpm.tech
+        </a>
+        <p class="text-small mt-2" style="color: var(--color-text-secondary);">
+          Full Stack AI Product Manager. Engineering Mind. Design Obsession.
+        </p>
+      </div>
+
+      <!-- Col 2: Quick links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Quick Links</h3>
+        <ul class="space-y-2">
+          
+          
+          <li>
+            <a href="/"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Home
+            </a>
+          </li>
+          
+          <li>
+            <a href="/projects"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Projects
+            </a>
+          </li>
+          
+          <li>
+            <a href="/blog"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Blog
+            </a>
+          </li>
+          
+          <li>
+            <a href="/@fullstackpm#contact"
+               class="text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              Contact
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <!-- Col 3: Social links -->
+      <div>
+        <h3 class="text-small mb-3 font-semibold" style="color: var(--color-text-primary);">Connect</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://github.com/harsha-k-cheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/harshacheruku"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="/feed.xml"
+               class="inline-flex items-center gap-2 text-small transition-colors"
+               style="color: var(--color-text-secondary);"
+               onmouseover="this.style.color='var(--color-accent)'"
+               onmouseout="this.style.color='var(--color-text-secondary)'">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /></svg>
+              RSS Feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom attribution -->
+    <div class="mt-8 border-t pt-6 text-center" style="border-color: var(--color-border);">
+      <p class="text-xs" style="color: var(--color-text-tertiary);">
+        Built with FastAPI + HTMX &middot; &copy; 2026 Harsha Cheruku
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- HTMX (CDN) -->
+  <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwCXuE+cDVtAu2B3crQxD" crossorigin="anonymous"></script>
+
+  <!-- Site JS -->
+  <script src="/static/js/main.js"></script>
+
+  
+<script>
+  function showHcClaims(id, btn) {
+    document.querySelectorAll('.hc-claims-panel').forEach(function(p) { p.style.display = 'none'; });
+    document.querySelectorAll('.hc-tab').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('hc-claims-' + id).style.display = 'block';
+    btn.classList.add('active');
+  }
+
+  const sections = ['participants', 'claims', 'priorauth', 'ffs-vbc', 'healthtech', 'components'];
+  const navLinks = document.querySelectorAll('.hc-subnav-link');
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 200;
+    navLinks.forEach(link => link.classList.remove('active'));
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === '#' + sections[i]) {
+            link.classList.add('active');
+          }
+        });
+        break;
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  updateActiveLink();
+</script>
+
+</body>
+</html>
