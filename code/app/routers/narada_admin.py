@@ -44,6 +44,8 @@ async def narada_admin_page(request: Request, db: Session = Depends(get_db)):
     morning = _get_or_create(db, "morning")
     return templates.TemplateResponse("admin/narada_config.html", {
         "request": request,
+        "config": settings,
+        "year": datetime.now().year,
         "title": "Narada Admin",
         "morning": morning,
         "saved": request.query_params.get("saved"),
