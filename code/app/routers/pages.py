@@ -92,7 +92,7 @@ async def lifecycle_simulator(request: Request) -> HTMLResponse:
 @router.get("/reading/archive", response_class=HTMLResponse)
 async def reading_archive(request: Request) -> HTMLResponse:
     """Archive view for previous PM reading stacks."""
-    archive_file = settings.static_dir / "data" / "archives" / "reading_stack_2026_03.json"
+    archive_file = settings.static_dir / "data" / "archives" / "reading_stack_2026_04.json"
     archive_data = {"last_updated": "", "picks": []}
     try:
         archive_data = json.loads(archive_file.read_text())
