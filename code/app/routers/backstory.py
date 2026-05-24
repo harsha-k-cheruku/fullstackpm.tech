@@ -1,4 +1,5 @@
 import json
+import markdown as md_lib
 from datetime import datetime
 from pathlib import Path
 
@@ -43,6 +44,9 @@ async def backstory_episode(request: Request, slug: str) -> HTMLResponse:
             _ctx(request, title="Not Found", current_page=""),
             status_code=404,
         )
+    if "shownotes_html" not in episode and "shownotes" in episode:
+        episode = dict(episode)
+        episode["shownotes_html"] = md_lib.markdown(episode["shownotes"], extensions=["nl2br"])
     return templates.TemplateResponse(
         "resources/backstory/episode.html",
         _ctx(request, title=f"{episode['title']} — fullstackpm.tech", current_page="/resources", episode=episode),
