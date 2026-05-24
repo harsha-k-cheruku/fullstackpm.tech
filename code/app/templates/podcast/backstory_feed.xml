@@ -23,9 +23,9 @@
       <itunes:category text="History"/>
     </itunes:category>
     <atom:link href="https://www.fullstackpm.tech/podcast/the-backstory/feed.xml" rel="self" type="application/rss+xml"/>
-    <itunes:image href="https://www.fullstackpm.tech/static/img/FSPM.png"/>
+    <itunes:image href="https://www.fullstackpm.tech/static/img/backstory_cover.png"/>
     <image>
-      <url>https://www.fullstackpm.tech/static/img/FSPM.png</url>
+      <url>https://www.fullstackpm.tech/static/img/backstory_cover.png</url>
       <title>The Backstory — fullstackpm.tech</title>
       <link>https://www.fullstackpm.tech/resources/the-backstory</link>
     </image>
@@ -39,7 +39,7 @@
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:duration>{{ ep.get('duration_human', '00:00') }}</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
-      <itunes:image href="https://www.fullstackpm.tech/static/img/FSPM.png"/>
+      <itunes:image href="https://www.fullstackpm.tech/static/img/backstory_cover.png"/>
       <enclosure
         url="{{ ep.get('audio_url', '') }}"
         type="audio/mpeg"
