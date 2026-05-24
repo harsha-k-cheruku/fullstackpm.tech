@@ -1,6 +1,26 @@
 {
   "episodes": [
     {
+      "id": "2026-05-24",
+      "episode_id": "bs003",
+      "slug": "the-backstory-2026-05-24",
+      "title": "The Crash That Portfolio Insurance Caused",
+      "hook": "On October 19th, 1987, the stock market fell 22% in a single day\u2014the worst day in history. And the system designed to prevent exactly that was the thing pulling the trigger.",
+      "theme": "",
+      "era": "",
+      "date": "2026-05-24",
+      "published_at": "2026-05-24T19:37:28",
+      "duration_seconds": 1266,
+      "duration_human": "21:06",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/the-backstory/audio/2026-05-24.mp3",
+      "audio_length_bytes": 10126751,
+      "lesson_for_traders": "When you're using a systematic hedging strategy\u2014whether it's portfolio insurance, stop losses, or volatility-based rebalancing\u2014you're not hedging in isolation. You're hedging in a market full of other traders using similar strategies. The moment your hedge becomes crowded (and you won't know it's crowded until it's too late), it stops working as insurance and starts working as a trigger. On Black Monday, everyone's safety mechanism fired at the same time, and there was no one on the other side to catch the falling knives. Before you deploy any systematic strategy, ask: what happens if this is the only trade in the market? What happens if everyone else is doing it too? If the answer to either question terrifies you, you're probably not hedged\u2014you're probably just levered in a different direction.",
+      "lesson_for_pms": "When you're designing a system that will scale\u2014whether it's an algorithm, a policy, or a process\u2014you need to think about what happens when adoption becomes universal. Portfolio insurance was a brilliant solution to a real problem at small scale. But the math that worked for one pension fund broke when 500 pension funds all used the same strategy. Your feature might be perfect for 10% of users and catastrophic for 100%. You need to model not just 'does this work?' but 'does this work if everyone does this?' The market taught us that feedback loops don't scale. A safety mechanism that assumes it's one of many becomes a weapon when it becomes the only one.",
+      "memorable_line": "Portfolio insurance was supposed to be the fire extinguisher. Instead, it was the accelerant\u2014and everyone had one.",
+      "shownotes": "# The Backstory \u2014 The Crash That Portfolio Insurance Caused\n*2026-05-24* | Episode bs003\n\n## The Hook\n\nOn October 19th, 1987, the stock market fell 22% in a single day\u2014the worst day in history. And the system designed to prevent exactly that was the thing pulling the trigger.\n\n## Key Players\n\n- **Hayne Leland** \u2014 He solved the problem of how to protect yourself in a crash by automating it\u2014and accidentally created a machine that guarantees crashes when everyone uses it.\n- **Mark Rubinstein** \u2014 The mathematical genius who made portfolio insurance elegant and theoretically sound\u2014which is precisely why everyone adopted it at once.\n- **The Portfolio Insurance Algorithms** \u2014 They did exactly what they were programmed to do, which turned out to be exactly the wrong thing for the market to experience all at once.\n\n## The Lesson\n\n**For traders:** When you're using a systematic hedging strategy\u2014whether it's portfolio insurance, stop losses, or volatility-based rebalancing\u2014you're not hedging in isolation. You're hedging in a market full of other traders using similar strategies. The moment your hedge becomes crowded (and you won't know it's crowded until it's too late), it stops working as insurance and starts working as a trigger. On Black Monday, everyone's safety mechanism fired at the same time, and there was no one on the other side to catch the falling knives. Before you deploy any systematic strategy, ask: what happens if this is the only trade in the market? What happens if everyone else is doing it too? If the answer to either question terrifies you, you're probably not hedged\u2014you're probably just levered in a different direction.\n\n**For PMs:** When you're designing a system that will scale\u2014whether it's an algorithm, a policy, or a process\u2014you need to think about what happens when adoption becomes universal. Portfolio insurance was a brilliant solution to a real problem at small scale. But the math that worked for one pension fund broke when 500 pension funds all used the same strategy. Your feature might be perfect for 10% of users and catastrophic for 100%. You need to model not just 'does this work?' but 'does this work if everyone does this?' The market taught us that feedback loops don't scale. A safety mechanism that assumes it's one of many becomes a weapon when it becomes the only one.\n\n## The Line\n\n> Portfolio insurance was supposed to be the fire extinguisher. Instead, it was the accelerant\u2014and everyone had one.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-05-20",
       "episode_id": "bs002",
       "slug": "the-backstory-2026-05-20",
