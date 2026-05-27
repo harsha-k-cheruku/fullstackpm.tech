@@ -65,26 +65,17 @@ def _build_form_state(**kwargs) -> dict:
 
 @router.get("/tools/josaa-top-25", response_class=HTMLResponse)
 async def josaa_top_25_page(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
-    service = get_josaa_service(settings.josaa_data_path)
-
-    years = []
-    default_year = None
+    # Keep GET ultra-fast: do NOT parse the large CSV on first page load.
+    # Heavy dataset work is deferred to form submission.
+    years = [2025, 2024, 2023, 2022, 2021, 2020]
+    default_year = 2025
     rounds = []
     quotas = []
     genders = []
-    error = None
-
-    try:
-        years = service.get_years()
-        default_year = years[-1] if years else None
-        rounds = service.get_rounds_for_year(default_year) if default_year else []
-        quotas = service.get_quotas()
-        genders = service.get_genders()
-    except Exception:
-        error = (
-            "JoSAA dataset is not ready yet on server. "
-            "Set JOSAA_CSV_URL (or JOSAA_DATA_PATH) and redeploy."
-        )
+    error = (
+        "Tip: first run may take a bit while dataset warms up on server. "
+        "If it fails, retry in a few seconds."
+    )
 
     session_key = _get_or_create_session_key(request)
     response = templates.TemplateResponse(
