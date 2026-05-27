@@ -66,8 +66,25 @@ def _build_form_state(**kwargs) -> dict:
 @router.get("/tools/josaa-top-25", response_class=HTMLResponse)
 async def josaa_top_25_page(request: Request, db: Session = Depends(get_db)) -> HTMLResponse:
     service = get_josaa_service(settings.josaa_data_path)
-    years = service.get_years()
-    default_year = years[-1] if years else None
+
+    years = []
+    default_year = None
+    rounds = []
+    quotas = []
+    genders = []
+    error = None
+
+    try:
+        years = service.get_years()
+        default_year = years[-1] if years else None
+        rounds = service.get_rounds_for_year(default_year) if default_year else []
+        quotas = service.get_quotas()
+        genders = service.get_genders()
+    except Exception:
+        error = (
+            "JoSAA dataset is not ready yet on server. "
+            "Set JOSAA_CSV_URL (or JOSAA_DATA_PATH) and redeploy."
+        )
 
     session_key = _get_or_create_session_key(request)
     response = templates.TemplateResponse(
@@ -77,13 +94,13 @@ async def josaa_top_25_page(request: Request, db: Session = Depends(get_db)) -> 
             title="JoSAA Top 25 Predictor — fullstackpm.tech",
             current_page="/tools/josaa-top-25",
             years=years,
-            rounds=service.get_rounds_for_year(default_year) if default_year else [],
-            quotas=service.get_quotas(),
-            genders=service.get_genders(),
+            rounds=rounds,
+            quotas=quotas,
+            genders=genders,
             form_state=_build_form_state(year=default_year, compare_rank=""),
             results=[],
             meta=None,
-            error=None,
+            error=error,
             round_insights=[],
             saved_scenarios=_list_scenarios(db, session_key),
         ),
