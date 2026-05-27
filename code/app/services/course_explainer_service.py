@@ -49,7 +49,7 @@ class CourseExplainerService:
         return sorted(self._load(), key=lambda c: (-c.sample_count, c.name.lower()))[:limit]
 
     def curated_top_courses(self) -> list[CourseExplainer]:
-        return [c for c in sorted(self._load(), key=lambda c: (-c.sample_count, c.name.lower())) if c.curated_tier == "top10"]
+        return [c for c in sorted(self._load(), key=lambda c: (-c.sample_count, c.name.lower())) if c.curated_tier != "standard"]
 
     def get_by_slug(self, slug: str) -> CourseExplainer | None:
         return next((c for c in self._load() if c.slug == slug), None)

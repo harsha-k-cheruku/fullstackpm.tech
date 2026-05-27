@@ -2,25 +2,44 @@
 
 {% block content %}
 <section class="py-12 lg:py-16">
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-5xl mx-auto">
     <a href="/resources/engineering-course-explainer" class="text-sm hover:underline" style="color: var(--color-text-tertiary);">← Back to all courses</a>
-    <p class="text-small mt-4 mb-2" style="color: var(--color-text-secondary);">Engineering Course Explainer (India)</p>
-    <div class="flex items-center gap-2 mb-3 flex-wrap">
-      <h1 class="text-h1" style="color: var(--color-text-primary);">{{ course.name }}</h1>
-      {% if course.curated_tier == 'top10' %}
-      <span class="text-xs rounded-full px-3 py-1" style="background-color:#dcfce7; color:#166534;">Top 10 Curated</span>
-      {% endif %}
-    </div>
-    <p class="text-body mb-8" style="color: var(--color-text-secondary);">This branch is usually a fit for {{ course.who_this_fits }}.</p>
 
-    <div class="rounded-xl border p-5 mb-6" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
-      <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Explain It Like I’m 10</h2>
-      <p style="color: var(--color-text-secondary);">{{ course.eli10 }}</p>
+    <div class="mt-4 rounded-2xl border p-6 lg:p-8 mb-8" style="border-color: var(--color-border); background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));">
+      <p class="text-small mb-2" style="color: var(--color-text-secondary);">Engineering Course Explainer (India)</p>
+      <div class="flex items-center gap-2 mb-3 flex-wrap">
+        <h1 class="text-h1" style="color: var(--color-text-primary);">{{ course.name }}</h1>
+        <span class="text-xs rounded-full px-3 py-1" style="background-color:#dbeafe; color:#1d4ed8; text-transform: capitalize;">{{ course.family }}</span>
+        {% if course.curated_tier != 'standard' %}
+        <span class="text-xs rounded-full px-3 py-1" style="background-color:#dcfce7; color:#166534;">Top 12 Curated</span>
+        {% endif %}
+      </div>
+      <p class="text-body mb-4" style="color: var(--color-text-secondary);">This branch is usually a fit for <strong style="color: var(--color-text-primary);">{{ course.who_this_fits }}</strong>.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div class="rounded-xl p-4" style="background-color: rgba(59,130,246,0.10); border: 1px solid rgba(59,130,246,0.18);">
+          <p class="text-xs font-semibold mb-1" style="color:#1d4ed8;">What this branch is really about</p>
+          <p class="text-sm" style="color: var(--color-text-secondary);">Understanding how this course thinks, what it teaches, and what kind of work it naturally leads into.</p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: rgba(16,185,129,0.10); border: 1px solid rgba(16,185,129,0.18);">
+          <p class="text-xs font-semibold mb-1" style="color:#047857;">Best for</p>
+          <p class="text-sm" style="color: var(--color-text-secondary);">Students who care about actual work fit, not just branch-name prestige theatre.</p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.18);">
+          <p class="text-xs font-semibold mb-1" style="color:#b45309;">Use this page for</p>
+          <p class="text-sm" style="color: var(--color-text-secondary);">Shortlisting, comparing adjacent branches, and figuring out if you’d actually enjoy the work after college.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="rounded-xl border p-5 mb-6" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
-      <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">What You Study</h2>
-      <ul class="list-disc pl-5 space-y-1" style="color: var(--color-text-secondary);">
+    <div class="rounded-2xl border p-6 mb-6" style="border-color:#fcd34d; background-color: rgba(253,230,138,0.12);">
+      <h2 class="text-h3 mb-2" style="color:#92400e;">Explain It Like I’m 10</h2>
+      <p style="color: var(--color-text-secondary); font-size: 1.05rem; line-height: 1.7;">{{ course.eli10 }}</p>
+    </div>
+
+    <div class="rounded-2xl border p-6 mb-6" style="border-color:#93c5fd; background-color: rgba(147,197,253,0.10);">
+      <h2 class="text-h3 mb-2" style="color:#1d4ed8;">What You Study</h2>
+      <p class="text-sm mb-3" style="color: var(--color-text-secondary);">Think of this as the academic shape of the branch — what kinds of subjects, systems, and ways of thinking dominate the course.</p>
+      <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
         {% for item in course.what_you_study %}
         <li>{{ item }}</li>
         {% endfor %}
@@ -28,17 +47,19 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-      <div class="rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
-        <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Problems You’ll Solve / Typical Work</h2>
-        <ul class="list-disc pl-5 space-y-1" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#86efac; background-color: rgba(134,239,172,0.10);">
+        <h2 class="text-h3 mb-2" style="color:#166534;">Problems You’ll Solve / Typical Work</h2>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary);">This is the part students usually care about most: what kind of real-world work this branch can train you toward.</p>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.problems_and_work %}
           <li>{{ item }}</li>
           {% endfor %}
         </ul>
       </div>
-      <div class="rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
-        <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Career Paths</h2>
-        <ul class="list-disc pl-5 space-y-1" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#c4b5fd; background-color: rgba(196,181,253,0.10);">
+        <h2 class="text-h3 mb-2" style="color:#6d28d9;">Career Paths</h2>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary);">Not “guaranteed outcomes,” obviously — but these are the kinds of roles this branch most naturally feeds into.</p>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.roles %}
           <li>{{ item }}</li>
           {% endfor %}
@@ -47,17 +68,19 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-      <div class="rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
-        <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Trade-offs / Things to Know</h2>
-        <ul class="list-disc pl-5 space-y-1" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#fca5a5; background-color: rgba(252,165,165,0.10);">
+        <h2 class="text-h3 mb-2" style="color:#b91c1c;">Trade-offs / Things to Know</h2>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary);">This is the “don’t-romanticize-the-branch” section. Every branch has upside. Every branch also has friction.</p>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.tradeoffs %}
           <li>{{ item }}</li>
           {% endfor %}
         </ul>
       </div>
-      <div class="rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
-        <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Good Fit Checklist</h2>
-        <ul class="list-disc pl-5 space-y-1" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#6ee7b7; background-color: rgba(110,231,183,0.10);">
+        <h2 class="text-h3 mb-2" style="color:#047857;">Good Fit Checklist</h2>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary);">If you say “yes” to most of these, the branch is probably directionally right for you.</p>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.good_fit_checklist %}
           <li>{{ item }}</li>
           {% endfor %}
@@ -65,12 +88,12 @@
       </div>
     </div>
 
-    <div class="rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+    <div class="rounded-2xl border p-6" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
       <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Similar / Adjacent Branches</h2>
-      <p class="text-sm mb-3" style="color: var(--color-text-secondary);">If you like {{ course.name }}, these are the nearby branches worth comparing before finalizing counselling preferences.</p>
+      <p class="text-sm mb-3" style="color: var(--color-text-secondary);">If you like <strong style="color: var(--color-text-primary);">{{ course.name }}</strong>, these are the nearby branches worth comparing before finalizing preferences. Sometimes the smartest choice is not the exact branch you started with, but an adjacent one with better fit or better odds.</p>
       <div class="flex flex-wrap gap-2">
         {% for item in course.similar_branches %}
-        <span class="text-xs rounded-full px-3 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary);">{{ item }}</span>
+        <span class="text-xs rounded-full px-3 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary); border:1px solid var(--color-border);">{{ item }}</span>
         {% endfor %}
       </div>
     </div>

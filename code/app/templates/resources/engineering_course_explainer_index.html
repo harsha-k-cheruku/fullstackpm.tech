@@ -43,8 +43,8 @@
     </div>
 
     <div class="mb-8">
-      <h2 class="text-h3 mb-3" style="color: var(--color-text-primary);">Top 10 curated branches</h2>
-      <p class="text-sm mb-3" style="color: var(--color-text-secondary);">These are the only branches currently receiving deeper handcrafted editorial treatment. Everything else remains useful, but more template-driven for now.</p>
+      <h2 class="text-h3 mb-3" style="color: var(--color-text-primary);">Top 12 curated branches</h2>
+      <p class="text-sm mb-3" style="color: var(--color-text-secondary);">These are the branches currently receiving deeper handcrafted editorial treatment. Everything else remains useful, but more template-driven for now.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {% for course in curated_top_courses %}
         <a href="/resources/engineering-course-explainer/{{ course.slug }}" class="course-card rounded-xl border p-4 transition-all" data-course-name="{{ course.name|lower }} {{ course.family|lower }}"
@@ -52,7 +52,7 @@
            onmouseover="this.style.borderColor='var(--color-accent)'" onmouseout="this.style.borderColor='var(--color-border)'">
           <div class="flex items-center justify-between gap-2 mb-1">
             <h3 class="font-semibold" style="color: var(--color-text-primary);">{{ course.name }}</h3>
-            <span class="text-[10px] rounded-full px-2 py-0.5" style="background-color: #dcfce7; color: #166534;">Curated</span>
+            <span class="text-[10px] rounded-full px-2 py-0.5" style="background-color: #dcfce7; color: #166534;">Top 12</span>
           </div>
           <p class="text-xs" style="color: var(--color-text-tertiary); text-transform: capitalize;">{{ course.family }} · {{ course.sample_count }} rows</p>
         </a>
