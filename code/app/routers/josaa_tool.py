@@ -126,9 +126,45 @@ async def josaa_top_25_run(
     institute_weight: float = Form(0.10),
     compare_rank: str = Form(""),
 ) -> HTMLResponse:
+    if not settings.josaa_compute_enabled:
+        return templates.TemplateResponse(
+            "tools/josaa_top25.html",
+            _ctx(
+                request,
+                title="JoSAA Top 25 Predictor — fullstackpm.tech",
+                current_page="/tools/josaa-top-25",
+                years=[2025, 2024, 2023, 2022, 2021, 2020],
+                rounds=[],
+                quotas=DEFAULT_QUOTAS,
+                genders=DEFAULT_GENDERS,
+                form_state=_build_form_state(
+                    rank=str(rank),
+                    history_window=str(history_window),
+                    round_number=round_number,
+                    quota=quota,
+                    gender=gender,
+                    preferred_branches=preferred_branches,
+                    preferred_institutes=preferred_institutes,
+                    mode=mode,
+                    branch_weight=str(branch_weight),
+                    institute_weight=str(institute_weight),
+                    compare_rank=compare_rank,
+                ),
+                results=[],
+                meta=None,
+                error="JoSAA compute is temporarily disabled on current server size to protect site stability. Core pages remain fully available.",
+                round_insights=[],
+                saved_scenarios=_list_scenarios(db, _get_or_create_session_key(request)),
+            ),
+        )
+
+    if not settings.josaa_compute_enabled:
+        mem = io.BytesIO(b"message\nJoSAA compute disabled on current server size\n")
+        return StreamingResponse(mem, media_type="text/csv", headers={"Content-Disposition": "attachment; filename=josaa_unavailable.csv"})
+
     service = get_josaa_service(settings.josaa_data_path)
-    years = service.get_years()
     available_years = service.get_years()
+    years = available_years
     target_year = available_years[-1] if available_years else datetime.now().year
     rounds = service.get_rounds_for_year(target_year)
 

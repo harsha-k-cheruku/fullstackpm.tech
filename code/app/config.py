@@ -35,6 +35,7 @@ class Settings(BaseSettings):
     )
     josaa_csv_url: str = os.getenv("JOSAA_CSV_URL", "")
     josaa_download_path: str = os.getenv("JOSAA_DOWNLOAD_PATH", "/tmp/josaa_master.csv")
+    josaa_compute_enabled: bool = os.getenv("JOSAA_COMPUTE_ENABLED", "false").lower() == "true"
 
     # Site metadata
     site_title: str = "fullstackpm.tech"
