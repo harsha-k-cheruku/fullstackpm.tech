@@ -49,6 +49,7 @@ def _build_form_state(**kwargs) -> dict:
     defaults = {
         "rank": "",
         "year": None,
+        "history_window": "3",
         "round_number": "",
         "quota": "",
         "gender": "",
@@ -105,7 +106,7 @@ async def josaa_top_25_run(
     request: Request,
     db: Session = Depends(get_db),
     rank: int = Form(...),
-    year: int = Form(...),
+    history_window: int = Form(3),
     round_number: str = Form(""),
     quota: str = Form(""),
     gender: str = Form(""),
@@ -118,19 +119,57 @@ async def josaa_top_25_run(
 ) -> HTMLResponse:
     service = get_josaa_service(settings.josaa_data_path)
     years = service.get_years()
-    rounds = service.get_rounds_for_year(year)
+    available_years = service.get_years()
+    target_year = available_years[-1] if available_years else datetime.now().year
+    rounds = service.get_rounds_for_year(target_year)
 
     try:
         round_value = int(round_number) if round_number.strip() else None
     except ValueError:
         round_value = None
 
+    quota_clean = quota.strip()
+    gender_clean = gender.strip()
+    if not quota_clean or not gender_clean:
+        return templates.TemplateResponse(
+            "tools/josaa_top25.html",
+            _ctx(
+                request,
+                title="JoSAA Top 25 Predictor — fullstackpm.tech",
+                current_page="/tools/josaa-top-25",
+                years=available_years,
+                rounds=rounds,
+                quotas=service.get_quotas(),
+                genders=service.get_genders(),
+                form_state=_build_form_state(
+                    rank=str(rank),
+                    year=target_year,
+                    history_window=str(history_window),
+                    round_number=round_number,
+                    quota=quota,
+                    gender=gender,
+                    preferred_branches=preferred_branches,
+                    preferred_institutes=preferred_institutes,
+                    mode=mode,
+                    branch_weight=str(branch_weight),
+                    institute_weight=str(institute_weight),
+                    compare_rank=compare_rank,
+                ),
+                results=[],
+                meta=None,
+                error="Quota and Gender pool are required inputs for accurate Top 25 predictions.",
+                round_insights=[],
+                saved_scenarios=_list_scenarios(db, _get_or_create_session_key(request)),
+            ),
+        )
+
     query = JosaaQuery(
         rank=rank,
-        year=year,
+        year=target_year,
+        history_window=history_window,
         round_number=round_value,
-        quota=quota.strip() or None,
-        gender=gender.strip() or None,
+        quota=quota_clean,
+        gender=gender_clean,
         preferred_branches=[preferred_branches] if preferred_branches.strip() else None,
         preferred_institutes=[preferred_institutes] if preferred_institutes.strip() else None,
         mode=mode if mode in {"basic", "strict"} else "basic",
@@ -171,7 +210,8 @@ async def josaa_top_25_run(
             genders=service.get_genders(),
             form_state=_build_form_state(
                 rank=str(rank),
-                year=year,
+                year=target_year,
+                history_window=str(history_window),
                 round_number=round_number,
                 quota=quota,
                 gender=gender,
@@ -197,7 +237,7 @@ async def josaa_top_25_run(
 async def josaa_top_25_export(
     request: Request,
     rank: int = Form(...),
-    year: int = Form(...),
+    history_window: int = Form(3),
     round_number: str = Form(""),
     quota: str = Form(""),
     gender: str = Form(""),
@@ -216,7 +256,8 @@ async def josaa_top_25_export(
 
     query = JosaaQuery(
         rank=rank,
-        year=year,
+        year=(service.get_years()[-1] if service.get_years() else datetime.now().year),
+        history_window=history_window,
         round_number=round_value,
         quota=quota.strip() or None,
         gender=gender.strip() or None,
@@ -237,7 +278,7 @@ async def josaa_top_25_export(
         writer.writerow({"message": "No results"})
 
     mem = io.BytesIO(output.getvalue().encode("utf-8"))
-    filename = f"josaa_top25_{year}_rank_{rank}.csv"
+    filename = f"josaa_top25_rank_{rank}.csv"
     return StreamingResponse(mem, media_type="text/csv", headers={"Content-Disposition": f"attachment; filename={filename}"})
 
 
