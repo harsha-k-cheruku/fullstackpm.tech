@@ -43,6 +43,20 @@
             <h3 class="text-sm font-semibold mb-2" style="color: var(--color-text-primary);">Best fit</h3>
             <p class="text-sm" style="color: var(--color-text-secondary);">{{ course.who_this_fits }}</p>
           </div>
+          <div class="rounded-xl p-4" style="background-color: rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.16);">
+            <h3 class="text-sm font-semibold mb-2" style="color:#1d4ed8;">Reality check</h3>
+            <p class="text-sm" style="color: var(--color-text-secondary);">{{ course.reality_check }}</p>
+          </div>
+          <div class="grid grid-cols-1 gap-3">
+            <div class="rounded-xl p-4" style="background-color: rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.16);">
+              <h3 class="text-sm font-semibold mb-2" style="color:#166534;">Choose this if...</h3>
+              <p class="text-sm" style="color: var(--color-text-secondary);">{{ course.choose_if|capitalize }}.</p>
+            </div>
+            <div class="rounded-xl p-4" style="background-color: rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.16);">
+              <h3 class="text-sm font-semibold mb-2" style="color:#b91c1c;">Avoid this if...</h3>
+              <p class="text-sm" style="color: var(--color-text-secondary);">{{ course.avoid_if|capitalize }}.</p>
+            </div>
+          </div>
           <div>
             <h3 class="text-sm font-semibold mb-2" style="color: var(--color-text-primary);">What you study</h3>
             <ul class="list-disc pl-5 space-y-1 text-sm" style="color: var(--color-text-secondary);">

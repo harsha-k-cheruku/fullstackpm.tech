@@ -20,6 +20,21 @@
       <p style="color: var(--color-text-secondary); line-height:1.7;">{{ course.eli10 }}</p>
     </div>
 
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+      <div class="rounded-2xl border p-5" style="border-color:#bfdbfe; background-color: rgba(191,219,254,0.20);">
+        <h2 class="text-sm font-semibold mb-2" style="color:#1d4ed8;">Reality Check</h2>
+        <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.reality_check }}</p>
+      </div>
+      <div class="rounded-2xl border p-5" style="border-color:#bbf7d0; background-color: rgba(187,247,208,0.18);">
+        <h2 class="text-sm font-semibold mb-2" style="color:#166534;">Choose This If...</h2>
+        <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.choose_if|capitalize }}.</p>
+      </div>
+      <div class="rounded-2xl border p-5" style="border-color:#fecaca; background-color: rgba(254,202,202,0.18);">
+        <h2 class="text-sm font-semibold mb-2" style="color:#b91c1c;">Avoid This If...</h2>
+        <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.avoid_if|capitalize }}.</p>
+      </div>
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
       <div class="rounded-2xl border p-6" style="border-color:#93c5fd; background-color: rgba(147,197,253,0.10);">
         <h2 class="text-h3 mb-3" style="color:#1d4ed8;">What You Study</h2>
