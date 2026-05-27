@@ -18,6 +18,13 @@ from app.services.josaa_service import JosaaQuery, get_josaa_service
 router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
 
+# Fast fallback options so first-load UX is never blank.
+DEFAULT_QUOTAS = ["AI", "HS", "OS", "GO", "JK", "LA"]
+DEFAULT_GENDERS = [
+    "Gender-Neutral",
+    "Female-only (including Supernumerary)",
+]
+
 
 def _ctx(request: Request, **kwargs) -> dict:
     return {
@@ -71,12 +78,24 @@ async def josaa_top_25_page(request: Request, db: Session = Depends(get_db)) -> 
     years = [2025, 2024, 2023, 2022, 2021, 2020]
     default_year = 2025
     rounds = []
-    quotas = []
-    genders = []
+    quotas = DEFAULT_QUOTAS.copy()
+    genders = DEFAULT_GENDERS.copy()
     error = (
         "Tip: first run may take a bit while dataset warms up on server. "
         "If it fails, retry in a few seconds."
     )
+
+    # Best effort: if dataset is available, replace fallbacks with actual values.
+    try:
+        service = get_josaa_service(settings.josaa_data_path)
+        quotas_live = service.get_quotas()
+        genders_live = service.get_genders()
+        if quotas_live:
+            quotas = quotas_live
+        if genders_live:
+            genders = genders_live
+    except Exception:
+        pass
 
     session_key = _get_or_create_session_key(request)
     response = templates.TemplateResponse(
