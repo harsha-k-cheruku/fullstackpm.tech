@@ -85,17 +85,7 @@ async def josaa_top_25_page(request: Request, db: Session = Depends(get_db)) -> 
         "If it fails, retry in a few seconds."
     )
 
-    # Best effort: if dataset is available, replace fallbacks with actual values.
-    try:
-        service = get_josaa_service(settings.josaa_data_path)
-        quotas_live = service.get_quotas()
-        genders_live = service.get_genders()
-        if quotas_live:
-            quotas = quotas_live
-        if genders_live:
-            genders = genders_live
-    except Exception:
-        pass
+    # IMPORTANT: do not touch heavy dataset here; keep GET lightweight and reliable.
 
     session_key = _get_or_create_session_key(request)
     response = templates.TemplateResponse(
