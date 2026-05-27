@@ -119,6 +119,37 @@
       </ul>
     </div>
 
+    <!-- Year-by-Year Curriculum Journey -->
+    {% if course.year_by_year %}
+    <div class="rounded-2xl border p-6 mb-6" style="border-color:#818cf8; background-color: rgba(129,140,248,0.06);">
+      <h2 class="text-h3 mb-2" style="color:#4338ca;">📅 Year-by-Year Journey</h2>
+      <p class="text-sm mb-5" style="color: var(--color-text-secondary);">A directional guide to what you study each year, what each course teaches, and how it tests you. Actual courses vary by college — this captures the typical structure.</p>
+
+      <div class="space-y-6">
+        {% for year_data in course.year_by_year %}
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold" style="background-color:#4338ca; color:white;">{{ year_data.year }}</span>
+            <div>
+              <h3 class="text-sm font-semibold" style="color: var(--color-text-primary);">Year {{ year_data.year }}</h3>
+              <p class="text-xs" style="color: var(--color-text-tertiary);">{{ year_data.theme }}</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pl-10">
+            {% for course_item in year_data.courses %}
+            <div class="rounded-xl p-4" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+              <h4 class="text-sm font-semibold mb-2" style="color: var(--color-text-primary);">{{ course_item.name }}</h4>
+              <p class="text-xs mb-1" style="color: var(--color-text-secondary);"><strong style="color:#4338ca;">Teaches:</strong> {{ course_item.teaches }}</p>
+              <p class="text-xs" style="color: var(--color-text-secondary);"><strong style="color:#b91c1c;">Tests:</strong> {{ course_item.tests }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
     <!-- Good Fit Checklist + Similar Branches -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
       <div class="rounded-2xl border p-6" style="border-color:#6ee7b7; background-color: rgba(110,231,183,0.08);">

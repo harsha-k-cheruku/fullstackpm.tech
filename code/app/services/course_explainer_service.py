@@ -23,6 +23,7 @@ class CourseExplainer:
     misconceptions: list[str]
     example_projects: list[str]
     similar_branches: list[str]
+    year_by_year: list = None  # list of dicts: {year, theme, courses: [{name, teaches, tests}]}
 
 
 TOP_12_COURSES: list[CourseExplainer] = [
@@ -85,6 +86,137 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Building a CI/CD pipeline that automatically tests and deploys code changes safely",
         ],
         similar_branches=["Information Technology", "Mathematics and Computing", "Electronics and Communication Engineering"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and first taste of code",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, linear algebra, differential equations \u2014 the math that powers algorithms and optimization later",
+                                        "tests": "Written exams heavy on problem solving; expect proofs and derivations"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Mechanics, waves, optics, and basic quantum concepts \u2014 general science foundation",
+                                        "tests": "Theory exams plus physics lab practicals with viva"
+                                },
+                                {
+                                        "name": "Introduction to Programming",
+                                        "teaches": "Variables, loops, functions, arrays, basic problem solving in C or Python",
+                                        "tests": "Lab exams where you write and run code under time pressure; written exam on logic"
+                                },
+                                {
+                                        "name": "Basic Electrical/Electronics",
+                                        "teaches": "Circuit fundamentals, signals, and digital logic basics \u2014 cross-disciplinary exposure",
+                                        "tests": "Circuit analysis problems and simple lab experiments"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical sketching, orthographic projections, and basic manufacturing processes",
+                                        "tests": "Drawing sheets graded on precision; workshop evaluation on completed items"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core CS fundamentals \u2014 data structures, logic, and how computers work inside",
+                        "courses": [
+                                {
+                                        "name": "Data Structures",
+                                        "teaches": "Arrays, linked lists, stacks, queues, trees, graphs, hashing \u2014 how data gets organized for efficient access",
+                                        "tests": "Coding assignments, lab exams implementing structures, written exams on complexity analysis"
+                                },
+                                {
+                                        "name": "Discrete Mathematics",
+                                        "teaches": "Sets, relations, graph theory, combinatorics, logic \u2014 the math backbone of computer science",
+                                        "tests": "Proof-based written exams; problem sets that test formal reasoning"
+                                },
+                                {
+                                        "name": "Digital Logic Design",
+                                        "teaches": "Boolean algebra, gates, flip-flops, counters, basic processor architecture concepts",
+                                        "tests": "Design problems on paper plus digital circuit lab experiments"
+                                },
+                                {
+                                        "name": "Object-Oriented Programming",
+                                        "teaches": "Classes, inheritance, polymorphism, design patterns \u2014 writing modular, reusable code",
+                                        "tests": "Coding projects, lab exams building OOP systems, written theory on design principles"
+                                },
+                                {
+                                        "name": "Computer Organization & Architecture",
+                                        "teaches": "How CPUs execute instructions, memory hierarchy, pipelining, assembly language basics",
+                                        "tests": "Written exams on architecture concepts; assembly programming assignments"
+                                },
+                                {
+                                        "name": "Database Management Systems",
+                                        "teaches": "SQL, relational models, normalization, indexing, transactions \u2014 how data gets stored and queried",
+                                        "tests": "SQL lab exams, database design projects, written theory on normalization and transactions"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Systems depth \u2014 operating systems, networks, algorithms, and software engineering",
+                        "courses": [
+                                {
+                                        "name": "Operating Systems",
+                                        "teaches": "Process management, memory management, file systems, concurrency \u2014 how your code actually runs on hardware",
+                                        "tests": "Written exams on scheduling and memory; coding assignments implementing OS concepts"
+                                },
+                                {
+                                        "name": "Computer Networks",
+                                        "teaches": "TCP/IP, routing, HTTP, DNS, sockets \u2014 how machines communicate across the internet",
+                                        "tests": "Packet analysis labs, network programming assignments, protocol-heavy written exams"
+                                },
+                                {
+                                        "name": "Design and Analysis of Algorithms",
+                                        "teaches": "Divide-and-conquer, dynamic programming, greedy algorithms, NP-completeness, complexity classes",
+                                        "tests": "Algorithm design problems on paper; coding contests; complexity proofs"
+                                },
+                                {
+                                        "name": "Software Engineering",
+                                        "teaches": "SDLC, requirements, testing, agile, version control \u2014 how real teams build and ship software",
+                                        "tests": "Group project building a working application; written exam on methodologies"
+                                },
+                                {
+                                        "name": "Compiler Design",
+                                        "teaches": "Lexical analysis, parsing, code generation \u2014 how programming languages get translated to machine code",
+                                        "tests": "Building a mini-compiler as a project; written exams on grammar and parsing theory"
+                                },
+                                {
+                                        "name": "Theory of Computation",
+                                        "teaches": "Automata, formal languages, Turing machines, computability \u2014 what can and cannot be computed",
+                                        "tests": "Proof-heavy written exams; formal language construction problems"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Specialization, electives, and capstone project",
+                        "courses": [
+                                {
+                                        "name": "Machine Learning / AI (elective)",
+                                        "teaches": "Regression, classification, neural networks, model evaluation \u2014 making predictions from data",
+                                        "tests": "ML project with real dataset; written exam on algorithms and math foundations"
+                                },
+                                {
+                                        "name": "Distributed Systems (elective)",
+                                        "teaches": "Consensus, replication, fault tolerance, MapReduce \u2014 how large-scale systems work",
+                                        "tests": "System design assignments; written exam on distributed algorithms"
+                                },
+                                {
+                                        "name": "Information Security (elective)",
+                                        "teaches": "Cryptography, authentication, network security, ethical hacking basics",
+                                        "tests": "Security analysis labs; written exam on crypto protocols and threat models"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "End-to-end engineering: problem identification, design, implementation, testing, and presentation",
+                                        "tests": "Project demo, written report, viva voce with external examiner"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Mechanical Engineering",
@@ -148,6 +280,132 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Analyzing why a specific component keeps failing in the field and redesigning it to last 3x longer",
         ],
         similar_branches=["Industrial Engineering", "Aerospace Engineering", "Civil Engineering"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and engineering basics",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, linear algebra, differential equations, vector calculus \u2014 math for mechanical analysis",
+                                        "tests": "Written exams with problem solving; emphasis on applied calculation"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Mechanics, thermodynamics basics, waves, properties of matter \u2014 physics foundations for ME",
+                                        "tests": "Theory exams plus lab practicals with measurement experiments"
+                                },
+                                {
+                                        "name": "Engineering Chemistry",
+                                        "teaches": "Material properties, corrosion, fuels, polymers \u2014 chemistry relevant to manufacturing and materials",
+                                        "tests": "Written exam plus chemistry lab practical and viva"
+                                },
+                                {
+                                        "name": "Engineering Drawing & CAD",
+                                        "teaches": "Orthographic projections, sections, isometric views, basic AutoCAD \u2014 communicating designs visually",
+                                        "tests": "Drawing sheet exams graded on accuracy and standards compliance"
+                                },
+                                {
+                                        "name": "Workshop Practice",
+                                        "teaches": "Fitting, welding, carpentry, casting, machining basics \u2014 hands-on manufacturing experience",
+                                        "tests": "Completed workshop pieces evaluated for precision and finish"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core mechanics \u2014 forces, materials, fluids, and thermal science",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mechanics / Statics & Dynamics",
+                                        "teaches": "Force analysis, equilibrium, kinematics, work-energy methods \u2014 how forces act on structures and machines",
+                                        "tests": "Numerical problem-heavy written exams; free body diagram analysis"
+                                },
+                                {
+                                        "name": "Strength of Materials",
+                                        "teaches": "Stress, strain, bending, torsion, deflection \u2014 how components deform and fail under load",
+                                        "tests": "Numerical problems on beams and shafts; lab experiments with UTM and strain gauges"
+                                },
+                                {
+                                        "name": "Thermodynamics",
+                                        "teaches": "Laws of thermodynamics, cycles, entropy, work-heat relationships \u2014 energy analysis fundamentals",
+                                        "tests": "Cycle analysis problems; written exams heavy on first and second law applications"
+                                },
+                                {
+                                        "name": "Fluid Mechanics",
+                                        "teaches": "Fluid statics, Bernoulli's equation, viscous flow, dimensional analysis \u2014 how fluids behave in systems",
+                                        "tests": "Numerical problem exams; hydraulics lab measuring flow and pressure"
+                                },
+                                {
+                                        "name": "Manufacturing Processes",
+                                        "teaches": "Casting, forming, machining, joining \u2014 how raw materials become finished components",
+                                        "tests": "Theory exam on process selection; lab reports on manufacturing experiments"
+                                },
+                                {
+                                        "name": "Material Science",
+                                        "teaches": "Crystal structures, phase diagrams, mechanical properties, heat treatment \u2014 why materials behave differently",
+                                        "tests": "Written exam on structure-property relationships; metallography lab"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Design, thermal systems, and industrial applications",
+                        "courses": [
+                                {
+                                        "name": "Machine Design",
+                                        "teaches": "Shaft design, gear design, bearing selection, fatigue analysis \u2014 designing components that survive real loads",
+                                        "tests": "Design problems requiring calculations and factor-of-safety decisions; design project"
+                                },
+                                {
+                                        "name": "Heat Transfer",
+                                        "teaches": "Conduction, convection, radiation, heat exchangers \u2014 how thermal energy moves through systems",
+                                        "tests": "Numerical problems on heat transfer modes; lab experiments with heat exchangers"
+                                },
+                                {
+                                        "name": "Dynamics of Machinery",
+                                        "teaches": "Mechanisms, cams, governors, balancing, vibrations \u2014 how machines move and how to control motion",
+                                        "tests": "Mechanism analysis problems; vibration measurement lab experiments"
+                                },
+                                {
+                                        "name": "CAD/CAM & FEA",
+                                        "teaches": "3D modeling in SolidWorks/CATIA, computer-aided manufacturing, finite element basics",
+                                        "tests": "CAD modeling assignments; FEA simulation project; lab practical exam"
+                                },
+                                {
+                                        "name": "Industrial Engineering",
+                                        "teaches": "Operations research, quality control, production planning, work study \u2014 factory-level optimization",
+                                        "tests": "Linear programming and scheduling problems; case study analysis"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Specialization, advanced topics, and capstone",
+                        "courses": [
+                                {
+                                        "name": "Automobile Engineering (elective)",
+                                        "teaches": "Vehicle dynamics, powertrain, suspension, braking systems \u2014 how cars and trucks are engineered",
+                                        "tests": "Design analysis assignments; written exam on vehicle subsystems"
+                                },
+                                {
+                                        "name": "Robotics (elective)",
+                                        "teaches": "Robot kinematics, dynamics, sensors, actuators, control \u2014 designing machines that move intelligently",
+                                        "tests": "Robot simulation project; written exam on kinematics and control"
+                                },
+                                {
+                                        "name": "Finite Element Analysis (elective)",
+                                        "teaches": "Meshing, boundary conditions, stress-strain simulation \u2014 predicting how designs behave before building them",
+                                        "tests": "FEA simulation project with analysis report; written exam on FEM theory"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "End-to-end design project: problem definition, analysis, prototyping, testing, and documentation",
+                                        "tests": "Working prototype or simulation demo, written report, viva voce"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Electronics and Communication Engineering",
@@ -211,6 +469,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Testing a PCB prototype for signal integrity, power consumption, and thermal performance",
         ],
         similar_branches=["Electrical Engineering", "Electrical and Electronics Engineering", "Information Technology"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and introduction to circuits",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, linear algebra, complex analysis, transforms \u2014 math essential for signal and circuit analysis",
+                                        "tests": "Written exams with heavy emphasis on transforms and complex variable problems"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Electromagnetic waves, optics, quantum physics basics, semiconductor physics introduction",
+                                        "tests": "Theory exams plus optics and semiconductor lab experiments"
+                                },
+                                {
+                                        "name": "Basic Electrical Engineering",
+                                        "teaches": "Circuit laws, AC/DC analysis, transformers, basic machines \u2014 electrical fundamentals for ECE",
+                                        "tests": "Circuit analysis problems and basic electrical lab experiments"
+                                },
+                                {
+                                        "name": "Introduction to Programming",
+                                        "teaches": "C programming, logic building, functions, arrays \u2014 coding fundamentals for embedded systems later",
+                                        "tests": "Lab exams with timed coding; written exam on programming logic"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical drawing, basic manufacturing processes, soldering practice",
+                                        "tests": "Drawing sheets and workshop practical evaluation"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core electronics \u2014 circuits, devices, signals, and digital systems",
+                        "courses": [
+                                {
+                                        "name": "Network Theory",
+                                        "teaches": "KVL, KCL, mesh/nodal analysis, transient response, network theorems \u2014 systematic circuit solving",
+                                        "tests": "Heavy numerical problems on circuit analysis; lab verification of theorems"
+                                },
+                                {
+                                        "name": "Electronic Devices & Circuits",
+                                        "teaches": "Diodes, BJTs, FETs, amplifier circuits, biasing \u2014 how individual electronic components work",
+                                        "tests": "Circuit design problems; electronics lab building amplifier circuits on breadboards"
+                                },
+                                {
+                                        "name": "Signals and Systems",
+                                        "teaches": "Fourier transforms, Laplace transforms, convolution, system response \u2014 mathematical framework for signals",
+                                        "tests": "Transform-heavy written exams; MATLAB/Python signal analysis assignments"
+                                },
+                                {
+                                        "name": "Digital Electronics",
+                                        "teaches": "Boolean algebra, combinational and sequential circuits, flip-flops, counters, basic FPGA concepts",
+                                        "tests": "Logic design problems; digital lab building circuits on trainer kits"
+                                },
+                                {
+                                        "name": "Electromagnetic Theory",
+                                        "teaches": "Maxwell's equations, wave propagation, transmission lines, antenna basics \u2014 the physics of wireless",
+                                        "tests": "Derivation-heavy written exam; EM field simulation assignments"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Communication systems, embedded, and advanced electronics",
+                        "courses": [
+                                {
+                                        "name": "Communication Systems",
+                                        "teaches": "Analog and digital modulation, noise analysis, channel capacity, wireless system design",
+                                        "tests": "Modulation analysis problems; communication lab with signal generators and analyzers"
+                                },
+                                {
+                                        "name": "Microprocessors & Microcontrollers",
+                                        "teaches": "8085/ARM architecture, assembly programming, interfacing peripherals \u2014 programming hardware directly",
+                                        "tests": "Assembly coding lab exams; interfacing project with sensors and displays"
+                                },
+                                {
+                                        "name": "Control Systems",
+                                        "teaches": "Transfer functions, stability analysis, Bode plots, PID controllers \u2014 how systems self-regulate",
+                                        "tests": "Stability analysis problems; control lab with servo motor experiments"
+                                },
+                                {
+                                        "name": "Analog Circuit Design",
+                                        "teaches": "Op-amp circuits, oscillators, filters, power supplies \u2014 designing real analog electronic systems",
+                                        "tests": "Circuit design assignments; analog lab building and testing functional circuits"
+                                },
+                                {
+                                        "name": "Digital Signal Processing",
+                                        "teaches": "DFT, FFT, FIR/IIR filters, spectral analysis \u2014 processing signals digitally for real applications",
+                                        "tests": "Filter design projects; DSP lab using MATLAB or DSP hardware kits"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Specialization, advanced systems, and capstone",
+                        "courses": [
+                                {
+                                        "name": "VLSI Design (elective)",
+                                        "teaches": "CMOS circuit design, layout, verification, ASIC flow \u2014 designing chips at the transistor level",
+                                        "tests": "VLSI design project using Cadence/Synopsis tools; written exam on CMOS theory"
+                                },
+                                {
+                                        "name": "Wireless Communication (elective)",
+                                        "teaches": "Fading channels, OFDM, MIMO, cellular systems, 4G/5G concepts",
+                                        "tests": "System analysis problems; simulation project on wireless channel performance"
+                                },
+                                {
+                                        "name": "Embedded Systems (elective)",
+                                        "teaches": "Real-time OS, embedded C, hardware-software co-design, IoT device development",
+                                        "tests": "Embedded system project with working hardware; code review and demo"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "End-to-end hardware/software project: design, prototype, test, and defend",
+                                        "tests": "Working demo, project report, external examiner viva"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Civil Engineering",
@@ -274,6 +653,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Managing a bridge construction project from tender to completion in 18 months",
         ],
         similar_branches=["Mechanical Engineering", "Environmental Engineering", "Architecture-adjacent planning paths"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and engineering basics",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, linear algebra, numerical methods \u2014 math for structural and hydraulic analysis",
+                                        "tests": "Written exams; emphasis on applied numerical problem solving"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Mechanics, waves, properties of matter \u2014 physics foundation for structural understanding",
+                                        "tests": "Theory exam plus physics lab practicals"
+                                },
+                                {
+                                        "name": "Engineering Chemistry",
+                                        "teaches": "Water chemistry, construction materials, corrosion \u2014 chemistry relevant to civil infrastructure",
+                                        "tests": "Written exam plus chemistry lab focused on water testing"
+                                },
+                                {
+                                        "name": "Engineering Drawing",
+                                        "teaches": "Projection systems, sections, building plan basics \u2014 visual communication for civil design",
+                                        "tests": "Drawing sheet exams evaluated for accuracy and drafting standards"
+                                },
+                                {
+                                        "name": "Introduction to Civil Engineering",
+                                        "teaches": "Overview of structures, transportation, water resources, construction \u2014 branch orientation",
+                                        "tests": "Introductory exam plus site visit reports"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core mechanics \u2014 structures, soil, fluids, and surveying",
+                        "courses": [
+                                {
+                                        "name": "Strength of Materials",
+                                        "teaches": "Stress-strain, bending moments, shear force diagrams, column buckling \u2014 how structural members behave",
+                                        "tests": "Numerical problems on beams and columns; lab testing concrete and steel specimens"
+                                },
+                                {
+                                        "name": "Surveying",
+                                        "teaches": "Chain, compass, theodolite, total station, GPS surveying \u2014 measuring land accurately for construction",
+                                        "tests": "Field surveying practicals with instrument handling; computation assignments"
+                                },
+                                {
+                                        "name": "Fluid Mechanics & Hydraulics",
+                                        "teaches": "Fluid statics, pipe flow, open channel flow, dimensional analysis \u2014 water behavior in systems",
+                                        "tests": "Numerical problem exams; hydraulics lab measuring flow rates and pressures"
+                                },
+                                {
+                                        "name": "Building Materials & Construction",
+                                        "teaches": "Concrete, steel, bricks, timber, modern materials \u2014 properties, testing, and construction techniques",
+                                        "tests": "Material testing lab (cube testing, slump test); written exam on specifications"
+                                },
+                                {
+                                        "name": "Engineering Geology",
+                                        "teaches": "Rock types, soil formation, geological mapping, groundwater \u2014 understanding the ground you build on",
+                                        "tests": "Geological specimen identification; field report on local geology"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Design and analysis \u2014 structures, geotechnical, transportation",
+                        "courses": [
+                                {
+                                        "name": "Structural Analysis",
+                                        "teaches": "Determinate and indeterminate structures, matrix methods, influence lines \u2014 analyzing how forces flow",
+                                        "tests": "Complex structural analysis problems; computer-aided analysis assignments"
+                                },
+                                {
+                                        "name": "Design of Concrete Structures",
+                                        "teaches": "RCC beam, slab, column, and footing design using IS codes \u2014 designing real structural elements",
+                                        "tests": "Design problems applying IS 456 code provisions; mini design project"
+                                },
+                                {
+                                        "name": "Geotechnical Engineering",
+                                        "teaches": "Soil classification, shear strength, consolidation, bearing capacity \u2014 understanding foundation behavior",
+                                        "tests": "Soil testing lab (triaxial, consolidation tests); foundation design problems"
+                                },
+                                {
+                                        "name": "Transportation Engineering",
+                                        "teaches": "Highway geometry, pavement design, traffic engineering, railway basics \u2014 designing movement systems",
+                                        "tests": "Highway design project; traffic survey fieldwork; written exam on design standards"
+                                },
+                                {
+                                        "name": "Water Resources Engineering",
+                                        "teaches": "Hydrology, irrigation, dam design, flood estimation \u2014 managing water for human use",
+                                        "tests": "Hydrological analysis problems; dam/canal design assignments"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Advanced design, management, and capstone",
+                        "courses": [
+                                {
+                                        "name": "Design of Steel Structures",
+                                        "teaches": "Tension members, compression members, connections, beam-column design using IS 800",
+                                        "tests": "Steel design problems applying code provisions; structural design project"
+                                },
+                                {
+                                        "name": "Construction Project Management",
+                                        "teaches": "Planning, scheduling (CPM/PERT), estimation, contracts, quality management \u2014 running real projects",
+                                        "tests": "Project scheduling assignments; quantity estimation exercises; case study analysis"
+                                },
+                                {
+                                        "name": "Environmental Engineering",
+                                        "teaches": "Water treatment, wastewater treatment, solid waste management, air pollution control",
+                                        "tests": "Treatment plant design problems; environmental lab testing water quality"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "Complete civil engineering project: site investigation, design, analysis, drawings, and presentation",
+                                        "tests": "Design drawings, analysis report, project defense with external examiner"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Electrical Engineering",
@@ -337,6 +837,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Designing the power electronics for an EV fast-charging station",
         ],
         similar_branches=["Electrical and Electronics Engineering", "Electronics and Communication Engineering", "Engineering Physics"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and circuit basics",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, complex analysis, linear algebra, transforms \u2014 math for circuit and system analysis",
+                                        "tests": "Written exams with heavy transform and differential equation problems"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Electromagnetics, quantum physics, semiconductor basics \u2014 physics underlying electrical systems",
+                                        "tests": "Theory exams plus lab experiments on electromagnetic phenomena"
+                                },
+                                {
+                                        "name": "Basic Electrical Engineering",
+                                        "teaches": "DC/AC circuits, Kirchhoff's laws, basic machines, power measurement \u2014 the starting point",
+                                        "tests": "Circuit analysis problems; basic electrical measurement lab"
+                                },
+                                {
+                                        "name": "Introduction to Programming",
+                                        "teaches": "C/Python programming, logic, functions \u2014 coding for simulation and control applications later",
+                                        "tests": "Lab coding exams; written exam on programming concepts"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical drawing, electrical wiring practice, basic fabrication",
+                                        "tests": "Drawing sheets and workshop practical assessment"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core electrical \u2014 machines, circuits, fields, and signals",
+                        "courses": [
+                                {
+                                        "name": "Circuit Theory",
+                                        "teaches": "Network theorems, transient analysis, AC steady state, resonance \u2014 systematic circuit analysis",
+                                        "tests": "Heavy numerical circuit problems; lab verification of network theorems"
+                                },
+                                {
+                                        "name": "Electrical Machines I",
+                                        "teaches": "DC machines, transformers \u2014 how motors, generators, and transformers work physically and electrically",
+                                        "tests": "Machine testing lab (load tests, efficiency); written analysis problems"
+                                },
+                                {
+                                        "name": "Electromagnetic Fields",
+                                        "teaches": "Maxwell's equations, wave propagation, boundary conditions \u2014 the physics of electrical systems",
+                                        "tests": "Derivation-heavy exams; field computation problems"
+                                },
+                                {
+                                        "name": "Signals and Systems",
+                                        "teaches": "Fourier and Laplace analysis, system response, convolution \u2014 mathematical signal framework",
+                                        "tests": "Transform-heavy written exams; MATLAB signal analysis labs"
+                                },
+                                {
+                                        "name": "Electrical Measurements",
+                                        "teaches": "Instrument transformers, bridges, oscilloscopes, measurement uncertainty \u2014 precision measurement",
+                                        "tests": "Measurement lab practicals; instrument handling assessment"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Power systems, control, and power electronics",
+                        "courses": [
+                                {
+                                        "name": "Power Systems Analysis",
+                                        "teaches": "Load flow, fault analysis, stability, economic dispatch \u2014 how the electrical grid works",
+                                        "tests": "Power flow computation problems; simulation assignments using PowerWorld/ETAP"
+                                },
+                                {
+                                        "name": "Control Systems",
+                                        "teaches": "Transfer functions, stability criteria, root locus, Bode plots, state space \u2014 system control theory",
+                                        "tests": "Stability analysis problems; control lab with servo motor and PID tuning"
+                                },
+                                {
+                                        "name": "Power Electronics",
+                                        "teaches": "Rectifiers, inverters, choppers, AC regulators \u2014 converting and controlling electrical power",
+                                        "tests": "Power converter design problems; power electronics lab with thyristor circuits"
+                                },
+                                {
+                                        "name": "Electrical Machines II",
+                                        "teaches": "Induction motors, synchronous machines, special machines \u2014 advanced rotating machine behavior",
+                                        "tests": "Machine testing lab (no-load, blocked rotor tests); performance analysis problems"
+                                },
+                                {
+                                        "name": "Switchgear & Protection",
+                                        "teaches": "Relay coordination, circuit breakers, fault protection \u2014 keeping power systems safe",
+                                        "tests": "Protection scheme design problems; relay testing lab experiments"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Advanced power, renewables, and capstone",
+                        "courses": [
+                                {
+                                        "name": "Renewable Energy Systems (elective)",
+                                        "teaches": "Solar PV design, wind energy systems, energy storage, grid integration of renewables",
+                                        "tests": "Solar/wind system design project; written exam on renewable energy technology"
+                                },
+                                {
+                                        "name": "High Voltage Engineering (elective)",
+                                        "teaches": "Insulation, breakdown mechanisms, testing techniques, lightning protection",
+                                        "tests": "High voltage lab experiments; insulation design problems"
+                                },
+                                {
+                                        "name": "Smart Grid Technology (elective)",
+                                        "teaches": "Advanced metering, demand response, distributed generation, grid automation",
+                                        "tests": "Case study analysis; simulation project on smart grid scenarios"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "Complete electrical engineering project: design, simulation, testing, and defense",
+                                        "tests": "Working simulation or hardware demo, project report, viva voce"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Chemical Engineering",
@@ -400,6 +1021,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Designing a wastewater treatment system for a textile factory to meet discharge standards",
         ],
         similar_branches=["Metallurgical and Materials Engineering", "Bio Technology", "Petroleum Engineering"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and process basics",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, ODEs, linear algebra \u2014 math for mass and energy balance calculations",
+                                        "tests": "Written exams focused on applied problem solving"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Thermodynamics basics, fluid properties, heat \u2014 physics relevant to process engineering",
+                                        "tests": "Theory exams and physics lab practicals"
+                                },
+                                {
+                                        "name": "Engineering Chemistry",
+                                        "teaches": "Chemical bonding, reaction kinetics, electrochemistry, polymers \u2014 chemistry foundations for ChemE",
+                                        "tests": "Written exam plus detailed chemistry lab practical and reports"
+                                },
+                                {
+                                        "name": "Introduction to Chemical Engineering",
+                                        "teaches": "Mass balance, energy balance, unit operations overview \u2014 the language of the discipline",
+                                        "tests": "Mass/energy balance calculation problems; introductory process flowsheet exercises"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical drawing, pipe fitting, basic fabrication relevant to process plants",
+                                        "tests": "Drawing assessment and workshop practical evaluation"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core process engineering \u2014 thermo, fluids, and heat transfer",
+                        "courses": [
+                                {
+                                        "name": "Chemical Engineering Thermodynamics",
+                                        "teaches": "Laws of thermodynamics, phase equilibria, fugacity, activity coefficients \u2014 energy analysis for processes",
+                                        "tests": "Thermodynamic cycle and equilibrium problems; heavy on numerical calculations"
+                                },
+                                {
+                                        "name": "Fluid Mechanics for Chemical Engineers",
+                                        "teaches": "Fluid statics, pipe flow, pumps, compressors, non-Newtonian fluids \u2014 moving materials through plants",
+                                        "tests": "Pipe flow and pump sizing problems; fluid mechanics lab with flow measurement"
+                                },
+                                {
+                                        "name": "Heat Transfer",
+                                        "teaches": "Conduction, convection, radiation, heat exchanger design \u2014 thermal energy management in processes",
+                                        "tests": "Heat exchanger design problems; lab experiments measuring heat transfer coefficients"
+                                },
+                                {
+                                        "name": "Chemical Process Calculations",
+                                        "teaches": "Material and energy balances on complex process flowsheets with recycle and bypass streams",
+                                        "tests": "Multi-unit process balance problems; flowsheet analysis assignments"
+                                },
+                                {
+                                        "name": "Organic / Inorganic Chemical Technology",
+                                        "teaches": "Industrial manufacturing of acids, alkalis, fertilizers, petrochemicals \u2014 how chemicals get made",
+                                        "tests": "Written exam on process descriptions; plant visit reports"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Reaction engineering, mass transfer, and process control",
+                        "courses": [
+                                {
+                                        "name": "Chemical Reaction Engineering",
+                                        "teaches": "Reactor design (CSTR, PFR, batch), kinetics, conversion, selectivity \u2014 the heart of chemical processing",
+                                        "tests": "Reactor design and sizing problems; reaction kinetics lab experiments"
+                                },
+                                {
+                                        "name": "Mass Transfer Operations",
+                                        "teaches": "Distillation, absorption, extraction, drying, crystallization \u2014 separating mixtures at scale",
+                                        "tests": "Column design problems; mass transfer lab (distillation, extraction experiments)"
+                                },
+                                {
+                                        "name": "Process Dynamics and Control",
+                                        "teaches": "Process modeling, feedback control, PID tuning, stability \u2014 keeping plants operating safely",
+                                        "tests": "Control system design problems; process control lab with simulation"
+                                },
+                                {
+                                        "name": "Transport Phenomena",
+                                        "teaches": "Unified treatment of momentum, heat, and mass transfer \u2014 the theoretical backbone of ChemE",
+                                        "tests": "Analytical and numerical problems; heavy on mathematical derivation"
+                                },
+                                {
+                                        "name": "Process Equipment Design",
+                                        "teaches": "Pressure vessel design, distillation column internals, storage tanks \u2014 designing real plant hardware",
+                                        "tests": "Equipment design project with mechanical drawing; code-based sizing calculations"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Plant design, safety, and capstone",
+                        "courses": [
+                                {
+                                        "name": "Process Plant Design & Economics",
+                                        "teaches": "Process synthesis, optimization, cost estimation, profitability analysis \u2014 designing viable plants",
+                                        "tests": "Complete plant design project with economic evaluation; group presentation"
+                                },
+                                {
+                                        "name": "Process Safety & Hazard Analysis",
+                                        "teaches": "HAZOP, fault trees, risk assessment, safety systems \u2014 preventing industrial disasters",
+                                        "tests": "HAZOP case study analysis; safety audit report on a real or simulated process"
+                                },
+                                {
+                                        "name": "Environmental Engineering (elective)",
+                                        "teaches": "Wastewater treatment, air pollution control, waste management for chemical industries",
+                                        "tests": "Treatment system design problems; environmental compliance case studies"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "End-to-end process design or research project: problem, design, simulation, and defense",
+                                        "tests": "Process simulation demo, written report, viva with external examiner"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Metallurgical and Materials Engineering",
@@ -463,6 +1205,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Analyzing weld quality in pipeline construction using non-destructive testing methods",
         ],
         similar_branches=["Chemical Engineering", "Mechanical Engineering", "Engineering Physics"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and materials introduction",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, linear algebra, statistics \u2014 math for materials analysis and process calculations",
+                                        "tests": "Written problem-solving exams"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Crystallography, X-ray diffraction basics, quantum mechanics \u2014 physics of solid materials",
+                                        "tests": "Theory exams plus lab on crystal structure and diffraction"
+                                },
+                                {
+                                        "name": "Engineering Chemistry",
+                                        "teaches": "Electrochemistry, corrosion basics, thermochemistry \u2014 chemistry of metals and reactions",
+                                        "tests": "Written exam and chemistry lab practicals"
+                                },
+                                {
+                                        "name": "Introduction to Materials Science",
+                                        "teaches": "Atomic bonding, crystal structures, defects, material classification \u2014 the branch orientation",
+                                        "tests": "Written exam on structure-property basics; specimen identification lab"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical drawing, foundry, welding, fitting \u2014 manufacturing process exposure",
+                                        "tests": "Drawing sheets and workshop practical assessment"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Physical metallurgy \u2014 structure, phases, and properties",
+                        "courses": [
+                                {
+                                        "name": "Physical Metallurgy",
+                                        "teaches": "Phase diagrams, solidification, diffusion, nucleation and growth \u2014 how microstructure forms",
+                                        "tests": "Phase diagram problems; metallography lab examining microstructures under microscope"
+                                },
+                                {
+                                        "name": "Mineral Processing",
+                                        "teaches": "Crushing, grinding, flotation, gravity separation \u2014 extracting valuable minerals from ore",
+                                        "tests": "Mineral processing lab with separation experiments; flowsheet design problems"
+                                },
+                                {
+                                        "name": "Iron and Steelmaking",
+                                        "teaches": "Blast furnace, BOF, EAF, secondary refining \u2014 how iron ore becomes steel at industrial scale",
+                                        "tests": "Process calculation problems; plant visit reports; steelmaking simulation"
+                                },
+                                {
+                                        "name": "Thermodynamics of Materials",
+                                        "teaches": "Free energy, equilibria, Ellingham diagrams, activity \u2014 predicting what reactions occur and when",
+                                        "tests": "Thermodynamic calculation problems; Ellingham diagram analysis"
+                                },
+                                {
+                                        "name": "Mechanical Behavior of Materials",
+                                        "teaches": "Tensile, hardness, impact, fatigue, creep testing \u2014 quantifying how materials perform under stress",
+                                        "tests": "Mechanical testing lab (UTM, hardness tester, impact machine); data analysis reports"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Processing, corrosion, and advanced characterization",
+                        "courses": [
+                                {
+                                        "name": "Mechanical Metallurgy",
+                                        "teaches": "Dislocations, strengthening mechanisms, fracture mechanics, fatigue \u2014 why materials fail",
+                                        "tests": "Failure analysis problems; fractography lab examining fracture surfaces"
+                                },
+                                {
+                                        "name": "Heat Treatment",
+                                        "teaches": "Annealing, quenching, tempering, case hardening, TTT/CCT diagrams \u2014 controlling properties through thermal processing",
+                                        "tests": "Heat treatment lab (heating, quenching, testing hardness); TTT diagram analysis"
+                                },
+                                {
+                                        "name": "Corrosion Engineering",
+                                        "teaches": "Electrochemical corrosion, types of corrosion, prevention methods, coatings, cathodic protection",
+                                        "tests": "Corrosion testing lab; protection system design problems; case studies"
+                                },
+                                {
+                                        "name": "Non-Ferrous Extractive Metallurgy",
+                                        "teaches": "Extraction of aluminum, copper, zinc, titanium \u2014 hydrometallurgy and pyrometallurgy processes",
+                                        "tests": "Process flowsheet and calculation problems; comparison of extraction routes"
+                                },
+                                {
+                                        "name": "Materials Characterization",
+                                        "teaches": "SEM, XRD, TEM, spectroscopy techniques \u2014 tools for studying material structure at micro/nano scale",
+                                        "tests": "Characterization lab using actual instruments; data interpretation assignments"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Advanced materials, applications, and capstone",
+                        "courses": [
+                                {
+                                        "name": "Advanced Materials (elective)",
+                                        "teaches": "Composites, nanomaterials, biomaterials, smart materials \u2014 frontier material systems",
+                                        "tests": "Literature review project; written exam on advanced material properties"
+                                },
+                                {
+                                        "name": "Welding Metallurgy (elective)",
+                                        "teaches": "Weld microstructure, heat affected zones, weld defects, qualification \u2014 metallurgy of joining",
+                                        "tests": "Weld testing lab; defect analysis case studies"
+                                },
+                                {
+                                        "name": "Failure Analysis (elective)",
+                                        "teaches": "Systematic failure investigation: fracture, fatigue, corrosion, wear \u2014 determining root causes",
+                                        "tests": "Failure case study project with full investigation report"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "Complete materials/metallurgy research or design project: experimentation, characterization, analysis",
+                                        "tests": "Lab results presentation, written thesis, viva with external examiner"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Electrical and Electronics Engineering",
@@ -526,6 +1389,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Testing and debugging an electronic control unit (ECU) for an automotive braking system",
         ],
         similar_branches=["Electrical Engineering", "Electronics and Communication Engineering", "Instrumentation Engineering"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and circuit basics",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, transforms, complex analysis \u2014 math shared with EE and ECE",
+                                        "tests": "Written exams with transform and circuit math problems"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Electromagnetics, semiconductor physics, optics \u2014 physics for electrical and electronic systems",
+                                        "tests": "Theory exam plus lab experiments"
+                                },
+                                {
+                                        "name": "Basic Electrical & Electronics",
+                                        "teaches": "DC/AC circuits, diodes, transistors, basic digital logic \u2014 dual foundation",
+                                        "tests": "Circuit analysis problems and introductory electronics lab"
+                                },
+                                {
+                                        "name": "Introduction to Programming",
+                                        "teaches": "C programming, logic, functions \u2014 coding for embedded and control applications",
+                                        "tests": "Lab coding exams; written exam on programming concepts"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical drawing, electrical wiring, PCB basics, soldering",
+                                        "tests": "Drawing sheets and workshop practical assessment"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Dual foundation \u2014 electrical machines and electronic circuits",
+                        "courses": [
+                                {
+                                        "name": "Circuit Theory",
+                                        "teaches": "Network analysis, transients, AC steady state, two-port networks \u2014 shared EE/ECE foundation",
+                                        "tests": "Circuit analysis problems; lab verification experiments"
+                                },
+                                {
+                                        "name": "Electrical Machines",
+                                        "teaches": "DC machines, transformers, induction motors \u2014 how electromechanical energy conversion works",
+                                        "tests": "Machine testing lab; performance analysis calculations"
+                                },
+                                {
+                                        "name": "Electronic Devices & Circuits",
+                                        "teaches": "Semiconductor devices, amplifiers, biasing, frequency response \u2014 analog electronics foundation",
+                                        "tests": "Circuit design problems; electronics lab building amplifier circuits"
+                                },
+                                {
+                                        "name": "Digital Electronics",
+                                        "teaches": "Logic gates, combinational/sequential circuits, memory, basic microprocessor concepts",
+                                        "tests": "Digital logic design problems; digital lab on trainer kits"
+                                },
+                                {
+                                        "name": "Signals and Systems",
+                                        "teaches": "Fourier and Laplace transforms, system response, convolution \u2014 signal analysis framework",
+                                        "tests": "Transform-heavy written exams; MATLAB signal processing labs"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Power electronics, control, and embedded systems",
+                        "courses": [
+                                {
+                                        "name": "Power Electronics",
+                                        "teaches": "Rectifiers, inverters, choppers, PWM \u2014 converting and controlling electrical power efficiently",
+                                        "tests": "Converter design problems; power electronics lab with thyristor/MOSFET circuits"
+                                },
+                                {
+                                        "name": "Control Systems",
+                                        "teaches": "Transfer functions, stability, root locus, Bode plots, PID controllers \u2014 feedback system design",
+                                        "tests": "Stability analysis problems; control lab with servo motor experiments"
+                                },
+                                {
+                                        "name": "Microprocessors & Embedded Systems",
+                                        "teaches": "Processor architecture, assembly programming, interfacing, real-time system concepts",
+                                        "tests": "Embedded programming lab; interfacing project with sensors and actuators"
+                                },
+                                {
+                                        "name": "Power Systems Basics",
+                                        "teaches": "Generation, transmission, distribution, load flow, fault analysis \u2014 power grid fundamentals",
+                                        "tests": "Power system calculation problems; simulation assignments"
+                                },
+                                {
+                                        "name": "Communication Systems (overview)",
+                                        "teaches": "Modulation, demodulation, noise, basic wireless concepts \u2014 introductory communication theory",
+                                        "tests": "Modulation analysis problems; communication lab experiments"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Advanced applications and capstone",
+                        "courses": [
+                                {
+                                        "name": "Drives and Industrial Automation (elective)",
+                                        "teaches": "Motor drives, PLCs, SCADA, industrial control systems \u2014 factory automation",
+                                        "tests": "PLC programming lab; drive simulation project"
+                                },
+                                {
+                                        "name": "Renewable Energy Systems (elective)",
+                                        "teaches": "Solar, wind, energy storage, grid integration \u2014 clean energy technology",
+                                        "tests": "Renewable system design project; technology comparison analysis"
+                                },
+                                {
+                                        "name": "Instrumentation & Sensors (elective)",
+                                        "teaches": "Transducers, signal conditioning, measurement systems, data acquisition",
+                                        "tests": "Sensor interfacing lab; measurement system design assignment"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "Integrated EEE project spanning electrical and electronic domains: design, build, test",
+                                        "tests": "Working demo, written report, viva with external examiner"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Information Technology",
@@ -589,6 +1573,132 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Building a dashboard that aggregates data from multiple APIs and presents business metrics visually",
         ],
         similar_branches=["Computer Science and Engineering", "Mathematics and Computing", "Electronics and Communication Engineering"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and first programming",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, linear algebra, probability \u2014 math foundations for computing and data",
+                                        "tests": "Written exams with problem-solving emphasis"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Mechanics, waves, optics, semiconductor basics \u2014 general science foundation",
+                                        "tests": "Theory exam plus physics lab practicals"
+                                },
+                                {
+                                        "name": "Introduction to Programming",
+                                        "teaches": "Variables, control flow, functions, arrays, basic problem solving in C or Python",
+                                        "tests": "Lab exams writing and running code under time constraints; written logic exam"
+                                },
+                                {
+                                        "name": "Digital Logic",
+                                        "teaches": "Boolean algebra, gates, flip-flops, basic processor concepts \u2014 how hardware computes",
+                                        "tests": "Logic design problems; digital lab experiments on trainer kits"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical drawing, basic fabrication, wiring \u2014 general engineering skills",
+                                        "tests": "Drawing sheets and workshop practical evaluation"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core computing \u2014 data structures, databases, and OOP",
+                        "courses": [
+                                {
+                                        "name": "Data Structures & Algorithms",
+                                        "teaches": "Arrays, linked lists, trees, graphs, sorting, searching, complexity analysis \u2014 the coding core",
+                                        "tests": "Coding assignments and lab exams; written exam on algorithm analysis"
+                                },
+                                {
+                                        "name": "Discrete Mathematics",
+                                        "teaches": "Sets, logic, graph theory, combinatorics \u2014 formal mathematical reasoning for CS/IT",
+                                        "tests": "Proof-based written exam; problem sets on discrete structures"
+                                },
+                                {
+                                        "name": "Object-Oriented Programming",
+                                        "teaches": "Classes, inheritance, polymorphism, design patterns \u2014 writing modular, maintainable code",
+                                        "tests": "Coding projects; lab exams building OOP systems; written design principles exam"
+                                },
+                                {
+                                        "name": "Database Management Systems",
+                                        "teaches": "SQL, relational design, normalization, transactions, indexing \u2014 data storage and retrieval",
+                                        "tests": "SQL lab exams; database design projects; written normalization theory exam"
+                                },
+                                {
+                                        "name": "Computer Organization",
+                                        "teaches": "CPU architecture, memory hierarchy, instruction execution \u2014 how hardware runs your code",
+                                        "tests": "Written exam on architecture concepts; assembly programming assignments"
+                                },
+                                {
+                                        "name": "Web Technologies",
+                                        "teaches": "HTML, CSS, JavaScript, server-side basics \u2014 building web applications from scratch",
+                                        "tests": "Web development project; lab exam building a functioning web page"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Systems, networks, security, and software engineering",
+                        "courses": [
+                                {
+                                        "name": "Operating Systems",
+                                        "teaches": "Process management, memory, file systems, concurrency \u2014 how software runs on hardware",
+                                        "tests": "Written exam; coding assignments implementing OS concepts (scheduling, sync)"
+                                },
+                                {
+                                        "name": "Computer Networks",
+                                        "teaches": "TCP/IP, routing, HTTP, sockets, network security basics \u2014 how the internet works",
+                                        "tests": "Network programming lab; packet analysis assignments; protocol-heavy written exam"
+                                },
+                                {
+                                        "name": "Software Engineering",
+                                        "teaches": "SDLC, requirements, testing, agile, CI/CD \u2014 how teams build and deliver software",
+                                        "tests": "Group project building a real application; written exam on methodologies"
+                                },
+                                {
+                                        "name": "Information Security",
+                                        "teaches": "Cryptography, authentication, network security, ethical hacking, security policies",
+                                        "tests": "Security analysis lab; penetration testing exercise; written crypto exam"
+                                },
+                                {
+                                        "name": "Algorithm Design",
+                                        "teaches": "Advanced algorithm techniques: DP, greedy, graph algorithms, complexity classes",
+                                        "tests": "Algorithm design problems; competitive programming-style lab exams"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Cloud, data, and capstone",
+                        "courses": [
+                                {
+                                        "name": "Cloud Computing (elective)",
+                                        "teaches": "Virtualization, containers, AWS/Azure basics, microservices, serverless architecture",
+                                        "tests": "Cloud deployment project; architecture design assignment"
+                                },
+                                {
+                                        "name": "Data Mining & Analytics (elective)",
+                                        "teaches": "Classification, clustering, association rules, text mining \u2014 extracting patterns from data",
+                                        "tests": "Data analysis project with real dataset; written exam on algorithms"
+                                },
+                                {
+                                        "name": "DevOps & Automation (elective)",
+                                        "teaches": "CI/CD pipelines, Docker, Kubernetes, infrastructure as code, monitoring",
+                                        "tests": "Pipeline setup project; automated deployment demo"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "End-to-end software project: requirements, design, implementation, testing, deployment",
+                                        "tests": "Working application demo, written report, viva voce"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Bio Technology",
@@ -652,6 +1762,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Developing a quality control protocol for testing batch-to-batch consistency in a vaccine manufacturing plant",
         ],
         similar_branches=["Biomedical Engineering", "Chemical Engineering", "Engineering Physics"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 math, science, and biology basics",
+                        "courses": [
+                                {
+                                        "name": "Engineering Mathematics I & II",
+                                        "teaches": "Calculus, statistics, linear algebra \u2014 math for bioprocess calculations and data analysis",
+                                        "tests": "Written problem-solving exams"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Biophysics concepts, optics, spectroscopy basics \u2014 physics relevant to biological instrumentation",
+                                        "tests": "Theory exam plus lab experiments"
+                                },
+                                {
+                                        "name": "Engineering Chemistry",
+                                        "teaches": "Organic chemistry, biochemistry basics, thermochemistry \u2014 chemical foundations for biotechnology",
+                                        "tests": "Written exam plus chemistry lab focused on organic/biochem experiments"
+                                },
+                                {
+                                        "name": "Biology for Engineers",
+                                        "teaches": "Cell biology, genetics basics, microbiology introduction, evolution \u2014 the biological foundations",
+                                        "tests": "Written exam on cell biology and genetics; biology lab with microscopy"
+                                },
+                                {
+                                        "name": "Introduction to Biotechnology",
+                                        "teaches": "Branch overview: medical, agricultural, industrial, environmental biotech applications",
+                                        "tests": "Introductory written exam; seminar presentations on biotech applications"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core biology \u2014 biochemistry, microbiology, and genetics",
+                        "courses": [
+                                {
+                                        "name": "Biochemistry",
+                                        "teaches": "Proteins, enzymes, metabolism, bioenergetics \u2014 the molecular machinery of living systems",
+                                        "tests": "Written exam on metabolic pathways; biochemistry lab (enzyme assays, chromatography)"
+                                },
+                                {
+                                        "name": "Microbiology",
+                                        "teaches": "Bacteria, viruses, fungi, sterilization, culture techniques \u2014 working with microorganisms",
+                                        "tests": "Microbiology lab (staining, culturing, identification); written exam on microbial biology"
+                                },
+                                {
+                                        "name": "Cell Biology & Molecular Biology",
+                                        "teaches": "Cell structure, gene expression, DNA replication, transcription, translation \u2014 the central dogma",
+                                        "tests": "Written exam on molecular mechanisms; lab techniques (gel electrophoresis, PCR basics)"
+                                },
+                                {
+                                        "name": "Bioprocess Engineering Fundamentals",
+                                        "teaches": "Mass and energy balances for biological systems, reactor basics, sterilization engineering",
+                                        "tests": "Bioprocess calculation problems; introduction to bioreactor lab"
+                                },
+                                {
+                                        "name": "Genetics",
+                                        "teaches": "Mendelian genetics, population genetics, gene mapping, chromosomal analysis",
+                                        "tests": "Genetics problem sets; lab exercises in Drosophila genetics or computational genomics"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Applied biotech \u2014 genetic engineering, bioinformatics, and downstream processing",
+                        "courses": [
+                                {
+                                        "name": "Genetic Engineering",
+                                        "teaches": "Restriction enzymes, cloning, vectors, PCR, gene expression systems \u2014 manipulating DNA",
+                                        "tests": "Cloning strategy design problems; molecular biology lab (restriction digestion, transformation)"
+                                },
+                                {
+                                        "name": "Immunology",
+                                        "teaches": "Immune system, antibodies, vaccines, diagnostic immunology \u2014 biological defense systems",
+                                        "tests": "Written exam on immune mechanisms; immunology lab (ELISA, Western blot basics)"
+                                },
+                                {
+                                        "name": "Bioinformatics",
+                                        "teaches": "Sequence alignment, database searching, phylogenetics, structural prediction \u2014 computational biology",
+                                        "tests": "Bioinformatics tool-based assignments (BLAST, multiple alignment); data analysis projects"
+                                },
+                                {
+                                        "name": "Downstream Processing",
+                                        "teaches": "Cell disruption, filtration, chromatography, drying \u2014 purifying biological products at scale",
+                                        "tests": "Downstream processing lab; purification protocol design assignments"
+                                },
+                                {
+                                        "name": "Biostatistics & Experimental Design",
+                                        "teaches": "Hypothesis testing, ANOVA, regression, experimental planning \u2014 rigorous data analysis for biology",
+                                        "tests": "Statistical analysis assignments using R or Excel; experimental design case studies"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Specialized biotech applications and capstone",
+                        "courses": [
+                                {
+                                        "name": "Pharmaceutical Biotechnology (elective)",
+                                        "teaches": "Drug development, biopharmaceuticals, clinical trials, regulatory science \u2014 medicines from biotech",
+                                        "tests": "Drug development case study; regulatory pathway analysis assignment"
+                                },
+                                {
+                                        "name": "Environmental Biotechnology (elective)",
+                                        "teaches": "Bioremediation, waste treatment using microorganisms, biosensors for environmental monitoring",
+                                        "tests": "Bioremediation project design; environmental microbiology lab"
+                                },
+                                {
+                                        "name": "Industrial Biotechnology (elective)",
+                                        "teaches": "Fermentation technology, enzyme technology, biofuels, food biotech \u2014 biotech at production scale",
+                                        "tests": "Fermentation optimization project; industrial process case study analysis"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "Complete biotech research project: hypothesis, experimental design, lab work, analysis, defense",
+                                        "tests": "Lab results presentation, written thesis, viva with external examiner"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Mathematics and Computing",
@@ -715,6 +1946,132 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Implementing a zero-knowledge proof system for privacy-preserving identity verification",
         ],
         similar_branches=["Computer Science and Engineering", "Information Technology", "Engineering Physics"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Foundations \u2014 rigorous math and programming basics",
+                        "courses": [
+                                {
+                                        "name": "Calculus & Real Analysis",
+                                        "teaches": "Limits, continuity, sequences, series, multivariable calculus \u2014 more rigorous than standard engineering math",
+                                        "tests": "Proof-based written exams; epsilon-delta style problems alongside computation"
+                                },
+                                {
+                                        "name": "Linear Algebra",
+                                        "teaches": "Vector spaces, eigenvalues, orthogonality, matrix decompositions \u2014 the math behind data and algorithms",
+                                        "tests": "Theory and computation exams; proof problems on vector space properties"
+                                },
+                                {
+                                        "name": "Introduction to Programming",
+                                        "teaches": "C/Python programming, recursion, basic data structures \u2014 coding foundations",
+                                        "tests": "Lab exams writing programs under time pressure; written logic exam"
+                                },
+                                {
+                                        "name": "Engineering Physics",
+                                        "teaches": "Mechanics, waves, basic quantum \u2014 general science foundation",
+                                        "tests": "Theory exam plus physics lab practicals"
+                                },
+                                {
+                                        "name": "Discrete Mathematics",
+                                        "teaches": "Logic, sets, relations, functions, counting, graph theory \u2014 started earlier than typical CS programs",
+                                        "tests": "Proof-heavy written exam; problem sets requiring formal mathematical arguments"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Mathematical depth and computing core",
+                        "courses": [
+                                {
+                                        "name": "Probability & Statistics",
+                                        "teaches": "Probability theory, distributions, estimation, hypothesis testing \u2014 rigorous statistical foundations",
+                                        "tests": "Problem sets combining theory and computation; statistics lab using R or Python"
+                                },
+                                {
+                                        "name": "Data Structures & Algorithms",
+                                        "teaches": "Standard structures plus algorithm analysis with mathematical rigor \u2014 complexity proofs and design",
+                                        "tests": "Coding assignments; algorithm design exams with proof requirements"
+                                },
+                                {
+                                        "name": "Abstract Algebra (or Number Theory)",
+                                        "teaches": "Groups, rings, fields \u2014 algebraic structures used in cryptography and coding theory",
+                                        "tests": "Proof-based written exams; algebraic structure problem sets"
+                                },
+                                {
+                                        "name": "Object-Oriented Programming",
+                                        "teaches": "Java/C++ OOP, design patterns, software architecture principles",
+                                        "tests": "Coding projects and lab exams; design pattern application assignments"
+                                },
+                                {
+                                        "name": "Numerical Methods",
+                                        "teaches": "Root finding, interpolation, numerical integration, ODE solvers \u2014 computing approximate solutions",
+                                        "tests": "Numerical computation labs; written exam on method analysis and error bounds"
+                                },
+                                {
+                                        "name": "Optimization",
+                                        "teaches": "Linear programming, convex optimization, duality \u2014 mathematical frameworks for finding best solutions",
+                                        "tests": "LP formulation and solving problems; optimization project with real-world data"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Advanced mathematics meets advanced computing",
+                        "courses": [
+                                {
+                                        "name": "Stochastic Processes",
+                                        "teaches": "Markov chains, Poisson processes, queuing theory \u2014 randomness with structure",
+                                        "tests": "Probability modeling problems; simulation assignments using Python"
+                                },
+                                {
+                                        "name": "Design and Analysis of Algorithms",
+                                        "teaches": "Advanced algorithm design, approximation algorithms, randomized algorithms, NP-hardness proofs",
+                                        "tests": "Algorithm design exams requiring correctness proofs and complexity analysis"
+                                },
+                                {
+                                        "name": "Mathematical Logic & Computability",
+                                        "teaches": "Propositional and predicate logic, Turing machines, decidability, G\u00f6del's theorems",
+                                        "tests": "Formal proof exams; computability and decidability problems"
+                                },
+                                {
+                                        "name": "Cryptography",
+                                        "teaches": "Number-theoretic protocols, RSA, elliptic curves, hash functions, zero-knowledge proofs",
+                                        "tests": "Cryptographic protocol analysis; implementation project; security proof assignments"
+                                },
+                                {
+                                        "name": "Operating Systems / Computer Networks",
+                                        "teaches": "Systems fundamentals shared with CS \u2014 process management, networking, distributed systems",
+                                        "tests": "Written exams and programming assignments similar to CS curriculum"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Specialization and capstone",
+                        "courses": [
+                                {
+                                        "name": "Machine Learning Theory (elective)",
+                                        "teaches": "PAC learning, VC dimension, kernel methods, optimization for ML \u2014 the math behind ML algorithms",
+                                        "tests": "Theoretical analysis assignments; ML implementation project with mathematical justification"
+                                },
+                                {
+                                        "name": "Mathematical Finance (elective)",
+                                        "teaches": "Stochastic calculus, Black-Scholes, portfolio theory, risk measures \u2014 quantitative finance foundations",
+                                        "tests": "Option pricing and portfolio problems; simulation project"
+                                },
+                                {
+                                        "name": "Operations Research (elective)",
+                                        "teaches": "Integer programming, network flows, game theory, combinatorial optimization \u2014 industrial math",
+                                        "tests": "Formulation and solving problems; OR case study project"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "Research-grade project combining mathematical analysis and computing implementation",
+                                        "tests": "Mathematical results presentation, working code demo, written thesis, viva"
+                                }
+                        ]
+                }
+        ],
     ),
     CourseExplainer(
         name="Engineering Physics",
@@ -780,6 +2137,127 @@ TOP_12_COURSES: list[CourseExplainer] = [
             "Creating a Monte Carlo simulation of neutron transport for a nuclear reactor shielding analysis",
         ],
         similar_branches=["Electrical Engineering", "Metallurgical and Materials Engineering", "Mathematics and Computing"],
+        year_by_year=[
+                {
+                        "year": 1,
+                        "theme": "Rigorous foundations \u2014 physics and math at higher depth",
+                        "courses": [
+                                {
+                                        "name": "Physics I: Classical Mechanics",
+                                        "teaches": "Lagrangian mechanics, Hamiltonian formulation, central forces \u2014 deeper than standard engineering physics",
+                                        "tests": "Problem-solving exams requiring Lagrangian/Hamiltonian approaches; derivation-heavy"
+                                },
+                                {
+                                        "name": "Mathematics I & II",
+                                        "teaches": "Real analysis, linear algebra, complex analysis \u2014 math at higher rigor than standard engineering",
+                                        "tests": "Proof-based and computational exams; more mathematical maturity expected"
+                                },
+                                {
+                                        "name": "Introduction to Programming",
+                                        "teaches": "Python/C programming with emphasis on scientific computing and numerical methods",
+                                        "tests": "Scientific computing lab exams; physics simulation assignments"
+                                },
+                                {
+                                        "name": "Chemistry / Materials Basics",
+                                        "teaches": "Atomic structure, bonding, material properties \u2014 chemistry relevant to device physics",
+                                        "tests": "Written exam plus chemistry lab"
+                                },
+                                {
+                                        "name": "Engineering Drawing / Workshop",
+                                        "teaches": "Technical drawing, basic instrumentation fabrication, optical bench assembly",
+                                        "tests": "Drawing sheets and lab practical assessment"
+                                }
+                        ]
+                },
+                {
+                        "year": 2,
+                        "theme": "Core physics \u2014 quantum mechanics, electrodynamics, and optics",
+                        "courses": [
+                                {
+                                        "name": "Quantum Mechanics",
+                                        "teaches": "Schr\u00f6dinger equation, hydrogen atom, angular momentum, perturbation theory \u2014 the physics of the very small",
+                                        "tests": "Problem-solving exams with derivations; quantum mechanics problem sets"
+                                },
+                                {
+                                        "name": "Electrodynamics",
+                                        "teaches": "Maxwell's equations in full, electromagnetic wave propagation, radiation, waveguides",
+                                        "tests": "Derivation-heavy written exams; computational electromagnetics assignments"
+                                },
+                                {
+                                        "name": "Mathematical Physics",
+                                        "teaches": "Complex analysis, special functions, Fourier analysis, Green's functions, tensor analysis",
+                                        "tests": "Mathematical derivation exams; problem sets on special functions and transforms"
+                                },
+                                {
+                                        "name": "Optics & Photonics",
+                                        "teaches": "Wave optics, interference, diffraction, lasers, fiber optics, optical instruments",
+                                        "tests": "Optics lab (interferometry, spectroscopy); written exam on wave optics theory"
+                                },
+                                {
+                                        "name": "Thermal & Statistical Physics",
+                                        "teaches": "Thermodynamic potentials, ensembles, partition functions, quantum statistics \u2014 connecting micro to macro",
+                                        "tests": "Statistical mechanics problem solving; derivation of macroscopic properties from microscopic models"
+                                }
+                        ]
+                },
+                {
+                        "year": 3,
+                        "theme": "Solid state, devices, and computational physics",
+                        "courses": [
+                                {
+                                        "name": "Solid State Physics",
+                                        "teaches": "Crystal structure, phonons, electronic band theory, semiconductors, magnetic materials \u2014 matter in bulk",
+                                        "tests": "Band structure calculation problems; solid state lab (Hall effect, resistivity measurements)"
+                                },
+                                {
+                                        "name": "Semiconductor Device Physics",
+                                        "teaches": "p-n junctions, MOSFETs, LEDs, solar cells, device fabrication \u2014 how electronic devices work at physics level",
+                                        "tests": "Device analysis problems; semiconductor characterization lab"
+                                },
+                                {
+                                        "name": "Laser Physics & Applications",
+                                        "teaches": "Stimulated emission, laser systems, nonlinear optics, laser applications in industry and medicine",
+                                        "tests": "Laser lab experiments; written exam on laser theory and applications"
+                                },
+                                {
+                                        "name": "Computational Physics",
+                                        "teaches": "Monte Carlo methods, molecular dynamics, PDE solvers, scientific visualization \u2014 physics through simulation",
+                                        "tests": "Computational projects simulating physical systems; code review and results analysis"
+                                },
+                                {
+                                        "name": "Instrumentation & Measurement",
+                                        "teaches": "Sensors, data acquisition, signal conditioning, error analysis \u2014 precision measurement for science",
+                                        "tests": "Instrumentation lab with real measurement systems; error analysis reports"
+                                }
+                        ]
+                },
+                {
+                        "year": 4,
+                        "theme": "Frontier topics and capstone",
+                        "courses": [
+                                {
+                                        "name": "Nanotechnology & Nanomaterials (elective)",
+                                        "teaches": "Quantum dots, thin films, nanostructure fabrication, characterization at nanoscale",
+                                        "tests": "Nanofabrication lab or simulation project; literature review presentation"
+                                },
+                                {
+                                        "name": "Nuclear & Particle Physics (elective)",
+                                        "teaches": "Nuclear structure, radioactivity, particle interactions, detector physics \u2014 subatomic world",
+                                        "tests": "Nuclear physics problems; radiation measurement lab"
+                                },
+                                {
+                                        "name": "Quantum Computing Basics (elective)",
+                                        "teaches": "Qubits, quantum gates, entanglement, quantum algorithms \u2014 computing with quantum mechanics",
+                                        "tests": "Quantum circuit design problems; simulation project using Qiskit or similar"
+                                },
+                                {
+                                        "name": "Capstone Project / B.Tech Thesis",
+                                        "teaches": "Physics research project: experimental or computational, requiring original analysis and results",
+                                        "tests": "Research presentation, written thesis with data analysis, viva with external examiner"
+                                }
+                        ]
+                }
+        ],
     ),
 ]
 
