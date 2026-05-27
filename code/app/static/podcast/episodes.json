@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-05-27",
+      "slug": "daily-brief-2026-05-27",
+      "episode_number": 25,
+      "title": "Daily Brief \u2014 May 27, 2026",
+      "date": "2026-05-27",
+      "published_at": "2026-05-27T18:42:28",
+      "duration_seconds": 1327,
+      "duration_human": "22:07",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-05-27.mp3",
+      "audio_length_bytes": 10610120,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 3,
+        "day": 4,
+        "topic": "Iron Condors on SPY",
+        "lesson": "Managing the trade: when to close early vs hold to expiry"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Managing the trade",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: None of these posts fit your audience",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 750.57,
+        "pct_change": -0.0,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "managing",
+        "trade",
+        "when",
+        "close",
+        "early",
+        "hold"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-05-27</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Strait of Hormuz uncertainty and big tech M&amp;A appetite collide with chip supply reshuffling</li>\n<li><strong>SPY learning:</strong> Managing the trade</li>\n<li><strong>Market brief:</strong> SPY Daily Brief: Consumer Strength Masks Tech Weakness as IV Rank Hits 100</li>\n<li><strong>PM/analytics:</strong> None of these posts fit your audience</li>\n</ul>\n<h2>Summary</h2>\n<p>JPMorgan Chase CEO Jamie Dimon signaled the bank is hunting for a $20 billion acquisition target, which would rank among the largest deals in the firm&rsquo;s history and likely draw regulatory scrutiny given JPM&rsquo;s already dominant position in US banking assets. Traders on Kalshi are skeptical Iran can reopen the Strait of Hormuz to normal traffic within a month of a peace deal, despite official timelines\u2014a meaningful signal that energy markets aren&rsquo;t pricing in near-term relief from one of the world&rsquo;s most critical chokepoints. Nvidia announced a $150 billion capex spending plan, triggering a rally in Taiwan chip stocks while mainland Chinese chipmakers like Cambricon sold off hard, reshaping the geopolitical calculus around semiconductor supply chains.</p>\n<p>Today&rsquo;s lesson is Managing the trade: when to close early vs hold to expiry. SPY most recently closed at 750.57, with current implied volatility around 13.65 and the near-the-money strike near 751.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>All right, let&rsquo;s break down what happened in the market today. SPY closed essentially flat at 750.57, down just a penny from yesterday&rsquo;s 750.59. Now, I know flat sounds boring, but context matters here. We&rsquo;re up nearly nine dollars for the week\u2014that&rsquo;s a 1.2 percent move from last Wednesday&rsquo;s close of 741.25. So today was a consolidation day after a pretty solid four-day run. The index traded in a narrow range, high of 751.38, low of 748.22, and volume came in at 24.5 million shares, which is right around normal. The real story today isn&rsquo;t the price action\u2014it&rsquo;s what&rsquo;s happening underneath.</p>\n<p>Let&rsquo;s talk sectors, because this is where the tension is. Consumer Discretionary led the charge, up 1.44 percent. Consumer Staples followed close behind at plus 1.4 percent. Communication Services added 1 percent. But here&rsquo;s the kicker: Technology fell 0.47 percent, and Energy got hammered, down 1.09 percent. Financials also lagged, dropping 0.8 percent. So you&rsquo;ve got a classic rotation story here. Defensive and cyclical consumer names are catching a bid while the mega-cap tech names and energy are getting sold. This is the kind of divergence that tells you there&rsquo;s some real debate in the market about what comes next.</p>\n<p>Why is this happening? A few things are in play. First, the yield curve just steepened\u2014the 10-2 spread widened to 43 basis points from 49 basis points yesterday. That&rsquo;s actually a meaningful move. When the curve steepens, it can signal either growth optimism or recession fears, depending on which end is moving. In this case, the 10-year fell one basis point to 4.56 percent while the 2-year rose five basis points to 4.13 percent. That&rsquo;s a classic steepening pattern that often precedes a growth slowdown. Energy&rsquo;s weakness also makes sense given the headlines around Iran and the Strait of Hormuz\u2014traders on Kalshi are skeptical about Iran&rsquo;s timeline for reopening that passageway, which is keeping geopolitical risk premium in the market. And tech? Well, Nvidia announced a $150 billion spending plan, which is massive, but that&rsquo;s also a reminder that the AI capex cycle is real and potentially unsustainable. The market&rsquo;s rotating into names that don&rsquo;t require infinite growth assumptions.</p>\n<p>Now let&rsquo;s talk about what matters for you as a premium seller. IV rank just hit 100. That&rsquo;s the highest reading possible. Current IV is 13.65, IV percentile is 37.78, and the VIX closed at 16.57. This is a critical moment. IV rank of 100 means implied volatility is at the highest point it&rsquo;s been over the last 52 weeks. For someone thinking about selling premium, this is textbook setup territory. You&rsquo;re getting paid maximum dollars for taking on defined risk. The ATM 751 strike on the June 26 expiry\u2014that&rsquo;s 30 days out\u2014is showing IV of 13.65 across both calls and puts. Your short call delta is around 0.54, your short put delta is around negative 0.46. That&rsquo;s a balanced risk profile if you&rsquo;re thinking about a call spread or a put spread. The fact that IV rank is at 100 while the VIX is only at 16.57 tells you this is more about realized volatility expectations than panic. It&rsquo;s a seller&rsquo;s market, plain and simple.</p>\n<p>Let&rsquo;s nail down the levels. SPY is trading right at the ATM strike of 751. The 52-week high is 752.13, just 1.56 points above us. The 52-week low is 583.24, which is ancient history at this point. For the week, we&rsquo;re sitting near the highs. Immediate resistance is 752, then 753. Support is 750, then 749. The range has been tight, so don&rsquo;t expect a breakout without a catalyst. The yield curve steepening is a subtle signal that the market is pricing in some caution, so I wouldn&rsquo;t be surprised to see us consolidate here for a few more days.</p>\n<p>What&rsquo;s on the calendar that could move us? Tomorrow, May 28th, we get the Freddie Mac Mortgage Rate Update\u2014that&rsquo;s medium importance. Then on May 29th, we get University of Michigan Consumer Sentiment. That one matters because consumer sentiment has been deteriorating\u2014it dropped 3.5 points to 49.8 in April. If it rolls over further, that could validate the rotation out of growth and into defensive names we saw today. The big one is the Fed meeting on June 10th, which is 14 days away. That&rsquo;s outside your immediate trading window if you&rsquo;re thinking about June expiries, but it&rsquo;s definitely on the radar for July positioning. No major earnings in the next seven days, so we&rsquo;re in a quiet period.</p>\n<p>Here&rsquo;s your one-liner takeaway: IV rank at 100 with a steepening yield curve is a green light to sell defined-risk call spreads or put spreads on SPY, but size them conservatively because the market is clearly rotating, and that rotation could accelerate if consumer sentiment data disappoints this week.</p>\n<p>I need to be straight with you here \u2014 none of these three posts are actionable for a senior PM building intuition on SPY defined-risk spreads.</p>\n<p>The Codex piece is about a product feature framework, which is solid PM content, but it&rsquo;s generic enough that a senior PM with 5-7 years already runs some version of this. It&rsquo;s not novel framing of a hard problem you&rsquo;re actually facing. The OpenCode and job market pieces are pure engineering/hiring content with zero relevance to your stated goal of thinking like a systematic trader.</p>\n<p>What you actually need for Segment D right now is one of three things: First, a post from a practitioner who&rsquo;s built systematic option strategies and shares the specific mental model they use to choose between spread types based on volatility regime \u2014 not textbook Greeks, but &ldquo;here&rsquo;s why I picked a call spread over a strangle last week.&rdquo; Second, something on how to measure edge in defined-risk positions when you&rsquo;re running small sample sizes and dealing with slippage. Third, a deep look at how senior traders actually prioritize capital allocation across multiple spreads when IV rank is in the 60-70 range and everything looks attractive.</p>\n<p>Right now you&rsquo;re getting fed content that assumes you need help with basic PM skills or engineering trends. You don&rsquo;t. You need someone who&rsquo;s traded through a vol crush, sized positions wrong, and learned the hard way how to think about risk in a way that connects to your PM intuition.</p>\n<p>The move here is to either surface posts from actual options traders or practitioners writing about systematic trading decisions, or skip this segment this week rather than force a connection that wastes your time. Your audience is sophisticated enough to know when something&rsquo;s been retrofitted to fit the brief.</p>\n<p>If you want me to write Segment D next time, send me content from someone like a quant who&rsquo;s published on volatility regime detection, a trader writing about position sizing in defined-risk spreads, or a PM who&rsquo;s shipped a product that required them to think systematically about trade-offs under uncertainty \u2014 which is actually the same skill you&rsquo;re building with spreads.</p>"
+    },
+    {
       "id": "2026-05-26",
       "slug": "daily-brief-2026-05-26",
       "episode_number": 24,
