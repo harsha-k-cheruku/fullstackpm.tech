@@ -6,15 +6,15 @@
 
     <!-- Nav -->
     <div class="flex items-center justify-between mb-4">
-      <a href="/resources/engineering-course-explainer" class="text-sm hover:underline" style="color: var(--color-text-tertiary);">← Back to all 12 branches</a>
+      <a href="/projects/engineering-course-explainer-india/explore" class="text-sm hover:underline" style="color: var(--color-text-tertiary);">← Back to all 12 branches</a>
       <div class="flex gap-3 text-sm">
         {% for c in courses %}
         {% if c.slug == course.slug %}
           {% if not loop.first %}
-          <a href="/resources/engineering-course-explainer/{{ courses[loop.index0 - 1].slug }}" class="hover:underline" style="color: var(--color-accent);">← {{ courses[loop.index0 - 1].name[:20] }}{% if courses[loop.index0 - 1].name|length > 20 %}…{% endif %}</a>
+          <a href="/projects/engineering-course-explainer-india/explore/{{ courses[loop.index0 - 1].slug }}" class="hover:underline" style="color: var(--color-accent);">← {{ courses[loop.index0 - 1].name[:20] }}{% if courses[loop.index0 - 1].name|length > 20 %}…{% endif %}</a>
           {% endif %}
           {% if not loop.last %}
-          <a href="/resources/engineering-course-explainer/{{ courses[loop.index0 + 1].slug }}" class="hover:underline" style="color: var(--color-accent);">{{ courses[loop.index0 + 1].name[:20] }}{% if courses[loop.index0 + 1].name|length > 20 %}…{% endif %} →</a>
+          <a href="/projects/engineering-course-explainer-india/explore/{{ courses[loop.index0 + 1].slug }}" class="hover:underline" style="color: var(--color-accent);">{{ courses[loop.index0 + 1].name[:20] }}{% if courses[loop.index0 + 1].name|length > 20 %}…{% endif %} →</a>
           {% endif %}
         {% endif %}
         {% endfor %}
@@ -139,21 +139,21 @@
         <div class="flex flex-wrap gap-2 mb-4">
           {% for item in course.similar_branches %}
           {% set sim_slug = item|lower|replace(' ', '-')|replace('/', '-')|replace('&', 'and') %}
-          <a href="/resources/engineering-course-explainer/{{ sim_slug }}"
+          <a href="/projects/engineering-course-explainer-india/explore/{{ sim_slug }}"
              class="text-xs rounded-full px-3 py-1.5 transition-colors hover:ring-1"
              style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary); border:1px solid var(--color-border); --tw-ring-color: var(--color-accent);">
             {{ item }}
           </a>
           {% endfor %}
         </div>
-        <a href="/resources/engineering-course-explainer/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare any two Top 12 branches →</a>
+        <a href="/projects/engineering-course-explainer-india/explore/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare any two Top 12 branches →</a>
       </div>
     </div>
 
     <!-- Bottom nav -->
     <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--color-border);">
-      <a href="/resources/engineering-course-explainer" class="text-sm hover:underline" style="color: var(--color-accent);">← All 12 branches</a>
-      <a href="/resources/engineering-course-explainer/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare tool →</a>
+      <a href="/projects/engineering-course-explainer-india/explore" class="text-sm hover:underline" style="color: var(--color-accent);">← All 12 branches</a>
+      <a href="/projects/engineering-course-explainer-india/explore/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare tool →</a>
     </div>
 
   </div>
