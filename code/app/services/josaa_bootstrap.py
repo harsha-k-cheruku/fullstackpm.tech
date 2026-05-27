@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import gzip
 from urllib.request import urlopen
 
 from app.config import settings
@@ -34,6 +35,18 @@ def ensure_josaa_dataset() -> str:
         data = resp.read()
     target.write_bytes(data)
 
-    settings.josaa_data_path = str(target)
-    print(f"[josaa-bootstrap] Dataset ready: {target} ({target.stat().st_size} bytes)")
-    return str(target)
+    final_path = target
+    if str(target).endswith('.gz') or settings.josaa_csv_url.lower().endswith('.gz'):
+        unzipped = target.with_suffix('')
+        print(f"[josaa-bootstrap] Detected gzip. Extracting to {unzipped}")
+        with gzip.open(target, 'rb') as fin, open(unzipped, 'wb') as fout:
+            while True:
+                chunk = fin.read(1024 * 1024)
+                if not chunk:
+                    break
+                fout.write(chunk)
+        final_path = unzipped
+
+    settings.josaa_data_path = str(final_path)
+    print(f"[josaa-bootstrap] Dataset ready: {final_path} ({final_path.stat().st_size} bytes)")
+    return str(final_path)
