@@ -2,14 +2,16 @@
 from datetime import datetime
 from pathlib import Path
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Query, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
+from app.services.course_explainer_service import CourseExplainerService
 
 router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
+course_service = CourseExplainerService()
 
 
 def _ctx(request: Request, **kwargs) -> dict:
@@ -31,6 +33,62 @@ async def resources_hub(request: Request) -> HTMLResponse:
             request,
             title="Resources - fullstackpm.tech",
             current_page="/resources",
+        ),
+    )
+
+
+@router.get("/resources/engineering-course-explainer", response_class=HTMLResponse)
+async def engineering_course_explainer_index(request: Request) -> HTMLResponse:
+    return templates.TemplateResponse(
+        "resources/engineering_course_explainer_index.html",
+        _ctx(
+            request,
+            title="Engineering Course Explainer (India) — fullstackpm.tech",
+            current_page="/resources/engineering-course-explainer",
+            courses=course_service.all_courses(),
+        ),
+    )
+
+
+@router.get("/resources/engineering-course-explainer/compare", response_class=HTMLResponse)
+async def engineering_course_explainer_compare(
+    request: Request,
+    left: str = Query("computer-science-and-engineering"),
+    right: str = Query("mechanical-engineering"),
+) -> HTMLResponse:
+    courses = course_service.all_courses()
+    left_course = course_service.get_by_slug(left) or courses[0]
+    right_course = course_service.get_by_slug(right) or courses[1]
+    return templates.TemplateResponse(
+        "resources/engineering_course_explainer_compare.html",
+        _ctx(
+            request,
+            title=f"Compare {left_course.name} vs {right_course.name} | fullstackpm.tech",
+            current_page="/resources/engineering-course-explainer",
+            courses=courses,
+            left_course=left_course,
+            right_course=right_course,
+        ),
+    )
+
+
+@router.get("/resources/engineering-course-explainer/{course_slug}", response_class=HTMLResponse)
+async def engineering_course_explainer_detail(request: Request, course_slug: str) -> HTMLResponse:
+    course = course_service.get_by_slug(course_slug)
+    if not course:
+        return templates.TemplateResponse(
+            "404.html",
+            _ctx(request, title="Course Not Found", current_page="/resources/engineering-course-explainer"),
+            status_code=404,
+        )
+    return templates.TemplateResponse(
+        "resources/engineering_course_explainer_detail.html",
+        _ctx(
+            request,
+            title=f"{course.name} — Engineering Course Explainer | fullstackpm.tech",
+            current_page="/resources/engineering-course-explainer",
+            course=course,
+            courses=course_service.all_courses(),
         ),
     )
 
