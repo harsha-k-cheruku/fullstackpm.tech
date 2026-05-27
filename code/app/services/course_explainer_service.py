@@ -11,6 +11,7 @@ class CourseExplainer:
     slug: str
     family: str
     sample_count: int
+    curated_tier: str = "standard"
     who_this_fits: str
     what_you_study: list[str]
     eli10: str
@@ -19,7 +20,6 @@ class CourseExplainer:
     similar_branches: list[str]
     tradeoffs: list[str]
     good_fit_checklist: list[str]
-    curated_tier: str = "standard"
 
 
 class CourseExplainerService:
