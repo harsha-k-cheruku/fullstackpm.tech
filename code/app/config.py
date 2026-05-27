@@ -33,6 +33,8 @@ class Settings(BaseSettings):
         "JOSAA_DATA_PATH",
         "/Users/sidc/Projects/josaa-data-pipeline/data/normalized/josaa_master.csv",
     )
+    josaa_csv_url: str = os.getenv("JOSAA_CSV_URL", "")
+    josaa_download_path: str = os.getenv("JOSAA_DOWNLOAD_PATH", "/tmp/josaa_master.csv")
 
     # Site metadata
     site_title: str = "fullstackpm.tech"
