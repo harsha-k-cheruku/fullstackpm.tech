@@ -32,9 +32,12 @@ def ensure_josaa_dataset() -> str:
 
     try:
         print(f"[josaa-bootstrap] Downloading dataset from URL to {target}")
-        with urlopen(settings.josaa_csv_url, timeout=120) as resp:
-            data = resp.read()
-        target.write_bytes(data)
+        with urlopen(settings.josaa_csv_url, timeout=120) as resp, open(target, "wb") as f_out:
+            while True:
+                chunk = resp.read(1024 * 1024)
+                if not chunk:
+                    break
+                f_out.write(chunk)
 
         final_path = target
         if str(target).endswith('.gz') or settings.josaa_csv_url.lower().endswith('.gz'):
