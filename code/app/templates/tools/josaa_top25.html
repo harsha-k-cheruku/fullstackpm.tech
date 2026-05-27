@@ -314,6 +314,23 @@
     {% endif %}
 
     <div class="mt-8 rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">How Ranking Works (Methodology)</h2>
+      <ol class="list-decimal pl-5 text-sm space-y-1" style="color: var(--color-text-secondary);">
+        <li><strong>Scope filter:</strong> We first filter by year (and round, if selected).</li>
+        <li><strong>Hard constraints:</strong> If you specify quota, gender, preferred branches, or institutes, we constrain the pool before scoring.</li>
+        <li><strong>Strict mode:</strong> Strict mode removes incomplete/low-quality rows (missing key fields like opening/closing rank, seat/quota/gender).</li>
+        <li><strong>Base probability:</strong> Probability is derived from your rank vs opening/closing rank — strong near opening, decays within range, then conservative exponential tail beyond closing.</li>
+        <li><strong>Preference score:</strong> Final score = probability + (branch boost × branch weight) + (institute boost × institute weight).</li>
+        <li><strong>All-round cleanup:</strong> If no round is selected, duplicate rows across rounds are deduplicated per option to keep output clean.</li>
+        <li><strong>Final ordering:</strong> Ranked by score (desc), then probability (desc), then closing rank (asc). Top 25 are returned.</li>
+        <li><strong>Bands:</strong> Safe (≥0.75), Target (≥0.40), Aspirational (&lt;0.40).</li>
+      </ol>
+      <p class="text-xs mt-3" style="color: var(--color-text-tertiary);">
+        This tool is decision support based on historical cutoffs and filters. It is not an official JoSAA seat allocation simulator.
+      </p>
+    </div>
+
+    <div class="mt-8 rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
       <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Rule Notes (2025-26 Business Rules — Practical Summary)</h2>
       <ul class="list-disc pl-5 text-sm space-y-1" style="color: var(--color-text-secondary);">
         <li>Opening/Closing ranks are category and pool specific; compare within matching quota + seat type + gender pool.</li>
