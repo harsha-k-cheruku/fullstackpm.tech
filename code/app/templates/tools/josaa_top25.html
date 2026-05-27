@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-10 lg:py-14">
+  <div class="max-w-[1100px] mx-auto">
+    <p class="text-small mb-2" style="color: var(--color-text-secondary);">Tool</p>
+    <h1 class="text-h1 mb-3" style="color: var(--color-text-primary);">JoSAA Top 25 Predictor</h1>
+    <p class="text-body mb-8" style="color: var(--color-text-secondary);">
+      Enter your rank and constraints. By default this returns the top 25 by <strong>probability</strong>. If you add preferred branches/institutes,
+      ranking happens <strong>inside those constraints</strong>.
+    </p>
+
+    <div class="rounded-xl border p-6 mb-8" style="background-color: var(--color-bg-secondary); border-color: var(--color-border);">
+      <form method="post" action="/tools/josaa-top-25" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">JEE Rank *</label>
+          <input name="rank" type="number" min="1" required value="{{ form_state.rank }}"
+                 class="w-full rounded-md px-3 py-2 border"
+                 style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"/>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Year *</label>
+          <select name="year" required class="w-full rounded-md px-3 py-2 border"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">
+            {% for y in years %}
+            <option value="{{ y }}" {% if form_state.year == y %}selected{% endif %}>{{ y }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Round (optional)</label>
+          <select name="round_number" class="w-full rounded-md px-3 py-2 border"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">
+            <option value="" {% if not form_state.round_number %}selected{% endif %}>All rounds (recommended first)</option>
+            {% for r in rounds %}
+            <option value="{{ r }}" {% if form_state.round_number == (r|string) %}selected{% endif %}>Round {{ r }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Quota (optional)</label>
+          <select name="quota" class="w-full rounded-md px-3 py-2 border"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">
+            <option value="">Any quota</option>
+            {% for q in quotas %}
+            <option value="{{ q }}" {% if form_state.quota == q %}selected{% endif %}>{{ q }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Gender pool (optional)</label>
+          <select name="gender" class="w-full rounded-md px-3 py-2 border"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">
+            <option value="">Any gender pool</option>
+            {% for g in genders %}
+            <option value="{{ g }}" {% if form_state.gender == g %}selected{% endif %}>{{ g }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Compare with another rank (optional)</label>
+          <input name="compare_rank" type="number" min="1" value="{{ form_state.compare_rank }}"
+                 placeholder="Example: sibling/friend rank"
+                 class="w-full rounded-md px-3 py-2 border"
+                 style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"/>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Preferred branches (optional constraints)</label>
+          <textarea name="preferred_branches" rows="2"
+                    placeholder="Example: Computer Science, Electronics, Mathematics"
+                    class="w-full rounded-md px-3 py-2 border"
+                    style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">{{ form_state.preferred_branches }}</textarea>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Preferred institutes (optional constraints)</label>
+          <textarea name="preferred_institutes" rows="2"
+                    placeholder="Example: IIT Delhi, IIT Bombay, NIT Trichy"
+                    class="w-full rounded-md px-3 py-2 border"
+                    style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">{{ form_state.preferred_institutes }}</textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Rule mode</label>
+          <select name="mode" class="w-full rounded-md px-3 py-2 border"
+                  style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);">
+            <option value="basic" {% if form_state.mode == 'basic' %}selected{% endif %}>Basic (faster, broad)</option>
+            <option value="strict" {% if form_state.mode == 'strict' %}selected{% endif %}>Strict (rule-aware filtering)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Branch weight (0.0 - 0.5)</label>
+          <input name="branch_weight" type="number" min="0" max="0.5" step="0.01" value="{{ form_state.branch_weight }}"
+                 class="w-full rounded-md px-3 py-2 border"
+                 style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"/>
+        </div>
+
+        <div>
+          <label class="block text-sm mb-1" style="color: var(--color-text-secondary);">Institute weight (0.0 - 0.5)</label>
+          <input name="institute_weight" type="number" min="0" max="0.5" step="0.01" value="{{ form_state.institute_weight }}"
+                 class="w-full rounded-md px-3 py-2 border"
+                 style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"/>
+        </div>
+
+        <div class="md:col-span-2 pt-1">
+          <button type="submit" class="rounded-md px-4 py-2 text-sm font-semibold"
+                  style="background-color: var(--color-accent); color: white;">
+            Generate Top 25
+          </button>
+        </div>
+      </form>
+    </div>
+
+    {% if error %}
+    <div class="rounded-lg border px-4 py-3 mb-6" style="border-color: #fecaca; background-color: #fff1f2; color: #9f1239;">
+      {{ error }}
+    </div>
+    {% endif %}
+
+    {% if meta %}
+    <div class="rounded-lg border px-4 py-3 mb-4 text-sm" style="border-color: var(--color-border); background-color: var(--color-bg-secondary); color: var(--color-text-secondary);">
+      Candidate pool after filters: <strong>{{ meta.total_candidates }}</strong>
+      · Mode: <strong>{{ meta.filters_applied.mode }}</strong>
+      {% if meta.filters_applied.branch_terms or meta.filters_applied.institute_terms %}
+      · Constraints applied
+      {% else %}
+      · No branch/institute constraints (pure probability run)
+      {% endif %}
+      · Weights: branch={{ meta.filters_applied.branch_weight }}, institute={{ meta.filters_applied.institute_weight }}
+    </div>
+    {% endif %}
+
+    {% if results and results|length > 0 %}
+    <form method="post" action="/tools/josaa-top-25/export" class="mb-3">
+      <input type="hidden" name="rank" value="{{ form_state.rank }}" />
+      <input type="hidden" name="year" value="{{ form_state.year }}" />
+      <input type="hidden" name="round_number" value="{{ form_state.round_number }}" />
+      <input type="hidden" name="quota" value="{{ form_state.quota }}" />
+      <input type="hidden" name="gender" value="{{ form_state.gender }}" />
+      <input type="hidden" name="preferred_branches" value="{{ form_state.preferred_branches }}" />
+      <input type="hidden" name="preferred_institutes" value="{{ form_state.preferred_institutes }}" />
+      <input type="hidden" name="mode" value="{{ form_state.mode }}" />
+      <input type="hidden" name="branch_weight" value="{{ form_state.branch_weight }}" />
+      <input type="hidden" name="institute_weight" value="{{ form_state.institute_weight }}" />
+      <input type="hidden" name="compare_rank" value="{{ form_state.compare_rank }}" />
+      <button type="submit" class="rounded-md px-3 py-2 text-sm font-semibold" style="background-color: var(--color-accent); color: white;">Export Top 25 CSV</button>
+    </form>
+
+    <div class="overflow-x-auto rounded-xl border" style="border-color: var(--color-border);">
+      <table class="min-w-full text-sm">
+        <thead style="background-color: var(--color-bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2">#</th>
+            <th class="text-left px-3 py-2">Institute</th>
+            <th class="text-left px-3 py-2">Program</th>
+            <th class="text-left px-3 py-2">Quota</th>
+            <th class="text-left px-3 py-2">Seat</th>
+            <th class="text-left px-3 py-2">Gender</th>
+            <th class="text-left px-3 py-2">Open</th>
+            <th class="text-left px-3 py-2">Close</th>
+            <th class="text-left px-3 py-2">Gap vs Close</th>
+            <th class="text-left px-3 py-2">Probability</th>
+            <th class="text-left px-3 py-2">Score</th>
+            {% if form_state.compare_rank %}
+            <th class="text-left px-3 py-2">Compare % (Rank {{ form_state.compare_rank }})</th>
+            <th class="text-left px-3 py-2">Compare Band</th>
+            {% endif %}
+            <th class="text-left px-3 py-2">Band</th>
+            <th class="text-left px-3 py-2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in results %}
+          <tr class="border-t" style="border-color: var(--color-border);">
+            <td class="px-3 py-2">{{ loop.index }}</td>
+            <td class="px-3 py-2">{{ r.institute }}</td>
+            <td class="px-3 py-2">{{ r.program }}</td>
+            <td class="px-3 py-2">{{ r.quota }}</td>
+            <td class="px-3 py-2">{{ r.seat_type }}</td>
+            <td class="px-3 py-2">{{ r.gender }}</td>
+            <td class="px-3 py-2">{{ r.opening_rank }}</td>
+            <td class="px-3 py-2">{{ r.closing_rank }}</td>
+            <td class="px-3 py-2">
+              {% if r.rank_gap_to_close <= 0 %}
+                {{ r.rank_gap_to_close|abs }} inside
+              {% else %}
+                +{{ r.rank_gap_to_close }} outside
+              {% endif %}
+            </td>
+            <td class="px-3 py-2">{{ r.probability_pct }}%</td>
+            <td class="px-3 py-2">{{ '%.3f'|format(r.score) }}</td>
+            {% if form_state.compare_rank %}
+            <td class="px-3 py-2">{{ r.compare_probability_pct }}%</td>
+            <td class="px-3 py-2">{{ r.compare_band }}</td>
+            {% endif %}
+            <td class="px-3 py-2">
+              <span class="inline-flex rounded-full px-2 py-0.5 text-xs"
+                    style="background-color:{% if r.band == 'Safe' %}#dcfce7{% elif r.band == 'Target' %}#fef9c3{% else %}#fee2e2{% endif %}; color:{% if r.band == 'Safe' %}#166534{% elif r.band == 'Target' %}#854d0e{% else %}#991b1b{% endif %};">
+                {{ r.band }}
+              </span>
+            </td>
+            <td class="px-3 py-2">
+              <button type="button"
+                      class="add-to-shortlist rounded px-2 py-1 text-xs font-semibold"
+                      style="background-color: var(--color-accent); color: white;"
+                      data-item='{{ r|tojson|safe }}'>
+                + Shortlist
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-xs mt-4" style="color: var(--color-text-tertiary);">
+      Probability is estimated from your rank position relative to opening/closing ranks (with a conservative tail beyond closing rank).
+      “Gap vs Close” tells how far your rank is from the listed closing rank: negative/inside is stronger, positive/outside is stretch.
+      Use as decision support, not absolute truth.
+    </p>
+
+    <div class="mt-8 rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-h3" style="color: var(--color-text-primary);">My Shortlist Workspace</h2>
+        <button id="clear-shortlist" type="button" class="rounded px-2 py-1 text-xs" style="background-color:#ef4444; color:white;">Clear</button>
+      </div>
+
+      <form method="post" action="/tools/josaa-top-25/save" class="mb-3 flex gap-2 items-center">
+        <input id="scenario-name" name="scenario_name" type="text" placeholder="Scenario name (e.g., Rank 12k IIT focus)"
+               class="rounded-md px-2 py-1 border text-xs"
+               style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"/>
+        <input id="scenario-form-state" name="form_state_json" type="hidden" value="{}"/>
+        <input id="scenario-shortlist" name="shortlist_json" type="hidden" value="[]"/>
+        <button id="save-scenario-btn" type="submit" class="rounded px-2 py-1 text-xs font-semibold" style="background-color: var(--color-accent); color: white;">Save Scenario</button>
+      </form>
+
+      {% if saved_scenarios and saved_scenarios|length > 0 %}
+      <div class="mb-3 text-xs" style="color: var(--color-text-secondary);">
+        <span class="font-semibold">Saved scenarios:</span>
+        <div class="mt-2 space-y-1">
+          {% for s in saved_scenarios %}
+          <div class="flex items-center gap-2 flex-wrap">
+            <a href="/tools/josaa-top-25/load/{{ s.id }}" class="underline">{{ s.name }}</a>
+            <form method="post" action="/tools/josaa-top-25/rename/{{ s.id }}" class="inline-flex gap-1 items-center">
+              <input name="new_name" type="text" value="{{ s.name }}" class="rounded border px-1 py-0.5 text-xs" style="background-color: var(--color-bg-primary); border-color: var(--color-border); color: var(--color-text-primary);"/>
+              <button type="submit" class="rounded px-1 py-0.5 text-xs" style="background-color: #334155; color: white;">Rename</button>
+            </form>
+            <form method="post" action="/tools/josaa-top-25/delete/{{ s.id }}" class="inline">
+              <button type="submit" class="rounded px-1 py-0.5 text-xs" style="background-color: #ef4444; color: white;">Delete</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      <p class="text-xs mb-3" style="color: var(--color-text-tertiary);">Add options from the table. Items are auto-bucketed by band and saved in your browser.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div>
+          <h3 class="font-semibold mb-2" style="color:#166534;">Safe</h3>
+          <ul id="bucket-safe" class="space-y-1 text-xs"></ul>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2" style="color:#854d0e;">Target</h3>
+          <ul id="bucket-target" class="space-y-1 text-xs"></ul>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-2" style="color:#991b1b;">Aspirational</h3>
+          <ul id="bucket-aspirational" class="space-y-1 text-xs"></ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if round_insights and round_insights|length > 0 %}
+    <div class="mt-8 rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Round Delta Insights (same option across rounds)</h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-xs">
+          <thead>
+            <tr>
+              <th class="text-left px-2 py-1">Institute</th>
+              <th class="text-left px-2 py-1">Program</th>
+              <th class="text-left px-2 py-1">Round span</th>
+              <th class="text-left px-2 py-1">Close: first → last</th>
+              <th class="text-left px-2 py-1">Delta</th>
+              <th class="text-left px-2 py-1">Direction</th>
+              <th class="text-left px-2 py-1">Trend</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for d in round_insights %}
+            <tr class="border-t" style="border-color: var(--color-border);">
+              <td class="px-2 py-1">{{ d.institute }}</td>
+              <td class="px-2 py-1">{{ d.program }}</td>
+              <td class="px-2 py-1">R{{ d.first_round }} → R{{ d.last_round }}</td>
+              <td class="px-2 py-1">{{ d.closing_first }} → {{ d.closing_last }}</td>
+              <td class="px-2 py-1">{{ d.delta_closing }}</td>
+              <td class="px-2 py-1">{{ d.direction }}</td>
+              <td class="px-2 py-1" title="Rounds {{ d.rounds }} | Closes {{ d.closes }}">{{ d.trend }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs mt-2" style="color: var(--color-text-tertiary);">Positive delta means closing rank moved higher (eased). Negative means became tighter.</p>
+    </div>
+    {% endif %}
+
+    <div class="mt-8 rounded-xl border p-5" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Rule Notes (2025-26 Business Rules — Practical Summary)</h2>
+      <ul class="list-disc pl-5 text-sm space-y-1" style="color: var(--color-text-secondary);">
+        <li>Opening/Closing ranks are category and pool specific; compare within matching quota + seat type + gender pool.</li>
+        <li>Different rounds materially shift cutoffs; shortlist should be reviewed per round update.</li>
+        <li>PwD and supernumerary pools behave differently; treat them as separate competitive pools.</li>
+        <li>This tool is decision-support, not official seat-allocation simulation.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+  const KEY = 'josaa_shortlist_v1';
+  const LOADED_SHORTLIST_JSON = {{ (loaded_shortlist_json if loaded_shortlist_json is defined else '[]')|tojson|safe }};
+
+  function readStore() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; }
+  }
+
+  function writeStore(items) {
+    localStorage.setItem(KEY, JSON.stringify(items));
+  }
+
+  function dedupe(items) {
+    const seen = new Set();
+    return items.filter(i => {
+      const k = [i.institute, i.program, i.quota, i.seat_type, i.gender].join('|');
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+  }
+
+  function renderBuckets() {
+    const items = readStore();
+    const safe = document.getElementById('bucket-safe');
+    const target = document.getElementById('bucket-target');
+    const asp = document.getElementById('bucket-aspirational');
+    if (!safe || !target || !asp) return;
+
+    safe.innerHTML = ''; target.innerHTML = ''; asp.innerHTML = '';
+
+    for (const item of items) {
+      const li = document.createElement('li');
+      li.className = 'rounded p-2 border';
+      li.style.borderColor = 'var(--color-border)';
+      li.textContent = `${item.institute} — ${item.program} (${item.probability_pct}%)`;
+
+      if (item.band === 'Safe') safe.appendChild(li);
+      else if (item.band === 'Target') target.appendChild(li);
+      else asp.appendChild(li);
+    }
+  }
+
+  document.querySelectorAll('.add-to-shortlist').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const raw = btn.getAttribute('data-item');
+      if (!raw) return;
+      const item = JSON.parse(raw);
+      const merged = dedupe([item, ...readStore()]).slice(0, 75);
+      writeStore(merged);
+      renderBuckets();
+    });
+  });
+
+  const clearBtn = document.getElementById('clear-shortlist');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      writeStore([]);
+      renderBuckets();
+    });
+  }
+
+  // If a scenario was loaded from server, hydrate local shortlist once.
+  try {
+    const loaded = JSON.parse(LOADED_SHORTLIST_JSON || '[]');
+    if (Array.isArray(loaded) && loaded.length > 0) {
+      writeStore(loaded);
+    }
+  } catch (_) {}
+
+  const saveBtn = document.getElementById('save-scenario-btn');
+  if (saveBtn) {
+    saveBtn.addEventListener('click', () => {
+      const formState = {
+        rank: document.querySelector('input[name="rank"]')?.value || '',
+        year: document.querySelector('select[name="year"]')?.value || '',
+        round_number: document.querySelector('select[name="round_number"]')?.value || '',
+        quota: document.querySelector('select[name="quota"]')?.value || '',
+        gender: document.querySelector('select[name="gender"]')?.value || '',
+        preferred_branches: document.querySelector('textarea[name="preferred_branches"]')?.value || '',
+        preferred_institutes: document.querySelector('textarea[name="preferred_institutes"]')?.value || '',
+        mode: document.querySelector('select[name="mode"]')?.value || 'basic',
+        branch_weight: document.querySelector('input[name="branch_weight"]')?.value || '0.15',
+        institute_weight: document.querySelector('input[name="institute_weight"]')?.value || '0.10',
+        compare_rank: document.querySelector('input[name="compare_rank"]')?.value || '',
+      };
+
+      const formStateInput = document.getElementById('scenario-form-state');
+      const shortlistInput = document.getElementById('scenario-shortlist');
+      if (formStateInput) formStateInput.value = JSON.stringify(formState);
+      if (shortlistInput) shortlistInput.value = JSON.stringify(readStore());
+    });
+  }
+
+  renderBuckets();
+})();
+</script>
+{% endblock %}

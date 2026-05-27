@@ -6,6 +6,7 @@ from app.models.interview_session import InterviewSession, InterviewAttempt
 from app.models.user import User
 from app.models.pm_multiverse import PmmVote
 from app.models.episode import Episode
+from app.models.josaa_scenario import JosaaScenario
 from app.models.sde_prep import (
     LeetCodeProblem,
     PracticeSession,
@@ -31,4 +32,5 @@ __all__ = [
     "DailyTask",
     "DailyLog",
     "NaradaOverride",
+    "JosaaScenario",
 ]

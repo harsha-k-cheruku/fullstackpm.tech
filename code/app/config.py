@@ -28,6 +28,12 @@ class Settings(BaseSettings):
     )
     google_sheets_id: str = os.getenv("GOOGLE_SHEETS_ID", "19-FyJ8gKiqodVBGnyAYIlvJ9Tun9NYU02AdvUM12T3Q")
 
+    # JoSAA tool dataset
+    josaa_data_path: str = os.getenv(
+        "JOSAA_DATA_PATH",
+        "/Users/sidc/Projects/josaa-data-pipeline/data/normalized/josaa_master.csv",
+    )
+
     # Site metadata
     site_title: str = "fullstackpm.tech"
     site_description: str = "Portfolio of Harsha Cheruku — Full Stack AI Product Manager"
