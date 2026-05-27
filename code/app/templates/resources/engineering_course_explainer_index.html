@@ -3,22 +3,87 @@
 {% block content %}
 <section class="py-12 lg:py-16">
   <div class="max-w-6xl mx-auto">
-    <p class="text-small mb-3" style="color: var(--color-text-secondary);">Resources</p>
-    <h1 class="text-h1 mb-4" style="color: var(--color-text-primary);">Engineering Course Explainer (India)</h1>
-    <p class="text-body-lg mb-8" style="color: var(--color-text-secondary);">
-      Just the <strong style="color: var(--color-text-primary);">Top 12 curated branches</strong>. No giant fake-complete catalog. Just the branches most worth comparing properly.
-    </p>
 
-    <div class="rounded-2xl border p-5 mb-8" style="border-color: var(--color-border); background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));">
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div>
-          <h2 class="text-h3 mb-2" style="color: var(--color-text-primary);">Top 12 curated grid</h2>
-          <p class="text-sm" style="color: var(--color-text-secondary);">Each branch has a branch page plus compare support. The compare tool also shows only these 12, because restraint is apparently a superpower.</p>
+    <!-- Hero -->
+    <div class="mb-10">
+      <p class="text-small mb-3" style="color: var(--color-text-secondary);">Resources</p>
+      <h1 class="text-h1 mb-4" style="color: var(--color-text-primary);">Engineering Course Explainer (India)</h1>
+      <p class="text-body-lg mb-4" style="color: var(--color-text-secondary);">
+        Making one of the biggest decisions of your life? Good. Let's make it less random.
+      </p>
+      <p class="text-body" style="color: var(--color-text-secondary);">
+        This is a curated guide to <strong style="color: var(--color-text-primary);">12 high-interest engineering branches</strong> — what you actually study, what work it leads to, what students get wrong, and how to compare branches sensibly instead of relying on relatives, Quora panic threads, or YouTube videos with clickbait thumbnails.
+      </p>
+    </div>
+
+    <!-- How to use this -->
+    <div class="rounded-2xl border p-6 mb-8" style="border-color: var(--color-border); background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));">
+      <h2 class="text-h3 mb-4" style="color: var(--color-text-primary);">How to use this</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-xl p-4" style="background-color: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.15);">
+          <p class="text-sm font-semibold mb-1" style="color:#1d4ed8;">1. Browse the grid</p>
+          <p class="text-sm" style="color: var(--color-text-secondary);">Each card shows what the branch is about and who it fits. Click through to the full explainer for honest depth.</p>
         </div>
-        <a href="/resources/engineering-course-explainer/compare" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium" style="background-color: var(--color-accent); color: white;">Compare two branches</a>
+        <div class="rounded-xl p-4" style="background-color: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.15);">
+          <p class="text-sm font-semibold mb-1" style="color:#047857;">2. Read the detail pages</p>
+          <p class="text-sm" style="color: var(--color-text-secondary);">Each page has Reality Check, Choose/Avoid guidance, Misconceptions, and Real-World Examples — the things most guides skip.</p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: rgba(168,85,247,0.08); border: 1px solid rgba(168,85,247,0.15);">
+          <p class="text-sm font-semibold mb-1" style="color:#7c3aed;">3. Compare two branches</p>
+          <p class="text-sm" style="color: var(--color-text-secondary);">Stuck between two options? The compare tool puts them side by side with the sections that actually matter for deciding.</p>
+        </div>
       </div>
     </div>
 
+    <!-- Not sure where to start -->
+    <div class="rounded-2xl border p-6 mb-8" style="border-color:#fcd34d; background-color: rgba(253,230,138,0.10);">
+      <h2 class="text-h3 mb-4" style="color:#92400e;">Not sure where to start?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="rounded-xl p-4" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <p class="text-sm" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">If you liked coding in school →</strong> Start with <a href="/resources/engineering-course-explainer/computer-science-and-engineering" class="hover:underline" style="color: var(--color-accent);">CSE</a>, then compare with <a href="/resources/engineering-course-explainer/information-technology" class="hover:underline" style="color: var(--color-accent);">IT</a> and <a href="/resources/engineering-course-explainer/mathematics-and-computing" class="hover:underline" style="color: var(--color-accent);">Math & Computing</a></p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <p class="text-sm" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">If you liked physics →</strong> Start with <a href="/resources/engineering-course-explainer/engineering-physics" class="hover:underline" style="color: var(--color-accent);">Engineering Physics</a>, then compare with <a href="/resources/engineering-course-explainer/electrical-engineering" class="hover:underline" style="color: var(--color-accent);">Electrical</a> and <a href="/resources/engineering-course-explainer/electronics-and-communication-engineering" class="hover:underline" style="color: var(--color-accent);">ECE</a></p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <p class="text-sm" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">If you liked chemistry →</strong> Start with <a href="/resources/engineering-course-explainer/chemical-engineering" class="hover:underline" style="color: var(--color-accent);">Chemical Engineering</a>, then look at <a href="/resources/engineering-course-explainer/metallurgical-and-materials-engineering" class="hover:underline" style="color: var(--color-accent);">Metallurgy & Materials</a> and <a href="/resources/engineering-course-explainer/bio-technology" class="hover:underline" style="color: var(--color-accent);">Biotech</a></p>
+        </div>
+        <div class="rounded-xl p-4" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <p class="text-sm" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">If you liked building things →</strong> Start with <a href="/resources/engineering-course-explainer/mechanical-engineering" class="hover:underline" style="color: var(--color-accent);">Mechanical</a>, then compare with <a href="/resources/engineering-course-explainer/civil-engineering" class="hover:underline" style="color: var(--color-accent);">Civil</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popular comparisons -->
+    <div class="rounded-2xl border p-6 mb-8" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
+        <div>
+          <h2 class="text-h3 mb-1" style="color: var(--color-text-primary);">Popular comparisons</h2>
+          <p class="text-sm" style="color: var(--color-text-secondary);">The branch matchups students argue about the most. Now you can compare them properly.</p>
+        </div>
+        <a href="/resources/engineering-course-explainer/compare" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium" style="background-color: var(--color-accent); color: white;">Build your own comparison</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {% set popular_comparisons = [
+          ("CSE vs IT", "computer-science-and-engineering", "information-technology"),
+          ("CSE vs Math & Computing", "computer-science-and-engineering", "mathematics-and-computing"),
+          ("Mechanical vs Civil", "mechanical-engineering", "civil-engineering"),
+          ("ECE vs EEE", "electronics-and-communication-engineering", "electrical-and-electronics-engineering"),
+          ("Electrical vs ECE", "electrical-engineering", "electronics-and-communication-engineering"),
+          ("Chemical vs Metallurgy", "chemical-engineering", "metallurgical-and-materials-engineering"),
+        ] %}
+        {% for label, l, r in popular_comparisons %}
+        <a href="/resources/engineering-course-explainer/compare?left={{ l }}&right={{ r }}"
+           class="rounded-xl p-3 text-sm font-medium transition-all text-center hover:ring-1"
+           style="background-color: var(--color-bg-primary); border: 1px solid var(--color-border); color: var(--color-text-primary); --tw-ring-color: var(--color-accent);">
+          {{ label }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Branch grid -->
+    <h2 class="text-h2 mb-6" style="color: var(--color-text-primary);">All 12 curated branches</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
       {% for course in courses %}
       <a href="/resources/engineering-course-explainer/{{ course.slug }}"
@@ -26,16 +91,17 @@
          style="border-color: var(--color-border); background-color: var(--color-bg-secondary);"
          onmouseover="this.style.borderColor='var(--color-accent)'; this.style.boxShadow='0 0 0 1px var(--color-accent)'"
          onmouseout="this.style.borderColor='var(--color-border)'; this.style.boxShadow='none'">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <h2 class="text-h3" style="color: var(--color-text-primary);">{{ course.name }}</h2>
-          <span class="text-[10px] rounded-full px-2 py-1" style="background-color:#dcfce7; color:#166534;">Top 12</span>
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <h3 class="text-h3" style="color: var(--color-text-primary);">{{ course.name }}</h3>
+          <span class="text-[10px] rounded-full px-2 py-0.5 flex-shrink-0" style="background-color:#dbeafe; color:#1d4ed8; text-transform: capitalize;">{{ course.family }}</span>
         </div>
-        <p class="text-xs mb-3" style="color: var(--color-text-tertiary); text-transform: capitalize;">{{ course.family }}</p>
-        <p class="text-sm mb-4" style="color: var(--color-text-secondary);">{{ course.overview }}</p>
-        <p class="text-sm" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">Best for:</strong> {{ course.who_this_fits }}</p>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary);">{{ course.overview[:150] }}...</p>
+        <p class="text-xs mb-3" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">Best for:</strong> {{ course.who_this_fits[:120] }}...</p>
+        <p class="text-xs" style="color: var(--color-text-tertiary);">📚 {{ course.school_connection[:100] }}...</p>
       </a>
       {% endfor %}
     </div>
+
   </div>
 </section>
 {% endblock %}

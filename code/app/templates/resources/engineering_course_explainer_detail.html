@@ -3,50 +3,72 @@
 {% block content %}
 <section class="py-12 lg:py-16">
   <div class="max-w-5xl mx-auto">
-    <a href="/resources/engineering-course-explainer" class="text-sm hover:underline" style="color: var(--color-text-tertiary);">← Back to Top 12</a>
 
-    <div class="mt-4 rounded-2xl border p-6 lg:p-8 mb-8" style="border-color: var(--color-border); background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));">
+    <!-- Nav -->
+    <div class="flex items-center justify-between mb-4">
+      <a href="/resources/engineering-course-explainer" class="text-sm hover:underline" style="color: var(--color-text-tertiary);">← Back to all 12 branches</a>
+      <div class="flex gap-3 text-sm">
+        {% for c in courses %}
+        {% if c.slug == course.slug %}
+          {% if not loop.first %}
+          <a href="/resources/engineering-course-explainer/{{ courses[loop.index0 - 1].slug }}" class="hover:underline" style="color: var(--color-accent);">← {{ courses[loop.index0 - 1].name[:20] }}{% if courses[loop.index0 - 1].name|length > 20 %}…{% endif %}</a>
+          {% endif %}
+          {% if not loop.last %}
+          <a href="/resources/engineering-course-explainer/{{ courses[loop.index0 + 1].slug }}" class="hover:underline" style="color: var(--color-accent);">{{ courses[loop.index0 + 1].name[:20] }}{% if courses[loop.index0 + 1].name|length > 20 %}…{% endif %} →</a>
+          {% endif %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Hero header -->
+    <div class="rounded-2xl border p-6 lg:p-8 mb-8" style="border-color: var(--color-border); background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));">
       <div class="flex items-center gap-2 mb-3 flex-wrap">
         <h1 class="text-h1" style="color: var(--color-text-primary);">{{ course.name }}</h1>
-        <span class="text-xs rounded-full px-3 py-1" style="background-color:#dcfce7; color:#166534;">Top 12 Curated</span>
         <span class="text-xs rounded-full px-3 py-1" style="background-color:#dbeafe; color:#1d4ed8; text-transform: capitalize;">{{ course.family }}</span>
       </div>
-      <p class="text-body-lg mb-3" style="color: var(--color-text-secondary);">{{ course.overview }}</p>
-      <p class="text-body" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">Best fit:</strong> {{ course.who_this_fits }}</p>
+      <p class="text-body-lg mb-4" style="color: var(--color-text-secondary);">{{ course.overview }}</p>
+      <p class="text-body mb-4" style="color: var(--color-text-secondary);"><strong style="color: var(--color-text-primary);">Best fit:</strong> {{ course.who_this_fits }}</p>
+      <div class="rounded-xl p-4" style="background-color: rgba(253,230,138,0.15); border: 1px solid rgba(253,230,138,0.30);">
+        <p class="text-sm" style="color: var(--color-text-secondary);"><strong style="color:#92400e;">📚 School connection:</strong> {{ course.school_connection }}</p>
+      </div>
     </div>
 
+    <!-- ELI10 -->
     <div class="rounded-2xl border p-6 mb-6" style="border-color:#fcd34d; background-color: rgba(253,230,138,0.12);">
-      <h2 class="text-h3 mb-2" style="color:#92400e;">Explain It Like I’m 10</h2>
-      <p style="color: var(--color-text-secondary); line-height:1.7;">{{ course.eli10 }}</p>
+      <h2 class="text-h3 mb-2" style="color:#92400e;">Explain It Like I'm 10</h2>
+      <p class="text-lg" style="color: var(--color-text-secondary); line-height:1.8;">{{ course.eli10 }}</p>
     </div>
 
+    <!-- Decision triptych: Reality Check / Choose / Avoid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
-      <div class="rounded-2xl border p-5" style="border-color:#bfdbfe; background-color: rgba(191,219,254,0.20);">
-        <h2 class="text-sm font-semibold mb-2" style="color:#1d4ed8;">Reality Check</h2>
+      <div class="rounded-2xl border p-5" style="border-color:#bfdbfe; background-color: rgba(191,219,254,0.15);">
+        <h2 class="text-sm font-semibold mb-2" style="color:#1d4ed8;">🔍 Reality Check</h2>
         <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.reality_check }}</p>
       </div>
-      <div class="rounded-2xl border p-5" style="border-color:#bbf7d0; background-color: rgba(187,247,208,0.18);">
-        <h2 class="text-sm font-semibold mb-2" style="color:#166534;">Choose This If...</h2>
-        <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.choose_if|capitalize }}.</p>
+      <div class="rounded-2xl border p-5" style="border-color:#bbf7d0; background-color: rgba(187,247,208,0.15);">
+        <h2 class="text-sm font-semibold mb-2" style="color:#166534;">✅ Choose This If...</h2>
+        <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.choose_if }}</p>
       </div>
-      <div class="rounded-2xl border p-5" style="border-color:#fecaca; background-color: rgba(254,202,202,0.18);">
-        <h2 class="text-sm font-semibold mb-2" style="color:#b91c1c;">Avoid This If...</h2>
-        <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.avoid_if|capitalize }}.</p>
+      <div class="rounded-2xl border p-5" style="border-color:#fecaca; background-color: rgba(254,202,202,0.15);">
+        <h2 class="text-sm font-semibold mb-2" style="color:#b91c1c;">🚫 Avoid This If...</h2>
+        <p class="text-sm" style="color: var(--color-text-secondary); line-height:1.7;">{{ course.avoid_if }}</p>
       </div>
     </div>
 
+    <!-- What you study + Problems you solve -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-      <div class="rounded-2xl border p-6" style="border-color:#93c5fd; background-color: rgba(147,197,253,0.10);">
-        <h2 class="text-h3 mb-3" style="color:#1d4ed8;">What You Study</h2>
-        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#93c5fd; background-color: rgba(147,197,253,0.08);">
+        <h2 class="text-h3 mb-3" style="color:#1d4ed8;">📖 What You Study</h2>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.what_you_study %}
           <li>{{ item }}</li>
           {% endfor %}
         </ul>
       </div>
-      <div class="rounded-2xl border p-6" style="border-color:#86efac; background-color: rgba(134,239,172,0.10);">
-        <h2 class="text-h3 mb-3" style="color:#166534;">Problems You’ll Solve</h2>
-        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#86efac; background-color: rgba(134,239,172,0.08);">
+        <h2 class="text-h3 mb-3" style="color:#166534;">🔧 Problems You'll Solve</h2>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.problems_and_work %}
           <li>{{ item }}</li>
           {% endfor %}
@@ -54,18 +76,19 @@
       </div>
     </div>
 
+    <!-- Career Paths + Trade-offs -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-      <div class="rounded-2xl border p-6" style="border-color:#c4b5fd; background-color: rgba(196,181,253,0.10);">
-        <h2 class="text-h3 mb-3" style="color:#6d28d9;">Career Paths</h2>
-        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#c4b5fd; background-color: rgba(196,181,253,0.08);">
+        <h2 class="text-h3 mb-3" style="color:#6d28d9;">💼 Career Paths</h2>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.roles %}
           <li>{{ item }}</li>
           {% endfor %}
         </ul>
       </div>
-      <div class="rounded-2xl border p-6" style="border-color:#fca5a5; background-color: rgba(252,165,165,0.10);">
-        <h2 class="text-h3 mb-3" style="color:#b91c1c;">Trade-offs / Things to Know</h2>
-        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#fca5a5; background-color: rgba(252,165,165,0.08);">
+        <h2 class="text-h3 mb-3" style="color:#b91c1c;">⚖️ Trade-offs</h2>
+        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
           {% for item in course.tradeoffs %}
           <li>{{ item }}</li>
           {% endfor %}
@@ -73,25 +96,66 @@
       </div>
     </div>
 
+    <!-- Misconceptions -->
+    <div class="rounded-2xl border p-6 mb-6" style="border-color:#fb923c; background-color: rgba(251,146,60,0.08);">
+      <h2 class="text-h3 mb-3" style="color:#c2410c;">🧠 What Students Get Wrong About This Branch</h2>
+      <div class="space-y-3">
+        {% for item in course.misconceptions %}
+        <div class="rounded-xl p-4" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <p class="text-sm" style="color: var(--color-text-secondary); line-height: 1.7;">{{ item }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Real-world examples -->
+    <div class="rounded-2xl border p-6 mb-6" style="border-color:#6ee7b7; background-color: rgba(110,231,183,0.08);">
+      <h2 class="text-h3 mb-3" style="color:#047857;">🌍 Real-World Examples</h2>
+      <p class="text-sm mb-4" style="color: var(--color-text-secondary);">Concrete things graduates of this branch actually work on — not vague promises, but specific project examples.</p>
+      <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary); line-height: 1.6;">
+        {% for item in course.example_projects %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Good Fit Checklist + Similar Branches -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-      <div class="rounded-2xl border p-6" style="border-color:#6ee7b7; background-color: rgba(110,231,183,0.10);">
-        <h2 class="text-h3 mb-3" style="color:#047857;">Good Fit Checklist</h2>
-        <ul class="list-disc pl-5 space-y-2" style="color: var(--color-text-secondary);">
+      <div class="rounded-2xl border p-6" style="border-color:#6ee7b7; background-color: rgba(110,231,183,0.08);">
+        <h2 class="text-h3 mb-3" style="color:#047857;">✅ Good Fit Checklist</h2>
+        <p class="text-sm mb-3" style="color: var(--color-text-secondary);">If you say "yes" to most of these, the branch is probably directionally right for you.</p>
+        <ul class="space-y-2">
           {% for item in course.good_fit_checklist %}
-          <li>{{ item }}</li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-600 mt-0.5">✓</span>
+            <span class="text-sm" style="color: var(--color-text-secondary);">{{ item }}</span>
+          </li>
           {% endfor %}
         </ul>
       </div>
       <div class="rounded-2xl border p-6" style="border-color: var(--color-border); background-color: var(--color-bg-secondary);">
-        <h2 class="text-h3 mb-3" style="color: var(--color-text-primary);">Similar / Adjacent Branches</h2>
+        <h2 class="text-h3 mb-3" style="color: var(--color-text-primary);">🔀 Similar / Adjacent Branches</h2>
+        <p class="text-sm mb-4" style="color: var(--color-text-secondary);">If you like <strong style="color: var(--color-text-primary);">{{ course.name }}</strong>, consider comparing these before finalizing. Sometimes the smartest choice is an adjacent branch with better fit or better odds.</p>
         <div class="flex flex-wrap gap-2 mb-4">
           {% for item in course.similar_branches %}
-          <span class="text-xs rounded-full px-3 py-1" style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary); border:1px solid var(--color-border);">{{ item }}</span>
+          {% set sim_slug = item|lower|replace(' ', '-')|replace('/', '-')|replace('&', 'and') %}
+          <a href="/resources/engineering-course-explainer/{{ sim_slug }}"
+             class="text-xs rounded-full px-3 py-1.5 transition-colors hover:ring-1"
+             style="background-color: var(--color-bg-tertiary); color: var(--color-text-secondary); border:1px solid var(--color-border); --tw-ring-color: var(--color-accent);">
+            {{ item }}
+          </a>
           {% endfor %}
         </div>
-        <a href="/resources/engineering-course-explainer/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare two Top 12 branches →</a>
+        <a href="/resources/engineering-course-explainer/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare any two Top 12 branches →</a>
       </div>
     </div>
+
+    <!-- Bottom nav -->
+    <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--color-border);">
+      <a href="/resources/engineering-course-explainer" class="text-sm hover:underline" style="color: var(--color-accent);">← All 12 branches</a>
+      <a href="/resources/engineering-course-explainer/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare tool →</a>
+    </div>
+
   </div>
 </section>
 {% endblock %}
