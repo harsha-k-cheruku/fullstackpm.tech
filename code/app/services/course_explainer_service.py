@@ -2259,6 +2259,316 @@ TOP_12_COURSES: list[CourseExplainer] = [
                 }
         ],
     ),
+    CourseExplainer(
+        name="Electronics and Instrumentation Engineering",
+        slug="electronics-and-instrumentation-engineering",
+        family="Circuits + Industrial Systems",
+        overview="Electronics and Instrumentation (E&I or EIE) sits at the intersection of electronics, sensors, measurement systems, control engineering, and industrial automation. Where ECE is about communication and computing hardware, E&I is about making industrial processes — refineries, power plants, pharmaceutical plants, hospitals — observe themselves accurately and respond intelligently. Every pressure gauge in an oil refinery, every patient monitor in an ICU, every flow controller in a fertilizer plant is an instrumentation system. The branch combines analog/digital electronics with transducer physics, signal conditioning, control theory, and process automation (PLCs, SCADA, DCS).",
+        who_this_fits="Students who like electronics but want a more applied, industrial focus than ECE. People drawn to systems that touch the physical world — sensors, actuators, control loops — rather than pure computing or pure communications. Strong fit for those interested in process industries (oil & gas, chemicals, pharma, power), biomedical equipment, or industrial automation. Also good for students who want a niche engineering identity rather than competing in the crowded CSE/ECE pool.",
+        eli10="Imagine a giant factory making fertilizer. Hundreds of pipes, tanks, and reactors. How does the operator in the control room know what's happening inside a closed vessel? Sensors measure temperature, pressure, flow, level. Those signals get conditioned, sent to controllers, and used to automatically adjust valves and pumps. E&I engineers design and maintain that entire nervous system. Without them, every chemical plant, power station, and hospital would be flying blind.",
+        school_connection="Builds on Class 11–12 Physics (especially electricity, magnetism, semiconductors) and Mathematics (calculus, differential equations for control systems). Some chemistry helps because much of the work happens in chemical/process industries. Students who enjoyed lab experiments in school — measuring, calibrating, analyzing data — often resonate with the discipline. Programming becomes relevant later for PLC and embedded work but isn't the entry point.",
+        reality_check="E&I is often confused with ECE — they share Year 1–2 electronics core, but diverge sharply. ECE goes deeper into communication, VLSI, DSP. E&I goes deeper into transducers, process control, industrial protocols, and instrumentation standards. Placement-wise, E&I has a strong niche in core process industries (Reliance, IOCL, BPCL, Honeywell, Yokogawa, Emerson, ABB, Siemens) and biomedical companies, but IT/software placements are slightly fewer than ECE because the brand recognition is lower in tech recruiters' eyes. Students who try to compete in the pure CS placement pool feel disadvantaged; students who own their niche thrive.",
+        choose_if="You want a hands-on electronics branch with industrial applicability. You like the idea of working in process plants, power stations, hospitals, or aerospace test facilities. You enjoy control systems and the math of feedback loops. You want a less crowded branch with clearer identity than ECE. You're open to core jobs and don't define success purely by FAANG placements.",
+        avoid_if="You want pure software/CS career — pick CSE or IT. You want to work on communication systems, mobile networks, or VLSI chips — ECE fits better. You dislike the physical/industrial side of engineering and prefer abstract computing. You want maximum brand recognition with recruiters — ECE and CSE still win there.",
+        what_you_study=[
+            "Analog and digital electronics (shared with ECE) — devices, amplifiers, logic circuits",
+            "Transducers and sensors — how physical quantities (temperature, pressure, flow, pH) get converted to electrical signals",
+            "Signal conditioning and data acquisition — amplifying, filtering, digitizing real-world signals accurately",
+            "Control systems — transfer functions, stability, PID controllers, advanced control strategies",
+            "Process control — modeling industrial processes, tuning controllers, dealing with dead time and non-linearities",
+            "Industrial instrumentation — flow meters, level sensors, pressure transmitters, analytical instruments",
+            "PLCs, SCADA, and DCS — the software/hardware platforms that run modern factories",
+            "Biomedical instrumentation (often) — ECG, EEG, imaging systems, patient monitoring",
+            "Communication for instrumentation — fieldbus protocols (HART, Foundation Fieldbus, Modbus, Profibus)",
+            "Safety and reliability engineering — functional safety (SIL), hazardous area instrumentation"
+        ],
+        problems_and_work=[
+            "Designing the instrumentation layout for a new refinery or chemical plant — selecting sensors, sizing control valves, drawing P&IDs",
+            "Calibrating and maintaining instruments in operating plants — keeping the measurement chain accurate",
+            "Building automation systems with PLCs and SCADA for manufacturing lines",
+            "Designing biomedical devices — patient monitors, infusion pumps, diagnostic equipment",
+            "Working on control system tuning for power plant turbines, distillation columns, or batch reactors",
+            "Safety instrumented systems engineering — designing emergency shutdown systems for hazardous processes",
+            "Embedded electronics development for industrial IoT devices"
+        ],
+        roles=[
+            "Instrumentation Engineer (refineries, power plants, chemical plants)",
+            "Control Systems Engineer",
+            "Automation Engineer (PLC/SCADA/DCS programming and design)",
+            "Biomedical Equipment Engineer / Service Engineer",
+            "Process Control Engineer",
+            "Field Instrumentation Engineer (site-based roles in EPC and operating companies)",
+            "Embedded Systems Engineer (industrial IoT focus)",
+            "Applications Engineer at instrumentation vendors (Honeywell, Yokogawa, Emerson, ABB)"
+        ],
+        tradeoffs=[
+            "Strong niche identity, but lower brand recognition than ECE/CSE in tech-heavy campus drives",
+            "Core industry placements are solid and well-paying, but software/IT placement count is lower",
+            "Field jobs (on actual plants) are common — great for hands-on learners, less appealing for those wanting office-only roles",
+            "Higher education paths are clearer in control/instrumentation/biomedical than in mainstream EE/ECE areas",
+            "Less hyped by coaching culture, so smarter applicants who choose it consciously often find a less crowded path"
+        ],
+        good_fit_checklist=[
+            "You enjoy electronics but also like physics and the physical world",
+            "You're interested in how things get measured, controlled, and automated",
+            "You're OK with core industry placements and don't define success only via FAANG",
+            "You're curious about process industries, power, biomedical, or aerospace test systems",
+            "You like control theory math (Laplace, transfer functions, stability)",
+            "You want a niche, less crowded engineering identity"
+        ],
+        misconceptions=[
+            "\"E&I is just ECE with a different name.\" — False. The core overlaps for 2 years but diverges into transducers, process control, and industrial automation, which ECE barely touches.",
+            "\"E&I has no placements.\" — False. Core companies (Honeywell, Yokogawa, Emerson, Reliance, IOCL, ABB, Siemens) actively recruit. Software placements are fewer but possible.",
+            "\"It's only for process industries.\" — Biomedical, aerospace, automotive (especially EV battery instrumentation), and semiconductor fab metrology all need E&I skills.",
+            "\"You can't get into IT/software from E&I.\" — Many E&I graduates do transition to software roles by self-learning. The branch doesn't prevent it; it just doesn't push you toward it."
+        ],
+        example_projects=[
+            "Design a PID-controlled temperature system using Arduino and a thermocouple",
+            "Build a SCADA-based mini factory simulation using a free PLC simulator",
+            "Develop an IoT-based industrial monitoring system with cloud dashboards",
+            "Design a biomedical signal acquisition system (ECG amplifier with filtering)",
+            "Simulate process control of a distillation column in MATLAB/Simulink"
+        ],
+        similar_branches=["electrical-and-electronics-engineering", "electronics-and-communication-engineering", "electrical-engineering"],
+        year_by_year=[
+            {"year": 1, "theme": "Foundations — math, science, and circuit basics", "courses": [
+                {"name": "Engineering Mathematics I & II", "teaches": "Calculus, transforms, complex analysis — math foundations for circuits and control systems", "tests": "Written exams heavy on problem solving and transforms"},
+                {"name": "Engineering Physics", "teaches": "Electromagnetics, semiconductor physics, optics — physics behind electronic measurement", "tests": "Theory exam plus physics lab practicals"},
+                {"name": "Basic Electrical & Electronics", "teaches": "Circuit fundamentals, diodes, transistors, logic gates — entry into electronics", "tests": "Circuit problems and introductory electronics lab"},
+                {"name": "Introduction to Programming", "teaches": "C/Python basics — coding foundations for embedded and automation work later", "tests": "Lab coding exams and written logic exam"},
+                {"name": "Engineering Drawing / Workshop", "teaches": "Technical drawing, basic fabrication, soldering, wiring practice", "tests": "Drawing sheets and workshop practical evaluation"}
+            ]},
+            {"year": 2, "theme": "Core electronics and measurement fundamentals", "courses": [
+                {"name": "Network Theory", "teaches": "KVL, KCL, network theorems, transient analysis — systematic circuit analysis", "tests": "Numerical circuit problems; lab verification of theorems"},
+                {"name": "Electronic Devices & Circuits", "teaches": "BJTs, FETs, op-amps, amplifier design, biasing — analog electronics core", "tests": "Circuit design problems; electronics lab building functional circuits"},
+                {"name": "Digital Electronics", "teaches": "Logic gates, combinational and sequential circuits, memory, basic processor concepts", "tests": "Logic design problems; digital lab on trainer kits"},
+                {"name": "Signals and Systems", "teaches": "Fourier and Laplace analysis, system response, convolution — signal analysis framework", "tests": "Transform-heavy written exams; MATLAB signal labs"},
+                {"name": "Transducers and Measurement", "teaches": "Resistive, capacitive, inductive, piezoelectric sensors — how physical quantities become electrical signals", "tests": "Measurement lab handling actual transducers; written exam on principles"},
+                {"name": "Electrical & Electronic Measurements", "teaches": "Bridges, oscilloscopes, instrument standards, error analysis — precision measurement", "tests": "Measurement lab practicals; instrument-handling assessment"}
+            ]},
+            {"year": 3, "theme": "Control systems, instrumentation, and microprocessors", "courses": [
+                {"name": "Control Systems", "teaches": "Transfer functions, stability criteria, root locus, Bode plots, PID tuning — feedback control theory", "tests": "Stability analysis problems; control lab with servo motor and PID experiments"},
+                {"name": "Industrial Instrumentation", "teaches": "Flow, pressure, level, temperature measurement at industrial scale; instrumentation standards", "tests": "Instrumentation lab with actual industrial sensors; written exam on selection and sizing"},
+                {"name": "Microprocessors & Microcontrollers", "teaches": "8085/ARM architecture, assembly programming, peripheral interfacing", "tests": "Assembly coding lab; interfacing project with sensors and displays"},
+                {"name": "Process Control", "teaches": "Process modeling, dead time, advanced control strategies (cascade, feedforward, ratio control)", "tests": "Process control simulation lab; controller tuning assignments"},
+                {"name": "Analytical & Biomedical Instrumentation", "teaches": "Spectrophotometry, chromatography, ECG, EEG, imaging system basics", "tests": "Instrumentation lab using real analytical equipment; written exam on principles"}
+            ]},
+            {"year": 4, "theme": "Automation, advanced control, and capstone", "courses": [
+                {"name": "PLC and SCADA Systems", "teaches": "Ladder logic, function block programming, HMI design, supervisory control architecture", "tests": "PLC programming lab; SCADA project; written exam on automation architecture"},
+                {"name": "Industrial Automation & Robotics (elective)", "teaches": "Robotics basics, distributed control systems (DCS), industrial communication protocols", "tests": "Automation lab; project on simulated factory floor"},
+                {"name": "VLSI / Embedded Systems (elective)", "teaches": "Embedded C, real-time OS, IoT device development — modern instrumentation runs on embedded platforms", "tests": "Embedded project with working hardware; code review and demo"},
+                {"name": "Safety Instrumented Systems (elective)", "teaches": "Functional safety, SIL ratings, emergency shutdown systems, hazardous area design", "tests": "Safety design case studies; written exam on standards (IEC 61508/61511)"},
+                {"name": "Capstone Project / B.Tech Thesis", "teaches": "End-to-end instrumentation/automation project: design, build, calibrate, and demonstrate", "tests": "Working hardware/software demo, written report, viva with external examiner"}
+            ]}
+        ],
+    ),
+    CourseExplainer(
+        name="MSc Semiconductor Science and Nanoscience (Integrated)",
+        slug="msc-semiconductor-and-nanoscience",
+        family="5-Year Integrated MSc",
+        overview="A 5-year Integrated MSc combining deep physics with applied semiconductor and nanoscience training. Sits between physics, materials science, and electronics — but with science-first rigor rather than engineering breadth. You spend the first 2–3 years on rigorous physics, chemistry, and math foundations, then specialize in semiconductor physics, nanomaterials, thin films, device physics, and characterization techniques. The 5th year typically involves a research thesis at the level of early MS work. This program produces graduates ready for semiconductor R&D, fab process engineering, nanomaterials research, or direct PhD entry — a profile distinct from BTech ECE/EE.",
+        who_this_fits="Physics-strong students who want depth over breadth — comfortable with abstract concepts and willing to invest 5 years in rigorous training. Best fit for those drawn to research, R&D, or specialized industry roles (semiconductor fabs, materials companies, national labs) rather than general engineering placements. Students considering PhDs in physics, materials science, or device engineering find this an excellent direct path. Strong interest in chips, displays, solar cells, sensors, and the science of how electronic devices work at the atomic level.",
+        eli10="Every phone, laptop, and TV depends on tiny pieces of silicon arranged in incredibly precise patterns at the atomic scale. Engineers use those chips; scientists figure out how to make them better — new materials, smaller features, novel devices. This program trains the second kind: people who understand semiconductors so deeply they can invent the next generation. Less about applying existing electronics, more about pushing the boundary of what's physically possible.",
+        school_connection="Builds heavily on Class 11–12 Physics (atomic structure, modern physics, semiconductors) and Mathematics (calculus, differential equations). Chemistry matters more here than in BTech ECE because materials science is integral. Students who genuinely enjoyed the *why* of physics problems (not just solving them mechanically) tend to thrive. Programming becomes important by Year 3 for simulations and data analysis.",
+        reality_check="This is not a faster route to a tech job. It is a 5-year science-heavy program where the first 2 years feel like rigorous BSc Physics, not engineering. Many students who choose it expecting an electronics shortcut feel mismatched. Placements are smaller and more specialized than BTech — semiconductor companies (Intel, Applied Materials, AMAT, Lam Research, Micron, Tata Electronics, ISRO), nanotech startups, and research labs are the natural recruiters. Many graduates pursue PhDs or MS programs abroad. Industry roles often require an MS/PhD overlay if you want core R&D positions, but the 5-year integrated MSc is itself considered an MS-equivalent in many contexts.",
+        choose_if="You love physics deeply and want depth over breadth. You're interested in semiconductor R&D, fab engineering, or nanomaterials. You're open to research careers or PhDs. You want a 5-year integrated path rather than BTech + separate MS. You enjoy thinking about *why* phenomena occur, not just designing applications. You're comfortable with smaller, specialized placement pools.",
+        avoid_if="You want a fast route to industry — BTech is faster and broader. You dislike abstract physics and prefer applied engineering — BTech ECE/EEE suits better. You want general tech/software placements — this program isn't optimized for them. You're not sure about research and don't want to commit 5 years to a niche path. You'd rather hedge with a BTech (which leaves more options open).",
+        what_you_study=[
+            "Rigorous physics core — classical mechanics, quantum mechanics, electrodynamics, statistical mechanics (BSc-level depth)",
+            "Solid state physics — crystal structure, band theory, phonons, electronic transport",
+            "Semiconductor physics — p-n junctions, MOSFETs, optoelectronic devices at the physics level",
+            "Nanoscience and nanomaterials — quantum dots, nanowires, 2D materials (graphene, MoS2), nanofabrication",
+            "Thin film technology — deposition methods (CVD, PVD, ALD), characterization, applications",
+            "Materials characterization — XRD, SEM, TEM, AFM, spectroscopy techniques",
+            "Computational materials science — DFT, molecular dynamics, semiconductor device simulation",
+            "Electronics and instrumentation — enough to interface with experimental setups and devices",
+            "Optoelectronics and photonics — lasers, LEDs, photodetectors, solar cells",
+            "5th-year research thesis — original research at MS level under faculty mentorship"
+        ],
+        problems_and_work=[
+            "Developing new semiconductor materials for next-gen chips (e.g., wide-bandgap semiconductors for power electronics)",
+            "Designing and characterizing nanostructures for sensors, energy storage, or quantum devices",
+            "Process engineering in semiconductor fabs — thin-film deposition, etching, lithography optimization",
+            "Modeling device physics using TCAD and quantum simulation tools",
+            "R&D on solar cells, LEDs, photodetectors — making them more efficient or cheaper",
+            "Working on quantum technologies — qubits, single-photon detectors, quantum sensors",
+            "Failure analysis in semiconductor manufacturing — using SEM/TEM to find defects",
+            "Academic research toward PhD in condensed matter, materials science, or device physics"
+        ],
+        roles=[
+            "Semiconductor Process Engineer (fab — Intel, TSMC, Micron, Tata Electronics, GlobalFoundries)",
+            "Device Physicist / R&D Engineer (semiconductor companies)",
+            "Materials Scientist (nanomaterials, thin films, characterization labs)",
+            "Research Scientist (DRDO, ISRO, BARC, IISc, national labs)",
+            "PhD candidate (top-tier — direct entry to research universities in India and abroad)",
+            "Quantum technology engineer (emerging field — sensors, computing hardware)",
+            "Equipment / Applications Engineer (Applied Materials, Lam Research, KLA, ASML)",
+            "Faculty / Academic researcher (after PhD)"
+        ],
+        tradeoffs=[
+            "5 years instead of 4 — one extra year of opportunity cost vs BTech",
+            "Much deeper specialization but narrower industry signal in non-semiconductor roles",
+            "Excellent for PhD/MS abroad applications — integrated MSc is well-recognized internationally",
+            "Placement pool is smaller and more specialized; not optimized for mass tech recruiting",
+            "Research-oriented training means industry roles often expect you in R&D, not pure execution roles",
+            "India's growing semiconductor push (Tata Electronics, ISMC, Vedanta-Foxconn) is creating new domestic demand — timing is favorable"
+        ],
+        good_fit_checklist=[
+            "You genuinely enjoy physics — including the abstract parts",
+            "You're interested in how semiconductors work at the atomic level, not just how to use them",
+            "You're open to research and possibly a PhD",
+            "You're OK with 5 years instead of 4, and a smaller, specialized placement pool",
+            "You're drawn to semiconductor fabs, materials science, or nanotech",
+            "You like the idea of being a scientist-engineer hybrid"
+        ],
+        misconceptions=[
+            "\"It's just a long BTech in electronics.\" — No. The first 2 years are rigorous physics/chemistry/math, much deeper than BTech foundations. It's science-first, with engineering applications layered on.",
+            "\"Placements are bad.\" — Different, not bad. Semiconductor and materials companies recruit actively; mass tech recruiters don't visit much. If your goal is core semiconductor R&D, the placement quality is excellent.",
+            "\"You need a PhD to use this degree.\" — Many graduates work in fab engineering, applications engineering, or R&D directly after the 5-year program. PhD is a strong option but not required.",
+            "\"It's only useful if you want academia.\" — India's semiconductor mission is creating thousands of industry jobs that specifically need this profile. Industry demand is rising sharply."
+        ],
+        example_projects=[
+            "Simulate band structure of a 2D material (e.g., graphene) using DFT software",
+            "Fabricate and characterize a thin film using sputtering or spin coating in an undergrad lab",
+            "Build a simple solar cell and measure its I–V curve and efficiency",
+            "Study a quantum well using simulation and predict its emission wavelength",
+            "Read and present a research paper on a recent semiconductor breakthrough"
+        ],
+        similar_branches=["engineering-physics", "metallurgical-and-materials-engineering", "electronics-and-communication-engineering"],
+        year_by_year=[
+            {"year": 1, "theme": "Rigorous science foundations — physics, chemistry, math at BSc depth", "courses": [
+                {"name": "Physics I & II (Mechanics, Waves, Optics)", "teaches": "Classical mechanics with vector calculus, oscillations, wave optics — deeper than BTech physics", "tests": "Theory exams with derivations; problem sets; physics lab with precision measurement"},
+                {"name": "Mathematics I & II", "teaches": "Calculus, linear algebra, ODEs, complex analysis — math at BSc Honours rigor", "tests": "Proof-style and computational exams; weekly problem sets"},
+                {"name": "Chemistry I & II", "teaches": "Quantum chemistry basics, thermodynamics, materials chemistry — relevant for materials science later", "tests": "Written exams and chemistry lab practicals"},
+                {"name": "Introduction to Programming", "teaches": "Python/C with focus on scientific computing — plotting, fitting, numerical methods", "tests": "Lab coding exams; scientific computing assignments"},
+                {"name": "Introduction to Semiconductors and Nanoscience", "teaches": "Orientation course — what semiconductors and nanostructures are, why they matter, where the field is going", "tests": "Seminar presentations; written exam on basics"}
+            ]},
+            {"year": 2, "theme": "Core physics — quantum mechanics, electrodynamics, and statistical mechanics", "courses": [
+                {"name": "Quantum Mechanics I", "teaches": "Schrödinger equation, hydrogen atom, angular momentum, simple potentials — foundational for everything later", "tests": "Problem-solving exams with derivations; quantum mechanics problem sets"},
+                {"name": "Electrodynamics", "teaches": "Maxwell's equations in full, EM wave propagation, radiation — the physics of electromagnetic phenomena", "tests": "Derivation-heavy written exams; computational EM assignments"},
+                {"name": "Thermal & Statistical Physics", "teaches": "Ensembles, partition functions, quantum statistics — connecting microscopic to macroscopic", "tests": "Statistical mechanics problem solving; derivation exams"},
+                {"name": "Mathematical Physics", "teaches": "Special functions, Fourier analysis, Green's functions, tensors — mathematical tools physicists use daily", "tests": "Mathematical derivation exams; problem sets"},
+                {"name": "Electronics Fundamentals", "teaches": "Analog and digital electronics — enough to use electronic instruments and understand devices at circuit level", "tests": "Circuit problems; electronics lab building basic circuits"},
+                {"name": "Materials Chemistry", "teaches": "Solid-state chemistry, crystal structures, defects, phase diagrams — preparing for solid state physics", "tests": "Written exam; materials chemistry lab with X-ray diffraction"}
+            ]},
+            {"year": 3, "theme": "Solid state, semiconductor physics, and characterization", "courses": [
+                {"name": "Solid State Physics", "teaches": "Crystal structure, band theory, phonons, electronic transport, magnetic materials — the science of bulk matter", "tests": "Band structure calculations; solid state lab (Hall effect, resistivity, susceptibility)"},
+                {"name": "Semiconductor Physics", "teaches": "Carrier dynamics, p-n junctions, MOS physics, optoelectronic devices — physics-level treatment, not engineering recipes", "tests": "Device analysis problems; semiconductor characterization lab"},
+                {"name": "Quantum Mechanics II", "teaches": "Perturbation theory, scattering, identical particles, relativistic basics — advanced quantum needed for solid state", "tests": "Advanced problem-solving exams; selected applications to atoms and solids"},
+                {"name": "Materials Characterization Techniques", "teaches": "XRD, SEM, TEM, AFM, Raman spectroscopy — tools for studying materials at nano/atomic scale", "tests": "Hands-on characterization lab with real instruments; data interpretation reports"},
+                {"name": "Computational Methods for Materials", "teaches": "Numerical methods, basic DFT, molecular dynamics, device simulation", "tests": "Computational projects simulating real materials/devices"}
+            ]},
+            {"year": 4, "theme": "Nanoscience, thin films, and applied semiconductor topics", "courses": [
+                {"name": "Nanoscience and Nanomaterials", "teaches": "Quantum confinement, quantum dots, nanowires, 2D materials, nanostructure properties", "tests": "Nanomaterials project; literature review presentations; written exam"},
+                {"name": "Thin Film Technology", "teaches": "PVD, CVD, ALD deposition; thin-film growth, characterization, applications", "tests": "Thin film lab (deposition and characterization); written exam on process physics"},
+                {"name": "Semiconductor Devices and Fabrication", "teaches": "MOSFET physics, advanced devices, fab process flow (lithography, etching, doping), cleanroom basics", "tests": "Device design problems; written exam on fabrication flow"},
+                {"name": "Optoelectronics and Photonics (elective)", "teaches": "LEDs, lasers, photodetectors, solar cells, photonic devices — converting light and electricity", "tests": "Device analysis problems; optoelectronics characterization lab"},
+                {"name": "Quantum Devices / Quantum Computing Basics (elective)", "teaches": "Qubits, quantum sensors, single-photon devices — frontier of quantum technology", "tests": "Quantum circuit problems; simulation project"},
+                {"name": "Project Work I", "teaches": "Mini research project introducing original investigation under faculty mentorship", "tests": "Project report and presentation evaluated by faculty panel"}
+            ]},
+            {"year": 5, "theme": "Research thesis — full year of original research work", "courses": [
+                {"name": "Master's Thesis Research", "teaches": "Full year of original research on a specific problem under a faculty advisor — equivalent to early MS work", "tests": "Major thesis document, defense before external examiners, often a publication"},
+                {"name": "Advanced Electives (2–4 courses)", "teaches": "Specialized topics — quantum materials, advanced semiconductors, plasmonics, or computational methods", "tests": "Mix of written exams, term papers, and seminar presentations"},
+                {"name": "Research Methodology & Scientific Writing", "teaches": "Literature review, experimental design, paper writing, grant proposal basics", "tests": "Research proposal and review paper assignments"},
+                {"name": "Industry Internship (optional / common)", "teaches": "Semester-long internship at a semiconductor fab, R&D lab, or research institute", "tests": "Internship report and evaluation by industry mentor"}
+            ]}
+        ],
+    ),
+    CourseExplainer(
+        name="BTech vs Integrated MSc — How to Choose",
+        slug="btech-vs-integrated-msc-guide",
+        family="Decision Guide",
+        overview="This is not a branch — it's a structural choice every JEE rank-holder eventually faces. BTech is a 4-year engineering degree optimized for breadth, applied work, and fast entry to industry. Integrated MSc (5 years) is a science-first program optimized for depth, research training, and specialized R&D or PhD pathways. The two degrees lead to overlapping but distinctly shaped careers. This guide walks through how to think about the tradeoffs, when each path makes sense, and what higher-education routes each opens. Apply this lens specifically when comparing branches like ECE/EEE (BTech) against programs like MSc Semiconductor and Nanoscience, MSc Physics, MSc Chemistry, or MSc Mathematics & Computing.",
+        who_this_fits="Any student deciding between a BTech in a related branch (ECE, EE, Materials, CSE) and an Integrated MSc program at the same or similar institute. Especially relevant for IIT/IISER/NISER aspirants whose ranks open both BTech and Integrated MSc options. Also useful for parents trying to understand why their child might prefer one over the other. Read this if you're confused about which path matches your real goals.",
+        eli10="Think of BTech as a Swiss Army knife: many tools, all usable, fast to deploy. Integrated MSc is a specialist's tool: fewer tools, but extremely sharp in one area. Both are useful — but you should know what kind of work you want to do before picking. If you'll likely need many tools (industry, switching roles, software, generalist engineering), BTech makes sense. If you already know you want to go deep into one science (semiconductors, physics, chemistry, math), Integrated MSc is built for that.",
+        school_connection="This decision usually surfaces around JEE counseling time. If you enjoyed school more for the rigor and beauty of science (physics, chemistry, math) than for solving applied problems, Integrated MSc deserves a serious look. If you enjoyed science but mostly because you wanted to *build* or *engineer* things, BTech is the natural path. Most students default to BTech because it's familiar — but that default doesn't always match individual fit.",
+        reality_check="Most students choose BTech by default because it has higher brand recognition, more visible placements, and a clearer industry narrative. That is often the right call — but not always. Integrated MSc programs at IITs/IISERs/NISER are highly respected academically, especially for research-bound students, and their integrated nature saves a year compared to BTech + separate MS. The honest truth: career outcomes converge significantly after 7–10 years. The choice mostly shapes the *first* job and the *type* of training you receive — not your lifetime ceiling.",
+        choose_if="You should pick BTech if: you want a broad engineering education, you want maximum industry options (including non-core like consulting, finance, software), you're not yet sure about research, you want to keep doors open. You should pick Integrated MSc if: you genuinely love one science deeply, you're open to research/PhD, you'd rather go deep than wide, you're OK with smaller and more specialized placement pools.",
+        avoid_if="Avoid Integrated MSc if: you're picking it just because your rank doesn't get you BTech at a target institute (you'll feel mismatched), you dislike abstract science, you want maximum job flexibility. Avoid BTech if: you're already deeply passionate about pure science and would resent 4 years of applied engineering, you know with certainty you want to do research and a PhD.",
+        what_you_study=[
+            "BTech: 4 years — broad engineering with applied focus. Year 1 common across branches, Years 2–4 branch-specific applied work",
+            "Integrated MSc: 5 years — first 2 years rigorous science foundations, Years 3–4 deep specialization, Year 5 research thesis",
+            "BTech depth: applied engineering — designing, building, optimizing within established frameworks",
+            "Integrated MSc depth: scientific — understanding *why* phenomena occur, extending knowledge through research",
+            "BTech math/science load: high in Year 1, then largely applied use of math",
+            "Integrated MSc math/science load: high throughout, with abstract/theoretical rigor preserved through senior years",
+            "BTech projects: design and build-oriented (build a robot, app, circuit, structure)",
+            "Integrated MSc projects: investigation-oriented (characterize a material, simulate a phenomenon, derive a model)"
+        ],
+        problems_and_work=[
+            "BTech graduates typically tackle: software development, design engineering, operations, consulting, product management, sales engineering",
+            "Integrated MSc graduates typically tackle: semiconductor process R&D, materials research, computational science, scientific software, specialized industry R&D",
+            "Both can do: software (especially with self-learning), data science, quant finance, entrepreneurship, civil services",
+            "BTech opens broader management/MBA pipelines because of stronger industry exposure during internships and placements",
+            "Integrated MSc opens broader academic/research pipelines and is well-received for international MS/PhD admissions"
+        ],
+        roles=[
+            "BTech career start: Software Engineer, Design Engineer, Analyst (consulting/finance), Operations roles, Product roles",
+            "Integrated MSc career start: R&D Scientist, Process Engineer (semiconductor fabs), Research Associate, MS/PhD student, Computational Scientist",
+            "After 5–10 years (BTech): Senior Engineer, Manager, Product Lead, Founder, MBA-route consulting/PE/VC",
+            "After 5–10 years (Integrated MSc): Senior Scientist, R&D Manager, Faculty (with PhD), Specialized industry expert, Research lab lead",
+            "Both converge in entrepreneurship, civil services, government scientific organizations (ISRO, DRDO, BARC), and switching paths is possible"
+        ],
+        tradeoffs=[
+            "BTech pros: Faster to industry (4 yr vs 5), broader options, stronger brand recognition, larger placement pools, easier path-switching",
+            "BTech cons: Less research training, may need separate MS for specialized R&D roles, applied rather than deep treatment of fundamentals",
+            "Integrated MSc pros: Deep scientific training, integrated MS-equivalent saves time vs BTech + MS, excellent for PhD pathways, smaller cohorts often mean better faculty access",
+            "Integrated MSc cons: 5 years (1 more), narrower industry signal, smaller placement pools, mismatched if you don't actually love the science",
+            "Higher education paths: BTech → MBA, MS in CS/EE, MTech, civil services. Integrated MSc → PhD (strong), MS abroad (strong), specialized industry, academia",
+            "International recognition: BTech is universally recognized; Integrated MSc is well-recognized for research admissions but less known in general recruiting"
+        ],
+        good_fit_checklist=[
+            "Pick BTech if: you want breadth, fast industry entry, and flexibility",
+            "Pick Integrated MSc if: you love one science deeply and are open to research",
+            "Ignore brand-only thinking — what matters is the fit between program and your goals",
+            "Talk to current students of both programs — their day-to-day is very different",
+            "Be honest about whether you want to be an engineer or a scientist (the work is genuinely different)",
+            "Don't pick Integrated MSc as a 'backup' if BTech doesn't open at your target institute — you'll be unhappy"
+        ],
+        misconceptions=[
+            "\"Integrated MSc is for people who couldn't get BTech.\" — False. At IITs/IISERs/NISER, many top rankers consciously pick Integrated MSc because they want depth. The degree has its own merit and following.",
+            "\"BTech is always better for jobs.\" — True for general/mass tech recruiting, false for specialized R&D roles. Semiconductor fabs, research labs, and materials companies often prefer MSc graduates for R&D positions.",
+            "\"Integrated MSc means you must do a PhD.\" — No. Many graduates go straight to industry R&D, MS abroad, civil services, or consulting. PhD is one option, not a requirement.",
+            "\"You can't do software from Integrated MSc.\" — You can. Many MSc Math/Computing and MSc Physics graduates work as software engineers, data scientists, or quants. It requires self-learning but is well-trodden.",
+            "\"5 years is wasted time vs 4.\" — If you'd otherwise do BTech + 2-year MS, the integrated program saves a year. The 5 vs 4 comparison alone is misleading."
+        ],
+        example_projects=[
+            "BTech-style project: Build a working IoT-based smart agriculture system with sensors, cloud, and mobile app",
+            "Integrated MSc-style project: Synthesize and characterize a novel 2D material for hydrogen storage",
+            "BTech-style: Design a complete e-commerce platform with payments and scaling concerns",
+            "Integrated MSc-style: Use DFT simulations to predict the band gap of a new perovskite for solar cells",
+            "BTech-style: Optimize a chemical process for cost and yield in a real plant context",
+            "Integrated MSc-style: Investigate the mechanism behind anomalous diffusion in a biological system"
+        ],
+        similar_branches=["msc-semiconductor-and-nanoscience", "engineering-physics", "mathematics-and-computing"],
+        year_by_year=[
+            {"year": 1, "theme": "Year 1: Foundations — surprisingly similar on the surface, different in spirit", "courses": [
+                {"name": "BTech Year 1", "teaches": "Engineering math, physics, chemistry, intro programming, drawing, workshop — common across most BTech branches", "tests": "Mix of written exams, lab practicals, drawing sheets — applied problem-solving emphasis"},
+                {"name": "Integrated MSc Year 1", "teaches": "Rigorous physics, chemistry, mathematics at BSc Honours depth — more proofs, more derivations, less applied recipes", "tests": "Theory-heavy written exams; problem sets requiring derivation; science lab with precision focus"},
+                {"name": "Key difference", "teaches": "BTech treats Year 1 as a *bridge* to engineering. Integrated MSc treats Year 1 as the *start* of being a scientist — deeper in the same subjects", "tests": "Even when the syllabus topic is identical, MSc exams probe understanding more deeply"}
+            ]},
+            {"year": 2, "theme": "Year 2: The paths diverge sharply", "courses": [
+                {"name": "BTech Year 2", "teaches": "Branch-specific applied core: data structures (CS), thermodynamics (ME), circuit theory (EE/ECE), strength of materials (Civil)", "tests": "Numerical problem-solving exams, branch-specific lab work, mini-projects"},
+                {"name": "Integrated MSc Year 2", "teaches": "Advanced foundations of the chosen science: quantum mechanics, electrodynamics, statistical mechanics (Physics), advanced organic/inorganic (Chemistry), real analysis (Math)", "tests": "Derivation-heavy exams; theoretical problem sets; advanced science lab"},
+                {"name": "Key difference", "teaches": "BTech students start building and designing in their branch domain. MSc students go deeper into theoretical foundations and abstract reasoning", "tests": "BTech tests application skill; MSc tests conceptual depth"}
+            ]},
+            {"year": 3, "theme": "Year 3: Specialization deepens on both tracks", "courses": [
+                {"name": "BTech Year 3", "teaches": "Core branch depth: OS/networks/algorithms (CS), machine design (ME), control systems (EE), structural analysis (Civil) — plus internship", "tests": "Branch-specific written and lab exams; internship evaluation; design projects"},
+                {"name": "Integrated MSc Year 3", "teaches": "Specialization core: solid state physics, semiconductor physics, materials characterization (for Semiconductor & Nanoscience track)", "tests": "Specialized written exams; advanced science lab; research methodology assignments"},
+                {"name": "Key difference", "teaches": "BTech students often do summer internships at industry — this shapes their job orientation. MSc students often do summer research at labs — this shapes their research orientation", "tests": "Industry vs research exposure becomes the dominant difference here"}
+            ]},
+            {"year": 4, "theme": "Year 4: BTech graduates; MSc enters thesis preparation", "courses": [
+                {"name": "BTech Year 4", "teaches": "Electives, capstone project, placement preparation — and the BTech wraps up", "tests": "Capstone project demo, electives via projects/exams, placement interviews"},
+                {"name": "Integrated MSc Year 4", "teaches": "Advanced electives, mini research project, preparing for the Year 5 thesis with thesis advisor selection", "tests": "Research proposal, literature review, advanced course exams"},
+                {"name": "Key difference", "teaches": "BTech graduates leave with a job (or admission) and a strong applied skillset. MSc students are still mid-degree, gearing up for a serious research year", "tests": "BTech: job market readiness. MSc: research readiness."}
+            ]},
+            {"year": 5, "theme": "Year 5: BTech has graduated; MSc does original research", "courses": [
+                {"name": "BTech: already in industry or higher studies", "teaches": "1 year of work experience, MS coursework, MBA prep, or grad school applications — depending on path chosen", "tests": "Real-world performance reviews, exam scores, application outcomes"},
+                {"name": "Integrated MSc Year 5", "teaches": "Full-year research thesis under a faculty advisor — equivalent to early MS work. Often produces publications or patents", "tests": "Thesis document, defense before external examiners, paper submissions"},
+                {"name": "Key difference", "teaches": "BTech graduate has 1 year of practical/industry experience by now. MSc graduate emerges with MS-level research training and is highly competitive for PhD admissions globally", "tests": "Different currencies — work experience vs research portfolio. Both are valuable; they unlock different doors."}
+            ]}
+        ],
+    ),
 ]
 
 
@@ -2266,7 +2576,7 @@ class CourseExplainerService:
     def all_courses(self) -> list[CourseExplainer]:
         return list(TOP_12_COURSES)
 
-    def popular_courses(self, limit: int = 12) -> list[CourseExplainer]:
+    def popular_courses(self, limit: int = 15) -> list[CourseExplainer]:
         return self.all_courses()[:limit]
 
     def get_by_slug(self, slug: str) -> CourseExplainer | None:
