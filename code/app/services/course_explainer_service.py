@@ -24,6 +24,7 @@ class CourseExplainer:
     example_projects: list[str]
     similar_branches: list[str]
     year_by_year: list = None  # list of dicts: {year, theme, courses: [{name, teaches, tests}]}
+    offered_at: dict = None  # dict mapping institute category → description string
 
 
 TOP_12_COURSES: list[CourseExplainer] = [
@@ -217,6 +218,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "All 23 IITs — flagship branch everywhere",
+                "NITs": "All 31 NITs",
+                "IIITs": "All IIITs (CSE / CSE-AI / CSE-Data Science) — their core offering",
+                "Other notable": "BITS Pilani/Goa/Hyderabad, DTU, NSUT, IIIT-H, IIIT Bangalore, COEP, Jadavpur, ISI, virtually every reputable private engineering college"
+        },
     ),
     CourseExplainer(
         name="Mechanical Engineering",
@@ -406,6 +413,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "All 23 IITs",
+                "NITs": "All 31 NITs",
+                "IIITs": "Generally not offered at IIITs (which focus on IT/CS)",
+                "Other notable": "BITS Pilani/Goa/Hyderabad, DTU, NSUT, COEP Pune, Jadavpur, MIT Manipal, VIT, PSG Coimbatore, most state engineering colleges"
+        },
     ),
     CourseExplainer(
         name="Electronics and Communication Engineering",
@@ -590,6 +603,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "All 23 IITs (often as EE with electronics specialization)",
+                "NITs": "All 31 NITs",
+                "IIITs": "Several IIITs (IIITDM Kancheepuram/Jabalpur, IIIT-H ECE program, IIIT Sri City, IIIT Guwahati)",
+                "Other notable": "BITS Pilani/Goa/Hyderabad, DTU, NSUT, COEP, MIT Manipal, VIT, PSG, Jadavpur"
+        },
     ),
     CourseExplainer(
         name="Civil Engineering",
@@ -774,6 +793,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "All 23 IITs",
+                "NITs": "All 31 NITs",
+                "IIITs": "Generally not offered (IIITs focus on computing)",
+                "Other notable": "DTU, NSUT, COEP, Jadavpur, MIT Manipal, VIT, PSG, BITS (limited), most state engineering universities"
+        },
     ),
     CourseExplainer(
         name="Electrical Engineering",
@@ -958,6 +983,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "All 23 IITs (sometimes combined as Electrical / EE with various specializations)",
+                "NITs": "All 31 NITs",
+                "IIITs": "Limited — IIITDM Kancheepuram, IIITDM Jabalpur offer EE-adjacent programs",
+                "Other notable": "BITS Pilani/Goa/Hyderabad, DTU, NSUT, COEP, Jadavpur, MIT Manipal, VIT, PSG"
+        },
     ),
     CourseExplainer(
         name="Chemical Engineering",
@@ -1142,6 +1173,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "Most IITs — IIT Bombay, Delhi, Madras, Kanpur, Kharagpur, Roorkee, BHU, Guwahati, Hyderabad, ISM Dhanbad, Gandhinagar, Tirupati, Jodhpur (not at every newer IIT)",
+                "NITs": "Most NITs — NIT Trichy, NIT Warangal, NIT Surathkal, NIT Rourkela, NIT Calicut, NIT Jalandhar, NIT Raipur, MNIT Jaipur, MNNIT Allahabad, NIT Durgapur, and others",
+                "IIITs": "Not offered at IIITs",
+                "Other notable": "ICT Mumbai (the gold standard for ChemE in India), BITS Pilani/Goa, HBTU Kanpur, Jadavpur, COEP, MIT Manipal, IIPE Visakhapatnam"
+        },
     ),
     CourseExplainer(
         name="Metallurgical and Materials Engineering",
@@ -1326,6 +1363,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "Limited — IIT Bombay, IIT Madras, IIT Kanpur, IIT Kharagpur, IIT Roorkee, IIT BHU, IIT Gandhinagar, IIT Hyderabad (Materials), IIT ISM Dhanbad",
+                "NITs": "Several NITs — NIT Rourkela (well-known), NIT Trichy, NIT Durgapur, NIT Raipur, MANIT Bhopal, MNIT Jaipur, NIT Jamshedpur, NIT Warangal",
+                "IIITs": "Not offered at IIITs",
+                "Other notable": "IIT ISM Dhanbad (flagship for mining/metallurgy), Jadavpur University, Anna University, PSG Coimbatore, BHU IIT (mining + metallurgy)"
+        },
     ),
     CourseExplainer(
         name="Electrical and Electronics Engineering",
@@ -1510,6 +1553,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "Generally offered as separate EE / ECE at IITs, not as combined 'EEE' — combined branch is rarer at IITs",
+                "NITs": "Several NITs offer EEE distinctly — NIT Trichy, NIT Surathkal (NIT Karnataka), NIT Calicut, NIT Warangal (as EEE), MNIT Jaipur, NIT Jamshedpur",
+                "IIITs": "Limited — IIITDM Kancheepuram",
+                "Other notable": "BITS Pilani/Goa/Hyderabad (strong EEE program), MIT Manipal, VIT (very popular), SRM, PSG Coimbatore, Anna University, most large private universities"
+        },
     ),
     CourseExplainer(
         name="Information Technology",
@@ -1699,6 +1748,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "Distinct IT branch is rare at IITs — most offer CSE instead. IIIT Allahabad (originally Indian Institute of Information Technology) is the flagship for IT",
+                "NITs": "Many NITs offer IT separately from CSE — NIT Trichy, NIT Surathkal, NIT Kurukshetra, NIT Allahabad, NIT Durgapur, MNNIT Allahabad",
+                "IIITs": "All IIITs offer IT or IT-flavored CSE — IIIT Allahabad, IIIT Hyderabad, IIIT Bangalore, IIIT Delhi, IIITDM Jabalpur/Kancheepuram",
+                "Other notable": "DTU, NSUT, IIIT-H, IIITDM, MIT Manipal, VIT, SRM, Thapar"
+        },
     ),
     CourseExplainer(
         name="Bio Technology",
@@ -1883,6 +1938,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "Selective — IIT Bombay (Bioscience + Bioengineering), IIT Delhi (Biochemical Engineering), IIT Madras (Biotech), IIT Kharagpur (Biotech), IIT Roorkee (Biotech), IIT Guwahati (Biotech & Biochemical Eng)",
+                "NITs": "A few NITs — NIT Warangal, NIT Rourkela, NIT Durgapur, NIT Raipur, NIT Jalandhar",
+                "IIITs": "Not offered at IIITs",
+                "Other notable": "VIT, SRM, Amity, Anna University, Jadavpur, BITS Pilani (Biological Sciences), DBT-funded universities, IIIT Hyderabad has Computational Natural Sciences (related)"
+        },
     ),
     CourseExplainer(
         name="Mathematics and Computing",
@@ -2072,6 +2133,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "Limited but prestigious — IIT Delhi, IIT Bombay, IIT Kanpur, IIT Kharagpur, IIT Guwahati, IIT BHU, IIT Hyderabad, IIT ISM Dhanbad. Closing ranks here are often very competitive (near or above CSE)",
+                "NITs": "Few NITs — NIT Surathkal (Math & Computing), MNIT Jaipur, NIT Warangal (related programs)",
+                "IIITs": "Some IIITs offer related programs — IIIT-H has Computational Natural Sciences and CLD (CSD + Math)",
+                "Other notable": "BITS Pilani/Goa/Hyderabad (Math & Computing — popular), DTU (Mathematics & Computing), ISI Bangalore/Kolkata (B.Stat / B.Math — adjacent)"
+        },
     ),
     CourseExplainer(
         name="Engineering Physics",
@@ -2258,6 +2325,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                         ]
                 }
         ],
+        offered_at={
+                "IITs": "Selective — IIT Bombay, IIT Delhi, IIT Madras, IIT Guwahati, IIT Hyderabad, IIT Roorkee, IIT BHU. Often called 'Engineering Physics' or 'Physics & Mathematical Methods'",
+                "NITs": "Very few NITs — NIT Surathkal, NIT Calicut, NIT Warangal (selective)",
+                "IIITs": "Not typically offered (IIITs focus on computing)",
+                "Other notable": "DTU (Engineering Physics — established program), BITS Pilani (M.Sc. Physics dual route), IISc Bangalore (B.Tech in Mathematics & Computing — adjacent)"
+        },
     ),
     CourseExplainer(
         name="Electronics and Instrumentation Engineering",
@@ -2361,6 +2434,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                 {"name": "Capstone Project / B.Tech Thesis", "teaches": "End-to-end instrumentation/automation project: design, build, calibrate, and demonstrate", "tests": "Working hardware/software demo, written report, viva with external examiner"}
             ]}
         ],
+        offered_at={
+                "IITs": "Very limited — IIT Kharagpur (Instrumentation Engineering, well-regarded). Most IITs do not offer a distinct E&I program",
+                "NITs": "Several NITs — NIT Trichy (one of the most respected E&I programs in India), NIT Surathkal, NIT Kurukshetra, NIT Jamshedpur, NIT Calicut, NIT Patna",
+                "IIITs": "Limited — IIIT Allahabad has IT + ECE blend (not E&I distinctly)",
+                "Other notable": "BITS Pilani/Goa/Hyderabad (EEE with strong instrumentation electives), MIT Manipal, COEP Pune, PSG Coimbatore, Jadavpur, HBTU Kanpur"
+        },
     ),
     CourseExplainer(
         name="MSc Semiconductor Science and Nanoscience (Integrated)",
@@ -2473,6 +2552,12 @@ TOP_12_COURSES: list[CourseExplainer] = [
                 {"name": "Industry Internship (optional / common)", "teaches": "Semester-long internship at a semiconductor fab, R&D lab, or research institute", "tests": "Internship report and evaluation by industry mentor"}
             ]}
         ],
+        offered_at={
+                "IITs (Integrated MSc / 5-yr programs)": "IIT Bombay (Integrated MSc in Applied Physics/Geology/Chemistry), IIT Kharagpur (Integrated MSc in Physics/Chemistry/Math), IIT Kanpur, IIT BHU, IIT Roorkee — actual 'Semiconductor & Nanoscience' branding varies by institute",
+                "IISERs / NISER": "All IISERs (Pune, Mohali, Kolkata, Bhopal, Tirupati, Berhampur) offer 5-year BS-MS programs in Physical Sciences with strong semiconductor/nano research tracks; NISER Bhubaneswar (5-year integrated MSc in Physics)",
+                "Other notable": "CUSAT (M.Sc. in Semiconductor Physics — well-established), University of Hyderabad (Integrated MSc), Tezpur University, JNCASR (research-only), IISc Bangalore (UG research programs)",
+                "Note": "Exact program names vary — sometimes branded as 'Engineering Physics', 'Materials Science', or 'Applied Physics'. Check current admission brochures of each institute via JoSAA / CSAB / IISER aptitude test (IAT) / NEST"
+        },
     ),
     CourseExplainer(
         name="BTech vs Integrated MSc — How to Choose",

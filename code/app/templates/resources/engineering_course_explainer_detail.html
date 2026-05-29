@@ -150,6 +150,24 @@
     </div>
     {% endif %}
 
+    <!-- Where it's offered -->
+    {% if course.offered_at %}
+    <div class="rounded-2xl border p-6 mb-6" style="border-color:#f59e0b; background-color: rgba(245,158,11,0.06);">
+      <h2 class="text-h3 mb-2" style="color:#b45309;">🏛️ Where it's offered</h2>
+      <p class="text-sm mb-4" style="color: var(--color-text-secondary);">A directional snapshot of where this path is available in India. Branch names and exact program titles vary by institute — always cross-check current JoSAA / CSAB / institute brochures during admission.</p>
+      <div class="space-y-3">
+        {% for category, description in course.offered_at.items() %}
+        <div class="rounded-xl p-4" style="background-color: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+          <div class="flex items-start gap-2">
+            <span class="text-xs font-semibold rounded px-2 py-0.5 flex-shrink-0 mt-0.5" style="background-color:#fef3c7; color:#92400e;">{{ category }}</span>
+            <p class="text-sm" style="color: var(--color-text-secondary);">{{ description }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
     <!-- Good Fit Checklist + Similar Branches -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
       <div class="rounded-2xl border p-6" style="border-color:#6ee7b7; background-color: rgba(110,231,183,0.08);">
@@ -183,7 +201,7 @@
 
     <!-- Bottom nav -->
     <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--color-border);">
-      <a href="/projects/engineering-course-explainer-india/explore" class="text-sm hover:underline" style="color: var(--color-accent);">← All 12 branches</a>
+      <a href="/projects/engineering-course-explainer-india/explore" class="text-sm hover:underline" style="color: var(--color-accent);">← All 15 paths</a>
       <a href="/projects/engineering-course-explainer-india/explore/compare" class="text-sm hover:underline" style="color: var(--color-accent);">Compare tool →</a>
     </div>
 
