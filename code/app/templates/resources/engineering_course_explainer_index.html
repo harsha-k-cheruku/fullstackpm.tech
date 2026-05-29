@@ -82,10 +82,10 @@
       </div>
     </div>
 
-    <!-- Branch grid -->
+    <!-- Branch grid (excludes Campus Guides which get their own section below) -->
     <h2 class="text-h2 mb-6" style="color: var(--color-text-primary);">All 15 curated paths</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-      {% for course in courses %}
+      {% for course in courses if course.family != "Campus Guide" %}
       <a href="/projects/engineering-course-explainer-india/explore/{{ course.slug }}"
          class="rounded-2xl border p-5 transition-all group"
          style="border-color: var(--color-border); background-color: var(--color-bg-secondary);"
@@ -101,6 +101,31 @@
       </a>
       {% endfor %}
     </div>
+
+    <!-- Campus Decision Guides (separate section below the main grid) -->
+    {% set campus_guides = courses|selectattr('family', 'equalto', 'Campus Guide')|list %}
+    {% if campus_guides %}
+    <div class="mt-12">
+      <h2 class="text-h2 mb-2" style="color: var(--color-text-primary);">📍 Campus Decision Guides</h2>
+      <p class="text-sm mb-6" style="color: var(--color-text-secondary);">Bonus guides for picking the right campus when multiple institutes offer the same branch — e.g., comparing BITS Pilani vs Goa vs Hyderabad. Not branches; campus-vs-campus tradeoffs.</p>
+      <div class="grid grid-cols-1 gap-5">
+        {% for course in campus_guides %}
+        <a href="/projects/engineering-course-explainer-india/explore/{{ course.slug }}"
+           class="rounded-2xl border p-6 transition-all group block"
+           style="border-color:#f59e0b; background-color: rgba(245,158,11,0.05);"
+           onmouseover="this.style.borderColor='#b45309'; this.style.boxShadow='0 0 0 1px #b45309'"
+           onmouseout="this.style.borderColor='#f59e0b'; this.style.boxShadow='none'">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <h3 class="text-h3" style="color: var(--color-text-primary);">{{ course.name }}</h3>
+            <span class="text-[10px] rounded-full px-2 py-0.5 flex-shrink-0" style="background-color:#fef3c7; color:#92400e;">{{ course.family }}</span>
+          </div>
+          <p class="text-sm mb-2" style="color: var(--color-text-secondary);">{{ course.overview[:220] }}...</p>
+          <p class="text-xs" style="color: var(--color-text-tertiary);"><strong style="color: var(--color-text-primary);">Best for:</strong> {{ course.who_this_fits[:140] }}...</p>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
   </div>
 </section>

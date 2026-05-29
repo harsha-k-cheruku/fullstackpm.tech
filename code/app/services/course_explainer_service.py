@@ -2654,6 +2654,81 @@ TOP_12_COURSES: list[CourseExplainer] = [
             ]}
         ],
     ),
+    CourseExplainer(
+        name="BITS Pilani vs Goa vs Hyderabad — Campus Choice Guide",
+        slug="bits-campuses-compared",
+        family="Campus Guide",
+        overview="BITSAT opens four campuses — Pilani (1964), Goa (2004), Hyderabad (2008), and Dubai (separate fee structure). All Indian campuses share the same BITS degree, curriculum, Practice School program, and alumni network. But they differ meaningfully in brand seniority, research culture, peer quality, cutoff scores, location/lifestyle, and industry adjacency. This guide breaks down what's actually different across campuses, when campus matters more than branch, and how to prioritize your BITSAT preferences.",
+        who_this_fits="Students with BITSAT scores high enough that multiple campus-branch combinations open up. Parents trying to fairly compare a campus-vs-branch tradeoff (the classic 'Pilani Chemical vs Hyderabad CSE' dilemma). Anyone weighing BITS vs other private/IIIT/NIT options and needing realistic data on campus differences.",
+        eli10="BITS has three Indian branches like a company with three offices — Pilani is the original head office (oldest, strongest network, deepest research), Goa is the popular coastal office (beautiful location, balanced lifestyle), and Hyderabad is the city office next to the tech industry (newest, fastest growing, best for internships). You get the same degree from all three, but daily life, peers, and certain advantages differ.",
+        school_connection="BITSAT is the entrance exam (not JEE), conducted online. Class 12 board marks also influence admission. Once admitted, the curriculum is consistent across campuses — same syllabus, same evaluation, same Practice School framework. The campus you pick affects your experience and network more than your degree credential.",
+        reality_check="The 'BITS brand' carries across all three Indian campuses — recruiters, MS programs, and alumni treat them as one BITS family on paper. But internally: Pilani has the deepest research culture and most senior faculty; Hyderabad has the strongest industry-adjacent internship culture (proximity to Microsoft/Google/Amazon/Salesforce regional HQs); Goa offers the most balanced lifestyle with arguably the most beautiful campus. The mistake students make is treating the campus difference as purely cosmetic. It's not — peer quality, professor access, research opportunities, and student-life energy do vary. But it's also not as dramatic as IIT Bombay vs newer IITs; BITS campuses are far more similar to each other than IITs are across their tiers.",
+        choose_if="Choose Pilani if: your BITSAT score allows it; you want maximum brand strength and alumni density; you're interested in research, MSc dual programs, or core engineering (EEE/Chemical/Mechanical); you prefer a focused academic environment without urban distractions. Choose Goa if: you want a balanced lifestyle; you value location aesthetics; you're going into CSE/ECE/Math&Computing where Goa is now competitive with Pilani; you prefer urban-adjacent without being in a big city. Choose Hyderabad if: you want maximum industry/internship exposure during college; you're targeting tech careers; you want to be embedded in a major tech hub; you're comfortable being at the youngest of the three campuses.",
+        avoid_if="Avoid BITS entirely if: government college fee structure matters significantly (BITS is private and not cheap); you want pure science research and would prefer IISERs/NISER; you want the absolute strongest brand recognition (top IITs still edge out for some recruiters and for international academia). Also reconsider if you'd need to downgrade your branch significantly just to get into Pilani — that tradeoff rarely pays off long-term.",
+        what_you_study=[
+            "Identical core curriculum across all three Indian campuses — same syllabus, same evaluation rubric",
+            "Same Practice School framework — PS-1 (~2 months after 2nd year) + PS-2 (~6 months in final year)",
+            "Same dual-degree (Bachelor + MSc) option mechanics — though MSc dual availability varies by campus",
+            "Same BITSAT entrance exam route and same degree issued (BITS Pilani — campuses are sub-units)",
+            "Cross-campus faculty mobility — some professors rotate across campuses",
+            "What varies: lab equipment depth (Pilani has the most established setup), research lab availability, senior faculty density"
+        ],
+        problems_and_work=[
+            "PS-1 (2 months, end of 2nd year): early industry exposure at partnered companies — usually shorter, exploratory",
+            "PS-2 (6 months, final year): full-time industry stint that often converts to a job offer — BITS's signature placement bridge",
+            "Campus-led student clubs (coding, robotics, quant, entrepreneurship) — biggest at Pilani, growing at Goa and Hyderabad",
+            "Final-year thesis or design project — common across campuses",
+            "Entrepreneurship is a strong BITS-wide thread — many startup founders come from across all three campuses"
+        ],
+        roles=[
+            "Same career outcomes broadly available from all three campuses",
+            "Tech roles (SDE/Product/Data): Hyderabad and Pilani roughly equivalent for placement quality; Goa close behind",
+            "Core engineering roles (Chemical/Mech/EEE): Pilani has a clear edge due to legacy and alumni network depth",
+            "Research/MS abroad: Pilani slightly stronger track record; Goa and Hyderabad catching up",
+            "Consulting/Finance: All three campuses get McKinsey/BCG/Bain/Goldman visits; Pilani historically has the most offers but Hyderabad is rising fast",
+            "Entrepreneurship: Roughly equal across campuses — BITS as a whole produces strong founder pipeline"
+        ],
+        tradeoffs=[
+            "Pilani pros: Strongest brand, deepest research culture, most senior faculty, biggest alumni network, best for core engineering and MSc dual programs",
+            "Pilani cons: Remote location (limited urban exposure), harder to access weekend industry events or internships during semesters, less lifestyle variety",
+            "Goa pros: Beautiful campus, balanced lifestyle, good weather, urban-adjacent, strong in CSE/ECE/M&C, slightly easier cutoffs for the same branch",
+            "Goa cons: Slightly less research depth than Pilani, slightly fewer specialized labs in core branches, smaller MSc dual program options",
+            "Hyderabad pros: Best industry adjacency (Microsoft/Google/Amazon/Salesforce campuses nearby), strongest local internship pipeline, urban tech hub energy, lowest cutoffs of the three",
+            "Hyderabad cons: Youngest campus with less alumni history, slightly fewer established research labs, smallest course catalog (especially for non-CS branches)",
+            "Typical BITSAT cutoff hierarchy for the same branch: Pilani > Goa > Hyderabad (gap is usually 10–25 marks, narrowing in CSE)"
+        ],
+        good_fit_checklist=[
+            "Rule of thumb: pick branch first, campus second — works for ~70% of students",
+            "For EEE / Chemical / MSc dual programs — prefer Pilani if your score allows",
+            "For pure CSE / IT / Math & Computing — any campus works; pick by lifestyle preference",
+            "For early industry exposure and tech internships — Hyderabad has a real edge",
+            "For research aspirations or PhD pathway — Pilani has the strongest track record",
+            "Don't downgrade branch just to be at Pilani if you'd resent the branch later (e.g., taking Pilani Civil over Hyderabad CSE if you actually want tech)",
+            "Visit campuses if possible before final preference list — student-life fit matters more than students expect"
+        ],
+        misconceptions=[
+            "\"Pilani CSE = Goa CSE = Hyderabad CSE.\" — Curriculum and degree are identical; placements are roughly similar; but peer quality (BITSAT cutoffs), alumni density, and research lab access differ. Especially for higher-end opportunities (top-tier MS, research roles, niche placements), Pilani still has small advantages.",
+            "\"Hyderabad campus is inferior.\" — Not for CSE/IT/ECE. The gap has closed dramatically. For tech careers specifically, Hyderabad's location advantage (HCL, Microsoft IDC, Amazon, Salesforce, Qualcomm, Google offices nearby) is real and growing.",
+            "\"Goa is just a vacation campus where nobody studies.\" — Goa has produced strong placements and academic outcomes; the lifestyle balance is a feature, not a bug for many students.",
+            "\"BITS is just an inferior IIT.\" — For CSE, Math & Computing, and tech placements, BITS Pilani regularly matches or exceeds mid-tier IITs. For brand snobbery in some recruiter circles or international academia, top IITs still edge out — but the gap is narrower than people assume.",
+            "\"Dubai campus is equivalent to Pilani/Goa/Hyderabad.\" — Not really. Dubai has a separate admission process, significantly higher fees, smaller alumni base, and is generally considered a different decision (often for students prioritizing international exposure or specific family reasons)."
+        ],
+        example_projects=[
+            "Practice School 1 (PS-1): 2-month exploratory internship at a partnered company after 2nd year",
+            "Practice School 2 (PS-2): 6-month full-time industry project in final year — often becomes a job offer",
+            "Student-built tech: BITS Pilani's Aerial Robotics team, BITS Hyderabad's coding club tournaments, BITS Goa's hackathons",
+            "Cross-campus exchange opportunities exist for select projects and labs",
+            "Year-long thesis or design project under a faculty mentor in your final year"
+        ],
+        similar_branches=["btech-vs-integrated-msc-guide"],
+        offered_at={
+            "BITS Pilani (Rajasthan, est. 1964)": "Flagship campus. Strongest for EEE, Chemical, Mechanical, MSc dual programs (Physics/Chemistry/Math/Economics/Biology). CSE/ECE/Math&Computing also excellent. Deepest research culture, most senior faculty, largest alumni network. Highest BITSAT cutoffs. Remote location (Pilani, Rajasthan) means focused academic environment but limited urban exposure.",
+            "BITS Goa (K.K. Birla Goa Campus, est. 2004)": "Second-most established campus. Strong in CSE, ECE, EEE, Mechanical, Chemical, and Math & Computing. Beautiful coastal location, balanced lifestyle, good weather. Slightly easier cutoffs than Pilani for the same branch (10–20 BITSAT marks typically). Good placements; research depth slightly behind Pilani.",
+            "BITS Hyderabad (est. 2008)": "Newest of the three Indian campuses, fastest growing. Particularly strong for CSE/IT due to Hyderabad's tech ecosystem (Microsoft IDC, Google, Amazon, Salesforce, Qualcomm all nearby). Best campus for industry internships and tech-adjacent exposure. Cutoffs lowest of the three (for now). Smaller alumni base but rapidly building.",
+            "BITS Dubai (est. 2000)": "International campus with separate admission process and significantly higher fees (often 3–4× Indian campuses). Smaller scale, different student profile, more international peer mix. Most Indian students don't seriously consider it unless prioritizing international exposure or specific family reasons.",
+            "How to prioritize": "For most students: branch matters more than campus (~70% of cases). For EEE/Chemical/MSc dual → favor Pilani. For pure CSE/IT → any campus works, choose by lifestyle. For maximum industry internships → favor Hyderabad. Always visit campuses or talk to current students before finalizing your BITSAT preference order."
+        },
+    ),
 ]
 
 
