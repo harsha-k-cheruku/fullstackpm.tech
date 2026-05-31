@@ -1,6 +1,26 @@
 {
   "episodes": [
     {
+      "id": "2026-05-31",
+      "episode_id": "bs006",
+      "slug": "the-backstory-2026-05-31",
+      "title": "The Algorithm in Kansas That Crashed the Market in 20 Minutes",
+      "hook": "On May 6, 2010, the stock market lost a trillion dollars in the time it takes to microwave popcorn\u2014and for years, nobody knew why. The answer, when it finally came, was somehow both mundane and terrifying.",
+      "theme": "",
+      "era": "",
+      "date": "2026-05-31",
+      "published_at": "2026-05-31T20:14:46",
+      "duration_seconds": 1474,
+      "duration_human": "24:34",
+      "audio_url": "https://www.fullstackpm.tech/podcast/the-backstory/audio/2026-05-31.mp3",
+      "audio_length_bytes": 11784795,
+      "lesson_for_traders": "If you're trading in a system with automated market makers and circuit breakers, understand that your edge isn't in predicting the market\u2014it's in understanding the feedback loops. When volatility spikes, the algorithms that provide liquidity pull back simultaneously, which creates more volatility, which triggers more pullbacks. The real risk isn't a 10% move; it's the speed at which that move happens and the cascading logic it triggers. Position sizing matters less than understanding what happens when your position becomes everyone's problem at the same time.",
+      "lesson_for_pms": "When you're building a system with multiple autonomous agents (algorithms, teams, vendors, users), test not for what each agent does individually, but for what they do collectively under stress. Waddell & Reed's algorithm was well-designed. High-frequency trading algorithms were well-designed. The circuit breaker was well-designed. Together, they created a system that no one fully understood. Before you add the next optimization, the next automation, the next layer of speed, ask: what happens when this interacts with everything else in a way I haven't predicted? The answer is usually: something worse than you thought.",
+      "memorable_line": "The market didn't crash because someone did something wrong\u2014it crashed because everyone did everything right, and the system couldn't handle that much rightness all at once.",
+      "shownotes": "# The Backstory \u2014 The Algorithm in Kansas That Crashed the Market in 20 Minutes\n*2026-05-31* | Episode bs006\n\n## The Hook\n\nOn May 6, 2010, the stock market lost a trillion dollars in the time it takes to microwave popcorn\u2014and for years, nobody knew why. The answer, when it finally came, was somehow both mundane and terrifying.\n\n## Key Players\n\n- **Waddell & Reed Financial Services** \u2014 A Kansas mutual fund manager who tried to sell $4 billion in the most normal way possible and accidentally showed us how abnormal the market had become.\n- **High-Frequency Trading Algorithms** \u2014 Systems designed to provide liquidity and protect capital, which did exactly that\u2014and in doing so, made everything worse.\n- **Navinder Sarao** \u2014 A day trader in London who became the scapegoat for a system failure that had nothing to do with him, proving that complex crashes need simple explanations.\n- **The Circuit Breaker** \u2014 A rule written for the 1987 crash that saved the market in 2010 not because it was designed for this problem, but because silence was the only thing that could break the feedback loop.\n\n## The Lesson\n\n**For traders:** If you're trading in a system with automated market makers and circuit breakers, understand that your edge isn't in predicting the market\u2014it's in understanding the feedback loops. When volatility spikes, the algorithms that provide liquidity pull back simultaneously, which creates more volatility, which triggers more pullbacks. The real risk isn't a 10% move; it's the speed at which that move happens and the cascading logic it triggers. Position sizing matters less than understanding what happens when your position becomes everyone's problem at the same time.\n\n**For PMs:** When you're building a system with multiple autonomous agents (algorithms, teams, vendors, users), test not for what each agent does individually, but for what they do collectively under stress. Waddell & Reed's algorithm was well-designed. High-frequency trading algorithms were well-designed. The circuit breaker was well-designed. Together, they created a system that no one fully understood. Before you add the next optimization, the next automation, the next layer of speed, ask: what happens when this interacts with everything else in a way I haven't predicted? The answer is usually: something worse than you thought.\n\n## The Line\n\n> The market didn't crash because someone did something wrong\u2014it crashed because everyone did everything right, and the system couldn't handle that much rightness all at once.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-05-30",
       "episode_id": "bs005",
       "slug": "the-backstory-2026-05-30",
