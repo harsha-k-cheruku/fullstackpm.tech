@@ -51,7 +51,7 @@
     <!-- PM Multiverse — featured full-width card -->
     <a href="/tools/pm-multiverse"
        class="card-hover"
-       style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:32px;background:linear-gradient(135deg,var(--color-blue-50) 0%,var(--color-bg-primary) 100%);text-decoration:none;margin-bottom:20px;">
+       style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-secondary);text-decoration:none;margin-bottom:20px;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
         <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
         <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-bg-secondary);color:var(--color-text-tertiary);border:1px solid var(--color-border);">Featured</span>
@@ -69,7 +69,7 @@
       <!-- Interview Coach -->
       <a href="/tools/interview-coach"
          class="card-hover"
-         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
+         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-secondary);text-decoration:none;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
           <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">In Progress</span>
         </div>
@@ -83,7 +83,7 @@
       <!-- SDE Prep -->
       <a href="/tools/sde-prep/intensive-8-week"
          class="card-hover"
-         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
+         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-secondary);text-decoration:none;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
           <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
         </div>
@@ -104,7 +104,7 @@
     <a href="https://www.amazon.com/Memoirs-Mediocre-Manager-Surviving-Cross-Functional/dp/B0G2X59WRL/"
        target="_blank" rel="noopener noreferrer"
        class="card-hover"
-       style="display:flex;align-items:center;gap:24px;border-radius:14px;border:1px solid var(--color-border);padding:24px 28px;background-color:var(--color-bg-secondary);text-decoration:none;flex-wrap:wrap;">
+       style="display:flex;align-items:center;gap:24px;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-secondary);text-decoration:none;flex-wrap:wrap;">
       <div style="font-size:2.5rem;flex-shrink:0;">📖</div>
       <div style="flex:1;min-width:200px;">
         <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Published Book</span>
@@ -131,7 +131,7 @@
       {% for post in recent_posts %}
       <a href="/blog/{{ post.slug }}"
          class="card-hover"
-         style="display:block;border-radius:12px;border:1px solid var(--color-border);padding:20px 22px;background-color:var(--color-bg-secondary);text-decoration:none;">
+         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-secondary);text-decoration:none;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           {% for tag in post.tags[:2] %}
           <span style="font-size:11px;color:var(--color-text-tertiary);padding:2px 8px;border-radius:4px;background-color:var(--color-bg-primary);border:1px solid var(--color-border);">{{ tag }}</span>
@@ -178,7 +178,7 @@
       {% for pick in reading.picks %}
       <a href="{{ pick.url }}" target="_blank" rel="noopener noreferrer"
          class="card-hover"
-         style="display:block;border-radius:12px;border:1px solid var(--color-border);padding:20px 22px;background-color:var(--color-bg-primary);text-decoration:none;">
+         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-secondary);text-decoration:none;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
           {% if pick.type == 'essay' %}
           <span style="font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background-color:var(--color-blue-100);color:var(--color-blue-900);">Essay</span>
@@ -212,7 +212,7 @@
         {% for item in reading.rss %}
         <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer"
            class="card-hover"
-           style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;border:1px solid var(--color-border);background-color:var(--color-bg-primary);text-decoration:none;">
+           style="display:flex;align-items:center;gap:14px;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-secondary);text-decoration:none;">
           <div style="flex:1;min-width:0;">
             <p class="text-small" style="color:var(--color-text-primary);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ item.title }}</p>
             <p style="font-size:12px;color:var(--color-text-tertiary);margin-top:2px;">{{ item.source }}</p>
