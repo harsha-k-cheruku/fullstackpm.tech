@@ -139,7 +139,7 @@ Dark mode override (in `.dark` block):
 ```
 
 **Verify:** Buttons, links, and accent elements across the site show indigo instead of blue. Check homepage, blog, projects.
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
@@ -160,7 +160,7 @@ To:
 --color-text-tertiary: #6B7280;
 ```
 **Verify:** Light mode body text is softer — not pure black. Dark mode unchanged.
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
@@ -180,7 +180,7 @@ Also find any `padding: 3rem 0` on section elements in templates and increase to
 - `code/app/templates/index.html` — change all `padding: 3rem 0` on `<section>` elements to `padding: 5rem 0`
 
 **Verify:** Homepage sections have more breathing room. The page feels less dense.
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
