@@ -3,57 +3,28 @@
 {% block content %}
 
 <!-- HERO -->
-<section style="padding: 5rem 0 4rem; border-bottom: 1px solid var(--color-border);">
+<section style="padding: 6rem 0 4rem; border-bottom: 1px solid var(--color-border);">
   <div class="max-w-3xl mx-auto px-6">
-    <p class="text-small mb-4" style="color: var(--color-text-tertiary); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;">
-      Harsha Cheruku &middot; @fullstackpm
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:1rem;">
+      The Full Stack PM
     </p>
-    <h1 class="text-display mb-5" style="color: var(--color-text-primary); line-height: 1.05;">
-      The PM<br>who ships.
+    <h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:var(--color-text-primary);margin-bottom:1.25rem;">
+      The PM who ships.
     </h1>
-    <p id="hero-tagline" class="text-body-lg mb-8" style="color: var(--color-text-secondary); max-width: 540px; line-height: 1.75; min-height: 5rem;"></p>
-
-  <script>
-    (function () {
-      var part1 = "Built code for other people\u2019s products. Wrote the vision for other engineers to ship. Now doing both \u2014 for projects small enough to launch alone, fun enough to actually finish.";
-      var part2 = "Learning in public.";
-      var el = document.getElementById("hero-tagline");
-      var style = document.createElement("style");
-      style.textContent = "@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}";
-      document.head.appendChild(style);
-      var cursor = document.createElement("span");
-      cursor.textContent = "|";
-      cursor.style.cssText = "animation:blink 0.75s step-end infinite;margin-left:1px;color:var(--color-accent);font-weight:300;";
-      el.appendChild(cursor);
-      var i = 0;
-      var strong = null;  // ← Declare here so it's always in scope
-      var interval = setInterval(function () {
-        if (i < part1.length) {
-          el.insertBefore(document.createTextNode(part1[i]), cursor);
-          i++;
-        } else if (i === part1.length) {
-          var br = document.createElement("br");
-          el.insertBefore(br, cursor);
-          strong = document.createElement("strong");  // ← Assign to outer scope
-          strong.style.color = "var(--color-text-primary)";
-          el.insertBefore(strong, cursor);
-          i++;
-        } else {
-          var j = i - part1.length - 1;
-          if (j < part2.length) {
-            if (strong) {  // ← Safety check
-              strong.appendChild(document.createTextNode(part2[j]));
-            }
-            i++;
-          } else {
-            clearInterval(interval);
-            setTimeout(function () { cursor.remove(); }, 1800);
-          }
-        }
-      }, 38);
-    })();
-  </script>
-
+    <p style="font-size:1.15rem;line-height:1.7;color:var(--color-text-secondary);max-width:560px;margin-bottom:2rem;">
+      Product thinking, AI-native workflows, and the economics of what endures.
+      Written by a PM who builds things and ships books.
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://fullstackpm.beehiiv.com/subscribe"
+         style="display:inline-block;padding:0.65rem 1.4rem;border-radius:8px;background-color:var(--color-accent);color:#fff;font-weight:600;font-size:0.9rem;text-decoration:none;">
+        Get the newsletter
+      </a>
+      <a href="/blog"
+         style="display:inline-block;padding:0.65rem 1.4rem;border-radius:8px;border:1px solid var(--color-border);color:var(--color-text-primary);font-weight:600;font-size:0.9rem;text-decoration:none;">
+        Read the blog &rarr;
+      </a>
+    </div>
   </div>
 </section>
 
