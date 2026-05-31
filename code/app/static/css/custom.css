@@ -16,17 +16,17 @@
   --color-border: #E2E8F0;
   --color-border-hover: #CBD5E1;
 
-  /* Accent (Blue) - 10-step scale */
-  --color-blue-50: #E6F4FB;
-  --color-blue-100: #CCE9F7;
-  --color-blue-200: #99D3EF;
-  --color-blue-300: #66BDE7;
-  --color-blue-400: #33A7DF;
-  --color-blue-500: #2E8ECE;  /* Primary accent */
-  --color-blue-600: #2577AD;
-  --color-blue-700: #1D608C;
-  --color-blue-800: #14496B;
-  --color-blue-900: #0C324A;
+  /* Accent (Editorial Indigo) - 10-step scale */
+  --color-blue-50: #EEF2FF;
+  --color-blue-100: #E0E7FF;
+  --color-blue-200: #C7D2FE;
+  --color-blue-300: #A5B4FC;
+  --color-blue-400: #818CF8;
+  --color-blue-500: #6366F1;  /* Primary accent */
+  --color-blue-600: #4F46E5;
+  --color-blue-700: #4338CA;
+  --color-blue-800: #3730A3;
+  --color-blue-900: #312E81;
 
   /* Legacy accent aliases (for backwards compatibility) */
   --color-accent: var(--color-blue-500);
@@ -82,9 +82,9 @@
   --color-border-hover: #475569;
 
   /* Accent overrides for dark */
-  --color-accent-light: #172554;
-  --color-blue-50: #172554;   /* Darker blue for dark mode */
-  --color-blue-100: #1E3A8A;  /* Darker blue for icon backgrounds */
+  --color-accent-light: #1E1B4B;
+  --color-blue-50: #1E1B4B;
+  --color-blue-100: #312E81;
 
   /* Semantic overrides for dark */
   --color-success-bg: #052E16;
