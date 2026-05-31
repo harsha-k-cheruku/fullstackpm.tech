@@ -27,6 +27,11 @@ def _ctx(request: Request, **kwargs) -> dict:
 async def projects(request: Request) -> HTMLResponse:
     content_service = request.app.state.content_service
     project_list = content_service.get_projects()
+    visible_statuses = {"live", "inprogress"}
+    project_list = [
+        p for p in project_list
+        if p.status.lower().replace("_", "").replace(" ", "") in visible_statuses
+    ]
 
     # Sort: live projects first, then others by display_order
     project_list = sorted(project_list, key=lambda p: (p.status != "live", p.display_order))
@@ -127,6 +132,11 @@ async def projects_filter_htmx(request: Request, status: str = "all") -> HTMLRes
     """HTMX endpoint for filtering projects by status."""
     content_service = request.app.state.content_service
     project_list = content_service.get_projects()
+    visible_statuses = {"live", "inprogress"}
+    project_list = [
+        p for p in project_list
+        if p.status.lower().replace("_", "").replace(" ", "") in visible_statuses
+    ]
 
     # Filter by status if not "all"
     if status != "all":
