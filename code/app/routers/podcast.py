@@ -21,6 +21,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
 templates.env.filters["rfc2822"] = lambda value: format_datetime(value)
 AUDIO_DIR = settings.static_dir / "podcast" / "audio"
+BACKSTORY_AUDIO_DIR = settings.static_dir / "podcast" / "the-backstory" / "audio"
 EPISODES_FILE = settings.static_dir / "podcast" / "episodes.json"
 LEARNING_BRIEF_FILE = settings.static_dir / "podcast" / "learning-brief" / "episodes.json"
 BACKSTORY_FILE = settings.static_dir / "podcast" / "the-backstory" / "episodes.json"
@@ -135,17 +136,10 @@ async def backstory_feed(request: Request) -> Response:
     return Response(content=xml, media_type="application/rss+xml", headers={"Cache-Control": "no-cache"})
 
 
-@router.get("/podcast/audio/{filename}")
-async def stream_audio(filename: str, request: Request) -> Response:
-    """
-    Serve podcast audio with explicit range-request support.
-    Apple Podcasts streams via HTTP byte-range — without this it shows
-    episodes as 'not playable' even though browser <audio> works fine.
-    """
+def _stream_audio_from_dir(audio_dir: Path, filename: str, request: Request) -> Response:
     import re as _re
-    audio_path = AUDIO_DIR / filename
+    audio_path = audio_dir / filename
     if not audio_path.exists() or not filename.endswith(".mp3"):
-        from fastapi import HTTPException
         raise HTTPException(status_code=404, detail="Audio file not found")
 
     file_size = audio_path.stat().st_size
@@ -173,7 +167,6 @@ async def stream_audio(filename: str, request: Request) -> Response:
                 },
             )
 
-    # Full file request
     return Response(
         content=audio_path.read_bytes(),
         media_type="audio/mpeg",
@@ -183,6 +176,22 @@ async def stream_audio(filename: str, request: Request) -> Response:
             "Cache-Control": "public, max-age=86400",
         },
     )
+
+
+@router.get("/podcast/audio/{filename}")
+async def stream_audio(filename: str, request: Request) -> Response:
+    """
+    Serve podcast audio with explicit range-request support.
+    Apple Podcasts streams via HTTP byte-range — without this it shows
+    episodes as 'not playable' even though browser <audio> works fine.
+    """
+    return _stream_audio_from_dir(AUDIO_DIR, filename, request)
+
+
+@router.get("/podcast/the-backstory/audio/{filename}")
+async def stream_backstory_audio(filename: str, request: Request) -> Response:
+    """Range-request-aware audio serving for The Backstory episodes."""
+    return _stream_audio_from_dir(BACKSTORY_AUDIO_DIR, filename, request)
 
 
 @router.get("/podcast/{slug}", response_class=HTMLResponse)
