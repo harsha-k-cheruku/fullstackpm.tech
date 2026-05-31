@@ -290,16 +290,70 @@ Find any cards with inconsistent styling (missing border, different radius, inli
 
 ---
 
+## Phase 6 — Newspaper Layout
+
+**Goal:** Shift the visual language from "SaaS product page" to "editorial publication." Pure white, typography-forward, ink-on-paper feel. Comp: Stratechery, Lenny's Newsletter.
+
+### Task 6.1 — Go full white: remove all colored section backgrounds
+**Files:** `code/app/templates/index.html`, `code/app/static/css/custom.css`
+**What:**
+- In `custom.css`, change `--color-bg-secondary` and `--color-bg-tertiary` to match `--color-bg-primary` (`#FFFFFF`) in `:root`. This removes the alternating slate section fills site-wide.
+- In `index.html`, remove any inline `background-color: var(--color-bg-secondary)` on `<section>` elements — replace with nothing (transparent).
+- Dark mode: leave `--color-bg-secondary` and `--color-bg-tertiary` unchanged in the `.dark` block — dark mode needs the layering.
+**Verify:** Homepage in light mode is all white — no gray/slate band sections. Dark mode still has depth.
+**Status:**  done
+
+---
+
+### Task 6.2 — Use thin horizontal rules as section dividers instead of background fills
+**File:** `code/app/templates/index.html`
+**What:** Each `<section>` currently uses `border-bottom: 1px solid var(--color-border)` — keep these. But remove any `padding`-heavy section wrappers that exist purely to create visual separation via background color. The border rule alone should divide sections.
+**Verify:** Sections are clearly separated by a thin line, not by color blocks.
+**Status:**  done
+
+---
+
+### Task 6.3 — Remove PM Reading Stack section from homepage
+**File:** `code/app/templates/index.html`
+**What:** Find and remove the entire PM Reading Stack `<section>` block. It promotes external content and dilutes the editorial identity. Do not delete any backend data — just remove the section from the homepage template.
+**Verify:** Homepage no longer shows PM Reading Stack. Page feels less cluttered.
+**Status:**  done
+
+---
+
+### Task 6.4 — Strengthen typography hierarchy
+**File:** `code/app/static/css/custom.css`
+**What:** Make headings heavier and more commanding — newspaper masthead energy.
+- Change `.text-h1` `font-weight` from `700` to `800`
+- Change `.text-h2` `font-weight` from `700` to `800`
+- Change `.text-display` `font-weight` from `700` to `800`
+- Add `letter-spacing: -0.03em` to `.text-display` (tighter = more editorial)
+**Verify:** Section headings on homepage feel bolder and more authoritative.
+**Status:**  done
+
+---
+
+### Task 6.5 — Tighten card borders, remove card background fills
+**File:** `code/app/templates/index.html`
+**What:** Cards currently use `background-color: var(--color-bg-secondary)` which adds a gray tint. In a newspaper layout, cards should be white with a clean border.
+- Find all cards on the homepage with `background-color: var(--color-bg-secondary)` and change to `background-color: var(--color-bg-primary)` (white).
+- Keep the `border: 1px solid var(--color-border)` and `border-radius: 12px` — just remove the fill.
+**Verify:** Cards are white-on-white with a clean border outline. No gray fills.
+**Status:**  done
+
+---
+
 ## Execution order (recommended)
 
 Run phases in this order. Each phase is independent but builds on the previous:
 
 ```
-Phase 1 (Tasks 1.1 → 1.4)  — Quick fixes, no visual risk
-Phase 2 (Tasks 2.1 → 2.3)  — Design system, biggest visual impact
-Phase 3 (Tasks 3.1 → 3.3)  — Homepage reorganization
-Phase 4 (Task 4.1)          — Resources page
-Phase 5 (Task 5.1)          — Footer
+Phase 1 (Tasks 1.1 → 1.5)  — Quick fixes, no visual risk         ✅ done
+Phase 2 (Tasks 2.1 → 2.3)  — Design system, biggest visual impact ✅ done
+Phase 3 (Tasks 3.1 → 3.3)  — Homepage reorganization              ✅ done
+Phase 4 (Task 4.1)          — Resources page                       ✅ done
+Phase 5 (Task 5.1)          — Footer                               ✅ done
+Phase 6 (Tasks 6.1 → 6.5)  — Newspaper layout                      done
 ```
 
 **Total estimated Claude work:** ~2-3 hours across sessions
