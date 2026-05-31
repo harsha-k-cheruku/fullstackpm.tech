@@ -1,16 +1,44 @@
-<!-- partials/newsletter_signup.html -->
-<form onsubmit="event.preventDefault(); window.open('https://fullstackpm.beehiiv.com/subscribe?email=' + encodeURIComponent(this.email.value), '_blank');"
-      style="display:flex;flex-direction:column;gap:10px;max-width:400px;margin:0 auto;">
-  <div style="display:flex;gap:8px;flex-wrap:wrap;">
-    <input type="email"
-           name="email"
-           placeholder="your@email.com"
-           required
-           style="flex:1;min-width:0;padding:0.6rem 0.9rem;border-radius:8px;border:1px solid var(--color-border);background-color:var(--color-bg-primary);color:var(--color-text-primary);font-size:0.9rem;outline:none;">
-    <button type="submit"
-            style="padding:0.6rem 1.2rem;border-radius:8px;background-color:var(--color-accent);color:#fff;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;white-space:nowrap;">
-      Subscribe
-    </button>
+<!-- partials/newsletter_signup.html — Kit (ConvertKit) embed -->
+<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+<form action="https://app.kit.com/forms/9506742/subscriptions"
+      class="seva-form formkit-form"
+      method="post"
+      data-sv-form="9506742"
+      data-uid="e8cf960de3"
+      data-format="inline"
+      data-version="5"
+      min-width="400 500 600 700 800"
+      style="background-color: var(--color-bg-secondary); border-radius: 8px; border: 1px solid var(--color-border);">
+  <div data-style="minimal">
+    <div class="formkit-header" data-element="header"
+         style="color: var(--color-text-primary); font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 6px;">
+      The Full Stack PM
+    </div>
+    <div class="formkit-subheader" data-element="subheader"
+         style="color: var(--color-text-secondary); font-size: 14px; text-align: center; margin-bottom: 16px;">
+      Product thinking, AI-native workflows, and the economics of what endures. Weekly.
+    </div>
+    <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+    <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"
+         style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <div class="formkit-field" style="flex: 1 0 200px;">
+        <input class="formkit-input"
+               name="email_address"
+               aria-label="Email Address"
+               placeholder="your@email.com"
+               required
+               type="email"
+               style="width: 100%; padding: 0.6rem 0.9rem; border-radius: 8px; border: 1px solid var(--color-border); background-color: var(--color-bg-primary); color: var(--color-text-primary); font-size: 0.9rem;">
+      </div>
+      <button data-element="submit" class="formkit-submit"
+              style="padding: 0.6rem 1.2rem; border-radius: 8px; background-color: var(--color-accent); color: #fff; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;">
+        <div class="formkit-spinner"><div></div><div></div><div></div></div>
+        <span>Subscribe</span>
+      </button>
+    </div>
+    <div class="formkit-guarantee" data-element="guarantee"
+         style="color: var(--color-text-tertiary); font-size: 12px; text-align: center; margin-top: 10px;">
+      No spam. Unsubscribe any time.
+    </div>
   </div>
-  <p style="font-size:0.75rem;color:var(--color-text-tertiary);margin:0;">No spam. Unsubscribe any time.</p>
 </form>
