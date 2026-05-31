@@ -207,7 +207,7 @@ Reorder to:
 7. Footer
 
 **Verify:** On homepage, newsletter section appears near the top, before the tools.
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
@@ -244,7 +244,7 @@ Reorder to:
 
 Replace the existing hero section with this. Keep the overall page structure intact.
 **Verify:** Hero has "The Full Stack PM" label, strong H1, subtitle, two CTAs (newsletter + blog).
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
@@ -260,7 +260,7 @@ background-color: var(--color-bg-secondary)
 Find any cards with inconsistent styling (missing border, different radius, inline background colors) and normalize them.
 
 **Verify:** Visual scan of homepage — all cards look like they belong to the same system.
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
