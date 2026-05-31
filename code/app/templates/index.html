@@ -57,6 +57,131 @@
   </div>
 </section>
 
+<!-- NEWSLETTER SIGNUP -->
+<section style="padding: 5rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-3xl mx-auto px-6">
+    <div style="text-align: center; margin-bottom: 1.5rem;">
+      <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Newsletter</span>
+      <h2 style="font-size:1.4rem;font-weight:700;color:var(--color-text-primary);margin:8px 0 6px;">The Full Stack PM</h2>
+      <p style="font-size:0.95rem;color:var(--color-text-secondary);">Product thinking, AI-native workflows, and the economics of what endures. Weekly.</p>
+    </div>
+    {% include "partials/newsletter_signup.html" %}
+  </div>
+</section>
+
+<!-- LIVE TOOLS -->
+<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-5xl mx-auto px-6">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
+      <h2 class="text-h2" style="color: var(--color-text-primary);">Live Tools</h2>
+      <span class="text-small" style="color: var(--color-text-tertiary);">Built &amp; shipped, not just planned</span>
+    </div>
+
+    <!-- PM Multiverse — featured full-width card -->
+    <a href="/tools/pm-multiverse"
+       class="card-hover"
+       style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:32px;background:linear-gradient(135deg,var(--color-blue-50) 0%,var(--color-bg-primary) 100%);text-decoration:none;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-bg-secondary);color:var(--color-text-tertiary);border:1px solid var(--color-border);">Featured</span>
+      </div>
+      <h3 class="text-h3" style="color:var(--color-text-primary);margin-bottom:10px;">PM Multiverse</h3>
+      <p class="text-body-lg" style="color:var(--color-text-secondary);margin-bottom:18px;max-width:600px;">
+        Same problem. 5 PM brains. Where do Cagan, Torres, Doshi, Lenny, and the Exec AI Monster disagree &mdash; and which one thinks like you?
+      </p>
+      <p class="text-small" style="color:var(--color-accent);font-weight:600;">10 problems &middot; 5 personas &middot; Live community votes &rarr;</p>
+    </a>
+
+    <!-- Two smaller tools -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Interview Coach -->
+      <a href="/tools/interview-coach"
+         class="card-hover"
+         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">In Progress</span>
+        </div>
+        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">🎯 Interview Coach</h4>
+        <p class="text-body" style="color:var(--color-text-secondary);">
+          Practice PM interviews. Get AI feedback on your frameworks, structure, and thinking. Build confidence before the real thing.
+        </p>
+        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">Start practicing &rarr;</p>
+      </a>
+
+      <!-- SDE Prep -->
+      <a href="/tools/sde-prep/intensive-8-week"
+         class="card-hover"
+         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
+        </div>
+        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">📋 SDE Prep</h4>
+        <p class="text-body" style="color:var(--color-text-secondary);">
+          9-week job search intensive. 200+ daily tasks, structured to get you from prep mode to signed offer.
+        </p>
+        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">See the plan &rarr;</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section style="padding: 5rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-3xl mx-auto px-6">
+    <a href="https://www.amazon.com/Memoirs-Mediocre-Manager-Surviving-Cross-Functional/dp/B0G2X59WRL/"
+       target="_blank" rel="noopener noreferrer"
+       class="card-hover"
+       style="display:flex;align-items:center;gap:24px;border-radius:14px;border:1px solid var(--color-border);padding:24px 28px;background-color:var(--color-bg-secondary);text-decoration:none;flex-wrap:wrap;">
+      <div style="font-size:2.5rem;flex-shrink:0;">📖</div>
+      <div style="flex:1;min-width:200px;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Published Book</span>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--color-text-primary);margin:4px 0 6px;">Memoirs of a Mediocre Manager</h3>
+        <p class="text-small" style="color:var(--color-text-secondary);">Part satire, part field guide. The quiet majority who actually keep the lights on finally get their story told.</p>
+      </div>
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;background-color:var(--color-accent);color:white;font-size:13px;font-weight:600;flex-shrink:0;white-space:nowrap;">
+        Read on Amazon &rarr;
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- LATEST WRITING -->
+<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-3xl mx-auto px-6">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;">
+      <h2 class="text-h2" style="color: var(--color-text-primary);">Latest Writing</h2>
+      <a href="/blog" class="text-small" style="color:var(--color-accent);text-decoration:none;font-weight:600;">All articles &rarr;</a>
+    </div>
+
+    {% if recent_posts %}
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      {% for post in recent_posts %}
+      <a href="/blog/{{ post.slug }}"
+         class="card-hover"
+         style="display:block;border-radius:12px;border:1px solid var(--color-border);padding:20px 22px;background-color:var(--color-bg-secondary);text-decoration:none;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          {% for tag in post.tags[:2] %}
+          <span style="font-size:11px;color:var(--color-text-tertiary);padding:2px 8px;border-radius:4px;background-color:var(--color-bg-primary);border:1px solid var(--color-border);">{{ tag }}</span>
+          {% endfor %}
+          <span class="text-small" style="color:var(--color-text-tertiary);margin-left:auto;">{{ post.date.strftime('%b %d, %Y') if post.date else '' }}</span>
+        </div>
+        <h4 style="font-size:1rem;font-weight:600;color:var(--color-text-primary);line-height:1.4;margin-bottom:6px;">{{ post.title }}</h4>
+        {% if post.excerpt %}
+        <p class="text-small" style="color:var(--color-text-secondary);line-clamp-2;">{{ post.excerpt }}</p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-body" style="color:var(--color-text-tertiary);">
+      Writing coming soon. <a href="/blog" style="color:var(--color-accent);">Check the blog &rarr;</a>
+    </p>
+    {% endif %}
+  </div>
+</section>
+
 <!-- PM READING STACK -->
 <section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg-secondary);">
   <div class="max-w-3xl mx-auto px-6">
@@ -132,131 +257,6 @@
     <p class="text-body" style="color:var(--color-text-tertiary);font-style:italic;">Reading stack coming soon — check back shortly.</p>
     {% endif %}
 
-  </div>
-</section>
-
-<!-- LIVE TOOLS -->
-<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-5xl mx-auto px-6">
-    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
-      <h2 class="text-h2" style="color: var(--color-text-primary);">Live Tools</h2>
-      <span class="text-small" style="color: var(--color-text-tertiary);">Built &amp; shipped, not just planned</span>
-    </div>
-
-    <!-- PM Multiverse — featured full-width card -->
-    <a href="/tools/pm-multiverse"
-       class="card-hover"
-       style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:32px;background:linear-gradient(135deg,var(--color-blue-50) 0%,var(--color-bg-primary) 100%);text-decoration:none;margin-bottom:20px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
-        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
-        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-bg-secondary);color:var(--color-text-tertiary);border:1px solid var(--color-border);">Featured</span>
-      </div>
-      <h3 class="text-h3" style="color:var(--color-text-primary);margin-bottom:10px;">PM Multiverse</h3>
-      <p class="text-body-lg" style="color:var(--color-text-secondary);margin-bottom:18px;max-width:600px;">
-        Same problem. 5 PM brains. Where do Cagan, Torres, Doshi, Lenny, and the Exec AI Monster disagree &mdash; and which one thinks like you?
-      </p>
-      <p class="text-small" style="color:var(--color-accent);font-weight:600;">10 problems &middot; 5 personas &middot; Live community votes &rarr;</p>
-    </a>
-
-    <!-- Two smaller tools -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-      <!-- Interview Coach -->
-      <a href="/tools/interview-coach"
-         class="card-hover"
-         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">In Progress</span>
-        </div>
-        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">🎯 Interview Coach</h4>
-        <p class="text-body" style="color:var(--color-text-secondary);">
-          Practice PM interviews. Get AI feedback on your frameworks, structure, and thinking. Build confidence before the real thing.
-        </p>
-        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">Start practicing &rarr;</p>
-      </a>
-
-      <!-- SDE Prep -->
-      <a href="/tools/sde-prep/intensive-8-week"
-         class="card-hover"
-         style="display:block;border-radius:16px;border:1.5px solid var(--color-border);padding:24px;background-color:var(--color-bg-primary);text-decoration:none;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
-        </div>
-        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">📋 SDE Prep</h4>
-        <p class="text-body" style="color:var(--color-text-secondary);">
-          9-week job search intensive. 200+ daily tasks, structured to get you from prep mode to signed offer.
-        </p>
-        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">See the plan &rarr;</p>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- LATEST WRITING -->
-<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-3xl mx-auto px-6">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;">
-      <h2 class="text-h2" style="color: var(--color-text-primary);">Latest Writing</h2>
-      <a href="/blog" class="text-small" style="color:var(--color-accent);text-decoration:none;font-weight:600;">All articles &rarr;</a>
-    </div>
-
-    {% if recent_posts %}
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      {% for post in recent_posts %}
-      <a href="/blog/{{ post.slug }}"
-         class="card-hover"
-         style="display:block;border-radius:12px;border:1px solid var(--color-border);padding:20px 22px;background-color:var(--color-bg-secondary);text-decoration:none;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-          {% for tag in post.tags[:2] %}
-          <span style="font-size:11px;color:var(--color-text-tertiary);padding:2px 8px;border-radius:4px;background-color:var(--color-bg-primary);border:1px solid var(--color-border);">{{ tag }}</span>
-          {% endfor %}
-          <span class="text-small" style="color:var(--color-text-tertiary);margin-left:auto;">{{ post.date.strftime('%b %d, %Y') if post.date else '' }}</span>
-        </div>
-        <h4 style="font-size:1rem;font-weight:600;color:var(--color-text-primary);line-height:1.4;margin-bottom:6px;">{{ post.title }}</h4>
-        {% if post.excerpt %}
-        <p class="text-small" style="color:var(--color-text-secondary);line-clamp-2;">{{ post.excerpt }}</p>
-        {% endif %}
-      </a>
-      {% endfor %}
-    </div>
-    {% else %}
-    <p class="text-body" style="color:var(--color-text-tertiary);">
-      Writing coming soon. <a href="/blog" style="color:var(--color-accent);">Check the blog &rarr;</a>
-    </p>
-    {% endif %}
-  </div>
-</section>
-
-<!-- NEWSLETTER SIGNUP -->
-<section style="padding: 5rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-3xl mx-auto px-6">
-    <div style="text-align: center; margin-bottom: 1.5rem;">
-      <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Newsletter</span>
-      <h2 style="font-size:1.4rem;font-weight:700;color:var(--color-text-primary);margin:8px 0 6px;">The Full Stack PM</h2>
-      <p style="font-size:0.95rem;color:var(--color-text-secondary);">Product thinking, AI-native workflows, and the economics of what endures. Weekly.</p>
-    </div>
-    {% include "partials/newsletter_signup.html" %}
-  </div>
-</section>
-
-<!-- BOOK -->
-<section style="padding: 5rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-3xl mx-auto px-6">
-    <a href="https://www.amazon.com/Memoirs-Mediocre-Manager-Surviving-Cross-Functional/dp/B0G2X59WRL/"
-       target="_blank" rel="noopener noreferrer"
-       class="card-hover"
-       style="display:flex;align-items:center;gap:24px;border-radius:14px;border:1px solid var(--color-border);padding:24px 28px;background-color:var(--color-bg-secondary);text-decoration:none;flex-wrap:wrap;">
-      <div style="font-size:2.5rem;flex-shrink:0;">📖</div>
-      <div style="flex:1;min-width:200px;">
-        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Published Book</span>
-        <h3 style="font-size:1.1rem;font-weight:700;color:var(--color-text-primary);margin:4px 0 6px;">Memoirs of a Mediocre Manager</h3>
-        <p class="text-small" style="color:var(--color-text-secondary);">Part satire, part field guide. The quiet majority who actually keep the lights on finally get their story told.</p>
-      </div>
-      <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;background-color:var(--color-accent);color:white;font-size:13px;font-weight:600;flex-shrink:0;white-space:nowrap;">
-        Read on Amazon &rarr;
-      </span>
-    </a>
   </div>
 </section>
 
