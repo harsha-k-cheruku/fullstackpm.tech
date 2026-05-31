@@ -273,7 +273,7 @@ Find any cards with inconsistent styling (missing border, different radius, inli
 - Change the H1 heading from "Resources" to "Podcasts & Resources"
 - Add a subtitle: "Three automated shows. Daily intelligence, PM learning, and weekend market history."
 **Verify:** Resources page shows updated heading and subtitle.
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
