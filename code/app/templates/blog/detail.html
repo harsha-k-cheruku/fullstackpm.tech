@@ -119,8 +119,15 @@
       </button>
     </div>
 
-    <!-- Newsletter CTA — disabled temporarily -->
-    {# newsletter signup hidden until spam/bot issue is resolved #}
+    <!-- Newsletter CTA -->
+    <div class="max-w-3xl mx-auto" style="margin-bottom: 3rem;">
+      <div style="border:1px solid var(--color-border);border-radius:12px;padding:2rem;background-color:var(--color-bg-secondary);text-align:center;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">Newsletter</p>
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--color-text-primary);margin-bottom:6px;">The Full Stack PM</h3>
+        <p style="font-size:0.9rem;color:var(--color-text-secondary);margin-bottom:1.25rem;">Product thinking, AI-native workflows, and the economics of what endures. Weekly.</p>
+        {% include "partials/newsletter_signup.html" %}
+      </div>
+    </div>
 
     <!-- Comments Section -->
     <div class="max-w-3xl mx-auto">
