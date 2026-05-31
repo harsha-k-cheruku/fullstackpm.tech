@@ -286,7 +286,7 @@ Find any cards with inconsistent styling (missing border, different radius, inli
 - Add newsletter link to footer quick links: "Newsletter" → `https://fullstackpm.beehiiv.com/subscribe`
 - Change "Resources" → "Podcasts" in footer links
 **Verify:** Footer shows updated bio and correct links.
-**Status:** ⏳ pending
+**Status:**  done
 
 ---
 
