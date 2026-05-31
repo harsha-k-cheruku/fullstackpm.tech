@@ -398,3 +398,8 @@
   background-color: var(--color-blue-100);
   color: #FFFFFF;
 }
+
+/* Section breathing room */
+section + section {
+  margin-top: 1rem;
+}
