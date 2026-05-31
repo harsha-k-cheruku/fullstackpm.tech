@@ -29,7 +29,7 @@ async def resources_hub(request: Request) -> HTMLResponse:
         "resources/index.html",
         _ctx(
             request,
-            title="Resources - fullstackpm.tech",
+            title="Podcasts & Resources — The Full Stack PM",
             current_page="/resources",
         ),
     )
