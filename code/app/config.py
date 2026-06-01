@@ -21,6 +21,13 @@ class Settings(BaseSettings):
     openai_model: str = "gpt-4o-mini"
     openai_max_tokens: int = 2000
 
+    # Anthropic API (for feed AI processing)
+    anthropic_api_key: str = ""
+    anthropic_model: str = "claude-haiku-4-5-20251001"
+
+    # Editorial dashboard token (set via env var EDITORIAL_TOKEN)
+    editorial_token: str = "fspm-editorial-2026"
+
     # Google Sheets Newsletter
     google_sheets_credentials_path: str = os.getenv(
         "GOOGLE_SHEETS_CREDENTIALS_PATH",
