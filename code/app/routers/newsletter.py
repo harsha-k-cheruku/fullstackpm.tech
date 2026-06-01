@@ -1,8 +1,12 @@
 # app/routers/newsletter.py
 """Newsletter subscription API routes using Google Sheets."""
+import logging
+import urllib.error
 import urllib.request
 import urllib.parse
 from urllib.parse import quote
+
+logger = logging.getLogger(__name__)
 
 from fastapi import APIRouter, Form, Request, Query
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
@@ -153,21 +157,39 @@ KIT_FORM_ID = "9506742"
 
 @router.post("/kit-subscribe", response_class=JSONResponse)
 async def kit_subscribe(email: str = Form(...)):
-    """Proxy subscription to Kit (ConvertKit) — avoids browser CORS/redirect issues."""
+    """Proxy subscription to Kit — server-side POST avoids CORS and redirect issues."""
+    data = urllib.parse.urlencode({
+        "email_address": email,
+        "first_name": "",
+        "utf8": "✓",
+    }).encode("utf-8")
+    req = urllib.request.Request(
+        f"https://app.kit.com/forms/{KIT_FORM_ID}/subscriptions",
+        data=data,
+        headers={
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Accept": "application/json, text/javascript, */*",
+            "User-Agent": "Mozilla/5.0 (compatible; fullstackpm.tech)",
+            "Origin": "https://fullstackpm.tech",
+            "Referer": "https://fullstackpm.tech/",
+            "X-Requested-With": "XMLHttpRequest",
+        },
+        method="POST",
+    )
     try:
-        data = urllib.parse.urlencode({"email_address": email}).encode()
-        req = urllib.request.Request(
-            f"https://app.kit.com/forms/{KIT_FORM_ID}/subscriptions",
-            data=data,
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             status = resp.status
+            body = resp.read().decode("utf-8", errors="replace")
+        logger.info("Kit subscribe response %s: %.200s", status, body)
         if status in (200, 201):
             return JSONResponse({"ok": True})
         return JSONResponse({"ok": False, "detail": f"Kit returned {status}"}, status_code=502)
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        logger.error("Kit subscribe HTTPError %s: %.300s", exc.code, body)
+        return JSONResponse({"ok": False, "detail": f"Kit error {exc.code}"}, status_code=502)
     except Exception as exc:
+        logger.error("Kit subscribe failed: %s", exc)
         return JSONResponse({"ok": False, "detail": str(exc)}, status_code=502)
 
 
