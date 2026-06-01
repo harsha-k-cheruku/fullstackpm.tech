@@ -1,7 +1,8 @@
 # app/routers/feed.py
 from datetime import datetime
+from html import escape
 
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
@@ -100,6 +101,52 @@ async def generate_brief(token: str = "", db: Session = Depends(get_db)):
         "generated": success,
         "latest": latest,
     }
+
+
+@router.get("/pm-brief.xml")
+async def podcast_rss():
+    """Podcast RSS feed for PM Daily Brief."""
+    episodes = brief_service.get_all()
+    items = ""
+    for episode in episodes:
+        pub_date = ""
+        try:
+            generated_at = datetime.fromisoformat(episode.get("generated_at", ""))
+            pub_date = generated_at.strftime("%a, %d %b %Y %H:%M:%S +0000")
+        except Exception:
+            pass
+        audio_url = episode.get("audio_url", "")
+        title = escape(episode.get("title", ""))
+        description = escape(f"{episode.get('article_count', 0)} top PM stories, scored and distilled.")
+        escaped_audio_url = escape(audio_url, quote=True)
+        items += f"""
+    <item>
+      <title>{title}</title>
+      <description>{description}</description>
+      <pubDate>{pub_date}</pubDate>
+      <enclosure url="{escaped_audio_url}" type="audio/mpeg"/>
+      <guid>{escaped_audio_url}</guid>
+    </item>"""
+
+    rss = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>PM Daily Brief</title>
+    <link>https://fullstackpm.tech</link>
+    <description>Daily intelligence brief for product managers — top stories from PM, engineering, strategy, and AI, distilled to essentials by fullstackpm.tech.</description>
+    <language>en-us</language>
+    <itunes:author>Harsha Cheruku</itunes:author>
+    <itunes:category text="Technology"/>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://fullstackpm.tech/static/img/FSPM.png"/>
+    <image>
+      <url>https://fullstackpm.tech/static/img/FSPM.png</url>
+      <title>PM Daily Brief</title>
+      <link>https://fullstackpm.tech</link>
+    </image>{items}
+  </channel>
+</rss>"""
+    return Response(content=rss, media_type="application/rss+xml")
 
 
 @router.post("/api/feed/article/{article_id}/pick", response_class=HTMLResponse)
