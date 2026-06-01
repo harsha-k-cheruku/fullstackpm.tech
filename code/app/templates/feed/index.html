@@ -13,7 +13,7 @@
       PM Intelligence Feed
     </h1>
     <p style="font-size:0.95rem;color:var(--color-text-secondary);">
-      Curated from 20+ PM, engineering, and strategy sources. Updated every 6 hours.
+      60+ PM, engineering, strategy, and AI sources — scored and distilled for PMs. Updated every 6 hours.
     </p>
   </div>
 </section>
@@ -30,6 +30,30 @@
     </div>
   </div>
 </section>
+
+{% macro category_badge(cat) %}
+  {% if cat == 'pm' %}
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-blue-100);color:var(--color-blue-900);">PM</span>
+  {% elif cat == 'engineering' %}
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-success-100);color:var(--color-success-900);">ENGINEERING</span>
+  {% elif cat == 'ai' %}
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:#ede9fe;color:#5b21b6;">AI</span>
+  {% else %}
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">STRATEGY</span>
+  {% endif %}
+{% endmacro %}
+
+{% macro ai_insight_block(article, large=false) %}
+  {% set insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight %}
+  {% if insight %}
+    {% set label = 'PM Take →' if article.source_category == 'engineering' else ('First Principle' if article.source_category == 'strategy' else ('Takeaway' if article.source_category == 'pm' else 'AI for PMs')) %}
+    <div style="margin-top:{{ '14px' if large else '10px' }};padding-top:{{ '14px' if large else '10px' }};border-top:1px solid var(--color-border);">
+      <p style="font-size:{{ '0.9rem' if large else '0.8rem' }};line-height:1.55;color:var(--color-text-secondary);">
+        <strong style="color:var(--color-accent);">{{ label }}:</strong> {{ insight }}
+      </p>
+    </div>
+  {% endif %}
+{% endmacro %}
 
 <section style="padding: 3rem 0;">
   <div class="max-w-5xl mx-auto px-6">
@@ -48,10 +72,16 @@
     <a href="{{ featured.url }}" target="_blank" rel="noopener noreferrer"
        style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:28px 32px;margin-bottom:2rem;text-decoration:none;"
        class="card-hover">
-      <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;">
-        <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:{{ 'var(--color-blue-100)' if featured.source_category == 'pm' else ('var(--color-success-100)' if featured.source_category == 'engineering' else 'var(--color-warning-100)') }};color:{{ 'var(--color-blue-900)' if featured.source_category == 'pm' else ('var(--color-success-900)' if featured.source_category == 'engineering' else 'var(--color-warning-900)') }};">
-          {{ featured.source_category | upper }}
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
+        {{ category_badge(featured.source_category) }}
+        {% if featured.is_editors_pick %}
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:#fef3c7;color:#92400e;"> EDITOR'S PICK</span>
+        {% endif %}
+        {% if featured.ai_score %}
+        <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;background-color:{{ '#dcfce7' if featured.ai_score >= 8 else ('#fef9c3' if featured.ai_score >= 5 else '#f3f4f6') }};color:{{ '#166534' if featured.ai_score >= 8 else ('#854d0e' if featured.ai_score >= 5 else '#374151') }};">
+          {{ featured.ai_score }}/10
         </span>
+        {% endif %}
         <span style="font-size:12px;color:var(--color-text-tertiary);">{{ featured.source_name }}</span>
         {% if featured.published_at %}
         <span style="font-size:12px;color:var(--color-text-tertiary);">· {{ featured.published_at.strftime('%b %d') }}</span>
@@ -63,6 +93,7 @@
       {% if featured.excerpt %}
       <p style="font-size:0.95rem;line-height:1.6;color:var(--color-text-secondary);">{{ featured.excerpt }}</p>
       {% endif %}
+      {{ ai_insight_block(featured, large=true) }}
     </a>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -70,10 +101,16 @@
       <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer"
          style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;text-decoration:none;"
          class="card-hover">
-        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
-          <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background-color:{{ 'var(--color-blue-100)' if article.source_category == 'pm' else ('var(--color-success-100)' if article.source_category == 'engineering' else 'var(--color-warning-100)') }};color:{{ 'var(--color-blue-900)' if article.source_category == 'pm' else ('var(--color-success-900)' if article.source_category == 'engineering' else 'var(--color-warning-900)') }};">
-            {{ article.source_category | upper }}
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap;">
+          {{ category_badge(article.source_category) }}
+          {% if article.is_editors_pick %}
+          <span style="font-size:9px;font-weight:700;padding:2px 6px;border-radius:999px;background-color:#fef3c7;color:#92400e;"> PICK</span>
+          {% endif %}
+          {% if article.ai_score %}
+          <span style="font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;background-color:{{ '#dcfce7' if article.ai_score >= 8 else ('#fef9c3' if article.ai_score >= 5 else '#f3f4f6') }};color:{{ '#166534' if article.ai_score >= 8 else ('#854d0e' if article.ai_score >= 5 else '#374151') }};">
+            {{ article.ai_score }}/10
           </span>
+          {% endif %}
           <span style="font-size:11px;color:var(--color-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
             {{ article.source_name }}
           </span>
@@ -86,6 +123,7 @@
           {{ article.excerpt }}
         </p>
         {% endif %}
+        {{ ai_insight_block(article) }}
         {% if article.published_at %}
         <p style="font-size:11px;color:var(--color-text-tertiary);margin-top:12px;">
           {{ article.published_at.strftime('%b %d, %Y') }}
