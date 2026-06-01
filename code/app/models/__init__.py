@@ -7,6 +7,7 @@ from app.models.user import User
 from app.models.pm_multiverse import PmmVote
 from app.models.episode import Episode
 from app.models.josaa_scenario import JosaaScenario
+from app.models.feed_article import FeedArticle
 from app.models.sde_prep import (
     LeetCodeProblem,
     PracticeSession,
@@ -33,4 +34,5 @@ __all__ = [
     "DailyLog",
     "NaradaOverride",
     "JosaaScenario",
+    "FeedArticle",
 ]
