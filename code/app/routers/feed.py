@@ -10,6 +10,7 @@ from app.config import settings
 from app.database import get_db
 from app.models.feed_article import FeedArticle
 from app.services.ai_processing_service import ai_processing_service
+from app.services.brief_service import brief_service
 from app.services.feed_service import feed_service
 
 router = APIRouter()
@@ -86,6 +87,19 @@ async def refresh_feed(db: Session = Depends(get_db)):
     new_articles = feed_service.fetch_all(db)
     processed = ai_processing_service.process_unprocessed(db, limit=20)
     return {"status": "ok", "new_articles": new_articles, "ai_processed": processed}
+
+
+@router.post("/api/feed/brief/generate", response_class=JSONResponse)
+async def generate_brief(token: str = "", db: Session = Depends(get_db)):
+    """Manually trigger a fresh audio brief generation."""
+    _check_editorial_token(token)
+    success = await brief_service.generate(db)
+    latest = brief_service.get_latest()
+    return {
+        "status": "ok" if success else "error",
+        "generated": success,
+        "latest": latest,
+    }
 
 
 @router.post("/api/feed/article/{article_id}/pick", response_class=HTMLResponse)
