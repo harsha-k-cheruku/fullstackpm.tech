@@ -14,7 +14,7 @@ from app.models.episode import Episode  # noqa: F401 — ensures table is create
 from app.models.narada_override import NaradaOverride  # noqa: F401 — ensures table is created by init_db
 from app.models.josaa_scenario import JosaaScenario  # noqa: F401 — ensures table is created by init_db
 from app.models.feed_article import FeedArticle  # noqa: F401 — ensures table is created by init_db
-from app.routers import auth, backstory, blog, comments, daily_brief, interview_coach, josaa_tool, learning_brief, likes, marketplace, narada_admin, newsletter, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
+from app.routers import auth, backstory, blog, comments, daily_brief, feed, interview_coach, josaa_tool, learning_brief, likes, marketplace, narada_admin, newsletter, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
 from app.services.content import ContentService
 from app.services.reading_service import ReadingService
 
@@ -47,6 +47,7 @@ app.include_router(pages.router)
 app.include_router(pm_multiverse.router)
 app.include_router(projects.router)
 app.include_router(blog.router)
+app.include_router(feed.router)
 app.include_router(podcast.router)
 app.include_router(comments.router)
 app.include_router(likes.router)
