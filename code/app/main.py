@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
-from app.database import SessionLocal, init_db
+from app.database import SessionLocal, ensure_feed_layer2_columns, init_db
 from app.models.like import Like  # noqa: F401 — ensures table is created by init_db
 from app.models.episode import Episode  # noqa: F401 — ensures table is created by init_db
 from app.models.narada_override import NaradaOverride  # noqa: F401 — ensures table is created by init_db
@@ -25,6 +25,7 @@ from app.services.reading_service import ReadingService
 async def lifespan(app: FastAPI):
     # Initialize database
     init_db()
+    ensure_feed_layer2_columns()
 
     # Load content
     content_service = ContentService(settings.content_dir)
