@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database import get_db
+from app.services.ai_processing_service import ai_processing_service
 from app.services.feed_service import feed_service
 
 router = APIRouter()
@@ -42,6 +43,7 @@ async def feed_page(request: Request, category: str = "all", db: Session = Depen
 
 @router.post("/api/feed/refresh", response_class=JSONResponse)
 async def refresh_feed(db: Session = Depends(get_db)):
-    """Manually trigger a feed refresh."""
-    count = feed_service.fetch_all(db)
-    return {"status": "ok", "new_articles": count}
+    """Manually trigger a feed refresh and AI processing."""
+    new_articles = feed_service.fetch_all(db)
+    processed = ai_processing_service.process_unprocessed(db, limit=20)
+    return {"status": "ok", "new_articles": new_articles, "ai_processed": processed}
