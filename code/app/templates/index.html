@@ -1,120 +1,173 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800&display=swap" rel="stylesheet">
+<style>
+  .fspm-serif { font-family: 'Source Serif 4', Charter, 'Iowan Old Style', Georgia, serif; }
+  .fspm-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .fspm-rule {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+  .fspm-rule::after { content: ""; flex: 1; height: 1px; background-color: var(--color-border); }
+  .fspm-cat-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-text-tertiary);
+  }
+  .fspm-article-link { display: block; text-decoration: none; }
+  .fspm-article-link:hover .fspm-headline { color: var(--color-accent); }
+  .fspm-headline { transition: color 0.15s; }
+  .fspm-feature-img {
+    width: 100%; aspect-ratio: 16/10; background: linear-gradient(135deg, var(--color-blue-100), var(--color-bg-secondary));
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    color: var(--color-text-tertiary); font-size: 0.75rem; letter-spacing: 0.1em;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 
-{% macro cat_badge(cat) %}
-  {% if cat == 'pm' %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:var(--color-blue-100);color:var(--color-blue-900);">PM</span>
-  {% elif cat == 'engineering' %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:var(--color-success-100);color:var(--color-success-900);">ENG</span>
-  {% elif cat == 'ai' %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:#ede9fe;color:#5b21b6;">AI</span>
-  {% else %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:var(--color-warning-100);color:var(--color-warning-900);">STRAT</span>
-  {% endif %}
-{% endmacro %}
-
-<!-- MASTHEAD -->
-<section style="padding: 2rem 0 1.5rem; border-bottom: 2px solid var(--color-text-primary);">
-  <div class="max-w-6xl mx-auto px-6">
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-      <div>
-        <h1 style="font-size:1.6rem;font-weight:900;letter-spacing:-0.03em;color:var(--color-text-primary);margin:0;">
-          PM Intelligence
-        </h1>
-        <p style="font-size:0.72rem;color:var(--color-text-tertiary);margin:3px 0 0;letter-spacing:0.03em;">
-          60+ sources · AI-scored · curated by <a href="/@fullstackpm" style="color:var(--color-accent);text-decoration:none;">@fullstackpm</a>
-        </p>
-      </div>
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-        {% if latest_brief %}
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Daily Brief</span>
-          <audio controls style="height:28px;width:180px;">
-            <source src="{{ latest_brief.audio_url }}" type="audio/mpeg">
-          </audio>
-        </div>
-        {% endif %}
-        <a href="/feed" style="font-size:0.8rem;font-weight:700;color:var(--color-accent);text-decoration:none;white-space:nowrap;">
-          Full feed →
-        </a>
-      </div>
-    </div>
+<!-- DATE KICKER -->
+<section style="padding: 1.5rem 0 0;">
+  <div class="max-w-6xl mx-auto px-2" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <span class="fspm-kicker" style="color: var(--color-text-tertiary);">{{ today }}</span>
+    <span class="fspm-kicker" style="color: var(--color-accent);">PM Intelligence · Issue {{ year }}</span>
   </div>
 </section>
 
-<!-- 4-COLUMN INTELLIGENCE GRID -->
-<section style="padding: 2rem 0;">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style="gap:0;border:1px solid var(--color-border);border-radius:12px;overflow:hidden;">
+<!-- TODAY'S READ — HERO FEATURE -->
+<section style="padding: 1.5rem 0 3rem; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-6xl mx-auto px-2">
+    <p class="fspm-rule" style="margin-bottom: 1.5rem;">Today's Read</p>
 
-      {% set columns = [
-        ("pm",          "PM & Product",   "/feed?category=pm"),
-        ("engineering", "Engineering",    "/feed?category=engineering"),
-        ("strategy",    "Strategy",       "/feed?category=strategy"),
-        ("ai",          "AI & Research",  "/feed?category=ai"),
-      ] %}
+    {% if feature %}
+    <a href="/feed/article/{{ feature.id }}" class="fspm-article-link">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-      {% for cat_key, cat_label, cat_url in columns %}
-      {% set articles = articles_by_category.get(cat_key, []) %}
-      <div style="border-right:1px solid var(--color-border);{% if loop.last %}border-right:none;{% endif %}">
-
-        <!-- Column header -->
-        <div style="padding:12px 16px;border-bottom:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between;background-color:var(--color-bg-secondary);">
-          <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-primary);">{{ cat_label }}</span>
-          <a href="{{ cat_url }}" style="font-size:10px;font-weight:600;color:var(--color-accent);text-decoration:none;">All →</a>
+        <!-- Hero image / placeholder (left, 5 cols) -->
+        <div class="lg:col-span-5">
+          <div class="fspm-feature-img">FEATURE IMAGE</div>
         </div>
 
-        <!-- Articles -->
+        <!-- Story (right, 7 cols) -->
+        <div class="lg:col-span-7">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            {% set cat = feature.source_category %}
+            {% set cat_label = 'Product' if cat == 'pm' else ('Engineering' if cat == 'engineering' else ('AI' if cat == 'ai' else 'Strategy')) %}
+            <span class="fspm-cat-tag" style="color: var(--color-accent);">{{ cat_label }}</span>
+            <span style="width:3px;height:3px;border-radius:50%;background:var(--color-text-tertiary);"></span>
+            <span class="fspm-cat-tag">{{ feature.source_name }}</span>
+          </div>
+
+          <h2 class="fspm-serif fspm-headline" style="font-size: clamp(1.75rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; color: var(--color-text-primary); margin: 0 0 1.25rem;">
+            {{ feature.display_title or feature.title }}
+          </h2>
+
+          {% set summary = feature.ai_summary or feature.first_principle or feature.key_insight or feature.ai_insight or feature.excerpt %}
+          {% if summary %}
+          <p class="fspm-serif" style="font-size: 1.075rem; line-height: 1.6; color: var(--color-text-secondary); margin: 0 0 1.5rem;">
+            {{ summary }}
+          </p>
+          {% endif %}
+
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="fspm-kicker" style="color: var(--color-accent);">Read the analysis →</span>
+            <span class="fspm-cat-tag">4 min read</span>
+          </div>
+        </div>
+      </div>
+    </a>
+    {% else %}
+    <div style="padding: 3rem 0; text-align: center; color: var(--color-text-tertiary);">
+      <p>Today's brief is being prepared.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- DAILY AUDIO BRIEF -->
+{% if latest_brief %}
+<section style="padding: 2rem 0; border-bottom: 1px solid var(--color-border); background-color: var(--color-bg-secondary);">
+  <div class="max-w-6xl mx-auto px-2" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-size:1.4rem;line-height:1;">♪</span>
+      <div>
+        <p class="fspm-kicker" style="color: var(--color-accent); margin: 0 0 4px;">PM Daily Brief</p>
+        <p class="fspm-serif" style="font-size: 0.95rem; color: var(--color-text-primary); margin: 0;">Today's stories, read in 6 minutes.</p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <audio controls style="height: 36px;">
+        <source src="{{ latest_brief.audio_url }}" type="audio/mpeg">
+      </audio>
+      <a href="/pm-brief.xml" class="fspm-kicker" style="color: var(--color-text-tertiary); text-decoration: none;">RSS →</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- THE BRIEF — 4-COLUMN GRID -->
+<section style="padding: 3rem 0;">
+  <div class="max-w-6xl mx-auto px-2">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+      <p class="fspm-rule" style="flex:0;">The Brief</p>
+      <a href="/feed" class="fspm-kicker" style="color: var(--color-accent); text-decoration: none;">Full feed →</a>
+    </div>
+
+    {% set columns = [
+      ("pm",          "Product"),
+      ("engineering", "Engineering"),
+      ("strategy",    "Strategy"),
+      ("ai",          "AI"),
+    ] %}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style="gap: 2.5rem;">
+      {% for cat_key, cat_label in columns %}
+      {% set articles = articles_by_category.get(cat_key, []) %}
+      <div>
+        <!-- Column header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;margin-bottom:1.25rem;border-bottom:2px solid var(--color-text-primary);">
+          <span class="fspm-kicker" style="color: var(--color-text-primary);">{{ cat_label }}</span>
+          <a href="/feed?category={{ cat_key }}" class="fspm-kicker" style="color: var(--color-text-tertiary); text-decoration: none;">All →</a>
+        </div>
+
         {% if articles %}
           {% for article in articles %}
-          <a href="/feed/article/{{ article.id }}"
-             style="display:block;padding:14px 16px;border-bottom:1px solid var(--color-border);text-decoration:none;{% if loop.last %}border-bottom:none;{% endif %}"
-             class="card-hover">
+          <a href="/feed/article/{{ article.id }}" class="fspm-article-link" style="padding-bottom: 1.25rem; margin-bottom: 1.25rem; {% if not loop.last %}border-bottom: 1px solid var(--color-border);{% endif %}">
+            <p class="fspm-cat-tag" style="margin: 0 0 6px;">{{ article.source_name }}</p>
 
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
-              <span style="font-size:10px;color:var(--color-text-tertiary);font-weight:500;line-height:1.4;flex:1;">{{ article.source_name }}</span>
-              {% if article.ai_score %}
-              <span style="font-size:10px;font-weight:800;flex-shrink:0;color:{{ '#16a34a' if article.ai_score >= 8 else ('#d97706' if article.ai_score >= 5 else '#9ca3af') }};">{{ article.ai_score }}</span>
-              {% endif %}
-            </div>
-
-            <p style="font-size:0.875rem;font-weight:700;line-height:1.35;color:var(--color-text-primary);margin:0 0 6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+            <h3 class="fspm-serif fspm-headline" style="font-size: 1.05rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--color-text-primary); margin: 0 0 8px;">
               {{ article.display_title or article.title }}
-            </p>
+            </h3>
 
-            {% set insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight %}
+            {% set insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight or article.excerpt %}
             {% if insight %}
-            <p style="font-size:0.775rem;line-height:1.45;color:var(--color-text-secondary);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+            <p style="font-size: 0.82rem; line-height: 1.5; color: var(--color-text-secondary); margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
               {{ insight }}
             </p>
-            {% elif article.excerpt %}
-            <p style="font-size:0.775rem;line-height:1.45;color:var(--color-text-secondary);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
-              {{ article.excerpt }}
-            </p>
             {% endif %}
-
-            {% if article.is_editors_pick %}
-            <span style="display:inline-block;margin-top:6px;font-size:9px;font-weight:700;color:#d97706;">★ Pick</span>
-            {% endif %}
-
           </a>
           {% endfor %}
         {% else %}
-        <div style="padding:2rem 16px;text-align:center;">
-          <p style="font-size:0.8rem;color:var(--color-text-tertiary);">Loading...</p>
-        </div>
+          <p style="font-size: 0.85rem; color: var(--color-text-tertiary); padding: 1rem 0;">Loading…</p>
         {% endif %}
-
       </div>
       {% endfor %}
-
     </div>
   </div>
 </section>
 
 <!-- NEWSLETTER -->
-<section id="newsletter" style="padding: 3rem 0; border-top: 1px solid var(--color-border);">
-  <div class="max-w-xl mx-auto px-6" style="text-align:center;">
-    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:0.5rem;">Newsletter</p>
-    <h2 style="font-size:1.25rem;font-weight:700;color:var(--color-text-primary);margin:0 0 0.5rem;">The Full Stack PM</h2>
-    <p style="font-size:0.9rem;line-height:1.6;color:var(--color-text-secondary);margin:0 auto 1.5rem;max-width:380px;">Product thinking, AI-native workflows, and the economics of what endures. Weekly.</p>
+<section id="newsletter" style="padding: 4rem 0; border-top: 1px solid var(--color-border); background-color: var(--color-bg-secondary);">
+  <div class="max-w-xl mx-auto px-6" style="text-align: center;">
+    <p class="fspm-kicker" style="color: var(--color-accent); margin-bottom: 0.75rem;">The Full Stack PM · Weekly</p>
+    <h2 class="fspm-serif" style="font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-text-primary); margin: 0 0 0.75rem;">
+      Product thinking, AI workflows, and the economics of what endures.
+    </h2>
+    <p style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-secondary); margin: 0 auto 1.75rem; max-width: 420px;">
+      One careful read every Sunday. No noise.
+    </p>
     {% include "partials/newsletter_signup.html" %}
   </div>
 </section>

@@ -29,11 +29,16 @@ def _ctx(request: Request, **kwargs) -> dict:
 async def home(request: Request) -> HTMLResponse:
     db = SessionLocal()
     try:
+        # Pick feature article: highest-scored across all categories (fallback to most recent)
+        feature_pool = feed_service.get_articles(db, category="all", limit=1)
+        feature = feature_pool[0] if feature_pool else None
+
+        feature_id = feature.id if feature else None
         articles_by_category = {
-            "pm":          feed_service.get_articles(db, category="pm",          limit=5),
-            "engineering": feed_service.get_articles(db, category="engineering", limit=5),
-            "strategy":    feed_service.get_articles(db, category="strategy",    limit=5),
-            "ai":          feed_service.get_articles(db, category="ai",          limit=5),
+            "pm":          [a for a in feed_service.get_articles(db, category="pm",          limit=4) if a.id != feature_id][:3],
+            "engineering": [a for a in feed_service.get_articles(db, category="engineering", limit=4) if a.id != feature_id][:3],
+            "strategy":    [a for a in feed_service.get_articles(db, category="strategy",    limit=4) if a.id != feature_id][:3],
+            "ai":          [a for a in feed_service.get_articles(db, category="ai",          limit=4) if a.id != feature_id][:3],
         }
     finally:
         db.close()
@@ -44,8 +49,10 @@ async def home(request: Request) -> HTMLResponse:
             request,
             title="PM Intelligence — fullstackpm.tech",
             current_page="/",
+            feature=feature,
             articles_by_category=articles_by_category,
             latest_brief=brief_service.get_latest(),
+            today=datetime.now().strftime("%A · %B %-d, %Y").upper(),
         ),
     )
 
