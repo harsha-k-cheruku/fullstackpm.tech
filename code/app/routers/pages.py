@@ -27,30 +27,25 @@ def _ctx(request: Request, **kwargs) -> dict:
 
 @router.get("/", response_class=HTMLResponse)
 async def home(request: Request) -> HTMLResponse:
-    """Consolidated home page: Full Stack PM definition + components."""
-    content_service = request.app.state.content_service
-    reading_service = request.app.state.reading_service
-    recent_posts, _ = content_service.get_posts(page=1, per_page=3)
-    reading = reading_service.get()
-
     db = SessionLocal()
     try:
-        top_articles = feed_service.get_articles(db, limit=5)
+        articles_by_category = {
+            "pm":          feed_service.get_articles(db, category="pm",          limit=5),
+            "engineering": feed_service.get_articles(db, category="engineering", limit=5),
+            "strategy":    feed_service.get_articles(db, category="strategy",    limit=5),
+            "ai":          feed_service.get_articles(db, category="ai",          limit=5),
+        }
     finally:
         db.close()
-
-    latest_brief = brief_service.get_latest()
 
     return templates.TemplateResponse(
         "index.html",
         _ctx(
             request,
-            title="@fullstackpm - Harsha Cheruku",
+            title="PM Intelligence — fullstackpm.tech",
             current_page="/",
-            recent_posts=recent_posts,
-            reading=reading,
-            top_articles=top_articles,
-            latest_brief=latest_brief,
+            articles_by_category=articles_by_category,
+            latest_brief=brief_service.get_latest(),
         ),
     )
 

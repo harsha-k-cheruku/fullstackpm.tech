@@ -2,252 +2,120 @@
 
 {% block content %}
 
-<!-- HERO -->
-<section style="padding: 6rem 0 4rem; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-3xl mx-auto px-6">
-    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:1rem;">
-      The Full Stack PM
-    </p>
-    <h1 style="font-size:2.5rem;font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:var(--color-text-primary);margin-bottom:1.25rem;">
-      The PM who ships.
-    </h1>
-    <p style="font-size:1.15rem;line-height:1.7;color:var(--color-text-secondary);max-width:560px;margin-bottom:2rem;">
-      Product thinking, AI-native workflows, and the economics of what endures.
-      Written by a PM who builds things and ships books.
-    </p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
-      <a href="#newsletter"
-         style="display:inline-block;padding:0.65rem 1.4rem;border-radius:8px;background-color:var(--color-accent);color:#fff;font-weight:600;font-size:0.9rem;text-decoration:none;">
-        Get the newsletter
-      </a>
-      <a href="/blog"
-         style="display:inline-block;padding:0.65rem 1.4rem;border-radius:8px;border:1px solid var(--color-border);color:var(--color-text-primary);font-weight:600;font-size:0.9rem;text-decoration:none;">
-        Read the blog &rarr;
-      </a>
+{% macro cat_badge(cat) %}
+  {% if cat == 'pm' %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:var(--color-blue-100);color:var(--color-blue-900);">PM</span>
+  {% elif cat == 'engineering' %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:var(--color-success-100);color:var(--color-success-900);">ENG</span>
+  {% elif cat == 'ai' %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:#ede9fe;color:#5b21b6;">AI</span>
+  {% else %}<span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background-color:var(--color-warning-100);color:var(--color-warning-900);">STRAT</span>
+  {% endif %}
+{% endmacro %}
+
+<!-- MASTHEAD -->
+<section style="padding: 2rem 0 1.5rem; border-bottom: 2px solid var(--color-text-primary);">
+  <div class="max-w-6xl mx-auto px-6">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div>
+        <h1 style="font-size:1.6rem;font-weight:900;letter-spacing:-0.03em;color:var(--color-text-primary);margin:0;">
+          PM Intelligence
+        </h1>
+        <p style="font-size:0.72rem;color:var(--color-text-tertiary);margin:3px 0 0;letter-spacing:0.03em;">
+          60+ sources · AI-scored · curated by <a href="/@fullstackpm" style="color:var(--color-accent);text-decoration:none;">@fullstackpm</a>
+        </p>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        {% if latest_brief %}
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Daily Brief</span>
+          <audio controls style="height:28px;width:180px;">
+            <source src="{{ latest_brief.audio_url }}" type="audio/mpeg">
+          </audio>
+        </div>
+        {% endif %}
+        <a href="/feed" style="font-size:0.8rem;font-weight:700;color:var(--color-accent);text-decoration:none;white-space:nowrap;">
+          Full feed →
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PM INTELLIGENCE STRIP -->
-{% if top_articles %}
-<section style="padding: 2.5rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-5xl mx-auto px-6">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px;">
-      <div style="display:flex;align-items:baseline;gap:12px;">
-        <h2 style="font-size:1rem;font-weight:800;letter-spacing:-0.01em;color:var(--color-text-primary);">Today's Intelligence</h2>
-        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background-color:var(--color-accent);color:#fff;">Live</span>
-      </div>
-      <a href="/feed" style="font-size:0.8rem;font-weight:600;color:var(--color-accent);text-decoration:none;">Full feed &rarr;</a>
-    </div>
+<!-- 4-COLUMN INTELLIGENCE GRID -->
+<section style="padding: 2rem 0;">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4" style="gap:0;border:1px solid var(--color-border);border-radius:12px;overflow:hidden;">
 
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      {% for article in top_articles %}
-      <a href="/feed/article/{{ article.id }}"
-         style="display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border:1px solid var(--color-border);border-radius:10px;text-decoration:none;"
-         class="card-hover">
+      {% set columns = [
+        ("pm",          "PM & Product",   "/feed?category=pm"),
+        ("engineering", "Engineering",    "/feed?category=engineering"),
+        ("strategy",    "Strategy",       "/feed?category=strategy"),
+        ("ai",          "AI & Research",  "/feed?category=ai"),
+      ] %}
 
-        {% if article.ai_score %}
-        <div style="min-width:36px;text-align:center;flex-shrink:0;padding-top:2px;">
-          <div style="font-size:0.9rem;font-weight:800;color:{{ '#16a34a' if article.ai_score >= 8 else ('#d97706' if article.ai_score >= 5 else '#9ca3af') }};">{{ article.ai_score }}</div>
-          <div style="font-size:9px;color:var(--color-text-tertiary);">/10</div>
+      {% for cat_key, cat_label, cat_url in columns %}
+      {% set articles = articles_by_category.get(cat_key, []) %}
+      <div style="border-right:1px solid var(--color-border);{% if loop.last %}border-right:none;{% endif %}">
+
+        <!-- Column header -->
+        <div style="padding:12px 16px;border-bottom:1px solid var(--color-border);display:flex;align-items:center;justify-content:space-between;background-color:var(--color-bg-secondary);">
+          <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-primary);">{{ cat_label }}</span>
+          <a href="{{ cat_url }}" style="font-size:10px;font-weight:600;color:var(--color-accent);text-decoration:none;">All →</a>
         </div>
-        {% endif %}
 
-        <div style="flex:1;min-width:0;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;">
-            {% if article.source_category == 'pm' %}
-            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 7px;border-radius:999px;background-color:var(--color-blue-100);color:var(--color-blue-900);">PM</span>
-            {% elif article.source_category == 'engineering' %}
-            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 7px;border-radius:999px;background-color:var(--color-success-100);color:var(--color-success-900);">ENG</span>
-            {% elif article.source_category == 'ai' %}
-            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 7px;border-radius:999px;background-color:#ede9fe;color:#5b21b6;">AI</span>
-            {% else %}
-            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:1px 7px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">STRATEGY</span>
+        <!-- Articles -->
+        {% if articles %}
+          {% for article in articles %}
+          <a href="/feed/article/{{ article.id }}"
+             style="display:block;padding:14px 16px;border-bottom:1px solid var(--color-border);text-decoration:none;{% if loop.last %}border-bottom:none;{% endif %}"
+             class="card-hover">
+
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:5px;">
+              <span style="font-size:10px;color:var(--color-text-tertiary);font-weight:500;line-height:1.4;flex:1;">{{ article.source_name }}</span>
+              {% if article.ai_score %}
+              <span style="font-size:10px;font-weight:800;flex-shrink:0;color:{{ '#16a34a' if article.ai_score >= 8 else ('#d97706' if article.ai_score >= 5 else '#9ca3af') }};">{{ article.ai_score }}</span>
+              {% endif %}
+            </div>
+
+            <p style="font-size:0.875rem;font-weight:700;line-height:1.35;color:var(--color-text-primary);margin:0 0 6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+              {{ article.title }}
+            </p>
+
+            {% set insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight %}
+            {% if insight %}
+            <p style="font-size:0.775rem;line-height:1.45;color:var(--color-text-secondary);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+              {{ insight }}
+            </p>
+            {% elif article.excerpt %}
+            <p style="font-size:0.775rem;line-height:1.45;color:var(--color-text-secondary);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+              {{ article.excerpt }}
+            </p>
             {% endif %}
+
             {% if article.is_editors_pick %}
-            <span style="font-size:9px;font-weight:700;color:#d97706;">Pick</span>
+            <span style="display:inline-block;margin-top:6px;font-size:9px;font-weight:700;color:#d97706;">★ Pick</span>
             {% endif %}
-            <span style="font-size:11px;color:var(--color-text-tertiary);">{{ article.source_name }}</span>
-          </div>
-          <p style="font-size:0.9rem;font-weight:600;color:var(--color-text-primary);line-height:1.4;margin:0;">{{ article.title }}</p>
-          {% set insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight %}
-          {% if insight %}
-          <p style="font-size:0.8rem;color:var(--color-text-secondary);margin-top:4px;line-height:1.45;">{{ insight[:150] }}{% if insight|length > 150 %}...{% endif %}</p>
-          {% endif %}
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
 
-<!-- AUDIO BRIEF -->
-{% if latest_brief %}
-<section style="padding: 2rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-5xl mx-auto px-6">
-    <div style="border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-      <div style="flex:1;min-width:200px;">
-        <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:4px;">PM Daily Brief</p>
-        <p style="font-size:0.95rem;font-weight:700;color:var(--color-text-primary);margin-bottom:4px;">{{ latest_brief.title }}</p>
-        <p style="font-size:0.8rem;color:var(--color-text-tertiary);">{{ latest_brief.article_count }} stories &middot; ~5 min &middot; <a href="/pm-brief.xml" style="color:var(--color-accent);">Subscribe via RSS</a></p>
-      </div>
-      <div style="flex-shrink:0;">
-        <audio controls style="height:36px;width:260px;max-width:100%;">
-          <source src="{{ latest_brief.audio_url }}" type="audio/mpeg">
-          Your browser does not support audio.
-        </audio>
-      </div>
-    </div>
-  </div>
-</section>
-{% endif %}
-
-<!-- NEWSLETTER SIGNUP -->
-<section id="newsletter" style="padding: 5rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-xl mx-auto px-6" style="text-align:center;">
-    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:0.75rem;">Newsletter</p>
-    <h2 style="font-size:1.5rem;font-weight:700;color:var(--color-text-primary);margin:0 0 0.6rem;">The Full Stack PM</h2>
-    <p style="font-size:0.95rem;line-height:1.6;color:var(--color-text-secondary);margin:0 auto 2rem;max-width:400px;">Product thinking, AI-native workflows, and the economics of what endures. Weekly.</p>
-    {% include "partials/newsletter_signup.html" %}
-  </div>
-</section>
-
-<!-- LIVE TOOLS -->
-<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-5xl mx-auto px-6">
-    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
-      <h2 class="text-h2" style="color: var(--color-text-primary);">Live Tools</h2>
-      <span class="text-small" style="color: var(--color-text-tertiary);">Built &amp; shipped, not just planned</span>
-    </div>
-
-    <!-- PM Multiverse — featured full-width card -->
-    <a href="/tools/pm-multiverse"
-       class="card-hover"
-       style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-primary);text-decoration:none;margin-bottom:20px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px;">
-        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
-        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-bg-secondary);color:var(--color-text-tertiary);border:1px solid var(--color-border);">Featured</span>
-      </div>
-      <h3 class="text-h3" style="color:var(--color-text-primary);margin-bottom:10px;">PM Multiverse</h3>
-      <p class="text-body-lg" style="color:var(--color-text-secondary);margin-bottom:18px;max-width:600px;">
-        Same problem. 5 PM brains. Where do Cagan, Torres, Doshi, Lenny, and the Exec AI Monster disagree &mdash; and which one thinks like you?
-      </p>
-      <p class="text-small" style="color:var(--color-accent);font-weight:600;">10 problems &middot; 5 personas &middot; Live community votes &rarr;</p>
-    </a>
-
-    <!-- Two smaller tools -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-      <!-- Interview Coach -->
-      <a href="/tools/interview-coach"
-         class="card-hover"
-         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-primary);text-decoration:none;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">In Progress</span>
-        </div>
-        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">🎯 Interview Coach</h4>
-        <p class="text-body" style="color:var(--color-text-secondary);">
-          Practice PM interviews. Get AI feedback on your frameworks, structure, and thinking. Build confidence before the real thing.
-        </p>
-        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">Start practicing &rarr;</p>
-      </a>
-
-      <!-- SDE Prep -->
-      <a href="/tools/sde-prep/intensive-8-week"
-         class="card-hover"
-         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-primary);text-decoration:none;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background-color:var(--color-accent);color:white;">Live</span>
-        </div>
-        <h4 class="text-h4" style="color:var(--color-text-primary);margin-bottom:8px;">📋 SDE Prep</h4>
-        <p class="text-body" style="color:var(--color-text-secondary);">
-          9-week job search intensive. 200+ daily tasks, structured to get you from prep mode to signed offer.
-        </p>
-        <p class="text-small" style="color:var(--color-accent);font-weight:600;margin-top:16px;">See the plan &rarr;</p>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- BOOK -->
-<section style="padding: 5rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-3xl mx-auto px-6">
-    <a href="https://www.amazon.com/Memoirs-Mediocre-Manager-Surviving-Cross-Functional/dp/B0G2X59WRL/"
-       target="_blank" rel="noopener noreferrer"
-       class="card-hover"
-       style="display:flex;align-items:center;gap:24px;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-primary);text-decoration:none;flex-wrap:wrap;">
-      <div style="font-size:2.5rem;flex-shrink:0;">📖</div>
-      <div style="flex:1;min-width:200px;">
-        <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);">Published Book</span>
-        <h3 style="font-size:1.1rem;font-weight:700;color:var(--color-text-primary);margin:4px 0 6px;">Memoirs of a Mediocre Manager</h3>
-        <p class="text-small" style="color:var(--color-text-secondary);">Part satire, part field guide. The quiet majority who actually keep the lights on finally get their story told.</p>
-      </div>
-      <span style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;background-color:var(--color-accent);color:white;font-size:13px;font-weight:600;flex-shrink:0;white-space:nowrap;">
-        Read on Amazon &rarr;
-      </span>
-    </a>
-  </div>
-</section>
-
-<!-- LATEST WRITING -->
-<section style="padding: 4rem 0; border-bottom: 1px solid var(--color-border);">
-  <div class="max-w-3xl mx-auto px-6">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;">
-      <h2 class="text-h2" style="color: var(--color-text-primary);">Latest Writing</h2>
-      <a href="/blog" class="text-small" style="color:var(--color-accent);text-decoration:none;font-weight:600;">All articles &rarr;</a>
-    </div>
-
-    {% if recent_posts %}
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      {% for post in recent_posts %}
-      <a href="/blog/{{ post.slug }}"
-         class="card-hover"
-         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;background-color:var(--color-bg-primary);text-decoration:none;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-          {% for tag in post.tags[:2] %}
-          <span style="font-size:11px;color:var(--color-text-tertiary);padding:2px 8px;border-radius:4px;background-color:var(--color-bg-primary);border:1px solid var(--color-border);">{{ tag }}</span>
+          </a>
           {% endfor %}
-          <span class="text-small" style="color:var(--color-text-tertiary);margin-left:auto;">{{ post.date.strftime('%b %d, %Y') if post.date else '' }}</span>
+        {% else %}
+        <div style="padding:2rem 16px;text-align:center;">
+          <p style="font-size:0.8rem;color:var(--color-text-tertiary);">Loading...</p>
         </div>
-        <h4 style="font-size:1rem;font-weight:600;color:var(--color-text-primary);line-height:1.4;margin-bottom:6px;">{{ post.title }}</h4>
-        {% if post.excerpt %}
-        <p class="text-small" style="color:var(--color-text-secondary);line-clamp-2;">{{ post.excerpt }}</p>
         {% endif %}
-      </a>
+
+      </div>
       {% endfor %}
+
     </div>
-    {% else %}
-    <p class="text-body" style="color:var(--color-text-tertiary);">
-      Writing coming soon. <a href="/blog" style="color:var(--color-accent);">Check the blog &rarr;</a>
-    </p>
-    {% endif %}
   </div>
 </section>
 
-<!-- FOOTER CTA -->
-<section style="padding: 5rem 0;">
-  <div class="max-w-xl mx-auto text-center px-6">
-    <p class="text-small mb-3" style="color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;">
-      @fullstackpm
-    </p>
-    <h2 class="text-h2 mb-4" style="color: var(--color-text-primary);">PM instinct.<br>Ship mindset.</h2>
-    <p class="text-body-lg mb-8" style="color: var(--color-text-secondary);">
-      Built by a PM who codes. 16 years of product experience, now shipping fun projects in public.
-    </p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
-      <a href="/tools/pm-multiverse"
-         class="card-hover"
-         style="display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;background-color:var(--color-accent);color:white;text-decoration:none;font-size:14px;font-weight:600;">
-        Try PM Multiverse
-      </a>
-      <a href="/@fullstackpm"
-         class="card-hover"
-         style="display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;border:1.5px solid var(--color-border);color:var(--color-text-primary);text-decoration:none;font-size:14px;font-weight:600;">
-        About me &rarr;
-      </a>
-    </div>
+<!-- NEWSLETTER -->
+<section id="newsletter" style="padding: 3rem 0; border-top: 1px solid var(--color-border);">
+  <div class="max-w-xl mx-auto px-6" style="text-align:center;">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:0.5rem;">Newsletter</p>
+    <h2 style="font-size:1.25rem;font-weight:700;color:var(--color-text-primary);margin:0 0 0.5rem;">The Full Stack PM</h2>
+    <p style="font-size:0.9rem;line-height:1.6;color:var(--color-text-secondary);margin:0 auto 1.5rem;max-width:380px;">Product thinking, AI-native workflows, and the economics of what endures. Weekly.</p>
+    {% include "partials/newsletter_signup.html" %}
   </div>
 </section>
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from datetime import datetime
 from typing import Optional
 
@@ -84,16 +85,11 @@ class AIProcessingService:
         if not raw:
             return False
 
-        # Strip markdown code fences if Claude returns ```json ... ```
+        # Strip markdown code fences if Claude wraps JSON in ```json ... ```
         cleaned = raw.strip()
-        if cleaned.startswith("```"):
-            cleaned = cleaned.split("```", 2)[-1] if cleaned.count("```") >= 2 else cleaned
-            if cleaned.startswith("json"):
-                cleaned = cleaned[4:]
-            end = cleaned.rfind("```")
-            if end != -1:
-                cleaned = cleaned[:end]
-            cleaned = cleaned.strip()
+        fence_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned)
+        if fence_match:
+            cleaned = fence_match.group(1).strip()
 
         try:
             data = json.loads(cleaned)
