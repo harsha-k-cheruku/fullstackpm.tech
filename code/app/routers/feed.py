@@ -50,17 +50,23 @@ async def feed_page(request: Request, category: str = "all", db: Session = Depen
 
 
 @router.get("/feed/article/{article_id}", response_class=HTMLResponse)
-async def article_page(article_id: int, request: Request, db: Session = Depends(get_db)):
+def article_page(article_id: int, request: Request, db: Session = Depends(get_db)):
     article = feed_service.get_article(db, article_id)
     if not article or article.is_dismissed:
         raise HTTPException(status_code=404, detail="Article not found")
+
+    # Generate deep analysis on first visit — cached in db forever after
+    if not article.ai_article_analysis:
+        ai_processing_service.generate_article_analysis(article, db)
+
     insight_label = {
         "engineering": "PM Take",
         "strategy": "First Principle",
         "pm": "Takeaway",
         "ai": "AI for PMs",
     }.get(article.source_category, "Insight")
-    insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight
+    card_insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight
+
     return templates.TemplateResponse(
         "feed/article.html",
         {
@@ -70,7 +76,7 @@ async def article_page(article_id: int, request: Request, db: Session = Depends(
             "title": f"{article.title} — fullstackpm.tech",
             "current_page": "/feed",
             "article": article,
-            "insight": insight,
+            "card_insight": card_insight,
             "insight_label": insight_label,
         },
     )

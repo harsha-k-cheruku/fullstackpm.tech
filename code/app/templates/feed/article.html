@@ -4,91 +4,91 @@
 {% block title %}{{ article.title }} — fullstackpm.tech{% endblock %}
 
 {% block content %}
-<section style="padding: 3rem 0 0;">
-  <div class="max-w-3xl mx-auto px-6">
+<section style="padding: 3rem 0 4rem;">
+  <div class="max-w-2xl mx-auto px-6">
 
-    <!-- Back + meta row -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:12px;">
-      <a href="/feed" style="font-size:0.85rem;font-weight:600;color:var(--color-text-secondary);text-decoration:none;"
-         onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-secondary)'">
-        ← Back to Feed
-      </a>
-      <div style="display:flex;gap:8px;align-items:center;">
-        {% if article.source_category == 'pm' %}
-        <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-blue-100);color:var(--color-blue-900);">PM</span>
-        {% elif article.source_category == 'engineering' %}
-        <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-success-100);color:var(--color-success-900);">Engineering</span>
-        {% elif article.source_category == 'ai' %}
-        <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:#ede9fe;color:#5b21b6;">AI</span>
-        {% else %}
-        <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">Strategy</span>
-        {% endif %}
-        {% if article.ai_score %}
-        <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;background-color:{{ '#dcfce7' if article.ai_score >= 8 else ('#fef9c3' if article.ai_score >= 5 else '#f3f4f6') }};color:{{ '#166534' if article.ai_score >= 8 else ('#854d0e' if article.ai_score >= 5 else '#374151') }};">
-          {{ article.ai_score }}/10
-        </span>
-        {% endif %}
-        {% if article.is_editors_pick %}
-        <span style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;background-color:#fef3c7;color:#92400e;">★ Editor's Pick</span>
-        {% endif %}
-      </div>
+    <!-- Back -->
+    <a href="/feed" style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;color:var(--color-text-tertiary);text-decoration:none;margin-bottom:2.5rem;"
+       onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-tertiary)'">
+      ← Back to Feed
+    </a>
+
+    <!-- Category + score row -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;flex-wrap:wrap;">
+      {% if article.source_category == 'pm' %}
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-blue-100);color:var(--color-blue-900);">PM</span>
+      {% elif article.source_category == 'engineering' %}
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-success-100);color:var(--color-success-900);">Engineering</span>
+      {% elif article.source_category == 'ai' %}
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:#ede9fe;color:#5b21b6;">AI</span>
+      {% else %}
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">Strategy</span>
+      {% endif %}
+      {% if article.ai_score %}
+      <span style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;background-color:{{ '#dcfce7' if article.ai_score >= 8 else ('#fef9c3' if article.ai_score >= 5 else '#f3f4f6') }};color:{{ '#166534' if article.ai_score >= 8 else ('#854d0e' if article.ai_score >= 5 else '#374151') }};">
+        {{ article.ai_score }}/10
+      </span>
+      {% endif %}
+      {% if article.is_editors_pick %}
+      <span style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;background-color:#fef3c7;color:#92400e;">★ Editor's Pick</span>
+      {% endif %}
     </div>
 
-    <!-- Source credit -->
-    <p style="font-size:0.8rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:0.75rem;">
+    <!-- Source + date -->
+    <p style="font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:0.75rem;">
       Via {{ article.source_name }}{% if article.published_at %} · {{ article.published_at.strftime('%B %d, %Y') }}{% endif %}
     </p>
 
     <!-- Title -->
-    <h1 style="font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;line-height:1.25;color:var(--color-text-primary);margin-bottom:2.5rem;">
+    <h1 style="font-size:1.75rem;font-weight:800;letter-spacing:-0.02em;line-height:1.25;color:var(--color-text-primary);margin-bottom:2.5rem;">
       {{ article.title }}
     </h1>
 
-    <!-- AI Insight — primary content -->
-    {% if insight %}
+    <!-- Deep analysis — primary content -->
+    {% if article.ai_article_analysis %}
     <div style="margin-bottom:2.5rem;">
-      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:1rem;">
+      <p style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent);margin-bottom:1.25rem;">
         {{ insight_label }}
       </p>
-      <p style="font-size:1.1rem;line-height:1.75;color:var(--color-text-primary);">
-        {{ insight }}
-      </p>
-      {% if article.ai_score_reason %}
-      <p style="margin-top:1.25rem;font-size:0.875rem;line-height:1.6;color:var(--color-text-tertiary);font-style:italic;">
-        {{ article.ai_score_reason }}
-      </p>
-      {% endif %}
+      <div style="font-size:1.05rem;line-height:1.8;color:var(--color-text-primary);">
+        {% for para in article.ai_article_analysis.split('\n\n') %}
+        {% if para.strip() %}
+        <p style="margin-bottom:1.1rem;">{{ para.strip() }}</p>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <!-- Fallback if analysis not yet generated -->
+    <div style="margin-bottom:2.5rem;padding:1.5rem;border:1px dashed var(--color-border);border-radius:10px;text-align:center;">
+      <p style="font-size:0.9rem;color:var(--color-text-tertiary);">Analysis being generated — check back in a moment.</p>
     </div>
     {% endif %}
 
     <!-- Divider -->
-    <hr style="border:none;border-top:1px solid var(--color-border);margin:2.5rem 0;">
+    <hr style="border:none;border-top:1px solid var(--color-border);margin:2rem 0;">
 
     <!-- Original excerpt -->
     {% if article.excerpt %}
-    <div style="margin-bottom:2.5rem;">
-      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:1rem;">
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:1rem;">
         From the original
       </p>
-      <blockquote style="margin:0;padding:1rem 1.25rem;border-left:3px solid var(--color-border);background-color:var(--color-bg-secondary);border-radius:0 8px 8px 0;">
-        <p style="font-size:0.95rem;line-height:1.7;color:var(--color-text-secondary);margin:0;">
-          {{ article.excerpt }}
-        </p>
-        <footer style="margin-top:0.75rem;font-size:0.8rem;color:var(--color-text-tertiary);">
-          — {{ article.source_name }}
-        </footer>
+      <blockquote style="margin:0;padding:1rem 1.25rem;border-left:3px solid var(--color-border);border-radius:0 8px 8px 0;">
+        <p style="font-size:0.9rem;line-height:1.7;color:var(--color-text-secondary);margin:0 0 0.75rem;">{{ article.excerpt }}</p>
+        <footer style="font-size:0.75rem;color:var(--color-text-tertiary);">— {{ article.source_name }}</footer>
       </blockquote>
     </div>
     {% endif %}
 
     <!-- Read original CTA -->
-    <div style="padding:1.5rem;border:1px solid var(--color-border);border-radius:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:4rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border:1px solid var(--color-border);border-radius:10px;flex-wrap:wrap;gap:12px;">
       <div>
         <p style="font-size:0.85rem;font-weight:600;color:var(--color-text-primary);margin:0 0 2px;">Read the full article</p>
-        <p style="font-size:0.8rem;color:var(--color-text-tertiary);margin:0;">Published by {{ article.source_name }}</p>
+        <p style="font-size:0.75rem;color:var(--color-text-tertiary);margin:0;">Published by {{ article.source_name }}</p>
       </div>
       <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer"
-         style="display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;background-color:var(--color-accent);color:#fff;font-size:0.85rem;font-weight:600;text-decoration:none;white-space:nowrap;">
+         style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background-color:var(--color-accent);color:#fff;font-size:0.85rem;font-weight:600;text-decoration:none;white-space:nowrap;">
         Read at {{ article.source_name }} ↗
       </a>
     </div>

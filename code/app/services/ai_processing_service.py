@@ -16,6 +16,18 @@ logger = logging.getLogger(__name__)
 MAX_ARTICLES_PER_RUN = 20
 MAX_INSIGHT_CHARS = 400
 
+_ANALYSIS_SYSTEM = """You are a senior PM analyst writing a deep read for product managers.
+
+Given an article title and excerpt, write a 250-300 word analysis. No headers, no bullet points, no markdown — clean prose a PM can read in 90 seconds.
+
+Structure depends on category:
+- engineering: What changed and what it signals. Why it matters for product strategy — what decisions does this affect? The trade-off or risk — what breaks or gets harder? What a sharp PM should watch for next.
+- strategy: The move and what it reveals. The first-principles mental model it illustrates (network effects, switching costs, platform dynamics, regulatory capture, flywheel, etc.). Competitive implications — who wins, who loses. One concrete thing worth tracking.
+- pm: The core idea or framework. How to apply it — make it concrete. Where it breaks down or doesn't apply. One thing a PM should actually do differently after reading this.
+- ai: What the capability or development is. The product opportunity it creates for B2B SaaS. The risk or limitation PMs need to plan around. What building with AI looks like differently because of this.
+
+Write like you are briefing a smart peer, not teaching a student. Direct, specific, no filler. End with one sharp observation or question that makes the reader think."""
+
 _SYSTEM_PROMPT = """You are a senior product manager analyst. Given an article title and excerpt, return a JSON object with exactly these keys:
 - "score": integer 1-10 (PM relevance: 8-10 = directly actionable or strategically important for a senior B2B SaaS PM; 5-7 = interesting but not urgent; 1-4 = too niche, too technical, or too generic)
 - "score_reason": one sentence explaining the score
@@ -105,6 +117,35 @@ class AIProcessingService:
             article.ai_insight = insight
 
         return True
+
+    def generate_article_analysis(self, article: FeedArticle, db: Session) -> Optional[str]:
+        """Generate a 250-300 word deep analysis for the article page. Saves and returns the text."""
+        if not settings.anthropic_api_key:
+            return None
+        prompt = (
+            f"Category: {article.source_category}\n"
+            f"Source: {article.source_name}\n"
+            f"Title: {article.title}\n"
+            f"Excerpt: {article.excerpt or '(no excerpt available — analyse based on title and source)'}\n\n"
+            "Write the analysis now."
+        )
+        try:
+            from anthropic import Anthropic
+            client = Anthropic(api_key=settings.anthropic_api_key)
+            response = client.messages.create(
+                model=settings.anthropic_model,
+                max_tokens=600,
+                system=_ANALYSIS_SYSTEM,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            analysis = response.content[0].text.strip()
+            article.ai_article_analysis = analysis
+            db.commit()
+            return analysis
+        except Exception as exc:
+            logger.error("Article analysis generation failed for %s: %s", article.id, exc)
+            db.rollback()
+            return None
 
     def _call_claude(self, prompt: str) -> Optional[str]:
         try:
