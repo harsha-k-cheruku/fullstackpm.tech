@@ -7,6 +7,9 @@ from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse, Resp
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
+from app.database import SessionLocal
+from app.services.brief_service import brief_service
+from app.services.feed_service import feed_service
 
 router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
@@ -29,6 +32,15 @@ async def home(request: Request) -> HTMLResponse:
     reading_service = request.app.state.reading_service
     recent_posts, _ = content_service.get_posts(page=1, per_page=3)
     reading = reading_service.get()
+
+    db = SessionLocal()
+    try:
+        top_articles = feed_service.get_articles(db, limit=5)
+    finally:
+        db.close()
+
+    latest_brief = brief_service.get_latest()
+
     return templates.TemplateResponse(
         "index.html",
         _ctx(
@@ -37,6 +49,8 @@ async def home(request: Request) -> HTMLResponse:
             current_page="/",
             recent_posts=recent_posts,
             reading=reading,
+            top_articles=top_articles,
+            latest_brief=latest_brief,
         ),
     )
 
