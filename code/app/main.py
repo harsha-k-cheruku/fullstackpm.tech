@@ -37,26 +37,21 @@ async def lifespan(app: FastAPI):
     # Reading stack (manual picks + RSS auto-pull)
     app.state.reading_service = ReadingService(settings.static_dir / "data")
 
-    # Feed: initial fetch + AI processing + daily brief
-    db = SessionLocal()
-    try:
-        feed_service.fetch_all(db)
-        ai_processing_service.process_unprocessed(db)
-        await brief_service.generate_if_needed(db)
-    finally:
-        db.close()
+    async def _run_feed_cycle():
+        db = SessionLocal()
+        try:
+            feed_service.fetch_all(db)
+            ai_processing_service.process_unprocessed(db)
+            await brief_service.generate_if_needed(db)
+        finally:
+            db.close()
 
-    # Feed: background refresh every 6 hours
+    # Feed: background refresh every 6 hours (first run is also background — don't block startup)
     async def _refresh_loop():
+        await _run_feed_cycle()
         while True:
             await asyncio.sleep(6 * 3600)
-            db = SessionLocal()
-            try:
-                feed_service.fetch_all(db)
-                ai_processing_service.process_unprocessed(db)
-                await brief_service.generate_if_needed(db)
-            finally:
-                db.close()
+            await _run_feed_cycle()
 
     task = asyncio.create_task(_refresh_loop())
     yield

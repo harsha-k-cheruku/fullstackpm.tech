@@ -2,7 +2,7 @@
 from datetime import datetime
 from html import escape
 
-from fastapi import APIRouter, Depends, HTTPException, Request, Response
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
@@ -50,14 +50,14 @@ async def feed_page(request: Request, category: str = "all", db: Session = Depen
 
 
 @router.get("/feed/article/{article_id}", response_class=HTMLResponse)
-def article_page(article_id: int, request: Request, db: Session = Depends(get_db)):
+async def article_page(article_id: int, request: Request, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     article = feed_service.get_article(db, article_id)
     if not article or article.is_dismissed:
         raise HTTPException(status_code=404, detail="Article not found")
 
-    # Generate deep analysis on first visit — cached in db forever after
+    # Generate deep analysis in background on first visit — page renders immediately, analysis appears on refresh
     if not article.ai_article_analysis:
-        ai_processing_service.generate_article_analysis(article, db)
+        background_tasks.add_task(ai_processing_service.generate_article_analysis, article, db)
 
     insight_label = {
         "engineering": "PM Take",
