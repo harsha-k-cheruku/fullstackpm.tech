@@ -17,6 +17,7 @@ from app.models.josaa_scenario import JosaaScenario  # noqa: F401 — ensures ta
 from app.models.feed_article import FeedArticle  # noqa: F401 — ensures table is created by init_db
 from app.routers import auth, backstory, blog, comments, daily_brief, feed, interview_coach, josaa_tool, learning_brief, likes, marketplace, narada_admin, newsletter, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
 from app.services.ai_processing_service import ai_processing_service
+from app.services.brief_service import brief_service
 from app.services.content import ContentService
 from app.services.feed_service import feed_service
 from app.services.reading_service import ReadingService
@@ -36,11 +37,12 @@ async def lifespan(app: FastAPI):
     # Reading stack (manual picks + RSS auto-pull)
     app.state.reading_service = ReadingService(settings.static_dir / "data")
 
-    # Feed: initial fetch + AI processing
+    # Feed: initial fetch + AI processing + daily brief
     db = SessionLocal()
     try:
         feed_service.fetch_all(db)
         ai_processing_service.process_unprocessed(db)
+        await brief_service.generate_if_needed(db)
     finally:
         db.close()
 
@@ -52,6 +54,7 @@ async def lifespan(app: FastAPI):
             try:
                 feed_service.fetch_all(db)
                 ai_processing_service.process_unprocessed(db)
+                await brief_service.generate_if_needed(db)
             finally:
                 db.close()
 
