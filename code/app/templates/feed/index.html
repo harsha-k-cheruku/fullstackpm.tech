@@ -69,7 +69,7 @@
     {% else %}
 
     {% set featured = articles[0] %}
-    <a href="{{ featured.url }}" target="_blank" rel="noopener noreferrer"
+    <a href="/feed/article/{{ featured.id }}"
        style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:28px 32px;margin-bottom:2rem;text-decoration:none;"
        class="card-hover">
       <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
@@ -98,7 +98,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {% for article in articles[1:] %}
-      <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer"
+      <a href="/feed/article/{{ article.id }}"
          style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;text-decoration:none;"
          class="card-hover">
         <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap;">

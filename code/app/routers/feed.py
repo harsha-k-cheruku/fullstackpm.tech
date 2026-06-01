@@ -49,6 +49,33 @@ async def feed_page(request: Request, category: str = "all", db: Session = Depen
     )
 
 
+@router.get("/feed/article/{article_id}", response_class=HTMLResponse)
+async def article_page(article_id: int, request: Request, db: Session = Depends(get_db)):
+    article = feed_service.get_article(db, article_id)
+    if not article or article.is_dismissed:
+        raise HTTPException(status_code=404, detail="Article not found")
+    insight_label = {
+        "engineering": "PM Take",
+        "strategy": "First Principle",
+        "pm": "Takeaway",
+        "ai": "AI for PMs",
+    }.get(article.source_category, "Insight")
+    insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight
+    return templates.TemplateResponse(
+        "feed/article.html",
+        {
+            "request": request,
+            "config": settings,
+            "year": datetime.now().year,
+            "title": f"{article.title} — fullstackpm.tech",
+            "current_page": "/feed",
+            "article": article,
+            "insight": insight,
+            "insight_label": insight_label,
+        },
+    )
+
+
 @router.get("/feed/editorial", response_class=HTMLResponse)
 async def editorial_page(request: Request, token: str = "", db: Session = Depends(get_db)):
     """Editorial dashboard — token-gated."""

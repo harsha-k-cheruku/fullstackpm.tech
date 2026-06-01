@@ -74,6 +74,9 @@ class FeedService:
                 db.rollback()
         return new_count
 
+    def get_article(self, db: Session, article_id: int) -> Optional[FeedArticle]:
+        return db.query(FeedArticle).filter(FeedArticle.id == article_id).first()
+
     def get_articles(self, db: Session, category: str = "all", limit: int = 60) -> list[FeedArticle]:
         """Return feed articles sorted by AI score then date, optionally filtered by category."""
         query = db.query(FeedArticle).filter(FeedArticle.is_dismissed == False)
