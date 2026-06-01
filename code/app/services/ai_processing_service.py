@@ -72,8 +72,19 @@ class AIProcessingService:
         if not raw:
             return False
 
+        # Strip markdown code fences if Claude returns ```json ... ```
+        cleaned = raw.strip()
+        if cleaned.startswith("```"):
+            cleaned = cleaned.split("```", 2)[-1] if cleaned.count("```") >= 2 else cleaned
+            if cleaned.startswith("json"):
+                cleaned = cleaned[4:]
+            end = cleaned.rfind("```")
+            if end != -1:
+                cleaned = cleaned[:end]
+            cleaned = cleaned.strip()
+
         try:
-            data = json.loads(raw)
+            data = json.loads(cleaned)
         except json.JSONDecodeError:
             logger.warning("Invalid JSON from Claude for article %s: %s", article.id, raw[:200])
             return False
