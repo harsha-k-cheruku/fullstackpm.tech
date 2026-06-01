@@ -16,8 +16,6 @@ from app.models.narada_override import NaradaOverride  # noqa: F401 — ensures 
 from app.models.josaa_scenario import JosaaScenario  # noqa: F401 — ensures table is created by init_db
 from app.models.feed_article import FeedArticle  # noqa: F401 — ensures table is created by init_db
 from app.routers import auth, backstory, blog, comments, daily_brief, feed, interview_coach, josaa_tool, learning_brief, likes, marketplace, narada_admin, newsletter, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
-from app.services.ai_processing_service import ai_processing_service
-from app.services.brief_service import brief_service
 from app.services.content import ContentService
 from app.services.feed_service import feed_service
 from app.services.reading_service import ReadingService
@@ -25,35 +23,27 @@ from app.services.reading_service import ReadingService
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Initialize database
     init_db()
     ensure_feed_layer2_columns()
 
-    # Load content
     content_service = ContentService(settings.content_dir)
     content_service.load()
     app.state.content_service = content_service
 
-    # Reading stack (manual picks + RSS auto-pull)
     app.state.reading_service = ReadingService(settings.static_dir / "data")
 
-    async def _run_feed_cycle():
-        db = SessionLocal()
-        try:
-            feed_service.fetch_all(db)
-            ai_processing_service.process_unprocessed(db)
-            await brief_service.generate_if_needed(db)
-        finally:
-            db.close()
-
-    # Feed: background refresh every 6 hours (first run is also background — don't block startup)
-    async def _refresh_loop():
-        await _run_feed_cycle()
+    # Lightweight 24-hour RSS fetch — captures new article URLs only, no AI.
+    # All scoring and analysis runs via scripts/process_feed.py on the local machine.
+    async def _fetch_loop():
         while True:
-            await asyncio.sleep(6 * 3600)
-            await _run_feed_cycle()
+            await asyncio.sleep(24 * 3600)
+            db = SessionLocal()
+            try:
+                feed_service.fetch_all(db)
+            finally:
+                db.close()
 
-    task = asyncio.create_task(_refresh_loop())
+    task = asyncio.create_task(_fetch_loop())
     yield
     task.cancel()
 

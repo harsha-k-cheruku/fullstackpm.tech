@@ -2,7 +2,7 @@
 from datetime import datetime
 from html import escape
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, Response
+from fastapi import APIRouter, Body, Depends, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
@@ -10,7 +10,6 @@ from sqlalchemy.orm import Session
 from app.config import settings
 from app.database import get_db
 from app.models.feed_article import FeedArticle
-from app.services.ai_processing_service import ai_processing_service
 from app.services.brief_service import brief_service
 from app.services.feed_service import feed_service
 
@@ -50,14 +49,10 @@ async def feed_page(request: Request, category: str = "all", db: Session = Depen
 
 
 @router.get("/feed/article/{article_id}", response_class=HTMLResponse)
-async def article_page(article_id: int, request: Request, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
+async def article_page(article_id: int, request: Request, db: Session = Depends(get_db)):
     article = feed_service.get_article(db, article_id)
     if not article or article.is_dismissed:
         raise HTTPException(status_code=404, detail="Article not found")
-
-    # Generate deep analysis in background on first visit — page renders immediately, analysis appears on refresh
-    if not article.ai_article_analysis:
-        background_tasks.add_task(ai_processing_service.generate_article_analysis, article, db)
 
     insight_label = {
         "engineering": "PM Take",
@@ -117,10 +112,67 @@ async def editorial_page(request: Request, token: str = "", db: Session = Depend
 
 @router.post("/api/feed/refresh", response_class=JSONResponse)
 async def refresh_feed(db: Session = Depends(get_db)):
-    """Manually trigger a feed refresh and AI processing."""
+    """Fetch new RSS articles (no AI processing — run scripts/process_feed.py locally for that)."""
     new_articles = feed_service.fetch_all(db)
-    processed = ai_processing_service.process_unprocessed(db, limit=20)
-    return {"status": "ok", "new_articles": new_articles, "ai_processed": processed}
+    return {"status": "ok", "new_articles": new_articles}
+
+
+@router.post("/api/feed/sync", response_class=JSONResponse)
+async def sync_articles(token: str = "", payload: dict = Body(...), db: Session = Depends(get_db)):
+    """Accept processed articles from the local machine and upsert into the DB.
+    Preserves editorial decisions (is_editors_pick, is_dismissed) on existing articles."""
+    _check_editorial_token(token)
+    articles = payload.get("articles", [])
+    inserted = updated = 0
+    ai_fields = (
+        "display_title", "ai_score", "ai_score_reason",
+        "ai_summary", "first_principle", "key_insight", "ai_insight",
+        "ai_article_analysis", "ai_processed_at",
+    )
+    for a in articles:
+        url = (a.get("url") or "").strip()
+        if not url:
+            continue
+        existing = db.query(FeedArticle).filter_by(url=url).first()
+        if existing:
+            for field in ai_fields:
+                val = a.get(field)
+                if val is not None:
+                    setattr(existing, field, val)
+            updated += 1
+        else:
+            pub = None
+            if a.get("published_at"):
+                try:
+                    pub = datetime.fromisoformat(a["published_at"])
+                except ValueError:
+                    pass
+            proc = None
+            if a.get("ai_processed_at"):
+                try:
+                    proc = datetime.fromisoformat(a["ai_processed_at"])
+                except ValueError:
+                    pass
+            db.add(FeedArticle(
+                title=(a.get("title") or "")[:500],
+                url=url,
+                excerpt=a.get("excerpt"),
+                source_name=a.get("source_name", ""),
+                source_category=a.get("source_category", ""),
+                published_at=pub,
+                display_title=a.get("display_title"),
+                ai_score=a.get("ai_score"),
+                ai_score_reason=a.get("ai_score_reason"),
+                ai_summary=a.get("ai_summary"),
+                first_principle=a.get("first_principle"),
+                key_insight=a.get("key_insight"),
+                ai_insight=a.get("ai_insight"),
+                ai_article_analysis=a.get("ai_article_analysis"),
+                ai_processed_at=proc,
+            ))
+            inserted += 1
+    db.commit()
+    return {"status": "ok", "inserted": inserted, "updated": updated}
 
 
 @router.post("/api/feed/brief/generate", response_class=JSONResponse)
