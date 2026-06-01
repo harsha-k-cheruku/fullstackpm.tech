@@ -18,6 +18,7 @@ CATEGORIES = [
     ("pm", "Product"),
     ("engineering", "Engineering"),
     ("strategy", "Strategy"),
+    ("ai", "AI & Research"),
 ]
 
 
