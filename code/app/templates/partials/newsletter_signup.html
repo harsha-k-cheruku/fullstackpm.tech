@@ -1,4 +1,4 @@
-<!-- partials/newsletter_signup.html — Kit subscribe via fetch (no redirect) -->
+<!-- partials/newsletter_signup.html — proxied through /api/newsletter/kit-subscribe -->
 <form id="fspm-newsletter-form"
       style="max-width:420px;margin:0 auto;"
       onsubmit="fspmSubscribe(event)">
@@ -32,19 +32,21 @@ async function fspmSubscribe(e) {
   btn.textContent = 'Subscribing…';
 
   try {
-    const res = await fetch('https://app.kit.com/forms/9506742/subscriptions', {
+    const body = new URLSearchParams({ email_address: email });
+    const res = await fetch('/api/newsletter/kit-subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'email_address=' + encodeURIComponent(email),
+      body: body.toString(),
     });
-    if (res.ok || res.status === 200 || res.status === 201) {
+    const json = await res.json();
+    if (json.ok) {
       document.getElementById('fspm-newsletter-form').innerHTML =
         '<p style="font-size:0.95rem;font-weight:600;color:var(--color-accent);text-align:center;">You\'re in. Check your inbox to confirm.</p>';
     } else {
-      throw new Error('non-2xx');
+      throw new Error(json.detail || 'error');
     }
   } catch (_) {
-    msg.textContent = 'Something went wrong — try again or email harsha@fullstackpm.tech';
+    msg.textContent = 'Something went wrong — please try again.';
     msg.style.color = '#dc2626';
     btn.disabled = false;
     btn.textContent = 'Subscribe';

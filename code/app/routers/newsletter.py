@@ -1,9 +1,11 @@
 # app/routers/newsletter.py
 """Newsletter subscription API routes using Google Sheets."""
+import urllib.request
+import urllib.parse
 from urllib.parse import quote
 
 from fastapi import APIRouter, Form, Request, Query
-from fastapi.responses import HTMLResponse, StreamingResponse
+from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
@@ -144,6 +146,29 @@ async def unsubscribe(
             "title": "Unsubscribe",
             "snippet": snippet,
         })
+
+
+KIT_FORM_ID = "9506742"
+
+
+@router.post("/kit-subscribe", response_class=JSONResponse)
+async def kit_subscribe(email: str = Form(...)):
+    """Proxy subscription to Kit (ConvertKit) — avoids browser CORS/redirect issues."""
+    try:
+        data = urllib.parse.urlencode({"email_address": email}).encode()
+        req = urllib.request.Request(
+            f"https://app.kit.com/forms/{KIT_FORM_ID}/subscriptions",
+            data=data,
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            status = resp.status
+        if status in (200, 201):
+            return JSONResponse({"ok": True})
+        return JSONResponse({"ok": False, "detail": f"Kit returned {status}"}, status_code=502)
+    except Exception as exc:
+        return JSONResponse({"ok": False, "detail": str(exc)}, status_code=502)
 
 
 @router.get("/status")
