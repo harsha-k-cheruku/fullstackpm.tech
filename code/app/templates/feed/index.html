@@ -1,0 +1,100 @@
+<!-- feed/index.html -->
+{% extends "base.html" %}
+
+{% block title %}PM Intelligence Feed — fullstackpm.tech{% endblock %}
+
+{% block content %}
+<section style="padding: 4rem 0 2rem; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-5xl mx-auto px-6">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:0.5rem;">
+      The Full Stack PM
+    </p>
+    <h1 style="font-size:2rem;font-weight:800;letter-spacing:-0.02em;color:var(--color-text-primary);margin-bottom:0.5rem;">
+      PM Intelligence Feed
+    </h1>
+    <p style="font-size:0.95rem;color:var(--color-text-secondary);">
+      Curated from 20+ PM, engineering, and strategy sources. Updated every 6 hours.
+    </p>
+  </div>
+</section>
+
+<section style="padding: 1.5rem 0; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-5xl mx-auto px-6">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      {% for key, label in categories %}
+      <a href="/feed?category={{ key }}"
+         style="display:inline-block;padding:6px 16px;border-radius:999px;font-size:0.85rem;font-weight:600;text-decoration:none;border:1px solid {{ 'var(--color-accent)' if active_category == key else 'var(--color-border)' }};background-color:{{ 'var(--color-accent)' if active_category == key else 'transparent' }};color:{{ '#fff' if active_category == key else 'var(--color-text-secondary)' }};">
+        {{ label }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section style="padding: 3rem 0;">
+  <div class="max-w-5xl mx-auto px-6">
+    {% if not articles %}
+    <div style="color:var(--color-text-tertiary);text-align:center;padding:4rem 0;">
+      Feed is loading — check back in a minute.
+      <form action="/api/feed/refresh" method="post" style="display:inline;">
+        <button type="submit" style="color:var(--color-accent);background:none;border:none;cursor:pointer;padding:0;font:inherit;">
+          Refresh now
+        </button>
+      </form>
+    </div>
+    {% else %}
+
+    {% set featured = articles[0] %}
+    <a href="{{ featured.url }}" target="_blank" rel="noopener noreferrer"
+       style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:28px 32px;margin-bottom:2rem;text-decoration:none;"
+       class="card-hover">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;">
+        <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background-color:{{ 'var(--color-blue-100)' if featured.source_category == 'pm' else ('var(--color-success-100)' if featured.source_category == 'engineering' else 'var(--color-warning-100)') }};color:{{ 'var(--color-blue-900)' if featured.source_category == 'pm' else ('var(--color-success-900)' if featured.source_category == 'engineering' else 'var(--color-warning-900)') }};">
+          {{ featured.source_category | upper }}
+        </span>
+        <span style="font-size:12px;color:var(--color-text-tertiary);">{{ featured.source_name }}</span>
+        {% if featured.published_at %}
+        <span style="font-size:12px;color:var(--color-text-tertiary);">· {{ featured.published_at.strftime('%b %d') }}</span>
+        {% endif %}
+      </div>
+      <h2 style="font-size:1.4rem;font-weight:800;letter-spacing:-0.02em;color:var(--color-text-primary);margin-bottom:10px;line-height:1.3;">
+        {{ featured.title }}
+      </h2>
+      {% if featured.excerpt %}
+      <p style="font-size:0.95rem;line-height:1.6;color:var(--color-text-secondary);">{{ featured.excerpt }}</p>
+      {% endif %}
+    </a>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {% for article in articles[1:] %}
+      <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer"
+         style="display:block;border:1px solid var(--color-border);border-radius:12px;padding:20px 24px;text-decoration:none;"
+         class="card-hover">
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
+          <span style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background-color:{{ 'var(--color-blue-100)' if article.source_category == 'pm' else ('var(--color-success-100)' if article.source_category == 'engineering' else 'var(--color-warning-100)') }};color:{{ 'var(--color-blue-900)' if article.source_category == 'pm' else ('var(--color-success-900)' if article.source_category == 'engineering' else 'var(--color-warning-900)') }};">
+            {{ article.source_category | upper }}
+          </span>
+          <span style="font-size:11px;color:var(--color-text-tertiary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+            {{ article.source_name }}
+          </span>
+        </div>
+        <h3 style="font-size:0.95rem;font-weight:700;line-height:1.4;color:var(--color-text-primary);margin-bottom:8px;">
+          {{ article.title }}
+        </h3>
+        {% if article.excerpt %}
+        <p style="font-size:0.85rem;line-height:1.5;color:var(--color-text-secondary);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+          {{ article.excerpt }}
+        </p>
+        {% endif %}
+        {% if article.published_at %}
+        <p style="font-size:11px;color:var(--color-text-tertiary);margin-top:12px;">
+          {{ article.published_at.strftime('%b %d, %Y') }}
+        </p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
