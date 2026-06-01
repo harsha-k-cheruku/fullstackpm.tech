@@ -1,0 +1,119 @@
+<!-- feed/editorial.html -->
+{% extends "base.html" %}
+
+{% block title %}Editorial Dashboard — fullstackpm.tech{% endblock %}
+
+{% block content %}
+{% macro toggle_pick_button(article) %}
+<button hx-post="/api/feed/article/{{ article.id }}/pick?token={{ token }}"
+        hx-target="this"
+        hx-swap="outerHTML"
+        style="background:none;border:1px solid {{ 'var(--color-accent)' if article.is_editors_pick else 'var(--color-text-tertiary)' }};color:{{ 'var(--color-accent)' if article.is_editors_pick else 'var(--color-text-tertiary)' }};padding:4px 12px;border-radius:6px;cursor:pointer;font-size:0.8rem;font-weight:600;">
+  {{ 'Featured' if article.is_editors_pick else 'Feature It' }}
+</button>
+{% endmacro %}
+
+<section style="padding: 3rem 0 1.5rem; border-bottom: 1px solid var(--color-border);">
+  <div class="max-w-5xl mx-auto px-6">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:0.5rem;">
+      EDITORIAL
+    </p>
+    <h1 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.02em;color:var(--color-text-primary);margin-bottom:1rem;">
+      Feed Dashboard
+    </h1>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <span style="font-size:0.85rem;color:var(--color-text-secondary);">
+        <strong style="color:var(--color-text-primary);">{{ stats.total }}</strong> total articles
+      </span>
+      <span style="font-size:0.85rem;color:var(--color-text-secondary);">
+        <strong style="color:var(--color-text-primary);">{{ stats.processed }}</strong> AI-processed
+      </span>
+      <span style="font-size:0.85rem;color:var(--color-text-secondary);">
+        <strong style="color:var(--color-accent);">{{ stats.picks }}</strong> editor's picks
+      </span>
+      <form action="/api/feed/refresh" method="post" style="display:inline;">
+        <button type="submit"
+                style="background:none;border:1px solid var(--color-border);color:var(--color-text-secondary);padding:4px 14px;border-radius:6px;cursor:pointer;font-size:0.8rem;">
+          Refresh feed
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 2rem 0;">
+  <div class="max-w-5xl mx-auto px-6">
+    {% if not articles %}
+    <p style="color:var(--color-text-tertiary);text-align:center;padding:4rem 0;">No articles yet.</p>
+    {% else %}
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      {% for article in articles %}
+      <div id="article-{{ article.id }}"
+           style="border:1px solid {{ 'var(--color-accent)' if article.is_editors_pick else 'var(--color-border)' }};border-radius:10px;padding:18px 22px;display:flex;gap:16px;align-items:flex-start;">
+
+        <div style="min-width:48px;text-align:center;">
+          {% if article.ai_score %}
+          <div style="font-size:1.1rem;font-weight:800;color:{{ '#16a34a' if article.ai_score >= 8 else ('#d97706' if article.ai_score >= 5 else '#9ca3af') }};">
+            {{ article.ai_score }}
+          </div>
+          <div style="font-size:10px;color:var(--color-text-tertiary);">/10</div>
+          {% else %}
+          <div style="font-size:0.75rem;color:var(--color-text-tertiary);">-</div>
+          {% endif %}
+        </div>
+
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px;flex-wrap:wrap;">
+            {% if article.source_category == 'pm' %}
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background-color:var(--color-blue-100);color:var(--color-blue-900);">PM</span>
+            {% elif article.source_category == 'engineering' %}
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background-color:var(--color-success-100);color:var(--color-success-900);">ENG</span>
+            {% elif article.source_category == 'ai' %}
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background-color:#ede9fe;color:#5b21b6;">AI</span>
+            {% else %}
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background-color:var(--color-warning-100);color:var(--color-warning-900);">STRATEGY</span>
+            {% endif %}
+            <span style="font-size:11px;color:var(--color-text-tertiary);">{{ article.source_name }}</span>
+            {% if article.published_at %}
+            <span style="font-size:11px;color:var(--color-text-tertiary);">· {{ article.published_at.strftime('%b %d') }}</span>
+            {% endif %}
+          </div>
+
+          <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer"
+             style="font-size:0.95rem;font-weight:700;color:var(--color-text-primary);text-decoration:none;line-height:1.4;display:block;margin-bottom:6px;">
+            {{ article.title }}
+          </a>
+
+          {% if article.ai_score_reason %}
+          <p style="font-size:0.8rem;color:var(--color-text-tertiary);margin-bottom:6px;font-style:italic;">
+            {{ article.ai_score_reason }}
+          </p>
+          {% endif %}
+
+          {% set insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight %}
+          {% if insight %}
+          {% set label = 'PM Take' if article.source_category == 'engineering' else ('First Principle' if article.source_category == 'strategy' else ('Takeaway' if article.source_category == 'pm' else 'AI for PMs')) %}
+          <p style="font-size:0.85rem;line-height:1.5;color:var(--color-text-secondary);">
+            <strong style="color:var(--color-accent);">{{ label }}:</strong> {{ insight }}
+          </p>
+          {% endif %}
+
+          <div style="display:flex;gap:8px;margin-top:12px;align-items:center;">
+            {{ toggle_pick_button(article) }}
+            <button hx-post="/api/feed/article/{{ article.id }}/dismiss?token={{ token }}"
+                    hx-target="#article-{{ article.id }}"
+                    hx-swap="outerHTML"
+                    style="background:none;border:1px solid var(--color-border);color:var(--color-text-tertiary);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:0.8rem;">
+              Skip
+            </button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+{% endblock %}
