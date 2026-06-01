@@ -82,7 +82,7 @@
           <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;">
             <a href="/feed/article/{{ article.id }}"
                style="font-size:0.95rem;font-weight:700;color:var(--color-text-primary);text-decoration:none;line-height:1.4;flex:1;">
-              {{ article.title }}
+              {{ article.display_title or article.title }}
             </a>
             <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer"
                style="font-size:0.75rem;color:var(--color-text-tertiary);text-decoration:none;flex-shrink:0;padding-top:2px;"

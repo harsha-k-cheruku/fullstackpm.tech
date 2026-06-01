@@ -76,7 +76,7 @@
             </div>
 
             <p style="font-size:0.875rem;font-weight:700;line-height:1.35;color:var(--color-text-primary);margin:0 0 6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
-              {{ article.title }}
+              {{ article.display_title or article.title }}
             </p>
 
             {% set insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight %}

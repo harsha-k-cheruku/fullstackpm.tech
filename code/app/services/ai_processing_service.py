@@ -30,6 +30,7 @@ Structure depends on category:
 Write like you are briefing a smart peer, not teaching a student. Direct, specific, no filler. End with one sharp observation or question that makes the reader think."""
 
 _SYSTEM_PROMPT = """You are a senior product manager analyst. Given an article title and excerpt, return a JSON object with exactly these keys:
+- "title": a clean, specific 5-9 word headline that captures what the article is actually about. No episode numbers, no newsletter series names, no vague phrases. Write it like a newspaper headline — concrete noun + specific action or finding. Example: "DuckDB 1.0 Adds Persistent Storage Layer" not "Weekly Dose of Optimism #195"
 - "score": integer 1-10 (PM relevance: 8-10 = directly actionable or strategically important for a senior B2B SaaS PM; 5-7 = interesting but not urgent; 1-4 = too niche, too technical, or too generic)
 - "score_reason": one sentence explaining the score
 - "insight": a short insight tailored to the category:
@@ -96,6 +97,10 @@ class AIProcessingService:
         except json.JSONDecodeError:
             logger.warning("Invalid JSON from Claude for article %s: %s", article.id, raw[:200])
             return False
+
+        raw_title = (data.get("title") or "").strip()
+        if raw_title:
+            article.display_title = raw_title[:300]
 
         score = int(data.get("score", 0)) or None
         article.ai_score = max(1, min(score, 10)) if score else None

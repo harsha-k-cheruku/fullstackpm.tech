@@ -29,3 +29,4 @@ class FeedArticle(Base):
     ai_score_reason = Column(Text, nullable=True)   # one sentence explaining score
     ai_processed_at = Column(DateTime, nullable=True)
     ai_article_analysis = Column(Text, nullable=True)
+    display_title = Column(String(300), nullable=True)  # cleaned headline, falls back to title
