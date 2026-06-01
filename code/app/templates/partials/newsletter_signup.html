@@ -1,44 +1,40 @@
 <!-- partials/newsletter_signup.html — Kit (ConvertKit) embed -->
+<style>
+  /* Hide Kit's built-in title/tagline — we render our own above the form */
+  .fspm-newsletter .formkit-header,
+  .fspm-newsletter .formkit-subheader { display: none !important; }
+</style>
 <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 <form action="https://app.kit.com/forms/9506742/subscriptions"
-      class="seva-form formkit-form"
+      class="seva-form formkit-form fspm-newsletter"
       method="post"
       data-sv-form="9506742"
       data-uid="e8cf960de3"
       data-format="inline"
       data-version="5"
       min-width="400 500 600 700 800"
-      style="background-color: var(--color-bg-secondary); border-radius: 8px; border: 1px solid var(--color-border);">
+      style="background:transparent;border:none;padding:0;">
   <div data-style="minimal">
-    <div class="formkit-header" data-element="header"
-         style="color: var(--color-text-primary); font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 6px;">
-      The Full Stack PM
-    </div>
-    <div class="formkit-subheader" data-element="subheader"
-         style="color: var(--color-text-secondary); font-size: 14px; text-align: center; margin-bottom: 16px;">
-      Product thinking, AI-native workflows, and the economics of what endures. Weekly.
-    </div>
+    <div class="formkit-header" data-element="header" style="display:none;">The Full Stack PM</div>
+    <div class="formkit-subheader" data-element="subheader" style="display:none;">Product thinking, AI-native workflows, and the economics of what endures. Weekly.</div>
     <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
     <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"
-         style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <div class="formkit-field" style="flex: 1 0 200px;">
+         style="display:flex;gap:8px;flex-wrap:wrap;max-width:420px;margin:0 auto;">
+      <div class="formkit-field" style="flex:1 0 200px;">
         <input class="formkit-input"
                name="email_address"
                aria-label="Email Address"
                placeholder="your@email.com"
                required
                type="email"
-               style="width: 100%; padding: 0.6rem 0.9rem; border-radius: 8px; border: 1px solid var(--color-border); background-color: var(--color-bg-primary); color: var(--color-text-primary); font-size: 0.9rem;">
+               style="width:100%;padding:0.65rem 1rem;border-radius:8px;border:1px solid var(--color-border);background:var(--color-bg-primary);color:var(--color-text-primary);font-size:0.9rem;">
       </div>
       <button data-element="submit" class="formkit-submit"
-              style="padding: 0.6rem 1.2rem; border-radius: 8px; background-color: var(--color-accent); color: #fff; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;">
+              style="padding:0.65rem 1.25rem;border-radius:8px;background:var(--color-accent);color:#fff;font-weight:600;font-size:0.9rem;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;">
         <div class="formkit-spinner"><div></div><div></div><div></div></div>
         <span>Subscribe</span>
       </button>
     </div>
-    <div class="formkit-guarantee" data-element="guarantee"
-         style="color: var(--color-text-tertiary); font-size: 12px; text-align: center; margin-top: 10px;">
-      No spam. Unsubscribe any time.
-    </div>
+    <p style="font-size:12px;color:var(--color-text-tertiary);margin:10px 0 0;text-align:center;">No spam. Unsubscribe any time.</p>
   </div>
 </form>
