@@ -75,12 +75,16 @@ class FeedService:
         return new_count
 
     def get_articles(self, db: Session, category: str = "all", limit: int = 60) -> list[FeedArticle]:
-        """Return feed articles, optionally filtered by category."""
-        query = db.query(FeedArticle)
+        """Return feed articles sorted by AI score then date, optionally filtered by category."""
+        query = db.query(FeedArticle).filter(FeedArticle.is_dismissed == False)
         if category != "all":
             query = query.filter(FeedArticle.source_category == category)
         return (
-            query.order_by(FeedArticle.published_at.desc().nullslast(), FeedArticle.fetched_at.desc())
+            query.order_by(
+                FeedArticle.ai_score.desc().nullslast(),
+                FeedArticle.published_at.desc().nullslast(),
+                FeedArticle.fetched_at.desc(),
+            )
             .limit(limit)
             .all()
         )
