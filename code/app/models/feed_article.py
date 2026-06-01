@@ -18,3 +18,13 @@ class FeedArticle(Base):
     published_at = Column(DateTime, nullable=True)
     fetched_at = Column(DateTime, default=datetime.utcnow)
     is_editors_pick = Column(Boolean, default=False)
+    is_dismissed = Column(Boolean, default=False)
+
+    # Layer 2: AI enrichment
+    ai_summary = Column(Text, nullable=True)        # engineering: PM-lens explanation
+    first_principle = Column(Text, nullable=True)   # strategy: mental model extraction
+    key_insight = Column(Text, nullable=True)       # pm: actionable takeaway
+    ai_insight = Column(Text, nullable=True)        # ai: so what for PMs
+    ai_score = Column(Integer, nullable=True)       # 1-10 PM relevance score
+    ai_score_reason = Column(Text, nullable=True)   # one sentence explaining score
+    ai_processed_at = Column(DateTime, nullable=True)
