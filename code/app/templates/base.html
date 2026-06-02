@@ -33,10 +33,118 @@
   <link rel="apple-touch-icon" href="/static/img/FSPM.png?v=3">
   <meta name="msapplication-TileImage" content="/static/img/FSPM.png?v=3">
 
-  <!-- Fonts: Inter + JetBrains Mono -->
+  <!-- Fonts: Inter (UI) + Source Serif 4 (editorial) + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700;8..60,800;8..60,900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- ─── Editorial design system (Stratechery-inspired) ─── -->
+  <style>
+    .serif { font-family: 'Source Serif 4', Charter, 'Iowan Old Style', Georgia, serif; }
+
+    /* Kicker: small all-caps label */
+    .kicker {
+      font-size: 12px; font-weight: 800; letter-spacing: 0.16em;
+      text-transform: uppercase; line-height: 1;
+    }
+
+    /* Section rule (heavy heading bar) */
+    .section-rule {
+      display: flex; align-items: center; gap: 16px;
+      padding-bottom: 12px; margin-bottom: 1.75rem;
+      border-bottom: 3px solid var(--color-text-primary);
+    }
+    .section-rule .label {
+      font-size: 13px; font-weight: 900; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--color-text-primary);
+    }
+    .section-rule .meta { margin-left: auto; }
+
+    /* Feature headline — the heavyweight */
+    .feature-headline {
+      font-family: 'Source Serif 4', Charter, Georgia, serif;
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+      margin: 0 0 1.25rem;
+    }
+    .feature-dek {
+      font-family: 'Source Serif 4', Charter, Georgia, serif;
+      font-size: clamp(1.125rem, 2vw, 1.4rem);
+      line-height: 1.45;
+      color: var(--color-text-secondary);
+      margin: 0 0 1.5rem;
+      font-weight: 400;
+    }
+
+    /* Column headlines */
+    .column-headline {
+      font-family: 'Source Serif 4', Charter, Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--color-text-primary);
+      margin: 0 0 10px;
+      transition: color 0.15s;
+    }
+    .column-dek {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    /* Article body (long-form serif) */
+    .article-body {
+      font-family: 'Source Serif 4', Charter, Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--color-text-primary);
+    }
+    .article-body p { margin: 0 0 1.25rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+
+    /* Card hover affordance */
+    .article-link { display: block; text-decoration: none; }
+    .article-link:hover .column-headline,
+    .article-link:hover .feature-headline { color: var(--color-accent); }
+
+    /* Feature image / placeholder */
+    .feature-image {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #1f2937, #0f172a);
+      color: #94a3b8;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; letter-spacing: 0.18em; font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Source meta */
+    .source-meta {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-text-tertiary);
+    }
+    .source-meta .accent { color: var(--color-accent); }
+
+    /* Hairline divider for article cards */
+    .article-card { padding: 1.25rem 0; border-bottom: 1px solid var(--color-border); }
+    .article-card:first-child { padding-top: 0; }
+    .article-card:last-child { border-bottom: none; padding-bottom: 0; }
+
+    /* Category chip — used on article + feed pages */
+    .cat-chip {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 999px;
+    }
+    .cat-chip.pm   { background-color: var(--color-blue-100);    color: var(--color-blue-900); }
+    .cat-chip.eng  { background-color: var(--color-success-100); color: var(--color-success-900); }
+    .cat-chip.ai   { background-color: #ede9fe; color: #5b21b6; }
+    .cat-chip.strat{ background-color: var(--color-warning-100); color: var(--color-warning-900); }
+  </style>
 
   <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
