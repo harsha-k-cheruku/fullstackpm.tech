@@ -55,3 +55,11 @@ def ensure_feed_layer2_columns() -> None:
         for column, statement in new_columns.items():
             if column not in existing:
                 conn.execute(text(statement))
+
+
+def ensure_pipeline_tables() -> None:
+    """Create the pipeline audit tables (extracts, analyses, editorials, deep_dives)
+    if they don't exist. Safe to call on every startup."""
+    # Importing the models registers them on Base.metadata.
+    from app.models import pipeline_models  # noqa: F401
+    Base.metadata.create_all(bind=engine)

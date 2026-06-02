@@ -55,3 +55,9 @@ secrets/
 
 # Content Strategy (internal ops, not public)
 content_strategy/
+
+# Pipeline working data (local-only)
+pipeline/data/
+*.db
+*.db-shm
+*.db-wal
