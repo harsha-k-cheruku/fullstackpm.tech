@@ -1,6 +1,43 @@
 {
   "episodes": [
     {
+      "id": "2026-06-01-deep-dive",
+      "slug": "deep-dive-ai-autonomous-successors-2028",
+      "title": "Deep Dive \u2014 Will AI Build Its Own Successors by 2028?",
+      "date": "2026-06-01",
+      "published_at": "2026-06-02T01:49:10.425632",
+      "duration_seconds": 507,
+      "duration_human": "8:27",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/learning-brief/audio/2026-06-01-deep-dive.mp3",
+      "audio_length_bytes": 8118189,
+      "kind": "deep_dive",
+      "topic": "AI Systems Will Autonomously Build Their Successors By 2028",
+      "source_article_id": 155,
+      "participants": [
+        {
+          "name": "The Believer",
+          "voice": "en-US-AndrewNeural",
+          "model": "gpt-4o"
+        },
+        {
+          "name": "The Skeptic",
+          "voice": "en-GB-RyanNeural",
+          "model": "grok-3"
+        },
+        {
+          "name": "The Realist",
+          "voice": "en-US-AvaNeural",
+          "model": "claude-haiku-4-5"
+        }
+      ],
+      "segments": {
+        "deep_dive": {
+          "title": "Will AI Build Its Own Successors by 2028?",
+          "summary": "Three AI personas (Believer / Skeptic / Realist) unpack Jack Clark's claim that AI R&D could be end-to-end automated within two years. Believer leans on benchmark progression (SWE-Bench 93.9%, METR time-horizon curve). Skeptic calls 'benchmark theater' on scripted tasks vs. real research taste. Realist names the actual gate \u2014 the human veto point on capital allocation \u2014 and where each side had a point."
+        }
+      }
+    },
+    {
       "id": "2026-05-26",
       "slug": "learning-brief-2026-05-26",
       "title": "Learning Brief \u2014 May 26, 2026",
