@@ -1,9 +1,11 @@
 # app/services/feed_service.py
 from __future__ import annotations
 
+import json
 import logging
 import re
 from datetime import datetime
+from pathlib import Path
 from typing import Optional
 
 import feedparser
@@ -56,6 +58,72 @@ def _clean_excerpt(entry) -> str:
 
 
 class FeedService:
+    def sync_from_json(self, db: Session, json_path: Path) -> int:
+        """
+        Upsert articles from the pre-processed articles.json into SQLite.
+        Called on startup so the DB is always populated from the committed JSON.
+        Preserves editorial overrides (is_editors_pick, is_dismissed) set via dashboard.
+        """
+        if not json_path.exists():
+            return 0
+        try:
+            data = json.loads(json_path.read_text())
+        except Exception as exc:
+            logger.warning("Failed to load articles.json: %s", exc)
+            return 0
+
+        upserted = 0
+        for a in data.get("articles", []):
+            url = a.get("url", "").strip()
+            if not url:
+                continue
+            try:
+                existing = db.query(FeedArticle).filter_by(url=url).first()
+                if existing:
+                    # Update AI fields only — preserve editorial overrides
+                    existing.title          = a.get("title") or existing.title
+                    existing.display_title  = a.get("display_title")
+                    existing.excerpt        = a.get("excerpt") or existing.excerpt
+                    existing.ai_score       = a.get("ai_score")
+                    existing.ai_score_reason = a.get("ai_score_reason")
+                    existing.ai_summary     = a.get("ai_summary")
+                    existing.first_principle = a.get("first_principle")
+                    existing.key_insight    = a.get("key_insight")
+                    existing.ai_insight     = a.get("ai_insight")
+                    existing.ai_article_analysis = a.get("ai_article_analysis")
+                else:
+                    pub = a.get("published_at")
+                    fetched = a.get("fetched_at")
+                    db.add(FeedArticle(
+                        url=url,
+                        title=a.get("title", "")[:500],
+                        display_title=a.get("display_title"),
+                        excerpt=a.get("excerpt"),
+                        source_name=a.get("source_name", ""),
+                        source_category=a.get("source_category", ""),
+                        published_at=datetime.fromisoformat(pub) if pub else None,
+                        fetched_at=datetime.fromisoformat(fetched) if fetched else None,
+                        ai_score=a.get("ai_score"),
+                        ai_score_reason=a.get("ai_score_reason"),
+                        ai_summary=a.get("ai_summary"),
+                        first_principle=a.get("first_principle"),
+                        key_insight=a.get("key_insight"),
+                        ai_insight=a.get("ai_insight"),
+                        ai_article_analysis=a.get("ai_article_analysis"),
+                    ))
+                upserted += 1
+            except Exception as exc:
+                logger.warning("sync_from_json: failed on %s: %s", url, exc)
+                db.rollback()
+                continue
+        try:
+            db.commit()
+        except Exception as exc:
+            logger.warning("sync_from_json: commit failed: %s", exc)
+            db.rollback()
+        logger.info("sync_from_json: upserted %d articles", upserted)
+        return upserted
+
     def fetch_all(self, db: Session) -> int:
         """Fetch all RSS sources and store new articles. Return new article count."""
         new_count = 0

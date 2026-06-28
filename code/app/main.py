@@ -32,17 +32,25 @@ async def lifespan(app: FastAPI):
 
     app.state.reading_service = ReadingService(settings.static_dir / "data")
 
-    # RSS fetch on startup, then every 6 hours. The SQLite DB is ephemeral on
-    # Render, so fetching immediately ensures the homepage is populated right
-    # after each deploy rather than sitting empty for 24 hours.
+    # Populate feed from pre-processed articles.json (committed to git, survives deploys).
+    # This runs synchronously on startup so the homepage is never empty after a deploy.
+    _articles_json = settings.static_dir / "feed" / "articles.json"
+    _sync_db = SessionLocal()
+    try:
+        feed_service.sync_from_json(_sync_db, _articles_json)
+    finally:
+        _sync_db.close()
+
+    # Background RSS fetch every 6 hours catches articles published between
+    # local feed pipeline runs. No AI processing — just URL capture.
     async def _fetch_loop():
         while True:
+            await asyncio.sleep(6 * 3600)
             db = SessionLocal()
             try:
                 feed_service.fetch_all(db)
             finally:
                 db.close()
-            await asyncio.sleep(6 * 3600)
 
     task = asyncio.create_task(_fetch_loop())
     yield
