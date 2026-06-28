@@ -30,3 +30,4 @@ class FeedArticle(Base):
     ai_processed_at = Column(DateTime, nullable=True)
     ai_article_analysis = Column(Text, nullable=True)
     display_title = Column(String(300), nullable=True)  # cleaned headline, falls back to title
+    source_type = Column(String(50), nullable=True)     # pm_practice | engineering | vc_essay | ai_research | vendor

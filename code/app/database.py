@@ -50,6 +50,7 @@ def ensure_feed_layer2_columns() -> None:
         "ai_processed_at": "ALTER TABLE feed_articles ADD COLUMN ai_processed_at DATETIME",
         "ai_article_analysis": "ALTER TABLE feed_articles ADD COLUMN ai_article_analysis TEXT",
         "display_title": "ALTER TABLE feed_articles ADD COLUMN display_title VARCHAR(300)",
+        "source_type": "ALTER TABLE feed_articles ADD COLUMN source_type VARCHAR(50)",
     }
     with engine.begin() as conn:
         for column, statement in new_columns.items():

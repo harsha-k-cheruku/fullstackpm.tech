@@ -84,6 +84,7 @@ class FeedService:
                     existing.title          = a.get("title") or existing.title
                     existing.display_title  = a.get("display_title")
                     existing.excerpt        = a.get("excerpt") or existing.excerpt
+                    existing.source_type    = a.get("source_type")
                     existing.ai_score       = a.get("ai_score")
                     existing.ai_score_reason = a.get("ai_score_reason")
                     existing.ai_summary     = a.get("ai_summary")
@@ -101,6 +102,7 @@ class FeedService:
                         excerpt=a.get("excerpt"),
                         source_name=a.get("source_name", ""),
                         source_category=a.get("source_category", ""),
+                        source_type=a.get("source_type"),
                         published_at=datetime.fromisoformat(pub) if pub else None,
                         fetched_at=datetime.fromisoformat(fetched) if fetched else None,
                         ai_score=a.get("ai_score"),
