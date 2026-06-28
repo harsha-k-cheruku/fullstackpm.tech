@@ -29,7 +29,7 @@ FEED_SOURCES = [
     {"name": "Leah Tharin",             "url": "https://leahtharin.substack.com/feed",                     "category": "pm",       "type": "pm_practice"},
     {"name": "Wes Kao",                  "url": "https://newsletter.weskao.com/feed",                       "category": "pm",       "type": "pm_practice"},
     {"name": "Shreyas Doshi",            "url": "https://shreyasdoshi.substack.com/feed",                   "category": "pm",       "type": "pm_practice"},
-    {"name": "The Beautiful Mess",       "url": "https://cutlefish.substack.com/feed",                      "category": "pm",       "type": "pm_practice"},
+    {"name": "The Beautiful Mess",       "url": "https://thebeautifulmess.substack.com/feed",               "category": "pm",       "type": "pm_practice"},
 
     # ── Vendor Blogs — kept for coverage, scored low, no AI processing ─────────
     {"name": "Productboard Blog",        "url": "https://www.productboard.com/blog/feed/",                  "category": "pm",       "type": "vendor"},
