@@ -17,6 +17,19 @@ logger = logging.getLogger(__name__)
 MAX_ARTICLES_PER_SOURCE = 5
 MAX_EXCERPT_CHARS = 300
 
+# Match emoji/pictograph Unicode ranges common in RSS feed titles
+_EMOJI_RE = re.compile(
+    "[\U0001F300-\U0001FFFF"
+    "\U00002600-\U000027BF"
+    "\U0000FE00-\U0000FE0F"
+    "\U00002500-\U00002BFF]+",
+    flags=re.UNICODE,
+)
+
+
+def _clean_title(text: str) -> str:
+    return _EMOJI_RE.sub("", text).strip()
+
 
 def _parse_date(entry) -> Optional[datetime]:
     for attr in ("published_parsed", "updated_parsed"):
@@ -59,7 +72,7 @@ class FeedService:
                         continue
 
                     article = FeedArticle(
-                        title=entry.get("title", "Untitled")[:500],
+                        title=_clean_title(entry.get("title", "Untitled"))[:500],
                         url=url,
                         excerpt=_clean_excerpt(entry),
                         source_name=source["name"],

@@ -18,38 +18,28 @@
 
     {% if feature %}
     <a href="/feed/article/{{ feature.id }}" class="article-link">
-      <div class="grid grid-cols-1 lg:grid-cols-12" style="gap: 3rem; align-items: flex-start;">
-
-        <!-- Story (left, 7 cols) -->
-        <div class="lg:col-span-7" style="order: 1;">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
-            {% set cat = feature.source_category %}
-            {% set cat_label = 'Product' if cat == 'pm' else ('Engineering' if cat == 'engineering' else ('AI & Research' if cat == 'ai' else 'Strategy')) %}
-            <span class="source-meta accent">{{ cat_label }}</span>
-            <span style="width:4px;height:4px;border-radius:50%;background:var(--color-text-tertiary);"></span>
-            <span class="source-meta">{{ feature.source_name }}</span>
-          </div>
-
-          <h1 class="feature-headline">
-            {{ feature.display_title or feature.title }}
-          </h1>
-
-          {% set summary = feature.ai_summary or feature.first_principle or feature.key_insight or feature.ai_insight or feature.excerpt %}
-          {% if summary %}
-          <p class="feature-dek">{{ summary }}</p>
-          {% endif %}
-
-          <div style="display:flex;align-items:center;gap:14px;padding-top:0.5rem;">
-            <span class="kicker" style="color: var(--color-accent);">Read the analysis →</span>
-            <span class="source-meta">5 min read</span>
-          </div>
+      <div style="max-width: 720px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+          {% set cat = feature.source_category %}
+          {% set cat_label = 'Product' if cat == 'pm' else ('Engineering' if cat == 'engineering' else ('AI & Research' if cat == 'ai' else 'Strategy')) %}
+          <span class="source-meta accent">{{ cat_label }}</span>
+          <span style="width:4px;height:4px;border-radius:50%;background:var(--color-text-tertiary);"></span>
+          <span class="source-meta">{{ feature.source_name }}</span>
         </div>
 
-        <!-- Image (right, 5 cols) -->
-        <div class="lg:col-span-5" style="order: 2;">
-          <div class="feature-image">Feature Image</div>
-        </div>
+        <h1 class="feature-headline">
+          {{ feature.display_title or feature.title }}
+        </h1>
 
+        {% set summary = feature.ai_summary or feature.first_principle or feature.key_insight or feature.ai_insight or feature.excerpt %}
+        {% if summary %}
+        <p class="feature-dek">{{ summary }}</p>
+        {% endif %}
+
+        <div style="display:flex;align-items:center;gap:14px;padding-top:0.5rem;">
+          <span class="kicker" style="color: var(--color-accent);">Read the analysis →</span>
+          <span class="source-meta">5 min read</span>
+        </div>
       </div>
     </a>
     {% else %}

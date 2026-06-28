@@ -60,7 +60,7 @@ async def article_page(article_id: int, request: Request, db: Session = Depends(
         "pm": "Takeaway",
         "ai": "AI for PMs",
     }.get(article.source_category, "Insight")
-    card_insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight
+    card_insight = article.ai_summary or article.first_principle or article.key_insight or article.ai_insight or article.excerpt
 
     return templates.TemplateResponse(
         "feed/article.html",
