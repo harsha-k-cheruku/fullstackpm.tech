@@ -32,16 +32,17 @@ async def lifespan(app: FastAPI):
 
     app.state.reading_service = ReadingService(settings.static_dir / "data")
 
-    # Lightweight 24-hour RSS fetch — captures new article URLs only, no AI.
-    # All scoring and analysis runs via scripts/process_feed.py on the local machine.
+    # RSS fetch on startup, then every 6 hours. The SQLite DB is ephemeral on
+    # Render, so fetching immediately ensures the homepage is populated right
+    # after each deploy rather than sitting empty for 24 hours.
     async def _fetch_loop():
         while True:
-            await asyncio.sleep(24 * 3600)
             db = SessionLocal()
             try:
                 feed_service.fetch_all(db)
             finally:
                 db.close()
+            await asyncio.sleep(6 * 3600)
 
     task = asyncio.create_task(_fetch_loop())
     yield
