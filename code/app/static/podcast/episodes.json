@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-06-30",
+      "slug": "daily-brief-2026-06-30",
+      "episode_number": 43,
+      "title": "Daily Brief \u2014 June 30, 2026",
+      "date": "2026-06-30",
+      "published_at": "2026-06-30T14:45:58",
+      "duration_seconds": 889,
+      "duration_human": "14:49",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-06-30.mp3",
+      "audio_length_bytes": 7111802,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 7,
+        "day": 3,
+        "topic": "Trade Management and Risk",
+        "lesson": "Rolling a trade: how to extend duration when a trade goes against you"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Rolling Trades: Extending Duration When Things Go South",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: How top PMs increase their leverage with AI",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 743.22,
+        "pct_change": 0.3,
+        "iv_rank": 97.96
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "rolling",
+        "trade",
+        "extend",
+        "duration",
+        "when",
+        "goes"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-06-30</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Markets on Edge: Trade, Tech, and Tensions Drive the Week</li>\n<li><strong>SPY learning:</strong> Rolling Trades: Extending Duration When Things Go South</li>\n<li><strong>Market brief:</strong> SPY Market Brief for June 30, 2026</li>\n<li><strong>PM/analytics:</strong> How top PMs increase their leverage with AI</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, small-cap stocks are experiencing their best first half in 35 years, driven by a resurgence in investor confidence and AI-related trades. This shift could reshape the market landscape as more capital flows into these previously underperforming assets. Over in Europe, the UK is making headlines with a 300-billion-pound defense investment plan that includes more than 5 billion pounds for drones and autonomous systems. This significant commitment could bolster the defense sector and impact related supply chains across the continent. In Asia, China&rsquo;s economy is showing signs of recovery in June, thanks to rebounding U.S. exports. This uptick in trade may have implications for global supply chains and could ease concerns about a slowing Chinese economy impacting global growth.</p>\n<p>Imagine you\u2019re at a birthday party, and you\u2019ve got a ticket for a game you really want to play. The game is super fun, but as you\u2019re waiting in line, the host suddenly announces that they\u2019re going to close the game in just a few minutes. You feel a bit worried because you haven\u2019t had your chance yet. So, you think, what if I could just get a new ticket that lets me play longer? Maybe if I ask nicely, or trade my ticket with someone who\u2019s leaving early, I can keep enjoying the game without losing out. It\u2019s all about keeping the fun going, even if things don\u2019t go as planned at first. </p>\n<p>Now, let&rsquo;s think of that ticket as your option in the stock market. When you buy an option, you\u2019re essentially buying a ticket to a game that lets you benefit from price movements of a stock, like SPY. If the game (or your trade) isn\u2019t going well and time is running out, rolling your option means you\u2019re getting a new ticket for a later date. This can help you avoid losing that initial investment and continue to play the game as the market evolves. It\u2019s about extending your opportunity when your first attempt didn\u2019t go as you hoped.</p>\n<p>Now, let\u2019s connect the dots to the real world of SPY options trading. Today, SPY is trading at $743.22, and you\u2019ve got an option that\u2019s not performing as expected with the expiration date coming up soon on July 31. If the market isn\u2019t moving in your favor, the natural question here is: how do I manage this situation? Here\u2019s how to think about it: if your option is losing value, you can roll it to a later date, say to August or September. Essentially, you\u2019re exchanging your current position for one that gives you more time to see if the SPY will move in a favorable direction. This way, you don\u2019t just abandon your original position\u2014it\u2019s a chance to adjust your strategy while remaining invested. </p>\n<p>Given that SPY\u2019s implied volatility rank is at 97.96 today, this means there\u2019s a high level of expectation for future price swings, which could benefit your trading strategy. High IV can make options more expensive, but if you\u2019re rolling your trade, you could potentially get a better deal on a later expiry option. So, if you started with an option that\u2019s expiring soon, consider rolling it to one with more days left, especially if you&rsquo;re seeing that SPY has the potential to move based on current market sentiment. This is where thinking like a systematic trader really pays off; you\u2019re not just reacting to price changes, but strategically planning your next steps based on the data in front of you. </p>\n<p>In a nutshell, rolling your trade doesn\u2019t just keep you in the game longer; it gives you a fresh chance to capitalize on future price movements in SPY. With today\u2019s SPY price and high IV, it\u2019s a good time to assess whether rolling your trade is a smart move to enhance your position, rather than simply exiting a trade that\u2019s not going your way. Remember, it\u2019s all about managing risk and maximizing opportunity, and rolling your options can help you do just that.</p>\n<p>Today, SPY closed at 743.22, marking a modest gain of 0.3% from the previous day. This move, while not monumental, is significant in the context of the week, especially considering SPY had a rough patch earlier, dipping to 728.99 just a few days ago. The upward trajectory over the last two days suggests a potential reversal of sentiment, and traders are keenly watching to see if this momentum can be sustained into July. Volume today was around 9.18 million shares, which is decent but not extraordinary, indicating that while there\u2019s some interest, it\u2019s not a full-blown rally just yet.</p>\n<p>In terms of sector performance, Technology, represented by the XLK, was the clear leader today, rising 1.69% and accounting for a significant portion of SPY&rsquo;s gains. This strength in tech is likely a reflection of ongoing enthusiasm around AI and tech innovation, which has been a hot topic lately. On the flip side, Real Estate (XLRE) lagged the index, falling 1.91%. The decline in real estate could be attributed to rising mortgage rates, which are currently at 6.49%. Higher borrowing costs typically dampen demand in this sector, and today\u2019s performance seems to echo that sentiment.</p>\n<p>The broader macro context also plays a role here. The recent uptick in inflation, with the CPI year-over-year at 4.27%, has traders on edge, and the Fed\u2019s next meeting on July 29 is looming large. The market is still digesting the implications of these economic indicators, particularly as the yield curve has flattened, suggesting potential economic headwinds. With the VIX hovering around 17.27, it indicates a moderate level of fear in the market, but it\u2019s not at panic levels, which is somewhat reassuring for traders looking to sell premium.</p>\n<p>Currently, the implied volatility rank for SPY stands at 97.96, which is quite high. This means that options are relatively expensive right now. If you\u2019re considering selling premium, this could be an opportune moment, but you\u2019ll want to be cautious about the potential for volatility spikes, especially with the Fed meeting on the horizon. The high IV rank suggests that the market is pricing in significant movement, and if you\u2019re looking to sell options, you might want to consider strategies that can capitalize on this elevated volatility.</p>\n<p>As for key price levels, immediate support for SPY is around 740, while resistance is seen at the 744.53 level, which was today\u2019s high. Watching these levels will be crucial as they can guide your trading decisions. If SPY can break above 744.53, it could signal further bullish momentum, while a drop below 740 might indicate a return to bearish sentiment.</p>\n<p>Looking ahead, we have the Freddie Mac Mortgage Rate Update releasing this afternoon, which could impact the real estate sector and overall market sentiment. Additionally, the Fed meeting on July 29 is a significant event that traders will be watching closely. Any hints of policy changes or economic outlooks could lead to increased volatility in the weeks to come. With the market still processing recent economic data, these upcoming events could be pivotal in shaping the direction of SPY.</p>\n<p>In summary, for options traders considering positions this week, the high IV rank presents an attractive opportunity for selling premium, but be mindful of the potential for increased volatility as we approach key economic events. The market is at a critical juncture, and positioning yourself wisely could yield favorable outcomes.</p>\n<p>Here&rsquo;s the thing: top product managers are increasingly leveraging AI not just as a tool, but as a strategic partner in decision-making. This is especially relevant for you as a senior PM looking to streamline your workflow and enhance your intuition for options trading like with SPY. What that means in practice is shifting your mindset to see AI as an extension of your analytical capabilities rather than just a shiny tech toy. </p>\n<p>For instance, consider how you might apply this in your current role. Instead of manually sifting through data to identify trends or pricing anomalies, imagine deploying an AI model that can analyze historical SPY option price movements and volatility patterns, adjusting for factors like IV rank in real-time. This way, you&rsquo;re not just reacting to market conditions; you&rsquo;re proactively shaping your trading strategies based on predictive analytics. When you think about it, it&rsquo;s like having an extra set of eyes on the market\u2014eyes that can process vast amounts of data instantly and provide insights that might take you hours to uncover on your own.</p>\n<p>Now, let\u2019s connect this to your trading decisions. If you start integrating AI tools that can simulate various market scenarios based on your defined-risk spreads, you gain a clearer picture of potential outcomes. This can help you prioritize which trades to execute based on their probability of success and risk-reward ratios. The move here is to experiment with this technology not just for efficiency, but for strategic advantage, allowing you to make data-driven decisions that might otherwise feel gut-driven.</p>\n<p>So, here\u2019s a specific action you can take this week: identify one area of your current workflow that feels particularly time-consuming or data-heavy. Research AI tools or platforms that can help automate or analyze that aspect. Whether it&rsquo;s a tool for better data visualization or a predictive analytics platform, find something that resonates with your needs. By the end of the week, integrate that tool into your routine and see how it shifts your approach to both product management and your trading strategies. This small step could lead to significant gains in your efficiency and decision-making prowess.</p>"
+    },
+    {
       "id": "2026-06-29",
       "slug": "daily-brief-2026-06-29",
       "episode_number": 42,
