@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-02",
+      "slug": "daily-brief-2026-07-02",
+      "episode_number": 45,
+      "title": "Daily Brief \u2014 July 02, 2026",
+      "date": "2026-07-02",
+      "published_at": "2026-07-02T15:16:30",
+      "duration_seconds": 865,
+      "duration_human": "14:25",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-02.mp3",
+      "audio_length_bytes": 6920168,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 7,
+        "day": 5,
+        "topic": "Trade Management and Risk",
+        "lesson": "Keeping a trade journal: what to track and why"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Understanding SPY Options Through Everyday Life",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: How Kent Beck shapes the software engineering industry",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 750.82,
+        "pct_change": 0.68,
+        "iv_rank": 98.5
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "keeping",
+        "trade",
+        "journal",
+        "track",
+        "kent",
+        "beck"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-02</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Markets on Edge: Oil Supply Risks and U.S.-China Tensions Emerge</li>\n<li><strong>SPY learning:</strong> Understanding SPY Options Through Everyday Life</li>\n<li><strong>Market brief:</strong> SPY Market Brief for July 2, 2026</li>\n<li><strong>PM/analytics:</strong> How Kent Beck shapes the software engineering industry</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, the reopening of the Strait of Hormuz has raised concerns about an oil surplus destabilizing global energy markets. This shift could impact energy prices and trade flows, particularly for oil-importing nations. In Europe, the region remains quiet with no significant market-relevant developments today. There are ongoing discussions related to political issues but nothing that could affect trade or economic policy. In Asia, China&rsquo;s tightening of capital controls is causing ripples in investment flows, as the Securities Regulatory Commission has fined brokerages for unauthorized access to overseas stocks. This could impact how global investors view China&rsquo;s market accessibility and lead to a reevaluation of capital flows. In India, Pakistan&rsquo;s Prime Minister is set to visit Iran, focusing on enhancing bilateral trade and investment. This could have implications for regional trade dynamics, particularly in energy. In the Middle East and Africa, the reopening of Hormuz could signal a shift from an oil shortage to a glut, potentially impacting global oil prices. This is crucial as many economies rely heavily on stable energy prices for their fiscal health. In the Asia Pacific, the Japanese yen has surged, hitting a 160 range due to fears of government intervention. This could influence currency trades and affect global investors&rsquo; positioning.</p>\n<p>Imagine you\u2019re at a big pizza party, and everyone is excited about getting their favorite slice. Each pizza represents a different kind of option, and the slices are like different prices you can choose. Now, let\u2019s say you see a delicious pepperoni pizza that everyone wants. You can make a deal with your friend: for a small fee, you reserve a slice for later, even if the pizza gets more popular and the price goes up. If the party gets wild and more people show up, your slice is still safe for you at the price you agreed on, no matter how much everyone else wants it. So, if you really love pepperoni, you\u2019re happy because you secured your slice at a good price, even if others have to pay more. That\u2019s kind of how trading options works, where you pay a little bit now to have the right to buy or sell something at a specific price later, regardless of what happens in between.</p>\n<p>Now, let\u2019s connect that to SPY options. When we talk about SPY, we\u2019re referring to the S&amp;P 500 ETF, which tracks the performance of 500 of the largest U.S. companies. Just like you reserved that slice of pizza, options give you the right to buy or sell shares of SPY at a specific price, known as the strike price, before a certain date, called the expiration date. For example, if SPY is currently priced at $750.82 and you think it\u2019s going to go up, you might buy a call option with a strike price of $751. If SPY climbs above that, you can exercise your option to buy at $751, even if the market price is higher. Today\u2019s implied volatility, sitting at 13.06 with an IV rank of 98.5, tells you that options are relatively cheap compared to where they might be in the future, adding a layer of opportunity to your trades.</p>\n<p>Understanding this concept transforms how you view trades. With SPY\u2019s current price at $750.82 and a high IV rank, you might think, \u201cGiven that IV rank is at 98.5 today, this indicates that options are very cheap relative to their historical prices. So, if I\u2019m considering a defined-risk spread strategy, it could be a good time to sell premium.\u201d For example, if you think SPY will stay below $751 over the next few weeks, you might consider selling a call spread, where you sell a call at $751 and buy another at $753. By doing this, you can potentially earn the premium while limiting your risk. This strategy is appealing right now because of the low implied volatility, meaning you get to collect premium from the options you sell while keeping your risks in check. You\u2019re not just thinking about the immediate price moves; you\u2019re anticipating how the market might behave based on current volatility metrics, using that to your advantage in your trade management.</p>\n<p>Today, SPY closed at 750.82, marking a gain of 0.68% from the previous day. The index opened at 747.4 and reached a high of 751.24, which is quite significant considering the volatility we&rsquo;ve seen this week. Over the past five days, SPY has shown a positive trend, climbing from a low of 728.99 last Friday to this current level. This upward movement indicates a potential shift in market sentiment, especially as we approach key economic indicators that could further influence trading decisions.</p>\n<p>In terms of sector performance, Healthcare (XLV) led the charge today, rising 1.5% and contributing significantly to SPY&rsquo;s overall gain. Utilities (XLU) followed closely with a 1.02% increase, while Materials (XLB) and Consumer Staples (XLP) also posted respectable gains of 0.89% and 0.88%, respectively. On the flip side, Consumer Discretionary (XLY) lagged, dropping 0.49%, and Communication Services (XLC) fell slightly by 0.22%. The strength in Healthcare can likely be attributed to ongoing discussions around healthcare reforms and innovations, which have been a hot topic lately. Meanwhile, the weakness in Consumer Discretionary may reflect broader concerns about consumer sentiment, especially with recent data showing a decline in retail sales.</p>\n<p>The macroeconomic backdrop is also worth noting. The latest Consumer Price Index (CPI) data showed a year-over-year increase of 4.27%, up from 3.95%, which could be influencing sector rotation as investors reassess their risk exposure. The unemployment rate has improved slightly to 4.2%, but consumer sentiment remains low at 44.8, down from 49.8. This mixed economic picture is likely causing traders to be cautious, particularly in sectors sensitive to consumer spending. With the Fed&rsquo;s next meeting coming up on July 29, many are watching closely to see how these economic indicators will influence monetary policy.</p>\n<p>Currently, SPY&rsquo;s implied volatility (IV) stands at 13.06, with an impressive IV rank of 98.5. This high IV rank suggests that options are relatively expensive compared to historical norms, which could be an attractive opportunity for those looking to sell premium. If you&rsquo;re considering selling options, this elevated IV could provide a favorable backdrop, especially if you believe that SPY will remain within a certain range over the coming weeks. However, keep in mind that high IV can also indicate potential for significant price movement, so risk management is key.</p>\n<p>As for key price levels, immediate support for SPY appears to be around 747, which aligns closely with today\u2019s low. Resistance is clearly defined at the 751 level, where we saw the high today. A break above this resistance could signal further bullish momentum, while a drop below support might prompt a reevaluation of long positions. Keeping an eye on these levels will be crucial as we navigate the coming days.</p>\n<p>Looking ahead, the next 48 hours could be pivotal for the market. The Non-Farm Payrolls report is set to be released tomorrow, and given its high importance, it could lead to increased volatility in SPY and related sectors. Traders will be keen to see how the job market is performing, especially in light of the recent economic data. Additionally, the Freddie Mac Mortgage Rate Update is scheduled for next week, which could also impact market sentiment, particularly in the housing sector.</p>\n<p>In summary, for options traders considering a position this week, the elevated IV suggests that selling premium could be a viable strategy, especially if you anticipate SPY will stay within the current range. However, be mindful of the upcoming economic data that could shake things up. Stay sharp and adjust your strategies accordingly.</p>\n<p>Here&rsquo;s the thing: as we navigate the complexities of product management, especially in areas like software engineering, we often overlook the power of trust as a foundational element\u2014not just among teams, but also in how we engage with our stakeholders. Kent Beck, a pioneer in Agile methodologies, emphasizes that the future of software engineering, particularly in an AI-driven context, hinges on building trust rather than merely generating code. What that means in practice is that when you&rsquo;re working on a project, whether it&rsquo;s developing a new feature for your product or integrating a complex system, fostering an environment of trust can dramatically influence the outcome. For instance, consider a scenario where you\u2019re leading a team through a tight deadline. If the team trusts that you have their best interests at heart, they are more likely to go the extra mile, share innovative ideas, and collaborate effectively. This can lead to not just meeting the deadline, but potentially delivering a superior product that exceeds expectations. The move here is to prioritize trust-building activities\u2014this could be regular check-ins where you genuinely solicit feedback, celebrate small wins, or even create a safe space for discussing challenges without fear of repercussion. Now, let\u2019s connect this to your trading decisions. Just like in software projects, trust plays a role in how you evaluate the market and your positions. If you build a framework of trust in your analysis\u2014a consistent method of assessing risk and potential reward\u2014you\u2019re more likely to stick to your strategy, even in volatile conditions. This week, I challenge you to identify one area in your current projects or trading practice where you can strengthen trust\u2014be it with your team, stakeholders, or your own trading methodology. Take that step, and you might just find that it leads to more robust outcomes down the line.</p>"
+    },
+    {
       "id": "2026-07-01",
       "slug": "daily-brief-2026-07-01",
       "episode_number": 44,
