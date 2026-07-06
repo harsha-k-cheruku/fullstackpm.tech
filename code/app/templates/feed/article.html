@@ -39,10 +39,28 @@
     <!-- Deep analysis as primary content -->
     {% if article.ai_article_analysis %}
     <div style="margin-bottom: 3rem;">
-      <p class="kicker" style="color: var(--color-accent); margin-bottom: 1.25rem;">{{ insight_label }}</p>
       <div class="article-body">
+        {% set section_labels = ['THE CLAIM', 'WHAT HOLDS', 'THE LIMIT', 'THE MOVE',
+                                  'THE PRODUCT PROBLEM', 'THE DECISION', 'THE LESSON',
+                                  'THE THESIS', 'THE BLIND SPOT', 'THE PM IMPLICATION',
+                                  'THE SHIFT', 'WHO IT AFFECTS', 'THE OVERHYPE', 'THE CALL'] %}
         {% for para in article.ai_article_analysis.split('\n\n') %}
-          {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+          {% set p = para.strip() %}
+          {% if p %}
+            {% set is_label = false %}
+            {% for label in section_labels %}
+              {% if p == label or p == label ~ ':' %}
+                {% set is_label = true %}
+              {% endif %}
+            {% endfor %}
+            {% if is_label %}
+              <p style="font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;
+                        color:var(--color-accent);margin:2rem 0 0.5rem;padding-top:1.5rem;
+                        border-top:1px solid var(--color-border);">{{ p.rstrip(':') }}</p>
+            {% else %}
+              <p>{{ p }}</p>
+            {% endif %}
+          {% endif %}
         {% endfor %}
       </div>
     </div>
