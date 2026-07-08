@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-08",
+      "slug": "daily-brief-2026-07-08",
+      "episode_number": 49,
+      "title": "Daily Brief \u2014 July 08, 2026",
+      "date": "2026-07-08",
+      "published_at": "2026-07-08T14:30:24",
+      "duration_seconds": 789,
+      "duration_human": "13:09",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-08.mp3",
+      "audio_length_bytes": 6309947,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 4,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Adjusting your strategy to your bias"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Building a Directional View on SPY",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: What a harness is and how to build one with Claude Agent SDK",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 743.98,
+        "pct_change": -0.5,
+        "iv_rank": 0.01
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "adjusting",
+        "strategy",
+        "bias",
+        "harness",
+        "claude",
+        "agent"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-08</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Tensions Rise as Geopolitical Strains Impact Markets</li>\n<li><strong>SPY learning:</strong> Building a Directional View on SPY</li>\n<li><strong>Market brief:</strong> SPY Market Brief - July 8, 2026</li>\n<li><strong>PM/analytics:</strong> What a harness is and how to build one with Claude Agent SDK</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, the Federal Reserve&rsquo;s meeting minutes reveal a deep internal debate on interest rates, indicating that a single rate move may not suffice to address economic pressures. This uncertainty could sway market expectations around future Fed actions, particularly if inflation remains stubborn. Over in Europe, the ongoing conflict in the Middle East escalated as the US and Iran exchanged strikes around the Strait of Hormuz, jeopardizing a fragile ceasefire. This situation heightens fears of potential disruptions in oil supply, which could ripple through European markets reliant on energy imports. In Asia, China is pressing the Netherlands for stable chip supply chains amid ongoing tech tensions with the US. This call for stability highlights the fragility of global semiconductor supply lines, which are critical for many industries, potentially affecting trading strategies worldwide.</p>\n<p>Imagine you&rsquo;re at a pizza place with your friends. You want to order a large pizza, but you\u2019re not sure how many slices everyone will eat. You think, &lsquo;What if I buy this pizza now, and if everyone eats more than we expected, I can still get a second one later without losing too much money?&rsquo; So, you make a deal with the restaurant: you pay a small amount now to reserve the option to buy a second pizza later at today\u2019s price. If everyone ends up eating less than expected, you can just walk away and not buy that second pizza. This way, you\u2019re protected from overspending while still having the chance to enjoy more pizza if you need it. You don\u2019t have to worry about how much the pizza costs tomorrow; you locked in the price today. Doesn\u2019t that sound smart?</p>\n<p>Now, let\u2019s connect this to something a bit more complex: options on SPY, which is an exchange-traded fund that tracks the S&amp;P 500. When you buy an option, it\u2019s like you\u2019re reserving the right to buy or sell the SPY at a certain price, known as the strike price, for a specific period. For example, if SPY is currently trading at $743.98, you might buy an option that allows you to buy it at $744. If the price goes up, you can exercise your option, but if it goes down, you can just let it expire. Today\u2019s market shows that SPY is at $743.98, and there are options expiring in 30 days with a strike price of $744. This means you have a chance to buy it at that price while protecting yourself from potential losses if SPY moves against you.</p>\n<p>Understanding this concept of reserving a right to buy or sell is crucial for your trading strategy. For instance, the current implied volatility (IV) rank for SPY is at 0.01, indicating it\u2019s very low. This low IV means that options are relatively cheap right now, so if you\u2019re bullish on SPY, you might consider buying a call spread. With SPY at $743.98 and the nearest call strike at $744.00, if you think it will rise, you could sell a call at a higher strike, say $750. This is a defined-risk spread, where you know your maximum loss and gain. The natural question here is: what does a low IV rank mean for my strategy? Here\u2019s how to think about it: when IV is low, options premiums are cheaper, which allows you to enter spreads at a lower cost. Given that SPY has been fluctuating around this price, a defined-risk spread could capitalize on any upward movement without exposing you to excessive risk, especially since you\u2019ve locked in your potential gains while keeping your losses defined. Thus, knowing the context of the market today allows you to adjust your strategy effectively, aligning it with your market view and risk tolerance.</p>\n<p>Today, SPY closed at 743.98, down 0.5% from the previous day. This marks a continuation of the downward trend we&rsquo;ve seen this week, as SPY has now lost ground for three consecutive days. The index opened slightly higher at 743.16 but quickly retreated, hitting a low of 742.64 before settling near the day&rsquo;s close. In the context of the week, this decline is significant as it reflects broader market sentiment that has been increasingly cautious, particularly in light of recent economic data and geopolitical tensions. Volume was relatively robust at nearly 6.9 million shares, suggesting that traders are actively positioning themselves in response to the market&rsquo;s movements.</p>\n<p>When we break down the sector performance, Energy (XLE) was one of the few bright spots today, rising 0.85%. This sector&rsquo;s strength can be attributed to ongoing concerns about supply disruptions, particularly in the Strait of Hormuz, which has traders on edge about potential impacts on oil prices. On the other hand, the laggards today included Materials (XLB), which fell 2.19%, and Consumer Discretionary (XLY), down 1.87%. The weakness in these sectors likely reflects broader economic concerns, as consumer sentiment has dipped recently, and inflationary pressures continue to weigh on spending.</p>\n<p>The mixed performance across sectors highlights the underlying tensions in the market. While Energy is benefiting from geopolitical risks, sectors like Consumer Discretionary and Materials are feeling the pinch from a slowing economy and rising costs. The recent CPI data showed a year-over-year increase of 4.27%, which is higher than the previous month, signaling that inflation remains a concern. This backdrop is likely influencing traders&rsquo; decisions, particularly as they assess the potential for further rate hikes from the Fed.</p>\n<p>Currently, SPY&rsquo;s implied volatility rank sits at a mere 0.01, indicating that options are relatively cheap at this moment. For traders considering selling premium, this low IV rank suggests that there may be limited opportunity for significant price movement in the near term. However, with the VIX hovering around 17.15, it also indicates that the market is not entirely complacent, and there could be opportunities for volatility to spike if unexpected news hits the wires.</p>\n<p>In terms of technical levels, traders should keep a close eye on the immediate support at 742, which is just below today&rsquo;s low. A break below this level could open the door for further downside, potentially testing the 740 mark. On the upside, resistance is forming around the 746 level, which has been a significant pivot point in recent trading sessions. Watching these levels will be crucial for anyone looking to make strategic moves in the options market.</p>\n<p>Looking ahead, we have some important events on the calendar that could impact market sentiment. Tomorrow, we have the Freddie Mac Mortgage Rate Update, which could provide insights into housing market dynamics. Additionally, on July 14, we\u2019ll see the release of the CPI inflation data and retail sales figures, both of which are critical for gauging consumer behavior and inflation trends. These upcoming releases will likely keep traders on their toes, as they could significantly influence the Fed&rsquo;s decision-making process at the end of the month.</p>\n<p>For options traders considering their positions this week, the takeaway is clear: with SPY&rsquo;s low IV rank and the potential for volatility spikes around upcoming economic data, this could be an opportune time to explore defined-risk spreads. Keeping an eye on the key price levels and sector performance will be essential as we navigate this uncertain market environment.</p>\n<p>Here&rsquo;s the thing: as a PM, especially in the fast-evolving tech landscape, you often wrestle with the need to streamline processes while enhancing product capabilities. A novel approach that&rsquo;s gaining traction is building custom automation harnesses\u2014think of them as a safety net for your workflows. Imagine you&rsquo;re in the middle of a complex project where bugs crop up like weeds. Traditionally, addressing these issues can be cumbersome, often leading to a bottleneck in your team\u2019s productivity. What that means in practice is that if you can automate parts of this process, you liberate your team to focus on higher-value tasks.</p>\n<p>Take the example of automating Sentry bug triage. By building a custom setup with the Claude Agent SDK, you can effectively triage bugs without the constant back-and-forth emails that typically plague your team. Instead of sending a message saying, &ldquo;Dear agent, please fix this,&rdquo; your system can automatically categorize and prioritize bugs based on pre-defined criteria you&rsquo;ve established, and it can even assign them to the correct team members. This not only saves time but also ensures that nothing slips through the cracks, enabling your team to work more efficiently.</p>\n<p>Now, let\u2019s connect this back to your trading decisions. Just like building an automation harness requires understanding the nuances of the tools at your disposal, trading SPY options effectively requires a deep dive into the market&rsquo;s behavior under different conditions. By integrating systematic strategies that mimic this automation mindset, you can develop metrics that help you make more informed decisions about when to sell premium, especially when the implied volatility is ripe for picking.</p>\n<p>The move here is to start small. This week, set aside an hour to explore the Claude Agent SDK and think about one area of your current workflow that could benefit from automation. Identify a repetitive task that drains your energy or time and brainstorm how you could create a simple harness around it. This isn&rsquo;t just about making your life easier; it&rsquo;s about creating a framework that allows your team to operate at a higher level. By aligning your operational processes with the systematic trading mindset, you enhance not only your productivity but also your team\u2019s overall performance.</p>"
+    },
+    {
       "id": "2026-07-07",
       "slug": "daily-brief-2026-07-07",
       "episode_number": 48,
