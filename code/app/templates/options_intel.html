@@ -555,6 +555,7 @@
     </div>
 
     {% set category_labels = {
+      'watchlist':   'Tracked Tickers',
       'broad':       'Broad Market',
       'sector':      'Sector ETFs',
       'bonds':       'Bonds',
@@ -562,7 +563,7 @@
       'commodities': 'Commodities',
       'volatility':  'Volatility',
     } %}
-    {% set cat_order = ['broad', 'sector', 'bonds', 'dollar', 'commodities', 'volatility'] %}
+    {% set cat_order = ['watchlist', 'broad', 'sector', 'bonds', 'dollar', 'commodities', 'volatility'] %}
 
     {% for cat in cat_order %}
       {% set rows = latest.market_overview | selectattr('category', 'eq', cat) | list %}
