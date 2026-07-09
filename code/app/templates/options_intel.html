@@ -338,6 +338,125 @@
     </div>
   </section>
 
+  {# ── Looking Ahead ────────────────────────────────────────────────────────── #}
+  {% if latest.looking_ahead %}
+  {% set windows = [
+    ('tomorrow',   'Tomorrow',  latest.looking_ahead.tomorrow),
+    ('next_week',  'Next Week', latest.looking_ahead.next_week),
+    ('next_month', 'Next Month',latest.looking_ahead.next_month),
+  ] %}
+  {% set has_any = (latest.looking_ahead.tomorrow | default([]) | length > 0)
+                or (latest.looking_ahead.next_week  | default([]) | length > 0)
+                or (latest.looking_ahead.next_month | default([]) | length > 0) %}
+  {% if has_any %}
+  <section class="mb-10">
+    <div class="section-rule">
+      <span class="label">Looking Ahead</span>
+      <span class="meta source-meta">prediction markets + scenarios</span>
+    </div>
+
+    {% for window_key, window_label, events in windows %}
+    {% if events and events | length > 0 %}
+    <div class="mb-6">
+      <h3 class="font-mono text-xs font-semibold uppercase tracking-widest mb-3"
+          style="color: var(--color-text-tertiary);">{{ window_label }}</h3>
+
+      <div class="space-y-4">
+        {% for ev in events %}
+        <div class="rounded-lg border p-4" style="border-color: var(--color-border); background: var(--color-bg-secondary);">
+
+          {# Event header row #}
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="cat-chip pm" style="font-size:10px; font-weight:700;">{{ ev.event_type }}</span>
+            {% if ev.ticker %}
+            <span class="cat-chip eng" style="font-size:10px;">{{ ev.ticker }}</span>
+            {% endif %}
+            <span class="font-mono text-xs" style="color: var(--color-text-secondary);">{{ ev.event_date }}</span>
+            <span class="font-mono text-xs" style="color: var(--color-text-tertiary);">·</span>
+            <span class="font-mono text-xs" style="color: var(--color-text-tertiary);">
+              {{ ev.days_until }} day{{ 's' if ev.days_until != 1 }} away
+            </span>
+
+            {% if ev.scenarios and ev.scenarios.chip %}
+            {% set chip = ev.scenarios.chip %}
+            {% if chip == 'BULL' %}
+              <span class="cat-chip eng" style="font-size:10px; margin-left:auto;">BULL</span>
+            {% elif chip == 'BEAR' %}
+              <span class="cat-chip" style="font-size:10px; margin-left:auto; background:var(--color-danger-100);color:var(--color-danger-900);">BEAR</span>
+            {% else %}
+              <span class="cat-chip strat" style="font-size:10px; margin-left:auto;">NEUTRAL</span>
+            {% endif %}
+            {% endif %}
+          </div>
+
+          {# Prediction market summary #}
+          {% if ev.scenarios and ev.scenarios.prediction_market_summary %}
+          <p class="text-sm mb-3" style="color: var(--color-text-primary);">
+            {{ ev.scenarios.prediction_market_summary }}
+          </p>
+          {% endif %}
+
+          {# Raw prediction market lines #}
+          {% if ev.prediction_markets and ev.prediction_markets | length > 0 %}
+          <div class="mb-3 px-3 py-2 rounded text-xs font-mono space-y-1"
+               style="background: var(--color-bg-primary); border: 1px solid var(--color-border); color: var(--color-text-tertiary);">
+            <div class="source-meta mb-1" style="font-size:10px;">Manifold prediction markets</div>
+            {% for pm in ev.prediction_markets %}
+            <div class="flex justify-between gap-2">
+              <span style="color: var(--color-text-secondary);">{{ pm.question | truncate(80) }}</span>
+              <span class="font-semibold flex-shrink-0" style="color: var(--color-text-primary);">{{ (pm.probability * 100) | int }}%</span>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {# Scenarios #}
+          {% if ev.scenarios and ev.scenarios.bull %}
+          {% set sc = ev.scenarios %}
+          <div class="space-y-2 text-sm">
+            <div class="flex gap-2">
+              <span class="flex-shrink-0 font-mono font-bold text-xs" style="color:var(--color-success-600); padding-top:2px;">BULL</span>
+              <div>
+                <span style="color: var(--color-text-secondary);">{{ sc.bull.trigger }}</span>
+                {% if sc.bull.implication %}
+                <span style="color: var(--color-text-tertiary);"> — {{ sc.bull.implication }}</span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <span class="flex-shrink-0 font-mono font-bold text-xs" style="color:var(--color-accent); padding-top:2px;">BASE</span>
+              <div>
+                <span style="color: var(--color-text-secondary);">{{ sc.base.trigger }}</span>
+                {% if sc.base.implication %}
+                <span style="color: var(--color-text-tertiary);"> — {{ sc.base.implication }}</span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <span class="flex-shrink-0 font-mono font-bold text-xs" style="color:var(--color-danger-600); padding-top:2px;">BEAR</span>
+              <div>
+                <span style="color: var(--color-text-secondary);">{{ sc.bear.trigger }}</span>
+                {% if sc.bear.implication %}
+                <span style="color: var(--color-text-tertiary);"> — {{ sc.bear.implication }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <p class="text-xs" style="color: var(--color-text-tertiary);">Scenario data unavailable for this event.</p>
+          {% endif %}
+
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+  </section>
+  {% endif %}
+  {% endif %}
+
   {# ── System footer ────────────────────────────────────────────────────────── #}
   {% if latest.discipline or latest.data_quality %}
   <div class="rounded-lg border p-4 font-mono text-xs space-y-1 mb-10"

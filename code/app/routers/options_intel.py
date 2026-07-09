@@ -140,6 +140,7 @@ def _parse_brief(payload_text: str, created_at: datetime | None = None) -> dict[
         "discipline": None,
         "data_quality": None,
         "warmup_days_remaining": None,
+        "looking_ahead": None,
         "parse_error": False,
         "created_at": created_at,
     }
@@ -188,6 +189,7 @@ def _parse_brief(payload_text: str, created_at: datetime | None = None) -> dict[
         result["warmup_days_remaining"] = structured.get("warmup_days_remaining")
         result["regime"] = structured.get("regime")
         result["news"] = structured.get("news", [])
+        result["looking_ahead"] = structured.get("looking_ahead")
 
         if result["regime"]:
             result["vix"] = str(result["regime"].get("vix", ""))
