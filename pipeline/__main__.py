@@ -28,6 +28,15 @@ def main():
 
     sub.add_parser("daily", help="fetch → extract → analyse (no rewrite, no publish)")
 
+    dd = sub.add_parser("deep-dive", help="Generate AI-vs-AI-vs-AI roundtable transcript")
+    dd.add_argument("--topic", type=str, default=None)
+    dd.add_argument("--article-id", type=int, default=None)
+    dd.add_argument("--depth", choices=["light", "standard", "deep"], default=None)
+    dd.add_argument("--rounds", type=int, default=None, help="Fixed override: rounds × 3 turns")
+    dd.add_argument("--pm-action", choices=["force", "optional", "off"], default=None)
+    dd.add_argument("--seed", type=int, default=None, help="For reproducibility")
+    dd.add_argument("--with-audio", action="store_true", help="Also synthesize per-speaker audio")
+
     args = parser.parse_args()
 
     if args.stage == "fetch":
@@ -49,6 +58,20 @@ def main():
         from pipeline.stages import fetch, extract, analyse
         results = [fetch.run(), extract.run(), analyse.run()]
         result = {"stage": "daily", "steps": results}
+    elif args.stage == "deep-dive":
+        from pipeline.stages import deep_dive
+        result = deep_dive.run(
+            topic=args.topic,
+            article_id=args.article_id,
+            depth=args.depth,
+            rounds=args.rounds,
+            pm_action=args.pm_action,
+            seed=args.seed,
+        )
+        if args.with_audio and result.get("id"):
+            from pipeline.stages import deep_dive_audio
+            audio_result = deep_dive_audio.run(deep_dive_id=result["id"])
+            result["audio"] = audio_result
     else:
         parser.print_help()
         sys.exit(1)

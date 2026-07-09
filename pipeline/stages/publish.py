@@ -9,10 +9,13 @@ Render reads these JSON files at boot (loader to be added in next phase).
 Until that loader exists, this stage still produces JSON locally so you can
 inspect what would be published.
 """
+from __future__ import annotations
+
 import json
 import re
 import unicodedata
 from datetime import datetime
+from typing import Dict, Optional
 
 from pipeline import config
 
@@ -30,7 +33,7 @@ def _slugify(text: str, fallback_id: int) -> str:
     return f"{slug}-{fallback_id}"
 
 
-def _serialize_article(article: FeedArticle, analysis: ArticleAnalysis | None, editorial: ArticleEditorial | None) -> dict:
+def _serialize_article(article: FeedArticle, analysis: Optional[ArticleAnalysis], editorial: Optional[ArticleEditorial]) -> dict:
     takeaways = []
     if analysis and analysis.takeaways_json:
         try:
@@ -94,7 +97,7 @@ def run(include_drafts: bool = False) -> dict:
             .order_by(ArticleEditorial.is_published.desc(), ArticleEditorial.run_at.desc())
             .all()
         )
-        editorial_by_id: dict[int, ArticleEditorial] = {}
+        editorial_by_id: Dict[int, ArticleEditorial] = {}
         for ed in all_editorials:
             if ed.article_id not in editorial_by_id:
                 if include_drafts or ed.is_published:

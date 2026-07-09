@@ -29,6 +29,48 @@ REWRITE_MODEL = os.environ.get("PIPELINE_REWRITE_MODEL", "claude-haiku-4-5-20251
 ANALYSE_PROMPT_VERSION = "analyse-v1"
 REWRITE_PROMPT_VERSION = "rewrite-v1"
 
+# Deep dive — multi-AI roundtable (Grok + GPT reserved for this; main pipeline = Claude only)
+BELIEVER_PROVIDER = "openai"
+BELIEVER_MODEL = os.environ.get("PIPELINE_BELIEVER_MODEL", "gpt-4o")
+SKEPTIC_PROVIDER = "xai"
+SKEPTIC_MODEL = os.environ.get("PIPELINE_SKEPTIC_MODEL", "grok-3")
+REALIST_PROVIDER = "anthropic"
+REALIST_MODEL = os.environ.get("PIPELINE_REALIST_MODEL", "claude-haiku-4-5-20251001")
+
+DEEP_DIVE_PROMPT_VERSION = "deepdive-v1"
+DEEP_DIVE_SEED = os.environ.get("PIPELINE_DEEP_DIVE_SEED")  # set for reproducibility
+
+# Depth profiles — controls model tier AND conversation length per topic depth.
+# Override individual models via env vars (e.g. PIPELINE_DEEP_BELIEVER=gpt-5).
+DEEP_DIVE_DEPTH_PROFILES = {
+    "light": {
+        "min_turns": 6, "max_turns": 9,
+        "believer_model": os.environ.get("PIPELINE_LIGHT_BELIEVER", "gpt-4o-mini"),
+        "skeptic_model":  os.environ.get("PIPELINE_LIGHT_SKEPTIC",  "grok-3-mini"),
+        "realist_model":  os.environ.get("PIPELINE_LIGHT_REALIST",  "claude-haiku-4-5-20251001"),
+    },
+    "standard": {
+        "min_turns": 9, "max_turns": 15,
+        "believer_model": BELIEVER_MODEL,
+        "skeptic_model":  SKEPTIC_MODEL,
+        "realist_model":  REALIST_MODEL,
+    },
+    "deep": {
+        "min_turns": 12, "max_turns": 20,
+        "believer_model": os.environ.get("PIPELINE_DEEP_BELIEVER", "gpt-4o"),
+        "skeptic_model":  os.environ.get("PIPELINE_DEEP_SKEPTIC",  "grok-3"),
+        "realist_model":  os.environ.get("PIPELINE_DEEP_REALIST",  "claude-sonnet-4-6"),
+    },
+}
+DEEP_DIVE_DEFAULT_DEPTH = os.environ.get("PIPELINE_DEEP_DIVE_DEPTH", "standard")
+
+# Closing-turn behavior. Avoids the Narada-style forced-synthesis problem
+# where the AI always connects dots even when there isn't a clean takeaway.
+#   force    — Realist MUST name a PM action
+#   optional — Realist names one only if it's clean and non-obvious (default)
+#   off      — no PM-action prompt; close with a sharp observation or question
+DEEP_DIVE_PM_ACTION_MODE = os.environ.get("PIPELINE_DEEP_DIVE_PM_ACTION", "optional")
+
 # How many articles get the editorial rewrite per run
 REWRITE_TOP_N = int(os.environ.get("PIPELINE_REWRITE_TOP_N", "12"))
 

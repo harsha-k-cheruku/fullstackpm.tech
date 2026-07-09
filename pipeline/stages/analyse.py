@@ -7,10 +7,13 @@ Append-only: each run inserts a new article_analyses row and flips is_latest.
 Also denormalizes the latest values into feed_articles so existing Render
 templates keep working unchanged.
 """
+from __future__ import annotations
+
 import json
 import os
 import re
 from datetime import datetime
+from typing import Optional
 
 from pipeline import config
 
@@ -59,7 +62,7 @@ def _build_user_prompt(article: FeedArticle, full_text: str) -> str:
     )
 
 
-def _call_claude(prompt: str) -> str | None:
+def _call_claude(prompt: str) -> Optional[str]:
     try:
         from anthropic import Anthropic
         client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
@@ -75,7 +78,7 @@ def _call_claude(prompt: str) -> str | None:
         return None
 
 
-def _parse_json(raw: str) -> dict | None:
+def _parse_json(raw: str) -> Optional[dict]:
     cleaned = raw.strip()
     fence = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned)
     if fence:
@@ -87,7 +90,7 @@ def _parse_json(raw: str) -> dict | None:
         return None
 
 
-def _denormalize_to_feed_article(article: FeedArticle, analysis: ArticleAnalysis):
+def _denormalize_to_feed_article(article: FeedArticle, analysis: "ArticleAnalysis"):
     """Mirror latest analysis values onto feed_articles so existing Render
     templates (which read FeedArticle columns) keep working."""
     article.display_title = analysis.display_title
@@ -109,7 +112,7 @@ def _denormalize_to_feed_article(article: FeedArticle, analysis: ArticleAnalysis
         article.ai_insight = insight
 
 
-def run(limit: int | None = None, re_analyse: bool = False) -> dict:
+def run(limit: Optional[int] = None, re_analyse: bool = False) -> dict:
     if not os.environ.get("ANTHROPIC_API_KEY"):
         return {"stage": "analyse", "error": "ANTHROPIC_API_KEY not set"}
 

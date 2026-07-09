@@ -3,7 +3,10 @@
 No AI. Cached per-article in article_extracts (one row per attempt, latest wins
 in practice — we query with order_by fetched_at desc).
 """
+from __future__ import annotations
+
 from datetime import datetime
+from typing import Optional, Tuple
 
 from pipeline import config
 
@@ -12,7 +15,7 @@ from app.models.feed_article import FeedArticle
 from app.models.pipeline_models import ArticleExtract
 
 
-def _extract(url: str) -> tuple[str | None, str | None]:
+def _extract(url: str) -> Tuple[Optional[str], Optional[str]]:
     """Return (full_text, error). One of them is None."""
     try:
         import trafilatura
@@ -20,14 +23,13 @@ def _extract(url: str) -> tuple[str | None, str | None]:
         return None, "trafilatura not installed — pip install -r pipeline/requirements.txt"
 
     try:
-        downloaded = trafilatura.fetch_url(url, timeout=config.EXTRACT_TIMEOUT_SECONDS)
+        downloaded = trafilatura.fetch_url(url)
         if not downloaded:
             return None, "fetch returned empty"
         text = trafilatura.extract(
             downloaded,
             include_comments=False,
             include_tables=False,
-            no_fallback=False,
             favor_recall=True,
         )
         if not text or len(text.strip()) < 200:
@@ -37,7 +39,7 @@ def _extract(url: str) -> tuple[str | None, str | None]:
         return None, f"{type(exc).__name__}: {exc}"
 
 
-def run(limit: int | None = None, re_extract: bool = False) -> dict:
+def run(limit: Optional[int] = None, re_extract: bool = False) -> dict:
     init_db()
     ensure_pipeline_tables()
 

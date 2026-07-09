@@ -3,10 +3,13 @@
 Reads the latest ArticleAnalysis per article. Produces an ArticleEditorial draft
 (status='draft'). HC reviews and flips status='published' via the editorial UI.
 """
+from __future__ import annotations
+
 import json
 import os
 import re
 from datetime import datetime
+from typing import Optional
 
 from pipeline import config
 
@@ -70,7 +73,7 @@ CONTRARIAN READ:
 Now write the editorial piece. Return the JSON object."""
 
 
-def _call_claude(prompt: str) -> str | None:
+def _call_claude(prompt: str) -> Optional[str]:
     try:
         from anthropic import Anthropic
         client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
@@ -86,7 +89,7 @@ def _call_claude(prompt: str) -> str | None:
         return None
 
 
-def _parse_json(raw: str) -> dict | None:
+def _parse_json(raw: str) -> Optional[dict]:
     cleaned = raw.strip()
     fence = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned)
     if fence:
@@ -98,7 +101,7 @@ def _parse_json(raw: str) -> dict | None:
         return None
 
 
-def run(top_n: int | None = None, re_rewrite: bool = False) -> dict:
+def run(top_n: Optional[int] = None, re_rewrite: bool = False) -> dict:
     if not os.environ.get("ANTHROPIC_API_KEY"):
         return {"stage": "rewrite", "error": "ANTHROPIC_API_KEY not set"}
 
