@@ -134,7 +134,7 @@
               title="VIX (CBOE Volatility Index): the market's 30-day fear gauge. Below 15 = calm, 15–25 = normal, above 25 = elevated fear. Derived from S&P 500 option prices.">
           VIX
         </abbr>
-        <p class="font-mono font-bold text-2xl mt-1 mb-1" style="color: var(--color-text-primary);">{{ latest.vix }}</p>
+        <p class="font-mono font-bold text-2xl mt-1 mb-1" style="color: var(--color-text-primary);">{{ "%.2f"|format(latest.vix|float) }}</p>
         {% if vix_f < 15 %}<span class="cat-chip eng">Very Calm</span>
         {% elif vix_f < 20 %}<span class="cat-chip eng">Calm</span>
         {% elif vix_f < 28 %}<span class="cat-chip strat">Elevated</span>
@@ -151,7 +151,7 @@
               title="HY OAS (High Yield Option-Adjusted Spread): the extra yield investors demand to hold junk bonds over Treasuries. Below 350 bps = normal, 350–450 = widening, above 450 = credit stress. A leading recession indicator.">
           HY OAS
         </abbr>
-        <p class="font-mono font-bold text-2xl mt-1 mb-1" style="color: var(--color-text-primary);">{{ latest.hy_oas }}<span class="text-sm font-normal ml-1" style="color:var(--color-text-tertiary);">bps</span></p>
+        <p class="font-mono font-bold text-2xl mt-1 mb-1" style="color: var(--color-text-primary);">{{ "%.0f"|format(latest.hy_oas|float) }}<span class="text-sm font-normal ml-1" style="color:var(--color-text-tertiary);">bps</span></p>
         {% if hy_f < 350 %}<span class="cat-chip eng">Normal</span>
         {% elif hy_f < 450 %}<span class="cat-chip strat">Widening</span>
         {% else %}<span class="cat-chip" style="background:var(--color-danger-100);color:var(--color-danger-900);">Stress</span>
@@ -167,7 +167,7 @@
               title="Sector Breadth: % of S&P 500 sectors trading above their 20-day moving average. Above 60% = broad participation (healthy rally), 35–60% = mixed, below 35% = narrow or broken market.">
           Breadth
         </abbr>
-        <p class="font-mono font-bold text-2xl mt-1 mb-1" style="color: var(--color-text-primary);">{{ latest.breadth }}<span class="text-sm font-normal ml-1" style="color:var(--color-text-tertiary);">%</span></p>
+        <p class="font-mono font-bold text-2xl mt-1 mb-1" style="color: var(--color-text-primary);">{{ "%.1f"|format(latest.breadth|float) }}<span class="text-sm font-normal ml-1" style="color:var(--color-text-tertiary);">%</span></p>
         {% if br_f >= 60 %}<span class="cat-chip eng">Healthy</span>
         {% elif br_f >= 35 %}<span class="cat-chip strat">Mixed</span>
         {% else %}<span class="cat-chip" style="background:var(--color-danger-100);color:var(--color-danger-900);">Weak</span>
@@ -185,7 +185,7 @@
         </abbr>
         <p class="font-mono font-bold text-lg mt-1 mb-1" style="color: var(--color-text-primary); text-transform: capitalize;">{{ ts }}</p>
         <p class="font-mono text-xs" style="color: var(--color-text-tertiary);">
-          9D {{ latest.regime.vix9d }} · spot {{ latest.regime.vix }} · 3M {{ latest.regime.vix3m }}
+          9D {{ "%.2f"|format(latest.regime.vix9d|float) }} · spot {{ "%.2f"|format(latest.regime.vix|float) }} · 3M {{ "%.2f"|format(latest.regime.vix3m|float) }}
         </p>
       </div>
       {% endif %}
@@ -197,19 +197,19 @@
       {% if latest.regime.us2y %}
       <span>
         <abbr class="metric-label" title="US 2-Year Treasury yield. Rising = Fed expected to stay tight. Above 4.5% = restrictive monetary policy.">2Y</abbr>
-        &nbsp;<span style="color: var(--color-text-secondary);">{{ latest.regime.us2y }}%</span>
+        &nbsp;<span style="color: var(--color-text-secondary);">{{ "%.2f"|format(latest.regime.us2y|float) }}%</span>
       </span>
       {% endif %}
       {% if latest.regime.us10y %}
       <span>
         <abbr class="metric-label" title="US 10-Year Treasury yield. The long-term borrowing benchmark. Rising = growth expectations or inflation fear. High 10Y compresses equity multiples.">10Y</abbr>
-        &nbsp;<span style="color: var(--color-text-secondary);">{{ latest.regime.us10y }}%</span>
+        &nbsp;<span style="color: var(--color-text-secondary);">{{ "%.2f"|format(latest.regime.us10y|float) }}%</span>
       </span>
       {% endif %}
       {% if latest.regime.dxy %}
       <span>
         <abbr class="metric-label" title="DXY (US Dollar Index). Strong dollar (above 103) = risk-off bias, headwind for multinationals like AMZN/NVDA. Weak dollar = risk-on.">DXY</abbr>
-        &nbsp;<span style="color: var(--color-text-secondary);">{{ latest.regime.dxy }}</span>
+        &nbsp;<span style="color: var(--color-text-secondary);">{{ "%.2f"|format(latest.regime.dxy|float) }}</span>
       </span>
       {% endif %}
     </div>
@@ -544,6 +544,95 @@
   {% endif %}
 
   {% endif %}{# end if latest #}
+
+  {# ── Market Overview ──────────────────────────────────────────────────────── #}
+  {% if latest and latest.market_overview and latest.market_overview | length > 0 %}
+  <section class="mb-10">
+    <div class="section-rule">
+      <span class="label">Market Overview</span>
+      <span class="meta source-meta">prev-session OHLCV · {{ latest.date or 'latest' }}</span>
+    </div>
+
+    {% set category_labels = {
+      'broad':       'Broad Market',
+      'sector':      'Sector ETFs',
+      'bonds':       'Bonds',
+      'dollar':      'Dollar',
+      'commodities': 'Commodities',
+      'volatility':  'Volatility',
+    } %}
+    {% set cat_order = ['broad', 'sector', 'bonds', 'dollar', 'commodities', 'volatility'] %}
+
+    {% for cat in cat_order %}
+      {% set rows = latest.market_overview | selectattr('category', 'eq', cat) | list %}
+      {% if rows %}
+      <div class="mb-5">
+        <p class="font-mono text-xs font-semibold uppercase tracking-widest mb-2"
+           style="color: var(--color-text-tertiary);">{{ category_labels[cat] }}</p>
+        <div class="overflow-x-auto rounded-lg border" style="border-color: var(--color-border);">
+          <table class="w-full text-xs font-mono">
+            <thead>
+              <tr style="background: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border);">
+                <th class="text-left px-3 py-2 source-meta w-14">Symbol</th>
+                <th class="text-left px-3 py-2 source-meta hidden sm:table-cell">Name</th>
+                <th class="text-right px-3 py-2 source-meta">Open</th>
+                <th class="text-right px-3 py-2 source-meta hidden md:table-cell">High</th>
+                <th class="text-right px-3 py-2 source-meta hidden md:table-cell">Low</th>
+                <th class="text-right px-3 py-2 source-meta">Close</th>
+                <th class="text-right px-3 py-2 source-meta">Chg%</th>
+                <th class="text-right px-3 py-2 source-meta hidden lg:table-cell">Volume</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in rows %}
+              <tr style="border-bottom: 1px solid var(--color-border);">
+                <td class="px-3 py-2 font-bold" style="color: var(--color-text-primary);">{{ row.symbol }}</td>
+                <td class="px-3 py-2 hidden sm:table-cell" style="color: var(--color-text-secondary);">{{ row.name }}</td>
+                <td class="px-3 py-2 text-right" style="color: var(--color-text-secondary);">
+                  {% if row.open is not none %}{{ "%.2f"|format(row.open) }}{% else %}—{% endif %}
+                </td>
+                <td class="px-3 py-2 text-right hidden md:table-cell" style="color: var(--color-text-tertiary);">
+                  {% if row.high is not none %}{{ "%.2f"|format(row.high) }}{% else %}—{% endif %}
+                </td>
+                <td class="px-3 py-2 text-right hidden md:table-cell" style="color: var(--color-text-tertiary);">
+                  {% if row.low is not none %}{{ "%.2f"|format(row.low) }}{% else %}—{% endif %}
+                </td>
+                <td class="px-3 py-2 text-right font-semibold" style="color: var(--color-text-primary);">
+                  {% if row.close is not none %}{{ "%.2f"|format(row.close) }}{% else %}—{% endif %}
+                </td>
+                <td class="px-3 py-2 text-right font-semibold">
+                  {% if row.change_pct is not none %}
+                    {% if row.change_pct > 0 %}
+                      <span style="color: var(--color-success-600);">+{{ "%.2f"|format(row.change_pct) }}%</span>
+                    {% elif row.change_pct < 0 %}
+                      <span style="color: var(--color-danger-600);">{{ "%.2f"|format(row.change_pct) }}%</span>
+                    {% else %}
+                      <span style="color: var(--color-text-tertiary);">0.00%</span>
+                    {% endif %}
+                  {% else %}
+                    <span style="color: var(--color-text-tertiary);">—</span>
+                  {% endif %}
+                </td>
+                <td class="px-3 py-2 text-right hidden lg:table-cell" style="color: var(--color-text-tertiary);">
+                  {% if row.volume %}
+                    {% set vol = row.volume %}
+                    {% if vol >= 1000000 %}{{ "%.1f"|format(vol / 1000000) }}M
+                    {% elif vol >= 1000 %}{{ "%.0f"|format(vol / 1000) }}K
+                    {% else %}{{ vol }}
+                    {% endif %}
+                  {% else %}—{% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+
+  </section>
+  {% endif %}
 
   {# ── Glossary ─────────────────────────────────────────────────────────────── #}
   <div class="mt-4">
