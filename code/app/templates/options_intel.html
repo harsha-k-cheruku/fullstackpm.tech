@@ -401,7 +401,7 @@
           {% if ev.prediction_markets and ev.prediction_markets | length > 0 %}
           <div class="mb-3 px-3 py-2 rounded text-xs font-mono space-y-1"
                style="background: var(--color-bg-primary); border: 1px solid var(--color-border); color: var(--color-text-tertiary);">
-            <div class="source-meta mb-1" style="font-size:10px;">Manifold prediction markets</div>
+            <div class="source-meta mb-1" style="font-size:10px;">{{ (ev.prediction_markets[0].source if ev.prediction_markets[0].source is defined else 'Prediction') }} prediction markets</div>
             {% for pm in ev.prediction_markets %}
             <div class="flex justify-between gap-2">
               <span style="color: var(--color-text-secondary);">{{ pm.question | truncate(80) }}</span>
