@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="py-10 md:py-16">
+
+  {# ── Page header ─────────────────────────────────────────────────────────── #}
+  <div class="mb-10 border-b pb-8" style="border-color: var(--color-border);">
+    <p class="kicker mb-3" style="color: var(--color-accent);">Daily Intelligence</p>
+    <h1 class="feature-headline mb-3">Options Intel</h1>
+    <p class="feature-dek" style="max-width: 52ch;">
+      Pre-market regime analysis and trade signals for SPY, NVDA, and AMZN —
+      generated daily at 6:15&nbsp;AM&nbsp;ET by an automated pipeline.
+    </p>
+  </div>
+
+  {% if not latest %}
+  {# ── Empty state ─────────────────────────────────────────────────────────── #}
+  <div class="rounded-lg border p-10 text-center" style="border-color: var(--color-border); background: var(--color-bg-secondary);">
+    <p class="kicker mb-2" style="color: var(--color-text-tertiary);">No data yet</p>
+    <p class="column-dek">The first brief will appear here after tomorrow morning's 6:15 AM ET run.</p>
+  </div>
+
+  {% else %}
+
+  {# ── Latest brief ─────────────────────────────────────────────────────────── #}
+  <section class="mb-12">
+    <div class="section-rule mb-6">
+      <span class="label">Latest Brief</span>
+      <span class="meta source-meta">
+        {% if latest.date %}{{ latest.date }}{% endif %}
+        {% if latest.created_at %}
+          &nbsp;·&nbsp;{{ latest.created_at.strftime('%I:%M %p ET') if latest.created_at else '' }}
+        {% endif %}
+      </span>
+    </div>
+
+    {# Regime bar #}
+    {% if latest.vix or latest.hy_oas or latest.breadth %}
+    <div class="rounded-lg mb-6 px-5 py-4 flex flex-wrap gap-6 font-mono text-sm"
+         style="background: var(--color-bg-secondary); border: 1px solid var(--color-border);">
+      {% if latest.vix %}
+      <div>
+        <span class="source-meta">VIX</span>
+        <span class="ml-2 font-semibold text-lg" style="color: var(--color-text-primary);">{{ latest.vix }}</span>
+        {% set vix_f = latest.vix | float %}
+        {% if vix_f < 15 %}
+          <span class="ml-1 cat-chip eng">Calm</span>
+        {% elif vix_f < 25 %}
+          <span class="ml-1 cat-chip strat">Elevated</span>
+        {% else %}
+          <span class="ml-1 cat-chip" style="background:var(--color-danger-100);color:var(--color-danger-900);">Stressed</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% if latest.hy_oas %}
+      <div>
+        <span class="source-meta">HY OAS</span>
+        <span class="ml-2 font-semibold text-lg" style="color: var(--color-text-primary);">{{ latest.hy_oas }} bps</span>
+        {% set hy_f = latest.hy_oas | float %}
+        {% if hy_f < 350 %}
+          <span class="ml-1 cat-chip eng">Normal</span>
+        {% elif hy_f < 450 %}
+          <span class="ml-1 cat-chip strat">Wide</span>
+        {% else %}
+          <span class="ml-1 cat-chip" style="background:var(--color-danger-100);color:var(--color-danger-900);">Stress</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% if latest.breadth %}
+      <div>
+        <span class="source-meta">Breadth</span>
+        <span class="ml-2 font-semibold text-lg" style="color: var(--color-text-primary);">{{ latest.breadth }}%</span>
+        {% set br_f = latest.breadth | float %}
+        {% if br_f >= 60 %}
+          <span class="ml-1 cat-chip eng">Healthy</span>
+        {% elif br_f >= 35 %}
+          <span class="ml-1 cat-chip strat">Weak</span>
+        {% else %}
+          <span class="ml-1 cat-chip" style="background:var(--color-danger-100);color:var(--color-danger-900);">Poor</span>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {# Ticker decision cards #}
+    {% if latest.tickers %}
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+      {% for t in latest.tickers %}
+      <div class="rounded-lg border p-5"
+           style="border-color: {% if t.status == 'TRADE' %}var(--color-success-500){% elif t.status == 'NO_TRADE' %}var(--color-border){% else %}var(--color-border){% endif %};
+                  background: {% if t.status == 'TRADE' %}var(--color-success-50){% else %}var(--color-bg-secondary){% endif %};">
+        <div class="flex items-center justify-between mb-3">
+          <span class="font-mono font-bold text-lg" style="color: var(--color-text-primary);">{{ t.ticker }}</span>
+          {% if t.status == 'TRADE' %}
+            <span class="cat-chip eng">TRADE</span>
+          {% elif t.status == 'NO_TRADE' %}
+            <span class="cat-chip" style="background:var(--color-bg-tertiary);color:var(--color-text-tertiary);">NO TRADE</span>
+          {% else %}
+            <span class="cat-chip strat">{{ t.status }}</span>
+          {% endif %}
+        </div>
+        {% if t.detail %}
+        <p class="text-xs leading-relaxed" style="color: var(--color-text-tertiary); font-family: 'JetBrains Mono', monospace;">
+          {{ t.detail | truncate(120) }}
+        </p>
+        {% endif %}
+        {% if t.status == 'TRADE' and '|' in t.detail %}
+          {# Parse inline trade details: "BULLISH conf 65% | Range 590.00–610.00 | put_credit_spread x2" #}
+          {% set parts = t.detail.split('|') %}
+          <div class="mt-3 pt-3 space-y-1" style="border-top: 1px solid var(--color-border);">
+            {% for part in parts %}
+              {% set p = part.strip() %}
+              {% if p and p != 'TRADE' %}
+              <p class="text-xs font-mono" style="color: var(--color-text-secondary);">{{ p }}</p>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {# System footer #}
+    <div class="rounded-lg border p-4 font-mono text-xs space-y-1"
+         style="background: var(--color-bg-secondary); border-color: var(--color-border); color: var(--color-text-tertiary);">
+      {% if latest.data_quality %}
+      <div>
+        <span class="font-semibold uppercase tracking-wider" style="color: var(--color-text-secondary);">Data</span>
+        &nbsp;{{ latest.data_quality }}
+        {% if 'all sources OK' in latest.data_quality %}
+          <span class="ml-1" style="color: var(--color-success-500);">✓</span>
+        {% else %}
+          <span class="ml-1" style="color: var(--color-warning-500);">⚠</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% if latest.discipline %}
+      <div>
+        <span class="font-semibold uppercase tracking-wider" style="color: var(--color-text-secondary);">Discipline</span>
+        &nbsp;{{ latest.discipline }}
+      </div>
+      {% endif %}
+      {% if latest.portfolio_risk %}
+      <div>
+        <span class="font-semibold uppercase tracking-wider" style="color: var(--color-text-secondary);">Portfolio</span>
+        &nbsp;{{ latest.portfolio_risk }}
+      </div>
+      {% endif %}
+      {% if latest.snapshot_id %}
+      <div style="color: var(--color-text-tertiary);">snapshot {{ latest.snapshot_id }}</div>
+      {% endif %}
+    </div>
+  </section>
+
+  {# ── Run history ──────────────────────────────────────────────────────────── #}
+  {% if history | length > 1 %}
+  <section>
+    <div class="section-rule mb-4">
+      <span class="label">Run History</span>
+      <span class="meta source-meta">last {{ history | length }} runs</span>
+    </div>
+
+    <div class="overflow-x-auto rounded-lg border" style="border-color: var(--color-border);">
+      <table class="w-full text-sm font-mono">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--color-border); background: var(--color-bg-secondary);">
+            <th class="text-left px-4 py-3 source-meta">Date</th>
+            <th class="text-left px-4 py-3 source-meta">Time (ET)</th>
+            <th class="text-center px-4 py-3 source-meta">SPY</th>
+            <th class="text-center px-4 py-3 source-meta">NVDA</th>
+            <th class="text-center px-4 py-3 source-meta">AMZN</th>
+            <th class="text-left px-4 py-3 source-meta">VIX</th>
+            <th class="text-left px-4 py-3 source-meta">Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in history %}
+          <tr style="border-bottom: 1px solid var(--color-border);"
+              class="{% if loop.first %}font-semibold{% endif %}">
+            <td class="px-4 py-3" style="color: var(--color-text-primary);">
+              {{ row.date or '—' }}
+            </td>
+            <td class="px-4 py-3" style="color: var(--color-text-tertiary);">
+              {{ row.created_at.strftime('%I:%M %p') if row.created_at else '—' }}
+            </td>
+            {% for ticker_key in ['SPY', 'NVDA', 'AMZN'] %}
+              {% set t = row.tickers | selectattr('ticker', 'eq', ticker_key) | first | default(none) %}
+              <td class="px-4 py-3 text-center">
+                {% if t %}
+                  {% if t.status == 'TRADE' %}
+                    <span style="color: var(--color-success-500);">✓</span>
+                  {% elif t.status == 'NO_TRADE' %}
+                    <span style="color: var(--color-text-tertiary);">—</span>
+                  {% else %}
+                    <span style="color: var(--color-warning-500);">?</span>
+                  {% endif %}
+                {% else %}
+                  <span style="color: var(--color-text-tertiary);">·</span>
+                {% endif %}
+              </td>
+            {% endfor %}
+            <td class="px-4 py-3" style="color: var(--color-text-secondary);">
+              {{ row.vix or '—' }}
+            </td>
+            <td class="px-4 py-3">
+              {% if row.data_quality %}
+                {% if 'all sources OK' in row.data_quality %}
+                  <span style="color: var(--color-success-500);">OK</span>
+                {% else %}
+                  <span style="color: var(--color-warning-500);">issues</span>
+                {% endif %}
+              {% else %}
+                <span style="color: var(--color-text-tertiary);">—</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
+  {% endif %}{# end if latest #}
+
+  {# ── About callout ─────────────────────────────────────────────────────────── #}
+  <div class="mt-12 pt-8 border-t" style="border-color: var(--color-border);">
+    <p class="column-dek" style="max-width: 64ch;">
+      Options Intel is a personal paper-trading system built on 10 regime gates (VIX level, term structure,
+      credit spreads, sector breadth, IV rank, macro catalysts) plus a 3-signal bias engine
+      (macro + news sentiment + technicals). Trade signals will activate after 60 days of IV rank history.
+      Not financial advice.
+    </p>
+  </div>
+
+</div>
+{% endblock %}
