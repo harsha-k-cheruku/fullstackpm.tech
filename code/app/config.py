@@ -28,6 +28,9 @@ class Settings(BaseSettings):
     # Editorial dashboard token (set via env var EDITORIAL_TOKEN)
     editorial_token: str = "fspm-editorial-2026"
 
+    # Options Intel webhook receiver token. Must be configured in production.
+    options_intel_webhook_token: str = os.getenv("OPTIONS_INTEL_WEBHOOK_TOKEN", "")
+
     # Google Sheets Newsletter
     google_sheets_credentials_path: str = os.getenv(
         "GOOGLE_SHEETS_CREDENTIALS_PATH",
