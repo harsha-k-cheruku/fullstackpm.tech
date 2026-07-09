@@ -116,14 +116,16 @@ async def options_intel_dashboard(request: Request, db: Session = Depends(get_db
 # ── Brief parser ──────────────────────────────────────────────────────────────
 
 def _parse_brief(payload_text: str, created_at: datetime | None = None) -> dict[str, Any]:
-    """Parse a stored JSON payload into structured brief fields."""
+    """Parse a stored JSON payload. Uses structured field when present, falls back to body text."""
     try:
         payload = json.loads(payload_text)
-        body: str = payload.get("body", "")
     except (json.JSONDecodeError, AttributeError):
-        return {"raw": payload_text, "parse_error": True, "tickers": [], "created_at": created_at}
+        return {"raw": payload_text, "parse_error": True, "tickers": [], "news": [], "created_at": created_at}
 
-    lines = body.strip().split("\n")
+    body: str = payload.get("body", "")
+    structured: dict | None = payload.get("structured")
+
+    # Base result from text parsing (always available as fallback)
     result: dict[str, Any] = {
         "raw": body,
         "date": None,
@@ -132,20 +134,23 @@ def _parse_brief(payload_text: str, created_at: datetime | None = None) -> dict[
         "hy_oas": None,
         "breadth": None,
         "tickers": [],
+        "news": [],
+        "takeaway": None,
+        "regime": None,
         "discipline": None,
         "data_quality": None,
-        "portfolio_risk": None,
+        "warmup_days_remaining": None,
         "parse_error": False,
         "created_at": created_at,
     }
 
-    for line in lines:
+    # Text-based fallback parsing
+    for line in body.strip().split("\n"):
         if line.startswith("MORNING INTEL"):
             m = re.match(r"MORNING INTEL — (\S+) \(snapshot (\S+)\)", line)
             if m:
                 result["date"] = m.group(1)
                 result["snapshot_id"] = m.group(2)
-
         elif line.startswith("Regime data:"):
             m = re.search(r"VIX ([\d.]+)", line)
             if m:
@@ -156,26 +161,61 @@ def _parse_brief(payload_text: str, created_at: datetime | None = None) -> dict[
             m = re.search(r"Breadth ([\d.]+)%", line)
             if m:
                 result["breadth"] = m.group(1)
-
         elif re.match(r"^(SPY|NVDA|AMZN):", line):
             ticker = line.split(":")[0]
             rest = line[len(ticker) + 1:].strip()
             if "NO_TRADE" in rest:
                 detail = rest.split(" — ", 1)[1] if " — " in rest else rest
-                result["tickers"].append({"ticker": ticker, "status": "NO_TRADE", "detail": detail})
-            elif "TRADE" in rest and "|" in rest:
-                result["tickers"].append({"ticker": ticker, "status": "TRADE", "detail": rest})
-            else:
-                result["tickers"].append({"ticker": ticker, "status": "UNKNOWN", "detail": rest})
-
+                result["tickers"].append({"ticker": ticker, "status": "NO_TRADE", "detail": detail,
+                                          "spot": None, "iv_30d_pct": None, "sentiment_score": None,
+                                          "sentiment_driver": None, "bias": None, "range_low": None,
+                                          "range_high": None, "strategy": None, "contracts": 0})
+            elif "TRADE" in rest:
+                result["tickers"].append({"ticker": ticker, "status": "TRADE", "detail": rest,
+                                          "spot": None, "iv_30d_pct": None, "sentiment_score": None,
+                                          "sentiment_driver": None, "bias": None, "range_low": None,
+                                          "range_high": None, "strategy": None, "contracts": 0})
         elif line.startswith("Discipline:"):
             result["discipline"] = line[len("Discipline:"):].strip()
-
         elif line.startswith("Data quality:"):
             result["data_quality"] = line[len("Data quality:"):].strip()
 
-        elif line.startswith("Portfolio risk"):
-            result["portfolio_risk"] = line.split(":", 1)[1].strip() if ":" in line else line
+    # Overlay with structured data when available (much richer)
+    if structured:
+        result["date"] = structured.get("date") or result["date"]
+        result["snapshot_id"] = structured.get("snapshot_id") or result["snapshot_id"]
+        result["takeaway"] = structured.get("takeaway")
+        result["warmup_days_remaining"] = structured.get("warmup_days_remaining")
+        result["regime"] = structured.get("regime")
+        result["news"] = structured.get("news", [])
+
+        if result["regime"]:
+            result["vix"] = str(result["regime"].get("vix", ""))
+            result["hy_oas"] = str(result["regime"].get("hy_oas_bps", ""))
+            result["breadth"] = str(result["regime"].get("breadth_pct", ""))
+
+        tickers_data = structured.get("tickers", {})
+        result["tickers"] = []
+        for t_name in ("SPY", "NVDA", "AMZN"):
+            t = tickers_data.get(t_name, {})
+            result["tickers"].append({
+                "ticker": t_name,
+                "status": "TRADE" if t.get("contracts", 0) > 0 else "NO_TRADE",
+                "detail": t.get("gate_failure_detail") or t.get("gate_failure") or "",
+                "spot": t.get("spot"),
+                "iv_30d_pct": t.get("iv_30d_pct"),
+                "iv_rank": t.get("iv_rank"),
+                "sentiment_score": t.get("sentiment_score"),
+                "sentiment_driver": t.get("sentiment_driver"),
+                "gate_failure": t.get("gate_failure"),
+                "bias": t.get("bias"),
+                "confidence_pct": t.get("confidence_pct"),
+                "range_low": t.get("range_low"),
+                "range_high": t.get("range_high"),
+                "strategy": t.get("strategy"),
+                "contracts": t.get("contracts", 0),
+                "conviction": t.get("conviction"),
+            })
 
     return result
 
@@ -187,10 +227,7 @@ def _brief_summary(parsed: dict[str, Any]) -> dict[str, Any]:
         "created_at": parsed.get("created_at"),
         "vix": parsed.get("vix"),
         "data_quality": parsed.get("data_quality"),
-        "tickers": [
-            {"ticker": t["ticker"], "status": t["status"]}
-            for t in parsed.get("tickers", [])
-        ],
+        "tickers": [{"ticker": t["ticker"], "status": t["status"]} for t in parsed.get("tickers", [])],
         "has_trade": any(t["status"] == "TRADE" for t in parsed.get("tickers", [])),
     }
 
