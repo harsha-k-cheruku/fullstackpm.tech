@@ -1,0 +1,561 @@
+{
+  "written_at": "2026-07-10T14:32:29.555396+00:00",
+  "body": "MORNING INTEL \u2014 2026-07-10 (snapshot 2026-07-10_3)\nRegime data: VIX 15.55 | HY OAS 270 | Breadth 63.6%\nAMZN: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nNVDA: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nSPY: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
+  "structured": {
+    "date": "2026-07-10",
+    "snapshot_id": "2026-07-10_3",
+    "warmup_days_remaining": 34,
+    "takeaway": "Calm, low-volatility conditions (VIX 15.6). VIX term structure is in contango (VIX9D 12.1 < spot 15.6 < VIX3M 18.9), meaning options sellers have an edge \u2014 fear is priced further out than where we are now. News is bullish for NVDA. System is in warmup mode \u2014 34 more daily runs needed before IV rank gates activate and trade signals turn on.",
+    "regime": {
+      "vix": 15.55,
+      "vix9d": 12.15,
+      "vix3m": 18.91,
+      "term_structure": "contango",
+      "hy_oas_bps": 270.0,
+      "breadth_pct": 63.64,
+      "us2y": 4.21,
+      "us10y": 4.56,
+      "dxy": 100.9
+    },
+    "tickers": {
+      "SPY": {
+        "ticker": "SPY",
+        "spot": 752.76,
+        "iv_30d_pct": 29.96,
+        "iv_rank": null,
+        "sentiment_score": 0,
+        "sentiment_driver": "Futures Flat As Traders Brace For Weekend Iran Escalation",
+        "gate_passed": false,
+        "gate_failure": "G2_iv_rank",
+        "gate_failure_detail": "IV Rank below minimum or missing",
+        "bias": null,
+        "confidence_pct": null,
+        "range_low": null,
+        "range_high": null,
+        "strategy": null,
+        "contracts": 0,
+        "conviction": null
+      },
+      "NVDA": {
+        "ticker": "NVDA",
+        "spot": 207.555,
+        "iv_30d_pct": 52.84,
+        "iv_rank": null,
+        "sentiment_score": 2,
+        "sentiment_driver": "SK Hynix stock makes highly anticipated U.S. market debut",
+        "gate_passed": false,
+        "gate_failure": "G2_iv_rank",
+        "gate_failure_detail": "IV Rank below minimum or missing",
+        "bias": null,
+        "confidence_pct": null,
+        "range_low": null,
+        "range_high": null,
+        "strategy": null,
+        "contracts": 0,
+        "conviction": null
+      },
+      "AMZN": {
+        "ticker": "AMZN",
+        "spot": 246.205,
+        "iv_30d_pct": 44.45,
+        "iv_rank": null,
+        "sentiment_score": 0,
+        "sentiment_driver": "No relevant headlines for AMZN",
+        "gate_passed": false,
+        "gate_failure": "G2_iv_rank",
+        "gate_failure_detail": "IV Rank below minimum or missing",
+        "bias": null,
+        "confidence_pct": null,
+        "range_low": null,
+        "range_high": null,
+        "strategy": null,
+        "contracts": 0,
+        "conviction": null
+      }
+    },
+    "news": [
+      {
+        "ticker": "NVDA",
+        "title": "SK Hynix stock: Nasdaq trading starts today as memory chipmaker makes highly anticipated U.S. market debut",
+        "source": "fastcompany.com",
+        "published_utc": "2026-07-10T12:21:00+00:00"
+      },
+      {
+        "ticker": null,
+        "title": "Futures Flat As Traders Brace For Weekend Iran Escalation",
+        "source": "zerohedge.com",
+        "published_utc": "2026-07-10T12:07:59+00:00"
+      },
+      {
+        "ticker": "NVDA",
+        "title": "South Korean billionaire's risky bet pays off, as SK Hynix debuts in New York",
+        "source": "economictimes.indiatimes.com",
+        "published_utc": "2026-07-10T11:21:39+00:00"
+      }
+    ],
+    "looking_ahead": {
+      "this_week": [],
+      "next_week": [],
+      "next_month": [
+        {
+          "event_type": "FOMC",
+          "event_date": "2026-07-30",
+          "days_until": 20,
+          "ticker": null,
+          "prediction_markets": [
+            {
+              "question": "Fed funds rate after Jul 2026 meeting? \u2014 P(cut to \u22643.25%)",
+              "probability": 0.01,
+              "url": "https://kalshi.com/events/KXFED-26JUL",
+              "source": "Kalshi"
+            },
+            {
+              "question": "Fed funds rate after Jul 2026 meeting? \u2014 P(hold at 3.50%)",
+              "probability": 0.85,
+              "url": "https://kalshi.com/events/KXFED-26JUL",
+              "source": "Kalshi"
+            },
+            {
+              "question": "Fed funds rate after Jul 2026 meeting? \u2014 P(hike to \u22653.75%)",
+              "probability": 0.14,
+              "url": "https://kalshi.com/events/KXFED-26JUL",
+              "source": "Kalshi"
+            }
+          ],
+          "scenarios": {
+            "prediction_market_summary": "85% chance Fed holds at 3.50%",
+            "chip": "NEUTRAL",
+            "bull": {
+              "trigger": "Fed signals future cuts or maintains rates",
+              "implication": "SPY, NVDA, and AMZN could see upward momentum due to favorable monetary policy outlook."
+            },
+            "base": {
+              "trigger": "Fed holds rates steady as expected",
+              "implication": "Markets remain stable with limited immediate impact on SPY, NVDA, and AMZN."
+            },
+            "bear": {
+              "trigger": "Unexpected hawkish comments from the Fed",
+              "implication": "SPY, NVDA, and AMZN may decline as investors reassess growth prospects."
+            }
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-30",
+          "days_until": 20,
+          "ticker": "AMZN",
+          "prediction_markets": [
+            {
+              "question": "Will $AMZN go up after earnings? (Feb 2024)",
+              "probability": 0.99,
+              "url": "https://manifold.markets/voodoo/will-amzn-go-up-after-earnings-feb",
+              "source": "Manifold"
+            },
+            {
+              "question": "Will Amazon ($amzn) beat analyst EPS estimates in their Q2 2023 earnings?",
+              "probability": 0.55,
+              "url": "https://manifold.markets/vgnsh/will-amazon-amzn-beat-analyst-eps-e",
+              "source": "Manifold"
+            },
+            {
+              "question": "Will Amazon (AMZN) closer higher on Feb 14th, 2025 than it did on February 7th, 2025",
+              "probability": 0.01,
+              "url": "https://manifold.markets/Neuronal7/will-amazon-amzn-closer-higher-on-f",
+              "source": "Manifold"
+            }
+          ],
+          "scenarios": {
+            "prediction_market_summary": "99% chance AMZN goes up post-earnings",
+            "chip": "BULL",
+            "bull": {
+              "trigger": "AMZN beats EPS estimates",
+              "implication": "SPY, NVDA, and AMZN rally on strong earnings performance."
+            },
+            "base": {
+              "trigger": "AMZN meets expectations",
+              "implication": "SPY and AMZN remain stable, while NVDA may see slight upward movement."
+            },
+            "bear": {
+              "trigger": "AMZN misses EPS estimates",
+              "implication": "SPY, NVDA, and AMZN could drop as market sentiment turns negative."
+            }
+          }
+        },
+        {
+          "event_type": "PCE",
+          "event_date": "2026-07-31",
+          "days_until": 21,
+          "ticker": null,
+          "prediction_markets": [
+            {
+              "question": "How much will core PCE increase in Aug 2026? \u2014 Above 0.0%",
+              "probability": 0.49,
+              "url": "https://kalshi.com/events/KXPCECORE-26AUG",
+              "source": "Kalshi"
+            },
+            {
+              "question": "How much will core PCE increase in Aug 2026? \u2014 Above 0.1%",
+              "probability": 0.49,
+              "url": "https://kalshi.com/events/KXPCECORE-26AUG",
+              "source": "Kalshi"
+            },
+            {
+              "question": "How much will core PCE increase in Aug 2026? \u2014 Above 0.4%",
+              "probability": 0.53,
+              "url": "https://kalshi.com/events/KXPCECORE-26AUG",
+              "source": "Kalshi"
+            }
+          ],
+          "scenarios": {
+            "prediction_market_summary": "49% chance core PCE increases above 0.1%",
+            "chip": "NEUTRAL",
+            "bull": {
+              "trigger": "Core PCE shows lower inflation than expected",
+              "implication": "SPY, NVDA, and AMZN may benefit from reduced inflation fears."
+            },
+            "base": {
+              "trigger": "Core PCE increases slightly as anticipated",
+              "implication": "Markets remain stable with no significant impact on SPY, NVDA, or AMZN."
+            },
+            "bear": {
+              "trigger": "Core PCE rises sharply above expectations",
+              "implication": "SPY, NVDA, and AMZN could face downward pressure as inflation concerns resurface."
+            }
+          }
+        },
+        {
+          "event_type": "NFP",
+          "event_date": "2026-08-07",
+          "days_until": 28,
+          "ticker": null,
+          "prediction_markets": [
+            {
+              "question": "Will August 2026 U.S. nonfarm payroll employment increase by at least 150,000?",
+              "probability": 0.5,
+              "url": "https://manifold.markets/CalibratedGhosts/will-august-2026-us-nonfarm-payroll",
+              "source": "Manifold"
+            },
+            {
+              "question": "Will July 2026 U.S. nonfarm payroll employment increase by at least 150,000?",
+              "probability": 0.25,
+              "url": "https://manifold.markets/CalibratedGhosts/will-july-2026-us-nonfarm-payroll-e",
+              "source": "Manifold"
+            },
+            {
+              "question": "Will September 2026 U.S. nonfarm payroll employment increase by at least 150,000?",
+              "probability": 0.45,
+              "url": "https://manifold.markets/CalibratedGhosts/will-september-2026-us-nonfarm-payr",
+              "source": "Manifold"
+            }
+          ],
+          "scenarios": {
+            "prediction_market_summary": "50% chance NFP increases by at least 150,000",
+            "chip": "NEUTRAL",
+            "bull": {
+              "trigger": "NFP significantly beats expectations",
+              "implication": "SPY, NVDA, and AMZN may rally on positive labor market data."
+            },
+            "base": {
+              "trigger": "NFP meets expectations",
+              "implication": "Limited impact on SPY, NVDA, and AMZN as markets digest steady job growth."
+            },
+            "bear": {
+              "trigger": "NFP falls short of expectations",
+              "implication": "SPY, NVDA, and AMZN could decline as concerns about economic slowdown grow."
+            }
+          }
+        }
+      ]
+    },
+    "market_overview": [
+      {
+        "symbol": "SPY",
+        "name": "S&P 500 ETF",
+        "category": "watchlist",
+        "open": 752.05,
+        "high": 753.35,
+        "low": 751.8,
+        "close": 753.01,
+        "prev_close": 751.71,
+        "volume": 5640057,
+        "change_pct": 0.17
+      },
+      {
+        "symbol": "NVDA",
+        "name": "Nvidia",
+        "category": "watchlist",
+        "open": 201.92,
+        "high": 208.14,
+        "low": 201.92,
+        "close": 207.82,
+        "prev_close": 202.78,
+        "volume": 37014297,
+        "change_pct": 2.49
+      },
+      {
+        "symbol": "AMZN",
+        "name": "Amazon",
+        "category": "watchlist",
+        "open": 249.64,
+        "high": 251.03,
+        "low": 244.88,
+        "close": 246.27,
+        "prev_close": 247.04,
+        "volume": 7252012,
+        "change_pct": -0.31
+      },
+      {
+        "symbol": "QQQ",
+        "name": "Nasdaq 100",
+        "category": "broad",
+        "open": 720.7,
+        "high": 724.04,
+        "low": 719.83,
+        "close": 723.54,
+        "prev_close": 723.28,
+        "volume": 6995742,
+        "change_pct": 0.04
+      },
+      {
+        "symbol": "RSP",
+        "name": "Equal-Weight S&P 500",
+        "category": "broad",
+        "open": 214.15,
+        "high": 214.6,
+        "low": 214.01,
+        "close": 214.47,
+        "prev_close": 213.5,
+        "volume": 1333065,
+        "change_pct": 0.45
+      },
+      {
+        "symbol": "SOXX",
+        "name": "Semiconductors",
+        "category": "broad",
+        "open": 572.06,
+        "high": 579.4,
+        "low": 566.67,
+        "close": 579.1,
+        "prev_close": 581.7,
+        "volume": 1897880,
+        "change_pct": -0.45
+      },
+      {
+        "symbol": "XLK",
+        "name": "Technology",
+        "category": "sector",
+        "open": 184.01,
+        "high": 185.48,
+        "low": 183.62,
+        "close": 184.96,
+        "prev_close": 185.35,
+        "volume": 1615507,
+        "change_pct": -0.21
+      },
+      {
+        "symbol": "XLY",
+        "name": "Consumer Disc.",
+        "category": "sector",
+        "open": 117.59,
+        "high": 117.89,
+        "low": 117.34,
+        "close": 117.53,
+        "prev_close": 116.85,
+        "volume": 1351444,
+        "change_pct": 0.58
+      },
+      {
+        "symbol": "XLC",
+        "name": "Communication Svcs",
+        "category": "sector",
+        "open": 111.72,
+        "high": 112.16,
+        "low": 111.43,
+        "close": 111.72,
+        "prev_close": 110.51,
+        "volume": 1307145,
+        "change_pct": 1.09
+      },
+      {
+        "symbol": "XLF",
+        "name": "Financials",
+        "category": "sector",
+        "open": 55.99,
+        "high": 56.03,
+        "low": 55.56,
+        "close": 55.64,
+        "prev_close": 55.54,
+        "volume": 4967268,
+        "change_pct": 0.18
+      },
+      {
+        "symbol": "XLV",
+        "name": "Health Care",
+        "category": "sector",
+        "open": 162.48,
+        "high": 162.66,
+        "low": 160.63,
+        "close": 161.04,
+        "prev_close": 162.17,
+        "volume": 2776445,
+        "change_pct": -0.7
+      },
+      {
+        "symbol": "XLI",
+        "name": "Industrials",
+        "category": "sector",
+        "open": 181.15,
+        "high": 181.7,
+        "low": 180.45,
+        "close": 181.69,
+        "prev_close": 181.11,
+        "volume": 1208272,
+        "change_pct": 0.32
+      },
+      {
+        "symbol": "XLE",
+        "name": "Energy",
+        "category": "sector",
+        "open": 55.08,
+        "high": 55.24,
+        "low": 54.81,
+        "close": 54.82,
+        "prev_close": 54.82,
+        "volume": 4313837,
+        "change_pct": 0.0
+      },
+      {
+        "symbol": "XLB",
+        "name": "Materials",
+        "category": "sector",
+        "open": 50.29,
+        "high": 50.97,
+        "low": 50.29,
+        "close": 50.97,
+        "prev_close": 50.26,
+        "volume": 2705007,
+        "change_pct": 1.41
+      },
+      {
+        "symbol": "XLP",
+        "name": "Consumer Staples",
+        "category": "sector",
+        "open": 83.24,
+        "high": 84.08,
+        "low": 83.18,
+        "close": 83.88,
+        "prev_close": 83.2,
+        "volume": 1689268,
+        "change_pct": 0.82
+      },
+      {
+        "symbol": "XLRE",
+        "name": "Real Estate",
+        "category": "sector",
+        "open": 44.48,
+        "high": 44.55,
+        "low": 44.24,
+        "close": 44.24,
+        "prev_close": 44.23,
+        "volume": 812415,
+        "change_pct": 0.02
+      },
+      {
+        "symbol": "XLU",
+        "name": "Utilities",
+        "category": "sector",
+        "open": 45.12,
+        "high": 45.48,
+        "low": 45.11,
+        "close": 45.37,
+        "prev_close": 45.13,
+        "volume": 2436415,
+        "change_pct": 0.53
+      },
+      {
+        "symbol": "TLT",
+        "name": "20yr+ Treasuries",
+        "category": "bonds",
+        "open": 84.51,
+        "high": 84.57,
+        "low": 84.41,
+        "close": 84.54,
+        "prev_close": 84.49,
+        "volume": 2139809,
+        "change_pct": 0.06
+      },
+      {
+        "symbol": "IEF",
+        "name": "7-10yr Treasuries",
+        "category": "bonds",
+        "open": 93.74,
+        "high": 93.78,
+        "low": 93.69,
+        "close": 93.75,
+        "prev_close": 93.71,
+        "volume": 465467,
+        "change_pct": 0.04
+      },
+      {
+        "symbol": "HYG",
+        "name": "High Yield Bonds",
+        "category": "bonds",
+        "open": 79.78,
+        "high": 79.83,
+        "low": 79.71,
+        "close": 79.74,
+        "prev_close": 79.75,
+        "volume": 3582053,
+        "change_pct": -0.01
+      },
+      {
+        "symbol": "UUP",
+        "name": "US Dollar Index ETF",
+        "category": "dollar",
+        "open": 28.36,
+        "high": 28.38,
+        "low": 28.35,
+        "close": 28.35,
+        "prev_close": 28.36,
+        "volume": 109852,
+        "change_pct": -0.04
+      },
+      {
+        "symbol": "GLD",
+        "name": "Gold",
+        "category": "commodities",
+        "open": 375.0,
+        "high": 376.97,
+        "low": 374.97,
+        "close": 376.78,
+        "prev_close": 378.18,
+        "volume": 1530648,
+        "change_pct": -0.37
+      },
+      {
+        "symbol": "SLV",
+        "name": "Silver",
+        "category": "commodities",
+        "open": 53.69,
+        "high": 54.29,
+        "low": 53.67,
+        "close": 54.14,
+        "prev_close": 54.14,
+        "volume": 5164669,
+        "change_pct": 0.0
+      },
+      {
+        "symbol": "VIX",
+        "name": "VIX",
+        "category": "volatility",
+        "open": 16.06,
+        "high": 16.16,
+        "low": 15.48,
+        "close": 15.55,
+        "prev_close": 15.84,
+        "volume": null,
+        "change_pct": -1.83
+      }
+    ]
+  }
+}
