@@ -353,6 +353,19 @@
       <span class="meta source-meta">prediction markets + scenarios</span>
     </div>
 
+    {# Window narratives #}
+    {% if latest.looking_ahead.narratives %}
+    {% set narr = latest.looking_ahead.narratives %}
+    <div class="mb-6 space-y-3">
+      {% set narr_map = [('this_week', narr.this_week), ('next_week', narr.next_week), ('next_month', narr.next_month)] %}
+      {% for wk, para in narr_map %}
+        {% if para %}
+        <p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">{{ para }}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
     {% for window_key, window_label, events in windows %}
     <div class="mb-6">
       <h3 class="font-mono text-xs font-semibold uppercase tracking-widest mb-3"
@@ -388,6 +401,41 @@
             {% endif %}
             {% endif %}
           </div>
+
+          {# Metadata tags #}
+          {% if ev.metadata %}
+          {% set meta = ev.metadata %}
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            {% if meta.sector %}
+            <span class="inline-block rounded px-2 py-0.5 text-xs font-mono"
+                  style="background:var(--color-bg-primary);border:1px solid var(--color-border);color:var(--color-text-secondary);">
+              {{ meta.sector }}
+            </span>
+            {% endif %}
+            {% if meta.industry %}
+            <span class="inline-block rounded px-2 py-0.5 text-xs font-mono"
+                  style="background:var(--color-bg-primary);border:1px solid var(--color-border);color:var(--color-text-tertiary);">
+              {{ meta.industry }}
+            </span>
+            {% endif %}
+            {% for idx in meta.indices | default([]) %}
+            <span class="inline-block rounded px-2 py-0.5 text-xs font-mono"
+                  style="background:var(--color-accent-light);color:var(--color-accent);">
+              {{ idx }}
+            </span>
+            {% endfor %}
+          </div>
+          {% if meta.consumers or meta.vendors %}
+          <div class="mb-3 text-xs font-mono space-y-1" style="color:var(--color-text-tertiary);">
+            {% if meta.consumers %}
+            <div><span style="color:var(--color-text-secondary);">Key buyers:</span> {{ meta.consumers | join(', ') }}</div>
+            {% endif %}
+            {% if meta.vendors %}
+            <div><span style="color:var(--color-text-secondary);">Key suppliers:</span> {{ meta.vendors | join(', ') }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+          {% endif %}
 
           {# Prediction market summary #}
           {% if ev.scenarios and ev.scenarios.prediction_market_summary %}
