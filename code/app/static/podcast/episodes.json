@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-10",
+      "slug": "daily-brief-2026-07-10",
+      "episode_number": 51,
+      "title": "Daily Brief \u2014 July 10, 2026",
+      "date": "2026-07-10",
+      "published_at": "2026-07-10T14:11:39",
+      "duration_seconds": 829,
+      "duration_human": "13:49",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-10.mp3",
+      "audio_length_bytes": 6630940,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 1,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "The trend is your friend: reading SPY on multiple timeframes"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: The trend is your friend",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: The Pulse: What can we learn from Bun\u2019s rapid Rust rewrite with AI?",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 753.26,
+        "pct_change": 0.21,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "trend",
+        "friend",
+        "reading",
+        "multiple",
+        "timeframes",
+        "pulse"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-10</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Markets on Edge: Energy Prices and Tech Developments Take Center Stage</li>\n<li><strong>SPY learning:</strong> The trend is your friend</li>\n<li><strong>Market brief:</strong> SPY Market Brief for July 10, 2026</li>\n<li><strong>PM/analytics:</strong> The Pulse: What can we learn from Bun\u2019s rapid Rust rewrite with AI?</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, Kalshi traders are increasingly betting that gas prices will exceed $3.50 on Election Day due to escalating tensions between the U.S. and Iran. This could have significant implications for consumer spending and inflation in the U.S. economy. In Europe, a destructive typhoon is heading toward Taiwan and southeastern China, raising concerns about potential supply chain disruptions for manufacturers in the region. As companies brace for possible interruptions, we could see volatility in tech stocks heavily reliant on these supply chains. In Asia, China has announced plans to improve salary distribution in an effort to combat AI-driven inequality. This move aims to bolster domestic consumer demand, which could impact global trade, particularly in sectors reliant on Chinese consumers.</p>\n<p>Today&rsquo;s lesson is The trend is your friend: reading SPY on multiple timeframes. SPY most recently closed at 753.26, with current implied volatility around 13.69 and the near-the-money strike near 753.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>Today, SPY closed at 753.26, up just 0.21% from its opening price of 752.05. While this move might seem modest, it\u2019s worth noting that it marks a slight recovery after a few days of declines earlier this week. The index has been oscillating within a tight range, and today\u2019s performance is significant in the context of the week, especially as it has managed to hold above the 750 mark, which could indicate a level of support. The volume today was around 3.8 million shares, which is relatively healthy and suggests that traders are still engaged, even if the price action is subdued. This uptick could be a precursor to more significant moves as we head into the next few trading sessions.</p>\n<p>When we break down the sectors, Communication Services (XLC) led the charge today, rising 1.06%. This sector&rsquo;s strength is likely tied to positive sentiment around major tech companies that have been reporting better-than-expected user engagement metrics. Materials (XLB) also contributed positively, up 0.84%, likely buoyed by ongoing infrastructure spending discussions. On the flip side, Healthcare (XLV) lagged behind, down 0.46%. This decline may reflect ongoing concerns about regulatory pressures and the potential impact on profit margins, which has been a recurring theme in recent earnings calls. Technology (XLK), despite being a powerhouse sector, was flat today, which could indicate a pause as investors digest recent earnings and guidance from key players.</p>\n<p>The macro context is crucial here. The recent uptick in CPI year-over-year to 4.27% has raised eyebrows, especially as it comes on the heels of a slight decline in unemployment to 4.2%. These mixed signals create a complex backdrop for traders. The Fed&rsquo;s current stance, with the federal funds rate holding steady at 3.63%, suggests they are in a wait-and-see mode, but any signs of inflation creeping higher could prompt a shift in policy. This uncertainty around inflation and interest rates is likely contributing to the subdued volatility we\u2019re seeing in SPY, with the current implied volatility at 13.69 and an IV rank of 100%. For those considering selling premium, this high IV rank suggests that options are relatively expensive right now, which could be a favorable environment for selling premium, especially if you\u2019re looking at defined-risk spreads.</p>\n<p>As for key price levels, immediate support is sitting around the 750 mark, which has held up well in recent sessions. On the resistance side, the 760 level is a critical threshold to watch. If SPY can break above this level, it could signal a stronger bullish trend, but if it fails to hold above 750, we might see a retest of the week\u2019s low around 745. Keeping an eye on these levels will be essential for making informed trading decisions in the coming days.</p>\n<p>Looking ahead, we have some important economic data on the horizon. The CPI inflation release is scheduled for July 14, which is just four days away. This will be a key event to watch, as it could significantly impact market sentiment and expectations around Fed policy. Additionally, retail sales data will also be released on the same day, providing further insight into consumer spending habits. Both of these reports could stir volatility in SPY, so positioning ahead of these events will be crucial.</p>\n<p>In summary, for options traders considering a position this week, the high IV rank suggests a good opportunity to sell premium, particularly if you\u2019re looking at defined-risk spreads. However, be mindful of the upcoming economic data that could influence market direction. With SPY hovering around key support and resistance levels, it\u2019s a pivotal moment for traders to assess their strategies carefully.</p>\n<p>Here&rsquo;s the thing: when we think about efficiency in product development, it\u2019s easy to get lost in the weeds of what seems like a million little tasks. But what if you could tackle a major rewrite project in just 11 days? That\u2019s exactly what the team at Bun accomplished, transforming a substantial codebase into Rust with the help of AI tools, and doing so for a fraction of the cost you might expect. What that means in practice is that as product managers, we need to start thinking about how we can leverage AI not just to assist in small tasks, but to fundamentally change how we approach larger, more complex projects. </p>\n<p>Consider this: if you can cut down a year\u2019s worth of engineering work into a couple of weeks, you\u2019re not just saving time; you\u2019re also opening up new avenues for innovation. This rapid turnaround means you can get feedback sooner, iterate faster, and ultimately deliver value to users much quicker than before. Imagine reengaging your engineering team with fresh, impactful projects instead of getting bogged down in legacy code issues. The move here is to rethink your approach to project management \u2014 prioritize leveraging AI tools that can handle heavy lifting, and create a culture where rapid prototyping and iteration are the norms. </p>\n<p>One concrete example here is to adopt a mindset of experimentation. Instead of waiting for the perfect solution, try using AI to create prototypes and iterate based on user feedback. Think of it as running a series of mini-projects that allow you to validate ideas quickly. You might find that a feature you thought was crucial isn\u2019t as valuable as you imagined, freeing up resources to explore new opportunities. </p>\n<p>This week, take a moment to identify a project or a feature that\u2019s been hanging around in your backlog. Set a clear goal to test an AI tool that can help streamline that process, whether it&rsquo;s for rewriting code, drafting user stories, or even conducting user surveys. Share your findings with your team and encourage them to think creatively about how AI can transform their workflows, too. The future of product management is here, and it\u2019s time we embrace it.</p>"
+    },
+    {
       "id": "2026-07-09",
       "slug": "daily-brief-2026-07-09",
       "episode_number": 50,
