@@ -1,27 +1,27 @@
 {
-  "written_at": "2026-07-10T14:32:29.555396+00:00",
-  "body": "MORNING INTEL \u2014 2026-07-10 (snapshot 2026-07-10_3)\nRegime data: VIX 15.55 | HY OAS 270 | Breadth 63.6%\nAMZN: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nNVDA: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nSPY: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
+  "written_at": "2026-07-10T14:53:53.412697+00:00",
+  "body": "MORNING INTEL \u2014 2026-07-10 (snapshot 2026-07-10_4)\nRegime data: VIX 15.79 | HY OAS 270 | Breadth 72.7%\nAMZN: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nNVDA: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nSPY: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
   "structured": {
     "date": "2026-07-10",
-    "snapshot_id": "2026-07-10_3",
-    "warmup_days_remaining": 34,
-    "takeaway": "Calm, low-volatility conditions (VIX 15.6). VIX term structure is in contango (VIX9D 12.1 < spot 15.6 < VIX3M 18.9), meaning options sellers have an edge \u2014 fear is priced further out than where we are now. News is bullish for NVDA. System is in warmup mode \u2014 34 more daily runs needed before IV rank gates activate and trade signals turn on.",
+    "snapshot_id": "2026-07-10_4",
+    "warmup_days_remaining": 33,
+    "takeaway": "Calm, low-volatility conditions (VIX 15.8). VIX term structure is in contango (VIX9D 12.8 < spot 15.8 < VIX3M 19.1), meaning options sellers have an edge \u2014 fear is priced further out than where we are now. News is bullish for NVDA. System is in warmup mode \u2014 33 more daily runs needed before IV rank gates activate and trade signals turn on.",
     "regime": {
-      "vix": 15.55,
-      "vix9d": 12.15,
-      "vix3m": 18.91,
+      "vix": 15.79,
+      "vix9d": 12.78,
+      "vix3m": 19.06,
       "term_structure": "contango",
       "hy_oas_bps": 270.0,
-      "breadth_pct": 63.64,
+      "breadth_pct": 72.73,
       "us2y": 4.21,
       "us10y": 4.56,
-      "dxy": 100.9
+      "dxy": 100.92
     },
     "tickers": {
       "SPY": {
         "ticker": "SPY",
-        "spot": 752.76,
-        "iv_30d_pct": 29.96,
+        "spot": 752.01,
+        "iv_30d_pct": 30.53,
         "iv_rank": null,
         "sentiment_score": 0,
         "sentiment_driver": "Futures Flat As Traders Brace For Weekend Iran Escalation",
@@ -38,11 +38,11 @@
       },
       "NVDA": {
         "ticker": "NVDA",
-        "spot": 207.555,
-        "iv_30d_pct": 52.84,
+        "spot": 206.7739,
+        "iv_30d_pct": 50.22,
         "iv_rank": null,
         "sentiment_score": 2,
-        "sentiment_driver": "SK Hynix stock makes highly anticipated U.S. market debut",
+        "sentiment_driver": "SK Hynix stock set for Nasdaq debut",
         "gate_passed": false,
         "gate_failure": "G2_iv_rank",
         "gate_failure_detail": "IV Rank below minimum or missing",
@@ -56,11 +56,11 @@
       },
       "AMZN": {
         "ticker": "AMZN",
-        "spot": 246.205,
-        "iv_30d_pct": 44.45,
+        "spot": 245.35,
+        "iv_30d_pct": 45.21,
         "iv_rank": null,
         "sentiment_score": 0,
-        "sentiment_driver": "No relevant headlines for AMZN",
+        "sentiment_driver": "Futures Flat As Traders Brace For Weekend Iran Escalation",
         "gate_passed": false,
         "gate_failure": "G2_iv_rank",
         "gate_failure_detail": "IV Rank below minimum or missing",
@@ -75,6 +75,12 @@
     },
     "news": [
       {
+        "ticker": null,
+        "title": "SK Hynix stock set for Nasdaq debut, opening the trillion-dollar chip giant to U.S. investors",
+        "source": "cnbc.com",
+        "published_utc": "2026-07-10T14:18:38+00:00"
+      },
+      {
         "ticker": "NVDA",
         "title": "SK Hynix stock: Nasdaq trading starts today as memory chipmaker makes highly anticipated U.S. market debut",
         "source": "fastcompany.com",
@@ -85,12 +91,6 @@
         "title": "Futures Flat As Traders Brace For Weekend Iran Escalation",
         "source": "zerohedge.com",
         "published_utc": "2026-07-10T12:07:59+00:00"
-      },
-      {
-        "ticker": "NVDA",
-        "title": "South Korean billionaire's risky bet pays off, as SK Hynix debuts in New York",
-        "source": "economictimes.indiatimes.com",
-        "published_utc": "2026-07-10T11:21:39+00:00"
       }
     ],
     "looking_ahead": {
@@ -124,18 +124,18 @@
           ],
           "scenarios": {
             "prediction_market_summary": "85% chance Fed holds at 3.50%",
-            "chip": "NEUTRAL",
+            "chip": "BULL",
             "bull": {
-              "trigger": "Fed signals future cuts or maintains rates",
-              "implication": "SPY, NVDA, and AMZN could see upward momentum due to favorable monetary policy outlook."
+              "trigger": "Fed signals a prolonged pause in rate hikes",
+              "implication": "SPY, NVDA, and AMZN rally as market gains confidence in stable rates."
             },
             "base": {
               "trigger": "Fed holds rates steady as expected",
-              "implication": "Markets remain stable with limited immediate impact on SPY, NVDA, and AMZN."
+              "implication": "Market remains stable with slight upward bias in SPY, NVDA, and AMZN."
             },
             "bear": {
-              "trigger": "Unexpected hawkish comments from the Fed",
-              "implication": "SPY, NVDA, and AMZN may decline as investors reassess growth prospects."
+              "trigger": "Unexpected hawkish comments from Fed officials",
+              "implication": "SPY, NVDA, and AMZN decline as investors fear future rate hikes."
             }
           }
         },
@@ -144,40 +144,21 @@
           "event_date": "2026-07-30",
           "days_until": 20,
           "ticker": "AMZN",
-          "prediction_markets": [
-            {
-              "question": "Will $AMZN go up after earnings? (Feb 2024)",
-              "probability": 0.99,
-              "url": "https://manifold.markets/voodoo/will-amzn-go-up-after-earnings-feb",
-              "source": "Manifold"
-            },
-            {
-              "question": "Will Amazon ($amzn) beat analyst EPS estimates in their Q2 2023 earnings?",
-              "probability": 0.55,
-              "url": "https://manifold.markets/vgnsh/will-amazon-amzn-beat-analyst-eps-e",
-              "source": "Manifold"
-            },
-            {
-              "question": "Will Amazon (AMZN) closer higher on Feb 14th, 2025 than it did on February 7th, 2025",
-              "probability": 0.01,
-              "url": "https://manifold.markets/Neuronal7/will-amazon-amzn-closer-higher-on-f",
-              "source": "Manifold"
-            }
-          ],
+          "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "99% chance AMZN goes up post-earnings",
-            "chip": "BULL",
+            "prediction_market_summary": "Mixed expectations for earnings results",
+            "chip": "NEUTRAL",
             "bull": {
-              "trigger": "AMZN beats EPS estimates",
-              "implication": "SPY, NVDA, and AMZN rally on strong earnings performance."
+              "trigger": "Earnings beat expectations significantly",
+              "implication": "SPY, NVDA, and AMZN surge as investor sentiment improves."
             },
             "base": {
-              "trigger": "AMZN meets expectations",
-              "implication": "SPY and AMZN remain stable, while NVDA may see slight upward movement."
+              "trigger": "Earnings meet consensus estimates",
+              "implication": "Market reaction is muted, with SPY, NVDA, and AMZN holding steady."
             },
             "bear": {
-              "trigger": "AMZN misses EPS estimates",
-              "implication": "SPY, NVDA, and AMZN could drop as market sentiment turns negative."
+              "trigger": "Earnings miss expectations",
+              "implication": "SPY, NVDA, and AMZN drop as concerns about growth surface."
             }
           }
         },
@@ -211,15 +192,15 @@
             "chip": "NEUTRAL",
             "bull": {
               "trigger": "Core PCE shows lower inflation than expected",
-              "implication": "SPY, NVDA, and AMZN may benefit from reduced inflation fears."
+              "implication": "SPY, NVDA, and AMZN rise as inflation fears ease."
             },
             "base": {
-              "trigger": "Core PCE increases slightly as anticipated",
-              "implication": "Markets remain stable with no significant impact on SPY, NVDA, or AMZN."
+              "trigger": "Core PCE increases slightly but within expectations",
+              "implication": "Market remains stable with no significant impact on SPY, NVDA, or AMZN."
             },
             "bear": {
-              "trigger": "Core PCE rises sharply above expectations",
-              "implication": "SPY, NVDA, and AMZN could face downward pressure as inflation concerns resurface."
+              "trigger": "Core PCE increases significantly above expectations",
+              "implication": "SPY, NVDA, and AMZN fall as inflation concerns resurface."
             }
           }
         },
@@ -249,19 +230,19 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "50% chance NFP increases by at least 150,000",
+            "prediction_market_summary": "50% chance of 150,000+ job increase",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "NFP significantly beats expectations",
-              "implication": "SPY, NVDA, and AMZN may rally on positive labor market data."
+              "trigger": "NFP shows strong job growth exceeding expectations",
+              "implication": "SPY, NVDA, and AMZN gain as labor market strength boosts confidence."
             },
             "base": {
-              "trigger": "NFP meets expectations",
-              "implication": "Limited impact on SPY, NVDA, and AMZN as markets digest steady job growth."
+              "trigger": "NFP meets expectations with moderate job growth",
+              "implication": "Market reaction is neutral, with SPY, NVDA, and AMZN holding steady."
             },
             "bear": {
-              "trigger": "NFP falls short of expectations",
-              "implication": "SPY, NVDA, and AMZN could decline as concerns about economic slowdown grow."
+              "trigger": "NFP shows weak job growth below expectations",
+              "implication": "SPY, NVDA, and AMZN decline as economic concerns mount."
             }
           }
         }
@@ -274,11 +255,11 @@
         "category": "watchlist",
         "open": 752.05,
         "high": 753.35,
-        "low": 751.8,
-        "close": 753.01,
+        "low": 748.1,
+        "close": 752.16,
         "prev_close": 751.71,
-        "volume": 5640057,
-        "change_pct": 0.17
+        "volume": 9977756,
+        "change_pct": 0.06
       },
       {
         "symbol": "NVDA",
@@ -287,10 +268,10 @@
         "open": 201.92,
         "high": 208.14,
         "low": 201.92,
-        "close": 207.82,
+        "close": 206.66,
         "prev_close": 202.78,
-        "volume": 37014297,
-        "change_pct": 2.49
+        "volume": 43357589,
+        "change_pct": 1.91
       },
       {
         "symbol": "AMZN",
@@ -298,11 +279,11 @@
         "category": "watchlist",
         "open": 249.64,
         "high": 251.03,
-        "low": 244.88,
-        "close": 246.27,
+        "low": 244.41,
+        "close": 245.37,
         "prev_close": 247.04,
-        "volume": 7252012,
-        "change_pct": -0.31
+        "volume": 8745157,
+        "change_pct": -0.68
       },
       {
         "symbol": "QQQ",
@@ -310,11 +291,11 @@
         "category": "broad",
         "open": 720.7,
         "high": 724.04,
-        "low": 719.83,
-        "close": 723.54,
+        "low": 717.0,
+        "close": 721.46,
         "prev_close": 723.28,
-        "volume": 6995742,
-        "change_pct": 0.04
+        "volume": 9789671,
+        "change_pct": -0.25
       },
       {
         "symbol": "RSP",
@@ -322,11 +303,11 @@
         "category": "broad",
         "open": 214.15,
         "high": 214.6,
-        "low": 214.01,
-        "close": 214.47,
+        "low": 213.06,
+        "close": 214.53,
         "prev_close": 213.5,
-        "volume": 1333065,
-        "change_pct": 0.45
+        "volume": 2381301,
+        "change_pct": 0.48
       },
       {
         "symbol": "SOXX",
@@ -335,10 +316,10 @@
         "open": 572.06,
         "high": 579.4,
         "low": 566.67,
-        "close": 579.1,
+        "close": 575.31,
         "prev_close": 581.7,
-        "volume": 1897880,
-        "change_pct": -0.45
+        "volume": 2291638,
+        "change_pct": -1.1
       },
       {
         "symbol": "XLK",
@@ -346,11 +327,11 @@
         "category": "sector",
         "open": 184.01,
         "high": 185.48,
-        "low": 183.62,
-        "close": 184.96,
+        "low": 183.09,
+        "close": 184.26,
         "prev_close": 185.35,
-        "volume": 1615507,
-        "change_pct": -0.21
+        "volume": 2485393,
+        "change_pct": -0.59
       },
       {
         "symbol": "XLY",
@@ -358,11 +339,11 @@
         "category": "sector",
         "open": 117.59,
         "high": 117.89,
-        "low": 117.34,
-        "close": 117.53,
+        "low": 116.5,
+        "close": 117.61,
         "prev_close": 116.85,
-        "volume": 1351444,
-        "change_pct": 0.58
+        "volume": 2068591,
+        "change_pct": 0.65
       },
       {
         "symbol": "XLC",
@@ -370,11 +351,11 @@
         "category": "sector",
         "open": 111.72,
         "high": 112.16,
-        "low": 111.43,
-        "close": 111.72,
+        "low": 111.18,
+        "close": 111.62,
         "prev_close": 110.51,
-        "volume": 1307145,
-        "change_pct": 1.09
+        "volume": 1718648,
+        "change_pct": 1.0
       },
       {
         "symbol": "XLF",
@@ -382,11 +363,11 @@
         "category": "sector",
         "open": 55.99,
         "high": 56.03,
-        "low": 55.56,
-        "close": 55.64,
+        "low": 55.37,
+        "close": 55.71,
         "prev_close": 55.54,
-        "volume": 4967268,
-        "change_pct": 0.18
+        "volume": 7545139,
+        "change_pct": 0.31
       },
       {
         "symbol": "XLV",
@@ -394,23 +375,23 @@
         "category": "sector",
         "open": 162.48,
         "high": 162.66,
-        "low": 160.63,
-        "close": 161.04,
+        "low": 160.54,
+        "close": 161.19,
         "prev_close": 162.17,
-        "volume": 2776445,
-        "change_pct": -0.7
+        "volume": 3376290,
+        "change_pct": -0.6
       },
       {
         "symbol": "XLI",
         "name": "Industrials",
         "category": "sector",
         "open": 181.15,
-        "high": 181.7,
-        "low": 180.45,
-        "close": 181.69,
+        "high": 181.96,
+        "low": 180.19,
+        "close": 181.9,
         "prev_close": 181.11,
-        "volume": 1208272,
-        "change_pct": 0.32
+        "volume": 1908929,
+        "change_pct": 0.44
       },
       {
         "symbol": "XLE",
@@ -418,35 +399,35 @@
         "category": "sector",
         "open": 55.08,
         "high": 55.24,
-        "low": 54.81,
-        "close": 54.82,
+        "low": 54.67,
+        "close": 54.87,
         "prev_close": 54.82,
-        "volume": 4313837,
-        "change_pct": 0.0
+        "volume": 8036671,
+        "change_pct": 0.09
       },
       {
         "symbol": "XLB",
         "name": "Materials",
         "category": "sector",
         "open": 50.29,
-        "high": 50.97,
+        "high": 51.02,
         "low": 50.29,
-        "close": 50.97,
+        "close": 51.01,
         "prev_close": 50.26,
-        "volume": 2705007,
-        "change_pct": 1.41
+        "volume": 3913249,
+        "change_pct": 1.49
       },
       {
         "symbol": "XLP",
         "name": "Consumer Staples",
         "category": "sector",
         "open": 83.24,
-        "high": 84.08,
+        "high": 84.15,
         "low": 83.18,
-        "close": 83.88,
+        "close": 84.14,
         "prev_close": 83.2,
-        "volume": 1689268,
-        "change_pct": 0.82
+        "volume": 2271634,
+        "change_pct": 1.13
       },
       {
         "symbol": "XLRE",
@@ -454,11 +435,11 @@
         "category": "sector",
         "open": 44.48,
         "high": 44.55,
-        "low": 44.24,
-        "close": 44.24,
+        "low": 44.05,
+        "close": 44.22,
         "prev_close": 44.23,
-        "volume": 812415,
-        "change_pct": 0.02
+        "volume": 1308494,
+        "change_pct": -0.02
       },
       {
         "symbol": "XLU",
@@ -467,10 +448,10 @@
         "open": 45.12,
         "high": 45.48,
         "low": 45.11,
-        "close": 45.37,
+        "close": 45.42,
         "prev_close": 45.13,
-        "volume": 2436415,
-        "change_pct": 0.53
+        "volume": 3901005,
+        "change_pct": 0.64
       },
       {
         "symbol": "TLT",
@@ -478,11 +459,11 @@
         "category": "bonds",
         "open": 84.51,
         "high": 84.57,
-        "low": 84.41,
-        "close": 84.54,
+        "low": 84.28,
+        "close": 84.46,
         "prev_close": 84.49,
-        "volume": 2139809,
-        "change_pct": 0.06
+        "volume": 4249830,
+        "change_pct": -0.04
       },
       {
         "symbol": "IEF",
@@ -490,11 +471,11 @@
         "category": "bonds",
         "open": 93.74,
         "high": 93.78,
-        "low": 93.69,
-        "close": 93.75,
+        "low": 93.59,
+        "close": 93.68,
         "prev_close": 93.71,
-        "volume": 465467,
-        "change_pct": 0.04
+        "volume": 1195353,
+        "change_pct": -0.03
       },
       {
         "symbol": "HYG",
@@ -502,23 +483,23 @@
         "category": "bonds",
         "open": 79.78,
         "high": 79.83,
-        "low": 79.71,
-        "close": 79.74,
+        "low": 79.63,
+        "close": 79.69,
         "prev_close": 79.75,
-        "volume": 3582053,
-        "change_pct": -0.01
+        "volume": 5561770,
+        "change_pct": -0.08
       },
       {
         "symbol": "UUP",
         "name": "US Dollar Index ETF",
         "category": "dollar",
         "open": 28.36,
-        "high": 28.38,
+        "high": 28.39,
         "low": 28.35,
-        "close": 28.35,
+        "close": 28.36,
         "prev_close": 28.36,
-        "volume": 109852,
-        "change_pct": -0.04
+        "volume": 191559,
+        "change_pct": 0.0
       },
       {
         "symbol": "GLD",
@@ -526,11 +507,11 @@
         "category": "commodities",
         "open": 375.0,
         "high": 376.97,
-        "low": 374.97,
-        "close": 376.78,
+        "low": 373.74,
+        "close": 376.17,
         "prev_close": 378.18,
-        "volume": 1530648,
-        "change_pct": -0.37
+        "volume": 2950112,
+        "change_pct": -0.53
       },
       {
         "symbol": "SLV",
@@ -538,11 +519,11 @@
         "category": "commodities",
         "open": 53.69,
         "high": 54.29,
-        "low": 53.67,
-        "close": 54.14,
+        "low": 53.23,
+        "close": 53.92,
         "prev_close": 54.14,
-        "volume": 5164669,
-        "change_pct": 0.0
+        "volume": 6557208,
+        "change_pct": -0.41
       },
       {
         "symbol": "VIX",
@@ -551,10 +532,10 @@
         "open": 16.06,
         "high": 16.16,
         "low": 15.48,
-        "close": 15.55,
+        "close": 15.78,
         "prev_close": 15.84,
         "volume": null,
-        "change_pct": -1.83
+        "change_pct": -0.38
       }
     ]
   }
