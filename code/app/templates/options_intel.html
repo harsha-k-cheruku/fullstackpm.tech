@@ -346,10 +346,7 @@
     ('next_week',  'Next Week',  latest.looking_ahead.next_week),
     ('next_month', 'Next Month', latest.looking_ahead.next_month),
   ] %}
-  {% set has_any = (latest.looking_ahead.this_week  | default([]) | length > 0)
-                or (latest.looking_ahead.next_week   | default([]) | length > 0)
-                or (latest.looking_ahead.next_month  | default([]) | length > 0) %}
-  {% if has_any %}
+  {% if true %}
   <section class="mb-10">
     <div class="section-rule">
       <span class="label">Looking Ahead</span>
@@ -357,11 +354,13 @@
     </div>
 
     {% for window_key, window_label, events in windows %}
-    {% if events and events | length > 0 %}
     <div class="mb-6">
       <h3 class="font-mono text-xs font-semibold uppercase tracking-widest mb-3"
           style="color: var(--color-text-tertiary);">{{ window_label }}</h3>
 
+      {% if not events or events | length == 0 %}
+      <p class="text-xs font-mono px-1" style="color: var(--color-text-tertiary);">Nothing scheduled.</p>
+      {% else %}
       <div class="space-y-4">
         {% for ev in events %}
         <div class="rounded-lg border p-4" style="border-color: var(--color-border); background: var(--color-bg-secondary);">
@@ -450,8 +449,8 @@
         </div>
         {% endfor %}
       </div>
+      {% endif %}
     </div>
-    {% endif %}
     {% endfor %}
 
   </section>
