@@ -342,13 +342,13 @@
   {# ── Looking Ahead ────────────────────────────────────────────────────────── #}
   {% if latest.looking_ahead %}
   {% set windows = [
-    ('tomorrow',   'Tomorrow',  latest.looking_ahead.tomorrow),
-    ('next_week',  'Next Week', latest.looking_ahead.next_week),
-    ('next_month', 'Next Month',latest.looking_ahead.next_month),
+    ('this_week',  'This Week',  latest.looking_ahead.this_week),
+    ('next_week',  'Next Week',  latest.looking_ahead.next_week),
+    ('next_month', 'Next Month', latest.looking_ahead.next_month),
   ] %}
-  {% set has_any = (latest.looking_ahead.tomorrow | default([]) | length > 0)
-                or (latest.looking_ahead.next_week  | default([]) | length > 0)
-                or (latest.looking_ahead.next_month | default([]) | length > 0) %}
+  {% set has_any = (latest.looking_ahead.this_week  | default([]) | length > 0)
+                or (latest.looking_ahead.next_week   | default([]) | length > 0)
+                or (latest.looking_ahead.next_month  | default([]) | length > 0) %}
   {% if has_any %}
   <section class="mb-10">
     <div class="section-rule">
