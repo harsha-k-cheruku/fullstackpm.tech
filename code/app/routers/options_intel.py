@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import re
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Optional
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Request, status
@@ -19,6 +20,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory=str(settings.templates_dir))
 
 MAX_PAYLOAD_BYTES = 256_000
+LATEST_JSON = settings.data_dir / "options_intel_latest.json"
 
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
@@ -80,23 +82,54 @@ async def latest_notification(
 
 # ── Dashboard page ────────────────────────────────────────────────────────────
 
+def _load_latest_json() -> dict | None:
+    """Read the latest run from the git-committed JSON file (survives Render deploys)."""
+    try:
+        if LATEST_JSON.exists():
+            entry = json.loads(LATEST_JSON.read_text())
+            if isinstance(entry, dict):
+                return entry
+    except Exception:
+        pass
+    return None
+
+
 @router.get("/options-intel", response_class=HTMLResponse)
 async def options_intel_dashboard(request: Request, db: Session = Depends(get_db)):
     """Public dashboard showing the latest morning brief and run history."""
+    latest = None
+    history: list[dict] = []
+
+    # Primary: git-committed latest.json (persists across Render deploys)
+    entry = _load_latest_json()
+    if entry:
+        payload_text = json.dumps({"body": entry.get("body", ""), "structured": entry.get("structured")})
+        try:
+            created_at = datetime.fromisoformat(entry.get("written_at", ""))
+        except Exception:
+            created_at = None
+        latest = _parse_brief(payload_text, created_at)
+        history = [_brief_summary(latest)]
+
+    # Fallback / history supplement: SQLite rows
     rows = (
         db.query(OptionsIntelNotification)
         .order_by(OptionsIntelNotification.created_at.desc())
         .limit(30)
         .all()
     )
+    if not latest and rows:
+        row = rows[0]
+        latest = _parse_brief(row.payload_text, row.created_at)
 
-    latest = None
-    history = []
-    for i, row in enumerate(rows):
-        parsed = _parse_brief(row.payload_text, row.created_at)
-        if i == 0:
-            latest = parsed
-        history.append(_brief_summary(parsed))
+    db_summaries = [_brief_summary(_parse_brief(r.payload_text, r.created_at)) for r in rows]
+    if db_summaries:
+        # Merge: JSON latest + DB history (deduplicate by date)
+        seen_dates = {h.get("date") for h in history}
+        for s in db_summaries:
+            if s.get("date") not in seen_dates:
+                history.append(s)
+                seen_dates.add(s.get("date"))
 
     return templates.TemplateResponse(
         "options_intel.html",
