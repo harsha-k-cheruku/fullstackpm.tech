@@ -418,6 +418,12 @@
               {{ meta.industry }}
             </span>
             {% endif %}
+            {% for etf in meta.sector_etf | default([]) %}
+            <span class="inline-block rounded px-2 py-0.5 text-xs font-mono font-semibold"
+                  style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.3);">
+              {{ etf }}
+            </span>
+            {% endfor %}
             {% for idx in meta.indices | default([]) %}
             <span class="inline-block rounded px-2 py-0.5 text-xs font-mono"
                   style="background:var(--color-accent-light);color:var(--color-accent);">
