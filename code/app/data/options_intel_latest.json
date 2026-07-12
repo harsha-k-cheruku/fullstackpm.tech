@@ -1,11 +1,11 @@
 {
-  "written_at": "2026-07-11T17:24:37.969299+00:00",
-  "body": "MORNING INTEL \u2014 2026-07-11 (snapshot 2026-07-11_2)\nRegime data: VIX 15.03 | HY OAS 270 | Breadth 90.9%\nAMZN: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nNVDA: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nSPY: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
+  "written_at": "2026-07-12T10:50:26.332893+00:00",
+  "body": "MORNING INTEL \u2014 2026-07-12 (snapshot 2026-07-12_1)\nRegime data: VIX 15.03 | HY OAS 270 | Breadth 90.9%\nAMZN: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nNVDA: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nSPY: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
   "structured": {
-    "date": "2026-07-11",
-    "snapshot_id": "2026-07-11_2",
-    "warmup_days_remaining": 27,
-    "takeaway": "The current regime shows a low VIX at 15.03 with a steep contango structure (9D at 11.15 vs 3M at 18.57), signaling subdued near-term volatility but elevated longer-term uncertainty, while HY spreads remain elevated at 270 bps, reflecting cautious credit conditions amid rising rates (US10Y at 4.54%). SPY is perched just below its all-time high at $754.95 with moderate IV at 19.05% and positive sentiment, suggesting a bullish but fragile tape primed for a breakout if momentum sustains. NVDA at $210.96 with IV north of 45% and strong positive sentiment is the clear AI euphoria proxy, supported by the ongoing IPO boom highlighted by SK Hynix\u2019s strong debut, which could fuel further tech sector upside. AMZN at $245.34 shows neutral sentiment and no fresh catalysts, implying limited near-term directional conviction. The key catalyst to watch is the upcoming bank earnings next week (BAC, JPM, WFC, GS, MS), as any signs of credit stress or cautious guidance could quickly unravel risk appetite and pull SPY back from record highs. The main risk is a potential volatility spike if credit conditions worsen or if the AI IPO enthusiasm fades abruptly. System is in warmup mode with IV rank filters inactive, so expect less signal clarity until full activation.",
+    "date": "2026-07-12",
+    "snapshot_id": "2026-07-12_1",
+    "warmup_days_remaining": 26,
+    "takeaway": "The current regime shows a moderately elevated VIX at 15.03 with a steep 9-day to 3-month contango, signaling short-term caution but longer-term risk appetite remains intact, supported by tight HY spreads at 270 bps and strong market breadth near 91%. SPY at $754.95 with 22.15% IV and neutral sentiment reflects mixed macro signals, while NVDA\u2019s $210.96 price and elevated 50.51% IV combined with a positive sentiment (+1) suggest a bullish setup fueled by the recent stock split and renewed buying interest. AMZN at $245.34 with 45.83% IV and neutral sentiment remains range-bound absent fresh catalysts. The key near-term catalyst is the upcoming bank earnings cycle starting July 14, which will be critical for gauging financial sector health and broader risk appetite amid stubbornly high 10-year yields near 4.54%. A growing risk is the stubbornly high US 2-year yield at 4.16%, which could pressure growth stocks if hawkish Fed expectations persist. System is in warmup with IV rank gating still offline, so volatility signals remain less reliable for now.",
     "regime": {
       "vix": 15.03,
       "vix9d": 11.15,
@@ -21,10 +21,10 @@
       "SPY": {
         "ticker": "SPY",
         "spot": 754.95,
-        "iv_30d_pct": 19.05,
+        "iv_30d_pct": 22.15,
         "iv_rank": null,
-        "sentiment_score": 2,
-        "sentiment_driver": "S&P 500 inches away from record high",
+        "sentiment_score": 0,
+        "sentiment_driver": "Mixed factors affecting market outlook",
         "gate_passed": false,
         "gate_failure": "G2_iv_rank",
         "gate_failure_detail": "IV Rank below minimum or missing",
@@ -39,10 +39,10 @@
       "NVDA": {
         "ticker": "NVDA",
         "spot": 210.96,
-        "iv_30d_pct": 45.27,
+        "iv_30d_pct": 50.51,
         "iv_rank": null,
-        "sentiment_score": 2,
-        "sentiment_driver": "AI euphoria persists with IPO boom",
+        "sentiment_score": 1,
+        "sentiment_driver": "Stock split and buying opportunities discussed",
         "gate_passed": false,
         "gate_failure": "G2_iv_rank",
         "gate_failure_detail": "IV Rank below minimum or missing",
@@ -57,10 +57,10 @@
       "AMZN": {
         "ticker": "AMZN",
         "spot": 245.34,
-        "iv_30d_pct": 41.16,
+        "iv_30d_pct": 45.83,
         "iv_rank": null,
         "sentiment_score": 0,
-        "sentiment_driver": "No specific headlines for AMZN",
+        "sentiment_driver": "No relevant headlines for AMZN",
         "gate_passed": false,
         "gate_failure": "G2_iv_rank",
         "gate_failure_detail": "IV Rank below minimum or missing",
@@ -75,51 +75,51 @@
     },
     "news": [
       {
-        "ticker": "NVDA",
-        "title": "Why the 2026 IPO boom is about to broaden beyond AI mega-deals",
-        "source": "fortune.com",
-        "published_utc": "2026-07-11T08:00:00+00:00"
-      },
-      {
-        "ticker": "NVDA",
-        "title": "SK Hynix shares jump in marquee US debut as AI euphoria persists",
-        "source": "economictimes.indiatimes.com",
-        "published_utc": "2026-07-11T03:34:42+00:00"
-      },
-      {
         "ticker": null,
-        "title": "S&P 500 Snapshot: Inches Away From Record High",
-        "source": "etftrends.com",
-        "published_utc": "2026-07-10T21:49:04+00:00"
+        "title": "Will Nifty, Sensex extend gains on Monday? Q1, oil among 5 major factors investors must track",
+        "source": "economictimes.indiatimes.com",
+        "published_utc": "2026-07-12T03:47:13+00:00"
+      },
+      {
+        "ticker": "NVDA",
+        "title": "CrowdStrike Just Completed a Stock Split. Is the Stock a Buy Now?",
+        "source": "finance.yahoo.com",
+        "published_utc": "2026-07-11T22:30:00+00:00"
+      },
+      {
+        "ticker": "NVDA",
+        "title": "This Unstoppable Tech ETF Is Down More Than 20%. Is It Time to Buy the Dip?",
+        "source": "finance.yahoo.com",
+        "published_utc": "2026-07-11T21:54:00+00:00"
       }
     ],
     "looking_ahead": {
       "narratives": {
-        "this_week": "Bank earnings dominate this week with major reports from BAC, JPM, WFC, and GS on July 14, followed by MS on July 15. Investors will focus on credit quality and margin trends amid mixed expectations, especially the cautious tone around WFC versus the slightly positive outlook for GS. The financial sector\u2019s performance will set the tone for broader risk sentiment, influencing SPY\u2019s near-term direction given banks\u2019 market sensitivity. Watch for any signs of credit stress or upside surprises that could also impact tech and consumer discretionary risk appetite, including early signals for AMZN.",
-        "next_week": "Next week features key Communication Services earnings with GOOGL and T on July 22, alongside TSLA in Consumer Discretionary. GOOGL\u2019s AI investment focus and moderate growth expectations are critical for the tech sector\u2019s momentum, directly relevant to NVDA\u2019s valuation as AI leadership narratives evolve. TSLA\u2019s growth outlook tempered by margin pressure could weigh on discretionary sentiment and SPY\u2019s cyclicals exposure. Real estate and industrials also report, but the tech and consumer discretionary earnings will be the main cross-asset drivers.",
-        "next_month": "The following month brings heavyweight tech earnings from MSFT, AAPL, AMZN, and META between July 29-30, alongside the FOMC meeting and July PCE data. Strong cloud and AI growth expected from MSFT and AMZN underpin bullish views on NVDA and the broader tech sector, while the FOMC\u2019s likely hold and inflation data will calibrate risk appetite across equities and fixed income. Investors should monitor inflation surprises that could pressure multiples and weigh on SPY, with energy and materials earnings adding nuance to sector rotation themes ahead of August\u2019s NFP report."
+        "this_week": "Bank earnings dominate this week with major reports from BAC, JPM, WFC, GS on July 14 and MS on July 15. Investors will focus on credit quality and trading revenue amid a VIX at 15.03 in contango and HY OAS steady at 270 bps, signaling moderate risk appetite. Financials\u2019 performance will provide early clues on economic resilience, influencing SPY\u2019s financial sector weighting and broader market sentiment ahead of communication and healthcare earnings later in the week, including NFLX and UNH.",
+        "next_week": "Next week features key technology and consumer discretionary earnings, notably TSLA and GOOGL on July 22, with bullish sentiment expected. The results will be a critical gauge of demand trends and innovation momentum, impacting NVDA\u2019s AI leadership narrative and AMZN\u2019s e-commerce outlook. Industrial and materials earnings like RTX, HON, FCX, and NEM will also offer insight into global growth dynamics, which could sway cyclicals within SPY and inform cross-asset risk positioning.",
+        "next_month": "The following month brings a heavy slate including MSFT, META, AMZN, and AAPL earnings alongside the July 30 FOMC meeting, where the market prices a 79% chance of a hold at 3.50%. Core PCE inflation data on July 31 carries downside risk with a 60% chance of exceeding 0.2%, potentially pressuring growth stocks like NVDA and AMZN if inflation surprises. AMD\u2019s August 4 report will be closely watched for AI accelerator market share, adding another layer of tech sector volatility ahead of the August 7 NFP, which currently signals a cautious labor market outlook."
       },
       "this_week": [
         {
           "event_type": "earnings",
           "event_date": "2026-07-14",
-          "days_until": 3,
+          "days_until": 2,
           "ticker": "BAC",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Market expects stable to slightly positive earnings",
+            "prediction_market_summary": "No specific market odds available",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Better-than-expected loan growth and lower credit costs",
+              "trigger": "Strong revenue and loan growth beat",
               "implication": "SPY up modestly; NVDA and AMZN little affected"
             },
             "base": {
-              "trigger": "In-line earnings with steady guidance",
-              "implication": "SPY flat; NVDA and AMZN neutral"
+              "trigger": "In-line earnings with stable guidance",
+              "implication": "SPY flat to slightly positive; NVDA and AMZN unchanged"
             },
             "bear": {
-              "trigger": "Weak trading revenue or rising credit losses",
-              "implication": "SPY down; NVDA and AMZN mildly pressured by risk-off"
+              "trigger": "Weak loan demand or credit issues",
+              "implication": "SPY down; NVDA and AMZN mildly pressured by risk-off sentiment"
             }
           },
           "metadata": {
@@ -146,23 +146,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-14",
-          "days_until": 3,
+          "days_until": 2,
           "ticker": "JPM",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Stable earnings expected with slight upside potential",
+            "prediction_market_summary": "No specific market odds available",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Strong trading and investment banking revenue",
-              "implication": "SPY up; NVDA and AMZN slightly positive on risk-on sentiment"
+              "trigger": "Beats on net interest income and fees",
+              "implication": "SPY up; NVDA and AMZN unaffected"
             },
             "base": {
-              "trigger": "Earnings in line with expectations",
-              "implication": "SPY flat; NVDA and AMZN neutral"
+              "trigger": "Meets expectations with cautious outlook",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Disappointing loan growth or margin compression",
-              "implication": "SPY down; NVDA and AMZN mildly negative"
+              "trigger": "Disappointing trading revenue or credit losses",
+              "implication": "SPY down; tech stocks mildly pressured"
             }
           },
           "metadata": {
@@ -191,23 +191,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-14",
-          "days_until": 3,
+          "days_until": 2,
           "ticker": "WFC",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Mixed expectations with cautious tone",
-            "chip": "BEAR",
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Better credit quality and cost control",
-              "implication": "SPY modestly up; NVDA and AMZN neutral"
+              "trigger": "Improved margins and loan growth",
+              "implication": "SPY modestly higher; NVDA and AMZN unaffected"
             },
             "base": {
-              "trigger": "In-line earnings with cautious guidance",
-              "implication": "SPY flat to slightly down; NVDA and AMZN neutral"
+              "trigger": "In-line results with stable outlook",
+              "implication": "SPY flat; NVDA and AMZN unchanged"
             },
             "bear": {
-              "trigger": "Rising credit losses or weak revenue",
-              "implication": "SPY down; NVDA and AMZN pressured by risk-off"
+              "trigger": "Weak credit quality or revenue miss",
+              "implication": "SPY down; risk-off weighs on NVDA and AMZN slightly"
             }
           },
           "metadata": {
@@ -234,23 +234,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-14",
-          "days_until": 3,
+          "days_until": 2,
           "ticker": "GS",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Slightly positive earnings expected",
-            "chip": "BULL",
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Strong investment banking fees and trading revenue",
-              "implication": "SPY up; NVDA and AMZN benefit from risk-on"
+              "trigger": "Strong trading and investment banking results",
+              "implication": "SPY up; NVDA and AMZN neutral"
             },
             "base": {
-              "trigger": "Earnings in line with expectations",
-              "implication": "SPY flat; NVDA and AMZN neutral"
+              "trigger": "Meets expectations with cautious commentary",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Weak trading or investment banking revenue",
-              "implication": "SPY down; NVDA and AMZN mildly negative"
+              "trigger": "Revenue miss or weak outlook",
+              "implication": "SPY down; tech stocks mildly pressured"
             }
           },
           "metadata": {
@@ -278,7 +278,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-15",
-          "days_until": 4,
+          "days_until": 3,
           "ticker": "MS",
           "prediction_markets": [],
           "scenarios": null,
@@ -306,7 +306,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-15",
-          "days_until": 4,
+          "days_until": 3,
           "ticker": "JNJ",
           "prediction_markets": [],
           "scenarios": null,
@@ -335,23 +335,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-16",
-          "days_until": 5,
+          "days_until": 4,
           "ticker": "NFLX",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Mixed expectations with growth concerns",
+            "prediction_market_summary": "No specific market odds available",
             "chip": "BEAR",
             "bull": {
               "trigger": "Subscriber growth beats and margin expansion",
-              "implication": "SPY up; NVDA neutral; AMZN slightly positive"
+              "implication": "SPY up; NVDA and AMZN modestly positive"
             },
             "base": {
               "trigger": "In-line subscriber growth and guidance",
-              "implication": "SPY flat; NVDA and AMZN neutral"
+              "implication": "SPY flat; NVDA and AMZN unchanged"
             },
             "bear": {
-              "trigger": "Subscriber losses or weak guidance",
-              "implication": "SPY down; NVDA neutral; AMZN mildly negative"
+              "trigger": "Subscriber loss or weak guidance",
+              "implication": "SPY down; NVDA and AMZN pressured by tech selloff"
             }
           },
           "metadata": {
@@ -378,51 +378,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-16",
-          "days_until": 5,
-          "ticker": "UNH",
-          "prediction_markets": [],
-          "scenarios": {
-            "prediction_market_summary": "Steady earnings expected with moderate growth",
-            "chip": "BULL",
-            "bull": {
-              "trigger": "Better cost management and revenue growth",
-              "implication": "SPY up; NVDA neutral; AMZN neutral"
-            },
-            "base": {
-              "trigger": "In-line earnings and guidance",
-              "implication": "SPY flat; NVDA and AMZN neutral"
-            },
-            "bear": {
-              "trigger": "Rising medical costs or weak revenue",
-              "implication": "SPY down; NVDA and AMZN neutral"
-            }
-          },
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLV"
-            ],
-            "sector": "Health Care",
-            "industry": "Managed Care / Optum",
-            "consumers": [
-              "Employers",
-              "Medicare/Medicaid patients",
-              "Hospitals"
-            ],
-            "vendors": [
-              "Optum Rx (in-house)",
-              "McKesson",
-              "AmerisourceBergen"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-16",
-          "days_until": 5,
+          "days_until": 4,
           "ticker": "GE",
           "prediction_markets": [],
           "scenarios": null,
@@ -450,7 +406,51 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-16",
-          "days_until": 5,
+          "days_until": 4,
+          "ticker": "UNH",
+          "prediction_markets": [],
+          "scenarios": {
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "BULL",
+            "bull": {
+              "trigger": "Strong revenue and margin beat",
+              "implication": "SPY up; NVDA and AMZN slightly positive"
+            },
+            "base": {
+              "trigger": "Meets expectations with stable outlook",
+              "implication": "SPY flat; NVDA and AMZN steady"
+            },
+            "bear": {
+              "trigger": "Profit miss or weak guidance",
+              "implication": "SPY down; tech stocks mildly pressured"
+            }
+          },
+          "metadata": {
+            "indices": [
+              "SP500",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLV"
+            ],
+            "sector": "Health Care",
+            "industry": "Managed Care / Optum",
+            "consumers": [
+              "Employers",
+              "Medicare/Medicaid patients",
+              "Hospitals"
+            ],
+            "vendors": [
+              "Optum Rx (in-house)",
+              "McKesson",
+              "AmerisourceBergen"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-16",
+          "days_until": 4,
           "ticker": "PLD",
           "prediction_markets": [],
           "scenarios": null,
@@ -480,95 +480,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-22",
-          "days_until": 11,
-          "ticker": "GOOGL",
-          "prediction_markets": [],
-          "scenarios": {
-            "prediction_market_summary": "Moderate growth expected with AI investment focus",
-            "chip": "BULL",
-            "bull": {
-              "trigger": "Strong ad revenue and AI product monetization",
-              "implication": "SPY up; NVDA up; AMZN up"
-            },
-            "base": {
-              "trigger": "In-line earnings with cautious AI spending",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
-            },
-            "bear": {
-              "trigger": "Weak ad revenue or high AI costs",
-              "implication": "SPY down; NVDA down; AMZN down"
-            }
-          },
-          "metadata": {
-            "indices": [
-              "SP500",
-              "NDX"
-            ],
-            "sector_etf": [
-              "XLC"
-            ],
-            "sector": "Communication Services",
-            "industry": "Search / Cloud / AI",
-            "consumers": [
-              "Advertisers",
-              "Enterprise GCP",
-              "Android OEMs"
-            ],
-            "vendors": [
-              "NVDA",
-              "Intel",
-              "TPU in-house"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-22",
-          "days_until": 11,
-          "ticker": "T",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLC"
-            ],
-            "sector": "Communication Services",
-            "industry": "Telecom",
-            "consumers": [
-              "Retail subscribers",
-              "Enterprise"
-            ],
-            "vendors": [
-              "Ericsson",
-              "Nokia",
-              "Samsung Networks"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-22",
-          "days_until": 11,
+          "days_until": 10,
           "ticker": "TSLA",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Growth expected but margin pressure possible",
-            "chip": "NEUTRAL",
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "BULL",
             "bull": {
               "trigger": "Strong vehicle deliveries and margin expansion",
-              "implication": "SPY up; NVDA up; AMZN neutral"
+              "implication": "SPY up; NVDA up on AI synergy; AMZN neutral"
             },
             "base": {
-              "trigger": "In-line deliveries and margin pressure",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "In-line deliveries and guidance",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Delivery misses or rising costs",
-              "implication": "SPY down; NVDA down; AMZN neutral"
+              "trigger": "Delivery miss or margin compression",
+              "implication": "SPY down; NVDA and AMZN pressured by tech selloff"
             }
           },
           "metadata": {
@@ -597,7 +525,79 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-22",
-          "days_until": 11,
+          "days_until": 10,
+          "ticker": "T",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLC"
+            ],
+            "sector": "Communication Services",
+            "industry": "Telecom",
+            "consumers": [
+              "Retail subscribers",
+              "Enterprise"
+            ],
+            "vendors": [
+              "Ericsson",
+              "Nokia",
+              "Samsung Networks"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-22",
+          "days_until": 10,
+          "ticker": "GOOGL",
+          "prediction_markets": [],
+          "scenarios": {
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "BULL",
+            "bull": {
+              "trigger": "Ad revenue and cloud growth beat",
+              "implication": "SPY up; NVDA up on AI demand; AMZN slightly positive"
+            },
+            "base": {
+              "trigger": "In-line results and guidance",
+              "implication": "SPY flat; NVDA and AMZN steady"
+            },
+            "bear": {
+              "trigger": "Ad revenue miss or cloud slowdown",
+              "implication": "SPY down; NVDA and AMZN pressured"
+            }
+          },
+          "metadata": {
+            "indices": [
+              "SP500",
+              "NDX"
+            ],
+            "sector_etf": [
+              "XLC"
+            ],
+            "sector": "Communication Services",
+            "industry": "Search / Cloud / AI",
+            "consumers": [
+              "Advertisers",
+              "Enterprise GCP",
+              "Android OEMs"
+            ],
+            "vendors": [
+              "NVDA",
+              "Intel",
+              "TPU in-house"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-22",
+          "days_until": 10,
           "ticker": "CCI",
           "prediction_markets": [],
           "scenarios": null,
@@ -624,35 +624,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-23",
-          "days_until": 12,
-          "ticker": "HON",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLI"
-            ],
-            "sector": "Industrials",
-            "industry": "Diversified Industrials",
-            "consumers": [
-              "Aerospace OEMs",
-              "Refineries",
-              "Building operators"
-            ],
-            "vendors": [
-              "Steel suppliers",
-              "Electronic component makers"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-23",
-          "days_until": 12,
+          "days_until": 11,
           "ticker": "RTX",
           "prediction_markets": [],
           "scenarios": null,
@@ -681,34 +653,35 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-23",
-          "days_until": 12,
-          "ticker": "NEM",
+          "days_until": 11,
+          "ticker": "HON",
           "prediction_markets": [],
           "scenarios": null,
           "metadata": {
             "indices": [
-              "SP500"
+              "SP500",
+              "DJI"
             ],
             "sector_etf": [
-              "XLB"
+              "XLI"
             ],
-            "sector": "Materials",
-            "industry": "Gold Mining",
+            "sector": "Industrials",
+            "industry": "Diversified Industrials",
             "consumers": [
-              "Jewelry makers",
-              "Central banks",
-              "ETF (GLD)"
+              "Aerospace OEMs",
+              "Refineries",
+              "Building operators"
             ],
             "vendors": [
-              "Mining equipment makers",
-              "Energy utilities"
+              "Steel suppliers",
+              "Electronic component makers"
             ]
           }
         },
         {
           "event_type": "earnings",
           "event_date": "2026-07-23",
-          "days_until": 12,
+          "days_until": 11,
           "ticker": "FCX",
           "prediction_markets": [],
           "scenarios": null,
@@ -735,7 +708,34 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-23",
-          "days_until": 12,
+          "days_until": 11,
+          "ticker": "NEM",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500"
+            ],
+            "sector_etf": [
+              "XLB"
+            ],
+            "sector": "Materials",
+            "industry": "Gold Mining",
+            "consumers": [
+              "Jewelry makers",
+              "Central banks",
+              "ETF (GLD)"
+            ],
+            "vendors": [
+              "Mining equipment makers",
+              "Energy utilities"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-23",
+          "days_until": 11,
           "ticker": "DLR",
           "prediction_markets": [],
           "scenarios": null,
@@ -762,7 +762,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-24",
-          "days_until": 13,
+          "days_until": 12,
           "ticker": "SLB",
           "prediction_markets": [],
           "scenarios": null,
@@ -790,7 +790,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-24",
-          "days_until": 13,
+          "days_until": 12,
           "ticker": "NEE",
           "prediction_markets": [],
           "scenarios": null,
@@ -821,7 +821,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-28",
-          "days_until": 17,
+          "days_until": 16,
           "ticker": "UPS",
           "prediction_markets": [],
           "scenarios": null,
@@ -850,7 +850,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-28",
-          "days_until": 17,
+          "days_until": 16,
           "ticker": "SHW",
           "prediction_markets": [],
           "scenarios": null,
@@ -878,7 +878,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-28",
-          "days_until": 17,
+          "days_until": 16,
           "ticker": "KO",
           "prediction_markets": [],
           "scenarios": null,
@@ -906,7 +906,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-28",
-          "days_until": 17,
+          "days_until": 16,
           "ticker": "AMT",
           "prediction_markets": [],
           "scenarios": null,
@@ -933,23 +933,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-29",
-          "days_until": 18,
+          "days_until": 17,
           "ticker": "MSFT",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Strong cloud and AI growth expected",
+            "prediction_market_summary": "No specific market odds available",
             "chip": "BULL",
             "bull": {
-              "trigger": "Better-than-expected cloud revenue and AI adoption",
-              "implication": "SPY up; NVDA up; AMZN up"
+              "trigger": "Strong cloud and AI revenue beat",
+              "implication": "SPY up; NVDA up sharply; AMZN positive"
             },
             "base": {
-              "trigger": "In-line earnings with steady guidance",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "Meets expectations with stable guidance",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Cloud slowdown or margin pressure",
-              "implication": "SPY down; NVDA down; AMZN down"
+              "trigger": "Cloud growth slowdown or margin miss",
+              "implication": "SPY down; NVDA and AMZN pressured"
             }
           },
           "metadata": {
@@ -980,23 +980,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-29",
-          "days_until": 18,
+          "days_until": 17,
           "ticker": "META",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Mixed expectations with AI investment focus",
-            "chip": "NEUTRAL",
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "BEAR",
             "bull": {
-              "trigger": "Strong ad revenue and AI monetization",
+              "trigger": "Ad revenue beats and AI investment payoff",
               "implication": "SPY up; NVDA up; AMZN neutral"
             },
             "base": {
-              "trigger": "In-line earnings with cautious guidance",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "In-line results and cautious outlook",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Ad revenue weakness or high AI costs",
-              "implication": "SPY down; NVDA down; AMZN neutral"
+              "trigger": "Ad revenue miss or high costs",
+              "implication": "SPY down; NVDA and AMZN pressured"
             }
           },
           "metadata": {
@@ -1025,7 +1025,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-29",
-          "days_until": 18,
+          "days_until": 17,
           "ticker": "PG",
           "prediction_markets": [],
           "scenarios": null,
@@ -1053,7 +1053,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-29",
-          "days_until": 18,
+          "days_until": 17,
           "ticker": "EQIX",
           "prediction_markets": [],
           "scenarios": null,
@@ -1081,7 +1081,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-29",
-          "days_until": 18,
+          "days_until": 17,
           "ticker": "QCOM",
           "prediction_markets": [],
           "scenarios": null,
@@ -1111,7 +1111,7 @@
         {
           "event_type": "FOMC",
           "event_date": "2026-07-30",
-          "days_until": 19,
+          "days_until": 18,
           "ticker": null,
           "prediction_markets": [
             {
@@ -1134,19 +1134,19 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "79% chance Fed holds at 3.50%, 1% chance cut",
+            "prediction_market_summary": "79% hold at 3.50%, 1% cut to \u22643.25%",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Fed signals patience and no hikes ahead",
-              "implication": "SPY up; NVDA up; AMZN up"
+              "trigger": "Fed signals pause with dovish tone",
+              "implication": "SPY up; NVDA and AMZN rally on lower rates"
             },
             "base": {
-              "trigger": "Fed holds rates steady with neutral tone",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "Fed holds rates steady with neutral guidance",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
               "trigger": "Hawkish tone or surprise rate hike",
-              "implication": "SPY down; NVDA down; AMZN down"
+              "implication": "SPY down; NVDA and AMZN selloff"
             }
           },
           "metadata": {}
@@ -1154,69 +1154,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-30",
-          "days_until": 19,
-          "ticker": "AAPL",
-          "prediction_markets": [],
-          "scenarios": {
-            "prediction_market_summary": "Steady growth expected with product cycle support",
-            "chip": "BULL",
-            "bull": {
-              "trigger": "Strong iPhone sales and services growth",
-              "implication": "SPY up; NVDA up; AMZN up"
-            },
-            "base": {
-              "trigger": "In-line earnings and guidance",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
-            },
-            "bear": {
-              "trigger": "Supply chain issues or weak demand",
-              "implication": "SPY down; NVDA down; AMZN down"
-            }
-          },
-          "metadata": {
-            "indices": [
-              "SP500",
-              "NDX",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLK"
-            ],
-            "sector": "Technology",
-            "industry": "Consumer Electronics",
-            "consumers": [
-              "Developers",
-              "Enterprise IT",
-              "Consumers"
-            ],
-            "vendors": [
-              "TSMC",
-              "Foxconn",
-              "Broadcom",
-              "Samsung"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-30",
-          "days_until": 19,
+          "days_until": 18,
           "ticker": "AMZN",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Growth expected with cloud and AI focus",
+            "prediction_market_summary": "No specific market odds available",
             "chip": "BULL",
             "bull": {
-              "trigger": "Strong AWS growth and AI product adoption",
-              "implication": "SPY up; NVDA up; AMZN up"
+              "trigger": "Strong AWS growth and margin expansion",
+              "implication": "SPY up; AMZN up; NVDA positive on cloud demand"
             },
             "base": {
-              "trigger": "In-line earnings with steady guidance",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "In-line revenue and guidance",
+              "implication": "SPY flat; AMZN and NVDA steady"
             },
             "bear": {
-              "trigger": "Cloud slowdown or margin pressure",
-              "implication": "SPY down; NVDA down; AMZN down"
+              "trigger": "AWS slowdown or margin pressure",
+              "implication": "SPY down; AMZN and NVDA pressured"
             }
           },
           "metadata": {
@@ -1246,7 +1200,53 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-30",
-          "days_until": 19,
+          "days_until": 18,
+          "ticker": "AAPL",
+          "prediction_markets": [],
+          "scenarios": {
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "BULL",
+            "bull": {
+              "trigger": "Strong iPhone sales and services growth",
+              "implication": "SPY up; NVDA and AMZN mildly positive"
+            },
+            "base": {
+              "trigger": "Meets expectations with stable guidance",
+              "implication": "SPY flat; NVDA and AMZN steady"
+            },
+            "bear": {
+              "trigger": "Product demand miss or margin compression",
+              "implication": "SPY down; NVDA and AMZN pressured"
+            }
+          },
+          "metadata": {
+            "indices": [
+              "SP500",
+              "NDX",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLK"
+            ],
+            "sector": "Technology",
+            "industry": "Consumer Electronics",
+            "consumers": [
+              "Developers",
+              "Enterprise IT",
+              "Consumers"
+            ],
+            "vendors": [
+              "TSMC",
+              "Foxconn",
+              "Broadcom",
+              "Samsung"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-30",
+          "days_until": 18,
           "ticker": "APD",
           "prediction_markets": [],
           "scenarios": null,
@@ -1273,7 +1273,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-30",
-          "days_until": 19,
+          "days_until": 18,
           "ticker": "SO",
           "prediction_markets": [],
           "scenarios": null,
@@ -1300,7 +1300,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-30",
-          "days_until": 19,
+          "days_until": 18,
           "ticker": "AEP",
           "prediction_markets": [],
           "scenarios": null,
@@ -1327,7 +1327,7 @@
         {
           "event_type": "PCE",
           "event_date": "2026-07-31",
-          "days_until": 20,
+          "days_until": 19,
           "ticker": null,
           "prediction_markets": [
             {
@@ -1350,19 +1350,19 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "60% chance core PCE >0.2%, 28% chance >0.3%",
+            "prediction_market_summary": "60% chance core PCE >0.2%, 28% >0.3%",
             "chip": "BEAR",
             "bull": {
               "trigger": "Core PCE below 0.2%, signaling easing inflation",
-              "implication": "SPY up; NVDA up; AMZN up"
+              "implication": "SPY up; NVDA and AMZN rally on rate cut hopes"
             },
             "base": {
               "trigger": "Core PCE around 0.2%, steady inflation",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Core PCE above 0.3%, indicating persistent inflation",
-              "implication": "SPY down; NVDA down; AMZN down"
+              "trigger": "Core PCE above 0.3%, inflation concerns rise",
+              "implication": "SPY down; NVDA and AMZN selloff"
             }
           },
           "metadata": {}
@@ -1370,7 +1370,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-31",
-          "days_until": 20,
+          "days_until": 19,
           "ticker": "ABBV",
           "prediction_markets": [],
           "scenarios": null,
@@ -1396,67 +1396,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-31",
-          "days_until": 20,
-          "ticker": "CVX",
-          "prediction_markets": [],
-          "scenarios": {
-            "prediction_market_summary": "Stable earnings with oil price sensitivity",
-            "chip": "NEUTRAL",
-            "bull": {
-              "trigger": "Higher oil prices and strong refining margins",
-              "implication": "SPY up; NVDA neutral; AMZN neutral"
-            },
-            "base": {
-              "trigger": "In-line earnings with stable oil prices",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
-            },
-            "bear": {
-              "trigger": "Oil price drop or margin compression",
-              "implication": "SPY down; NVDA neutral; AMZN neutral"
-            }
-          },
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLE"
-            ],
-            "sector": "Energy",
-            "industry": "Integrated Oil & Gas",
-            "consumers": [
-              "Refiners",
-              "Petrochemical companies",
-              "Consumers"
-            ],
-            "vendors": [
-              "SLB",
-              "Baker Hughes",
-              "Halliburton"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-31",
-          "days_until": 20,
+          "days_until": 19,
           "ticker": "XOM",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Stable earnings with oil market sensitivity",
+            "prediction_market_summary": "No specific market odds available",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Higher oil prices and strong production",
-              "implication": "SPY up; NVDA neutral; AMZN neutral"
+              "trigger": "Strong oil prices and earnings beat",
+              "implication": "SPY modestly up; NVDA and AMZN neutral"
             },
             "base": {
-              "trigger": "In-line earnings with stable oil prices",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "In-line earnings and guidance",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Oil price weakness or operational issues",
-              "implication": "SPY down; NVDA neutral; AMZN neutral"
+              "trigger": "Oil price drop or earnings miss",
+              "implication": "SPY down; NVDA and AMZN mildly pressured"
             }
           },
           "metadata": {
@@ -1485,7 +1441,51 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-31",
-          "days_until": 20,
+          "days_until": 19,
+          "ticker": "CVX",
+          "prediction_markets": [],
+          "scenarios": {
+            "prediction_market_summary": "No specific market odds available",
+            "chip": "NEUTRAL",
+            "bull": {
+              "trigger": "Strong earnings beat on refining and production",
+              "implication": "SPY modestly up; NVDA and AMZN neutral"
+            },
+            "base": {
+              "trigger": "Meets expectations with stable outlook",
+              "implication": "SPY flat; NVDA and AMZN steady"
+            },
+            "bear": {
+              "trigger": "Earnings miss or weak guidance",
+              "implication": "SPY down; NVDA and AMZN mildly pressured"
+            }
+          },
+          "metadata": {
+            "indices": [
+              "SP500",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLE"
+            ],
+            "sector": "Energy",
+            "industry": "Integrated Oil & Gas",
+            "consumers": [
+              "Refiners",
+              "Petrochemical companies",
+              "Consumers"
+            ],
+            "vendors": [
+              "SLB",
+              "Baker Hughes",
+              "Halliburton"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-31",
+          "days_until": 19,
           "ticker": "LIN",
           "prediction_markets": [],
           "scenarios": null,
@@ -1513,7 +1513,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-07-31",
-          "days_until": 20,
+          "days_until": 19,
           "ticker": "D",
           "prediction_markets": [],
           "scenarios": null,
@@ -1540,7 +1540,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-04",
-          "days_until": 24,
+          "days_until": 23,
           "ticker": "MCD",
           "prediction_markets": [],
           "scenarios": null,
@@ -1569,7 +1569,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-04",
-          "days_until": 24,
+          "days_until": 23,
           "ticker": "BKNG",
           "prediction_markets": [],
           "scenarios": null,
@@ -1597,7 +1597,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-04",
-          "days_until": 24,
+          "days_until": 23,
           "ticker": "MRK",
           "prediction_markets": [],
           "scenarios": null,
@@ -1626,7 +1626,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-04",
-          "days_until": 24,
+          "days_until": 23,
           "ticker": "CAT",
           "prediction_markets": [],
           "scenarios": null,
@@ -1655,7 +1655,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-04",
-          "days_until": 24,
+          "days_until": 23,
           "ticker": "EOG",
           "prediction_markets": [],
           "scenarios": null,
@@ -1682,7 +1682,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-04",
-          "days_until": 24,
+          "days_until": 23,
           "ticker": "DUK",
           "prediction_markets": [],
           "scenarios": null,
@@ -1709,7 +1709,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-04",
-          "days_until": 24,
+          "days_until": 23,
           "ticker": "AMD",
           "prediction_markets": [
             {
@@ -1726,18 +1726,18 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "46% chance MI300+ hits $10B revenue, 70% chance NVDA >80% AI share",
-            "chip": "BULL",
+            "prediction_market_summary": "46% chance AMD MI300+ \u2265$10B revenue; 70% NVIDIA >80% AI accelerator share",
+            "chip": "BEAR",
             "bull": {
-              "trigger": "Strong MI300+ sales and competitive AI positioning",
-              "implication": "SPY up; NVDA neutral to slightly down; AMZN neutral"
+              "trigger": "AMD beats with strong MI300+ sales",
+              "implication": "SPY up; NVDA pressured; AMZN neutral"
             },
             "base": {
-              "trigger": "Moderate MI300+ sales, NVDA maintains AI dominance",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "In-line sales with competitive AI market share",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Weak MI300+ sales and loss of AI market share",
+              "trigger": "Weak MI300+ sales confirming NVIDIA dominance",
               "implication": "SPY down; NVDA up; AMZN neutral"
             }
           },
@@ -1770,7 +1770,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-05",
-          "days_until": 25,
+          "days_until": 24,
           "ticker": "DIS",
           "prediction_markets": [],
           "scenarios": null,
@@ -1799,23 +1799,23 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-05",
-          "days_until": 25,
+          "days_until": 24,
           "ticker": "LLY",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "Stable biotech earnings expected",
+            "prediction_market_summary": "No specific market odds available",
             "chip": "NEUTRAL",
             "bull": {
               "trigger": "Strong drug sales and pipeline progress",
-              "implication": "SPY up; NVDA neutral; AMZN neutral"
+              "implication": "SPY modestly up; NVDA and AMZN neutral"
             },
             "base": {
-              "trigger": "In-line earnings and guidance",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "Meets expectations with stable outlook",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Regulatory setbacks or weak sales",
-              "implication": "SPY down; NVDA neutral; AMZN neutral"
+              "trigger": "Drug trial failures or sales miss",
+              "implication": "SPY down; NVDA and AMZN mildly pressured"
             }
           },
           "metadata": {
@@ -1843,7 +1843,7 @@
         {
           "event_type": "earnings",
           "event_date": "2026-08-06",
-          "days_until": 26,
+          "days_until": 25,
           "ticker": "COP",
           "prediction_markets": [],
           "scenarios": null,
@@ -1871,12 +1871,12 @@
         {
           "event_type": "NFP",
           "event_date": "2026-08-07",
-          "days_until": 27,
+          "days_until": 26,
           "ticker": null,
           "prediction_markets": [
             {
               "question": "Will August 2026 U.S. nonfarm payroll employment increase by at least 150,000?",
-              "probability": 0.5,
+              "probability": 0.37,
               "url": "https://manifold.markets/CalibratedGhosts/will-august-2026-us-nonfarm-payroll",
               "source": "Manifold"
             },
@@ -1894,19 +1894,19 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "50% chance \u2265150k job gains in August, 25% in July",
-            "chip": "NEUTRAL",
+            "prediction_market_summary": "37% chance \u2265150K jobs added in Aug; 25% in July",
+            "chip": "BEAR",
             "bull": {
-              "trigger": "Strong job growth above 150k",
-              "implication": "SPY up; NVDA up; AMZN up"
+              "trigger": "Strong jobs growth >150K",
+              "implication": "SPY up; NVDA and AMZN positive on growth optimism"
             },
             "base": {
-              "trigger": "Moderate job growth near 150k",
-              "implication": "SPY flat; NVDA neutral; AMZN neutral"
+              "trigger": "Moderate jobs growth below 150K",
+              "implication": "SPY flat; NVDA and AMZN steady"
             },
             "bear": {
-              "trigger": "Weak job growth below 150k",
-              "implication": "SPY down; NVDA down; AMZN down"
+              "trigger": "Weak jobs growth or contraction",
+              "implication": "SPY down; NVDA and AMZN pressured by growth concerns"
             }
           },
           "metadata": {}
