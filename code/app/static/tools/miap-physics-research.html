@@ -529,6 +529,63 @@
       white-space: nowrap;
     }
 
+    /* ── Already Know ── */
+    .know-block { margin-bottom: 11px; }
+
+    .know-label {
+      font-size: 10.5px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .know-label.required { color: var(--blue); }
+    .know-label.should   { color: var(--orange, #c2540a); }
+    .know-label.flags    { color: var(--red); }
+
+    .know-items { display: flex; flex-direction: column; gap: 5px; }
+
+    .know-item {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .know-dot {
+      flex: 0 0 auto;
+      margin-top: 3px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .required .know-dot { background: var(--blue); }
+    .should   .know-dot { background: #c2540a; }
+    .flags    .know-dot { background: var(--red); }
+
+    .know-item-text { color: var(--muted); font-weight: 500; }
+    .know-item-text strong { color: var(--ink); }
+
+    .know-divider { border: none; border-top: 1px solid var(--line); margin: 11px 0; }
+
+    .hcv-callout {
+      margin-top: 12px;
+      padding: 11px 13px;
+      background: var(--blue-light);
+      border: 1px solid #c0d8f8;
+      border-radius: 13px;
+      font-size: 12.5px;
+      color: #1a3060;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
     @media print {
       body { background: white; }
       .page { width: 100%; margin: 0; border-radius: 0; box-shadow: none; padding: 24px; }
@@ -840,14 +897,43 @@
         </section>
 
         <section class="section">
-          <h2><span class="icon purple">✅</span>Applicant Self-Check</h2>
-          <ul>
-            <li>Can explain diffraction, resonance, and lasers without memorizing.</li>
-            <li>Comfortable with calculus, vectors, graphs, and basic programming.</li>
-            <li>Can summarize a Raman spectroscopy paper in 48 hours.</li>
-            <li>Enjoys debugging messy experiments, not just clean lecture notes.</li>
-            <li>Willing to learn Python, NumPy, and data analysis from scratch.</li>
-          </ul>
+          <h2><span class="icon purple">🎒</span>What You Should Already Have</h2>
+
+          <div class="know-block">
+            <div class="know-label required">✦ Must already have — no exceptions</div>
+            <div class="know-items required">
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text"><strong>Calculus that made sense, not just passed.</strong> Derivatives and integrals understood physically — what they mean, not just how to compute them. If it was rote, Year 1 will be brutal.</div></div>
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text"><strong>Strong Class 11–12 Physics.</strong> Mechanics, waves, optics, E&amp;M — can explain <em>why</em> equations work, not just plug numbers.</div></div>
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text"><strong>Comfort with vectors.</strong> Direction, magnitude, dot/cross products. Not just the formula — what they represent geometrically.</div></div>
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text"><strong>Patience with problems that don't resolve quickly.</strong> Research is 80% "it's not working yet." Must be okay sitting with that.</div></div>
+            </div>
+          </div>
+
+          <hr class="know-divider">
+
+          <div class="know-block">
+            <div class="know-label should">◆ Should already have (or be actively building)</div>
+            <div class="know-items should">
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text"><strong>Basic coding in any language.</strong> Even Excel macros or simple Python scripts count. Must not be allergic to programming.</div></div>
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text"><strong>Habit of reading things they don't fully understand</strong> and pushing through — textbooks, articles, anything dense.</div></div>
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text"><strong>Basic error analysis intuition.</strong> Why repeated measurements matter. What uncertainty and significant figures mean physically.</div></div>
+            </div>
+          </div>
+
+          <hr class="know-divider">
+
+          <div class="know-block">
+            <div class="know-label flags">✕ Red flags that signal poor fit</div>
+            <div class="know-items flags">
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text">Physics was a backup — engineering didn't happen and they expect this to be easier.</div></div>
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text">Passed calculus by memorising integration formulas without knowing what an integral <em>means</em>.</div></div>
+              <div class="know-item"><div class="know-dot"></div><div class="know-item-text">Primary goal is "a job after graduation" with no interest in further studies or research.</div></div>
+            </div>
+          </div>
+
+          <div class="hcv-callout">
+            <b>The honest filter:</b> If a student <em>enjoyed</em> solving H.C. Verma problems rather than just surviving them, they're probably the right fit. If they powered through it as a chore, four years of applied physics will feel like four years of chores.
+          </div>
         </section>
 
       </aside>
