@@ -96,6 +96,7 @@ async def borrower_generation_js(request: Request) -> Response:
     )
 
 
+@router.get("/miap-physics-research", response_class=HTMLResponse)
 @router.get("/miap-physics-research.html", response_class=HTMLResponse)
 async def miap_physics_research(request: Request) -> FileResponse:
     """MIAP B.Sc. Physics Honours research & career assessment poster."""
