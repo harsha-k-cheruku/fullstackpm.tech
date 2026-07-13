@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Mental Models & How to Think - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-7" style="color:#0053e2;text-decoration:none">Trust &amp; the meta level</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Mental Models &amp; How to Think</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Mental Models</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#what"><span class="num">1</span>What a mental model is</a>
+  <a href="#lattice"><span class="num">2</span>The latticework idea</a>
+  <a href="#toolkit"><span class="num">3</span>A core toolkit</a>
+  <a href="#inversion"><span class="num">4</span>Inversion, deep</a>
+  <a href="#incentives"><span class="num">5</span>Incentives</a>
+  <a href="#biases"><span class="num">6</span>The biases that corrupt</a>
+  <a href="#smarter"><span class="num">7</span>How to get smarter</a>
+  <a href="#warning"><span class="num">8</span>The reflexive warning</a>
+  <a href="#use"><span class="num">9</span>How to use it</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="../index.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Mental Models &amp; How to Think</h1>
+  <p class="lede">Every other note in this collection is a model of some slice of the world. This one is the note about the notes: what a model actually is, how to hold many of them at once, and how to pick the right one at the right moment - the practical operating system for thinking, and an index into everything else here.</p>
+  <p class="meta">Topic folder: first-principles-tutor/meta &middot; Captured 2026-07-12 &middot; The how-to-think companion that ties the whole collection together</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>A mental model is a compression:</strong> a lossy, reusable representation of how some part of the world works. You already think <em>through</em> models whether you name them or not - the only choice is whether they are good ones, held consciously.</li>
+    <li><strong>No single model is enough.</strong> Wisdom is a <em>latticework</em> (Munger) of many models drawn from many disciplines. The man with only a hammer sees nails everywhere; the skill is knowing WHICH model to apply WHEN.</li>
+    <li><strong>Invert, always invert.</strong> Solving a problem backwards - listing the ways to fail and avoiding them - is often easier and more reliable than chasing brilliance. Avoiding stupidity beats seeking cleverness.</li>
+    <li><strong>Follow the incentives.</strong> "Show me the incentive and I'll show you the outcome." Incentives are the single most reliable predictor of behavior - and when the measure becomes the target, the measure breaks (Goodhart).</li>
+    <li><strong>Watch the biases.</strong> Confirmation, availability, sunk cost, anchoring, Dunning-Kruger, and motivated reasoning quietly corrupt every model you run. Each has a known counter.</li>
+    <li><strong>Models are maps, not the territory.</strong> A model that explains everything explains nothing. Hold them loosely, match them to the problem, and slow down on the one-way doors.</li>
+  </ul>
+
+  <h2 id="what"><span class="n">1</span>What a mental model is</h2>
+  <p>A mental model is a <strong>compressed representation of how some part of the world works</strong>. It throws away almost all the detail and keeps only the structure you need to predict, decide, or explain. "Supply and demand," "compound interest," "natural selection," "incentives" - each is a tiny portable machine you carry in your head and point at reality.</p>
+  <div class="box key"><span class="lbl">A model is a compression</span><p>This is not a metaphor - it is literally the same operation as in <a href="../foundations/information_theory.html">Information Theory</a>. A good model, like a good compression, discards the noise and keeps the signal: it is small, reusable, and lets you reconstruct or anticipate a large space of situations from a few rules. And like all lossy compression, it necessarily <em>throws away</em> real detail - which is exactly why every model is wrong in some regime and useful in another. The art is knowing what got compressed out.</p></div>
+  <p>The crucial point: <strong>you think through models whether you know it or not.</strong> There is no model-free perception of a complex world - your brain is a prediction engine running compressed representations constantly. The only question is whether your models are (a) good compressions of reality, and (b) consciously chosen rather than absorbed by accident from whoever shouted loudest. Making them explicit is the whole game: named models can be inspected, compared, and swapped; invisible ones just run you.</p>
+
+  <h2 id="lattice"><span class="n">2</span>The latticework idea (Munger)</h2>
+  <p>Charlie Munger's central claim about thinking: you cannot get by on one model, or even the handful your profession happens to teach you. Wisdom is a <strong>latticework of many models from many disciplines</strong>, hung together so that a fact learned in physics reinforces one in biology reinforces one in economics.</p>
+  <div class="box"><span class="lbl">The man with only a hammer</span><p>"To the man with only a hammer, every problem looks like a nail." A person who knows only one model - only economics, or only psychology, or only engineering - will force every situation into that single frame, and be confidently wrong whenever the situation belongs to a different discipline. The specialist's greatest strength becomes their blind spot. The fix is not depth alone but <em>breadth held in tension</em>: enough big models from enough fields that the right one is available when the problem calls for it.</p></div>
+  <p>Two skills define the latticework thinker, and the second is harder than the first:</p>
+  <ol>
+    <li><strong>Acquisition</strong> - collect the big, load-bearing models from the major disciplines (the ones that come up again and again). This collection is, in effect, one attempt at that acquisition.</li>
+    <li><strong>Selection</strong> - know <em>which model to apply when</em>. A room full of models is useless if you reach for the wrong one; the master skill is matching the model to the shape of the problem in front of you, and often running several at once to triangulate.</li>
+  </ol>
+  <p>Why "latticework" and not "list"? Because the models cross-brace each other. Second-order thinking sharpens your use of incentives; ergodicity reshapes how you read expected value; evolution and network effects turn out to be the same selection-plus-feedback structure wearing different clothes. The models compound - which is exactly why this note doubles as an index into the rest of the collection.</p>
+
+  <h2 id="toolkit"><span class="n">3</span>A core toolkit</h2>
+  <p>Here is a working starter latticework - the load-bearing models that recur across nearly every domain, with a one-line handle for each and where it lives in this collection. Learn these first; they carry most of the weight.</p>
+  <table>
+    <thead><tr><th>Model</th><th>One-liner</th><th>Where it lives here</th></tr></thead>
+    <tbody>
+      <tr><td><strong>First principles</strong></td><td>Reason up from what must be true, not down from what others assume.</td><td><a href="../meta/epistemology_and_first_principles.html">meta/</a></td></tr>
+      <tr><td><strong>Map vs territory</strong></td><td>The model is not the reality; never confuse the two.</td><td><a href="../meta/epistemology_and_first_principles.html">meta/</a></td></tr>
+      <tr><td><strong>Inversion</strong></td><td>Solve backwards - avoid stupidity instead of seeking brilliance.</td><td>Section 4 (below)</td></tr>
+      <tr><td><strong>Second-order thinking</strong></td><td>Ask "and then what?" - trace the consequences of the consequences.</td><td><a href="../dynamics/systems_thinking.html">dynamics/systems_thinking</a></td></tr>
+      <tr><td><strong>Feedback loops</strong></td><td>Outputs loop back as inputs; reinforcing loops explode, balancing loops stabilize.</td><td><a href="../dynamics/systems_thinking.html">dynamics/systems_thinking</a></td></tr>
+      <tr><td><strong>Opportunity cost</strong></td><td>The true cost of anything is the best thing you gave up to get it.</td><td><a href="../human-needs/">human-needs/</a></td></tr>
+      <tr><td><strong>Incentives</strong></td><td>People do what they are rewarded for; follow the payoff to predict behavior.</td><td>Section 5; <a href="../forces/game_theory_and_moloch.html">forces/</a></td></tr>
+      <tr><td><strong>Probabilistic thinking</strong></td><td>Think in odds and distributions, not certainties.</td><td><a href="../dynamics/risk_uncertainty_tails.html">dynamics/risk_uncertainty_tails</a></td></tr>
+      <tr><td><strong>Fat tails</strong></td><td>In Extremistan, one rare event carries most of the outcome.</td><td><a href="../dynamics/risk_uncertainty_tails.html">dynamics/risk_uncertainty_tails</a></td></tr>
+      <tr><td><strong>Ergodicity</strong></td><td>The group's average is not your path when ruin is possible - never risk ruin.</td><td><a href="../dynamics/risk_uncertainty_tails.html">dynamics/risk_uncertainty_tails</a></td></tr>
+      <tr><td><strong>Supply &amp; demand</strong></td><td>Price is where willingness to sell meets willingness to buy.</td><td><a href="../human-needs/">human-needs/</a></td></tr>
+      <tr><td><strong>Effective demand</strong></td><td>Need only moves markets when backed by ability and willingness to pay.</td><td><a href="../human-needs/">human-needs/</a></td></tr>
+      <tr><td><strong>Network effects</strong></td><td>Value grows with the number of users; the strong get stronger.</td><td><a href="../foundations/networks_and_emergence.html">foundations/networks_and_emergence</a></td></tr>
+      <tr><td><strong>Emergence</strong></td><td>Simple parts + interaction rules produce complex wholes no part contains.</td><td><a href="../foundations/networks_and_emergence.html">foundations/networks_and_emergence</a></td></tr>
+      <tr><td><strong>Evolution / selection</strong></td><td>Variation + selection + retention optimizes without a designer.</td><td><a href="../foundations/evolution_as_algorithm.html">foundations/evolution_as_algorithm</a></td></tr>
+      <tr><td><strong>Game theory</strong></td><td>Your best move depends on others' moves; equilibria can be collectively awful.</td><td><a href="../forces/game_theory_and_moloch.html">forces/game_theory_and_moloch</a></td></tr>
+      <tr><td><strong>Comparative advantage</strong></td><td>Specialize where your relative cost is lowest, then trade - everyone gains.</td><td><a href="../human-needs/">human-needs/</a></td></tr>
+      <tr><td><strong>Margin of safety</strong></td><td>Build in slack so you survive being wrong about your estimates.</td><td>Section 9; <a href="../dynamics/risk_uncertainty_tails.html">risk_uncertainty_tails</a></td></tr>
+      <tr><td><strong>Occam's razor</strong></td><td>Prefer the simplest explanation that fits the evidence.</td><td>Section 6 &amp; Glossary</td></tr>
+      <tr><td><strong>Hanlon's razor</strong></td><td>Never attribute to malice what is adequately explained by incompetence.</td><td>Section 6 &amp; Glossary</td></tr>
+    </tbody>
+  </table>
+  <div class="box"><span class="lbl">How to read this table</span><p>This is not a list to memorize - it is a map of the collection organized by <em>thinking tool</em>. When a problem lands on your desk, run down the middle column and ask which one-liner matches its shape, then follow the right column into the deep note. The rest of this study note zooms in on the four models that do the most work per unit of effort: inversion, incentives, the bias-counters, and the map/territory warning.</p></div>
+
+  <h2 id="inversion"><span class="n">4</span>Inversion, deep</h2>
+  <p>"Invert, always invert" - the mathematician Carl Jacobi's advice, adopted by Munger as a core discipline. Many problems that are hard to solve forwards become easy backwards. Instead of asking "how do I succeed?", ask "how would I <em>guarantee failure</em>?" - then simply refuse to do those things.</p>
+  <div class="box key"><span class="lbl">Avoid stupidity, don't seek brilliance</span><p>Munger's version: "It is remarkable how much long-term advantage people like us have gotten by trying to be consistently not stupid, instead of trying to be very intelligent." Forward-thinking chases the small, uncertain set of brilliant moves; inversion eliminates the large, knowable set of dumb ones. You almost always know more about what will <em>ruin</em> a plan than about what will make it soar - so subtract the failure modes first. Want a happy marriage? List everything that reliably destroys marriages and don't do it. Want a healthy portfolio? Enumerate the ways investors blow up, and avoid each.</p></div>
+  <p>Inversion is the thinking-toolkit sibling of <strong>via negativa</strong> from <a href="../dynamics/risk_uncertainty_tails.html">Risk, Uncertainty &amp; the Tails</a>: improvement by removal. Under uncertainty, cutting sources of fragility is more robust than adding cleverness, precisely because failure modes are more knowable and more stable than success recipes. Inversion also pairs with pre-mortems (Section 7): before you start, assume the plan already failed and ask why - then fix those causes in advance.</p>
+
+  <h2 id="incentives"><span class="n">5</span>Incentives</h2>
+  <p>If you keep only one model from this note, keep this one. "Show me the incentive and I'll show you the outcome" (Munger). Incentives are <strong>the single most reliable predictor of behavior</strong> - more reliable than stated intentions, values, or org charts. When you cannot understand why a person, company, or system behaves as it does, you have almost always failed to find the incentive.</p>
+  <div class="box key"><span class="lbl">Follow the payoff</span><p>People, firms, and even algorithms flow toward what is rewarded and away from what is punished - often unconsciously, often against their own stated beliefs. This is why "incentive-caused bias" is so dangerous: a smart, honest person will genuinely believe the conclusion that pays them, without any conscious dishonesty. Before you diagnose stupidity or malice (see Hanlon, Section 6), check the incentive structure. Change the payoffs and the behavior follows; leave the payoffs and the behavior returns no matter how many memos you write.</p></div>
+  <p>Incentives are the engine underneath much of the collection. They drive the competitive races in <a href="../forces/game_theory_and_moloch.html">Game Theory &amp; Moloch</a>, where individually rational responses to incentives produce collectively terrible equilibria. And they carry a built-in failure mode - <strong>Goodhart's Law</strong>: "when a measure becomes a target, it ceases to be a good measure." Optimize a proxy hard enough and the system games the proxy while the real goal rots. This is the beating heart of the alignment problem in <a href="../ai/ai_from_first_principles.html">AI from First Principles</a>: an optimizer given the wrong incentive will pursue it with terrifying literalness.</p>
+
+  <h2 id="biases"><span class="n">6</span>The biases that corrupt thinking</h2>
+  <p>Every model you run executes on flawed hardware. Cognitive biases are systematic errors in how the mind processes evidence - and they do not go away when you learn about them, so the defense is a set of concrete counters you build into your process. A short field guide to the worst offenders:</p>
+  <table>
+    <thead><tr><th>Bias</th><th>What it does</th><th>The counter</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Confirmation bias</strong></td><td>You seek and favor evidence that fits what you already believe.</td><td>Actively hunt disconfirmation; ask "what would change my mind?" before looking.</td></tr>
+      <tr><td><strong>Availability bias</strong></td><td>You judge likelihood by how easily examples come to mind, not by base rates.</td><td>Reach for the actual base rate; distrust the vivid, recent, or dramatic case.</td></tr>
+      <tr><td><strong>Sunk cost fallacy</strong></td><td>You keep pouring in because of what you already spent, not future value.</td><td>Ask only "given where I am now, what is the best move?" Past cost is gone.</td></tr>
+      <tr><td><strong>Anchoring</strong></td><td>The first number or frame you see drags all later estimates toward it.</td><td>Estimate independently first; consider multiple starting points; question the anchor.</td></tr>
+      <tr><td><strong>Dunning-Kruger</strong></td><td>The less you know, the more you overrate how much you know.</td><td>Seek expert critique; map the edges of your competence; assume unknown unknowns.</td></tr>
+      <tr><td><strong>Motivated reasoning</strong></td><td>You reason toward the conclusion you want, then rationalize it.</td><td>Check the incentive (Section 5); argue the other side; separate "want" from "is."</td></tr>
+    </tbody>
+  </table>
+  <p>Two razors belong in this section as first-pass filters for interpreting others:</p>
+  <ul>
+    <li><strong>Occam's razor</strong> - among competing explanations, prefer the one requiring the fewest assumptions. Not "the simplest is always true," but "start there, and demand extra evidence for extra complexity."</li>
+    <li><strong>Hanlon's razor</strong> - "never attribute to malice what is adequately explained by incompetence" (and, we'd add, by incentives). Most apparent conspiracies are just uncoordinated people responding to their payoffs.</li>
+  </ul>
+  <div class="box"><span class="lbl">Where this goes deeper</span><p>These biases are the raw material of two whole notes in the collection: <a href="../psychology/human_psychology_from_first_principles.html">Human Psychology</a> (why the hardware works this way) and <a href="../behavioral-economics/behavioral_economics_from_first_principles.html">Behavioral Economics</a> (what predictable irrationality does to markets and decisions). Treat this table as the quick-reference; treat those as the manuals.</p></div>
+
+  <h2 id="smarter"><span class="n">7</span>How to actually get smarter</h2>
+  <p>Knowing about models and biases changes almost nothing on its own - insight does not survive contact with a busy day. What works is <em>process</em>: small, repeatable habits that force better thinking whether or not you feel like it.</p>
+  <div class="box good"><span class="lbl">The practices that compound</span>
+    <p><strong>Decision journals.</strong> Before a real decision, write down what you expect to happen, why, and how confident you are. Later, compare. This is the only cure for hindsight bias - it freezes what you actually believed so you can calibrate over time.</p>
+    <p><strong>Pre-mortems.</strong> Assume the project has already failed, then ask "why?" Inversion applied to planning - it surfaces the failure modes while you can still prevent them, and gives quiet doubters permission to speak.</p>
+    <p><strong>Steelmanning.</strong> Before attacking an opposing view, state its <em>strongest</em> version - stronger than its own advocates would. If you can only beat the weak version (a straw man), you have learned nothing.</p>
+    <p><strong>Thinking in bets.</strong> Reframe beliefs as wagers with odds: "how sure am I, and what would I stake?" This converts fuzzy conviction into calibrated probability and separates decision quality from outcome luck.</p>
+    <p><strong>Surround ideas with disconfirmation.</strong> Deliberately seek the evidence and people most likely to prove you wrong. Comfort is the enemy of calibration.</p>
+  </div>
+  <div class="box key"><span class="lbl">One-way vs two-way doors</span><p>Match your rigor to reversibility. Most decisions are <strong>two-way doors</strong> - cheap to reverse, so decide fast and learn from the result; agonizing over them wastes your scarcest resource. A few are <strong>one-way doors</strong> - hard or impossible to undo (quitting, selling, launching publicly, anything with ruin potential). <em>Slow down</em> on those: gather more information, run a pre-mortem, demand a margin of safety. The classic error is spending one-way-door caution on two-way-door decisions and vice versa. Speed on the reversible; patience on the irreversible.</p></div>
+
+  <h2 id="warning"><span class="n">8</span>The reflexive warning</h2>
+  <p>A note about mental models has to turn its own tools on itself, or it fails its own test. The most important thing to know about models is their limit.</p>
+  <div class="box trap"><span class="lbl">The map is not the territory</span><p>Every model in this collection is a <em>map</em> - a compressed, lossy, deliberately incomplete representation. It is never the territory itself. When the map and the ground disagree, the ground wins, every time. The failure mode is falling in love with an elegant model and then editing your perception of reality to fit it, rather than the reverse. This is the through-line back to <a href="../meta/epistemology_and_first_principles.html">Epistemology &amp; First Principles</a>: knowledge is provisional, and a model earns its keep only by predicting, never by being pretty.</p></div>
+  <p>Two corollaries follow, and they are what keep a latticework from becoming a cage:</p>
+  <ul>
+    <li><strong>A model that explains everything explains nothing.</strong> If your favorite framework can absorb any fact - if no observation could ever count against it - it has stopped being a model and become a faith. Unfalsifiable is not the same as true; it is the same as empty. The best models are the ones that stick their necks out and could be wrong.</li>
+    <li><strong>Hold them loosely.</strong> Use models as lenses to try on, not lenses fused to your eyes. Reach for several, notice where they disagree, and let the disagreement teach you. The goal is not to be a hedgehog who knows one big thing but a fox who holds many and swaps them fluidly. Your attachment should be to reality, not to any map of it.</li>
+  </ul>
+
+  <h2 id="use"><span class="n">9</span>How to use it</h2>
+  <p>A standing routine that turns this whole collection into a working thinking practice:</p>
+  <div class="box good"><span class="lbl">Five moves to run</span>
+    <p><strong>1. Build the latticework.</strong> Keep acquiring the big models from many disciplines - use the toolkit table in Section 3 as your acquisition map, and go deep in the linked notes.</p>
+    <p><strong>2. Match the model to the problem.</strong> When a problem lands, ask what <em>shape</em> it has and which one-liner fits. Run two or three models, not one; let their disagreement flag where you're unsure.</p>
+    <p><strong>3. Invert.</strong> Ask "how would this fail?" and remove the failure modes first. Avoiding stupidity beats chasing brilliance - and it's easier.</p>
+    <p><strong>4. Follow the incentives.</strong> Before diagnosing malice or stupidity, find the payoff structure. To change behavior, change the incentives - and watch for Goodhart when you set a target.</p>
+    <p><strong>5. Keep a decision journal.</strong> Write predictions before outcomes, slow down on one-way doors, build a margin of safety, and calibrate over time. Process beats resolutions.</p>
+  </div>
+  <p>Notice the shape: acquire broadly, apply selectively, invert to protect the downside, follow incentives to predict behavior, and journal to close the feedback loop on your own thinking. None of it requires being the smartest person in the room - which, fittingly, is the entire point.</p>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Mental model</strong></td><td>A compressed, reusable representation of how some part of the world works; a thinking tool you point at reality.</td></tr>
+      <tr><td><strong>Latticework</strong></td><td>Munger's idea that wisdom is many models from many disciplines held together, so the right one is available when needed.</td></tr>
+      <tr><td><strong>Inversion</strong></td><td>Solving a problem backwards - listing the ways to fail and avoiding them, rather than chasing success directly.</td></tr>
+      <tr><td><strong>Second-order thinking</strong></td><td>Tracing the consequences of the consequences - asking "and then what?" beyond the first, obvious effect.</td></tr>
+      <tr><td><strong>Opportunity cost</strong></td><td>The value of the best alternative you gave up; the true cost of any choice.</td></tr>
+      <tr><td><strong>Incentives</strong></td><td>The rewards and punishments that shape behavior; the most reliable predictor of what people and systems will do.</td></tr>
+      <tr><td><strong>Goodhart's Law</strong></td><td>When a measure becomes a target, it ceases to be a good measure - the system games the proxy.</td></tr>
+      <tr><td><strong>Margin of safety</strong></td><td>Deliberate slack built into a plan or estimate so you survive being wrong about your assumptions.</td></tr>
+      <tr><td><strong>Occam's razor</strong></td><td>Prefer the explanation requiring the fewest assumptions; demand extra evidence for extra complexity.</td></tr>
+      <tr><td><strong>Hanlon's razor</strong></td><td>Never attribute to malice what is adequately explained by incompetence (or by incentives).</td></tr>
+      <tr><td><strong>Steelman</strong></td><td>The strongest possible version of an opposing argument; the opposite of a straw man.</td></tr>
+      <tr><td><strong>Pre-mortem</strong></td><td>Imagining a plan has already failed and asking why, so you can prevent those causes in advance.</td></tr>
+      <tr><td><strong>One-way vs two-way door</strong></td><td>Irreversible decisions (slow down, be careful) versus reversible ones (decide fast, learn from the result).</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Mental Models &amp; How to Think &middot; captured 2026-07-12. The how-to-think operating system: build the latticework, invert, follow incentives, hold every map loosely. <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

@@ -66,6 +66,18 @@ app = FastAPI(
 # Mount static files
 app.mount("/static", StaticFiles(directory=str(settings.static_dir)), name="static")
 
+# Mount the First-Principles Learning static site.
+# html=True serves index.html at the mount root and directory indexes for subpaths.
+# Intentionally NOT linked from the homepage yet — reachable only by direct URL.
+app.mount(
+    "/first-principles-learning",
+    StaticFiles(
+        directory=str(settings.base_dir / "app" / "first_principles_learning"),
+        html=True,
+    ),
+    name="first_principles_learning",
+)
+
 # Include routers
 app.include_router(pages.router)
 app.include_router(pm_multiverse.router)

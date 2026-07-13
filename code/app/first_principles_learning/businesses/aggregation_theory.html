@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Aggregation Theory: Own the Demand, Tax the Flow</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:300px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:33px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="business_first_principles_framework.html" style="color:#0053e2;text-decoration:none">Businesses</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Aggregation Theory: Own the Demand, Tax the Flow</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Businesses: Aggregation Theory</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#mechanism"><span class="num">1</span>The core mechanism</a>
+  <a href="#why"><span class="num">2</span>Why it works now</a>
+  <a href="#math"><span class="num">3</span>The value-capture math</a>
+  <a href="#winners"><span class="num">4</span>Who wins, who pays</a>
+  <a href="#ratchet"><span class="num">5</span>The take-rate ratchet</a>
+  <a href="#patterns"><span class="num">6</span>The 4 value-capture patterns</a>
+  <a href="#streaming"><span class="num">7</span>Case study: streaming (AVOD/SVOD)</a>
+  <a href="#test"><span class="num">8</span>Spot / build / defend</a>
+  <a href="#limits"><span class="num">9</span>Limits &amp; counter-moves</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="distribution_vs_depth.html" style="margin-top:14px;color:var(--blue);font-weight:700">Distribution vs Depth (Spotify)</a>
+  <a href="business_first_principles_framework.html" style="color:var(--blue);font-weight:700">The shared lens</a>
+  <a href="../index.html" style="color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Aggregation Theory: Own the Demand, Tax the Flow</h1>
+  <p class="lede">The load-bearing value-capture model of the internet era. Own the customer relationship, and the suppliers commoditize themselves fighting to reach you - after which you tax the whole flow, thinly but hugely.</p>
+  <p class="meta">Formalizes the synthesis behind <a href="distribution_vs_depth.html">Distribution vs Depth</a> &middot; explains <a href="amazon_first_principles.html">Amazon</a>, <a href="google_first_principles.html">Google</a>, <a href="meta_first_principles.html">Meta</a>, <a href="doordash_first_principles.html">DoorDash</a> &middot; term coined by Ben Thompson &middot; Captured 2026-07-11</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>The move:</strong> build a curated/personalized experience -&gt; <strong>own the demand (the customer/attention)</strong> -&gt; suppliers must come to you to reach anyone -&gt; supply commoditizes -&gt; you dictate terms.</li>
+    <li><strong>The causation is one-way:</strong> owning demand is the lever; "suppliers face more competition" is the <em>consequence</em>, not the cause.</li>
+    <li><strong>Capture:</strong> a small tax x enormous volume x ~zero marginal cost = the biggest, most durable slice. A toll booth, not a stickup.</li>
+    <li><strong>Asymmetry:</strong> the consumer usually <em>wins</em> (surplus - better/cheaper/curated); the <strong>supplier</strong> gets squeezed. But the consumer still pays - in attention, data, and lock-in.</li>
+    <li><strong>The ratchet:</strong> take rates start small to grow the flywheel, then rise as lock-in deepens (enshittification).</li>
+    <li><strong>It is ONE of four patterns:</strong> aggregate demand / own scarce supply / enable producers / invert via membership.</li>
+    <li><strong>Streaming (AVOD/SVOD)</strong> is aggregation theory live: AVOD taxes attention, SVOD taxes dollars, hybrid does both - and it is quietly rebundling cable.</li>
+  </ul>
+
+  <h2 id="mechanism"><span class="n">1</span>The core mechanism</h2>
+  <p>Aggregation Theory (Ben Thompson) explains why the internet's biggest winners captured value. The classic chain:</p>
+  <pre>1. Build a superior, curated, personalized EXPERIENCE (the demand magnet)
+2. -> OWN THE CUSTOMER / ATTENTION (the demand relationship = the asset)
+3. -> suppliers now MUST come to you to reach any customer
+4. -> suppliers become interchangeable = SUPPLY COMMODITIZES
+5. -> you set the terms and TAX THE FLOW (thin cut, gigantic volume)</pre>
+  <div class="box key"><span class="lbl">The one correction most people get wrong</span><p>It is <strong>not</strong> "expose customers to more options, therefore negotiate harder." That gets the causation backwards. The lever is <strong>owning the demand relationship</strong>. Once you own the customer, the supplier's "more competition" problem is the <em>downstream consequence</em> - they are now one of thousands fighting for your users, so their pricing power evaporates. Own demand first; supply commoditizes itself second.</p></div>
+  <p>Contrast the old world: pre-internet, value accrued to whoever controlled <strong>distribution + supply</strong> (the newspaper's printing press, the studio's theaters, the retailer's shelf). The internet made distribution free, so control shifted to whoever owns <strong>demand</strong>. That is the entire regime change.</p>
+
+  <h2 id="why"><span class="n">2</span>Why it works now (and not before)</h2>
+  <p>Aggregation is a child of <a href="../how-tech-changes-the-world/cost_collapse_and_friction.html">friction death / zero marginal cost</a>. Three collapses had to happen first:</p>
+  <ul>
+    <li><strong>Zero cost of distribution</strong> - you can serve one more user for ~$0, so you can aggregate <em>global</em> demand, not just local.</li>
+    <li><strong>Zero cost of transactions</strong> - you can intermediate billions of tiny interactions profitably.</li>
+    <li><strong>Zero cost of supply onboarding</strong> - suppliers (drivers, sellers, creators, listings) can be added at ~$0, so supply is effectively infinite and therefore cheap.</li>
+  </ul>
+  <div class="box"><span class="lbl">Why this hands power to demand</span><p>When distribution and supply both go to ~zero cost, the <em>only</em> scarce thing left is <strong>attention / demand</strong>. Scarcity migrates to demand - so value does too. (This is the "scarcity migrates" principle from the abundance note, applied to industry structure.)</p></div>
+
+  <h2 id="math"><span class="n">3</span>The value-capture math</h2>
+  <p>Your instinct - "consolidate the most value in small chunks" - is exactly right. The formula:</p>
+  <pre>Value captured  =  (small take rate)  x  (enormous volume)  x  (~zero marginal cost)</pre>
+  <table>
+    <thead><tr><th>Aggregator</th><th>Per-unit cut (looks small)</th><th>Summed (is huge)</th></tr></thead>
+    <tbody>
+      <tr><td>Visa / Mastercard</td><td>~1.5-3% per swipe</td><td>A tax on ~all of commerce</td></tr>
+      <tr><td>App stores</td><td>15-30% per sale</td><td>A tax on the app economy</td></tr>
+      <tr><td>Amazon 3P (early)</td><td>~15% referral fee</td><td>A tax on e-commerce</td></tr>
+      <tr><td>Google / Meta</td><td>Cents per ad</td><td>~The digital ad market</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The genius: take a cut nobody revolts over</span><p>Each participant pays a slice small enough that leaving is not worth it, while the aggregator owns the <em>sum</em>. Because marginal cost is ~zero, almost the entire tax drops to the bottom line. A toll booth on a road everyone must use - not a robbery of any one traveler.</p></div>
+
+  <h2 id="winners"><span class="n">4</span>Who wins, who pays (the asymmetry)</h2>
+  <p>The subtle part your synthesis should correct: <strong>the consumer usually is not the one squeezed - the supplier is.</strong> The aggregator's <em>weapon</em> is delighting the consumer.</p>
+  <table>
+    <thead><tr><th>Party</th><th>What they get</th><th>What they pay</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Consumer</strong></td><td>Big surplus - better, cheaper, curated, convenient</td><td>Attention, data, lock-in (not always $)</td></tr>
+      <tr><td><strong>Aggregator</strong></td><td>The largest, most durable value pool</td><td>Must keep the experience great (its only moat)</td></tr>
+      <tr><td><strong>Supplier / producer</strong></td><td>Reach they could not get alone</td><td>Margin, the customer relationship, pricing power</td></tr>
+    </tbody>
+  </table>
+  <div class="box"><span class="lbl">Why suppliers accept the thin slice</span><p><strong>A small slice of a huge pie beats 100% of nothing.</strong> They trade margin for distribution. The ones who refuse flee to <a href="shopify_first_principles.html">enablers (Shopify/Stripe)</a> to own their own demand - the counter-move (see &sect;9). And "if you are not paying, you are the product" is just this asymmetry stated from the consumer side: the consumer is delighted <em>because</em> they are the inventory being sold to advertisers/suppliers.</p></div>
+
+  <h2 id="ratchet"><span class="n">5</span>The take-rate ratchet</h2>
+  <p>The take rate is <strong>not fixed - it ratchets up.</strong> This is the time-dynamic your model was missing.</p>
+  <ul>
+    <li><strong>Phase 1 - grow:</strong> keep the cut small, subsidize both sides, win the market. Suppliers and users pile in.</li>
+    <li><strong>Phase 2 - lock in:</strong> switching cost rises (reviews, ranking, habit, data). Sides can no longer leave cheaply.</li>
+    <li><strong>Phase 3 - extract:</strong> raise the cut, add ads, add fees, degrade the free experience. The "small pie" shrinks <em>for the supplier</em>.</li>
+  </ul>
+  <div class="box trap"><span class="lbl">Enshittification</span><p>Amazon's all-in 3P take (referral + FBA + ad spend to be visible) is now estimated near <strong>~50%</strong>, not 15%. App stores hold 30%. This is <em>enshittification</em> (systems-thinking + incentives): a maturing aggregator extracts more and quality decays - which is precisely what opens the door for the next specialist or enabler. The ratchet contains its own counter-force.</p></div>
+
+  <h2 id="patterns"><span class="n">6</span>The four value-capture patterns</h2>
+  <p>Aggregation is powerful but it is <strong>one of four</strong> ways to capture value. Knowing which game you are in is the whole point.</p>
+  <table>
+    <thead><tr><th>Pattern</th><th>You own...</th><th>Margin shape</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Aggregate demand</strong></td><td>The customer / attention</td><td>Thin cut x huge volume</td><td>Google, Meta, Amazon, DoorDash, Spotify</td></tr>
+      <tr><td><strong>Own scarce supply (bottleneck)</strong></td><td>An input nobody can route around</td><td>FAT margin per unit</td><td>Nvidia, TSMC, ASML, Visa's network</td></tr>
+      <tr><td><strong>Enable producers (arms dealer)</strong></td><td>The tools producers use to escape aggregators</td><td>Small % of producer success</td><td>Shopify, Stripe, AWS</td></tr>
+      <tr><td><strong>Invert via membership</strong></td><td>The relationship; give away the goods margin</td><td>Profit from the FEE, not the product</td><td>Costco, Amazon Prime</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">Your synthesis, placed</span><p>What you described - "consolidate value in small chunks while producer and consumer get a thin slice" - is precisely the <strong>aggregate-demand quadrant</strong>. It is the dominant internet pattern, but the <em>fattest</em> margins often sit in the bottleneck quadrant (own scarce supply), and the most defensible often in enablement (help others own <em>their</em> demand).</p></div>
+
+  <h2 id="streaming"><span class="n">7</span>Case study: streaming and the VOD models</h2>
+  <p>Streaming is aggregation theory playing out live - and the acronyms are just <strong>which side of the flow you tax.</strong></p>
+  <table>
+    <thead><tr><th>Model</th><th>Stands for</th><th>How you pay</th><th>What it taxes</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AVOD</strong></td><td>Advertising-based Video On Demand</td><td>Free; you watch ads</td><td><strong>Attention</strong></td><td>YouTube free, Tubi, Netflix/Disney ad tiers</td></tr>
+      <tr><td><strong>SVOD</strong></td><td>Subscription Video On Demand</td><td>Flat recurring fee, (usually) no ads</td><td><strong>Dollars + habit</strong></td><td>Netflix, Disney+, HBO Max, Apple TV+</td></tr>
+      <tr><td><strong>TVOD</strong></td><td>Transactional Video On Demand</td><td>Pay per title (rent/buy)</td><td>Per-transaction</td><td>Amazon/Apple movie rentals</td></tr>
+      <tr><td><strong>FAST</strong></td><td>Free Ad-Supported Streaming TV</td><td>Free, linear "channels" that just play</td><td>Attention (lean-back)</td><td>Pluto TV, Samsung TV Plus, Roku Channel</td></tr>
+    </tbody>
+  </table>
+  <h3>Why this is the same freemium funnel as Spotify</h3>
+  <ul>
+    <li><strong>AVOD = the free top of funnel</strong> (Spotify's free tier) - monetize <em>attention</em>, widen reach, capture non-payers. Pure aggregation: own the eyeballs, sell them.</li>
+    <li><strong>SVOD = the paid tier</strong> (Spotify Premium) - monetize <em>dollars + recurring habit</em>, higher ARPU, lower churn.</li>
+    <li><strong>Hybrid (Netflix/Disney adding ad tiers)</strong> - the realization that you want <em>both</em>: AVOD to widen the funnel, SVOD for margin. Own the demand, monetize it two ways.</li>
+  </ul>
+  <div class="box"><span class="lbl">The unbundling -&gt; rebundling paradox, live</span><p>Streaming <em>unbundled</em> cable (pick your services a la carte). Now there are too many services, each fragmenting the catalog - so consumers want a bundle again, and <strong>FAST/AVOD is quietly rebuilding ad-supported linear "channels."</strong> Cable, reincarnated. Value oscillates between bundling and unbundling as friction and economics shift - a paradox worth its own flag.</p></div>
+  <div class="box trap"><span class="lbl">The streaming twist: nobody fully owns the supply</span><p>Unlike Google (owns the index) or Amazon (owns the marketplace), streamers must <em>make or license</em> the content - so, like <a href="distribution_vs_depth.html">Spotify with labels</a>, content cost caps margin, which is why everyone is racing to owned originals + ads. Aggregation is strongest when supply is other people's free output (YouTube), weaker when you must fund the supply yourself (Netflix).</p></div>
+
+  <h2 id="test"><span class="n">8</span>Spot it / build it / defend against it</h2>
+  <h3>Spot an aggregator</h3>
+  <ol>
+    <li>Who owns the <strong>demand relationship</strong> (the default place users start)?</li>
+    <li>Is <strong>supply commoditized</strong> - are suppliers interchangeable and price-taking?</li>
+    <li>Is value captured as a <strong>thin cut of huge volume</strong> at ~zero marginal cost?</li>
+    <li>Is the <strong>experience</strong> (curation/personalization) the moat, not owning assets?</li>
+  </ol>
+  <h3>Build one</h3>
+  <ul>
+    <li>Win the <strong>consumer experience</strong> first (that is the demand magnet) - subsidize the hard side to solve cold-start.</li>
+    <li>Make onboarding supply ~free so supply floods in and commoditizes.</li>
+    <li>Grow the flywheel with a <em>small</em> take; raise it only once switching cost is deep.</li>
+  </ul>
+  <h3>Defend against one (if you are a supplier)</h3>
+  <ul>
+    <li><strong>Own your own demand</strong> - direct relationship, brand, email/community (the Shopify/DTC escape).</li>
+    <li><strong>Differentiate off the commodity axis</strong> - taste, identity, trust (the <a href="distribution_vs_depth.html">depth play</a>).</li>
+    <li><strong>Become a bottleneck</strong> - own a scarce input the aggregator cannot route around.</li>
+  </ul>
+
+  <h2 id="limits"><span class="n">9</span>Limits &amp; counter-moves</h2>
+  <div class="box"><span class="lbl">Where aggregation weakens or breaks</span>
+    <p><strong>1. You must fund your own supply.</strong> If supply is not other people's free output, content/inventory cost caps margin (Netflix, Spotify).</p>
+    <p><strong>2. Arm-the-rebels enablers.</strong> Shopify/Stripe/Substack let producers own their demand - structurally anti-aggregator.</p>
+    <p><strong>3. Regulation.</strong> Own too much demand and you become a gatekeeper - antitrust, app-store rules, DMA.</p>
+    <p><strong>4. A new surface.</strong> AI agents may re-intermediate discovery ("agent, find/buy/play X"), aggregating the aggregators - the next surface war (see <a href="amazon_first_principles.html">Amazon</a> / <a href="distribution_vs_depth.html">Spotify</a>).</p>
+    <p><strong>5. The ratchet's own backlash.</strong> Over-extraction (enshittification) degrades the experience - the one thing the moat depends on - opening the door to the next entrant.</p></div>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Aggregation theory</strong></td><td>Own the demand relationship -&gt; commoditize supply -&gt; tax the flow.</td></tr>
+      <tr><td><strong>Take rate</strong></td><td>The % of a transaction the intermediary keeps.</td></tr>
+      <tr><td><strong>Demand ownership</strong></td><td>Being the default place customers start; the internet-era source of power.</td></tr>
+      <tr><td><strong>Commoditize supply</strong></td><td>Make suppliers interchangeable so they lose pricing power.</td></tr>
+      <tr><td><strong>Take-rate ratchet</strong></td><td>Cut starts small to grow, rises as lock-in deepens.</td></tr>
+      <tr><td><strong>Enshittification</strong></td><td>Mature platform extracts more and quality decays.</td></tr>
+      <tr><td><strong>Bottleneck</strong></td><td>A scarce input nobody can route around (Nvidia, TSMC) - fat margins.</td></tr>
+      <tr><td><strong>Enabler / arms dealer</strong></td><td>Tools that help producers own their own demand (Shopify, Stripe).</td></tr>
+      <tr><td><strong>AVOD</strong></td><td>Advertising-based Video On Demand - free, ad-funded (taxes attention).</td></tr>
+      <tr><td><strong>SVOD</strong></td><td>Subscription Video On Demand - flat fee, (usually) ad-free (taxes dollars).</td></tr>
+      <tr><td><strong>TVOD</strong></td><td>Transactional VOD - pay per title (rent/buy).</td></tr>
+      <tr><td><strong>FAST</strong></td><td>Free Ad-Supported Streaming TV - free, linear ad-supported channels.</td></tr>
+      <tr><td><strong>Unbundling / rebundling</strong></td><td>Value oscillating between a la carte and bundled as economics shift.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Aggregation Theory &middot; captured 2026-07-11. Companion to Distribution vs Depth, Amazon, Google, Meta, and Shopify.</footer>
+</main>
+</div>
+</body>
+</html>

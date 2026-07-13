@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Algorithms &amp; Data Structures That Matter - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-8" style="color:#0053e2;text-decoration:none">The builder's craft</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="builders_atlas.html" style="color:#0053e2;text-decoration:none">Builder's Atlas</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Algorithms &amp; Data Structures That Matter</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Algorithms &amp; Data Structures</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#bigo"><span class="num">1</span>Big-O: cost as it scales</a>
+  <a href="#tradeoff"><span class="num">2</span>The space-time tradeoff</a>
+  <a href="#structures"><span class="num">3</span>The data structures that matter</a>
+  <a href="#hashing"><span class="num">4</span>Hashing: the workhorse</a>
+  <a href="#treesgraphs"><span class="num">5</span>Trees &amp; graphs</a>
+  <a href="#recursion"><span class="num">6</span>Recursion &amp; divide-and-conquer</a>
+  <a href="#vectors"><span class="num">7</span>Vector similarity (AI's algorithm)</a>
+  <a href="#edges"><span class="num">8</span>Edge &amp; breaking cases</a>
+  <a href="#use"><span class="num">9</span>How to use it</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="builders_atlas.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Builder's Atlas</a>
+  <a href="../index.html" style="color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Algorithms &amp; Data Structures That Matter</h1>
+  <p class="lede">Not a competitive-programming grind. The small set of ideas a builder actually reasons with: how cost grows with size (Big-O), the space-time tradeoff, the four data structures you use daily, and vector similarity - the algorithm that powers modern AI retrieval. This is the Computation substrate made practical.</p>
+  <p class="meta">Topic folder: first-principles-tutor/building &middot; Captured 2026-07-12 &middot; Cluster 2 of the <a href="builders_atlas.html">Builder's Atlas</a>; the daily face of <a href="../foundations/computation_as_substrate.html">Computation as a Substrate</a></p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>An algorithm is a recipe; a data structure is how you arrange data so the recipe is cheap.</strong> They are two halves of one skill: making computation affordable.</li>
+    <li><strong>Big-O</strong> measures how cost <em>grows</em> as input grows. It ignores constants and small inputs and asks the only question that matters at scale: does this blow up? O(1) and O(log n) are heaven; O(n^2) and worse are landmines.</li>
+    <li><strong>The universal lever is the space-time tradeoff:</strong> you can almost always go faster by using more memory (caching, indexes, hash maps) - and vice versa.</li>
+    <li><strong>Four structures cover most work:</strong> arrays/lists (order), hash maps (instant lookup), trees (sorted hierarchy), graphs (relationships).</li>
+    <li><strong>Hashing is the workhorse</strong> behind instant lookup, deduplication, and caching expensive work (including model calls).</li>
+    <li><strong>Vector similarity / nearest-neighbor</strong> is <em>the</em> algorithm under embeddings and RAG - how an AI system finds "the most relevant chunks" from millions.</li>
+  </ul>
+
+  <h2 id="bigo"><span class="n">1</span>Big-O: the language of cost as it scales</h2>
+  <p>The only performance question that survives changing hardware is: <strong>as the input grows, how does the work grow?</strong> Big-O answers exactly that, deliberately throwing away constant factors and small-input behavior to expose the growth <em>shape</em>. A laptop that is 10x faster does not save an algorithm whose cost quadruples every time the data doubles - scale always wins.</p>
+  <table>
+    <thead><tr><th>Notation</th><th>Name</th><th>Doubling the input...</th><th>Everyday example</th></tr></thead>
+    <tbody>
+      <tr><td><code>O(1)</code></td><td>Constant</td><td>...changes nothing. Heaven.</td><td>Hash-map lookup; array index</td></tr>
+      <tr><td><code>O(log n)</code></td><td>Logarithmic</td><td>...adds one step. Nearly free.</td><td>Binary search; balanced-tree lookup</td></tr>
+      <tr><td><code>O(n)</code></td><td>Linear</td><td>...doubles the work. Fine.</td><td>Scanning a list once</td></tr>
+      <tr><td><code>O(n log n)</code></td><td>Linearithmic</td><td>...a bit more than doubles. The best sorting can do.</td><td>Good sorts (merge/quick sort)</td></tr>
+      <tr><td><code>O(n^2)</code></td><td>Quadratic</td><td>...quadruples. Danger at scale.</td><td>Nested loop over all pairs</td></tr>
+      <tr><td><code>O(2^n)</code>, <code>O(n!)</code></td><td>Exponential / factorial</td><td>...explodes. Intractable.</td><td>Brute-forcing all combinations</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The direct link to the Computation substrate</span><p>This table is the <a href="../foundations/computation_as_substrate.html">tractable-vs-intractable wall</a> in daily clothing. O(1) to O(n log n) are <em>tractable</em> - they scale. Exponential/factorial are the <em>intractable</em> problems (and the shadow of P vs NP): they are computable in theory but hopeless in practice past small inputs. When you hit exponential cost, stop hunting for a clever tweak - you have hit a wall, and the move is to approximate, cache, or change the problem.</p></div>
+  <div class="box"><span class="lbl">The two honest caveats</span><p><strong>Constants sometimes matter.</strong> Big-O hides the constant factor; for small, fixed inputs a "worse" O(n^2) with a tiny constant can beat an O(n log n) with overhead. Measure, do not assume. <strong>Average vs worst case differ.</strong> A hash map is O(1) <em>average</em> but O(n) worst case (many collisions). Know which case your data triggers.</p></div>
+
+  <h2 id="tradeoff"><span class="n">2</span>The space-time tradeoff: the universal lever</h2>
+  <p>The single most useful practical idea in this note. <strong>You can almost always trade memory for speed.</strong> Precompute and store an answer (use space) so you do not have to recompute it (save time). Nearly every optimization is a version of this:</p>
+  <ul>
+    <li><strong>Caching</strong> - store the result of expensive work so repeat requests are instant (see <a href="system_design.html">System Design</a>).</li>
+    <li><strong>Indexes</strong> - a database index is a precomputed structure (usually a tree) that turns a full scan into a fast lookup.</li>
+    <li><strong>Hash maps</strong> - spend memory on a table to buy O(1) lookup instead of an O(n) scan.</li>
+    <li><strong>Memoization</strong> - remember results of a function so the same call is never computed twice.</li>
+  </ul>
+  <div class="box key"><span class="lbl">Deep connection: this is Landauer + information theory</span><p>The space-time tradeoff is not just a trick - it echoes the <a href="../foundations/information_theory.html">information</a> and <a href="../foundations/energy_and_thermodynamics.html">energy</a> substrates. Storing a precomputed answer is <em>storing information to avoid re-doing the computation</em> (which would cost energy/time). For an AI builder this is huge: caching a model's answer to a repeated prompt trades a little storage for skipping an expensive, slow, energy-hungry inference. The whole economics of AI serving is space-time tradeoffs.</p></div>
+
+  <h2 id="structures"><span class="n">3</span>The data structures that actually matter</h2>
+  <p>A data structure is a way of arranging data so the operations you care about are cheap. Choosing the right one <em>is</em> most of practical performance. Four cover the vast majority of real work:</p>
+  <table>
+    <thead><tr><th>Structure</th><th>Great at (cheap)</th><th>Bad at (expensive)</th><th>Reach for it when...</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Array / list</strong></td><td>Ordered data; access by position O(1); iterate in order</td><td>Searching for a value O(n); inserting in the middle</td><td>You need order or a simple sequence</td></tr>
+      <tr><td><strong>Hash map / dict / set</strong></td><td>Lookup, insert, "have I seen this?" all O(1) average</td><td>Any notion of order; range queries</td><td>You need to find things by key, fast</td></tr>
+      <tr><td><strong>Tree</strong> (balanced / B-tree)</td><td>Sorted order + fast O(log n) lookup and range queries</td><td>More overhead than a hash map for pure lookup</td><td>You need sorted data or ranges (databases!)</td></tr>
+      <tr><td><strong>Graph</strong></td><td>Representing arbitrary relationships/connections</td><td>Can be expensive to traverse (O(V+E)+)</td><td>Things relate to many other things (networks, deps)</td></tr>
+    </tbody>
+  </table>
+  <div class="box good"><span class="lbl">The builder's move</span><p>Before writing a loop, ask: <strong>"what operation will I do most, and which structure makes that operation cheap?"</strong> Searching a list over and over is O(n) each time - put the data in a hash map and it is O(1). Ninety percent of "why is this slow?" is the wrong data structure, not a slow language.</p></div>
+
+  <h2 id="hashing"><span class="n">4</span>Hashing: the workhorse behind everything fast</h2>
+  <p>A <strong>hash function</strong> turns any data into a fixed-size number (a "fingerprint"). The magic: the same input always yields the same fingerprint, and different inputs almost never collide. That one idea powers a startling amount of the stack:</p>
+  <ul>
+    <li><strong>Instant lookup (hash maps):</strong> use the fingerprint as an address, so you jump straight to the data instead of scanning - O(1).</li>
+    <li><strong>Deduplication:</strong> same content &rarr; same hash, so you can spot duplicates instantly.</li>
+    <li><strong>Caching:</strong> hash the request (or prompt) to make a cache key; if you have seen that key, return the stored answer. This is how you avoid repeating expensive AI calls.</li>
+    <li><strong>Integrity &amp; change detection:</strong> if the hash changed, the data changed (git, checksums, content-addressing).</li>
+  </ul>
+  <div class="box key"><span class="lbl">For AI builders specifically</span><p><strong>Hashing prompts is your cheapest optimization.</strong> Many requests to an AI system are identical or near-identical. Hash the normalized prompt; on a hit, serve the cached completion for free and instantly. This single technique can slash cost and latency (cross-ref <a href="../economics-of-ai/">Economics of AI</a>). Note: hashing is exact-match; for <em>semantic</em> near-matches you need vector similarity (&sect;7) - a "semantic cache".</p></div>
+
+  <h2 id="treesgraphs"><span class="n">5</span>Trees &amp; graphs: hierarchy and relationships</h2>
+  <p><strong>Trees</strong> model hierarchy (a file system, an org chart, the DOM) and, when balanced, give O(log n) search by keeping data sorted - which is exactly why <em>database indexes</em> are trees (B-trees). Divide the search space in half each step and a million items take ~20 comparisons.</p>
+  <p><strong>Graphs</strong> model arbitrary relationships: nodes connected by edges. They are everywhere once you look - social networks, dependency graphs, maps, knowledge graphs, and the connections between your notes. The two core traversals are <strong>BFS</strong> (breadth-first: explore level by level, finds shortest paths) and <strong>DFS</strong> (depth-first: go deep then backtrack, good for exhausting possibilities).</p>
+  <div class="box"><span class="lbl">The link to the Networks substrate</span><p>Graphs are the concrete, buildable form of <a href="../foundations/networks_and_emergence.html">Networks &amp; Emergence</a>. Network effects, hubs, and contagion from the Think wing are graph properties you can now actually compute over. Agent systems and RAG knowledge bases are graphs under the hood.</p></div>
+
+  <h2 id="recursion"><span class="n">6</span>Recursion &amp; divide-and-conquer</h2>
+  <p><strong>Recursion</strong> is a function that solves a big problem by calling itself on smaller versions until a trivial "base case." It is <a href="coding_fundamentals.html">decomposition</a> made executable: "to solve this, solve two smaller copies and combine them." <strong>Divide-and-conquer</strong> (split in half, solve each, merge) is why the best sorts are O(n log n) - the "log n" is the number of times you can halve the problem.</p>
+  <div class="box trap"><span class="lbl">The recursion gotcha</span><p>Recursion is elegant but each call uses memory (the "call stack"); too deep and it overflows. And naive recursion can re-solve the same subproblem exponentially (the classic slow Fibonacci) - the fix is <em>memoization</em> (the space-time tradeoff again) or converting to a loop. Elegant is not automatically efficient.</p></div>
+
+  <h2 id="vectors"><span class="n">7</span>Vector similarity: the algorithm that powers AI retrieval</h2>
+  <p>This is the one algorithm every AI builder must understand, because it is the engine of embeddings, semantic search, and RAG. The chain of ideas:</p>
+  <ol>
+    <li><strong>An embedding turns meaning into a vector</strong> - a list of numbers (a point in high-dimensional space). Text with similar meaning lands at nearby points. (This is the <a href="../foundations/information_theory.html">"compression of meaning"</a> idea made into coordinates.)</li>
+    <li><strong>Similarity = closeness in that space.</strong> Measure it with <em>cosine similarity</em> (the angle between two vectors) or distance. Close vectors = similar meaning.</li>
+    <li><strong>Retrieval = nearest-neighbor search:</strong> given a query vector, find the closest stored vectors. Those are the most semantically relevant chunks.</li>
+    <li><strong>At scale you cannot compare against everything</strong> (that is O(n) per query over millions). So <strong>vector databases</strong> use <em>Approximate Nearest Neighbor (ANN)</em> indexes (e.g. HNSW - a navigable graph!) to get near-instant, approximately-best matches. Note the tradeoff: <em>approximate</em> buys enormous speed for a tiny accuracy cost - the space-time tradeoff yet again.</li>
+  </ol>
+  <div class="box key"><span class="lbl">Why this unlocks RAG</span><p>Retrieval-Augmented Generation works because of this algorithm: embed your documents into vectors, store them in a vector DB, embed the user's question, find the nearest chunks, and feed those to the model as context. <strong>Vector similarity is literally how an AI system "looks things up."</strong> Understand this and RAG stops being magic - see <a href="designing_ai_systems.html">Designing AI Systems</a>.</p></div>
+
+  <h2 id="edges"><span class="n">8</span>Edge &amp; breaking cases</h2>
+  <ul>
+    <li><strong>Premature optimization.</strong> "The root of all evil" (Knuth). Do not micro-optimize before measuring - most code is not the bottleneck. Get it correct and clear first, profile, then optimize the <em>one</em> part that matters. Big-O intuition tells you where the danger <em>could</em> be; a profiler tells you where it <em>is</em>.</li>
+    <li><strong>Big-O lies about small n.</strong> For tiny inputs, the constant factors and simplicity dominate; a "worse" algorithm can win. Big-O is a scale question.</li>
+    <li><strong>The curse of dimensionality.</strong> In very high-dimensional embedding spaces, distances get less meaningful and exact nearest-neighbor gets expensive - which is exactly why ANN (approximation) exists.</li>
+    <li><strong>You rarely implement these from scratch.</strong> Languages and libraries give you hash maps, sorts, and vector DBs. The skill is <em>choosing and reasoning about</em> them, not reinventing them - which is why this note is about judgment, not code.</li>
+  </ul>
+
+  <h2 id="use"><span class="n">9</span>How to use it</h2>
+  <div class="box good"><span class="lbl">The four questions</span>
+    <p><strong>1. What operation happens most?</strong> Pick the data structure that makes <em>that</em> cheap.</p>
+    <p><strong>2. How does the cost grow with size?</strong> Get a rough Big-O. If it is quadratic or worse and the input can get big, redesign now.</p>
+    <p><strong>3. Can I trade memory for speed?</strong> Cache, index, or memoize the expensive repeated work (especially AI calls).</p>
+    <p><strong>4. Is this exact-match or similarity?</strong> Exact &rarr; hashing. Semantic &rarr; embeddings + vector similarity.</p>
+  </div>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Algorithm</strong></td><td>A step-by-step procedure to solve a problem.</td></tr>
+      <tr><td><strong>Data structure</strong></td><td>A way of arranging data so certain operations are cheap.</td></tr>
+      <tr><td><strong>Big-O</strong></td><td>How an algorithm's cost grows as input grows, ignoring constants; the language of scale.</td></tr>
+      <tr><td><strong>Space-time tradeoff</strong></td><td>Using more memory to save time (or vice versa); the basis of caching, indexes, memoization.</td></tr>
+      <tr><td><strong>Hash function</strong></td><td>Turns any data into a fixed-size fingerprint; powers O(1) lookup, dedup, caching, integrity.</td></tr>
+      <tr><td><strong>Tree / B-tree</strong></td><td>Hierarchical structure giving O(log n) sorted lookup; the basis of database indexes.</td></tr>
+      <tr><td><strong>Graph</strong></td><td>Nodes connected by edges; models arbitrary relationships. Traversed by BFS/DFS.</td></tr>
+      <tr><td><strong>Recursion</strong></td><td>A function solving a problem by calling itself on smaller inputs down to a base case.</td></tr>
+      <tr><td><strong>Embedding</strong></td><td>A vector (point in space) representing meaning; similar meanings sit close together.</td></tr>
+      <tr><td><strong>Cosine similarity</strong></td><td>A measure of how aligned two vectors are; used to score semantic similarity.</td></tr>
+      <tr><td><strong>Nearest-neighbor / ANN</strong></td><td>Finding the closest vectors to a query; ANN = approximate, fast version used by vector DBs.</td></tr>
+      <tr><td><strong>Memoization</strong></td><td>Caching a function's results so the same call is never recomputed.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Algorithms &amp; Data Structures That Matter &middot; captured 2026-07-12. Making computation affordable - and the vector-similarity engine under modern AI.</footer>
+</main>
+</div>
+</body>
+</html>

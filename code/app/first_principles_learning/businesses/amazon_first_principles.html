@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Amazon from First Principles - 1P Retail + 3P Marketplace + AWS</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="business_first_principles_framework.html" style="color:#0053e2;text-decoration:none">Businesses</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Amazon from First Principles</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Businesses: Amazon</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>Founding bet / core axiom</a>
+  <a href="#creation"><span class="num">2</span>Value creation</a>
+  <a href="#capture"><span class="num">3</span>Value capture</a>
+  <a href="#flywheel"><span class="num">4</span>The flywheel</a>
+  <a href="#moat"><span class="num">5</span>The moat</a>
+  <a href="#aggregation"><span class="num">6</span>Aggregated / commoditized</a>
+  <a href="#unit"><span class="num">7</span>Unit economics shape</a>
+  <a href="#failure"><span class="num">8</span>Failure modes</a>
+  <a href="#pattern"><span class="num">9</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">Back to home</a>
+</nav>
+<main>
+  <h1>Amazon from First Principles</h1>
+  <p class="lede">Three stacked businesses in one flywheel: (a) 1P retail, (b) the 3P Marketplace, (c) AWS. The retail loses cushion; ads and AWS pay the bills.</p>
+  <p class="meta">Topic folder: first-principles-tutor/businesses &middot; Applies the shared 9-point lens &middot; <a href="business_first_principles_framework.html">The shared lens</a></p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li>Amazon is not one company - it is <strong>three stacked businesses</strong>: 1P retail (Amazon buys and resells), the 3P Marketplace (other sellers sell, Amazon rakes), and AWS (cloud infrastructure utility).</li>
+    <li>The <strong>core axiom</strong>: customers will always want lower prices, more selection, and faster delivery. Bezos said invest in what stays constant, and reinvest cash flow rather than protect margin.</li>
+    <li>Retail runs on <strong>razor-thin margin plus enormous scale</strong> and a <strong>negative working-capital cycle</strong> (collect from buyers before paying suppliers) that self-funds growth.</li>
+    <li>The <strong>real profit engines</strong> are the hidden high-margin layers: 3P seller fees + FBA + <strong>advertising</strong>, and <strong>AWS</strong>. These subsidize cheap retail.</li>
+    <li>The <strong>flywheel</strong> (the Bezos napkin): lower prices -&gt; more customers -&gt; more sellers/selection -&gt; better cost structure -&gt; even lower prices. Growth compounds itself.</li>
+    <li>3P advertising is the <strong>same pattern as Google/Meta</strong>: aggregate demand, then charge suppliers for visibility on your shelf.</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>Founding bet / core axiom</h2>
+  <p>Bezos built the whole company on things that <strong>do not change</strong>. Ask what customers will want in ten years and the answer is boring and permanent: <strong>lower prices, more selection, faster delivery</strong>. Nobody will ever wake up wanting fewer choices, higher prices, and slower shipping. So you can safely pour a decade of investment into those axes and know the effort keeps paying off.</p>
+  <div class="box key"><span class="lbl">The Bezos inversion</span><p>Most companies optimize for reported earnings and defend margin. Amazon inverted this: <strong>maximize long-run free cash flow per share, and reinvest it</strong> into the constants (price, selection, speed) instead of dropping it to the bottom line. Thin margin is a feature, not a bug - it is deferred market share.</p></div>
+  <p>The second axiom is <strong>cash flow, not accounting profit</strong>. Amazon spent roughly its first two decades near breakeven on purpose, plowing every dollar of cash back into fulfillment centers, price cuts, and new bets. The bet: a company that owns the customer relationship at massive scale can monetize later on its own terms.</p>
+
+  <h2 id="creation"><span class="n">2</span>Value creation</h2>
+  <p>Each of the three businesses makes something abundant that used to be scarce or expensive.</p>
+  <table>
+    <thead><tr><th>Business</th><th>What it makes abundant / cheap</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1P retail</strong></td><td>Selection + convenience + low price. One store with near-infinite shelf, delivered to your door, often cheaper than local retail.</td></tr>
+      <tr><td><strong>3P Marketplace</strong></td><td>Instant distribution + trust + logistics for any small seller. A garage brand gets Amazon's traffic, checkout, reviews, and (via FBA) same-scale delivery.</td></tr>
+      <tr><td><strong>AWS</strong></td><td>Turns capex infrastructure into on-demand opex utility. Servers, storage, and databases become a metered tap you turn on in minutes instead of a data center you build in months.</td></tr>
+    </tbody>
+  </table>
+  <p>The AWS insight is the sharpest: Amazon took its own hard-won, capital-heavy infrastructure competence and <strong>repackaged a fixed cost as a variable service</strong>. A startup no longer needs a million dollars and six months to launch - it rents compute by the hour. That is genuine value creation: it lowered the barrier to building software for the entire economy.</p>
+
+  <h2 id="capture"><span class="n">3</span>Value capture</h2>
+  <p>This is where the three businesses diverge sharply - and where the popular picture of Amazon is usually wrong.</p>
+  <table>
+    <thead><tr><th>Layer</th><th>How it captures</th><th>Margin shape</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1P retail</strong></td><td>Buy low, sell low, keep a sliver of the spread; win on volume.</td><td>Razor-thin (low single-digit operating margin, sometimes negative).</td></tr>
+      <tr><td><strong>3P take rate + FBA</strong></td><td>Referral fee per sale (~8-15%) + fulfillment/storage fees when the seller uses FBA. Roughly half of all units sold are 3P.</td><td>High - Amazon rakes without owning the inventory risk.</td></tr>
+      <tr><td><strong>Advertising</strong></td><td>Sellers pay for sponsored placement on the search results they need to be seen on. A ~$50B+ annual business.</td><td>Very high - near-software margins. The hidden gem.</td></tr>
+      <tr><td><strong>AWS</strong></td><td>Metered utility pricing on compute/storage/services.</td><td>High utility margin (roughly 30%+ operating margin) - the real profit engine.</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The hidden gem</span><p>Advertising is the quiet miracle. Because Amazon <strong>owns the point of purchase intent</strong> (shoppers already searching to buy), an ad on Amazon converts far better than a display ad. Sellers already commoditized on the shelf now pay Amazon a second time just to be visible. This is the same "charge suppliers for attention" mechanic as Google and Meta - but attached directly to the buy button.</p></div>
+  <div class="box"><span class="lbl">Follow the profit</span><p>For long stretches, North America + International retail operating income was roughly breakeven or negative, while <strong>AWS supplied the majority of total operating income</strong>. Ads increasingly stack on top. Retail is the customer-acquisition and demand-aggregation machine; ads and AWS are where the money is actually made.</p></div>
+
+  <h2 id="flywheel"><span class="n">4</span>The flywheel</h2>
+  <p>The famous napkin sketch Bezos drew describes a self-reinforcing loop with no obvious starting point:</p>
+  <p><code>lower prices -&gt; more customers -&gt; more traffic -&gt; more sellers/selection -&gt; better cost structure (scale) -&gt; lower prices</code></p>
+  <ol>
+    <li><strong>Lower prices</strong> pull in more customers.</li>
+    <li><strong>More customers</strong> mean more traffic and demand on the site.</li>
+    <li><strong>More demand</strong> attracts more third-party sellers, which expands selection.</li>
+    <li><strong>More selection + volume</strong> improves the customer experience and drives more scale.</li>
+    <li><strong>Scale</strong> lowers unit cost (fulfillment, buying power), which funds still-lower prices. Loop repeats.</li>
+  </ol>
+  <div class="box good"><span class="lbl">The second, financial loop</span><p>Bolted onto the growth flywheel is a cash loop: <strong>generate free cash flow -&gt; reinvest into fulfillment, price, and new bets -&gt; grow the base -&gt; generate more cash flow</strong>. The negative working-capital cycle (see section 7) makes the flywheel partly self-funding - growth throws off cash instead of consuming it.</p></div>
+  <p>Crucially, the 3P Marketplace supercharges the loop: Amazon gets more selection <strong>without paying for the inventory</strong>, and each 3P sale is higher-margin than a 1P sale. Sellers do the assortment expansion for free; Amazon captures the rake and the ad dollars.</p>
+
+  <h2 id="moat"><span class="n">5</span>The moat</h2>
+  <ul>
+    <li><strong>Economies of scale</strong> - the largest buyer and shipper in retail has the lowest unit cost. Hard to out-price the low-cost operator.</li>
+    <li><strong>Logistics / fulfillment network</strong> - hundreds of fulfillment centers, sortation, and last-mile delivery are a multi-decade, tens-of-billions capex moat. You cannot rent same-day delivery into existence.</li>
+    <li><strong>Prime switching costs / lock-in</strong> - once you pay the annual fee and lean on fast free shipping (plus video, music, etc.), you default to Amazon for every purchase. The subscription pre-commits your future demand.</li>
+    <li><strong>3P network effects</strong> - more buyers attract more sellers attract more selection attract more buyers. A classic two-sided marketplace loop.</li>
+    <li><strong>AWS switching costs + scale</strong> - once your app is built on AWS-specific services, migrating is painful and risky. Meanwhile AWS's scale lets it keep cutting prices, the same supply-side moat as retail.</li>
+  </ul>
+  <div class="box"><span class="lbl">Stacked moats</span><p>Amazon is unusual because it stacks nearly every moat type at once: scale economies (retail + AWS), network effects (3P), switching costs (Prime + AWS), and a proprietary logistics process. Breaching one does not breach the others.</p></div>
+
+  <h2 id="aggregation"><span class="n">6</span>What it aggregated / commoditized</h2>
+  <p>In the language of Aggregation Theory (see <a href="business_first_principles_framework.html">the shared lens</a>): Amazon <strong>aggregates consumption / demand</strong>. It owns the relationship with the buyer - the place people go to search for and buy things.</p>
+  <p>What it commoditizes is the <strong>supply side: sellers and brands</strong>. To reach Amazon's aggregated demand, a brand must compete on Amazon's shelf, price against every rival on the same page, accept Amazon's rules, and - increasingly - <strong>buy Amazon's ads to be seen at all</strong>. The seller is interchangeable; the demand is scarce and Amazon owns it.</p>
+  <div class="box trap"><span class="lbl">The seller's trap</span><p>Once Amazon is your main channel you are dependent on it, yet you compete against every other seller (and sometimes against Amazon's own private-label products) on your own product page. You created the value; Amazon captures a widening slice via fees + FBA + ads. This is aggregation working exactly as designed - painful for suppliers, great for the aggregator.</p></div>
+
+  <h2 id="unit"><span class="n">7</span>Unit economics shape</h2>
+  <ul>
+    <li><strong>Razor-thin retail margin</strong> - 1P operating margin is low single digits at best. The model only works at enormous volume.</li>
+    <li><strong>Negative working capital / cash conversion cycle</strong> - Amazon collects cash from customers immediately but pays suppliers on ~30-60 day terms. It effectively uses supplier money to fund operations and growth. A negative cash conversion cycle means growth generates cash.</li>
+    <li><strong>High-margin ads + AWS subsidize retail</strong> - the loss-leader retail acquires and locks in customers; the profit is harvested elsewhere. This cross-subsidy is the whole financial trick.</li>
+    <li><strong>FCF over EPS</strong> - Amazon guides and thinks in <strong>free cash flow</strong>, not earnings per share. Depreciation-heavy investment can suppress reported profit while cash generation stays strong.</li>
+    <li><strong>3P is margin-accretive</strong> - each 3P unit carries a fee/ad rake with no inventory risk, so shifting mix toward 3P lifts blended margins even as headline retail stays thin.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The mental model</span><p>Picture retail as a giant, low-margin funnel that captures and holds demand, financed partly by suppliers' float, with two high-margin taps - advertising and AWS - drilled into the side. The funnel does not need to be profitable; it just needs to keep the taps flowing.</p></div>
+
+  <h2 id="failure"><span class="n">8</span>Failure modes / vulnerabilities</h2>
+  <ul>
+    <li><strong>Regulatory / antitrust</strong> - the sharpest risk. Owning the marketplace, competing on it with private label, AND charging sellers for visibility invites self-preferencing claims. Forced separation of these roles would fracture the flywheel.</li>
+    <li><strong>AWS competition</strong> - Microsoft Azure and Google Cloud are well-funded and growing fast. Price competition or a share of AI-workload wins shifting to rivals would erode the main profit engine.</li>
+    <li><strong>Logistics cost</strong> - fuel, labor, wages, and last-mile expense are structurally rising. Fast delivery is capital- and labor-intensive; margin pressure is constant.</li>
+    <li><strong>Seller discontent</strong> - as total take (fees + FBA + ads) climbs toward a large share of a seller's revenue, sellers seek other channels (Shopify, TikTok Shop, direct). If the supply side revolts, selection suffers.</li>
+    <li><strong>Thin retail margin</strong> - with so little cushion, a demand shock, a bad capex cycle, or an over-build of fulfillment capacity can quickly turn retail loss-making (as it did during over-expansion periods).</li>
+  </ul>
+
+  <h2 id="pattern"><span class="n">9</span>The pattern it exemplifies</h2>
+  <p>Amazon is the canonical stack of three business "physics": <strong>economies of scale + the flywheel + aggregation-then-monetize-suppliers-with-ads</strong>. Retail wins on scale; the flywheel makes growth compound; the marketplace and ads monetize the aggregated demand.</p>
+  <div class="box key"><span class="lbl">The transferable lesson</span><p>Own the demand at scale first, even at breakeven, then monetize the suppliers who need to reach that demand. Amazon's 3P advertising is <strong>structurally identical to Google and Meta's model</strong>: aggregate demand/attention, then charge suppliers for visibility. Amazon just attached it to the moment of purchase, where intent is highest and ads convert best.</p></div>
+  <div class="box good"><span class="lbl">Build takeaway</span><p>The most durable position is to <strong>own a demand relationship</strong> and let suppliers commoditize themselves to reach it. Bonus points if you can layer a second, higher-margin business (ads, a utility like AWS) on top of a thin-margin demand-aggregation core. The thin core is the moat; the layers are the profit.</p></div>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Flywheel</strong></td><td>Amazon's self-reinforcing loop: lower prices -&gt; more customers -&gt; more sellers/selection -&gt; scale -&gt; lower prices.</td></tr>
+      <tr><td><strong>1P (first-party)</strong></td><td>Amazon buys inventory and resells it; it owns the goods and the margin/risk.</td></tr>
+      <tr><td><strong>3P (third-party)</strong></td><td>Independent sellers sell on Amazon's Marketplace; Amazon takes a fee instead of owning inventory. ~50% of units.</td></tr>
+      <tr><td><strong>FBA (Fulfillment by Amazon)</strong></td><td>3P sellers ship inventory to Amazon, which stores, packs, and delivers it (often Prime-eligible) for a fee.</td></tr>
+      <tr><td><strong>Take rate / rake</strong></td><td>The percentage of each 3P sale Amazon keeps (referral fee ~8-15%, plus FBA fees).</td></tr>
+      <tr><td><strong>Cash conversion cycle</strong></td><td>Time between paying suppliers and collecting from customers. Amazon's is negative - it collects first, pays later, so growth funds itself.</td></tr>
+      <tr><td><strong>FCF (free cash flow)</strong></td><td>Cash generated after capex. Amazon optimizes for FCF per share, not accounting EPS.</td></tr>
+      <tr><td><strong>Prime lock-in</strong></td><td>Annual subscription (fast free shipping + media) that pre-commits members' future purchases to Amazon - a switching-cost moat.</td></tr>
+      <tr><td><strong>Utility computing</strong></td><td>Selling compute/storage as a metered, on-demand service (AWS) - turning capex infrastructure into opex.</td></tr>
+      <tr><td><strong>Negative working capital</strong></td><td>Operating on suppliers' float: customer cash arrives before supplier bills are due, financing growth.</td></tr>
+      <tr><td><strong>Aggregation theory</strong></td><td>Own the demand relationship, commoditize suppliers, and take the margin. Amazon aggregates consumption.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Businesses: Amazon &middot; applies the shared 9-point lens &middot; <a href="business_first_principles_framework.html">The shared lens</a> &middot; <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

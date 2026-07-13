@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Need: Health &amp; Safety - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="human_needs_from_first_principles.html" style="color:#0053e2;text-decoration:none">Human Needs</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Health &amp; Safety: Stay Alive and Well</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Need: Health</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>The need as an axiom</a>
+  <a href="#flow"><span class="num">2</span>The demand flow</a>
+  <a href="#united"><span class="num">3</span>#1 UnitedHealth</a>
+  <a href="#cvs"><span class="num">4</span>#2 CVS / Aetna</a>
+  <a href="#others"><span class="num">5</span>Other players / evolution</a>
+  <a href="#econ"><span class="num">6</span>Unit economics</a>
+  <a href="#playing"><span class="num">7</span>How it is playing out</a>
+  <a href="#pattern"><span class="num">8</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">9</span>Glossary</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Health &amp; Safety: Stay Alive and Well</h1>
+  <p class="lede">Maslow tier 2. Permanent, inelastic demand - and the one market where the person consuming the product is almost never the one paying for it. That single fact bends everything.</p>
+  <p class="meta">Need 04 of 13 &middot; US-centric &middot; See <a href="human_needs_from_first_principles.html">The needs framework</a> &middot; Ties to ../behavioral-economics/ (moral hazard, principal-agent)</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>Health is a permanent, price-inelastic need</strong> - you do not haggle over an ambulance. That inelasticity is exactly what makes the market prone to distortion.</li>
+    <li><strong>The core anomaly: the payer is not the patient.</strong> An insurer (often chosen by your employer) pays the provider. The person receiving care rarely sees a real price. Normal supply-and-demand discipline never engages.</li>
+    <li><strong>US spend is roughly $4.9 trillion/year, about 17-18% of GDP, near $14,500 per person</strong> - the most expensive system on Earth by a wide margin, with middling outcomes.</li>
+    <li><strong>#1 UnitedHealth Group (~$400B revenue)</strong> wins by owning both sides: UnitedHealthcare (the insurer/payer) plus Optum (care delivery, the OptumRx pharmacy-benefit manager, and the data). It increasingly is the provider it pays.</li>
+    <li><strong>#2 CVS Health (~$370B revenue)</strong> attacks from the pharmacy side: ~9,000 retail stores + Aetna (insurer) + Caremark (PBM) - convenience plus the same vertical stack, assembled from the front counter inward.</li>
+    <li><strong>Incentive misalignment and moral hazard are not bugs, they are the equilibrium.</strong> Disruption keeps failing (Haven died, Amazon keeps circling) because the data, the contracts, and the payment intermediary are the moat - not the medicine.</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>The need as an axiom</h2>
+  <p>Staying alive and well sits on Maslow's <strong>safety</strong> tier, just above raw food and shelter. It is as old as the species: every human, in every era, wants to avoid pain, injury, and death. There is no demographic that ages out of it and no technology that removes it. Demand only grows as people get older and richer.</p>
+  <p><strong>Demand is inelastic.</strong> For most goods, if the price doubles, people buy less. Health does not behave that way. Told that a treatment will save your child's life, your willingness to pay approaches your entire net worth. There is no substitute good and often no time to shop. Economists call this <em>inelastic demand</em>, and it is the root condition that lets prices float free of any normal ceiling.</p>
+  <div class="box trap"><span class="lbl">The core distortion: the payer is not the patient</span>
+    <p>In a normal market the buyer, the user, and the payer are the same person, so price feedback keeps everyone honest. In US healthcare these three roles are split across three parties:</p>
+    <p><strong>The patient</strong> consumes the care. <strong>The employer</strong> (or the government) chooses and largely funds the insurance. <strong>The insurer</strong> pays the provider a negotiated, opaque price that the patient usually never learns.</p>
+    <p>When the person deciding to consume is insulated from the price, they over-consume relative to what they would if paying cash (that is <em>moral hazard</em>). And when the person paying (insurer) is not the person receiving the service (patient), their interests diverge (that is a <em>principal-agent problem</em>). Both distortions from ../behavioral-economics/ live here simultaneously, permanently.</p>
+  </div>
+  <p>So the axiom is simple - "keep me alive and well" - but the mechanism serving it is arguably the most tangled market in the modern economy, precisely because the feedback loop that disciplines every other market has been cut in three places.</p>
+
+  <h2 id="flow"><span class="n">2</span>The demand flow (and why the insurance layer breaks it)</h2>
+  <p>Every need travels the same pipeline. Health follows it too - until payment, where a middleman steps in and rewires the whole chain:</p>
+<pre>NEED (stay well)
+  -&gt; Symptom / trigger (pain, injury, screening, chronic condition)
+  -&gt; Access / discovery (find a doctor, ER, clinic, in-network provider)
+  -&gt; Trust (credentials, reputation, referral, bedside manner)
+  -&gt; Treatment / fulfillment (diagnosis, procedure, prescription)
+  -&gt; PAYMENT via insurance intermediary   &lt;-- the twist
+  -&gt; Retention (chronic care, plan renewal, refills)</pre>
+  <p>Steps 1-4 look like any service market. Then step 5 detonates the normal logic:</p>
+  <ul>
+    <li><strong>The patient does not pay the provider directly.</strong> The insurer does, at a rate negotiated in secret months earlier. The patient sees a "chargemaster" list price that almost nobody actually pays, then a separate "explanation of benefits" that arrives weeks later.</li>
+    <li><strong>Price is invisible at the moment of decision.</strong> You choose care without knowing the cost - the opposite of every other purchase. This kills comparison shopping, so providers do not compete on price the way restaurants or airlines do.</li>
+    <li><strong>Discovery is gated by "in-network".</strong> Your real choice set is not "every doctor" but "doctors my insurer has a contract with." The insurer, not the patient, curates the market.</li>
+    <li><strong>Retention is owned by whoever controls the plan.</strong> Because your employer picks the plan annually, the customer relationship the insurer defends is with the <em>employer's HR department</em>, not with you.</li>
+  </ul>
+  <div class="box"><span class="lbl">Why owning the payment step is the whole game</span><p>In most needs, the aggregator wins by owning Discovery + Trust. In health, the durable power sits at <strong>Payment</strong>. Whoever is the insurer decides which providers exist for you, what gets covered, and at what negotiated price. Control the payment intermediary and you control the flow. That is why the giants are all insurers first.</p></div>
+
+  <h2 id="united"><span class="n">3</span>#1 UnitedHealth - own the payer AND the provider</h2>
+  <p><strong>UnitedHealth Group</strong> is the largest healthcare company in the US by revenue (roughly <strong>$400 billion/year</strong>) and one of the most valuable companies in the country. Its genius is that it does not pick a side of the payment table - it owns both, through two halves:</p>
+  <table>
+    <thead><tr><th>Segment</th><th>What it is</th><th>Role in the flow</th></tr></thead>
+    <tbody>
+      <tr><td><strong>UnitedHealthcare</strong></td><td>The insurer. Covers roughly 50M+ members across employer, individual, Medicare Advantage, and Medicaid plans.</td><td>Owns the PAYMENT step. Collects premiums, negotiates provider rates, decides coverage.</td></tr>
+      <tr><td><strong>Optum Health</strong></td><td>Care delivery. Employs or affiliates with ~90,000+ physicians - one of the largest doctor groups in America.</td><td>Owns TREATMENT. UnitedHealth increasingly is the provider it pays.</td></tr>
+      <tr><td><strong>OptumRx</strong></td><td>A pharmacy-benefit manager (PBM), one of the "big three."</td><td>Owns drug PAYMENT - negotiates rebates, sets formularies, captures spread.</td></tr>
+      <tr><td><strong>Optum Insight</strong></td><td>Data, analytics, and software sold back to the rest of the industry.</td><td>Owns the DATA layer across the whole flow.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>The vertical-integration play:</strong> money paid out by UnitedHealthcare as a medical claim can land in the pocket of Optum as a provider or OptumRx as a PBM. What looks like a "cost" on the insurance ledger becomes revenue and margin on the Optum ledger. The group captures margin at multiple steps of the same dollar. When you own the payer, the doctor, the pharmacy benefit, and the analytics, you can arbitrage between them in ways a single-line competitor cannot.</p>
+  <div class="box key"><span class="lbl">Why data is the deepest moat</span><p>UnitedHealth sees claims, clinical records, and pharmacy data across ~150M lives. That dataset lets it price risk, steer patients to owned providers, and predict costs better than anyone. Optum then sells analytics back to rival insurers and hospitals - so competitors help fund the leader's data advantage. Scale begets data begets scale.</p></div>
+  <p>Medicare Advantage - privately administered Medicare, paid per-enrollee by the government - has been the growth engine. It pairs an inelastic, government-funded payer with an aging population, exactly the demand curve you want to own.</p>
+
+  <h2 id="cvs"><span class="n">4</span>#2 CVS / Aetna - the same stack, built from the pharmacy counter</h2>
+  <p><strong>CVS Health</strong> (roughly <strong>$370 billion/year</strong> revenue) reaches the same vertical-integration destination as UnitedHealth but starts from the opposite end of the chain: the retail pharmacy, where patients physically show up. Its three pillars:</p>
+  <table>
+    <thead><tr><th>Pillar</th><th>What it is</th><th>Angle</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Retail pharmacy</strong></td><td>~9,000 CVS stores plus MinuteClinic locations.</td><td>Physical access + convenience. The front door to the flow - where refills and quick care happen.</td></tr>
+      <tr><td><strong>Aetna</strong></td><td>The insurer, ~27M+ members. Acquired 2018 for ~$70B.</td><td>Owns the PAYMENT step, same as UnitedHealthcare.</td></tr>
+      <tr><td><strong>CVS Caremark</strong></td><td>One of the "big three" PBMs.</td><td>Owns drug PAYMENT - formularies, rebates, spread.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>The different angle:</strong> where UnitedHealth integrated from insurance outward into care, CVS integrated from the store inward into insurance. Its distinctive asset is <em>footprint</em> - a pharmacy within a few miles of most Americans. The thesis: steer Aetna members into CVS pharmacies and clinics, fill scripts through Caremark, and keep the whole dollar inside the house. Convenience is the wedge; vertical integration is the profit.</p>
+  <div class="box"><span class="lbl">Same shape, different entry point</span><p>UnitedHealth and CVS are mirror images: insurer + PBM + care delivery + data. One assembled the stack from the payer down, the other from the pharmacy up. That two independent giants converged on the identical structure tells you the structure - not the starting point - is what wins.</p></div>
+
+  <h2 id="others"><span class="n">5</span>Other players and how it is evolving</h2>
+  <ul>
+    <li><strong>Cigna / Evernorth</strong> - the third integrated giant (~$240B revenue). Evernorth houses Express Scripts, the PBM that completes the "big three" (OptumRx + Caremark + Express Scripts control roughly 80% of US prescriptions between them). Same insurer + PBM template.</li>
+    <li><strong>Big pharma</strong> (Eli Lilly, Novo Nordisk, Pfizer, Merck) - they make the actual drugs, the one part of the system with clear scientific value creation, protected by patents. The PBMs sit between them and patients, extracting rebates.</li>
+    <li><strong>Epic Systems</strong> - a private company holding roughly a third of the US hospital EHR (electronic health record) market and record data on hundreds of millions of patients. It is a quiet data moat: once a hospital runs on Epic, switching is nearly impossible, and Epic controls how clinical data flows.</li>
+    <li><strong>Telehealth</strong> (Teladoc, Amwell) - promised to disrupt access. Boomed during COVID, then deflated: cheap to copy, and still dependent on the same insurers for payment. A feature, not a new flow.</li>
+    <li><strong>GLP-1 drugs</strong> (Ozempic/Wegovy from Novo Nordisk, Mounjaro/Zepbound from Eli Lilly) - the genuine shock of the decade. List prices around $1,000+/month, demand effectively unlimited, and they may reduce downstream costs (diabetes, heart disease). They are reshaping who pays for what and turning Lilly and Novo into some of the most valuable companies on Earth.</li>
+    <li><strong>Amazon's attempts</strong> - the recurring cautionary tale. <em>Haven</em> (2018, with JPMorgan and Berkshire) aimed to fix employer healthcare and dissolved in 2021 having changed nothing. Amazon then bought PillPack, launched Amazon Pharmacy, and acquired One Medical (~$3.9B) for primary care. Steady nibbling, no revolution.</li>
+  </ul>
+  <div class="box trap"><span class="lbl">Why disruption keeps failing</span><p>Newcomers attack the visible ugliness (bad UX, high prices, slow access) but the actual moat is invisible: multi-year provider contracts, the PBM rebate machine, regulatory complexity, EHR data lock-in, and the fact that the buyer (employer/government) is not the user. You cannot out-convenience a system whose profit does not depend on the user being happy. The moat is the payment intermediary and the data, not the medicine.</p></div>
+
+  <h2 id="econ"><span class="n">6</span>Unit economics</h2>
+  <p>Follow the dollar and the whole structure explains itself.</p>
+  <h3>Medical loss ratio (MLR) - the regulated ceiling that created integration</h3>
+  <p>The ACA requires insurers to spend at least <strong>80% of premiums</strong> (individual/small group) or <strong>85%</strong> (large group) on actual medical care - the <em>medical loss ratio</em>. Only the remaining 15-20% covers admin and profit. This rule was meant to cap insurer greed, but it had a perverse effect: <strong>if you can only keep a fixed percentage, the way to grow profit is to grow the total dollars flowing through.</strong> Higher medical spend is not the enemy of insurer profit - it can be the driver of it. And the cleanest way to grow the pie without violating MLR is to own the providers and PBMs where the "medical spend" 80% actually lands. MLR quietly incentivized the exact vertical integration we see.</p>
+  <h3>PBM spread</h3>
+  <p>PBMs make money in opaque ways: rebates negotiated from drugmakers (some kept, some passed through), and <em>spread pricing</em> - charging the health plan more for a drug than they reimburse the pharmacy, pocketing the difference. Because the flows are confidential, the true margin is hard to see, which is exactly the point. Owning a PBM lets an insurer capture value on every prescription its own members fill.</p>
+  <h3>Why vertical integration captures margin</h3>
+  <p>Each independent layer - insurer, PBM, provider, pharmacy - normally takes a cut and the patient pays the stack. When one company owns all the layers, an "expense" at one layer becomes "revenue" at another. The group nets the intercompany margin instead of paying it out. That is the entire financial logic of UnitedHealth and CVS.</p>
+  <h3>Employer-sponsored insurance</h3>
+  <p>Roughly <strong>150M Americans</strong> (about half the population) get coverage through an employer - a WWII-era accident of wage controls and tax policy that never went away. Average family premiums run around <strong>$25,000/year</strong>, with the employer paying roughly 70% and the employee the rest (plus deductibles). This is the structural source of the payer-is-not-patient split: your employer is the customer the insurer really serves, which is why plans optimize for the HR buyer, not for you.</p>
+
+  <h2 id="playing"><span class="n">7</span>How it is playing out</h2>
+  <ul>
+    <li><strong>Relentless consolidation.</strong> Payers, providers, and PBMs keep merging into a handful of vertically integrated giants (UnitedHealth, CVS/Aetna, Cigna/Evernorth). The three big PBMs alone touch ~80% of prescriptions. The "market" is increasingly three companies wearing many hats.</li>
+    <li><strong>Data is the moat.</strong> Whoever sees the most claims and clinical records prices risk best and steers patients most effectively. Optum and Epic show that the durable advantage is informational, not clinical.</li>
+    <li><strong>Incentive misalignment persists by design.</strong> Because the buyer (employer/government) is not the user (patient), no amount of consumer frustration forces change. The people who could vote with their wallet do not hold the wallet.</li>
+    <li><strong>Moral hazard everywhere.</strong> Insured patients over-consume relative to cash prices; providers, paid per procedure (fee-for-service), have reason to do more. "Value-based care" (paying for outcomes, not volume) is the proposed fix and the direction UnitedHealth/Optum push - partly because owning the provider is what makes capturing that value possible.</li>
+    <li><strong>GLP-1s are the live wildcard.</strong> A genuinely effective, wildly demanded, expensive class of drugs is stress-testing every payer's budget and could shift the cost curve for a generation.</li>
+    <li><strong>Regulatory pressure is rising but slow.</strong> PBM transparency, MA overbilling scrutiny, and antitrust attention are all growing - but the giants have the lobbying and legal depth to absorb it.</li>
+  </ul>
+
+  <h2 id="pattern"><span class="n">8</span>The pattern it exemplifies</h2>
+  <p>Health is the textbook case of a repeatable structural pattern worth carrying to other needs:</p>
+  <div class="box key"><span class="lbl">The pattern</span>
+    <p><strong>Vertical integration + owning the payment intermediary, in a market where the buyer is not the user.</strong></p>
+    <p>1. Start with an inelastic, permanent need. 2. Insert an intermediary (insurance) between user and payment, so the user never sees a real price. 3. Split buyer (employer/government) from user (patient), severing the feedback loop. 4. Then buy up every layer - provider, PBM, data - so intercompany "costs" become internal margin. 5. Defend it all with the deepest asset: data.</p>
+  </div>
+  <p><strong>Principal-agent distortions</strong> are the connective tissue. The insurer is an agent for the patient but is paid by the employer; the employer is an agent for the employee but optimizes its own budget; the provider is an agent for the patient but is paid per procedure. At every hop, the interests of the deciding party and the affected party diverge - and the winners are the firms that positioned themselves at the payment choke point to profit from the divergence rather than resolve it.</p>
+  <p>Where else does this show up? Any market with an insurance-like intermediary and a split buyer/user: dental, vision, and - more loosely - anything sold to a corporate buyer for an end user who cannot switch (enterprise software, textbooks assigned to students). When you see "the person choosing is not the person paying is not the person using," expect distorted prices and a middleman getting rich in the seams.</p>
+
+  <h2 id="glossary"><span class="n">9</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Payer</strong></td><td>The entity that actually pays the provider - usually an insurer or the government - not the patient receiving care.</td></tr>
+      <tr><td><strong>Provider</strong></td><td>Who delivers care: doctors, hospitals, clinics, pharmacies.</td></tr>
+      <tr><td><strong>PBM (pharmacy-benefit manager)</strong></td><td>Middleman between drugmakers, insurers, and pharmacies. Sets formularies, negotiates rebates, captures spread. Big three: OptumRx, CVS Caremark, Express Scripts.</td></tr>
+      <tr><td><strong>Medical loss ratio (MLR)</strong></td><td>Share of premiums an insurer must spend on care - 80% (small group) or 85% (large group) under the ACA. Capping the margin rate pushed insurers to grow total dollars, driving integration.</td></tr>
+      <tr><td><strong>Vertical integration</strong></td><td>Owning multiple layers of the chain (insurer + PBM + provider + data) so a cost at one layer becomes revenue at another.</td></tr>
+      <tr><td><strong>Moral hazard</strong></td><td>When being insulated from cost (by insurance) leads people to consume more than they would if paying directly.</td></tr>
+      <tr><td><strong>Principal-agent problem</strong></td><td>When the party acting (agent: insurer, employer, provider) has interests that diverge from the party affected (principal: patient).</td></tr>
+      <tr><td><strong>EHR (electronic health record)</strong></td><td>Digital patient record system. Epic dominates hospitals; a data and switching-cost moat.</td></tr>
+      <tr><td><strong>Inelastic demand</strong></td><td>Demand that barely falls when price rises - you do not shop around for emergency care. Root cause of health's price distortions.</td></tr>
+      <tr><td><strong>Medicare Advantage (MA)</strong></td><td>Privately administered Medicare, paid per-enrollee by the government. A key growth engine for UnitedHealth and CVS.</td></tr>
+      <tr><td><strong>Employer-sponsored insurance</strong></td><td>Coverage bought by an employer for employees - ~150M Americans. The structural source of the buyer-is-not-user split.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Need 04: Health &amp; Safety &middot; UnitedHealth vs CVS/Aetna. The payer is not the patient - remember that and the whole market makes sense. <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

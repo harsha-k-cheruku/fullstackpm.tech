@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Game Theory &amp; Multipolar Traps (Moloch) - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-3" style="color:#0053e2;text-decoration:none">Dynamics &amp; forces</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Game Theory &amp; Multipolar Traps (Moloch)</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Game Theory &amp; Moloch</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#what"><span class="num">1</span>What game theory studies</a>
+  <a href="#pd"><span class="num">2</span>The Prisoner's Dilemma</a>
+  <a href="#nash"><span class="num">3</span>Nash equilibrium</a>
+  <a href="#repeated"><span class="num">4</span>Repeated games change everything</a>
+  <a href="#commons"><span class="num">5</span>The tragedy of the commons</a>
+  <a href="#moloch"><span class="num">6</span>Moloch / multipolar traps</a>
+  <a href="#escape"><span class="num">7</span>How traps are escaped</a>
+  <a href="#sum"><span class="num">8</span>Positive-, zero-, negative-sum</a>
+  <a href="#edges"><span class="num">9</span>Edge &amp; breaking cases</a>
+  <a href="#use"><span class="num">10</span>How to use it</a>
+  <a href="#glossary"><span class="num">11</span>Glossary</a>
+  <a href="../index.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Game Theory &amp; Multipolar Traps (Moloch)</h1>
+  <p class="lede">Some of the worst outcomes in the world are produced by everyone acting perfectly rationally. This note is about strategic interaction - where my best move depends on yours - and the traps that emerge when rational individuals are marched, step by locally sensible step, into a collectively ruinous place nobody chose.</p>
+  <p class="meta">Topic folder: first-principles-tutor/forces &middot; Captured 2026-07-12 &middot; The logic of many minds colliding: why cooperation is hard and races run to the bottom</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>Game theory</strong> studies strategic interaction: situations where my best move depends on your move. Its atoms are players, strategies, and payoffs.</li>
+    <li><strong>The Prisoner's Dilemma</strong> is the core tragedy: each player is individually better off defecting no matter what the other does, so both defect - and both end up worse than if they had cooperated. Individual rationality manufactures collective disaster.</li>
+    <li><strong>Nash equilibrium</strong> is a state where no one can improve by changing alone. Crucially, <em>equilibrium is not optimum</em> - the stable outcome is often bad for everyone.</li>
+    <li><strong>Repetition changes everything.</strong> The shadow of the future - the chance we meet again - lets cooperation emerge via tit-for-tat, reputation, and the threat of retaliation.</li>
+    <li><strong>Tragedy of the commons</strong> and <strong>Moloch / multipolar traps</strong> are the Prisoner's Dilemma scaled up: competition can force everyone to sacrifice what they value just to stay in the race. Nobody wants it; everybody does it; defecting-first loses.</li>
+    <li><strong>The AI race is itself a multipolar trap.</strong> Escape requires coordination - binding agreements, an outside enforcer, or changing the payoffs - all of which are hard precisely because defection is individually rational.</li>
+  </ul>
+
+  <h2 id="what"><span class="n">1</span>What game theory studies</h2>
+  <p>Most of our other models treat the world as something to be measured or optimized against fixed rules. Game theory studies the case where the "environment" is <em>other minds who are also optimizing</em> - and who are reacting to you as you react to them. The defining feature: <strong>my best move depends on your move, and yours on mine.</strong></p>
+  <p>That interdependence is what makes it different from ordinary decision-making. Against a slot machine you just compute the odds. Against a person, the odds themselves depend on what they think you will do, which depends on what they think you think they will do. Strategy is recursive.</p>
+  <h3>The three atoms</h3>
+  <ul>
+    <li><strong>Players</strong> - the decision-makers (people, firms, nations, genes, algorithms). Anything that can choose and has interests.</li>
+    <li><strong>Strategies</strong> - the complete set of moves available to each player, and the rule for which one they pick.</li>
+    <li><strong>Payoffs</strong> - what each player gets from each combination of moves. Payoffs encode the incentives; change the payoffs and you change the game.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The central lens</span><p>Once you see players, strategies, and payoffs, you stop asking "what is the right thing to do?" in isolation and start asking "<strong>what game am I in, and what will everyone else rationally do?</strong>" Outcomes are not chosen by any one player - they <em>emerge</em> from the structure of the game. That is why you can predict terrible results without any villains: the structure, not the character of the players, does the work.</p></div>
+
+  <h2 id="pd"><span class="n">2</span>The Prisoner's Dilemma</h2>
+  <p>This is the single most important object in the field - the compact engine behind almost every trap in this note. The setup: two accomplices are arrested and interrogated separately. Each can <strong>cooperate</strong> (stay silent, loyal to the other) or <strong>defect</strong> (betray the other to the police). The payoffs (shown as years in prison - lower is better):</p>
+  <pre>
+                        PLAYER B
+                 Cooperate      Defect
+              +-------------+-------------+
+   Cooperate  |  A: 1 yr    |  A: 10 yrs  |
+              |  B: 1 yr    |  B: 0 yrs   |
+  PLAYER A    +-------------+-------------+
+   Defect     |  A: 0 yrs   |  A: 5 yrs   |
+              |  B: 10 yrs  |  B: 5 yrs   |
+              +-------------+-------------+
+
+  Each cell shows (A's sentence, B's sentence). Lower = better.
+  </pre>
+  <p>Now reason as Player A. <strong>Look at each of B's possible choices in turn:</strong></p>
+  <ul>
+    <li><strong>If B cooperates:</strong> I get 1 year by cooperating, or 0 years by defecting. Defect is better.</li>
+    <li><strong>If B defects:</strong> I get 10 years by cooperating, or 5 years by defecting. Defect is better.</li>
+  </ul>
+  <p>No matter what B does, defecting leaves me better off. That is a <strong>dominant strategy</strong> - a move that beats the alternative regardless of the other player. B reasons identically. So both defect and each serves <strong>5 years</strong> - even though if both had cooperated they would each serve just <strong>1 year</strong>.</p>
+  <div class="box trap"><span class="lbl">The core tragedy</span><p>Both players acted with flawless individual rationality, and it delivered them to an outcome that is <em>worse for both</em> than the one they could have reached together. <strong>(Defect, Defect) is jointly terrible but individually unbeatable.</strong> There is no mistake to point to, no stupidity to correct - the wreck is baked into the incentive structure. This is the shape of nearly every coordination failure that follows: individually rational choices summing to a collectively awful result.</p></div>
+
+  <h2 id="nash"><span class="n">3</span>Nash equilibrium</h2>
+  <p>Why do both players get stuck at (Defect, Defect)? Because it is a <strong>Nash equilibrium</strong> - named for John Nash - the concept that formalizes "stuck."</p>
+  <div class="box key"><span class="lbl">The definition, plainly</span><p>A set of strategies is a <strong>Nash equilibrium</strong> if <em>no player can improve their own payoff by unilaterally changing their move, given what everyone else is doing.</em> It is a state of no regret and no incentive to deviate alone - a mutual best-response. Once you are in one, nobody moves, because moving alone only makes you worse off.</p></div>
+  <p>In the Prisoner's Dilemma, (Defect, Defect) is a Nash equilibrium: if A switches to Cooperate while B still defects, A goes from 5 years to 10 - a worse deal. So A stays. Same for B. Mutual cooperation, by contrast, is <em>not</em> an equilibrium: from (Cooperate, Cooperate), either player can defect and drop from 1 year to 0. The good outcome is unstable; the bad outcome is a fortress.</p>
+  <div class="box trap"><span class="lbl">Equilibrium is not optimum</span><p>This is the idea to burn in: <strong>the stable outcome of a game is frequently not the best outcome for the group.</strong> "Everyone is doing the rational thing and nobody can improve by acting alone" does <em>not</em> imply "this is good." The equilibrium is merely where the incentives park the system - and where they park it can be a disaster. Every trap in this note is, at bottom, a bad Nash equilibrium that no single player can escape by moving alone.</p></div>
+
+  <h2 id="repeated"><span class="n">4</span>Repeated games change everything</h2>
+  <p>The Prisoner's Dilemma above is a <em>one-shot</em> game: the players meet once and never again, so betrayal has no consequences. But most of real life is not one-shot. We deal with the same colleagues, neighbors, suppliers, and rivals over and over - and that single change transforms the logic.</p>
+  <div class="box key"><span class="lbl">The shadow of the future</span><p>When a game <strong>repeats</strong> and players might meet again, today's defection can be punished tomorrow. This looming possibility - the "shadow of the future" - reshapes present incentives. If the relationship is likely to continue, the long-run cost of retaliation can outweigh the short-run gain of betrayal, and <strong>cooperation becomes rational</strong>. The very same payoff matrix that guaranteed betrayal one-shot can now sustain cooperation, purely because the game does not end.</p></div>
+  <h3>Tit-for-tat</h3>
+  <p>In Robert Axelrod's famous tournaments, where strategies played the repeated Prisoner's Dilemma against each other, the winner was almost embarrassingly simple: <strong>tit-for-tat</strong>. Its rule is four words - <em>cooperate first, then copy</em>: start by cooperating, and thereafter do whatever your opponent did last round. Its strengths generalize into a recipe for cooperation:</p>
+  <ul>
+    <li><strong>Nice</strong> - never defects first; it gives cooperation a chance to start.</li>
+    <li><strong>Retaliatory</strong> - punishes defection immediately, so it cannot be exploited.</li>
+    <li><strong>Forgiving</strong> - returns to cooperation the moment the other does, avoiding endless feuds.</li>
+    <li><strong>Clear</strong> - its behavior is legible, so the other player can learn that cooperation pays.</li>
+  </ul>
+  <p>Three ingredients make this work: <strong>repetition</strong> (we meet again), <strong>memory</strong> (I remember what you did), and <strong>retaliation</strong> (I can make defection cost you). Remove any one and cooperation collapses back to the one-shot outcome.</p>
+  <div class="box good"><span class="lbl">Reputation scales it up</span><p>Repetition need not be with the <em>same</em> partner. If word gets around, my behavior toward you becomes information others use to decide how to treat me. That is <strong>reputation</strong>: it turns a crowd of one-shot encounters into one long repeated game, letting cooperation survive even among strangers. This is exactly the machinery explored in <a href="../trust/trust_and_verification.html">Trust &amp; Verification</a> - trust is, in large part, the socially stored memory of past cooperation, and verification is what keeps that memory honest.</p></div>
+
+  <h2 id="commons"><span class="n">5</span>The tragedy of the commons</h2>
+  <p>Scale the Prisoner's Dilemma from two players to many, sharing one resource, and you get the <strong>tragedy of the commons</strong> (Garrett Hardin's framing). A shared resource - a pasture, a fishery, clean air - is open to all. Each individual gains the <em>full</em> benefit of using a little more, while the <em>cost</em> of depletion is spread across everyone. So each person's rational move is to take more; and when everyone reasons that way, the resource collapses and all lose.</p>
+  <table>
+    <thead><tr><th>Commons</th><th>Individual incentive</th><th>Collective ruin</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fisheries</strong></td><td>Catch as much as you can now</td><td>Stocks collapse; everyone's boats sit idle</td></tr>
+      <tr><td><strong>Climate / air</strong></td><td>Emit freely; cleanup is someone else's cost</td><td>Shared atmosphere degrades for all</td></tr>
+      <tr><td><strong>Attention</strong></td><td>Grab eyeballs with louder, sharper hooks</td><td>A polluted, exhausting information commons</td></tr>
+      <tr><td><strong>Antibiotics</strong></td><td>Prescribe / use liberally for each patient</td><td>Resistance spreads; the drugs stop working for everyone</td></tr>
+    </tbody>
+  </table>
+  <div class="box trap"><span class="lbl">Same engine, many players</span><p>The structure is the Prisoner's Dilemma with a crowd: <strong>cooperate</strong> = restrain your use; <strong>defect</strong> = grab more. Defection dominates for each individual, so the shared resource is drained even though everyone would prefer a world where all restrained. Note the cruel twist: your personal restraint accomplishes almost nothing if others don't restrain too - the fish you leave in the sea are simply caught by someone else. That is what makes unilateral virtue feel (and often be) futile, and why these problems demand <em>coordination</em>, not just conscience.</p></div>
+
+  <h2 id="moloch"><span class="n">6</span>Moloch / multipolar traps</h2>
+  <p>Scott Alexander gave this whole family of failures a name: <strong>Moloch</strong> - the ancient god to whom people sacrificed what they loved most. A <strong>multipolar trap</strong> is a situation with many competing players where <em>competition itself forces everyone to sacrifice the things they value in order to stay in the race.</em> It is a race to the bottom that no single player can exit.</p>
+  <div class="box trap"><span class="lbl">The big idea, in one line</span><p><strong>Nobody wants it, everybody does it, because whoever refuses first loses.</strong> Each player would gladly keep what they value - safety, leisure, dignity, honesty - if only everyone else did too. But because defecting-first grabs an advantage (and refusing-first surrenders one), the competitive pressure ratchets everyone downward. The sacrifice is not chosen; it is <em>extracted</em> by the structure of competition. Moloch is what a bad Nash equilibrium looks like when it eats the things you care about.</p></div>
+  <h3>The pattern everywhere</h3>
+  <ul>
+    <li><strong>Ad-driven attention wars</strong> - every platform would prefer calmer, healthier feeds, but the one that optimizes hardest for outrage and engagement wins users, so all must.</li>
+    <li><strong>Arms races</strong> - no nation wants to pour wealth into weapons, but the one that disarms first is exposed, so all keep building.</li>
+    <li><strong>Beauty filters / cosmetic escalation</strong> - no individual wants the treadmill, but once some edit and enhance, the baseline shifts and everyone must to look "normal."</li>
+    <li><strong>Overwork</strong> - no one wants 80-hour weeks, but where they signal commitment, refusing to work them means losing to those who do.</li>
+    <li><strong>Cutting corners under competition</strong> - safety, quality, and ethics all become "defect" opportunities when a rival who cuts them undercuts you on price or speed.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The AI race IS a multipolar trap</span><p>Name it explicitly: <strong>the race to build ever-more-powerful AI is itself a Molochian multipolar trap.</strong> Many labs and nations would, in the abstract, prefer to move carefully - more testing, more alignment work, more caution. But whoever slows down risks being overtaken by a less careful competitor who captures the market, the capability, or the strategic advantage. So caution becomes "defecting-first loses," and the field is pushed to race faster than any single participant thinks wise. The economic pressure driving this is dissected in <a href="../economics-of-ai/">Economics of AI</a>, and its knock-on pressure on labor - itself a competitive race among workers and firms - runs through <a href="../future-of-work/">Future of Work</a>. The technology differs from fisheries and arms; the game-theoretic skeleton is identical.</p></div>
+
+  <h2 id="escape"><span class="n">7</span>How traps are escaped</h2>
+  <p>If the trap is structural, the escape must be structural too. You cannot exhort individuals into cooperation when defection pays - you have to <em>change the game</em>. The tools, roughly in order of ambition:</p>
+  <ul>
+    <li><strong>Binding agreements</strong> - players commit in advance and make the commitment costly to break (contracts, treaties, escrow). The point is to remove the option to defect, not to trust that no one will.</li>
+    <li><strong>An outside enforcer (Leviathan)</strong> - Hobbes's answer: a higher authority - a government, a regulator, a referee - that punishes defection so cooperation becomes the individually rational choice. Regulation is not the enemy of markets here; it is the machinery that makes the good equilibrium stable.</li>
+    <li><strong>Changing the payoffs</strong> - taxes on the harmful move, subsidies for the cooperative one, liability for spillover costs. Reprice defection until cooperating is simply the better bet for each player alone.</li>
+    <li><strong>Aligning incentives / mechanism design</strong> - deliberately engineering the rules of the game so that self-interested play produces the collectively good outcome. This is the constructive flip side of game theory: don't fight the incentives, redesign them.</li>
+  </ul>
+  <div class="box good"><span class="lbl">Coordination is the escape hatch</span><p>Every escape is a form of <strong>coordination</strong>: getting the players to move together to the better equilibrium that none could reach alone. When it works, it is civilization's highest trick - turning a trap into a solved problem (see Section 8).</p></div>
+  <div class="box trap"><span class="lbl">Why coordination is hard</span><p>The very thing that creates the trap sabotages the cure: <strong>defection remains individually rational.</strong> Any coordination deal creates a fresh incentive to be the one who cheats it - to keep fishing while others restrain, to keep racing while others pause. So coordination needs enforcement, monitoring, and trust, all of which are expensive and fragile, and any of which can be undermined by a single determined defector. The larger and more anonymous the group, the harder it gets. This is why some traps persist for decades even when everyone can see them.</p></div>
+
+  <h2 id="sum"><span class="n">8</span>Positive-sum vs zero-sum vs negative-sum games</h2>
+  <p>Step back from any single game and ask what happens to the <em>total</em> value across all players. This gives the most useful strategic taxonomy there is.</p>
+  <table>
+    <thead><tr><th>Type</th><th>What happens to the total</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Zero-sum</strong></td><td>Fixed pie - my gain is exactly your loss; the total never changes</td><td>Poker, dividing a fixed inheritance, a chess match</td></tr>
+      <tr><td><strong>Positive-sum</strong></td><td>The pie grows - both players can end up better off than they started</td><td>Trade, specialization, most healthy collaboration</td></tr>
+      <tr><td><strong>Negative-sum</strong></td><td>The pie shrinks - the interaction destroys value overall</td><td>War, arms races, the tragedy of the commons, Moloch traps</td></tr>
+    </tbody>
+  </table>
+  <div class="box good"><span class="lbl">The great project</span><p>Here is the optimistic through-line: <strong>most of civilization's progress is the work of turning zero-sum and negative-sum games into positive-sum ones.</strong> Trade converts "I take your stuff" (zero-sum raiding) into "we exchange and both gain" (positive-sum). Law and property rights convert "whoever is stronger takes it" into "we all invest because our gains are protected." The strategic goal in life is rarely to win a zero-sum fight harder - it is to <em>find or create a positive-sum game</em> where winning together is possible. When you feel locked in a zero-sum death-match, the highest move is usually to change the game, not to fight it better.</p></div>
+
+  <h2 id="edges"><span class="n">9</span>Edge &amp; breaking cases</h2>
+  <p>The clean theory frays at the edges - and the edges are where much of the real danger lives.</p>
+  <ul>
+    <li><strong>Red Queen races</strong> - competition can force endless running just to stay in place. Each player's improvement cancels out against everyone else's, so effort rises while relative position holds - a treadmill with no finish line. This is the same engine driving biological arms races in <a href="../foundations/evolution_as_algorithm.html">Evolution as Algorithm</a>: predator and prey both get faster and neither pulls ahead. Many Moloch traps are Red Queen races wearing a suit.</li>
+    <li><strong>Goodhart under competition</strong> - "when a measure becomes a target, it ceases to be a good measure." Competition supercharges this: the moment a proxy is rewarded, rivals race to game it, and whoever games it hardest wins - so the metric decays fastest exactly where the pressure is highest. This is the competitive face of the alignment failures in <a href="../ai/">the AI notes</a>: optimize a proxy hard enough and it detaches from what you actually wanted.</li>
+    <li><strong>Coordination failures</strong> - sometimes everyone <em>wants</em> to move to the better equilibrium and still can't, because no one dares move first without a guarantee the others will follow. The good outcome exists and is common knowledge, yet remains unreachable for want of a trusted signal. (This is why leadership, focal points, and credible commitments matter so much.)</li>
+    <li><strong>When cooperation collapses</strong> - the shadow of the future can shorten without warning. Near a known endgame (a firm about to fold, a final round, a dying relationship), future punishment loses its bite and defection floods back in. Cooperation is not a permanent achievement; it is a standing equilibrium that can unravel the instant the conditions holding it up disappear.</li>
+  </ul>
+
+  <h2 id="use"><span class="n">10</span>How to use it</h2>
+  <p>A short interrogation to run whenever you feel stuck, squeezed, or locked in conflict:</p>
+  <div class="box good"><span class="lbl">Four questions to run</span>
+    <p><strong>1. What game am I in?</strong> Name the players, the strategies, and the payoffs. Who else is optimizing, and does my best move depend on theirs? Half of clear thinking is just seeing the game correctly.</p>
+    <p><strong>2. Is this a trap?</strong> Is the bad outcome an equilibrium that no one can escape alone - a Prisoner's Dilemma, a commons, a Moloch race? If so, stop blaming the players; the structure is the problem.</p>
+    <p><strong>3. Can I change the payoffs or find a positive-sum move?</strong> Rather than playing the given game harder, ask whether you can re-price defection, build a binding agreement, bring in an enforcer, or turn a zero-sum fight into a positive-sum trade.</p>
+    <p><strong>4. Where is the shadow of the future?</strong> Is this one-shot or repeated? Can you lengthen the relationship, add memory (reputation), or make retaliation credible - so cooperation becomes the rational choice?</p>
+  </div>
+  <p>The deepest habit this builds: when you see a bad outcome, resist the urge to find a villain. Ask instead what game produced it - because the surest way to fix a trap is to change its structure, and the surest way to stay stuck is to keep playing a losing game more earnestly.</p>
+
+  <h2 id="glossary"><span class="n">11</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Game</strong></td><td>Any situation of strategic interaction where each player's best move depends on the others' moves.</td></tr>
+      <tr><td><strong>Payoff</strong></td><td>What a player gets from a given combination of everyone's moves; the encoding of their incentives.</td></tr>
+      <tr><td><strong>Dominant strategy</strong></td><td>A move that beats the alternatives regardless of what the other players do (e.g. defect in the one-shot dilemma).</td></tr>
+      <tr><td><strong>Prisoner's Dilemma</strong></td><td>The core game where individually rational defection by both players yields an outcome worse for both than mutual cooperation.</td></tr>
+      <tr><td><strong>Nash equilibrium</strong></td><td>A state where no player can improve by unilaterally changing their move; stable, but often not the best outcome for the group.</td></tr>
+      <tr><td><strong>Repeated game</strong></td><td>A game played over and over by the same players, letting future consequences shape present choices.</td></tr>
+      <tr><td><strong>Shadow of the future</strong></td><td>The influence of possible future interactions on today's incentives; the force that lets cooperation emerge.</td></tr>
+      <tr><td><strong>Tit-for-tat</strong></td><td>A simple, powerful repeated-game strategy: cooperate first, then copy the opponent's last move; nice, retaliatory, forgiving, clear.</td></tr>
+      <tr><td><strong>Tragedy of the commons</strong></td><td>Many players sharing a resource, each with an incentive to overuse it, leading to collective ruin.</td></tr>
+      <tr><td><strong>Moloch / multipolar trap</strong></td><td>Competition among many players that forces everyone to sacrifice what they value to stay in the race; a race to the bottom no one can exit alone.</td></tr>
+      <tr><td><strong>Coordination problem</strong></td><td>The difficulty of getting players to jointly move to a better equilibrium, since defecting from any deal stays individually rational.</td></tr>
+      <tr><td><strong>Mechanism design</strong></td><td>Engineering the rules of a game so that self-interested play produces the collectively desirable outcome.</td></tr>
+      <tr><td><strong>Zero-sum</strong></td><td>A game where the total is fixed - one player's gain is exactly another's loss.</td></tr>
+      <tr><td><strong>Positive-sum</strong></td><td>A game where the total can grow - all players can end up better off (trade, collaboration).</td></tr>
+      <tr><td><strong>Negative-sum</strong></td><td>A game where the total shrinks - value is destroyed overall (war, arms races, Moloch traps).</td></tr>
+      <tr><td><strong>Race to the bottom</strong></td><td>Competitive pressure that ratchets every player downward on some dimension they would rather protect.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Game Theory &amp; Multipolar Traps (Moloch) &middot; captured 2026-07-12. The logic of many minds: equilibrium is not optimum, defection is individually rational, and escaping the trap means changing the game.</footer>
+</main>
+</div>
+</body>
+</html>

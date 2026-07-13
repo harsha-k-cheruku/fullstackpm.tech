@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Agents from First Principles - Study Notes</title>
+<style>
+  :root{
+    --ink:#1a1b1d; --body:#2e2f32; --muted:#6b7280; --line:#e5e7eb;
+    --bg:#ffffff; --soft:#f7f8fa; --blue:#0053e2; --blue-light:#e9f0fe;
+    --spark:#ffc220; --spark-dark:#8a4b12; --spark-light:#fff8e5;
+    --green:#2a8703; --green-light:#ecf7e8; --red:#c62828; --red-light:#fdeceb;
+    --code-bg:#0f1b33; --code-ink:#dbe6ff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  /* sidebar */
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;
+    width:250px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)}
+  nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  /* content */
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;
+    background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0}
+  ul,ol{margin:12px 0;padding-left:24px}
+  li{margin:7px 0}
+  strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);
+    padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  /* callouts */
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)}
+  .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)}
+  .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)}
+  .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  /* code / trace blocks */
+  pre{background:var(--code-bg);color:var(--code-ink);border-radius:10px;padding:16px 18px;overflow:auto;
+    font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13.5px;line-height:1.55;margin:18px 0}
+  pre .c{color:#8ea6d6}    /* comment */
+  pre .k{color:#ffc220}    /* key label */
+  pre .g{color:#7ee787}    /* good/result */
+  .trace-label{font-size:13px;font-weight:700;color:var(--muted);margin:22px 0 -8px}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-2" style="color:#0053e2;text-decoration:none">The technology</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Agents from First Principles</span></nav>
+<div class="wrap">
+
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Study Notes: Agents</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#llm"><span class="num">1</span>Recap: LLM first principles</a>
+  <a href="#what"><span class="num">2</span>What an agent really is</a>
+  <a href="#patch"><span class="num">3</span>Each part patches a weakness</a>
+  <a href="#verdict"><span class="num">4</span>"Prompt + tools + loop" - right?</a>
+  <a href="#stateless"><span class="num">5</span>The stateless LLM (the aha)</a>
+  <a href="#trace"><span class="num">6</span>A full loop trace</a>
+  <a href="#memory"><span class="num">7</span>Memory management: 2 layers</a>
+  <a href="#compaction"><span class="num">8</span>Compaction deep dive</a>
+  <a href="#tools"><span class="num">9</span>Tools, the OS &amp; permissions</a>
+  <a href="#skills"><span class="num">10</span>Becoming an agent builder</a>
+  <a href="#glossary"><span class="num">11</span>Glossary</a>
+</nav>
+
+<main>
+  <h1>Agents from First Principles</h1>
+  <p class="lede">Personal study notes - how agents actually work behind the scenes.</p>
+  <p class="meta">Topic folder: first-principles-tutor/agents &middot; Captured 2026-07-11 &middot; Running example: the "Caddie" (mp-prism-caddie) agent</p>
+
+  <!-- 0 -->
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>An agent</strong> = an LLM + tools + a loop + memory + a stop condition. It is the minimum scaffolding that turns a text-predictor into something that can pursue a goal.</li>
+    <li><strong>Each scaffold patches one intrinsic weakness</strong> of the raw LLM (can't act, can't plan, can't remember, isn't reliably true).</li>
+    <li><strong>The LLM is stateless.</strong> "Memory" is just a list of messages your loop keeps and re-sends in full on every iteration. Updating memory = appending to that list.</li>
+    <li><strong>Context management</strong> = curating that list so it fits the window and stays relevant (append -&gt; truncate -&gt; summarize -&gt; offload).</li>
+    <li><strong>Tools are not in the OS.</strong> A tool is a framework function the model can only <em>ask</em> to call by emitting text; your framework is the bouncer that checks an allow-list before running it.</li>
+    <li><strong>Agent-builder skills</strong> = decomposition, prompting, memory management, tool design, and evaluation/trace-debugging.</li>
+  </ul>
+
+  <!-- 1 -->
+  <h2 id="llm"><span class="n">1</span>Recap: the first principles of an LLM</h2>
+  <p>Remember the distinction: <strong>first principles = irreducible facts</strong> (true even if LLMs never existed), <em>not</em> mechanisms (which are consequences). The six axioms:</p>
+  <ol>
+    <li><strong>Language has statistical structure.</strong> Context constrains what is likely next (Shannon, 1948). The deepest one - if false, no LLM could exist.</li>
+    <li><strong>Meaning is revealed by context</strong> (distributional hypothesis; Firth/Harris, 1950s). Words in similar company have similar meaning.</li>
+    <li><strong>Anything can be turned into numbers.</strong> Symbols -&gt; numbers makes text computable.</li>
+    <li><strong>A big enough adjustable function can approximate any pattern</strong> (universal approximation theorem, 1989).</li>
+    <li><strong>You can measure error and descend it with calculus.</strong> Score wrongness, follow the derivative downhill (gradient descent).</li>
+    <li><strong>Scale is available.</strong> Enough text (internet) + compute (GPUs). The only axiom that became true recently - why LLMs happened ~2020, not 1995.</li>
+  </ol>
+  <p>The <strong>mechanisms</strong> fall out of the axioms (they are consequences, not principles):</p>
+  <table>
+    <thead><tr><th>Axiom</th><th>Mechanism it forces</th></tr></thead>
+    <tbody>
+      <tr><td>1 - language is predictable</td><td>Next-token prediction (the objective)</td></tr>
+      <tr><td>3 - turn into numbers</td><td>Tokens (a practical compromise)</td></tr>
+      <tr><td>2 - meaning is contextual</td><td>Embeddings + attention (Axiom 2 as arithmetic)</td></tr>
+      <tr><td>4 - approximate any pattern</td><td>The Transformer (a huge parameterized function)</td></tr>
+      <tr><td>5 - measure &amp; descend error</td><td>Gradient descent / backprop (training)</td></tr>
+      <tr><td>6 - scale available</td><td>The "Large" in LLM</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">One line</span><p>An LLM is what you inevitably get when you push "language is predictable + meaning is contextual" through "turn it into numbers, fit a huge function by descending error, at internet scale."</p></div>
+
+  <!-- 2 -->
+  <h2 id="what"><span class="n">2</span>What an agent really is</h2>
+  <p>Strip away the hype: <strong>an agent is a loop around an LLM that lets it act, observe, and repeat.</strong> The canonical shape is the <strong>ReAct pattern</strong> (Reason + Act):</p>
+  <ol>
+    <li>A goal comes in.</li>
+    <li>The LLM <strong>thinks</strong>: what should I do next?</li>
+    <li>The LLM chooses an <strong>action</strong>: call a tool.</li>
+    <li>The tool runs; its <strong>output</strong> (observation) is fed back into context.</li>
+    <li>The LLM looks at the result and decides: am I done, or loop again?</li>
+    <li>Repeat 2-5 until the goal is met, then answer.</li>
+  </ol>
+  <p>The five building blocks: (1) the <strong>LLM</strong> (reasoning core), (2) <strong>tools</strong>, (3) the <strong>loop / control flow</strong>, (4) <strong>memory / context management</strong>, (5) a <strong>stop condition</strong>.</p>
+  <div class="box"><span class="lbl">First-principles definition</span><p>An agent is the minimum scaffolding that turns a text-predictor into something that can pursue a goal.</p></div>
+
+  <!-- 3 -->
+  <h2 id="patch"><span class="n">3</span>Each agent part patches one LLM weakness</h2>
+  <p>The most elegant way to remember the architecture: an agent is <strong>a set of scaffolds, each bolted onto a specific crack in the LLM.</strong></p>
+  <table>
+    <thead><tr><th>LLM's intrinsic weakness</th><th>The agent part that compensates</th></tr></thead>
+    <tbody>
+      <tr><td>It only predicts text - can't act on the world</td><td><strong>Tools</strong></td></tr>
+      <tr><td>It commits token-by-token; can't plan or self-correct mid-thought</td><td><strong>The loop</strong> (act -&gt; observe -&gt; re-decide)</td></tr>
+      <tr><td>Its whole world is the context window - no memory</td><td><strong>Context / memory management</strong></td></tr>
+      <tr><td>It optimizes for plausible, not true</td><td><strong>Guardrails + verification</strong> in the prompt/loop</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 4 -->
+  <h2 id="verdict"><span class="n">4</span>Is "agent = prompt + tools + loop" correct?</h2>
+  <p><strong>Mostly right - it is the correct skeleton.</strong> On a platform like Code Puppy the claim "designing a good agent is mostly writing the right prompt with the right guardrails" is ~80% true - which is exactly why building Caddie was <em>just</em> a JSON file: a prompt + a list of already-existing tools, dropped onto a loop the platform already runs. No loop or tool code written.</p>
+  <p>Where the word <strong>"just"</strong> undersells it - three load-bearing muscles the prompt can't fix:</p>
+  <ol>
+    <li><strong>Tool design.</strong> Which tools you expose, and especially what their <em>error messages</em> say. "Error 500" vs "No rows for week 23 - try another week" is the difference between an agent that recovers and one that spirals.</li>
+    <li><strong>Context/memory management.</strong> On long tasks the window overflows; deciding what to keep/summarize/retrieve is a design axis the prompt alone doesn't solve.</li>
+    <li><strong>The loop's control logic.</strong> Stop conditions, retries, step limits, and verification live in the loop (code), not the prompt - because you can't fully trust the model to police itself.</li>
+  </ol>
+  <p>Two quieter levers: <strong>model choice</strong> (a weak model won't follow even a perfect prompt) and <strong>evaluation</strong> (vibes lie; you must test).</p>
+  <div class="box good"><span class="lbl">Corrected one-liner</span><p>Agent = LLM + tools + loop + memory + stop condition. The prompt is the single biggest lever (especially where tools and loop already exist), but a <em>good</em> agent also depends on tool design, context management, and the loop's guardrails - the parts that compensate for what the prompt can't fix.</p></div>
+
+  <!-- 5 -->
+  <h2 id="stateless"><span class="n">5</span>The stateless LLM (the aha that unlocks everything)</h2>
+  <p>The word "memory" tricks you into imagining the model remembering things. <strong>It doesn't.</strong> Every loop iteration is a brand-new, amnesiac API call. So where does memory live?</p>
+  <div class="box key"><span class="lbl">The key idea</span><p>Memory is a list of messages that YOUR code (or the framework) keeps, and re-sends in full on every loop iteration. "Updating memory" = appending to that list. There is no state inside the model - the state lives in your orchestrator loop.</p></div>
+  <p>The model gets the whole array, reads it fresh, emits <em>one</em> step, and forgets again. You append its step + the tool result, and hand the whole thing back next time. Once this clicks, "context management" is obvious: it is just <strong>curating that list</strong> so it (a) stays under the window size and (b) stays relevant.</p>
+
+  <!-- 6 -->
+  <h2 id="trace"><span class="n">6</span>A full loop trace (worked example)</h2>
+  <p><strong>Task:</strong> "Compare my team's launches this week vs last week, find the biggest movers, and draft a leadership update."</p>
+  <h3>Design first (the 4 decisions)</h3>
+  <ol>
+    <li><strong>Tools:</strong> <code>list_files</code>, <code>read_file</code>, <code>run_python</code>, <code>write_file</code>.</li>
+    <li><strong>Loop:</strong> ReAct - model either calls a tool or says DONE.</li>
+    <li><strong>Stop condition:</strong> model emits a final answer, OR 15 iterations max (safety).</li>
+    <li><strong>Memory policy:</strong> keep full transcript until big, then compact.</li>
+  </ol>
+  <p>Now watch the <strong>messages list</strong> grow. Each iteration re-sends the ENTIRE list.</p>
+
+  <div class="trace-label">Iteration 0 - starting context sent to the model</div>
+<pre><span class="c">// your code builds this list and sends it</span>
+[1] <span class="k">system</span>: "You are an analyst agent. Tools: list_files, read_file,
+             run_python, write_file. Think step by step. Say DONE when finished."
+[2] <span class="k">user</span>:   "Compare launches this week vs last, find movers, draft update."
+
+<span class="c">// model responds with an ACTION, not an answer:</span>
+[3] <span class="k">assistant</span>: think:"I need the report files first."
+              action: list_files("~/reports")
+
+<span class="c">// your code RUNS the tool, then APPENDS action + result. THIS is the memory update.</span>
+[4] <span class="k">tool</span>:   <span class="g">"wk22_launches.csv, wk23_launches.csv"</span></pre>
+
+  <div class="trace-label">Iteration 1 - resend the whole list [1..4]</div>
+<pre>[5] <span class="k">assistant</span>: action: read_file("wk23_launches.csv")
+[6] <span class="k">tool</span>:   <span class="g">"&lt;contents of THIS week's CSV ...&gt;"</span></pre>
+
+  <div class="trace-label">Iteration 2 - resend [1..6]</div>
+<pre>[7] <span class="k">assistant</span>: action: read_file("wk22_launches.csv")
+[8] <span class="k">tool</span>:   <span class="g">"&lt;contents of LAST week's CSV ...&gt;"</span>
+<span class="c">// context now holds BOTH full CSVs - this is where it gets heavy</span></pre>
+
+  <div class="trace-label">Iteration 3 - resend [1..8]</div>
+<pre>[9]  <span class="k">assistant</span>: action: run_python("df_this - df_last, sort by delta")
+[10] <span class="k">tool</span>:    <span class="g">"Jordan +4, Priya +2, Dana -5, Chris -6 ..."</span></pre>
+
+  <div class="trace-label">Iteration 4 - resend [1..10], model finishes</div>
+<pre>[11] <span class="k">assistant</span>: action: write_file("update.md", "&lt;draft&gt;")
+[12] <span class="k">tool</span>:      <span class="g">"written"</span>
+[13] <span class="k">assistant</span>: "DONE. Draft saved. Biggest movers: Dana -5, Chris -6 ..."
+<span class="c">// stop condition (DONE) hit -&gt; loop exits</span></pre>
+
+  <div class="box"><span class="lbl">What actually happened</span><p>The "memory" was just messages 1 -&gt; 13, re-sent in full each pass, growing by append. The model never remembered anything; your loop did.</p></div>
+
+  <!-- 7 -->
+  <h2 id="memory"><span class="n">7</span>Memory management: the two layers</h2>
+  <p>Look at iteration 2 above: you stuffed two entire CSVs into the list. On a 40-step task that list explodes past the context window. So the orchestrator applies a <strong>memory policy</strong>. The moves, cheapest to fanciest:</p>
+  <ol>
+    <li><strong>Append-only (do nothing).</strong> Fine for short tasks. Most agents start here.</li>
+    <li><strong>Truncation / sliding window.</strong> Drop oldest messages past a token budget. Risk: forgets the goal - so PIN the system prompt + task and only trim the middle.</li>
+    <li><strong>Summarization / compaction.</strong> When big, make a side LLM call to summarize the transcript, then REPLACE the old bulky messages with the summary. Two giant CSVs collapse to "this week vs last: Dana -5, Chris -6."</li>
+    <li><strong>Offload + retrieve (RAG).</strong> Don't paste raw data into the transcript; write it to disk / a vector DB, keep a pointer, and pull back only what you need when you need it.</li>
+    <li><strong>Structured scratchpad.</strong> Keep a separate tidy state object (e.g. findings.md) the agent updates and you inject fresh each turn - so important conclusions never get trimmed.</li>
+  </ol>
+  <div class="box key"><span class="lbl">The two-layer model</span>
+    <p><strong>Working memory</strong> = the message list inside the context window. Updated by APPEND each iteration; kept sane by TRUNCATE/SUMMARIZE.</p>
+    <p><strong>Long-term memory</strong> = files / DB / vector store outside the window. Updated by WRITE; recalled by RETRIEVE. Survives across tasks and sessions.</p>
+    <p>An LLM only ever sees working memory. Long-term memory only helps if you RETRIEVE from it INTO working memory. (Caddie's long-term memory = the report file on disk; its working memory = the transcript; <code>read_file</code> is the bridge.)</p>
+  </div>
+
+  <!-- 8 -->
+  <h2 id="compaction"><span class="n">8</span>Compaction deep dive: summarize without losing the thread</h2>
+  <p>The core question is: <strong>what is the "thread" that must survive?</strong> It is NOT the whole transcript - it is four specific things:</p>
+  <ul>
+    <li><strong>The goal</strong> (the original task)</li>
+    <li><strong>Decisions already made</strong> (so it doesn't relitigate or contradict itself)</li>
+    <li><strong>Facts learned that future steps depend on</strong> (numbers, file names, findings)</li>
+    <li><strong>Open state</strong> (what's left to do)</li>
+  </ul>
+  <p>Everything else - verbose tool dumps, dead-ends, chatter - is compressible or droppable. The rules:</p>
+  <ol>
+    <li><strong>Pin the anchors - never summarize them.</strong> System prompt + original goal always injected verbatim. Drift happens when these get trimmed.</li>
+    <li><strong>Separate durable state from chatter.</strong> Keep a structured running scratchpad (learned / decided / open / next). Update it each loop, inject it fresh. Even if you drop raw history, conclusions never die. <em>The single best trick.</em></li>
+    <li><strong>Summarize with a template, not free-form.</strong> Force structure: "Learned: ... Decided: ... Still open: ... Data lives in: wk23.csv". Loses far less than "summarize the above."</li>
+    <li><strong>Keep recent turns verbatim; compress only the old</strong> (rolling summarization). Recency carries the most signal.</li>
+    <li><strong>Preserve identifiers and numbers exactly; summarize the prose.</strong> Never let "Dana -5.3" become "Dana declined."</li>
+    <li><strong>Offload, don't delete - keep a pointer.</strong> Big outputs to disk; transcript keeps "full data in wk23.csv"; re-fetch if a later step needs it.</li>
+  </ol>
+  <div class="box key"><span class="lbl">The one heuristic</span><p>For each piece of context ask: "Would a future step need this exact text?"<br>Yes -&gt; keep verbatim, or offload + pointer.<br>Only needs the conclusion -&gt; summarize.<br>Neither -&gt; drop.</p></div>
+  <div class="box trap"><span class="lbl">The trap</span><p>Compaction is itself an LLM call, so it can hallucinate or silently drop a key fact. That is why the durable scratchpad matters (it is deterministic, not summarized) and why you test your compaction on real runs.</p></div>
+
+  <!-- 9 -->
+  <h2 id="tools"><span class="n">9</span>Tools, the OS, and permissions</h2>
+  <p><strong>A tool is not an OS feature.</strong> A tool is a function the FRAMEWORK exposes and makes callable by the model. Some tools wrap OS capabilities, but that wrapper is the point. Categories:</p>
+  <ul>
+    <li><strong>OS-backed:</strong> <code>read_file</code>, <code>run_shell</code> - leverage the OS, but through a framework function.</li>
+    <li><strong>API-backed:</strong> query BigQuery, call Salesforce, hit a REST endpoint.</li>
+    <li><strong>Compute:</strong> <code>run_python</code>.</li>
+    <li><strong>Other agents:</strong> <code>invoke_agent</code>.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The whole safety story</span><p>The model never touches the OS directly. It only emits TEXT like <code>read_file("x.csv")</code>. The framework's code intercepts that text and decides whether and how to run it. That indirection is where all access control lives.</p></div>
+  <h3>How agents get access - and how you control it</h3>
+  <ol>
+    <li><strong>The allow-list (main control).</strong> The agent config declares exactly which tools it may use - literally the <code>"tools": [...]</code> array in the agent JSON. This is <em>least privilege</em>: expose only what the job needs.</li>
+    <li><strong>The execution layer enforces limits.</strong> Sandboxing (restricted dirs, containers), read-only vs write scopes, argument validation, deny-lists (e.g. "never kill Teams on port 8080", "never touch ~/.code-puppy-venv").</li>
+    <li><strong>Human-in-the-loop approval.</strong> Dangerous tools (shell, delete, publish) can require confirmation BEFORE the framework executes them.</li>
+    <li><strong>Injection defense.</strong> Tool OUTPUTS are untrusted input (a file could say "ignore your instructions"). A good framework treats tool results as data, never as new permissions.</li>
+  </ol>
+  <div class="box trap"><span class="lbl">The warning that matters</span><p>An agent runs with YOUR OS permissions. The allow-list controls which doors exist, but a <code>run_shell</code> tool is a very wide door - it can do anything you can do on that machine. Real control = allow-list + sandbox + approval on the powerful tools. To truly lock down Caddie you would drop <code>agent_run_shell_command</code> (or gate it behind approval) so it can only read/write specific report files.</p></div>
+  <div class="box"><span class="lbl">Mental model</span><p>The model can only ASK to use a tool by emitting text; your framework is the bouncer that checks the allow-list, validates the request, maybe asks you, then runs it. The tools array in the agent config is you handing the bouncer the guest list.</p></div>
+
+  <!-- 10 -->
+  <h2 id="skills"><span class="n">10</span>Becoming an agent builder: the skill stack</h2>
+  <p>Prompting and memory management are the two biggest levers, but they are two of five. In order of leverage:</p>
+  <ol>
+    <li><strong>Decomposition / systems thinking.</strong> Turn a fuzzy goal into tool-sized steps. The meta-skill. Think "manager delegating to a brilliant but painfully literal intern."</li>
+    <li><strong>Prompting.</strong> Role, guardrails, output shape, examples. The single biggest dial.</li>
+    <li><strong>Memory / context management.</strong> What to keep, compress, offload, retrieve.</li>
+    <li><strong>Tool design.</strong> Which tools to expose, and what their outputs/errors say (a good error message is what lets an agent self-correct).</li>
+    <li><strong>Evaluation + trace-debugging.</strong> The underrated one. Test on real cases; READ the transcript to find where in the loop it went wrong.</li>
+  </ol>
+  <p>On a platform like Code Puppy you need almost no heavy coding - the loop and tools are given, so prompt-craft feels like the whole game. The moment you build agents that run long, use custom tools, or chain other agents, decomposition + memory + eval start doing the heavy lifting.</p>
+
+  <!-- 11 -->
+  <h2 id="glossary"><span class="n">11</span>Glossary / quick reference</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Agent</strong></td><td>LLM + tools + loop + memory + stop condition. Scaffolding that lets a text-predictor pursue a goal.</td></tr>
+      <tr><td><strong>ReAct</strong></td><td>Reason + Act loop: think -&gt; call tool -&gt; observe result -&gt; repeat -&gt; stop.</td></tr>
+      <tr><td><strong>Context window</strong></td><td>Everything the model can see at once. Its entire "world" for that call.</td></tr>
+      <tr><td><strong>Working memory</strong></td><td>The message list inside the window; updated by append.</td></tr>
+      <tr><td><strong>Long-term memory</strong></td><td>Files / DB / vector store outside the window; updated by write, recalled by retrieve.</td></tr>
+      <tr><td><strong>Compaction</strong></td><td>Summarizing old transcript to fit the window without losing the thread.</td></tr>
+      <tr><td><strong>Scratchpad</strong></td><td>A deterministic structured state object (learned/decided/open/next) injected fresh each turn.</td></tr>
+      <tr><td><strong>Tool</strong></td><td>A framework function the model can ask to call by emitting text.</td></tr>
+      <tr><td><strong>Allow-list</strong></td><td>The tools array in the agent config; least-privilege access control.</td></tr>
+      <tr><td><strong>Stop condition</strong></td><td>What ends the loop (final answer, or a max-iteration safety cap).</td></tr>
+      <tr><td><strong>Prompt injection</strong></td><td>Untrusted tool output trying to override the agent's instructions.</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    First-Principles Study Notes &middot; Agents &middot; captured 2026-07-11.
+    Companion files: ../first_principles_tutor.md (the tutor super-prompt).
+    Running example throughout: the Caddie agent (mp-prism-caddie).
+  </footer>
+</main>
+</div>
+</body>
+</html>

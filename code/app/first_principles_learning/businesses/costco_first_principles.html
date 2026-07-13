@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Costco from First Principles</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="business_first_principles_framework.html" style="color:#0053e2;text-decoration:none">Businesses</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Costco from First Principles</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Businesses: Costco</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>Founding bet / core axiom</a>
+  <a href="#create"><span class="num">2</span>Value creation</a>
+  <a href="#capture"><span class="num">3</span>Value capture</a>
+  <a href="#flywheel"><span class="num">4</span>The flywheel</a>
+  <a href="#moat"><span class="num">5</span>The moat</a>
+  <a href="#aggregate"><span class="num">6</span>What it aggregated / commoditized</a>
+  <a href="#unit"><span class="num">7</span>Unit economics</a>
+  <a href="#failure"><span class="num">8</span>Failure modes / vulnerabilities</a>
+  <a href="#pattern"><span class="num">9</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">Back to home</a>
+</nav>
+<main>
+  <h1>Costco from First Principles</h1>
+  <p class="lede">Invert retail: make ~zero profit on the goods, profit ONLY on the membership fee. Sell at near-cost, align perfectly with the customer, and turn trust into the product.</p>
+  <p class="meta">Businesses folder &middot; Applies the shared 9-point lens: <a href="business_first_principles_framework.html">The shared lens</a> &middot; Read alongside <a href="walmart_first_principles.html">Walmart</a> - two opposite ways to win groceries</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>Costco inverts retail:</strong> instead of marking goods up to earn a profit, it sells goods at roughly cost and earns its profit almost entirely from the <strong>annual membership fee</strong>. Revenue is roughly <strong>~$250B+</strong> a year; membership fees are roughly <strong>~$4B-5B+</strong> a year.</li>
+    <li><strong>Operating income roughly equals membership revenue.</strong> That is the whole model in one line: the goods run near break-even, and the fee is the business. It is not a retailer that happens to sell memberships; it is a membership club that happens to run a warehouse.</li>
+    <li><strong>Incentive alignment is the moat.</strong> Because the profit is the fee and not the markup, Costco has every reason to get you the lowest possible price - its interests and yours point the same way. Markup on most items is <strong>capped by policy (roughly ~10-11%, ~15% on Kirkland)</strong>, so members trust there is no hidden markup.</li>
+    <li><strong>The flywheel is renewal-driven:</strong> low prices -&gt; more members -&gt; more buying power/scale -&gt; lower cost of goods -&gt; even lower prices -&gt; more members and renewals. Renewal rates run <strong>~90%+</strong> in the US/Canada, so the fee income is annuity-like and compounding.</li>
+    <li><strong>Radical SKU discipline is the weapon:</strong> a curated <strong>~4,000 SKUs</strong> (vs ~30,000+ at a supermarket) concentrates enormous volume per item, which crushes supplier costs and powers the Kirkland Signature private label.</li>
+    <li><strong>The transferable lesson:</strong> profit from the <strong>relationship</strong>, not the transaction. Costco is the clean counter-position to margin-maximizing retail - a model competitors cannot copy without dismantling their own P&amp;L.</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>Founding bet / core axiom</h2>
+  <p>Most retail runs on one instinct: buy at X, sell at X plus a markup, and try to make that markup as fat as the customer will tolerate. That instinct quietly puts the retailer and the customer on <strong>opposite sides</strong> - every extra point of margin is money out of the shopper's pocket. Costco's founding bet is to <strong>refuse that game entirely.</strong></p>
+  <p>The core axiom: <strong>do not earn your profit on the goods at all. Sell everything at close to cost, and charge a flat annual fee for the right to shop.</strong> Once the fee is where the profit lives, the retailer's incentive flips to perfect alignment with the customer - the cheaper Costco gets the goods, the more value the member feels, the more likely they renew, and renewals are the actual business.</p>
+  <div class="box key"><span class="lbl">The axiom, distilled</span><p>Costco sells <strong>trust</strong>, not markup. The product is the promise: "everything in here is about as cheap as it can possibly be, and we are not quietly marking it up - because we do not make money that way." The fee is what you pay for that guarantee. Align yourself so completely with the customer that they pay you a subscription just to be on your side.</p></div>
+  <p>This is why the markup cap matters so much. Costco enforces an internal rule that no branded item is marked up more than roughly <strong>~14-15%</strong> (and typically far less - most sit nearer ~10-11%), and Kirkland Signature items around ~15%. A normal supermarket runs 25-50%+ on many categories. The cap is not a marketing slogan; it is a self-imposed constraint that keeps the axiom honest and the trust intact.</p>
+
+  <h2 id="create"><span class="n">2</span>Value creation</h2>
+  <p>Costco makes <strong>genuinely low prices plus trust</strong> abundant. What it creates, concretely:</p>
+  <ul>
+    <li><strong>Truly lowest prices, not "sale" prices</strong> - because the markup is capped and the profit lives elsewhere, the shelf price is about as low as a retailer can offer. There are no coupon games or fake discounts; the everyday price is the deal.</li>
+    <li><strong>A curated, high-trust selection</strong> - roughly <strong>~4,000 SKUs</strong> means Costco has already done the choosing for you. Instead of 12 brands of ketchup, you get one or two excellent options at the best price. Curation is itself a service: less decision fatigue, higher confidence.</li>
+    <li><strong>Bulk value</strong> - selling in large pack sizes lowers per-unit cost and packaging/handling overhead, and those savings are passed through. Value-conscious and small-business buyers get real, recurring money saved.</li>
+    <li><strong>The treasure hunt</strong> - a rotating slice of the floor holds surprise, high-value items (electronics, seasonal goods, one-time buys). This turns a chore into a visit worth making and drives incremental, unplanned spend.</li>
+    <li><strong>The trust guarantee itself</strong> - the single most valuable thing Costco creates is the member's belief that "Costco would not rip me off." That belief removes the shopper's usual need to price-check and comparison-shop. Certainty is the product.</li>
+  </ul>
+  <div class="box"><span class="lbl">Curation as value, in one sentence</span><p>A supermarket makes you the buyer and the referee of ~30,000 choices; Costco pre-selects ~4,000 winners at the best price and stakes its reputation on each one. You are buying its judgment as much as its goods.</p></div>
+
+  <h2 id="capture"><span class="n">3</span>Value capture</h2>
+  <p>This is where Costco is genuinely different from almost every other retailer. <strong>The membership fee IS the profit.</strong> The goods essentially run at break-even; the annuity of annual fees is what falls to the bottom line.</p>
+  <p>The relationship is close enough to be a running joke among analysts: <strong>operating income roughly equals membership fee revenue.</strong> If membership fees are ~$4B-5B+ and operating income is in the same neighborhood, then the retail operation - a quarter-trillion dollars of goods - is contributing close to nothing in net profit by design. The goods exist to justify the fee.</p>
+  <table>
+    <thead><tr><th>Stream</th><th>What it is</th><th>Profit character</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Membership fees</strong></td><td>Flat annual fee (Gold Star and Executive tiers) for the right to shop</td><td>The profit engine - near-100% margin, annuity-like, ~= operating income</td></tr>
+      <tr><td><strong>Retail margin on goods</strong></td><td>Buy/sell spread, capped at roughly ~10-11% markup (~15% Kirkland)</td><td>Essentially break-even by design - covers operating the warehouses</td></tr>
+      <tr><td><strong>Executive rewards flywheel</strong></td><td>Higher-fee tier that rebates ~2% of spend back to the member</td><td>Deepens loyalty and spend; the rebate is funded by the member's own volume</td></tr>
+      <tr><td><strong>Ancillary services</strong></td><td>Gas, pharmacy, optical, travel, food court, tires, business services</td><td>Traffic drivers and modest margin - reasons to renew, not the profit core</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The whole model in one line</span><p>Gross margin on goods is razor-thin (~2-3% net of costs). Operating income ~= membership fees. Therefore Costco is a <strong>subscription business wearing a warehouse costume:</strong> it makes its money selling access to low prices, not the goods themselves.</p></div>
+
+  <h2 id="flywheel"><span class="n">4</span>The flywheel</h2>
+  <p>Costco's loop is a scale-plus-renewal flywheel, and every turn tightens the alignment between low prices and locked-in members.</p>
+  <ol>
+    <li><strong>Sell at near-cost</strong> - capped markup makes prices unbeatable and the trust guarantee real.</li>
+    <li><strong>More members join and renew</strong> - unbeatable value pulls people in and keeps them (~90%+ renewal).</li>
+    <li><strong>More members -&gt; more buying power and scale</strong> - concentrated volume on ~4,000 SKUs gives Costco enormous leverage with suppliers.</li>
+    <li><strong>Lower cost of goods</strong> - that leverage plus SKU discipline drives per-unit input costs down.</li>
+    <li><strong>Pass it straight back as even lower prices</strong> - because the profit is the fee, savings go to the member, not the margin.</li>
+    <li><strong>Even more members and renewals</strong> - and the loop repeats, compounding fee income each cycle.</li>
+  </ol>
+  <div class="box good"><span class="lbl">The renewal annuity</span><p>The quiet magic is the <strong>~90%+ renewal rate.</strong> A member who paid the fee is psychologically motivated to "use it to justify it," which drives more visits and spend, which delivers more value, which drives the next renewal. The fee is both the profit and the behavioral hook that guarantees next year's profit. That is a flywheel with a subscription bolted to its center.</p></div>
+
+  <h2 id="moat"><span class="n">5</span>The moat</h2>
+  <p>Costco stacks several moats, and the deepest one is the kind incumbents literally cannot copy.</p>
+  <ul>
+    <li><strong>Switching costs / membership lock-in</strong> - the member has already paid a sunk annual fee, so shopping elsewhere feels like wasting money already spent. Renewal becomes a habit, and habits are sticky.</li>
+    <li><strong>Economies of scale</strong> - ~$250B+ of purchasing gives Costco input costs few rivals can match; scale is both a cost advantage and a barrier to entry.</li>
+    <li><strong>Limited-SKU purchasing power</strong> - concentrating that volume across only ~4,000 SKUs means Costco is often a supplier's single largest customer for an item, which extracts pricing no broad-line retailer can.</li>
+    <li><strong>Brand and trust</strong> - decades of "Costco would not overcharge me" is a reputation asset that cannot be bought, only earned slowly.</li>
+    <li><strong>Kirkland Signature private label</strong> - a ~$50B+ brand in its own right, often outselling the national brands beside it, giving Costco margin control, quality control, and negotiating leverage over branded suppliers.</li>
+    <li><strong>Counter-positioning (the deepest moat)</strong> - the low-margin, fee-funded model actively <strong>repels margin-focused competitors.</strong> A traditional retailer cannot slash markups to ~10% without vaporizing the profit its shareholders depend on. Costco is safe precisely because copying it would be corporate self-harm for the incumbent.</li>
+  </ul>
+  <div class="box key"><span class="lbl">Why the moat holds</span><p>Most moats are things you build. Counter-positioning is a moat made of your rival's own P&amp;L. A markup-driven retailer that tried to match Costco would have to accept that its entire profit model is wrong - so it rationally declines, and Costco keeps the ground uncontested.</p></div>
+
+  <h2 id="aggregate"><span class="n">6</span>What it aggregated / commoditized</h2>
+  <p><strong>What it aggregated:</strong> a loyal, high-value, high-income membership base. Costco does not aggregate the widest possible audience - it aggregates the <strong>best</strong> audience: households and small businesses that pre-pay to shop and renew ~90%+ of the time. That base is a scarce, defensible asset - concentrated demand that Costco owns outright.</p>
+  <p><strong>What it commoditized:</strong> its suppliers. By funneling enormous per-SKU volume through a curated ~4,000-item assortment (vs ~30,000+ at a supermarket), Costco turns each shelf slot into a prize suppliers fight over. Winning that slot means access to a captive, high-spending base; the price of winning is accepting Costco's terms - low margin, high volume, and the constant threat of a Kirkland substitute.</p>
+  <div class="box"><span class="lbl">The classic aggregation move, retail edition</span><p>Own demand (the paid, loyal membership), then make supply compete to serve it. A supplier's dream and nightmare in one: unmatched volume, but on Costco's terms - and if you push back on price, Kirkland Signature can simply replace you on the shelf.</p></div>
+
+  <h2 id="unit"><span class="n">7</span>Unit economics</h2>
+  <p>The shape of Costco's economics is unusual and worth seeing plainly.</p>
+  <table>
+    <thead><tr><th>Metric</th><th>Approximate shape</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Markup on goods</strong></td><td>Capped ~10-11% (~15% Kirkland)</td><td>Deliberately near-cost; keeps prices unbeatable and trust intact</td></tr>
+      <tr><td><strong>Net margin on the whole business</strong></td><td>~2-3%</td><td>Razor-thin; the goods are break-even, the fee is the profit</td></tr>
+      <tr><td><strong>Membership fee revenue</strong></td><td>~$4B-5B+ a year</td><td>Roughly equals total operating income - the profit engine</td></tr>
+      <tr><td><strong>Renewal rate</strong></td><td>~90%+ (US/Canada)</td><td>Annuity-like, predictable, compounding fee income</td></tr>
+      <tr><td><strong>Sales per SKU</strong></td><td>Very high (few SKUs, huge volume each)</td><td>Powers supplier leverage and low input costs</td></tr>
+      <tr><td><strong>Working capital</strong></td><td>Negative</td><td>Inventory turns and sells before the supplier bill is due - suppliers finance the business</td></tr>
+    </tbody>
+  </table>
+  <div class="box good"><span class="lbl">Negative working capital, explained</span><p>Because a curated, high-velocity assortment <strong>sells through before payment terms come due</strong>, Costco often collects cash from members before it has to pay suppliers. The float funds operations and growth. Low margin plus fast turns plus negative working capital is a self-financing machine - and the fee income sits on top of it, nearly pure profit.</p></div>
+  <div class="box trap"><span class="lbl">The thin-margin knife edge</span><p>A ~2-3% net margin leaves almost no room for error. A logistics shock, a cost spike Costco cannot pass along, or a stumble in renewals hits the bottom line hard - because there is no fat markup cushioning the goods. The model is safe only as long as scale and renewals keep turning.</p></div>
+
+  <h2 id="failure"><span class="n">8</span>Failure modes / vulnerabilities</h2>
+  <ul>
+    <li><strong>E-commerce and convenience lag</strong> - Costco's model is built for the physical warehouse trip. Against Amazon's frictionless delivery and Walmart's store-as-node same-day fulfillment, Costco's digital and last-mile experience is comparatively slow. Bulk-in-a-warehouse resists easy online translation.</li>
+    <li><strong>Limited SKU is not for everyone</strong> - ~4,000 curated items means if Costco does not carry your specific brand or variant, you cannot get it there. Some shoppers want breadth Costco deliberately refuses to offer.</li>
+    <li><strong>Membership fatigue / fee sensitivity</strong> - the whole model rests on members feeling the fee is obviously worth it. If perceived value slips, or fee hikes outrun that value, renewals could soften - and renewals ARE the profit.</li>
+    <li><strong>Thin margins leave no room for error</strong> - with profit ~= fees and goods near break-even, cost shocks the company cannot absorb or pass through bite immediately.</li>
+    <li><strong>Slower digital and data monetization</strong> - unlike Walmart Connect or Amazon Ads, Costco has largely declined the high-margin retail-media playbook. Consistent with its trust-first identity, but it forgoes a profit lever rivals are pressing hard.</li>
+    <li><strong>Bulk / demographic fit</strong> - large pack sizes suit families and small businesses better than single-person or space-constrained households, capping the addressable base.</li>
+  </ul>
+
+  <h2 id="pattern"><span class="n">9</span>The pattern it exemplifies</h2>
+  <p>Costco is the cleanest example of <strong>membership / loyalty economics: profit from the relationship, not the transaction.</strong> The transaction (selling goods) is run at cost specifically so the relationship (the renewing membership) can be monetized. Once you see it, the pattern shows up everywhere subscriptions replace per-unit margin.</p>
+  <p>It is also the textbook case of <strong>incentive alignment as a moat.</strong> By choosing to make money only when the customer wins, Costco converts trust into a durable competitive asset - and trust, once earned at this scale, is extraordinarily hard to attack.</p>
+  <p>And it is the purest <strong>counter-position to margin-maximizing retail.</strong> The model works precisely because rivals cannot copy it without destroying their own economics.</p>
+  <div class="box key"><span class="lbl">Costco vs Walmart - two ways to win groceries</span><p>Compare with <a href="walmart_first_principles.html">Walmart</a>. Both weaponize scale and thin margins, but they capture value at opposite ends. <strong>Walmart</strong> makes its money on the <strong>goods</strong> (thin markup times colossal volume) and is now layering in high-margin ads/marketplace/membership to lift profit without raising shelf prices. <strong>Costco</strong> makes almost <strong>no</strong> money on the goods on purpose and captures everything through the <strong>membership fee</strong>, deliberately declining the retail-media margin lever to protect trust. Walmart aggregates the broadest possible demand and monetizes suppliers; Costco aggregates the best, most loyal demand and monetizes the relationship. Same physics (scale, thin margin, negative working capital), opposite monetization philosophy.</p></div>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Membership model</strong></td><td>Charging a recurring fee for the right to access a service/store; the fee, not the goods, is the profit.</td></tr>
+      <tr><td><strong>Renewal rate</strong></td><td>The share of members who renew each period. Costco runs ~90%+, making fee income annuity-like.</td></tr>
+      <tr><td><strong>Limited SKU</strong></td><td>Deliberately stocking few items (~4,000) so each carries huge volume and maximum supplier leverage.</td></tr>
+      <tr><td><strong>Private label</strong></td><td>A retailer's own brand (Kirkland Signature) - margin control, quality control, and leverage over national brands.</td></tr>
+      <tr><td><strong>Economies of scale</strong></td><td>Bigger purchasing volume -&gt; lower per-unit input cost -&gt; lower prices -&gt; more volume.</td></tr>
+      <tr><td><strong>Negative working capital</strong></td><td>Selling inventory and collecting cash before the supplier bill is due; suppliers effectively finance operations.</td></tr>
+      <tr><td><strong>Counter-positioning</strong></td><td>A model incumbents cannot copy without harming their own profit; here, refusing markups repels margin-focused rivals.</td></tr>
+      <tr><td><strong>Markup cap</strong></td><td>A self-imposed ceiling (~10-11%, ~15% Kirkland) on how much any item is marked up - keeps prices and trust honest.</td></tr>
+      <tr><td><strong>Treasure hunt</strong></td><td>A rotating set of surprise, high-value items that turns a shopping trip into an event and drives unplanned spend.</td></tr>
+      <tr><td><strong>Incentive alignment</strong></td><td>Structuring the business so the seller only profits when the customer wins; the source of Costco's trust moat.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Businesses - Costco &middot; Applies the shared 9-point lens. Numbers are approximate, framed for pattern-learning, not investment. Read alongside <a href="walmart_first_principles.html">Walmart</a> and <a href="business_first_principles_framework.html">The shared lens</a>.</footer>
+</main>
+</div>
+</body>
+</html>

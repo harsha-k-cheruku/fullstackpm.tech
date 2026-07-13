@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>The Build Playbook - Personal Strategy Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  .check{list-style:none;padding-left:0} .check li{padding-left:30px;position:relative}
+  .check li:before{content:"[ ]";position:absolute;left:0;font-family:monospace;color:var(--blue);font-weight:800}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">The Build Playbook</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">The Build Playbook (personal)</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#reframe"><span class="num">1</span>The reframe</a>
+  <a href="#inventory"><span class="num">2</span>Your asset inventory</a>
+  <a href="#move"><span class="num">3</span>The highest-leverage move</a>
+  <a href="#rule"><span class="num">4</span>The cheap-verifier rule</a>
+  <a href="#flywheel"><span class="num">5</span>The data flywheel</a>
+  <a href="#menu"><span class="num">6</span>The ranked build menu</a>
+  <a href="#checklist"><span class="num">7</span>Asset-inventory checklist</a>
+  <a href="#synthesis"><span class="num">8</span>Synthesis</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>The Build Playbook</h1>
+  <p class="lede">Personal strategy: what to build, given domain knowledge but little proprietary data (yet).</p>
+  <p class="meta">Topic folder: first-principles-tutor/build-playbook &middot; Captured 2026-07-11 &middot; Cashes out ../future-of-work/, ../economics-of-ai/, ../businesses/</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>You are not moat-poor.</strong> You have 3 of the 4 moats (domain judgment, distribution, trust). The 4th (proprietary data) is the one you MANUFACTURE by shipping.</li>
+    <li><strong>The highest-leverage move:</strong> encode your tacit domain judgment into agents + shared skills - convert knowledge (trapped in your head) into an asset (runs without you, improves for free).</li>
+    <li><strong>Build where you are the cheap verifier</strong> - tasks where your domain knowledge makes checking the output cheap for you and expensive for everyone else.</li>
+    <li><strong>Shipping mints the data:</strong> usage generates the labeled examples + eval sets that become your durable moat.</li>
+    <li><strong>One line:</strong> own the judgment, rent the intelligence, and let shipping mint the data.</li>
+  </ul>
+
+  <h2 id="reframe"><span class="n">1</span>The reframe: you are conflating "raw data" with "moat"</h2>
+  <p>"I don't own much proprietary data" is true - but that is only ONE of the four moats from the Economics of AI note, and it is the only one you build by shipping rather than the one you need to start. Most builders have the opposite problem (data but no distribution or trust). Your starting hand is actually stronger.</p>
+  <div class="box key"><span class="lbl">The core correction</span><p>A moat is not just proprietary data. It is domain judgment + distribution + trust + data. You already have the first three. The move is not "go get data" - it is "use what you have to start the loop that generates the data."</p></div>
+
+  <h2 id="inventory"><span class="n">2</span>Your asset inventory (score it honestly)</h2>
+  <table>
+    <thead><tr><th>Moat</th><th>Have it?</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Domain judgment</strong></td><td>Yes - strong</td><td>You know what "good" looks like -&gt; you can verify cheaply. This IS your eval function.</td></tr>
+      <tr><td><strong>Distribution</strong></td><td>Yes</td><td>You can put a tool in front of real users (your org, managers, VP) - most builders cannot.</td></tr>
+      <tr><td><strong>Trust</strong></td><td>Yes</td><td>You are a leader people already listen to - adoption starts warm, not cold.</td></tr>
+      <tr><td><strong>Proprietary data</strong></td><td>Not yet</td><td>The one you MANUFACTURE by shipping (see the flywheel).</td></tr>
+    </tbody>
+  </table>
+  <div class="box good"><span class="lbl">Hidden asset you already have</span><p>You have been accumulating proprietary data without naming it: the WBR metric glossary, the qualify-IB logic, manager lookups, SQL query assets, "settled data definitions." That curated, hard-won institutional logic IS proprietary data. Nobody outside your org can reproduce it. It is a moat wearing work clothes.</p></div>
+
+  <h2 id="move"><span class="n">3</span>The highest-leverage move</h2>
+  <div class="box key"><span class="lbl">Do this</span><p><strong>Encode your tacit domain judgment into agents + shared skills.</strong></p></div>
+  <p>Right now your most valuable asset - knowing how launches really work, what a real qualified inbound is, why the AOP number was wrong, what a good WBR looks like - lives in your head and dies when you are busy. Encoding converts that <em>knowledge</em> (illiquid, trapped in you) into an <em>asset</em> (runs without you, improves as the models under it improve). This is exactly what Caddie already is: encoded judgment. You have started; the move is to do it deliberately and repeatedly.</p>
+
+  <h2 id="rule"><span class="n">4</span>The cheap-verifier rule (what to build)</h2>
+  <div class="box"><span class="lbl">The filter</span><p>Build agents for tasks where YOUR domain knowledge makes verification cheap for you and expensive for everyone else.</p></div>
+  <p>From the Future-of-Work note: value concentrates where generation is cheap but verification is hard. An outsider can prompt an LLM to "analyze launches," but they cannot tell if the answer is right - <em>you</em> can, instantly. Your judgment is the eval function. Build where you are the judge; that is your comparative advantage made concrete.</p>
+
+  <h2 id="flywheel"><span class="n">5</span>The data flywheel (how you mint the missing moat)</h2>
+  <p>You do not buy the 4th moat - you generate it by shipping:</p>
+<pre>Encode judgment -&gt; ship a tool -&gt; people use it
+        ^                                   |
+        |                                   v
+   better tool  &lt;- eval set + feedback &lt;- usage data
+   (proprietary)     (what they ask,
+                      what's right/wrong)</pre>
+  <p>Every question a manager asks Caddie, every answer you correct, every metric definition you lock in = labeled examples only you own. After six months of use, that eval set + those definitions ARE the moat - and they compound while you sleep (the appreciating-asset principle from Economics of AI).</p>
+
+  <h2 id="menu"><span class="n">6</span>The ranked build menu (your world)</h2>
+  <p>Ordered by leverage-per-effort. Start at 1 and 2 - they build 3-5 for free and start the flywheel with the distribution + trust you already have.</p>
+  <ol>
+    <li><strong>Judgment-encoding analyst agents</strong> (started - Caddie). One per recurring analytical job: WBR-prep, launch-quality QA, target-vs-actuals, coaching briefs. Moat: your metric logic. Verifier: you.</li>
+    <li><strong>Skills, not just agents (DRY).</strong> Factor repeated knowledge - the metric glossary, qualify-IB rules, SQL patterns - into shared skills many agents reference. Your knowledge base as code: the most durable, most reusable, hardest-to-copy asset.</li>
+    <li><strong>A "definitions / source-of-truth" agent.</strong> The thing that ended the AOP-vs-WBR confusion. Encodes what each metric really means so nobody relitigates. Pure encoded judgment; huge org value; zero external data needed.</li>
+    <li><strong>Workflow / pipeline agents</strong> (the WBR scaffolder pattern). Automates a process, not a task. High stickiness = distribution moat.</li>
+    <li><strong>A verification / QA agent</strong> (the critic, kept separate from the doer). Checks other analysts' numbers against your locked definitions. This one IS your judgment, productized - the purest expression of your edge.</li>
+  </ol>
+
+  <h2 id="checklist"><span class="n">7</span>Asset-inventory checklist (revisit quarterly)</h2>
+  <p>Tick these as your moats grow - it turns the abstract strategy into a scoreboard:</p>
+  <ul class="check">
+    <li>Have I encoded at least one new piece of tacit judgment into an agent/skill this quarter?</li>
+    <li>Is my repeated knowledge factored into shared <strong>skills</strong> (DRY), not copy-pasted across agents?</li>
+    <li>Do I have a single <strong>source-of-truth</strong> for my metric definitions that agents reference?</li>
+    <li>Is at least one tool in front of <strong>real users</strong> (using my distribution)?</li>
+    <li>Am I <strong>capturing usage</strong> (questions asked, answers corrected) as a growing eval set?</li>
+    <li>Is there a <strong>separate verifier</strong> checking the doer (not self-checking)?</li>
+    <li>Am I building things that <strong>improve for free</strong> as the underlying models improve?</li>
+    <li>Am I pricing/positioning for <strong>outcomes + trust</strong>, not raw output volume?</li>
+  </ul>
+
+  <h2 id="synthesis"><span class="n">8</span>Synthesis</h2>
+  <div class="box key"><span class="lbl">The one-line strategy</span><p>You don't lack a moat - you lack the habit of encoding. Convert your domain judgment into agents + shared skills, ship them to the audience and trust you already own, and let usage manufacture the proprietary data you don't yet have. <strong>Own the judgment, rent the intelligence, and let shipping mint the data.</strong></p></div>
+  <p>This maps straight onto the businesses capstone: be a <strong>deep wrapper, not a thin one</strong> - own the domain + workflow + trust, and let cheap intelligence supply the labor. That is the durable position the first principles point to.</p>
+  <footer>First-Principles Study Notes &middot; The Build Playbook (personal strategy) &middot; captured 2026-07-11.</footer>
+</main>
+</div>
+</body>
+</html>

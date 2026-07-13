@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Networks & Emergence from First Principles - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-1" style="color:#0053e2;text-decoration:none">The substrates</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Networks &amp; Emergence from First Principles</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Networks & Emergence</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#network"><span class="num">1</span>A network = nodes + edges</a>
+  <a href="#effects"><span class="num">2</span>Network effects</a>
+  <a href="#topology"><span class="num">3</span>Topology: random vs scale-free</a>
+  <a href="#contagion"><span class="num">4</span>Contagion & tipping points</a>
+  <a href="#emergence"><span class="num">5</span>Emergence</a>
+  <a href="#criticality"><span class="num">6</span>Self-organization & criticality</a>
+  <a href="#edges"><span class="num">7</span>Edge & breaking cases</a>
+  <a href="#use"><span class="num">8</span>How to use it</a>
+  <a href="#glossary"><span class="num">9</span>Glossary</a>
+  <a href="../index.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Networks &amp; Emergence from First Principles</h1>
+  <p class="lede">Two linked ideas: how VALUE and BEHAVIOR arise from the CONNECTIONS between parts - and how a connected whole becomes something more than the sum of its parts.</p>
+  <p class="meta">Topic folder: first-principles-tutor/foundations &middot; The structure between things often matters more than the things &middot; Pairs with ../businesses/ (moats), ../dynamics/ (tails), and ../meta/ (epistemology)</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>A network is nodes + edges</strong> - and the <em>structure</em> (topology) usually matters more than the individual nodes. Change who-connects-to-whom and you change everything.</li>
+    <li><strong>Network effects:</strong> a thing gets more valuable as more people use it. Metcalfe's naive law says value ~ n^2; the honest version is sub-quadratic (n log n). This is the deepest business moat - especially <em>two-sided</em> (indirect) effects.</li>
+    <li><strong>Real networks are scale-free, not random:</strong> a few hubs hold most of the connections (power law). "The rich get richer" via preferential attachment. Also small-world: six degrees of separation.</li>
+    <li><strong>Contagion + tipping points:</strong> diseases, ideas, trends, and bank runs all spread through connections. Past a threshold, a cascade tips - a phase transition, not a gradual slope.</li>
+    <li><strong>Emergence:</strong> complex global behavior from simple local rules with NO central controller (ants, flocks, markets, brains, LLMs). The whole has properties the parts lack; you cannot read the macro off the micro.</li>
+    <li><strong>Criticality:</strong> connected systems self-organize to the "edge of chaos," where small triggers can cause avalanches of any size. Big cascades are not bugs - they are inevitable.</li>
+    <li><strong>Breaking cases:</strong> network effects run in reverse (death spirals), hubs are robust-yet-fragile (attack the hub = collapse), emergence defeats pure reductionism, and connection breeds systemic risk (2008).</li>
+  </ul>
+
+  <h2 id="network"><span class="n">1</span>A network = nodes + edges</h2>
+  <p>Strip any network to its bones and you get two things: <strong>nodes</strong> (the parts - people, neurons, computers, banks, cities) and <strong>edges</strong> (the connections between them - friendships, synapses, cables, loans, roads). That is it. Everything else is detail about <em>which</em> nodes connect to <em>which</em>, and how strongly.</p>
+  <div class="box key"><span class="lbl">The core principle</span><p>The <strong>topology</strong> - the pattern of connections - usually matters more than the nodes themselves. Two networks made of identical parts can behave in totally opposite ways depending only on how the parts are wired together. Neurons are just neurons; the <em>wiring</em> is the mind.</p></div>
+  <p>This is why "look at the parts" is a weak instinct. A brain and a bucket of disconnected neurons contain the same components; only one thinks. A market and a room of isolated traders hold the same people; only one sets a price. The information that matters lives in the edges, not the nodes.</p>
+  <pre>NODES ONLY (no edges)        SAME NODES, WIRED
+  o   o   o                    o---o---o
+                               |   |   |
+  o   o   o        -&gt;          o---o---o
+                               |   |   |
+  o   o   o                    o---o---o
+  (a pile of parts)            (a system that can compute, spread, fail)</pre>
+  <p>A few structural properties describe most of what a network does: <strong>degree</strong> (how many edges a node has), <strong>path length</strong> (how many hops between two nodes), <strong>clustering</strong> (how much your neighbors are also each other's neighbors), and <strong>degree distribution</strong> (whether connections are spread evenly or hoarded by a few). These four numbers predict how value accrues, how fast things spread, and how the system breaks.</p>
+
+  <h2 id="effects"><span class="n">2</span>Network effects (value grows with users)</h2>
+  <p>The first big consequence of connection: some things get <em>more valuable the more people use them</em>. One telephone is a paperweight; two make a line; a million make a utility. The value is not in the device - it is in the edges the device can form.</p>
+
+  <h3>Metcalfe's law and its critics</h3>
+  <p>Metcalfe's law is the naive count: if every one of <code>n</code> users can connect to every other, the number of possible pairs is <code>n(n-1)/2</code>, which grows like <strong>n^2</strong>. Double the users, quadruple the value. That n^2 intuition is why network businesses feel explosive.</p>
+  <div class="box trap"><span class="lbl">The honest correction</span><p>Real value is <strong>sub-quadratic</strong>. Metcalfe assumes every connection is equally valuable, but they are not - your 5,000th LinkedIn contact is worth far less than your 5th (Zipf/diminishing returns). The better empirical fit is roughly <strong>n log n</strong> (Briscoe-Odlyzko-Tilly). Still super-linear and still a powerful moat - just not the fantasy of infinite quadratic returns that helped inflate the dot-com bubble.</p></div>
+  <table>
+    <thead><tr><th>Law / model</th><th>Value scales like</th><th>Assumption</th></tr></thead>
+    <tbody>
+      <tr><td>Sarnoff (broadcast)</td><td>n (linear)</td><td>one-to-many, no peer links</td></tr>
+      <tr><td>Metcalfe (naive)</td><td>n^2</td><td>every pair equally valuable</td></tr>
+      <tr><td>Reed (group-forming)</td><td>2^n</td><td>every possible subgroup matters (over-optimistic)</td></tr>
+      <tr><td>Briscoe-Odlyzko-Tilly</td><td>n log n</td><td>connections have diminishing value (realistic)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Direct vs indirect (two-sided) network effects</h3>
+  <p>There are two flavors, and the second is the deeper moat:</p>
+  <ul>
+    <li><strong>Direct (same-side):</strong> more users make the product better for other users of the same kind. Telephones, WhatsApp, a language. Value flows within one group.</li>
+    <li><strong>Indirect (cross-side / two-sided):</strong> more users on side A make the product better for side B, and vice versa. More riders attract more drivers (Uber); more buyers attract more sellers (Amazon, eBay); more players attract more game developers (a console). This is the <strong>platform</strong> pattern.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The deepest moat</span><p>Two-sided network effects are the strongest durable advantage in business because they are <em>self-reinforcing and hard to copy</em>: a competitor cannot just build a better app, they must simultaneously convince <em>both</em> sides to switch (the "cold start" / chicken-and-egg problem). The value lives in the accumulated network, not the code. See <a href="../businesses/">../businesses/</a> for why this beats brand, cost, and patents as a moat.</p></div>
+
+  <h2 id="topology"><span class="n">3</span>Topology types: random vs scale-free</h2>
+  <p>How are the edges actually distributed? For decades the default model was the <strong>random network</strong> (Erdos-Renyi): connect pairs at random. In a random network most nodes have a similar number of edges - the degree distribution is a bell curve with a typical value. There is an "average" node.</p>
+  <p>But almost no real network looks like that. The internet, the web, airline routes, citations, wealth, and fame are all <strong>scale-free</strong>: their degree distribution follows a <strong>power law</strong>. A few nodes (the <strong>hubs</strong>) have an enormous number of connections; the vast majority have very few. There is no "typical" node - hence "scale-free."</p>
+  <pre>RANDOM (bell curve)              SCALE-FREE (power law)
+ count                            count
+   |    .-''-.                      |*
+   |   /      \                     | *
+   |  /        \                    |  *
+   |_/__________\___ degree         |    *  .        .       (hubs)
+      most nodes ~average           |________*___________.____ degree
+                                     many tiny, few giant hubs</pre>
+
+  <h3>Why hubs form: preferential attachment</h3>
+  <p>Scale-free structure is generated by a brutally simple local rule (Barabasi-Albert): <strong>new nodes prefer to connect to nodes that are already well-connected.</strong> A new website links to popular sites; a new researcher cites famous papers; a newcomer follows accounts that already have followers.</p>
+  <div class="box"><span class="lbl">The rich get richer</span><p>Preferential attachment is the mechanism behind "the rich get richer" (a.k.a. the Matthew effect, cumulative advantage). A small early lead compounds: being connected makes you <em>more likely</em> to gain the next connection, which makes you more connected still. This is why winner-take-most outcomes are the natural equilibrium of connected systems - fame, wealth, city size, and platform dominance all follow the same power law for the same reason.</p></div>
+
+  <h3>Small-world: six degrees of separation</h3>
+  <p>Real networks are also <strong>small-world</strong> (Watts-Strogatz): they combine high local clustering (your friends know each other) with a handful of long-range shortcut edges, so the path between any two nodes is astonishingly short. Milgram's experiment gave us "six degrees of separation." The shortcuts - often provided by hubs - are what make the world small, and what let a rumor, a virus, or a meme cross the entire network in a few hops.</p>
+
+  <h2 id="contagion"><span class="n">4</span>Contagion &amp; tipping points</h2>
+  <p>Once things are connected, <em>stuff spreads along the edges</em>. The same mathematics governs an epidemic, a viral video, a fashion, a rumor, a financial panic, and a bank run. Only the labels change: what spreads (a virus / an idea / fear), and along which edges (contact / attention / exposure).</p>
+  <p>Two ingredients decide whether a spark becomes a fire:</p>
+  <ul>
+    <li><strong>Transmission rate</strong> - how likely a connection is to pass the thing on (the R0 of epidemiology; the "share rate" of content).</li>
+    <li><strong>Threshold</strong> - how many infected neighbors it takes before <em>you</em> flip. Some behaviors are simple contagion (one exposure is enough); most social behaviors are <strong>complex contagion</strong> (you need several friends to adopt before you do).</li>
+  </ul>
+  <div class="box key"><span class="lbl">The tipping point is a phase transition</span><p>Spread is not gradual. Below a critical threshold, an outbreak fizzles - it infects a few and dies. Cross the threshold and it explodes to global scale. This sharp switch from "nothing happens" to "everything happens" is a <strong>phase transition</strong> - the same physics as water flashing to steam at 100C. The "tipping point" is exactly that critical value, and small changes near it produce wildly different outcomes.</p></div>
+  <p>Virality is a cascade: an adoption triggers neighboring adoptions, which trigger theirs. Whether a cascade stays local or sweeps the whole network depends on the topology (hubs are super-spreaders) and on how close the system sits to its threshold. This is why marketers hunt for hubs, why one uninsured default can freeze an entire banking system, and why the difference between a flop and a phenomenon can be a rounding error in the transmission rate.</p>
+
+  <h2 id="emergence"><span class="n">5</span>Emergence: the whole exceeds the parts</h2>
+  <p>Now the second big idea. When many simple parts interact through connections, the system can display <strong>complex global behavior that none of the parts possess and no one designed</strong>. This is <strong>emergence</strong>, and its signature is: <em>simple local rules + many interacting parts + no central controller = surprising global order.</em></p>
+  <table>
+    <thead><tr><th>System</th><th>Simple local rule</th><th>Emergent whole</th></tr></thead>
+    <tbody>
+      <tr><td>Ant colony</td><td>follow / lay pheromone trails</td><td>optimal foraging, "colony intelligence"</td></tr>
+      <tr><td>Bird flock</td><td>match neighbors, avoid collisions, stay close</td><td>fluid coordinated murmuration</td></tr>
+      <tr><td>Market</td><td>buy low, sell high, locally</td><td>a price that aggregates dispersed knowledge</td></tr>
+      <tr><td>Brain</td><td>neuron fires if inputs exceed threshold</td><td>perception, memory, mind</td></tr>
+      <tr><td>LLM</td><td>predict the next token</td><td>reasoning, translation, apparent understanding</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">No one is in charge</span><p>The astonishing part: there is <strong>no central controller</strong>. No ant is the boss; no neuron holds the thought; no bird leads the flock; no trader sets the market price. The order comes <em>from the interactions themselves</em>. Coordination without a coordinator is the default outcome of dense connection - which is deeply counterintuitive to brains that expect a designer behind every design.</p></div>
+  <p>The crucial epistemic point: <strong>you cannot predict the macro from the micro alone.</strong> Knowing the rule "predict the next token" tells you nothing about whether the system will translate French. Knowing how one neuron works does not let you deduce consciousness. Emergent properties are <em>real</em> and <em>causal</em>, yet they are not visible in the parts - they only appear at the level of the interacting whole. Wetness is not a property of an H2O molecule; it is a property of many of them together.</p>
+
+  <h2 id="criticality"><span class="n">6</span>Self-organization &amp; criticality</h2>
+  <p>Why do connected systems keep landing in that fertile zone where interesting things happen? Because many of them <strong>self-organize toward criticality</strong> - they tune themselves, with no external dial, to the boundary between frozen order and total chaos. This boundary is often called the <strong>edge of chaos</strong>, and it is where computation, adaptation, and life-like behavior are richest: ordered enough to remember, fluid enough to change.</p>
+  <div class="box"><span class="lbl">The sandpile</span><p>The classic model (Bak-Tang-Wiesenfeld) is a sandpile. Drop grains one at a time. The pile steepens until it reaches a critical slope - then it stops getting steeper on average, because each new grain can trigger an avalanche. Crucially, avalanche sizes follow a <strong>power law</strong>: mostly tiny slips, occasionally a catastrophic collapse, with no "typical" size. The system organized itself to the critical point with no one setting the angle.</p></div>
+  <div class="box trap"><span class="lbl">Why big cascades are inevitable</span><p>This is the sobering result. In a self-organized-critical system, the <strong>same grain of sand</strong> can cause a tiny slip or a giant avalanche - and you cannot tell which in advance. Large cascades are not anomalies or failures; they are a structural, unavoidable feature of any connected system poised at criticality. Earthquakes, forest fires, mass extinctions, traffic jams, viral outbreaks, and market crashes all show the same power-law-of-sizes fingerprint. Connection buys you efficiency and adaptability - and it buys you the certainty of occasional huge cascades as the price.</p></div>
+
+  <h2 id="edges"><span class="n">7</span>Edge &amp; breaking cases</h2>
+  <h3>Network effects run in reverse</h3>
+  <p>The n^2 engine is symmetric. When users start leaving, the product gets <em>worse</em> for those who remain, which drives more to leave - a <strong>negative network effect</strong> and a <strong>death spiral</strong>. MySpace, Friendster, and Clubhouse died on the same curve that built them, just pointed downhill. The moat is only a moat while the water is rising.</p>
+
+  <h3>Robust-yet-fragile: the tyranny of the hub</h3>
+  <div class="box trap"><span class="lbl">Scale-free networks are robust yet fragile</span><p>Because most nodes are tiny, a scale-free network shrugs off <em>random</em> failures - knock out a random node and you almost certainly hit an unimportant one. But that same structure is exquisitely vulnerable to a <em>targeted attack on its hubs</em>. Take out a few hubs and the whole network shatters into disconnected islands. This "robust-yet-fragile" duality is why the internet survives random outages but a targeted strike on key exchanges is catastrophic - and why concentration (of banks, suppliers, or infrastructure) trades everyday resilience for tail catastrophe.</p></div>
+
+  <h3>Emergence defeats reductionism</h3>
+  <p>The reductionist promise - "understand the whole by dissecting the parts" - fails for emergent systems. You can fully characterize a neuron and still not have a theory of mind; you can know every trading rule and still not predict the crash. The macro-level has its own laws that cannot be derived from the micro-level alone. This is a hard limit on a whole style of knowing - forward-ref <a href="../meta/epistemology_and_first_principles.html">../meta/epistemology_and_first_principles.html</a> for what that does to "understanding from first principles."</p>
+
+  <h3>Systemic / contagion risk</h3>
+  <div class="box trap"><span class="lbl">2008: connection as the risk</span><p>The financial system is a scale-free network of obligations. Connections that let capital flow efficiently also let <em>failure</em> flow efficiently. In 2008, one node's collapse (Lehman) propagated along the edges of counterparty exposure until the entire system seized - a textbook cascade through a hub-heavy network sitting at criticality. The very connectivity that made the system efficient made it fragile. Systemic risk is emergent: it does not live in any single bank, only in the wiring between them. Forward-ref <a href="../dynamics/risk_uncertainty_tails.html">../dynamics/risk_uncertainty_tails.html</a> for why these tail cascades dominate the risk.</p></div>
+
+  <h2 id="use"><span class="n">8</span>How to use it</h2>
+  <div class="box good"><span class="lbl">Three moves</span>
+    <p><strong>1. Look at the connections, not just the nodes.</strong> When analyzing anything - a company, a brain, a crisis, a culture - ask about the <em>edges</em> first. The structure of the wiring predicts the behavior better than any inventory of the parts.</p>
+    <p><strong>2. Find the hubs.</strong> In any scale-free system a few nodes carry disproportionate power - the super-spreaders, the kingmakers, the single points of failure. To spread something, seed the hubs. To protect a system, defend the hubs. To break one, cut the hubs.</p>
+    <p><strong>3. Ask what emerges.</strong> Do not assume the whole behaves like the parts. Ask what new properties appear at the system level, whether it sits near a tipping point, and whether a small nudge could trigger a cascade. The most important behavior is almost never visible in any single component.</p>
+  </div>
+  <p>Bottom line: value and behavior are properties of <em>relationships</em>, not things. Whenever the world surprises you, suspect that you were staring at the nodes when the answer was in the edges.</p>
+
+  <h2 id="glossary"><span class="n">9</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Node / edge</strong></td><td>The two atoms of a network: a part (node) and a connection between parts (edge).</td></tr>
+      <tr><td><strong>Topology</strong></td><td>The overall pattern of who-connects-to-whom; the structure of the network, independent of the nodes.</td></tr>
+      <tr><td><strong>Network effect</strong></td><td>When a product/service gets more valuable as more people use it.</td></tr>
+      <tr><td><strong>Metcalfe's law</strong></td><td>Naive claim that a network's value scales as n^2 (all pairs); really sub-quadratic (~n log n).</td></tr>
+      <tr><td><strong>Two-sided market</strong></td><td>A platform where two distinct groups create value for each other (buyers/sellers, riders/drivers); source of indirect network effects.</td></tr>
+      <tr><td><strong>Scale-free network</strong></td><td>A network whose degree distribution follows a power law: a few hubs, many small nodes; no typical scale.</td></tr>
+      <tr><td><strong>Power law</strong></td><td>A distribution where a few items dominate and there is no meaningful "average" (80/20 taken to the extreme).</td></tr>
+      <tr><td><strong>Preferential attachment</strong></td><td>The rule that well-connected nodes gain new connections faster ("the rich get richer"); generates scale-free structure.</td></tr>
+      <tr><td><strong>Small-world</strong></td><td>Network with high local clustering plus a few long-range shortcuts, so path lengths are very short ("six degrees").</td></tr>
+      <tr><td><strong>Contagion / cascade</strong></td><td>The spread of something (disease, idea, panic) along edges, where each adoption can trigger further adoptions.</td></tr>
+      <tr><td><strong>Tipping point</strong></td><td>The critical threshold at which a cascade switches from fizzling out to sweeping the whole network; a phase transition.</td></tr>
+      <tr><td><strong>Emergence</strong></td><td>Complex global behavior arising from simple local rules with no central controller; the whole has properties the parts lack.</td></tr>
+      <tr><td><strong>Self-organization</strong></td><td>Order and structure appearing spontaneously from local interactions, without external direction or design.</td></tr>
+      <tr><td><strong>Criticality</strong></td><td>The "edge of chaos" state a connected system tunes toward, where triggers can cause cascades of any size (power-law distributed).</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Networks &amp; Emergence from First Principles &middot; Value and behavior live in the edges, not the nodes; the whole is more than the sum of its parts.</footer>
+</main>
+</div>
+</body>
+</html>

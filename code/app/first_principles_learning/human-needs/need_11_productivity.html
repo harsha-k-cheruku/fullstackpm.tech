@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Need: Productivity / Work / Growth - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="human_needs_from_first_principles.html" style="color:#0053e2;text-decoration:none">Human Needs</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Productivity / Work / Growth</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Need: Productivity</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>The need as an axiom</a>
+  <a href="#flow"><span class="num">2</span>The demand flow</a>
+  <a href="#microsoft"><span class="num">3</span>#1 Microsoft - how it wins</a>
+  <a href="#challengers"><span class="num">4</span>#2 Google Workspace + Salesforce</a>
+  <a href="#others"><span class="num">5</span>Other players / evolution</a>
+  <a href="#econ"><span class="num">6</span>Unit economics</a>
+  <a href="#playing"><span class="num">7</span>How it is playing out</a>
+  <a href="#pattern"><span class="num">8</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">9</span>Glossary</a>
+  <a href="human_needs_from_first_principles.html" style="margin-top:18px;color:var(--blue);font-weight:700">The needs framework</a>
+  <a href="../index.html" style="color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Productivity / Work / Growth</h1>
+  <p class="lede">The human need to do and achieve - and how software tools amplify human output today, from the spreadsheet to the AI copilot.</p>
+  <p class="meta">Need #11 of 13 &middot; #1 Microsoft &middot; #2 Google Workspace / Salesforce &middot; See <a href="human_needs_from_first_principles.html">The needs framework</a></p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>The need is ancient:</strong> humans have always sought to produce, achieve, and get more done with less effort. Tools amplify output - the plow, the abacus, the ledger, the spreadsheet, and now the AI copilot are all the same axiom.</li>
+    <li><strong>The mechanism today is software</strong>, sold mostly as SaaS (Software as a Service) on recurring, seat-based subscriptions. The value is in the <em>workflow</em>, and the moat is the switching cost of moving off it.</li>
+    <li><strong>#1 is Microsoft</strong> (~USD 245B revenue FY24): it wins by owning the whole work stack - Windows, Office/Microsoft 365, Teams, Azure, GitHub - bundled and distributed through enterprise IT, with brutal switching costs, and now upselling Copilot AI.</li>
+    <li><strong>#2 is split:</strong> Google Workspace attacks with cheaper, cloud-native, collaboration-first tools; Salesforce owns the CRM system of record and a whole application platform on top of it.</li>
+    <li><strong>Economics are beautiful:</strong> SaaS runs ~70-80% gross margin, recurring revenue, low churn, land-and-expand growth, and a favorable CAC/LTV ratio. Seats are the meter.</li>
+    <li><strong>The shift underway:</strong> AI copilots are embedding into every tool, and the model is moving from tools-that-help-you-work toward agents-that-do-the-work - which pressures the seat-based pricing model itself (see <a href="../future-of-work/">../future-of-work/</a>).</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>The need as an axiom</h2>
+  <p>Under Maslow this sits at <strong>self-actualization</strong> (growth, mastery, achievement) but it is also anchored in <strong>provision</strong> - the safety/esteem drive to earn and provide for a family. The axiom: <strong>humans want to produce, achieve, and get work done - and to do more of it with less effort.</strong> This is not a modern want. It is one of the oldest.</p>
+  <p>What changes is only the tool. Every era invents an amplifier of human output:</p>
+  <ul>
+    <li><strong>The plow</strong> multiplied one farmer's yield.</li>
+    <li><strong>The abacus and double-entry ledger</strong> multiplied a merchant's ability to track value.</li>
+    <li><strong>The typewriter and telephone</strong> multiplied a clerk's throughput.</li>
+    <li><strong>The spreadsheet</strong> (VisiCalc 1979, then Lotus 1-2-3, then Excel) turned a room of accountants into one analyst - it was the app that sold the personal computer to business.</li>
+    <li><strong>The AI copilot</strong> now drafts the document, writes the code, and summarizes the meeting.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The axiom in one line</span><p>Give a human a tool that amplifies output, and they will pay for it - forever. The need is constant; only the amplifier changes. Software is simply the current, most-leveraged amplifier because it is copyable at near-zero marginal cost.</p></div>
+  <p>Why software specifically dominates today: a physical tool amplifies one worker; a software tool can be copied to a billion workers for almost nothing, and it can be improved continuously without re-manufacturing. That combination - infinite distribution plus continuous improvement - is why the productivity need is now served overwhelmingly by code.</p>
+
+  <h2 id="flow"><span class="n">2</span>The demand flow</h2>
+  <p>The productivity need travels a specific pipeline from felt friction to locked-in recurring revenue:</p>
+<pre>NEED (get work done) -&gt; Task/friction -&gt; Tool discovery -&gt; Adoption/Trust
+   -&gt; Daily use -&gt; Workflow lock-in -&gt; Subscription payment -&gt; Retention (switching costs)</pre>
+  <ul>
+    <li><strong>Task / friction:</strong> a specific job is slow or painful - tracking customers, writing docs, shipping code, coordinating a team.</li>
+    <li><strong>Tool discovery:</strong> a worker or a company finds a tool. In consumer/bottom-up SaaS this is one person; in enterprise it is an IT-led evaluation.</li>
+    <li><strong>Adoption / trust:</strong> the tool has to be trusted with the work - reliability, security, and data handling matter enormously at the enterprise level.</li>
+    <li><strong>Daily use -&gt; workflow lock-in:</strong> the tool becomes <em>the way work is done</em>. Data, templates, integrations, muscle memory, and org charts all form around it. This is where the moat is built.</li>
+    <li><strong>Subscription payment:</strong> billing is recurring and usually <em>per seat</em> (per user per month). Revenue compounds as headcount grows.</li>
+    <li><strong>Retention via switching costs:</strong> migrating off is expensive - retraining, data export, integration rewrites, and risk. So customers stay.</li>
+  </ul>
+  <div class="box"><span class="lbl">Why enterprise is the prize</span><p>Enterprise software combines the two best properties a business can have: <strong>high switching costs</strong> (nobody re-platforms 50,000 employees casually) and <strong>seat-based recurring revenue</strong> (you bill every user, every month, and the bill grows as the customer grows). This is why the biggest software fortunes are built in enterprise, not consumer.</p></div>
+
+  <h2 id="microsoft"><span class="n">3</span>#1 Microsoft - how it wins</h2>
+  <p>Microsoft (~USD 245B revenue FY24, ~USD 3T+ market cap) is the clearest #1 for the productivity need because it does not sell a tool - it sells <strong>the work stack</strong>, and then bundles and distributes it through the one channel every large company already has: corporate IT.</p>
+  <table>
+    <thead><tr><th>Layer</th><th>Product</th><th>What it locks in</th></tr></thead>
+    <tbody>
+      <tr><td>Operating system</td><td>Windows</td><td>The desktop most work happens on</td></tr>
+      <tr><td>Documents</td><td>Microsoft 365 (Word, Excel, PowerPoint, Outlook)</td><td>The file formats and daily habits of office work</td></tr>
+      <tr><td>Collaboration</td><td>Teams</td><td>Chat, meetings, calls - the comms layer, bundled free into 365</td></tr>
+      <tr><td>Cloud</td><td>Azure</td><td>Where the enterprise runs its own apps and data</td></tr>
+      <tr><td>Developers</td><td>GitHub + Visual Studio</td><td>Where code is written and stored</td></tr>
+      <tr><td>Identity</td><td>Entra / Active Directory</td><td>Employee logins - the root of all access</td></tr>
+      <tr><td>AI</td><td>Copilot</td><td>The upsell layered on top of every tool above</td></tr>
+    </tbody>
+  </table>
+  <h3>The four mechanisms of the win</h3>
+  <ul>
+    <li><strong>Bundling:</strong> Microsoft 365 sells the whole suite for one per-seat price (roughly USD 12-57 per user per month depending on tier). Teams was bundled in and quickly overtook standalone rivals - not because it was best, but because it was <em>already there</em>.</li>
+    <li><strong>Enterprise distribution:</strong> Microsoft already has the relationship with corporate IT, an existing contract, and volume licensing (Enterprise Agreements). Selling one more product to an existing account is far cheaper than acquiring a new one.</li>
+    <li><strong>Switching costs:</strong> a company on Windows + 365 + Azure + Active Directory cannot casually leave. Files, identity, integrations, and training are all Microsoft-shaped. The cost of leaving dwarfs the price of staying.</li>
+    <li><strong>AI Copilot upsell:</strong> Microsoft 365 Copilot adds roughly USD 30 per user per month on top of the existing subscription - a large upsell layered onto an already-locked-in base. GitHub Copilot does the same for developers (~USD 10-39 per user per month).</li>
+  </ul>
+  <div class="box key"><span class="lbl">The compounding trick</span><p>Microsoft's genius is that each layer makes the next one easier to sell and harder to leave. Windows sells Office; Office sells Teams; the account sells Azure; Azure hosts the AI; and Copilot upsells the whole installed base at once. One sales relationship monetized many times over.</p></div>
+
+  <h2 id="challengers"><span class="n">4</span>#2 Google Workspace and Salesforce</h2>
+  <p>The #2 slot is genuinely split between two different attacks on Microsoft's position.</p>
+  <h3>Google Workspace - the cloud-native, cheaper, simpler attack</h3>
+  <p>Google Workspace (Gmail, Docs, Sheets, Slides, Drive, Meet; ~USD 6-18 per user per month) attacks Microsoft where Microsoft was slow: <strong>the browser and real-time collaboration.</strong> Its wins:</p>
+  <ul>
+    <li><strong>Born in the cloud:</strong> multiple people editing one document live was native to Google Docs years before Microsoft matched it. No files to email around.</li>
+    <li><strong>Cheaper and simpler:</strong> less to configure, no heavy desktop install, popular with startups, schools, and small businesses.</li>
+    <li><strong>Bottom-up adoption:</strong> people already use Gmail personally, so it enters organizations from the ground up rather than through IT procurement.</li>
+  </ul>
+  <p>Its limit: it has struggled to displace Microsoft in the large-enterprise core, where Excel depth, compliance, and the installed base keep Office entrenched.</p>
+  <h3>Salesforce - owning the system of record</h3>
+  <p>Salesforce (~USD 38B revenue FY24) takes a different route: instead of documents, it owns the <strong>CRM (Customer Relationship Management) system of record</strong> - the authoritative database of a company's customers, deals, and support cases - and then built an entire <strong>platform</strong> (custom apps, automation, analytics, Slack, Tableau, MuleSoft) on top of it.</p>
+  <ul>
+    <li><strong>System of record = deepest lock-in.</strong> The tool that holds the authoritative data is the hardest of all to replace, because everything else reads from it.</li>
+    <li><strong>Platform effects:</strong> customers and partners build custom apps on Salesforce, so leaving means rebuilding all of them.</li>
+    <li><strong>Acquisition machine:</strong> Slack (comms), Tableau (analytics), and MuleSoft (integration) widen the footprint around that system of record.</li>
+  </ul>
+  <div class="box"><span class="lbl">Two ways to be #2</span><p>Google attacks on <strong>price and cloud-native collaboration</strong>; Salesforce attacks by owning a <strong>different, deeper layer</strong> (the data system of record) that Microsoft's document suite does not occupy. Both prove there is more than one durable position in the productivity need.</p></div>
+
+  <h2 id="others"><span class="n">5</span>Other players and the evolution</h2>
+  <p>Below the giants sits an enormous ecosystem of point tools and a clear direction of travel.</p>
+  <table>
+    <thead><tr><th>Player</th><th>The job it does</th><th>Angle</th></tr></thead>
+    <tbody>
+      <tr><td>Slack</td><td>Team messaging</td><td>Point tool, now owned by Salesforce; squeezed by Teams bundling</td></tr>
+      <tr><td>Notion</td><td>Docs + wiki + database</td><td>Flexible all-in-one workspace, bottom-up adoption</td></tr>
+      <tr><td>Atlassian (Jira, Confluence)</td><td>Software project tracking + docs</td><td>Owns the developer/PM workflow</td></tr>
+      <tr><td>Zoom</td><td>Video meetings</td><td>Won on quality, then got bundled against by Teams</td></tr>
+      <tr><td>Figma</td><td>Design collaboration</td><td>Cloud-native, real-time, category-defining</td></tr>
+      <tr><td>ServiceNow</td><td>IT and enterprise workflow</td><td>System of record for internal operations</td></tr>
+    </tbody>
+  </table>
+  <h3>The direction of travel</h3>
+  <ul>
+    <li><strong>The SaaS explosion:</strong> the average company now runs well over 100 SaaS apps. Cheap cloud infrastructure made it possible to build a business around a single workflow.</li>
+    <li><strong>AI copilots embedding everywhere:</strong> nearly every tool above is bolting an AI assistant into its product - draft, summarize, generate, automate. Copilot is becoming a feature of everything, not a separate product.</li>
+    <li><strong>Vertical SaaS:</strong> software tailored to one industry (Toast for restaurants, Veeva for pharma, Procore for construction) - deeper fit, stickier, often bundling payments on top.</li>
+    <li><strong>Pricing shift - seat-based toward outcome-based:</strong> as AI does the work rather than assisting a human, charging per human seat starts to break. Pricing is drifting toward usage or outcomes (per task, per resolved ticket, per agent).</li>
+    <li><strong>Agents doing the work:</strong> the frontier is software that does not help a person work but <em>does the work itself</em>. This reframes the whole category - see <a href="../future-of-work/">../future-of-work/</a>.</li>
+  </ul>
+
+  <h2 id="econ"><span class="n">6</span>Unit economics</h2>
+  <p>SaaS is one of the best business models ever discovered, and the numbers show why.</p>
+  <table>
+    <thead><tr><th>Metric</th><th>Typical range</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td>Gross margin</td><td>~70-80%+</td><td>Software copies for almost nothing; cost is mostly hosting and support</td></tr>
+      <tr><td>Revenue type</td><td>Recurring, seat-based</td><td>Predictable, compounding; bills every user every month</td></tr>
+      <tr><td>Gross churn</td><td>Low (~5-10%/yr for good enterprise SaaS)</td><td>High switching costs keep customers in</td></tr>
+      <tr><td>Net revenue retention</td><td>&gt;100% (great firms 120%+)</td><td>Existing customers spend more each year - land-and-expand</td></tr>
+      <tr><td>LTV / CAC</td><td>Aim for &gt;3x</td><td>Lifetime value should far exceed cost to acquire</td></tr>
+    </tbody>
+  </table>
+  <h3>The engine: land-and-expand</h3>
+  <p><strong>Land</strong> a small deal (one team, a few seats), prove value, then <strong>expand</strong> - more seats as the customer grows, more products cross-sold, higher tiers. Because acquiring the account was the expensive part, every expansion is high-margin. When net revenue retention exceeds 100%, the customer base grows revenue <em>even with zero new customers</em>.</p>
+  <div class="box good"><span class="lbl">The AI copilot upsell</span><p>AI is the newest expansion lever. Microsoft 365 Copilot (~USD 30/user/month) and GitHub Copilot (~USD 10-39/user/month) layer a large new charge onto an already-acquired, already-locked-in base. The acquisition cost was paid years ago, so the incremental Copilot revenue is extraordinarily profitable - a textbook expand.</p></div>
+
+  <h2 id="playing"><span class="n">7</span>How it is playing out</h2>
+  <ul>
+    <li><strong>AI embedded everywhere:</strong> the race is to put a copilot in every surface - the document, the inbox, the IDE, the CRM. The company that owns the workflow (Microsoft, Salesforce) has the advantage: it can drop AI right where the work already happens.</li>
+    <li><strong>Bundling vs best-of-breed:</strong> the eternal tension. Bundles (Microsoft 365) win on price and convenience and can crush point tools (see Teams vs Slack/Zoom). Best-of-breed tools (Figma, Notion) win when they are dramatically better at one thing. AI raises the stakes on both sides.</li>
+    <li><strong>Tools-that-help vs agents-that-do:</strong> the deepest shift. A tool assists a human who does the work; an agent does the work and reports back. This changes who the customer is (a manager buying output, not a worker buying assistance) and what is being sold.</li>
+    <li><strong>Seat-based pricing under pressure:</strong> if one AI agent replaces the output of five seats, charging per seat undercounts the value delivered and shrinks the seat count. Vendors are experimenting with usage-based and outcome-based pricing to capture value that no longer maps to headcount.</li>
+  </ul>
+  <div class="box trap"><span class="lbl">The risk for incumbents</span><p>The seat model that made SaaS rich could be the thing AI erodes. If software stops being priced per human, a decade of SaaS financial logic - net revenue retention driven by headcount growth - has to be rebuilt. Incumbents with workflow lock-in are best placed to survive it, but the model itself is in play.</p></div>
+
+  <h2 id="pattern"><span class="n">8</span>The pattern it exemplifies</h2>
+  <p>Productivity is the purest example of a repeatable business pattern that shows up across the board:</p>
+  <ul>
+    <li><strong>Workflow lock-in + switching costs + recurring revenue.</strong> Own the way work is done, make leaving expensive, and bill for it every month. This trio is the strongest position in software.</li>
+    <li><strong>The bundle vs point-tool tension.</strong> Scale players bundle to commoditize point tools; point tools survive only by being much better at one job. Watch which way any category is tipping.</li>
+    <li><strong>System of record beats system of engagement.</strong> Owning the authoritative data (Salesforce CRM, ServiceNow) is a deeper moat than owning the interface, because everything reads from the record.</li>
+    <li><strong>AI eating the seat model.</strong> The newest twist: the amplifier is becoming the worker. That both extends the axiom (more output per human) and threatens the pricing built on counting humans.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The one-line takeaway</span><p>The productivity need is served by whoever owns the workflow and can bill for it recurringly. Today that is Microsoft's bundled stack, with Google and Salesforce holding different flanks. The next chapter belongs to whoever prices the work AI does - not the seats humans fill.</p></div>
+
+  <h2 id="glossary"><span class="n">9</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SaaS</strong></td><td>Software as a Service - software delivered over the internet on a subscription, not sold as a one-time license.</td></tr>
+      <tr><td><strong>Seat-based pricing</strong></td><td>Billing per user (per seat) per month. Revenue grows as the customer adds headcount.</td></tr>
+      <tr><td><strong>Switching costs</strong></td><td>The time, money, and risk of moving off a tool - retraining, data migration, integration rewrites. High switching costs keep customers in.</td></tr>
+      <tr><td><strong>System of record</strong></td><td>The authoritative database for a type of data (e.g. Salesforce for customers). The deepest lock-in, because everything else reads from it.</td></tr>
+      <tr><td><strong>Land-and-expand</strong></td><td>Win a small initial deal, prove value, then grow the account via more seats, products, and tiers.</td></tr>
+      <tr><td><strong>ARR</strong></td><td>Annual Recurring Revenue - the annualized value of subscription contracts. The core SaaS growth metric.</td></tr>
+      <tr><td><strong>Churn</strong></td><td>The rate at which customers (or revenue) leave. Low churn is essential to the recurring-revenue model.</td></tr>
+      <tr><td><strong>Net revenue retention</strong></td><td>Revenue from existing customers this year vs last year. Above 100% means the base grows even with no new customers.</td></tr>
+      <tr><td><strong>CAC / LTV</strong></td><td>Customer Acquisition Cost vs Lifetime Value. A healthy SaaS aims for LTV at least ~3x CAC.</td></tr>
+      <tr><td><strong>Vertical SaaS</strong></td><td>Software built for one specific industry (restaurants, pharma, construction) - deeper fit, stickier, often bundling payments.</td></tr>
+      <tr><td><strong>Copilot</strong></td><td>An AI assistant embedded in a tool to draft, summarize, generate, or automate work - the current AI upsell layer.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Need #11: Productivity / Work / Growth &middot; #1 Microsoft, #2 Google Workspace / Salesforce &middot; <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

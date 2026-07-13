@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Technological Revolutions & S-Curves - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-3" style="color:#0053e2;text-decoration:none">Dynamics &amp; forces</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Technological Revolutions &amp; S-Curves</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Tech Revolutions & S-Curves</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#scurve"><span class="num">1</span>The S-curve</a>
+  <a href="#diffusion"><span class="num">2</span>Diffusion &amp; the chasm</a>
+  <a href="#perez"><span class="num">3</span>Perez: technological revolutions</a>
+  <a href="#hype"><span class="num">4</span>The hype cycle</a>
+  <a href="#lag"><span class="num">5</span>The productivity lag</a>
+  <a href="#path"><span class="num">6</span>Path dependence &amp; lock-in</a>
+  <a href="#stacked"><span class="num">7</span>Stacked S-curves</a>
+  <a href="#edge"><span class="num">8</span>Edge &amp; breaking cases</a>
+  <a href="#use"><span class="num">9</span>How to use it</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="../index.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Technological Revolutions &amp; S-Curves</h1>
+  <p class="lede">The missing TIME axis of the whole collection: technology does not arrive all at once - it unfolds over decades in recognizable shapes. Learn the shapes and you can read where you are, and what comes next.</p>
+  <p class="meta">Topic folder: first-principles-tutor/dynamics &middot; Captured 2026-07-12 &middot; Adds the time dimension to ../how-tech-changes-the-world/ and ../future-of-work/</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>Everything grows on an S-curve:</strong> slow start -&gt; explosive middle -&gt; saturation plateau. Feedback drives the boom; limits impose the ceiling.</li>
+    <li><strong>"Gradually, then suddenly":</strong> exponential growth in the early phase looks flat, so the takeoff feels like it came from nowhere. It didn't - it was compounding the whole time.</li>
+    <li><strong>Adoption spreads in groups</strong> (Rogers: innovators -&gt; early adopters -&gt; majority -&gt; laggards), with a <strong>chasm</strong> (Moore) between the visionaries and the pragmatic mainstream where most products die.</li>
+    <li><strong>Perez's big idea:</strong> each great revolution runs INSTALLATION (frenzy + bubble + financial capital) -&gt; a CRASH -&gt; DEPLOYMENT (golden age + production capital). The bubble is <em>how societies fund infrastructure</em>; the crash is normal; the tech still deploys afterward.</li>
+    <li><strong>The hype cycle</strong> (peak -&gt; trough -&gt; plateau) is the emotional soundtrack to the early S-curve, not a separate law.</li>
+    <li><strong>Progress = stacked S-curves:</strong> one curve saturates and hands off to the next. Disruption happens at the handoff. This is the meta-principle of the entire collection.</li>
+  </ul>
+
+  <h2 id="scurve"><span class="n">1</span>The S-curve: the master shape</h2>
+  <p>Almost every adoption, growth, or performance process traces the same sigmoid: a slow beginning, a steep explosive middle, and a flattening plateau. Plot cumulative adoption (or capability) against time and you get an S.</p>
+  <pre>adoption
+ 100% |               _______------  &lt;- SATURATION (limits bite)
+      |            _-'
+      |          _'
+      |        _'          &lt;- EXPLOSIVE MIDDLE (feedback dominates)
+      |      _'
+      |    _'
+      |  _-'
+   0% |-'________________________ &lt;- SLOW START (looks flat, is compounding)
+      +----------------------------&gt; time</pre>
+  <div class="box key"><span class="lbl">Why the S happens - two forces</span><p><strong>The boom is feedback.</strong> Early on, each adopter makes the next adoption more likely - word of mouth, network effects, falling cost from scale, better complements. That is compounding, so growth accelerates. <strong>The plateau is limits.</strong> Eventually you run out of non-adopters, or hit a physical/market/thermodynamic ceiling. Growth that was proportional to the remaining runway slows as the runway shrinks. Boom then brake = the S.</p></div>
+  <h3>Why it feels sudden</h3>
+  <p>The early part of an S-curve is indistinguishable from a flat line to the naked eye - 1% to 2% to 4% barely registers. Then 4 -&gt; 8 -&gt; 16 -&gt; 32 and it seems to explode overnight. Nothing changed about the growth <em>rate</em>; you just crossed the region where a constant doubling becomes visible. This is Hemingway's "gradually, then suddenly," and it is why incumbents are repeatedly blindsided: the threat was compounding quietly for years below the notice threshold.</p>
+  <div class="box"><span class="lbl">A subtlety</span><p>An S-curve is a logistic (bounded), not a pure exponential (unbounded). In the messy middle they look identical - which is exactly why people over-extrapolate. Bulls draw the exponential to the moon; the ceiling is already bending it into an S. Knowing <em>which</em> curve you are on is the whole game (see section 8).</p></div>
+
+  <h2 id="diffusion"><span class="n">2</span>Diffusion of innovations &amp; the chasm</h2>
+  <p>Everett Rogers (1962) noticed that the S-curve of adoption is actually made of distinct <strong>groups adopting in sequence</strong>, each with a different psychology. The bell curve of <em>new</em> adopters per period is the derivative of the cumulative S.</p>
+  <table>
+    <thead><tr><th>Group</th><th>~Share</th><th>Motive</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Innovators</strong></td><td>~2.5%</td><td>Tech for its own sake; tolerate breakage; chase novelty.</td></tr>
+      <tr><td><strong>Early adopters</strong></td><td>~13.5%</td><td>Visionaries; want a competitive edge; buy the promise.</td></tr>
+      <tr><td><strong>Early majority</strong></td><td>~34%</td><td>Pragmatists; want proven value + references; buy the productivity.</td></tr>
+      <tr><td><strong>Late majority</strong></td><td>~34%</td><td>Conservatives; adopt only when it is the safe default / standard.</td></tr>
+      <tr><td><strong>Laggards</strong></td><td>~16%</td><td>Skeptics; adopt only when the alternative disappears.</td></tr>
+    </tbody>
+  </table>
+  <div class="box trap"><span class="lbl">The chasm (Geoffrey Moore)</span><p>The dangerous gap is between <strong>early adopters and the early majority</strong>. Visionaries buy a vision and forgive rough edges; pragmatists buy a <em>complete, de-risked solution</em> with references from people like them. The two want opposite things, so a product that thrilled the early adopters often stalls and dies before the mainstream - the <strong>chasm</strong>. Crossing it usually means narrowing to one beachhead segment, delivering a "whole product," and manufacturing social proof. Most technologies that "should have won" simply never crossed.</p></div>
+  <div class="box"><span class="lbl">Link to the S-curve</span><p>The chasm sits in the flat pre-takeoff part of the S. Crossing it <em>is</em> entering the explosive middle. Diffusion groups explain <em>who</em> drives each region of the curve; the chasm explains why so many curves never leave the launchpad.</p></div>
+
+  <h2 id="perez"><span class="n">3</span>Carlota Perez: technological revolutions</h2>
+  <p>Perez zooms out from a single product to whole <strong>techno-economic surges</strong> that reshape society over ~50 years. Her central claim: each great revolution runs through the same two-act structure, split by a financial crash.</p>
+  <pre>  INSTALLATION (financial capital)          DEPLOYMENT (production capital)
+  |----------------------|                  |------------------------------|
+  irruption -&gt; FRENZY -&gt; [ BUBBLE ]          [ GOLDEN AGE ] ------&gt; maturity
+                              |                    ^
+                              v                    |
+                         *** CRASH / turning point ***</pre>
+  <h3>The two capitals</h3>
+  <ul>
+    <li><strong>Financial capital</strong> drives the <em>installation</em> phase: speculative money races to build out the new infrastructure (canals, rail track, fiber, datacenters). It is impatient, exuberant, and creates a bubble - overbuilding far past current demand.</li>
+    <li><strong>Production capital</strong> drives the <em>deployment</em> phase: after the crash clears the froth, patient money puts the now-cheap, overbuilt infrastructure to productive work across the whole economy. This is the golden age - the broad prosperity.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The payoff idea (do not skip this)</span><p>The bubble is not a bug - it is <strong>how a society funds its infrastructure buildout</strong>. Mania mobilizes capital to lay far more track / fiber / compute than any rational near-term plan would justify. The crash wipes out the speculators - but the <em>rails remain</em>. Deployment then runs on that cheap, overbuilt substrate. Railways and the dotcom fiber glut are the classic cases: the investors lost their shirts; the infrastructure powered decades of growth. <strong>The crash is normal, and the technology still deploys after it.</strong></p></div>
+  <h3>The five (going on six) surges</h3>
+  <table>
+    <thead><tr><th>#</th><th>Surge</th><th>~Start</th><th>Installation frenzy / bubble</th><th>The crash</th><th>Deployment / golden age</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Industrial Revolution (machines, canals)</td><td>1771</td><td>Canal mania; early factories</td><td>1797 panic</td><td>Mechanized Britain</td></tr>
+      <tr><td>2</td><td>Steam &amp; Railways</td><td>1829</td><td>Railway mania (1840s)</td><td>1847 rail crash</td><td>Victorian boom; national rail</td></tr>
+      <tr><td>3</td><td>Steel &amp; Heavy Engineering</td><td>1875</td><td>Global infrastructure / London &amp; Argentine booms</td><td>1890s panics</td><td>Belle Epoque; steel cities</td></tr>
+      <tr><td>4</td><td>Oil, Autos &amp; Mass Production</td><td>1908</td><td>Roaring Twenties boom</td><td>1929 Crash</td><td>Post-war golden age; suburbia</td></tr>
+      <tr><td>5</td><td>ICT / Internet</td><td>1971</td><td>Dotcom / telecom bubble (late 1990s)</td><td>2000-01 dotcom bust</td><td>Web 2.0, mobile, cloud, platforms</td></tr>
+      <tr><td>6?</td><td><strong>AI</strong> (candidate: new surge or late-5 deepening)</td><td>~2020s</td><td><strong>AI / datacenter capex frenzy (now)</strong></td><td><strong>not yet - expect one</strong></td><td><strong>deployment across every sector (ahead)</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="box"><span class="lbl">Where AI sits</span><p>On Perez's map, AI looks like an <strong>installation frenzy</strong>: enormous financial capital racing to build compute infrastructure, valuations detached from current revenue, "this changes everything" energy. Whether it is a genuine sixth surge or the deepening/late phase of the ICT surge is debated (recall from <a href="../how-tech-changes-the-world/cost_collapse_and_friction.html">Cost Collapse</a> that AI is a child of the compute/storage/bandwidth trinity). Either way the framework's prediction is uncomfortable but clarifying: <strong>expect a shakeout</strong>, and expect the biggest real value to arrive in the <em>deployment</em> phase that follows it - not in the frenzy.</p></div>
+
+  <h2 id="hype"><span class="n">4</span>The hype cycle (Gartner)</h2>
+  <p>The hype cycle tracks <em>expectations</em> (not adoption) over time and has a distinctive double shape:</p>
+  <pre>expectations
+      |        /\  &lt;- PEAK of inflated expectations
+      |       /  \
+      |      /    \
+      |     /      \___                 ____----  &lt;- PLATEAU of productivity
+      |    /           \___        ____/
+      |   / (trigger)       \____--/
+      |  /              TROUGH of disillusionment
+      +----------------------------------------&gt; time</pre>
+  <ul>
+    <li><strong>Innovation trigger</strong> - a breakthrough gets attention.</li>
+    <li><strong>Peak of inflated expectations</strong> - press, promises, and speculation overshoot reality.</li>
+    <li><strong>Trough of disillusionment</strong> - it fails to instantly deliver; the crowd declares it dead.</li>
+    <li><strong>Slope of enlightenment</strong> - quietly, real use cases mature.</li>
+    <li><strong>Plateau of productivity</strong> - it becomes boringly, genuinely useful.</li>
+  </ul>
+  <div class="box key"><span class="lbl">How it relates to the S-curve</span><p>The hype cycle is the <strong>emotional/expectations overlay</strong> on the early part of the S-curve. Expectations spike and crash <em>before</em> real adoption takes off - people overestimate the technology in the short run (the peak) and underestimate it in the long run (they quit during the trough, just before the actual S-curve takeoff). Note the family resemblance to Perez: the hype peak is the frenzy, the trough is the crash, the plateau is deployment - the same rhythm at different scales. It is a useful pattern, not a measured law; treat the shape as a caution against both mania and premature funerals.</p></div>
+
+  <h2 id="lag"><span class="n">5</span>The productivity lag revisited</h2>
+  <p>Why does the payoff trail the invention by years or decades? Because a general technology's value is unlocked not by <em>having</em> it but by <strong>redesigning the workflow around it</strong> - and that redesign is slow, social, and expensive.</p>
+  <div class="box trap"><span class="lbl">The electricity lesson (again)</span><p>Electric motors existed in the 1880s; the factory productivity boom waited until the 1920s. Firms first bolted electric motors onto steam-era layouts (one central motor, overhead shafts). The gain only came when they <strong>reorganized the whole factory</strong> around distributed unit motors - enabling the assembly line. Paul David called this out ("The Dynamo and the Computer"); Solow quipped computers were "everywhere except in the productivity statistics." See <a href="../how-tech-changes-the-world/cost_collapse_and_friction.html">Cost Collapse &amp; Friction</a> for the full treatment.</p></div>
+  <p>This is exactly why Perez's deployment phase lags installation, and why the hype-cycle trough exists: the capability arrives first, the reorganization arrives later. We are currently in the "bolt a chatbot onto the old workflow" phase of AI. The real productivity explosion comes when work is redesigned around agents - which is the thesis of <a href="../future-of-work/future_of_work_from_first_principles.html">Future of Work</a>. Expect a frustrating gap between demonstrated capability and measured output; that gap <em>is</em> the deployment phase warming up.</p>
+
+  <h2 id="path"><span class="n">6</span>Path dependence &amp; lock-in</h2>
+  <p>S-curves and surges are not blank slates - history constrains them. <strong>Path dependence</strong> means small, sometimes accidental early choices get locked in and shape everything downstream, so the outcome depends on the <em>path taken</em>, not just on which option was best.</p>
+  <ul>
+    <li><strong>QWERTY</strong> - a layout designed for 1870s mechanical typewriters (partly to avoid jamming) outlived its constraint by 150 years. Retraining costs and universal familiarity lock it in even though alternatives (e.g. Dvorak) may be marginally faster. The keyboard you use was decided by a jam problem that no longer exists.</li>
+    <li><strong>Standards wars</strong> - VHS vs Betamax, and countless others: the winner is often decided by ecosystem, timing, and momentum, not by technical superiority.</li>
+    <li><strong>Increasing returns</strong> (Brian Arthur) - unlike the classic economics of diminishing returns, information-age goods get <em>more</em> valuable as more people adopt them (network effects, learning effects, complementary ecosystems). The lead compounds - "them that has, gets."</li>
+  </ul>
+  <div class="box key"><span class="lbl">Why the best tech does not always win</span><p>Increasing returns means the market can lock in around whichever option got an early lead - even a slightly inferior one - because switching costs and network value keep rising. So adoption is <strong>history-dependent</strong>: rerun the tape and you might get a different winner. This is the antidote to naive "the market always picks the best technology" thinking, and it explains why timing, standards, and momentum can matter more than raw quality.</p></div>
+
+  <h2 id="stacked"><span class="n">7</span>Stacked S-curves (the meta-principle)</h2>
+  <p>No single S-curve is the story. Progress is a <strong>staircase of S-curves</strong>: each technology matures and plateaus, and just as it saturates, a new curve takes off and carries progress higher.</p>
+  <pre>capability
+      |                         _____---  curve C
+      |                    ___-/
+      |            _____---   &lt;- HANDOFF (disruption happens here)
+      |       __--/  curve B
+      |   ___/  _____---
+      |  /_____/  &lt;- HANDOFF
+      | / curve A
+      |/________________________________&gt; time</pre>
+  <div class="box key"><span class="lbl">The meta-principle of the whole collection</span><p>This is the same shape as the GPT lineage in <a href="../how-tech-changes-the-world/cost_collapse_and_friction.html">Cost Collapse</a>: steam -&gt; electricity -&gt; computing -&gt; internet -&gt; AI. Each surge's mechanism becomes the next surge's assumed substrate ("last era's mechanism becomes this era's axiom"). Perez's surges are macro S-curves stacked end to end; the diffusion S is the micro version. <strong>Progress = one S-curve handing off to the next.</strong></p></div>
+  <div class="box good"><span class="lbl">Disruption lives at the handoff</span><p>Incumbents optimize the top of the current S (their curve is flattening but still profitable). The next curve starts <em>below</em> them - worse at first, aimed at a niche - so it is easy to dismiss (this is Christensen's disruption, mechanized). By the time the new curve crosses the old one, the incumbent is committed to the wrong staircase. The dangerous moment is not the peak of your curve; it is the quiet start of the next one.</p></div>
+
+  <h2 id="edge"><span class="n">8</span>Edge &amp; breaking cases</h2>
+  <ul>
+    <li><strong>Predicting the ceiling is hard.</strong> The plateau height (the market size, the physical limit) is usually invisible from inside the boom. Extrapolating the steep middle straight up is the classic error - and so is calling the ceiling too early.</li>
+    <li><strong>Not everything is an S-curve.</strong> Some things fad-and-fade (rise then <em>fall</em>, not plateau). Some grow linearly, or in fits and starts, or oscillate. Fashions, fads, and speculative assets can spike and collapse. Do not force an S onto a shape that is not one.</li>
+    <li><strong>Timing is brutal.</strong> Knowing a chasm or a crash is coming does not tell you <em>when</em>. Markets can stay irrational, and takeoffs can lag years past the "obvious" trigger. Being early is indistinguishable from being wrong - until it isn't.</li>
+    <li><strong>"This time is different"</strong> - the four most expensive words. Usually it is <em>not</em> different: the bubble still bursts, the hype still troughs, the deployment still lags. But occasionally a structural change really does bend the pattern, and the framework cannot tell you which is which in advance. Use the patterns as priors, not prophecies.</li>
+    <li><strong>Curves are described, not guaranteed.</strong> S-curves, hype cycles, and surges are empirical regularities and useful lenses - not physical laws. Fit them loosely; hold them humbly.</li>
+  </ul>
+
+  <h2 id="use"><span class="n">9</span>How to use it</h2>
+  <div class="box good"><span class="lbl">The practical drill</span>
+    <p><strong>1. Locate the technology on its S-curve.</strong> Slow start (pre-chasm), explosive middle (crossing/crossed), or plateau (saturating)? That tells you whether the story is "will it take off," "how big does it get," or "what replaces it."</p>
+    <p><strong>2. Locate it in Perez's phases.</strong> Installation frenzy (bubble, financial capital, valuations detached from revenue) or deployment (production capital, broad boring usefulness)? AI today reads as installation.</p>
+    <p><strong>3. Expect the crash.</strong> If you are in a frenzy, a shakeout is the base case, not a surprise. Plan for it; do not bet the house on the peak.</p>
+    <p><strong>4. Follow the deployment money.</strong> The durable value is usually in <em>deployment</em>, not installation. The people who got rich off railways and the internet were mostly those who used the cheap, overbuilt infrastructure <em>after</em> the crash - not the ones who financed the mania.</p>
+    <p><strong>5. Watch the handoff.</strong> When a curve plateaus, hunt for the next curve starting quietly beneath it. That is where disruption - and the next fortune - is forming.</p>
+  </div>
+  <div class="box"><span class="lbl">Cross-references</span><p>This note is the TIME axis. Pair it with <a href="../how-tech-changes-the-world/cost_collapse_and_friction.html">Cost Collapse &amp; the Death of Friction</a> (the engine of each surge) and <a href="../future-of-work/future_of_work_from_first_principles.html">Future of Work</a> (what deployment does to labor). Cost collapse says <em>why</em> it explodes; S-curves and surges say <em>when</em> and <em>in what order</em>.</p></div>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S-curve (logistic)</strong></td><td>The master growth shape: slow start -&gt; explosive middle -&gt; saturation plateau. Feedback drives the boom, limits impose the ceiling.</td></tr>
+      <tr><td><strong>Diffusion of innovations</strong></td><td>Rogers' model of adoption spreading through groups: innovators -&gt; early adopters -&gt; early majority -&gt; late majority -&gt; laggards.</td></tr>
+      <tr><td><strong>The chasm</strong></td><td>Moore's gap between early adopters (buy a vision) and the early majority (buy a proven solution); where most products stall and die.</td></tr>
+      <tr><td><strong>Perez surge</strong></td><td>A ~50-year techno-economic revolution running installation -&gt; crash -&gt; deployment -&gt; maturity.</td></tr>
+      <tr><td><strong>Installation / deployment</strong></td><td>The two acts of a surge: buildout of new infrastructure (frenzy) vs. broad productive use of it (golden age), split by a crash.</td></tr>
+      <tr><td><strong>Financial vs production capital</strong></td><td>Impatient speculative money that funds/overbuilds the infrastructure (installation) vs. patient money that puts it to work (deployment).</td></tr>
+      <tr><td><strong>Hype cycle</strong></td><td>Gartner's expectations curve: trigger -&gt; peak of inflated expectations -&gt; trough of disillusionment -&gt; slope of enlightenment -&gt; plateau of productivity.</td></tr>
+      <tr><td><strong>Productivity lag</strong></td><td>The gap between an invention and its measurable payoff, caused by the need to redesign workflows around it (electricity: ~40 years).</td></tr>
+      <tr><td><strong>Path dependence</strong></td><td>Early, sometimes accidental choices getting locked in, so outcomes depend on the path taken, not just on what was best.</td></tr>
+      <tr><td><strong>Lock-in</strong></td><td>A state where switching costs and network value keep users on an option even if a better one exists (QWERTY, standards wars).</td></tr>
+      <tr><td><strong>Increasing returns</strong></td><td>Goods that get more valuable the more they are adopted (network/learning effects); the lead compounds instead of diminishing.</td></tr>
+      <tr><td><strong>Stacked S-curves</strong></td><td>Progress as a staircase of overlapping S-curves; each saturates and hands off to the next. Disruption happens at the handoff.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Technological Revolutions &amp; S-Curves &middot; captured 2026-07-12. The TIME axis: how technology unfolds over decades in recognizable shapes. &middot; <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

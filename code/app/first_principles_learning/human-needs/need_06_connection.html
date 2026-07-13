@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Need: Connection - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="human_needs_from_first_principles.html" style="color:#0053e2;text-decoration:none">Human Needs</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Need: Connection / Belonging</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Need: Connection</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>The need as an axiom</a>
+  <a href="#flow"><span class="num">2</span>The demand flow</a>
+  <a href="#meta"><span class="num">3</span>#1 Meta - how it wins</a>
+  <a href="#challengers"><span class="num">4</span>#2 TikTok + LinkedIn</a>
+  <a href="#others"><span class="num">5</span>Other players / evolution</a>
+  <a href="#economics"><span class="num">6</span>Unit economics</a>
+  <a href="#playing"><span class="num">7</span>How it is playing out</a>
+  <a href="#pattern"><span class="num">8</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">9</span>Glossary</a>
+  <a href="human_needs_from_first_principles.html" style="margin-top:18px;color:var(--blue);font-weight:700">The needs framework</a>
+  <a href="../index.html" style="color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Need: Connection / Belonging</h1>
+  <p class="lede">The deepest social need - to be seen, known, and part of a group - and the machine that turns that need into the most profitable advertising business ever built.</p>
+  <p class="meta">Need note 06 of 13 &middot; Meta vs TikTok / LinkedIn &middot; See the framework: <a href="human_needs_from_first_principles.html">The needs framework</a></p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>Belonging is not a luxury - it is survival wiring.</strong> Humans are obligately social (psychology axiom #4): for a caveman, exile from the tribe meant death, so the brain treats social rejection like physical pain. That ancient circuit is what every social app rents.</li>
+    <li><strong>The product is free; you are the product.</strong> The user pays with attention and data; the advertiser pays the cash. Connection is monetized indirectly - the deepest, most monetizable social need.</li>
+    <li><strong>Meta (#1) won with the social graph</strong> - the mapped web of who-knows-whom. Direct network effects made it near-unassailable; Instagram and WhatsApp closed the loop across photos and private messaging. ~4 billion people use a Meta app monthly.</li>
+    <li><strong>TikTok (#2) attacked from a different axis</strong> - the interest graph. You do not need friends; the algorithm finds content you like. It shifted social from "who you know" to "what you like," and forced everyone to copy the format.</li>
+    <li><strong>LinkedIn owns the professional slice</strong> of connection (owned by Microsoft) - the one place where a real-name, career graph is the point.</li>
+    <li><strong>The economics are brutal-in-your-favor:</strong> near-zero marginal cost per extra user, revenue driven by ARPU x users x ad load. US/Canada ARPU is roughly 10-15x that of poorer regions. Engagement literally manufactures the ad inventory that gets sold.</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>The need as an axiom</h2>
+  <p><strong>Belonging sits on Maslow tier 3</strong> - above food and safety, below esteem. But calling it "tier 3" undersells it. Connection is not a want layered on top of survival; for humans it <em>is</em> survival infrastructure.</p>
+  <div class="box key"><span class="lbl">Ties to psychology axiom #4: humans are obligately social</span>
+    <p>An "obligate" social species cannot survive alone. A lone human on the savanna was a dead human - no group meant no food-sharing, no protection, no mating, no help raising slow-maturing young. Natural selection therefore wired connection as a <strong>primary drive, not a preference</strong>.</p>
+    <p>The evidence: social rejection activates the same brain regions (dorsal anterior cingulate) as physical pain. Loneliness raises mortality risk comparably to smoking. We are, at the hardware level, built to need each other. That is why "connect with people" is one of the very few pitches that reliably captures billions of humans.</p>
+  </div>
+  <p>Because the drive is ancient, involuntary, and universal, it is the <strong>deepest and most monetizable social need</strong>. A person will skip meals to check who liked their post. That is not weakness; it is a survival circuit firing in an environment it was never designed for. Every dominant social company is, in effect, a business built on top of that circuit.</p>
+  <p>Note the split this need contains, which will matter for the whole note: <strong>connection has a private form</strong> (one-to-one and small-group bonds - messaging, family, close friends) <strong>and a broadcast form</strong> (belonging to a wide group, being seen by it). The private form is stickier; the broadcast form is more monetizable. The winners try to own both.</p>
+
+  <h2 id="flow"><span class="n">2</span>The demand flow</h2>
+  <p>Every social product runs the same loop. Follow the money and notice that the person feeling the need is not the one who pays:</p>
+<pre>NEED (belong / be seen)
+   -&gt; OPEN APP (habit trigger: boredom, notification, downtime)
+   -&gt; FEED / DISCOVERY (graph or algorithm serves content)
+   -&gt; ENGAGEMENT (scroll, like, comment, post, DM)
+   -&gt; ATTENTION captured and measured
+   -&gt; ADVERTISER PAYS for that attention (the actual revenue)
+   -&gt; RETENTION via habit loops (variable reward brings the user back)
+   -&gt; back to OPEN APP</pre>
+  <ul>
+    <li><strong>The user pays in attention and data; the advertiser pays in cash.</strong> This is the defining twist of the connection business. "If you are not paying for the product, you are the product." The human need is the bait; the advertiser is the customer.</li>
+    <li><strong>Discovery is the battleground.</strong> Whoever decides <em>what shows up in the feed</em> owns the engagement, and engagement is the raw material that becomes ad inventory. The whole graph-vs-algorithm war (Section 4, 7) is a fight over who controls this one step.</li>
+    <li><strong>Retention is engineered, not accidental.</strong> Variable-ratio rewards (you never know if the next scroll brings something great), streaks, notifications, and unread badges exploit the same dopamine machinery slot machines use. The goal is to convert a need into a <strong>habit</strong>, so the app is opened reflexively.</li>
+    <li><strong>Marginal cost of one more user is ~zero</strong>, but marginal <em>value</em> can be positive (network effects) - a rare combination that lets these businesses scale to billions with fat margins.</li>
+  </ul>
+  <div class="box"><span class="lbl">Why "free" is the strongest possible price</span><p>Charging money would shrink the network, and network size is the product. So the winning move is: give the connection away free, grow to billions, then sell the resulting attention to advertisers. The need for belonging is monetized <em>around</em> the user, never <em>from</em> the user directly.</p></div>
+
+  <h2 id="meta"><span class="n">3</span>#1 Meta - how it wins</h2>
+  <p><strong>Meta (Facebook, Instagram, WhatsApp, Messenger) is the #1 mechanism for connection.</strong> Roughly <strong>3.2 billion people use at least one of its apps every day</strong> and close to 4 billion monthly - about half of everyone alive who has internet access. Revenue was ~$135B+ in 2023 and ~$160B+ in 2024, ~98% of it from advertising.</p>
+  <h3>The social graph moat</h3>
+  <p>Meta's core asset is the <strong>social graph</strong> - the mapped network of who is connected to whom, plus everything those edges reveal about each person. You do not just "use Facebook"; you have deposited your relationships, photos, and history there. To leave, you would have to rebuild your entire social world somewhere else - and convince everyone else to move too.</p>
+  <div class="box key"><span class="lbl">Direct network effects: the deepest moat in tech</span>
+    <p>A social network gets more valuable to each user as more users join, because the value <em>is</em> the other people. This is a <strong>direct</strong> network effect (users attract users), not an indirect one (like buyers and sellers). It creates a winner-take-most dynamic: everyone piles onto the network that already has their friends, and switching requires coordinated mass defection - which almost never happens.</p>
+  </div>
+  <h3>Closing the loop: Instagram + WhatsApp</h3>
+  <p>Facebook's masterstroke was recognizing threats early and <strong>buying them before they matured</strong>:</p>
+  <ul>
+    <li><strong>Instagram (2012, ~$1B)</strong> - captured photo-based, mobile-native connection and the younger cohort Facebook was losing. Now the crown jewel and likely worth well over $500B as a standalone. This is the esteem/status surface too (see need 07), but it is anchored in the connection graph.</li>
+    <li><strong>WhatsApp (2014, ~$19B)</strong> - captured private, one-to-one and small-group messaging (the sticky <em>private</em> form of connection) with ~2 billion+ users, dominant across most of the world outside the US/China.</li>
+  </ul>
+  <p>With this trio, Meta covers the whole span: <strong>Facebook</strong> (broad graph + groups), <strong>Instagram</strong> (broadcast + visual), <strong>WhatsApp/Messenger</strong> (private). It owns both the broadcast and the private forms of the need.</p>
+  <h3>Attention converted to advertising</h3>
+  <p>Meta knows who your friends are, what you like, what you linger on, and (via the graph) what people <em>like you</em> buy. That makes its ad targeting extraordinarily precise. Advertisers pay for that precision. In effect: <strong>capture the connection need for free -&gt; harvest attention and interest data -&gt; sell perfectly targeted ads.</strong> That is the entire machine, and it prints ~$40-50B of operating profit a year.</p>
+
+  <h2 id="challengers"><span class="n">4</span>#2 TikTok (a different angle) + LinkedIn (the pro niche)</h2>
+  <h3>TikTok - the interest graph beats the social graph</h3>
+  <p>TikTok is the most important challenger because it did not attack Meta head-on. It changed the <strong>mechanism</strong> for serving the same need. Meta assumed connection required a <em>social graph</em> - it feeds you content from people you chose to follow. TikTok bet on the <strong>interest graph</strong>: forget who you know; the algorithm watches what you actually watch and serves more of it.</p>
+  <div class="box key"><span class="lbl">Graph -&gt; algorithm: the mechanism shift</span>
+    <p><strong>Old model (Meta):</strong> your feed = content from your network. Quality is capped by how good your friends are at posting. You must build a graph first.</p>
+    <p><strong>New model (TikTok):</strong> your feed = content the algorithm predicts you will like, from anyone on Earth. A brand-new user with zero friends gets a great feed in minutes. The <strong>interest graph</strong> (what you like) replaced the <strong>social graph</strong> (who you know) as the discovery engine.</p>
+  </div>
+  <ul>
+    <li>This lowered the cold-start problem to near zero and unlocked <strong>content from strangers</strong>, which is a far larger and higher-quality supply than "your friends' posts."</li>
+    <li>TikTok reached ~1 billion+ monthly users faster than any prior app and drove watch times of ~60-90 minutes/day - a direct attack on the scarce resource everyone monetizes: time.</li>
+    <li>Crucially, it <strong>reframed the need</strong>: belonging shifted partly from "keep up with my friends" to "belong to a community of interest" (a niche you discover, not a graph you built). The need is constant; the mechanism moved.</li>
+    <li>The whole industry copied the format - Instagram Reels, YouTube Shorts - which is the clearest proof the mechanism shift was real.</li>
+  </ul>
+  <h3>LinkedIn - the professional connection niche (Microsoft)</h3>
+  <p>LinkedIn (bought by <strong>Microsoft in 2016 for ~$26B</strong>, now ~$16B+ annual revenue) owns a specific, defensible slice: <strong>professional connection</strong>. It works because it is the one social network where a <strong>real-name, career-based graph</strong> is the entire point - your resume, colleagues, and industry ties.</p>
+  <ul>
+    <li>Its moat is a different network effect: recruiters need candidates, candidates need to be seen by recruiters - a two-sided professional graph nobody else can replicate at scale.</li>
+    <li>It monetizes in three ways instead of one: <strong>recruiting/hiring tools</strong> (the biggest), <strong>premium subscriptions</strong>, and <strong>advertising</strong>. That mix makes it less ad-dependent than Meta or TikTok.</li>
+    <li>Lesson: connection is not monolithic. Owning a well-defined niche (professional identity) beats fighting Meta for the general graph.</li>
+  </ul>
+
+  <h2 id="others"><span class="n">5</span>Other players / the evolution</h2>
+  <p>The connection market has fragmented as the need splintered into distinct forms:</p>
+  <ul>
+    <li><strong>Snapchat</strong> - pioneered <em>ephemeral</em> messaging (content that disappears), which mapped better onto how casual friendship actually feels than Facebook's permanent record. ~400M+ daily users, strong with teens, but never cracked durable profitability at scale. It invented "Stories," which everyone then copied.</li>
+    <li><strong>Discord</strong> - owns <em>community</em> connection: persistent servers around games, interests, and fandoms. It is the modern group hangout - closer to a clubhouse than a broadcast feed. Monetizes via subscriptions (Nitro), not ads, which keeps it aligned with users.</li>
+    <li><strong>Messaging fragmentation</strong> - private connection is split by geography: <strong>WhatsApp</strong> (most of the world), <strong>iMessage</strong> (US), <strong>WeChat</strong> (China, the super-app model), <strong>Telegram/Signal</strong> (privacy niches). No single winner globally, because messaging locks in by local network.</li>
+    <li><strong>X / Twitter</strong> - the "public conversation" / news-and-status niche. Culturally central, commercially fragile; it owns real-time discourse but has never matched Meta-scale monetization.</li>
+    <li><strong>The arc of discovery mechanisms:</strong>
+      <pre>SOCIAL GRAPH (who you know)       -&gt; Facebook era
+   -&gt; INTEREST GRAPH (what you like) -&gt; TikTok era
+   -&gt; AI-GENERATED FEEDS (what a model makes/picks for you) -&gt; emerging</pre>
+      Each step further loosens the feed from your real relationships - and further tightens it around raw engagement.</li>
+  </ul>
+
+  <h2 id="economics"><span class="n">6</span>Unit economics</h2>
+  <p>The connection business is defined by three multiplied levers: <strong>revenue = users x ARPU x ad load efficiency</strong>, sitting on top of near-zero marginal cost.</p>
+  <table>
+    <thead><tr><th>Lever</th><th>What it is</th><th>Approximate numbers</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ARPU (by geography)</strong></td><td>Average revenue per user per period - wildly uneven by region</td><td>Meta annual ARPU: ~$68 in US/Canada, ~$23 in Europe, ~$5-6 in Asia-Pacific, ~$4 rest-of-world. US users are worth ~12-15x a rest-of-world user.</td></tr>
+      <tr><td><strong>Ad load</strong></td><td>Share of feed content that is ads</td><td>Roughly 1 in 4-6 feed items is an ad (~15-25% ad load). Raising it lifts revenue short-term but risks engagement - a constant balancing act.</td></tr>
+      <tr><td><strong>Marginal cost</strong></td><td>Cost to serve one more user</td><td>Near zero (fractions of a cent in servers/bandwidth). Fixed costs are R&amp;D, data centers, and content moderation.</td></tr>
+      <tr><td><strong>Engagement -&gt; inventory</strong></td><td>Time spent literally creates the ad slots to sell</td><td>More minutes = more feed items = more ad impressions. Meta serves trillions of ad impressions per quarter.</td></tr>
+      <tr><td><strong>Gross margin</strong></td><td>After serving costs</td><td>~80%+ gross margin; ~30-40% operating margin at Meta scale.</td></tr>
+    </tbody>
+  </table>
+  <div class="box"><span class="lbl">The key economic identity</span><p><strong>Engagement is not just a vanity metric - it is the factory.</strong> Every minute of attention is another slot of ad inventory manufactured out of thin air. That is why every design decision optimizes for time-spent: time spent = inventory = revenue. Combine that with near-zero marginal cost and network-effect user growth, and you get one of the highest-return business models ever discovered.</p></div>
+
+  <h2 id="playing"><span class="n">7</span>How it is playing out</h2>
+  <ul>
+    <li><strong>Graph vs algorithm - and the algorithm is winning.</strong> Meta, once a pure social graph, now shows you mostly algorithmically-recommended content from people you do not follow. It literally rebuilt itself around TikTok's mechanism to survive. The interest graph beat the social graph as the discovery engine.</li>
+    <li><strong>Short-form video convergence.</strong> Reels, Shorts, and TikTok are now near-identical formats. The moat is no longer "who has the format" but "who has the best recommendation model and the deepest content supply." Competition collapsed onto algorithm quality.</li>
+    <li><strong>AI-generated content and AI companions.</strong> The next shift: feeds partly filled with AI-made content, and one-to-one connection with AI chatbots (Meta AI, Character.AI). This is a genuine philosophical turn - serving the belonging need with synthetic "others." Cheap, infinite, and ethically fraught.</li>
+    <li><strong>Teen attention migration.</strong> Each generation flees the platform its parents joined. Facebook -&gt; Instagram -&gt; Snapchat -&gt; TikTok. Whoever owns the teens owns the next decade of adults, which is why the fight over young attention is existential (and why acquisitions like Instagram were so shrewd).</li>
+    <li><strong>Regulation and the trust backlash.</strong> Antitrust (the FTC's attempt to unwind Instagram/WhatsApp), teen mental-health scrutiny, privacy law (GDPR), ad-targeting limits (Apple's ATT cost Meta ~$10B/year), and the recurring US TikTok ban/divestiture fight. The mechanism is under pressure even as the underlying need is untouchable.</li>
+  </ul>
+
+  <h2 id="pattern"><span class="n">8</span>The pattern it exemplifies</h2>
+  <p>Connection is the canonical example of <strong>two</strong> deep business patterns operating at once:</p>
+  <div class="box good"><span class="lbl">Pattern A - attention -&gt; advertising, protected by network effects</span>
+    <p>Give the connection away free -&gt; grow to billions via <strong>direct network effects</strong> -&gt; harvest attention and interest data -&gt; sell targeted ads. The network effect builds a near-uncrossable moat; the advertising model monetizes the need without ever charging the user. This is the same shape as need 08 (Knowledge / Google) and need 07 (Esteem / Instagram) - attention businesses all rhyme.</p>
+  </div>
+  <div class="box good"><span class="lbl">Pattern B - the graph-to-algorithm mechanism shift</span>
+    <p>Recall the framework's core claim: <strong>needs are constant; mechanisms churn.</strong> The belonging need never moved, but the <em>mechanism</em> for serving it shifted from the social graph (who you know) to the interest graph (what you like) to AI-generated feeds. TikTok did not out-execute Meta on Meta's terms; it changed the terms. That is the textbook way an incumbent with an unassailable moat still gets attacked: not by a better version of the same mechanism, but by a <strong>different mechanism serving the identical need.</strong></p>
+  </div>
+  <p>Put together: the connection need is so deep and so universal that it produced the most profitable attention-advertising machine in history - and it is still valuable enough that challengers keep inventing entirely new mechanisms to capture it. Hold the need fixed, watch the mechanism move: that is the whole game.</p>
+
+  <h2 id="glossary"><span class="n">9</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Social graph</strong></td><td>The mapped network of who is connected to whom. Meta's core asset; feeds you content from people you chose to follow.</td></tr>
+      <tr><td><strong>Interest graph</strong></td><td>A map of what you like rather than who you know. TikTok's engine; the algorithm serves content by predicted interest, no friends required.</td></tr>
+      <tr><td><strong>Network effect (direct)</strong></td><td>A product gets more valuable to each user as more users join, because the value is the other users. Creates winner-take-most dynamics.</td></tr>
+      <tr><td><strong>ARPU</strong></td><td>Average Revenue Per User over a period. For ad businesses it varies ~10-15x by geography (US users far more valuable than rest-of-world).</td></tr>
+      <tr><td><strong>Ad load</strong></td><td>The fraction of feed content that is advertising (roughly 15-25%). Raising it lifts revenue but risks engagement.</td></tr>
+      <tr><td><strong>Engagement loop</strong></td><td>The self-reinforcing cycle: trigger -&gt; action -&gt; reward -&gt; investment -&gt; back to trigger, designed to build reflexive habit.</td></tr>
+      <tr><td><strong>Variable reward</strong></td><td>Unpredictable payoffs (you never know if the next scroll is great) that trigger dopamine and drive compulsive checking - the slot-machine mechanic.</td></tr>
+      <tr><td><strong>Algorithmic feed</strong></td><td>A feed ordered by a recommendation model predicting what will maximize engagement, rather than chronological posts from your network.</td></tr>
+      <tr><td><strong>"You are the product"</strong></td><td>In a free ad-supported service the user does not pay cash; their attention and data are sold to the real customer, the advertiser.</td></tr>
+      <tr><td><strong>Obligately social</strong></td><td>A species that cannot survive or reproduce alone. Humans are obligately social, which makes belonging a survival-grade drive, not a preference.</td></tr>
+      <tr><td><strong>Ephemeral messaging</strong></td><td>Content designed to disappear after viewing (Snapchat). Maps onto casual, low-stakes connection better than a permanent record.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Need 06: Connection &middot; Meta vs TikTok / LinkedIn. Needs are constant; mechanisms churn. <a href="human_needs_from_first_principles.html">The needs framework</a> &middot; <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

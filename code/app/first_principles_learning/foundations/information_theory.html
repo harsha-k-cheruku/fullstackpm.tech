@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Information Theory from First Principles - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-1" style="color:#0053e2;text-decoration:none">The substrates</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Information Theory from First Principles</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Information Theory</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#problem"><span class="num">1</span>The problem Shannon solved</a>
+  <a href="#bit"><span class="num">2</span>The bit: information as surprise</a>
+  <a href="#entropy"><span class="num">3</span>Entropy: average surprise</a>
+  <a href="#compression"><span class="num">4</span>Compression: the entropy floor</a>
+  <a href="#channel"><span class="num">5</span>Channel capacity + noise</a>
+  <a href="#signalnoise"><span class="num">6</span>Signal vs noise as a lens</a>
+  <a href="#payoff"><span class="num">7</span>The payoff: an LLM is compression</a>
+  <a href="#edges"><span class="num">8</span>Edge + breaking cases</a>
+  <a href="#use"><span class="num">9</span>How to use it</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="../index.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Information Theory from First Principles</h1>
+  <p class="lede">The missing floor under the entire digital and AI story: what information actually IS, why a bit is the irreducible unit, and why prediction and compression turn out to be the same act.</p>
+  <p class="meta">Topic folder: first-principles-tutor/foundations &middot; Captured 2026-07-12 &middot; The substrate beneath ../llms/, ../economics-of-ai/, and ../how-tech-changes-the-world/</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <div class="box key"><span class="lbl">Why this is the floor</span><p>Every note in this collection talks about "information," "bits," "compute," "signal," and "compression" as if they were obvious. They are not. In 1948 one paper (Claude Shannon, <em>A Mathematical Theory of Communication</em>) defined all of them precisely - and that definition is the bedrock the whole digital and AI story is built on. Miss this and you are doing architecture without a foundation.</p></div>
+  <ul>
+    <li><strong>The problem:</strong> how do you send a message reliably over a noisy channel? To answer it, Shannon had to first define information - and he deliberately <em>separated information from meaning</em>.</li>
+    <li><strong>The bit:</strong> the irreducible unit of information is one reduction of uncertainty - one yes/no answer. Information = surprise. Rarer events carry more bits (<code>log2</code> of the possibilities).</li>
+    <li><strong>Entropy:</strong> the average surprise of a source. High entropy = unpredictable = incompressible. Low entropy = predictable = squeezable.</li>
+    <li><strong>Compression:</strong> redundancy is removable; entropy is the hard floor. You cannot losslessly compress below a source's entropy - it is a law, not an engineering limit.</li>
+    <li><strong>Channel capacity:</strong> every channel has a maximum reliable rate (the Shannon limit). Below it, error-correcting codes let you communicate with arbitrarily low error over an <em>unreliable</em> channel. That is a near-miraculous result.</li>
+    <li><strong>The payoff:</strong> to predict the next token well, a model must have captured the regularities of its data - which is exactly what compression is. <strong>An LLM is a lossy compression of the internet.</strong> Prediction and compression are the same thing. Intelligence may <em>be</em> compression.</li>
+  </ul>
+
+  <h2 id="problem"><span class="n">1</span>The core problem Shannon solved</h2>
+  <p>By the 1940s we had telegraphs, telephones, and radio, but no theory of what they were <em>carrying</em>. The engineering question was concrete: given a physical channel that corrupts what you send (static, crosstalk, dropped pulses), how much can you push through it, and how reliably? To even ask that, Shannon needed a unit for the stuff being pushed.</p>
+  <p>His move was radical and is still misunderstood: he <strong>threw meaning away on purpose.</strong> A message that says "the enemy attacks at dawn" and a message of the same length that says "the platypus enjoys jazz" contain the same amount of information from the channel's point of view. Information theory measures how many distinguishable possibilities a message selects among - not what any of them mean.</p>
+  <div class="box key"><span class="lbl">The founding separation</span><p><strong>Information is not meaning.</strong> Shannon quarantined semantics ("what it means to a human") from the engineering problem ("how many bits to transmit it reliably"). This is what made the problem solvable - and, as we will see in section 8, it is also the theory's most profound limitation. Everything downstream inherits both the power and the blind spot of this one decision.</p></div>
+  <p>The whole edifice of digital technology - files, networks, storage, streaming, and eventually machine learning - stands on the answer he gave. Every later note in this collection that says "bits get cheaper" is quietly assuming Shannon's definition of a bit.</p>
+
+  <h2 id="bit"><span class="n">2</span>The bit: information as a reduction of uncertainty</h2>
+  <p>Start from scratch. What is the smallest possible piece of information? It is the answer to a single yes/no question - one collapse of two equally likely possibilities into one. That is <strong>one bit</strong>. Not a thing, but an <em>event</em>: uncertainty going down.</p>
+  <div class="box"><span class="lbl">Information = surprise</span><p>The more surprising an outcome, the more information it carries. Being told "the sun rose today" tells you almost nothing (you knew it) - near-zero bits. Being told "it snowed in the desert today" tells you a lot - many bits. Predictable = low information. Surprising = high information. This is the single most important intuition in the whole subject.</p></div>
+  <p>Formally, if an event has probability <code>p</code>, its information content (the "surprise") is:</p>
+  <pre>information(event) = log2( 1 / p )   bits
+                   = -log2( p )     bits
+
+p = 1/2   -&gt;  -log2(1/2)  = 1 bit   (one coin flip)
+p = 1/8   -&gt;  -log2(1/8)  = 3 bits  (rarer -&gt; more surprising)
+p = 1     -&gt;  -log2(1)    = 0 bits  (certain -&gt; no information)</pre>
+  <p>Why <code>log2</code>? Because each independent yes/no question doubles the number of possibilities you can distinguish. 1 question tells apart 2 things, 2 questions tell apart 4, 3 questions tell apart 8. To identify one item out of N equally likely items takes <code>log2(N)</code> questions. Picking 1 of 8 = 3 bits. That "how many yes/no questions to pin it down" is the physical meaning of a bit.</p>
+  <div class="box good"><span class="lbl">Why base 2</span><p>The unit is arbitrary - you can measure in base-e (nats) or base-10 (dits). We use base 2 because the most convenient physical carrier is a two-state device: on/off, high/low, charged/uncharged. The bit and the transistor are made for each other, which is why "digital" and "binary" became synonymous.</p></div>
+
+  <h2 id="entropy"><span class="n">3</span>Entropy: the average surprise of a source</h2>
+  <p>A single event has a surprise value. But usually we care about a <em>source</em> that keeps emitting symbols (a language, a sensor, a coin). The right question is: on average, how many bits does each symbol from this source carry? That average surprise is <strong>entropy</strong>, written <code>H</code>.</p>
+  <pre>H = sum over all outcomes of  p(x) * log2( 1 / p(x) )   bits per symbol</pre>
+  <p>It is just the surprise of each outcome, weighted by how often that outcome happens. Worked examples make it concrete:</p>
+  <table>
+    <thead><tr><th>Source</th><th>Distribution</th><th>Entropy H</th><th>Reading</th></tr></thead>
+    <tbody>
+      <tr><td>Fair coin</td><td>H 1/2, T 1/2</td><td><strong>1.00 bit</strong></td><td>Maximum uncertainty for 2 outcomes.</td></tr>
+      <tr><td>Biased coin</td><td>H 0.9, T 0.1</td><td><strong>0.47 bits</strong></td><td>More predictable -&gt; less info per flip.</td></tr>
+      <tr><td>Two-headed coin</td><td>H 1.0, T 0.0</td><td><strong>0.00 bits</strong></td><td>No uncertainty, no information.</td></tr>
+      <tr><td>Fair die</td><td>each face 1/6</td><td><strong>2.58 bits</strong></td><td>log2(6); one roll = 2.58 bits.</td></tr>
+      <tr><td>English letter</td><td>skewed (e common, z rare)</td><td><strong>~1.0-1.5 bits</strong></td><td>Far below log2(27)=4.75; language is highly redundant.</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The one sentence to keep</span><p><strong>High entropy = unpredictable = incompressible. Low entropy = predictable = compressible.</strong> Entropy is simultaneously a measure of uncertainty, of information content, and of the ultimate compressed size. Those are three names for the same number - which is the hinge the entire subject turns on.</p></div>
+  <p>Note the fair coin maxes out at 1 bit and the biased coin drops below it. Uncertainty is highest when outcomes are equally likely; any skew (any predictability) lowers the entropy. This is the mathematical reason a lopsided source is easier to guess - and, next section, easier to compress.</p>
+
+  <h2 id="compression"><span class="n">4</span>Compression: redundancy out, entropy is the floor</h2>
+  <p>If English letters carried the full <code>log2(27) = 4.75</code> bits each, text would be incompressible. They do not - real English runs around 1 to 1.5 bits per letter. The gap between the naive size and the true entropy is <strong>redundancy</strong>, and redundancy is exactly what compression removes.</p>
+  <p>The trick of all lossless compression is the same: <strong>spend short codes on frequent things and long codes on rare things.</strong> Morse code already did this by hand (E = one dot, Q = dash-dash-dot-dash). Give "e" a 2-bit code and "z" a 12-bit code and the average message shrinks, because you pay the short price far more often.</p>
+  <pre>Naive fixed code:   every letter = 5 bits   (wasteful)
+Entropy code:       e = short, z = long     (matched to p)
+                    average bits/letter  -&gt;  approaches H
+
+Shannon source coding theorem:
+    you CANNOT losslessly compress below H bits/symbol.
+    You can get arbitrarily CLOSE to H, never under it.</pre>
+  <div class="box key"><span class="lbl">Entropy is a hard floor, not an engineering limit</span><p>This is a law of nature, like the speed of light - not a "we haven't figured it out yet." A file's entropy is the true amount of information in it; you can strip every bit of redundancy but the irreducible core remains. This is why you cannot zip a zip file and keep shrinking it forever, and why truly random data will not compress at all (random = maximum entropy = no redundancy to remove).</p></div>
+  <h3>Lossless vs lossy</h3>
+  <table>
+    <thead><tr><th></th><th>Lossless</th><th>Lossy</th></tr></thead>
+    <tbody>
+      <tr><td>Rule</td><td>Reconstruct the original exactly</td><td>Throw away information you will not miss</td></tr>
+      <tr><td>Floor</td><td>The entropy H (cannot go below)</td><td>No floor - quality degrades smoothly</td></tr>
+      <tr><td>Examples</td><td>ZIP, PNG, FLAC, text</td><td>JPEG, MP3, MP4, most streaming</td></tr>
+      <tr><td>Bet</td><td>Every bit matters</td><td>Human senses will not notice the loss</td></tr>
+    </tbody>
+  </table>
+  <p>Lossy compression is a judgment about <em>meaning</em> smuggled back in: JPEG discards color detail your eye is bad at, MP3 discards sounds your ear masks. It escapes the entropy floor only by changing the target from "the exact file" to "close enough for a human." Hold onto that - section 7 is going to say an LLM is doing lossy compression of the whole internet.</p>
+
+  <h2 id="channel"><span class="n">5</span>Channel capacity and noise: reliability from unreliability</h2>
+  <p>Now the original problem. A real channel adds <strong>noise</strong> - it randomly corrupts what you send. Naively you would think noise forces a tradeoff: to be more reliable you must slow down, and perfect reliability requires infinite slowness. Shannon proved something far stranger and better.</p>
+  <div class="box key"><span class="lbl">The channel capacity theorem (the Shannon limit)</span><p>Every channel has a maximum rate <strong>C</strong> (its capacity, in bits per second) set by its bandwidth and its signal-to-noise ratio. As long as you transmit <em>below</em> C, you can achieve <strong>arbitrarily low error</strong> - as close to zero as you want - using clever coding. Above C, reliable communication is impossible. There is a hard cliff, and a paradise right below it.</p></div>
+  <p>The mechanism is <strong>error-correcting codes</strong>: you add carefully structured redundancy so the receiver can detect and repair corruption. A trivial version - send every bit three times, take the majority - already fixes any single flip. Real codes (Hamming, Reed-Solomon, LDPC, turbo codes) do this with astonishing efficiency, adding only a little redundancy to survive a lot of noise.</p>
+  <pre>Send:     1                     (1 bit, no protection)
+Noise:    1 -&gt; 0                 (corrupted, undetectable)
+
+Send:     1 1 1                 (3x redundancy)
+Noise:    1 0 1                 (one flip)
+Decode:   majority = 1          (repaired!)</pre>
+  <div class="box good"><span class="lbl">Why this quietly runs your whole life</span><p>This is the reason a scratched CD still plays, a Wi-Fi packet arrives intact through interference, a photo from a spacecraft billions of miles away is pixel-perfect, and a QR code scans with a chunk missing. You experience digital systems as <em>flawless</em> even though the underlying physics is noisy and error-prone. That reliability is not a hardware miracle - it is Shannon's theorem cashed out in code. Reliable communication over an unreliable channel is the invention that made "digital" trustworthy.</p></div>
+
+  <h2 id="signalnoise"><span class="n">6</span>Signal vs noise as a first-principles lens</h2>
+  <p>Shannon gave us <strong>signal</strong> (the information you want) and <strong>noise</strong> (everything corrupting it), plus the ratio between them. This is a technical definition, but it is also one of the most portable thinking tools ever produced. Once you see the world as signal buried in noise, you cannot unsee it.</p>
+  <table>
+    <thead><tr><th>Domain</th><th>Signal</th><th>Noise</th><th>The task</th></tr></thead>
+    <tbody>
+      <tr><td>Attention</td><td>What is true and matters</td><td>Slop, outrage, ads, feeds</td><td>Filtering - the scarce skill of the age</td></tr>
+      <tr><td>Markets</td><td>Real change in value</td><td>Random price wiggle, hype</td><td>Do not trade on noise</td></tr>
+      <tr><td>Truth / science</td><td>The real effect</td><td>Sampling error, bias</td><td>Statistics = a noise filter</td></tr>
+      <tr><td>Hiring / decisions</td><td>Genuine ability signal</td><td>Credentials, vibes, luck</td><td>Find the low-noise indicator</td></tr>
+    </tbody>
+  </table>
+  <div class="box"><span class="lbl">The tie-back to abundance</span><p>The <a href="../how-tech-changes-the-world/cost_collapse_and_friction.html">cost collapse</a> note argues that when everything becomes available, scarcity migrates to <strong>attention</strong>. Information theory tells you exactly why: zero-cost publishing floods every channel with noise, so the signal-to-noise ratio collapses. The scarce, valuable act becomes <em>filtering</em> - separating signal from noise. That is not a metaphor; it is the same quantity Shannon defined, operating on your attention.</p></div>
+
+  <h2 id="payoff"><span class="n">7</span>The big payoff: an LLM is a compression of the internet</h2>
+  <p>Here is where the floor holds up the whole building. There is a deep, exact equivalence at the heart of machine learning, and information theory is the only place it becomes obvious:</p>
+  <div class="box key"><span class="lbl">Prediction and compression are the same thing</span><p>To <strong>predict</strong> the next token well, you must have modeled the regularities of the data. To <strong>compress</strong> data well, you must also have modeled its regularities (so you can spend short codes on the predictable parts). A perfect predictor <em>is</em> a perfect compressor, and vice versa. They are two descriptions of one skill: <em>finding and exploiting structure.</em></p></div>
+  <p>Watch the mechanism. A good language model assigns high probability to what comes next. High probability = low surprise = few bits needed to encode it. So a model that predicts text well can compress that text well - the better the prediction, the smaller the code. Training a model to minimize prediction error is <em>mathematically identical</em> to training it to compress the training data. The loss function is measured in exactly the bits from section 2.</p>
+  <div class="box good"><span class="lbl">So what is an LLM, really?</span><p><strong>An LLM is a lossy compression of its training data - a lossy compression of the internet.</strong> It cannot store the whole thing (far too big), so it is forced to throw away the redundant, predictable surface and keep the underlying regularities - grammar, facts, styles, reasoning patterns. Those regularities ARE the compressed representation. When it generates text, it is decompressing: reconstructing plausible data from the structure it retained. This is why it "hallucinates" - lossy reconstruction fills gaps with plausible-but-wrong detail, exactly like JPEG artifacts. See <a href="../llms/">the LLMs notes</a> for how this plays out in practice.</p></div>
+  <div class="box"><span class="lbl">The deep claim: intelligence may BE compression</span><p>Push it one step further. If understanding something means finding its underlying pattern - the short description that generates the messy surface - then <strong>understanding is compression.</strong> A physicist who reduces a million observations to <code>F = ma</code> has compressed them. A child who learns "dogs" has compressed a thousand furry instances into one concept. On this view, intelligence is the search for the shortest program that explains the data (compare <em>Kolmogorov complexity</em>, section 10). It is not proven that intelligence <em>is</em> compression - but the fact that our best AI is literally a compressor is a very loud hint.</p></div>
+
+  <h2 id="edges"><span class="n">8</span>Edge cases and where the theory breaks</h2>
+  <h3>Information is not meaning (the profound blind spot)</h3>
+  <p>Shannon's founding move - quarantining meaning - is both his genius and the theory's ceiling. Information theory can tell you a message contains 4,000 bits. It cannot tell you whether those bits are a cure for cancer or random gibberish of the same length. <strong>It measures the container, never the contents.</strong> Every question about significance, truth, or value lives outside the theory. When people say "we are drowning in information," they mean bits; the thing they are starved of - meaning - is precisely what Shannon set aside.</p>
+  <div class="box trap"><span class="lbl">The DIKW ladder: do not confuse the rungs</span><p>The blind spot is easiest to see as a ladder, each rung adding what the one below lacks:</p>
+    <p><strong>Data</strong> = raw bits/symbols (Shannon lives here). <strong>Information</strong> = data with structure/context. <strong>Knowledge</strong> = information connected into a usable model of how things work. <strong>Wisdom</strong> = knowing which knowledge to apply, and when, and why - judgment about meaning and value.</p>
+    <p>Information theory is rigorous about the bottom rung and silent about the top. More data does not automatically climb the ladder - and an age of abundant data can be an age of scarce wisdom.</p></div>
+  <h3>The link to thermodynamics (entropy is not a pun)</h3>
+  <p>Shannon called <code>H</code> "entropy" on von Neumann's advice, and the name is not a coincidence - the equations are the same form. Thermodynamic entropy measures the number of microscopic arrangements consistent with a macrostate; information entropy measures the number of messages consistent with what you know. Both count <em>possibilities you are uncertain among.</em></p>
+  <div class="box key"><span class="lbl">Landauer's principle: information is physical</span><p>The link is not just poetic - it has a price in joules. <strong>Erasing one bit of information must dissipate at least kT ln(2) of energy as heat</strong> (Landauer's limit). Information is not an abstraction floating above matter; storing, moving, and erasing it costs energy, always. This is the deep reason the AI era collides with the <em>energy</em> era - computation is physical, and every bit has a thermodynamic bill. Forward-ref: <a href="../foundations/energy_and_thermodynamics.html">Energy and Thermodynamics</a> picks up this thread and follows it down to the substrate.</p></div>
+  <h3>Other edges worth knowing</h3>
+  <ul>
+    <li><strong>Randomness is maximal information.</strong> Counterintuitively, pure noise has the highest entropy - it is incompressible and unpredictable. "Maximum information" and "maximum meaninglessness" can be the same state. Structure, not volume, is what we actually value.</li>
+    <li><strong>Entropy depends on the observer's model.</strong> A message is only "surprising" relative to what you expected. A code you cannot read looks like maximum-entropy noise; with the key it collapses to low entropy. Information is relative to a model - which is why compression and prediction are model-bound.</li>
+    <li><strong>Lossy compression hides a value judgment.</strong> Deciding what is "safe to throw away" is a claim about what matters to the receiver - meaning sneaking back in through the side door the theory tried to lock.</li>
+  </ul>
+
+  <h2 id="use"><span class="n">9</span>How to use it</h2>
+  <div class="box good"><span class="lbl">Compression as a test of understanding</span><p>If you truly understand something, you can compress it - explain it shortly, from its core principle, and regenerate the details on demand. If the shortest version you can give is "it's complicated" or a memorized wall of text, you have stored the data but not found its structure. <strong>Can you compress it?</strong> is a sharper test of understanding than <strong>can you recall it?</strong> (This whole note is an attempt to compress a textbook to its irreducible core.)</p></div>
+  <div class="box good"><span class="lbl">Signal-to-noise as a decision lens</span><p>Before acting on any input, ask: <em>is this signal or noise?</em> Most of a feed, a price chart, a rumor mill, or a comment section is noise - random fluctuation carrying no real information. The discipline is to raise your threshold: act on signal, ignore noise, and treat "more data" as suspect until you have separated the two. In an abundant world, the filter is the scarce and valuable part.</p></div>
+  <ul>
+    <li><strong>Spot the redundancy.</strong> If something feels repetitive or predictable, it is compressible - a sign there is a simpler underlying rule to find.</li>
+    <li><strong>Respect the floor.</strong> Some things are irreducibly complex (high entropy); no summary will shrink them without losing the point. Know when you are hitting the entropy floor versus just being lazy.</li>
+    <li><strong>Add error correction to what matters.</strong> Redundancy is not always waste. Backups, confirmations, and repeating the key point are error-correcting codes for real life - deliberate redundancy bought to survive a noisy channel.</li>
+  </ul>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bit</strong></td><td>The irreducible unit of information: one reduction of uncertainty, one yes/no answer. Equals log2 of the possibilities distinguished.</td></tr>
+      <tr><td><strong>Entropy (H)</strong></td><td>The average surprise/uncertainty per symbol from a source. Also the theoretical minimum bits needed to encode it. High = unpredictable = incompressible.</td></tr>
+      <tr><td><strong>Redundancy</strong></td><td>The gap between a message's naive size and its true entropy; the predictable, removable part that compression strips out.</td></tr>
+      <tr><td><strong>Lossless compression</strong></td><td>Shrinking data while allowing exact reconstruction. Cannot go below the entropy floor (Shannon source coding theorem). E.g. ZIP, PNG, FLAC.</td></tr>
+      <tr><td><strong>Lossy compression</strong></td><td>Shrinking data by discarding information deemed unimportant; no hard floor, quality degrades smoothly. E.g. JPEG, MP3. Smuggles meaning back in.</td></tr>
+      <tr><td><strong>Channel capacity (C)</strong></td><td>The maximum rate at which information can be sent reliably over a channel, set by its bandwidth and signal-to-noise ratio.</td></tr>
+      <tr><td><strong>Shannon limit</strong></td><td>The hard boundary at capacity C: below it, arbitrarily reliable communication is possible with coding; above it, impossible.</td></tr>
+      <tr><td><strong>Error-correcting code</strong></td><td>Structured redundancy added so a receiver can detect and repair corruption - the trick that gives reliability over a noisy channel.</td></tr>
+      <tr><td><strong>Signal-to-noise ratio</strong></td><td>The ratio of wanted information to corrupting noise. A portable lens for attention, markets, and truth as well as circuits.</td></tr>
+      <tr><td><strong>Mutual information</strong></td><td>How much knowing one variable reduces uncertainty about another - the amount of information they share. The formal measure of "how much X tells you about Y."</td></tr>
+      <tr><td><strong>Kolmogorov complexity</strong></td><td>The length of the shortest program that reproduces a given string; the theoretical ultimate compression of an object, and a formal cousin of "understanding = finding the shortest description." (A <em>program</em> is a computation - see <a href="computation_as_substrate.html">Computation as a Substrate</a>.)</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Information Theory from First Principles &middot; captured 2026-07-12. The floor under bits, compression, channels, and the claim that an LLM is a compression of the internet.</footer>
+</main>
+</div>
+</body>
+</html>

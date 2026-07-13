@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Evolution as the Meta-Algorithm - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-1" style="color:#0053e2;text-decoration:none">The substrates</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Evolution as the Meta-Algorithm</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Evolution as Algorithm</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#algo"><span class="num">1</span>The algorithm, simplest form</a>
+  <a href="#nogoal"><span class="num">2</span>Why it needs no goal</a>
+  <a href="#fitness"><span class="num">3</span>It optimizes fitness, not you</a>
+  <a href="#substrate"><span class="num">4</span>Substrate independence</a>
+  <a href="#emergent"><span class="num">5</span>Design without a designer</a>
+  <a href="#edges"><span class="num">6</span>Edge & breaking cases</a>
+  <a href="#use"><span class="num">7</span>How to use it</a>
+  <a href="#glossary"><span class="num">8</span>Glossary</a>
+  <a href="../index.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Evolution as the Meta-Algorithm</h1>
+  <p class="lede">Evolution is not a biology topic. It is a substrate-independent algorithm - variation + selection + retention - that runs anywhere those three conditions hold. The same engine drives genes, ideas, markets, and AI training.</p>
+  <p class="meta">Topic folder: first-principles-tutor/foundations &middot; Captured 2026-07-12 &middot; The single engine under ../psychology/, ../businesses/, and ../ai/</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>Evolution is an algorithm, not a subject.</strong> It is three conditions - <em>variation</em>, <em>selection</em>, <em>retention</em> - and wherever all three hold, adaptation happens automatically. No designer required.</li>
+    <li><strong>It has no goal.</strong> It is a blind <em>hill-climbing optimizer</em>, not a planner. It finds <em>local</em> optima, not perfection, and it <em>satisfices</em> (good enough to replicate beats ideal).</li>
+    <li><strong>It optimizes fitness (replication), not your happiness, truth, or wellbeing.</strong> That gap is the root of nearly every modern mismatch.</li>
+    <li><strong>It is substrate-independent.</strong> The identical logic runs on genes (biology), memes (culture), products/firms (markets), and weights (AI training - SGD is literally selection over parameters).</li>
+    <li><strong>It manufactures apparent design.</strong> Complexity and "intelligence" emerge from dumb rules run at scale - the appearance of a designer with none present.</li>
+    <li><strong>It breaks in knowable ways:</strong> local optima & path dependence, evolutionary mismatch, Goodhart (proxy divergence), and Red Queen races.</li>
+    <li><strong>Use it as a lens:</strong> for any adaptive system ask - what varies, what selects, what is retained, and what is it <em>really</em> optimizing vs. what you <em>want</em>?</li>
+  </ul>
+
+  <h2 id="algo"><span class="n">1</span>The algorithm in its simplest form</h2>
+  <p>Strip evolution of all biology and you are left with a loop so simple it barely looks like an idea. It needs exactly three ingredients:</p>
+  <div class="box key"><span class="lbl">The three conditions</span>
+    <p><strong>1. Variation</strong> - the members of a population differ (mutations, copying errors, recombination, random tweaks). Something must be non-identical.</p>
+    <p><strong>2. Selection</strong> - some of those variants survive / reproduce / get copied more than others, because of how they interact with an environment.</p>
+    <p><strong>3. Retention (heredity)</strong> - the traits of the winners are passed on / copied forward, so the next round starts from them.</p>
+    <p>Run that loop and you get <strong>adaptation</strong> - populations that fit their environment better over time. That is the whole engine.</p>
+  </div>
+  <pre>WHILE population exists:
+    vary      -&gt; produce differing copies      (VARIATION)
+    test      -&gt; environment culls some         (SELECTION)
+    copy      -&gt; survivors seed the next round  (RETENTION)
+# result: adaptation, accumulating with NO plan and NO designer</pre>
+  <p>The astonishing claim is what is <em>absent</em>: there is no architect, no blueprint, no foresight. This is Dawkins' <strong>blind watchmaker</strong> - design without a designer. Daniel Dennett called the idea a <strong>"universal acid"</strong>: it eats through every domain you pour it on, because it does not care <em>what</em> is varying and being selected - only <em>that</em> the three conditions hold.</p>
+  <div class="box"><span class="lbl">Why "algorithm" is the right word</span><p>An algorithm is a mindless, mechanical procedure that produces a result if you follow the steps. Darwin's insight, in Dennett's framing, is that adaptation is <em>algorithmic</em>: it is substrate-neutral (works on any material), underlain by mindless steps, and guaranteed to produce results wherever it runs. That is exactly why it generalizes far beyond DNA. (Evolution is, quite literally, a <a href="computation_as_substrate.html">computation</a> - an algorithm run on a physical substrate; see the 5th substrate note.)</p></div>
+
+  <h2 id="nogoal"><span class="n">2</span>Why it needs no goal</h2>
+  <p>The deepest misreading of evolution is teleological - that it is "trying" to build something, aiming at humans or at perfection. It is not aiming at anything. It is a <strong>hill-climbing optimizer</strong>.</p>
+  <p>Picture a <strong>fitness landscape</strong>: a terrain where height = reproductive success. Every variant is a point on the terrain; selection nudges the population <em>uphill</em>, one small step at a time, toward whatever is locally higher. It cannot see the map. It cannot plan a route. It only ever asks: "of the tiny variations available right now, which is slightly better?" - and takes that step.</p>
+  <div class="box key"><span class="lbl">Optimizer, not planner</span><p>A planner looks ahead, holds a goal, and can walk <em>downhill</em> temporarily to reach a higher peak later. Evolution can do none of that. It is <strong>greedy</strong>: it climbs the nearest slope. So it reliably reaches <strong>local optima</strong> - good-enough peaks - but has no mechanism to find the <em>global</em> optimum if a valley sits between here and there.</p></div>
+  <p>And it does not even climb to the top of the local hill. It <strong>satisfices</strong> (Herbert Simon's term): it settles for "good enough to out-reproduce the neighbors," not "the best conceivable design." Perfection is expensive and unnecessary; replication is the only bar. This is why nature is full of janky, jury-rigged solutions that clearly work but no engineer would draw.</p>
+
+  <h2 id="fitness"><span class="n">3</span>It optimizes for fitness, not for you</h2>
+  <div class="box key"><span class="lbl">The single most important sentence</span><p>Evolution optimizes for <strong>fitness</strong> - differential replication - and for <em>nothing else</em>. It does not optimize for your happiness, your health, your accuracy about the world, or your long-term wellbeing. Those are sometimes <em>correlated</em> with fitness, and where they are, you get them for free. Where they diverge, fitness wins every time.</p></div>
+  <p>Your brain, your cravings, your emotions were all shaped to maximize copies of your genes in an <em>ancestral</em> environment - not to make you content or truthful. That is the root of almost every mismatch you will study elsewhere in these notes:</p>
+  <ul>
+    <li><strong>Happiness is a carrot on a stick.</strong> A permanently satisfied ancestor stopped striving; a restless one out-reproduced them. So the reward is engineered to fade - the hedonic treadmill is a feature, not a bug (cross-ref <a href="../psychology/">../psychology/</a>).</li>
+    <li><strong>Truth is optional.</strong> Beliefs were selected for <em>usefulness to replication</em>, not accuracy. A false belief that boosts survival (over-detecting predators, over-trusting the in-group) beats a true belief that does not.</li>
+    <li><strong>Fear, anxiety, disgust, status-hunger</strong> are all fitness tools, tuned for a world of ~150 people and scarce calories - which is why they misfire so badly today (see section 6).</li>
+  </ul>
+  <p>Once you internalize "the optimizer's target is not my wellbeing," a huge amount of human behavior stops looking irrational and starts looking like <em>a system doing exactly what it was optimized to do, in the wrong environment.</em></p>
+
+  <h2 id="substrate"><span class="n">4</span>Substrate independence: the same engine, four domains</h2>
+  <p>Because the algorithm only cares that variation + selection + retention are present, it runs on any medium that supplies them. The medium is called the <strong>substrate</strong>. Change the substrate; the logic is identical.</p>
+  <table>
+    <thead><tr><th>Domain</th><th>Variation (what differs)</th><th>Selection (what survives)</th><th>Retention (how winners persist)</th><th>Substrate</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Biology</strong></td><td>Mutation, recombination, copying errors in DNA</td><td>Survival + reproduction in an ecological niche</td><td>Inheritance - genes passed to offspring</td><td>Genes</td></tr>
+      <tr><td><strong>Culture</strong></td><td>New ideas, stories, tunes, styles, tweaks to existing ones</td><td>Attention, memorability, being believed / repeated</td><td>Imitation, teaching, media - copied brain to brain</td><td>Memes / ideas</td></tr>
+      <tr><td><strong>Markets</strong></td><td>New products, firms, business models, features</td><td>Customers buy; capital funds; the rest go bankrupt</td><td>Successful patterns copied, franchised, scaled, imitated</td><td>Products / firms</td></tr>
+      <tr><td><strong>AI training</strong></td><td>Parameter perturbations; candidate outputs / models</td><td>Loss function / reward: lower error or higher reward kept</td><td>Weight updates carried into the next step / checkpoint</td><td>Weights</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">AI training IS selection over parameters</span><p>This is not a loose analogy. Stochastic gradient descent generates variation (candidate weight changes), applies selection (keep the direction that lowers loss), and retains the winner (update the weights, iterate). Reinforcement learning is even more literally Darwinian: sample behaviors, reward the good ones, make them more likely next time. Training a model <em>is</em> running the evolution algorithm on the substrate of weights - which is why trained models, like organisms, end up full of adaptive "solutions" nobody explicitly designed. This is the deep link to the alignment problem (cross-ref <a href="../ai/">../ai/</a>).</p></div>
+  <div class="box"><span class="lbl">Markets: mechanisms are selected, needs are the environment</span><p>A crucial refinement (cross-ref <a href="../businesses/">../businesses/</a> and <a href="../human-needs/birth_and_replacement.html">Why Companies Are Born and Die</a>): in markets, the things being <em>varied and selected</em> are the <strong>mechanisms</strong> - products, firms, models. The <strong>human needs</strong> they serve are the relatively stable <em>environment</em> doing the selecting. Needs are the landscape; firms are the climbers. That is why companies die and get replaced while the underlying need persists - the environment outlives any one adaptation to it.</p></div>
+
+  <h2 id="emergent"><span class="n">5</span>Emergent design without a designer</h2>
+  <p>The single hardest thing to accept is that the eye, the immune system, a termite mound, the global economy, and a large language model can all exhibit exquisite, purpose-fit <em>design</em> - with no one designing them. The resolution: <strong>design is what accumulated selection looks like from the outside.</strong></p>
+  <ul>
+    <li><strong>Simple rules + iteration + scale = apparent complexity.</strong> Each step is dumb ("keep the slightly better variant"). Run it across billions of rounds and a vast population, and you accumulate structure that <em>looks</em> foresighted.</li>
+    <li><strong>It looks intelligent because it is fit.</strong> We are pattern-matchers who infer an agent behind any purposeful-looking arrangement (this instinct is itself an evolved fitness tool). So we hallucinate a designer. There isn't one - there is a filter, run for a very long time.</li>
+    <li><strong>The "design" is retrospective.</strong> Nothing was aiming at the eye. Countless slightly-better-at-seeing variants were retained; the endpoint <em>looks</em> like a goal only because we are reading the history backwards.</li>
+  </ul>
+  <div class="box good"><span class="lbl">The reframe</span><p>Wherever you see something impressively well-fitted to its job - an organism, a company, a viral idea, a trained model - do not ask "who designed this so well?" Ask "what varied, what selected, and for how long?" The apparent intelligence is a receipt for accumulated selection.</p></div>
+
+  <h2 id="edges"><span class="n">6</span>Edge & breaking cases</h2>
+  <p>The algorithm is powerful precisely because it is dumb - and its dumbness produces predictable failure modes. Knowing them is where the lens earns its keep.</p>
+
+  <h3>Local optima & path dependence (it cannot backtrack)</h3>
+  <p>Because it only climbs the nearest hill, evolution gets <strong>stuck on good-enough peaks</strong> and cannot cross a fitness valley to reach a better one. It also cannot undo past choices - each step builds on the last, so early accidents get locked in. This is <strong>path dependence</strong>.</p>
+  <ul>
+    <li><strong>The panda's thumb</strong> (Gould): not a real thumb but a jury-rigged wrist bone, because no better design was reachable from the panda's starting point. Clearly suboptimal, clearly stuck.</li>
+    <li><strong>QWERTY:</strong> a keyboard layout selected for early-typewriter constraints, retained by the cost of switching once everyone learned it. A frozen accident - a cultural local optimum.</li>
+  </ul>
+
+  <h3>Evolutionary mismatch (old circuits, new environment)</h3>
+  <p>Selection tuned your reward system to an environment that no longer exists. Modern hyper-stimuli are engineered (often by <em>market</em> evolution, section 4) to jam those ancient circuits harder than anything ancestral ever did:</p>
+  <ul>
+    <li><strong>Sugar / fat:</strong> a rational craving when calories were scarce; a health disaster at a vending machine.</li>
+    <li><strong>Outrage / gossip:</strong> tribal-monitoring instincts hijacked by feeds selected to maximize engagement.</li>
+    <li><strong>Pornography:</strong> a supernormal stimulus of a mating drive built for a small, real social world.</li>
+  </ul>
+  <div class="box trap"><span class="lbl">Mismatch is a two-optimizer collision</span><p>The most dangerous mismatches happen when a <em>fast</em> optimizer (market/AI selection, operating in months) targets the fixed outputs of a <em>slow</em> optimizer (your genome, operating over millennia). The fast one <em>evolves to exploit</em> the slow one's fitness shortcuts. Your brain never had a chance to adapt back. This is the mechanical heart of the whole ../psychology/ mismatch story.</p></div>
+
+  <h3>Goodhart: the proxy diverges from the target</h3>
+  <p>Selection can only act on a measurable <em>proxy</em>, never on the true objective. Fitness is a proxy for "genes that persist"; a loss function is a proxy for "what we actually want the model to do"; a KPI is a proxy for "a healthy business." <strong>Goodhart's Law:</strong> once a measure becomes the target, it stops being a good measure - the optimizer finds ways to score high on the proxy while diverging from the thing you cared about.</p>
+  <ul>
+    <li>Fitness optimizes for replication, so it will happily wreck your wellbeing to hit the proxy (section 3).</li>
+    <li>An AI optimizing a reward will "reward-hack" - satisfy the metric, betray the intent (cross-ref <a href="../ai/">../ai/</a>). Same failure, different substrate.</li>
+  </ul>
+
+  <h3>Red Queen dynamics (run to stay still)</h3>
+  <p>When the environment doing the selecting is <em>itself</em> made of other evolving things (predators, competitors, rival firms), fitness is <strong>relative, not absolute</strong>. Everyone improves, so improving just keeps you in place. Named for the Red Queen in <em>Through the Looking-Glass</em>: "it takes all the running you can do to keep in the same place."</p>
+  <div class="box"><span class="lbl">Forward-reference</span><p>Red Queen races are the doorway to competition traps and coordination failures - why rational adaptation by everyone can leave everyone worse off. That is the subject of <a href="../forces/game_theory_and_moloch.html">Game Theory and Moloch</a>. Evolution supplies the engine; Moloch is what the engine does when the players are each other.</p></div>
+
+  <h2 id="use"><span class="n">7</span>How to use it</h2>
+  <p>Treat any adaptive system - a species, a company, a subculture, a model, a habit, an addiction - as an instance of the algorithm, and run four questions:</p>
+  <div class="box good"><span class="lbl">The four-question lens</span>
+    <p><strong>1. What varies?</strong> Where do the differences / novelties come from? (No variation = no evolution; the system is frozen.)</p>
+    <p><strong>2. What selects?</strong> What is the environment that culls? Who or what decides which variants survive? (Follow the selection pressure and you find the real cause of the system's shape.)</p>
+    <p><strong>3. What is retained?</strong> How do winners persist and seed the next round - genes, imitation, capital, weights, habit? (Weak retention = no accumulation.)</p>
+    <p><strong>4. What is it REALLY optimizing vs. what I WANT?</strong> Name the actual fitness proxy, then compare it to your intended goal. The gap between them is where mismatch, Goodhart, and harm live.</p>
+  </div>
+  <div class="box key"><span class="lbl">The payoff</span><p>Question 4 is the master move. Almost every "why is this system behaving so perversely?" resolves into: it is faithfully optimizing a proxy that has drifted from what anyone wants. You cannot fix an adaptive system by scolding it - you change what varies, what selects, or what is retained. Redesign the landscape, not the climber.</p></div>
+
+  <h2 id="glossary"><span class="n">8</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Variation</strong></td><td>The presence of differences among members of a population (mutations, tweaks, novelties) - the raw material selection acts on.</td></tr>
+      <tr><td><strong>Selection</strong></td><td>The differential survival / reproduction / copying of variants based on how they fare in an environment.</td></tr>
+      <tr><td><strong>Retention (heredity)</strong></td><td>The passing-on / copying-forward of winning traits so the next round starts from them; enables accumulation.</td></tr>
+      <tr><td><strong>Fitness</strong></td><td>Differential replicative success - how much better one variant copies itself than another. The <em>only</em> thing evolution optimizes.</td></tr>
+      <tr><td><strong>Fitness landscape</strong></td><td>A metaphorical terrain where height = fitness; selection pushes a population uphill via small local steps.</td></tr>
+      <tr><td><strong>Local optimum</strong></td><td>A good-enough peak the algorithm gets stuck on because reaching a higher peak would require going downhill first.</td></tr>
+      <tr><td><strong>Satisficing</strong></td><td>Settling for "good enough to replicate" rather than optimal (Herbert Simon); why evolved designs are jury-rigged, not perfect.</td></tr>
+      <tr><td><strong>Meme</strong></td><td>A unit of culture (idea, tune, style) that varies, is selected for attention/memorability, and is retained by imitation - the cultural substrate.</td></tr>
+      <tr><td><strong>Substrate independence</strong></td><td>The property that the algorithm runs identically on any medium supplying variation + selection + retention (genes, memes, firms, weights).</td></tr>
+      <tr><td><strong>Evolutionary mismatch</strong></td><td>When adaptations tuned to an ancestral environment misfire in a modern one (sugar, outrage, porn hijacking old reward circuits).</td></tr>
+      <tr><td><strong>Red Queen</strong></td><td>Dynamics where fitness is relative because competitors also evolve, so constant improvement is needed just to hold position.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Evolution as the Meta-Algorithm &middot; captured 2026-07-12. The one engine - variation + selection + retention - running under biology, culture, markets, and AI.</footer>
+</main>
+</div>
+</body>
+</html>

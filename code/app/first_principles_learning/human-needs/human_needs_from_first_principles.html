@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Human Needs from First Principles - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Human Needs</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Human Needs (the axiom layer)</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#framing"><span class="num">1</span>Needs = axioms, companies = mechanisms</a>
+  <a href="#maslow"><span class="num">2</span>Maslow's hierarchy + critique</a>
+  <a href="#needs"><span class="num">3</span>The durable needs (refined)</a>
+  <a href="#flow"><span class="num">4</span>The demand flow chain</a>
+  <a href="#map"><span class="num">5</span>How companies map onto needs</a>
+  <a href="#shift"><span class="num">6</span>Why the mapping shifts</a>
+  <a href="#notes"><span class="num">7</span>The 15 need notes + capstone</a>
+  <a href="#glossary"><span class="num">8</span>Glossary</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Human Needs from First Principles</h1>
+  <p class="lede">The axiom layer under every business: what humans permanently want, and how today's mechanisms arrange themselves to serve it.</p>
+  <p class="meta">Topic folder: first-principles-tutor/human-needs &middot; Captured 2026-07-11 &middot; Builds on ../psychology/ &middot; Feeds the 13 need notes</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>Needs are the irreducible layer; companies are the mechanisms</strong> that currently serve them best. Needs are stable for millennia; the mechanisms churn every generation.</li>
+    <li>Maslow's hierarchy is a useful map (physiological -&gt; safety -&gt; belonging -&gt; esteem -&gt; self-actualization) but is <strong>not strictly hierarchical</strong> and misses a few durable needs.</li>
+    <li>A refined list gives <strong>~13 durable "jobs that never change"</strong> - from sustenance to knowledge to status to compute.</li>
+    <li>Every need is served through the same <strong>demand flow</strong>: need -&gt; trigger -&gt; discovery -&gt; trust -&gt; decision -&gt; fulfillment -&gt; payment -&gt; retention.</li>
+    <li>Watching the #1 and #2 company per need shows <strong>how the whole board is playing out</strong> - and the same handful of patterns recur everywhere.</li>
+  </ul>
+
+  <h2 id="framing"><span class="n">1</span>Needs are axioms; companies are mechanisms</h2>
+  <p>The cleanest way to understand "why does this company exist" is to invert it: <strong>a company is whatever currently serves a durable human need best.</strong> The need came first and will outlive the company. Amazon is not an axiom - "people want selection, convenience, and low prices" is the axiom, and Amazon is the current mechanism. Replace Amazon and the need remains.</p>
+  <div class="box key"><span class="lbl">The meta-principle, again</span><p>Needs (axioms) -&gt; the best mechanism to serve them (companies). When technology changes, the need stays constant but a new mechanism can win. Study the need to understand why any business exists, and to see what is permanent versus what is temporary.</p></div>
+
+  <h2 id="maslow"><span class="n">2</span>Maslow's hierarchy + an honest critique</h2>
+  <p>Maslow (1943) proposed five tiers, usually drawn as a pyramid:</p>
+  <ol>
+    <li><strong>Physiological</strong> - food, water, warmth, rest, sex.</li>
+    <li><strong>Safety</strong> - security, health, shelter, money, stability.</li>
+    <li><strong>Belonging / love</strong> - relationships, connection, community.</li>
+    <li><strong>Esteem</strong> - status, recognition, respect, identity.</li>
+    <li><strong>Self-actualization</strong> - growth, mastery, meaning, creativity.</li>
+  </ol>
+  <div class="box trap"><span class="lbl">Where Maslow is wrong / incomplete</span>
+    <p><strong>Not strictly hierarchical:</strong> people pursue belonging and esteem while still hungry; a starving artist chases meaning over safety. The tiers are simultaneous drives, not a strict ladder.</p>
+    <p><strong>Missing needs:</strong> it under-weights <em>knowledge/understanding</em> (Maslow later added "cognitive" and "aesthetic" needs), <em>convenience/time-saving</em> (a meta-need modern commerce is built on), and <em>entertainment/stimulation</em>.</p>
+    <p><strong>Culturally narrow:</strong> "self-actualization" at the top reflects an individualist lens; other cultures rank community/belonging higher.</p>
+    <p>Still: as a first-order map of durable demand, it is excellent - just treat it as overlapping drives, not a queue.</p>
+  </div>
+
+  <h2 id="needs"><span class="n">3</span>The durable needs (refined into "jobs that never change")</h2>
+  <p>Maslow, sharpened into the units that actually map to industries. Each is an axiom - true for a caveman and a billionaire alike:</p>
+  <table>
+    <thead><tr><th>Maslow tier</th><th>Durable need (the job)</th></tr></thead>
+    <tbody>
+      <tr><td>Physiological</td><td>1. Sustenance - groceries / raw food</td></tr>
+      <tr><td>Physiological</td><td>2. Sustenance - prepared food / convenience eating</td></tr>
+      <tr><td>Physiological / Safety</td><td>3. Shelter - a place to live / stay</td></tr>
+      <tr><td>Safety</td><td>4. Health &amp; safety - stay alive and well</td></tr>
+      <tr><td>Safety</td><td>5. Financial security - store, move, grow money</td></tr>
+      <tr><td>Belonging</td><td>6. Connection - relationships, community</td></tr>
+      <tr><td>Esteem</td><td>7. Esteem / status / identity - be seen, respected</td></tr>
+      <tr><td>Cognitive</td><td>8. Knowledge / understanding - answers, learning</td></tr>
+      <tr><td>Aesthetic / leisure</td><td>9. Entertainment / leisure - stimulation, fun, rest</td></tr>
+      <tr><td>Physiological / freedom</td><td>10. Mobility - move people and things</td></tr>
+      <tr><td>Self-actualization</td><td>11. Productivity / work / growth - do and achieve</td></tr>
+      <tr><td>Self-actualization / safety</td><td>12. Commerce enablement - sell, earn, provide</td></tr>
+      <tr><td>(enabling meta-need)</td><td>13. Compute - the substrate beneath all modern services</td></tr>
+      <tr><td>Self-actualization / esteem</td><td>14. Education / skilling - learn, gain skills, earn credentials</td></tr>
+      <tr><td>Safety / belonging</td><td>15. Care - childcare, eldercare, mental health, caregiving</td></tr>
+    </tbody>
+  </table>
+  <p>Two of these (12 and 13) are "meta-needs" - not on Maslow directly, but durable because <em>providing for one's family</em> (a Maslow safety/esteem driver) requires the ability to earn, and every modern mechanism now runs on compute.</p>
+
+  <h2 id="flow"><span class="n">4</span>The demand flow chain</h2>
+  <p>Every need is satisfied by traveling the same pipeline. Understanding it explains who captures the value:</p>
+<pre>NEED -&gt; Trigger -&gt; Discovery/Search -&gt; Evaluation/Trust -&gt; Decision -&gt; Fulfillment -&gt; Payment -&gt; Retention</pre>
+  <ul>
+    <li><strong>Aggregators own Discovery + Trust</strong> (Google owns search/intent; Amazon owns evaluation via reviews).</li>
+    <li><strong>The strongest businesses own the most steps end-to-end</strong> (Apple, Amazon), capturing margin at each.</li>
+    <li><strong>Whoever owns the demand relationship</strong> (the top of the chain) forces suppliers below to commoditize - this is aggregation theory (see ../businesses/).</li>
+  </ul>
+  <div class="box"><span class="lbl">Why this matters for reading the board</span><p>For any need, ask: who owns Discovery? who owns Trust? who owns Fulfillment? The answers tell you who has power and why - and each need note traces exactly this.</p></div>
+
+  <h2 id="map"><span class="n">5</span>How companies map onto needs (the board today)</h2>
+  <p>The current best mechanisms per need, #1 and the leading challenger #2 (each with its distinct angle). This is the map the 13 notes expand:</p>
+  <table>
+    <thead><tr><th>#</th><th>Need</th><th>#1 (how)</th><th>#2 / challenger (how)</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Groceries</td><td>Walmart (scale / EDLP / stores)</td><td>Costco (membership)</td></tr>
+      <tr><td>2</td><td>Prepared food</td><td>DoorDash (local density)</td><td>Uber Eats (multi-product)</td></tr>
+      <tr><td>3</td><td>Shelter</td><td>Zillow (discovery) / Airbnb (stays)</td><td>Redfin / Booking</td></tr>
+      <tr><td>4</td><td>Health &amp; safety</td><td>UnitedHealth (insurance+care)</td><td>CVS / Aetna</td></tr>
+      <tr><td>5</td><td>Money</td><td>Visa (rails)</td><td>Stripe (SMB) / Mastercard</td></tr>
+      <tr><td>6</td><td>Connection</td><td>Meta (social graph)</td><td>TikTok (algo) / LinkedIn (pro)</td></tr>
+      <tr><td>7</td><td>Esteem / status</td><td>Instagram</td><td>YouTube creators / LVMH (luxury)</td></tr>
+      <tr><td>8</td><td>Knowledge</td><td>Google (intent)</td><td>OpenAI (answers)</td></tr>
+      <tr><td>9</td><td>Entertainment</td><td>Netflix / TikTok</td><td>Disney / Spotify / YouTube</td></tr>
+      <tr><td>10</td><td>Mobility</td><td>Uber (people)</td><td>Tesla (own the car) / Lyft</td></tr>
+      <tr><td>11</td><td>Productivity / work</td><td>Microsoft (the stack)</td><td>Google Workspace / Salesforce</td></tr>
+      <tr><td>12</td><td>Commerce enablement</td><td>Amazon (owns sellers)</td><td>Shopify (arms sellers)</td></tr>
+      <tr><td>13</td><td>Compute</td><td>Nvidia + AWS</td><td>AMD / Azure / TSMC</td></tr>
+      <tr><td>14</td><td>Education</td><td>Universities (the credential)</td><td>Duolingo / Coursera / YouTube (the learning)</td></tr>
+      <tr><td>15</td><td>Care</td><td>Fragmented - no aggregator</td><td>Care.com / Bright Horizons / BetterHelp</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="shift"><span class="n">6</span>Why the mapping shifts (needs constant, mechanisms churn)</h2>
+  <p>The need never moves; the winning mechanism does - whenever a new technology serves the same need better:</p>
+  <ul>
+    <li><strong>Knowledge:</strong> encyclopedias -&gt; Google -&gt; now answer-engines (OpenAI). Same need, three mechanisms in one lifetime.</li>
+    <li><strong>Entertainment:</strong> broadcast TV -&gt; cable -&gt; Netflix -&gt; TikTok. The need for stimulation is constant.</li>
+    <li><strong>Connection:</strong> letters -&gt; phone -&gt; Facebook -&gt; ephemeral/messaging. Belonging never changed.</li>
+    <li><strong>Money:</strong> cash -&gt; cards -&gt; digital rails -&gt; embedded finance. Financial security is ancient.</li>
+  </ul>
+  <div class="box good"><span class="lbl">The reader's takeaway</span><p>To predict the future of any industry, hold the need fixed and ask: what new technology now serves it better? That is where the next mechanism (and the next #1) comes from. This is the whole game of watching the board.</p></div>
+
+  <h2 id="notes"><span class="n">7</span>The 15 need notes + capstone</h2>
+  <p>Each note takes one need, states it as an axiom, traces its demand flow, and shows how #1 and #2 serve it - so you can watch the whole board play out.</p>
+  <ol>
+    <li><a href="need_01_groceries.html">Groceries</a> - Walmart vs Costco</li>
+    <li><a href="need_02_prepared_food.html">Prepared food</a> - DoorDash vs Uber Eats</li>
+    <li><a href="need_03_shelter.html">Shelter</a> - Zillow/Airbnb vs Redfin/Booking</li>
+    <li><a href="need_04_health.html">Health &amp; safety</a> - UnitedHealth vs CVS/Aetna</li>
+    <li><a href="need_05_money.html">Money</a> - Visa vs Stripe/Mastercard</li>
+    <li><a href="need_06_connection.html">Connection</a> - Meta vs TikTok/LinkedIn</li>
+    <li><a href="need_07_esteem.html">Esteem / status</a> - Instagram vs YouTube/LVMH</li>
+    <li><a href="need_08_knowledge.html">Knowledge</a> - Google vs OpenAI</li>
+    <li><a href="need_09_entertainment.html">Entertainment</a> - Netflix/TikTok vs Disney/Spotify</li>
+    <li><a href="need_10_mobility.html">Mobility</a> - Uber vs Tesla/Lyft</li>
+    <li><a href="need_11_productivity.html">Productivity / work</a> - Microsoft vs Google/Salesforce</li>
+    <li><a href="need_12_commerce_enablement.html">Commerce enablement</a> - Amazon vs Shopify</li>
+    <li><a href="need_13_compute.html">Compute</a> - Nvidia/AWS vs AMD/Azure/TSMC</li>
+    <li><a href="need_14_education.html">Education / skilling</a> - Universities vs Duolingo/Coursera</li>
+    <li><a href="need_15_care.html">Care</a> - the fragmented, human-premium outlier</li>
+  </ol>
+  <div class="box key"><span class="lbl">The capstone</span><p>Once you have read the need notes, the <a href="patterns_across_needs.html"><strong>Patterns Across All the Needs</strong></a> synthesis collapses all 15 into ~6 recurring business archetypes + the two-mechanism duality - the pattern language for reading any company on sight.</p></div>
+  <div class="box"><span class="lbl">Going deeper (the theory)</span><p>Three notes stress-test the framework itself:</p><ul><li><a href="birth_and_replacement.html"><strong>Why Companies Are Born and Die</strong></a> - the Need x Catalyst x Gap formula, core-vs-derived needs, and a 5-question durability/replacement test.</li><li><a href="consumption_lens.html"><strong>The Consumption Lens</strong></a> - the 7 dimensions of consumption (atoms vs bits, own vs access...) and the atoms-&gt;bits-&gt;services-as-bits megatrend.</li><li><a href="needs_consumption_overlay.html"><strong>The Grand Overlay: Needs x Consumption</strong></a> - Maslow as a graph (feed/compete/substitute), the enabler needs, and the diagonal from physical/low to digital/high.</li><li><a href="abundance_and_new_order.html"><strong>Abundance, Its Limits &amp; a New Order of Needs</strong></a> - the counterweight: effective-demand-vs-need, the zone of neglect, Max-Neef/Sen/Doughnut, and where the brain goes once basic needs are solved.</li></ul></div>
+
+  <h2 id="glossary"><span class="n">8</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Need (axiom)</strong></td><td>A durable human want, stable across time and culture.</td></tr>
+      <tr><td><strong>Mechanism</strong></td><td>The current best product/company serving a need.</td></tr>
+      <tr><td><strong>Maslow's hierarchy</strong></td><td>Five tiers of need: physiological, safety, belonging, esteem, self-actualization.</td></tr>
+      <tr><td><strong>Job to be done</strong></td><td>The functional/emotional task a customer "hires" a product for.</td></tr>
+      <tr><td><strong>Demand flow</strong></td><td>need -&gt; trigger -&gt; discovery -&gt; trust -&gt; decision -&gt; fulfillment -&gt; payment -&gt; retention.</td></tr>
+      <tr><td><strong>Aggregator</strong></td><td>Whoever owns the demand/discovery relationship and commoditizes supply.</td></tr>
+      <tr><td><strong>Meta-need</strong></td><td>A need that enables serving other needs (earning, compute).</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Human Needs &middot; captured 2026-07-11. The axiom layer feeding the 13 need notes.</footer>
+</main>
+</div>
+</body>
+</html>

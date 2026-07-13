@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>First-Principles Tutor - Home</title>
+<style>
+  :root{
+    --ink:#1a1b1d; --body:#2e2f32; --muted:#6b7280; --line:#e5e7eb;
+    --bg:#ffffff; --soft:#f7f8fa; --blue:#0053e2; --blue-light:#e9f0fe;
+    --spark:#ffc220; --spark-dark:#8a4b12; --green:#2a8703; --green-light:#ecf7e8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--body);background:var(--soft);line-height:1.6}
+  .hero{background:linear-gradient(135deg,#0053e2,#003da8);color:#fff;padding:56px 24px 60px;
+    border-bottom:5px solid var(--spark)}
+  .hero .inner{max-width:960px;margin:0 auto}
+  .hero .kicker{font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:var(--spark);margin-bottom:10px}
+  .hero h1{font-size:40px;line-height:1.1;margin:0 0 12px;font-weight:800}
+  .hero p{font-size:18px;max-width:640px;margin:0;color:#dbe6ff}
+  main{max-width:960px;margin:-32px auto 80px;padding:0 24px}
+  .sec-label{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:var(--muted);margin:38px 0 14px}
+  .sec-label .hint{font-weight:600;text-transform:none;letter-spacing:0;color:var(--muted);opacity:.85}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:22px;box-shadow:0 1px 3px rgba(0,0,0,.05);transition:transform .12s,box-shadow .12s,border-color .12s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,83,226,.12);border-color:var(--blue)}
+  .card .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;
+    color:var(--blue);background:var(--blue-light);padding:3px 10px;border-radius:999px;margin-bottom:12px}
+  .card h3{font-size:20px;color:var(--ink);margin:0 0 6px}
+  .card p{font-size:14.5px;color:var(--muted);margin:0 0 14px}
+  .card .meta{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+  .card .go{color:var(--blue);font-weight:700}
+  .card.start{border-color:var(--spark);background:#fffdf5}
+  .card.start .tag{color:var(--spark-dark);background:#fff3cd}
+  .card.soon{opacity:.62;cursor:default;background:#fbfbfc}
+  .card.soon:hover{transform:none;box-shadow:0 1px 3px rgba(0,0,0,.05);border-color:var(--line)}
+  .card.soon .tag{color:var(--muted);background:#eef0f3}
+  .resource{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+    display:flex;align-items:center;gap:16px}
+  .resource .icon{width:44px;height:44px;border-radius:11px;background:var(--spark);color:var(--spark-dark);
+    display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;flex-shrink:0}
+  .resource .body h3{margin:0 0 3px;font-size:17px;color:var(--ink)}
+  .resource .body p{margin:0;font-size:13.5px;color:var(--muted)}
+  .resource code{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12.5px;background:var(--soft);
+    border:1px solid var(--line);padding:1px 6px;border-radius:5px;color:#b02a37}
+  .principle{background:#fff;border:1px solid var(--line);border-left:4px solid var(--spark);border-radius:0 12px 12px 0;
+    padding:16px 20px;margin-top:14px;font-size:15px}
+  .principle strong{color:var(--ink)}
+  .stack{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.5;background:#0f1b33;color:#dbe6ff;
+    border-radius:10px;padding:18px 20px;margin:14px 0;overflow:auto}
+stack .cap{color:var(--spark);font-weight:700}
+  footer{max-width:960px;margin:0 auto;padding:0 24px 60px;font-size:13px;color:var(--muted)}
+  .wing{margin:56px 0 10px;padding:20px 24px;border-radius:16px;background:linear-gradient(135deg,#0f1b33,#1f2d4d);color:#fff;box-shadow:0 8px 24px rgba(15,27,51,.18)}
+  .wing .wk{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:var(--spark)}
+  .wing h2{margin:6px 0 6px;font-size:27px;color:#fff;font-weight:800}
+  .wing p{margin:0;color:#c7d2e6;font-size:15px;max-width:700px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="inner">
+      <div class="kicker">Personal Knowledge Base</div>
+      <h1>First-Principles Tutor</h1>
+      <p>Become a sharper <strong>thinker</strong> and <strong>builder</strong> from first principles. Two wings: <strong>Think</strong> - understand how the world works, from the irreducible facts up; and <strong>Build</strong> - the craft of turning that understanding into working systems.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="principle">
+      <strong>The method used in every note here:</strong> separate the <strong>axioms</strong> (irreducible facts, true even if the subject never existed) from the <strong>mechanisms</strong> (the consequences that fall out of them). Learn the axioms and you understand <em>why</em>; learn only mechanisms and you just memorize <em>how</em>.
+    </div>
+
+    <div class="sec-label">The one flow to internalize first</div>
+    <div class="principle" style="border-left-color:var(--spark);background:var(--spark-light,#fff8e5)">
+      <p style="margin-top:0"><strong>The Adoption Loop</strong> - how <em>anything</em> (a product, an idea, a skill, a habit, a relationship) travels from unknown to indispensable. It is arguably the first lens to reach for, because almost everything is something being taken up by a mind or a market:</p>
+      <p style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:13.5px;line-height:1.9;margin:12px 0;overflow:auto">
+      <strong>Discover</strong> &rarr; <strong>Comprehend</strong> &rarr; <strong>Trust</strong> &rarr; <strong>Adopt</strong> &rarr; <strong>Experience</strong> &rarr; <strong>Retain</strong> &rarr; <strong>Advocate</strong><br>
+      <span style="color:var(--muted)">&nbsp;&nbsp;&#8624; ...and Advocate feeds new Discovery, so it is a <em>loop</em>, not a funnel.</span>
+      </p>
+      <p style="margin-bottom:0">It is the <strong>demand-side mirror of evolution</strong> (selection &rarr; retention &rarr; replication), which is why it runs under commerce, learning, and life alike. The master move: <em>ask which gate is the bottleneck</em> - you cannot fix a Trust problem with more Discovery. <a href="meta/the_adoption_loop.html" style="color:var(--blue);font-weight:700">Open the full note -&gt;</a></p>
+    </div>
+
+    <div class="sec-label">How this collection fits together</div>
+    <div class="principle" style="border-left-color:var(--blue);background:var(--blue-light)">
+      <p style="margin-top:0">This is no longer a single ladder - it is a <strong>layered stack</strong>. Each layer's mechanisms become the next layer's first principles; a <strong>foundation</strong> sits below, <strong>cross-cutting lenses</strong> run through every level, and a <strong>meta layer</strong> wraps the whole thing. The stack below maps the <strong>Think</strong> wing; a second <strong>Build</strong> wing - the craft of making things - follows it.</p>
+      <pre class="stack">          <span class="cap">[ META - how we know / how to think ]</span>   the lens around it all
+  ======================================================
+   <span class="cap">APPLIED ECONOMY</span>   Human Needs -&gt; Businesses -&gt; Build (+ Abundance)
+   <span class="cap">CONSEQUENCES</span>      Future of Work &middot; Economics of AI &middot; Cost Collapse
+   <span class="cap">THE HUMAN LAYER</span>   Psychology &middot; Behavioral Economics (adoption speed)
+   <span class="cap">THE TECHNOLOGY</span>    AI -&gt; LLMs -&gt; Agents
+  ======================================================
+   <span class="cap">THE SUBSTRATES</span>    Information &middot; Energy &middot; Evolution &middot; Networks &middot; Computation
+          <span class="cap">[ CROSS-CUTTING - Dynamics + Forces + Trust ]</span>
+                 (apply at every layer)</pre>
+      <p><strong>Read it bottom-up or top-down.</strong> Bottom-up: the substrates (information, energy) enable the technology, which reshapes work and the economy, all mediated by human psychology. Top-down: what to build (applied) rests on consequences, which rest on the tech, which rests on the substrates.</p>
+      <p style="margin-bottom:0"><strong>The meta-principle:</strong> the mechanisms that fall out of one layer become the axioms of the next. That is how knowledge compounds - and it is the reusable method behind every note here.</p>
+    </div>
+
+    <div class="sec-label">How to read this</div>
+    <div class="principle" style="border-left-color:var(--green);background:var(--green-light)">
+      <p style="margin-top:0"><strong>The fast path</strong> (a week of good reading, top of the stack down):</p>
+      <p style="margin:6px 0">Mental Models (the on-ramp) -&gt; AI -&gt; LLMs -&gt; Agents -&gt; Future of Work -&gt; Economics of AI -&gt; Human Needs framework + the <em>Patterns</em> capstone -&gt; The Build Playbook.</p>
+      <p style="margin:14px 0 6px"><strong>The deep path</strong> (bedrock first, bottom of the stack up):</p>
+      <p style="margin:6px 0">Information Theory -&gt; Energy -&gt; Evolution -&gt; Networks (the substrates) -&gt; then the tech stack -&gt; then Cost Collapse &amp; Abundance for the big picture -&gt; and Epistemology last, to see the method examine itself.</p>
+      <p style="margin-bottom:0"><strong>Cross-cutting, dip in anytime:</strong> the Dynamics, Forces, and Trust notes apply to every layer - read them whenever a topic makes you ask "how does this move over time?", "who has the power here?", or "why should I believe this?"</p>
+    </div>
+
+    <div class="wing">
+      <div class="wk">Wing I</div>
+      <h2>Think &mdash; understand how the world works</h2>
+      <p>From the substrates up to the demand economy, wrapped by the meta layer. The foundations of understanding: what is true, why, and where it breaks.</p>
+    </div>
+
+    <div class="sec-label" id="sec-0">0 &middot; Start here <span class="hint">- the on-ramp and router into everything else</span></div>
+    <div class="grid">
+      <a class="card start" href="meta/mental_models_how_to_think.html">
+        <span class="tag">Start here</span>
+        <h3>Mental Models &amp; How to Think</h3>
+        <p>The latticework: a core toolkit (inversion, incentives, second-order thinking), the biases that corrupt it, and a table that routes you into every other note in the collection.</p>
+        <div class="meta">11 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+      <a class="card start" href="meta/the_adoption_loop.html">
+        <span class="tag">Start here</span>
+        <h3>The Adoption Loop</h3>
+        <p>How anything travels from unknown to indispensable - the 7 gates (Discover -&gt; Trust -&gt; Retain -&gt; Advocate), why it is universal, and how it applies to learning itself. The first lens to reach for.</p>
+        <div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+    </div>
+
+    <div class="sec-label" id="sec-1">1 &middot; The substrates <span class="hint">- the bedrock everything is built on</span></div>
+    <div class="grid">
+      <a class="card" href="foundations/information_theory.html"><span class="tag">Substrate</span><h3>Information Theory</h3><p>The missing floor under the whole digital/AI story: the bit, entropy, compression, signal vs noise - and why an LLM is a compression of the internet.</p><div class="meta">11 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="foundations/energy_and_thermodynamics.html"><span class="tag">Substrate</span><h3>Energy &amp; Thermodynamics</h3><p>Energy as the master resource: the two laws, entropy, life as a local entropy-reducer, Landauer's limit, and why energy now gates AI.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="foundations/evolution_as_algorithm.html"><span class="tag">Substrate</span><h3>Evolution as the Meta-Algorithm</h3><p>Variation + selection + retention: one substrate-independent engine running under biology, markets, ideas, and AI training.</p><div class="meta">9 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="foundations/networks_and_emergence.html"><span class="tag">Substrate</span><h3>Networks &amp; Emergence</h3><p>Value lives in the edges, not the nodes: network effects, scale-free hubs, contagion, tipping points, and how the whole exceeds its parts.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="foundations/computation_as_substrate.html"><span class="tag">Substrate</span><h3>Computation (the honest 5th)</h3><p>Rules + state + iteration - the substrate-independent process the other four run on: universality, why it may be the deepest, and its provable walls (halting, uncomputable, P vs NP).</p><div class="meta">9 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+    </div>
+
+    <div class="sec-label" id="sec-2">2 &middot; The technology <span class="hint">- what AI actually is and can do</span></div>
+    <div class="grid">
+      <a class="card" href="ai/ai_from_first_principles.html">
+        <span class="tag">Technology</span>
+        <h3>AI from First Principles</h3>
+        <p>The parent layer: the 6 axioms, symbolic vs connectionist + the Bitter Lesson, the rational-agent definition, and Goodhart/alignment. Unifies the whole collection.</p>
+        <div class="meta">9 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+      <a class="card" href="llms/llms_from_first_principles.html">
+        <span class="tag">Technology</span>
+        <h3>LLMs from First Principles</h3>
+        <p>The 6 axioms an LLM is built on, the mechanisms that follow, the real build pipeline, sampling, context windows, failure modes, and the SLM-vs-RAG decision ladder.</p>
+        <div class="meta">13 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+      <a class="card" href="agents/agents_from_first_principles.html">
+        <span class="tag">Technology</span>
+        <h3>Agents from First Principles</h3>
+        <p>What an agent really is, how the loop works, the stateless-LLM "memory is a re-sent list" aha, a full loop trace, context/memory management, compaction, and tool permissions.</p>
+        <div class="meta">12 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+    </div>
+
+    <div class="sec-label" id="sec-3">3 &middot; Dynamics &amp; forces <span class="hint">- cross-cutting: how systems move + who steers them</span></div>
+    <div class="grid">
+      <a class="card" href="dynamics/tech_revolutions_and_scurves.html"><span class="tag">Dynamics</span><h3>Tech Revolutions &amp; S-Curves</h3><p>The time axis: S-curves, the chasm, Perez's installation-crash-deployment surges, the hype cycle, and where AI sits.</p><div class="meta">11 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="dynamics/systems_thinking.html"><span class="tag">Dynamics</span><h3>Systems Thinking &amp; Feedback</h3><p>Stocks, flows, reinforcing vs balancing loops, delays, Jevons paradox, and leverage points - second-order thinking as a discipline.</p><div class="meta">12 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="dynamics/risk_uncertainty_tails.html"><span class="tag">Dynamics</span><h3>Risk, Uncertainty &amp; the Tails</h3><p>Risk vs uncertainty, fat tails, black swans, ergodicity (never risk ruin), and antifragility - thinking well when you can't predict.</p><div class="meta">11 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="forces/power_and_political_economy.html"><span class="tag">Forces</span><h3>Power &amp; Political Economy</h3><p>Who steers the machine: power as dependence, chokepoints, why power concentrates, state vs market vs firm, and the geopolitics of compute.</p><div class="meta">11 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="forces/game_theory_and_moloch.html"><span class="tag">Forces</span><h3>Game Theory &amp; Moloch</h3><p>The prisoner's dilemma, Nash equilibria, tragedy of the commons, and multipolar traps - why the AI race is a trap nobody can exit.</p><div class="meta">12 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+    </div>
+
+    <div class="sec-label" id="sec-4">4 &middot; The human layer <span class="hint">- why we act, and how fast we adopt</span></div>
+    <div class="grid">
+      <a class="card" href="psychology/human_psychology_from_first_principles.html">
+        <span class="tag">Human layer</span>
+        <h3>Human Psychology from First Principles</h3>
+        <p>The 7 irreducible facts about the human mind (evolution, energy, sociality, emotion, prediction) and the biases and behaviors that fall out of them.</p>
+        <div class="meta">8 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+      <a class="card" href="behavioral-economics/behavioral_economics_from_first_principles.html">
+        <span class="tag">Human layer</span>
+        <h3>Behavioral Economics from First Principles</h3>
+        <p>Where psychology meets money: loss aversion, present bias, time preference, herding, animal spirits, and the incentives/moral-hazard cousin from information economics.</p>
+        <div class="meta">8 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+    </div>
+
+    <div class="sec-label" id="sec-5">5 &middot; The consequences <span class="hint">- what cheap intelligence does to the world</span></div>
+    <div class="grid">
+      <a class="card" href="future-of-work/future_of_work_from_first_principles.html">
+        <span class="tag">Consequence</span>
+        <h3>The Future of Work (LLMs + Agents)</h3>
+        <p>Verification economics, the leverage ladder, agents-as-microservices, inter-agent comms + folder org, the 5 invariants, the 2/5/10-year horizons, and the investment thesis.</p>
+        <div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+      <a class="card" href="economics-of-ai/economics_of_ai_from_first_principles.html">
+        <span class="tag">Consequence</span>
+        <h3>The Economics of AI / Compute</h3>
+        <p>Where the money and compute go when intelligence gets cheap: training vs inference, cost curves, commoditization, moats, and own-the-context-rent-the-intelligence.</p>
+        <div class="meta">8 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+      <a class="card" href="how-tech-changes-the-world/cost_collapse_and_friction.html">
+        <span class="tag">Consequence</span>
+        <h3>Cost Collapse &amp; the Death of Friction</h3>
+        <p>The deepest statement of what technology is: it drives a fundamental input's marginal cost to zero (the GPT lineage) - and the felt result is "everything, to everyone, everywhere, all the time."</p>
+        <div class="meta">12 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+    </div>
+
+    <div class="sec-label" id="sec-6">6 &middot; The demand economy <span class="hint">- needs, the businesses serving them, and what to build</span></div>
+    <div class="grid">
+      <a class="card" href="human-needs/human_needs_from_first_principles.html">
+        <span class="tag">Topic pack</span>
+        <h3>Human Needs &amp; the Companies Serving Them</h3>
+        <p>The axiom layer under every business: Maslow refined into 15 durable needs, the demand-flow chain, 15 notes on #1 vs #2 per need, a capstone of ~6 archetypes, plus 3 theory notes.</p>
+        <div class="meta">Framework + 15 notes + capstone + 3 theory &middot; <span class="go">Open the framework -&gt;</span></div>
+      </a>
+      <a class="card" href="businesses/business_first_principles_framework.html">
+        <span class="tag">Topic pack</span>
+        <h3>Businesses &amp; Marketplaces</h3>
+        <p>A shared 9-point lens + 9 company teardowns (Meta, Google, Amazon, Nvidia, DoorDash, Walmart, Shopify, Stripe, Costco): value creation/capture, flywheels, moats, and aggregation theory.</p>
+        <div class="meta">Lens + 9 notes &middot; <span class="go">Open the lens -&gt;</span></div>
+      </a>
+      <a class="card" href="human-needs/abundance_and_new_order.html">
+        <span class="tag">Demand economy</span>
+        <h3>Abundance, Its Limits &amp; a New Order of Needs</h3>
+        <p>The honest counterweight: what overproduction costs, why markets serve effective-demand-not-need (the zone of neglect), better frameworks, and where a sated brain goes next.</p>
+        <div class="meta">12 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+      <a class="card" href="businesses/distribution_vs_depth.html">
+        <span class="tag">Business lens</span>
+        <h3>Distribution vs Depth (Spotify)</h3>
+        <p>Why a standalone app beat both the bundle (Amazon) and the surface (Apple): two kinds of friction, habit-as-the-real-surface, brand permission, plus a full Spotify business + product-taste deconstruction.</p>
+        <div class="meta">12 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+
+      <a class="card" href="businesses/aggregation_theory.html">
+        <span class="tag">Business lens</span>
+        <h3>Aggregation Theory</h3>
+        <p>The load-bearing value-capture model: own the demand, commoditize supply, tax the flow thinly but hugely - who wins/pays, the take-rate ratchet, the 4 capture patterns, plus the streaming AVOD/SVOD case.</p>
+        <div class="meta">11 sections &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+
+      <a class="card" href="build-playbook/build_playbook.html">
+        <span class="tag">Personal</span>
+        <h3>The Build Playbook</h3>
+        <p>What to build given domain knowledge but little proprietary data: the asset inventory, the cheap-verifier rule, the data flywheel, a ranked build menu, and a quarterly checklist.</p>
+        <div class="meta">9 sections + checklist &middot; <span class="go">Open note -&gt;</span></div>
+      </a>
+    </div>
+
+    <div class="sec-label" id="sec-7">7 &middot; Trust &amp; the meta level <span class="hint">- the new scarcity, and the method examining itself</span></div>
+    <div class="grid">
+      <a class="card" href="trust/trust_and_verification.html"><span class="tag">Trust</span><h3>Trust &amp; Verification</h3><p>Why trust is cached verification, how it's manufactured, and why - when generation is free - verification becomes the central scarcity of the AI age.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="meta/epistemology_and_first_principles.html"><span class="tag">Meta</span><h3>Epistemology &amp; the Method</h3><p>The collection examining itself: what a first principle really is (it's fractal), when reductionism fails, map vs territory, and how beliefs should update.</p><div class="meta">11 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <div class="card soon">
+        <span class="tag">Coming soon</span>
+        <h3>Add your next topic</h3>
+        <p>RAG, evaluations, fine-tuning, negotiation... anything. Same structure: axioms, then mechanisms, then how to use it.</p>
+        <div class="meta">One folder + one HTML note per topic</div>
+      </div>
+    </div>
+
+    <div class="wing">
+      <div class="wk">Wing II</div>
+      <h2>Build &mdash; turn understanding into working systems</h2>
+      <p>The craft of making things that work: managing complexity, from code in the small to AI systems in the large. The Think wing tells you what to build and why; this wing is how to build it so it survives contact with reality.</p>
+    </div>
+
+    <div class="sec-label">The map of the craft</div>
+    <div class="principle" style="border-left-color:var(--spark);background:var(--spark-light,#fff8e5)">
+      <p style="margin-top:0"><strong>The Builder's Atlas</strong> is the syllabus for this wing. The whole craft has one enemy - <strong>complexity</strong> - and every fundamental is a move to keep a system simple enough for a human mind to reason about. Suggested order:</p>
+      <p style="font-family:'SF Mono',Menlo,Consolas,monospace;font-size:13px;line-height:1.9;margin:12px 0;overflow:auto">
+      <strong>Coding Fundamentals</strong> &rarr; <strong>Design Principles</strong> &rarr; <strong>Algorithms &amp; Data Structures</strong> &rarr; <strong>System Design</strong> &rarr; <strong>Designing AI Systems</strong>
+      </p>
+      <p style="margin-bottom:0">AI-centric on purpose: every fundamental earns its place by mattering when you build with AI. <a href="building/builders_atlas.html" style="color:var(--blue);font-weight:700">Open the Builder's Atlas -&gt;</a></p>
+    </div>
+
+    <div class="sec-label" id="sec-8">8 &middot; The builder's craft <span class="hint">- from code in the small to AI systems in the large</span></div>
+    <div class="grid">
+      <a class="card start" href="building/builders_atlas.html"><span class="tag">Start here</span><h3>The Builder's Atlas</h3><p>The map of the Build wing: the one big idea (complexity management), the three clusters, the suggested track, and how the craft links back to the Think wing.</p><div class="meta">9 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="building/coding_fundamentals.html"><span class="tag">Craft</span><h3>Coding Fundamentals</h3><p>Abstraction, decomposition, state (the real villain), interfaces, and why - in the AI era - reading code beats writing it.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="building/design_principles.html"><span class="tag">Craft</span><h3>Design Principles</h3><p>DRY, YAGNI, KISS, SOLID - derived, not memorized: every one falls out of a single fact, that code is changed and change is where cost lives.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="building/algorithms_and_data_structures.html"><span class="tag">Craft</span><h3>Algorithms &amp; Data Structures</h3><p>Big-O, the space-time tradeoff, the four structures you use daily, hashing, and vector similarity - the algorithm under modern AI retrieval.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="building/system_design.html"><span class="tag">Craft</span><h3>System Design</h3><p>Making many machines act like one reliable service: the master tradeoffs, CAP, scaling, caching, queues, state, and designing for failure.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+      <a class="card" href="building/designing_ai_systems.html"><span class="tag">Craft &middot; capstone</span><h3>Designing AI Systems</h3><p>Building a reliable product on a probabilistic, expensive, slow core: the inference pipeline, context engineering, RAG, agents-as-distributed-systems, and evals.</p><div class="meta">10 sections &middot; <span class="go">Open note -&gt;</span></div></a>
+    </div>
+
+    <div class="sec-label">Resources</div>
+    <div class="principle" style="border-left-color:var(--blue);background:var(--blue-light);margin-bottom:14px">
+      <p style="margin:0"><strong>Two matched super-prompts.</strong> Use the <strong>Tutor</strong> to learn a new topic cold (1:1 Socratic, one concept at a time). Use the <strong>Synthesis Partner</strong> to connect, stress-test, and compound what you already know across topics - the mode that built most of this collection.</p>
+    </div>
+    <div class="resource">
+      <div class="icon">MD</div>
+      <div class="body">
+        <h3>The First-Principles Tutor super-prompt</h3>
+        <p>The reusable Socratic tutor that teaches any topic this way - axioms first, then mechanisms. File: <code>first_principles_tutor.md</code></p>
+      </div>
+    </div>
+    <div class="resource" style="margin-top:14px">
+      <div class="icon">MD</div>
+      <div class="body">
+        <h3>The First-Principles Synthesis Partner super-prompt</h3>
+        <p>A thinking partner that connects ideas into a web, steelmans-then-sharpens your models, hunts paradoxes, and turns threads into durable notes. File: <code>first_principles_synthesis_partner.md</code></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    First-Principles Tutor &middot; personal knowledge base &middot; 63 notes across 17 topics &middot; two wings (Think + Build) &middot; updated 2026-07-11.
+    Every note is a single self-contained HTML file - open with a double-click, no build step.
+  </footer>
+</body>
+</html>

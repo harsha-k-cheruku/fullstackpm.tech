@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Distribution vs Depth: Why Spotify Beats the Bundle and the Surface</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:300px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:33px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="business_first_principles_framework.html" style="color:#0053e2;text-decoration:none">Businesses</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Distribution vs Depth: Why Spotify Beats the Bundle and the Surface</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Businesses: Distribution vs Depth</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#puzzle"><span class="num">1</span>The puzzle</a>
+  <a href="#twofrictions"><span class="num">2</span>Two frictions</a>
+  <a href="#frictiondeath"><span class="num">3</span>Friction death helps the specialist</a>
+  <a href="#habit"><span class="num">4</span>The real surface is the habit</a>
+  <a href="#distvdepth"><span class="num">5</span>Distribution vs Depth (the law)</a>
+  <a href="#perception"><span class="num">6</span>Amazon's perception problem</a>
+  <a href="#model"><span class="num">7</span>Spotify's business model</a>
+  <a href="#product"><span class="num">8</span>Product sense &amp; taste</a>
+  <a href="#moat"><span class="num">9</span>Moat &amp; vulnerabilities</a>
+  <a href="#use"><span class="num">10</span>The reusable test</a>
+  <a href="#glossary"><span class="num">11</span>Glossary</a>
+a href="business_first_principles_framework.html" style="margin-top:14px;color:var(--blue);font-weight:700">The shared lens</a>
+  <a href="../index.html" style="color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Distribution vs Depth: Why Spotify Beats the Bundle and the Surface</h1>
+  <p class="lede">A standalone app with no hardware, no bundle, and no ecosystem beat both the everything-store (Amazon) and the company that owns the phone (Apple). Here is why - and a full deconstruction of the business + product that pulled it off.</p>
+  <p class="meta">Companion to <a href="amazon_first_principles.html">Amazon</a> and <a href="shopify_first_principles.html">Shopify</a> &middot; uses <a href="business_first_principles_framework.html">the shared lens</a> &middot; Captured 2026-07-11</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>The puzzle:</strong> Spotify (~600M+ users, ~250M paying, ~2x Apple Music) beat Amazon Music (the bundle) AND Apple Music (pre-installed on the iPhone). Neither bundling nor surface-integration won.</li>
+    <li><strong>Two frictions:</strong> acquisition friction is a one-time cost; usage friction is paid every day. For a 2-hrs/day habit, daily usage friction dwarfs the one-time install - so people rationally pay to install the better daily experience.</li>
+    <li><strong>Friction death helps the challenger:</strong> app stores + one-tap sign-in collapsed acquisition friction to ~20 seconds, dissolving the pre-installed default's only moat.</li>
+    <li><strong>The real surface is the habit, not the hardware.</strong> Apple owns the phone; Spotify owns the mental slot labeled "music." Habit beats hardware for daily products.</li>
+    <li><strong>The law:</strong> distribution/bundling wins low-engagement commodity utilities; depth (focus + data flywheel + personal switching cost) wins high-engagement, identity-laden habits.</li>
+    <li><strong>Amazon has a structural perception problem:</strong> a utility/cheap brand has no "permission" in taste/identity categories, and free-with-Prime signals low value.</li>
+    <li><strong>The business:</strong> a freemium two-sided marketplace with a fatal flaw - it never owned the supply (labels take ~70%), so its whole strategy is an escape toward owned, higher-margin audio (podcasts, audiobooks, ads, marketplace tools).</li>
+  </ul>
+
+  <h2 id="puzzle"><span class="n">1</span>The puzzle that breaks two theories</h2>
+  <p>Two giants had textbook advantages and still lost:</p>
+  <ul>
+    <li><strong>Amazon's theory - "bundle it."</strong> Amazon Music is ~free inside Prime. Bundling + scale should win.</li>
+    <li><strong>Apple's theory - "own the surface."</strong> Apple Music is pre-installed on the most valuable device on earth, zero install friction. Default bias should win.</li>
+  </ul>
+  <p>Yet the winner is a <strong>standalone company</strong> with no hardware, no bundle, no ecosystem lock-in. So the explanation cannot be bundling or distribution. It has to be something those two lack.</p>
+  <div class="box key"><span class="lbl">The setup that decides everything</span><p>All three license the <em>same</em> ~100M songs from the <em>same</em> labels. The core good is byte-for-byte identical - the catalog is <strong>commoditized</strong>. When the "what" is identical, 100% of the competition moves to the "how": discovery, recommendation, UX, identity. That is the battlefield a focused specialist can win against giants.</p></div>
+
+  <h2 id="twofrictions"><span class="n">2</span>Two frictions (the refinement)</h2>
+  <p>"A new app is new friction, so the pre-installed option should win" is true but too coarse. There are <strong>two</strong> frictions, paid at different times:</p>
+  <table>
+    <thead><tr><th>Friction</th><th>When paid</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Acquisition friction</strong></td><td>ONCE (to start)</td><td>Download, sign up, learn it, one more icon, one more bill</td></tr>
+      <tr><td><strong>Usage friction</strong></td><td>EVERY time you use it</td><td>Worse recommendations, clunky discovery, "not on this device", no playlists/Wrapped</td></tr>
+    </tbody>
+  </table>
+  <p>The default (Apple/Amazon) has ~zero acquisition friction but <em>high</em> usage friction. Spotify has a one-time acquisition friction but <em>low</em> usage friction. Now amortize over a habit used ~2 hrs/day:</p>
+<pre>One-time 20-second install
+        vs
+slightly-worse experience  x  ~1,000 sessions / year</pre>
+  <div class="box key"><span class="lbl">Friction minimization is NOT violated - it is amortized</span><p>People rationally pay a one-time friction to kill a daily friction. They are still minimizing <em>total lifetime</em> friction; they just correctly discount a one-off against a recurring cost. <strong>Default bias only wins when the default's usage friction is low enough (or the product matters little enough) that the one-time cost is not worth paying</strong> - the calculator, the weather app. Music is the opposite: high engagement means usage friction dominates, so the default loses.</p></div>
+
+  <h2 id="frictiondeath"><span class="n">3</span>Friction death dissolves the incumbent's moat</h2>
+  <p>Here is the loop back to <a href="../how-tech-changes-the-world/cost_collapse_and_friction.html">Cost Collapse &amp; the Death of Friction</a>. The collapse of <em>acquisition</em> friction - app stores, one-tap install, "Sign in with Apple/Google" - dropped the cost of adding a new app from "an ordeal" to ~20 seconds. That barrier <strong>was the entire moat the pre-installed default relied on.</strong></p>
+  <div class="box"><span class="lbl">The irony</span><p>The very trend that seems to favor the pre-installed default actually <strong>undermines</strong> it. When switching is nearly free, the fight reverts to usage quality - exactly where the specialist wins. Friction death is the challenger's friend.</p></div>
+
+  <h2 id="habit"><span class="n">4</span>The real surface is the habit, not the hardware</h2>
+  <p>We talk about "owning the surface" as if it means the iPhone. But for a daily-use product the surface that matters is the <strong>habit</strong> - the slot in your head labeled "music," the app your thumb reaches for without thinking.</p>
+  <div class="box key"><span class="lbl">Habit beats hardware</span><p>Apple owns the hardware surface; Spotify owns the habit surface. Once Spotify is your habit, the pre-installed icon is irrelevant. And habit is won by usage quality + identity + accumulated personal data - not by being factory-installed. Whoever owns the habit owns the real surface.</p></div>
+  <p>The psychology of why people willingly cross the install friction:</p>
+  <ul>
+    <li><strong>Pull &gt; friction.</strong> Friction only blocks when the value gain is small. The daily pleasure is re-felt ~1,000x (peak-end rule); the install pain is felt once and forgotten.</li>
+    <li><strong>Effort justification / IKEA effect.</strong> Choosing Spotify and building playlists <em>increases</em> attachment - you value what you invested in. Friction paid <em>toward</em> a thing bonds you to it.</li>
+    <li><strong>Social proof + identity.</strong> Friends are on it, Wrapped is shared, playlists swapped. Choosing it is an identity act - easily worth 20 seconds.</li>
+  </ul>
+
+  <h2 id="distvdepth"><span class="n">5</span>Distribution vs Depth (the law)</h2>
+  <div class="box key"><span class="lbl">The reusable principle</span><p><strong>Bundling and surface-integration win LOW-engagement, commodity, "good-enough" utilities</strong> (default bias does the work). <strong>Focused product quality + a data flywheel + personal switching costs win HIGH-engagement, identity-laden, daily-habit products - even against a rival that owns the hardware.</strong> The more a product is used, loved, and worn as identity, the more depth-of-focus beats breadth-of-distribution.</p></div>
+  <table>
+    <thead><tr><th></th><th>Distribution wins</th><th>Depth wins</th></tr></thead>
+    <tbody>
+      <tr><td>Engagement</td><td>Low (occasional)</td><td>High (daily, hours)</td></tr>
+      <tr><td>Differentiation</td><td>"Good enough" is fine</td><td>Quality gap is felt</td></tr>
+      <tr><td>Identity load</td><td>None (calculator)</td><td>High (taste = you)</td></tr>
+      <tr><td>Switching cost accrues to</td><td>Nobody / the platform</td><td>The specialist (your data)</td></tr>
+      <tr><td>Examples</td><td>Default weather, Amazon Photos</td><td>Music, messaging, the tools you live in</td></tr>
+    </tbody>
+  </table>
+  <div class="box"><span class="lbl">Why the giants can't just fix it</span><p><strong>Focus is the un-copyable input.</strong> For Apple, music sells hardware + pads Services; for Amazon, it reduces Prime churn. For Spotify it is <em>the whole company</em>. When your product is someone else's feature, you lose to the firm whose product is its life - a gap users feel in something they touch for hours a day.</p></div>
+
+  <h2 id="perception"><span class="n">6</span>Amazon's perception problem</h2>
+  <p>Recall <strong>brand = cached trust/positioning</strong> (from <a href="../trust/trust_and_verification.html">Trust &amp; Verification</a>). Amazon's cached brand is "cheap, convenient, everything, functional, transactional" - a utility/hardware-store brand. That is gold for commodity retail and reliable cloud, and <em>poison</em> for anything needing taste, curation, identity, or prestige.</p>
+  <table>
+    <thead><tr><th>Trap</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td><strong>No brand permission</strong></td><td>A brand only stretches where its core association transfers. Amazon's transfers to cheap-and-functional, NOT to taste/identity. "Amazon Music" is pre-framed as the second-tier freebie before you open it.</td></tr>
+      <tr><td><strong>Zero-price paradox</strong></td><td>For experiential goods, free/bundled signals LOW value - we discount what we did not choose to pay for. ~Free-with-Prime makes people take it <em>less</em> seriously as "their music app." (Spotify's freemium dodges this: free is an explicit funnel to a clearly-better paid tier.)</td></tr>
+      <tr><td><strong>Halo vs horns</strong></td><td>Apple's premium/design halo <em>helps</em> Apple Music even though the product trails. Amazon's value halo becomes a horn - "cheap &amp; convenient" is exactly what you do NOT want signalling your taste.</td></tr>
+    </tbody>
+  </table>
+  <div class="box trap"><span class="lbl">The structural verdict</span><p>Amazon's problem is not (only) the product - <strong>the brand itself repels the high-margin, identity-laden slice of every taste-driven category.</strong> It is a commodity-floor brand trying to sell a meaning-ceiling product, and perception will not let it. Same reason Amazon struggles in luxury and fashion.</p></div>
+
+  <h2 id="model"><span class="n">7</span>Spotify's business model deconstructed</h2>
+  <h3>The engine: freemium two-sided marketplace</h3>
+  <p>Spotify runs a <strong>freemium funnel</strong>: a permanent free, ad-supported tier as a giant zero-cost acquisition machine, converting into <strong>Premium</strong> subscriptions. It is also a <strong>two-sided marketplace</strong> - listeners on one side, artists/labels on the other - with tools (Spotify for Artists, Discovery Mode, Marketplace) monetizing the supply side.</p>
+  <table>
+    <thead><tr><th>Revenue stream</th><th>Share (approx)</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Premium subscriptions</td><td>~85-88%</td><td>The core; predictable recurring ARPU</td></tr>
+      <tr><td>Ad-supported (free tier)</td><td>~12-15%</td><td>The funnel + a business in its own right; podcasts made ads strategic</td></tr>
+    </tbody>
+  </table>
+  <div class="box trap"><span class="lbl">The fatal flaw: it never owned the supply</span><p>Spotify licenses music - it does not own it. Roughly <strong>~70% of revenue flows straight to labels and rights-holders</strong>. That caps gross margin around ~25-30% - thin for software, and structurally so. This is the deepest fact about the business: <em>the supplier owns the product</em>, so Spotify has scale but weak pricing power (contrast <a href="shopify_first_principles.html">Shopify</a>, which also does not own demand; and see <a href="aggregation_theory.html">Aggregation Theory</a> for why owning the supply changes everything). Being #1 does not fix a capped margin.</p></div>
+  <h3>The escape: own the audio you can</h3>
+  <p>Every major strategic move is the same move - <strong>climb toward owned, higher-margin, non-label audio</strong> to escape the 70% tax:</p>
+  <ul>
+    <li><strong>Podcasts</strong> - exclusives + a huge catalog. Podcast rights economics beat music; ads attach; and it deepens daily engagement (one app for all audio).</li>
+    <li><strong>Audiobooks</strong> - another owned-ish, higher-margin audio vertical bolted onto the same habit.</li>
+    <li><strong>Advertising / marketplace tools</strong> - Discovery Mode (artists trade royalty for algorithmic promotion), ad tech, and creator tools - higher-margin, two-sided revenue that is <em>Spotify's</em>, not the labels'.</li>
+    <li><strong>Price increases</strong> - only recently possible, because the habit/switching-cost moat finally gave it pricing power.</li>
+  </ul>
+  <div class="box"><span class="lbl">Unit economics in one breath</span><p>Value = MAU -&gt; free-to-paid conversion -&gt; ARPU x retention, minus the ~70% content cost. The levers: grow the funnel (free tier), lift conversion (product quality), lift ARPU (price + audiobooks + ads), cut the content share (own more non-music audio). Churn is low because the personal data + playlists lock users in - which is what finally enabled price hikes.</p></div>
+
+  <h2 id="product"><span class="n">8</span>Product sense &amp; taste (the craft that wins the "how")</h2>
+  <p>Because the catalog is commoditized, Spotify wins on <strong>product taste</strong> - the felt quality of discovery and personalization. This is the un-bundleable, un-defaultable edge:</p>
+  <table>
+    <thead><tr><th>Product</th><th>The insight / job it nails</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Discover Weekly</strong></td><td>Solved the hardest job in music - "what do I play next?" - as a personal, reliable, weekly ritual. Turned a search problem into a gift that arrives.</td></tr>
+      <tr><td><strong>Release Radar</strong></td><td>Personalized new-release feed - keeps the artist relationship warm and the catalog feeling fresh.</td></tr>
+      <tr><td><strong>Wrapped</strong></td><td>The masterstroke of product-as-identity: turns your private listening into a shareable status artifact. Free viral acquisition + identity + retention in one - a status ritual Apple/Amazon cannot manufacture.</td></tr>
+      <tr><td><strong>Playlists (owned + editorial + user)</strong></td><td>The core switching cost. Your library is <em>your</em> work; leaving means abandoning it. Editorial playlists also give Spotify supply-side power (placement = promotion).</td></tr>
+      <tr><td><strong>Blend / Jam / social</strong></td><td>Turns a solo utility into a shared, belonging-flavored experience - the substitute-need (connection) bolted onto music.</td></tr>
+      <tr><td><strong>AI DJ</strong></td><td>Packages the recommendation engine as a personality - the data flywheel made tangible and delightful.</td></tr>
+      <tr><td><strong>Ubiquity + seamless handoff</strong></td><td>Equally excellent on phone, car, PlayStation, Sonos, Alexa, web, watch - Spotify Connect hands playback across devices. Neutralizes Apple's "integration" by being everywhere.</td></tr>
+    </tbody>
+  </table>
+  <div class="box good"><span class="lbl">The product-sense lesson</span><p>Great product taste here is not more features - it is <strong>nailing the one job (what to play next) so well it feels like magic, then wrapping it in identity (Wrapped), habit (playlists), and ubiquity (Connect).</strong> That is what a team obsessed with one thing produces and a team shipping a checkbox feature cannot. Taste is the compounding output of focus.</p></div>
+
+  <h2 id="moat"><span class="n">9</span>Moat &amp; vulnerabilities</h2>
+  <h3>The moat</h3>
+  <ul>
+    <li><strong>The recommendation data-flywheel</strong> - more listeners -&gt; more data -&gt; better recommendations -&gt; better retention -&gt; more listeners. Started earliest, invested most.</li>
+    <li><strong>Personal switching costs</strong> - playlists, library, trained algorithm, Wrapped history, followers - all accrue to Spotify, not the OS.</li>
+    <li><strong>Ubiquity + brand</strong> - the verb for music; Wrapped as culture.</li>
+    <li><strong>Habit</strong> - the real surface, owned.</li>
+  </ul>
+  <h3>The vulnerabilities</h3>
+  <div class="box trap"><span class="lbl">Where it is exposed</span>
+    <p><strong>1. The labels (structural).</strong> It never owned supply; the ~70% tax caps margin forever unless it keeps shifting mix to owned audio.</p>
+    <p><strong>2. A new surface.</strong> Its real threats are not Amazon/Apple but AI-native audio, generative music, or a voice-agent that re-intermediates discovery ("play me something") - a fresh surface war (see <a href="amazon_first_principles.html">Amazon</a>'s same agent risk).</p>
+    <p><strong>3. Platform tax + rules.</strong> Apple's App Store cut and default-app power (the long-running dispute) - the classic risk of building on a rival's surface.</p></div>
+
+  <h2 id="use"><span class="n">10</span>The reusable test</h2>
+  <p>Before betting on the giant's bundle/surface or the specialist's depth, ask:</p>
+  <ol>
+    <li><strong>How commoditized is the input?</strong> If the core good is identical for all players, the war moves to the experience layer - advantage: depth.</li>
+    <li><strong>How engaged / identity-laden is the use?</strong> Daily + emotional + self-signaling -&gt; usage friction and love dominate -&gt; depth. Occasional + functional -&gt; distribution/default.</li>
+    <li><strong>Do personal switching costs accrue to the specialist?</strong> If using it builds up data/history/creations that lock the user in, the specialist compounds a moat the default cannot.</li>
+    <li><strong>Does the giant's BRAND have permission here?</strong> A utility brand cannot sell taste/identity, however good the product.</li>
+    <li><strong>Who owns the supply?</strong> If neither the giant nor the specialist owns it (labels), margin is capped for everyone and the game is about owning the next layer.</li>
+  </ol>
+  <div class="box key"><span class="lbl">The one-liner</span><p>Distribution wins the one-time acquisition-friction game; depth wins the recurring usage-friction game. For a daily, identity-laden habit built on a commodity input, <strong>focus + data flywheel + personal switching cost beat both the bundle and the surface</strong> - which is exactly how a standalone app became the world's #1 audio platform over Amazon and Apple.</p></div>
+
+  <h2 id="glossary"><span class="n">11</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Acquisition friction</strong></td><td>One-time cost to start using something (install, signup, learn).</td></tr>
+      <tr><td><strong>Usage friction</strong></td><td>Recurring cost paid every time you use it (worse UX/discovery).</td></tr>
+      <tr><td><strong>Default bias</strong></td><td>Tendency to stick with the pre-selected/pre-installed option.</td></tr>
+      <tr><td><strong>Habit surface</strong></td><td>The mental slot / reflexive app a user reaches for - the real surface for daily products.</td></tr>
+      <tr><td><strong>Distribution vs depth</strong></td><td>Breadth/bundling/default vs focus/quality/switching-cost; which wins depends on engagement + identity.</td></tr>
+      <tr><td><strong>Brand permission</strong></td><td>The categories a brand can credibly extend into (where its core association transfers).</td></tr>
+      <tr><td><strong>Zero-price paradox</strong></td><td>Free/bundled can signal low value for experiential goods.</td></tr>
+      <tr><td><strong>Halo / horns effect</strong></td><td>A brand's overall impression colors perception of each product (premium halo helps; value horn hurts taste goods).</td></tr>
+      <tr><td><strong>Freemium funnel</strong></td><td>Free tier as acquisition, converting to paid.</td></tr>
+      <tr><td><strong>Two-sided marketplace</strong></td><td>A platform serving two groups (listeners + artists) whose value rises with each other.</td></tr>
+      <tr><td><strong>Data flywheel</strong></td><td>Usage -&gt; data -&gt; better product -&gt; more usage; a compounding moat.</td></tr>
+      <tr><td><strong>Effort justification / IKEA effect</strong></td><td>We value more what we chose and invested effort in.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Distribution vs Depth (Spotify) &middot; captured 2026-07-11. Companion to the Amazon and Shopify teardowns.</footer>
+</main>
+</div>
+</body>
+</html>

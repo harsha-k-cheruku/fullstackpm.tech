@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Need: Entertainment / Leisure - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="human_needs_from_first_principles.html" style="color:#0053e2;text-decoration:none">Human Needs</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Entertainment / Leisure</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Need: Entertainment</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>The need as an axiom</a>
+  <a href="#flow"><span class="num">2</span>The demand flow</a>
+  <a href="#one"><span class="num">3</span>#1 Netflix and TikTok</a>
+  <a href="#two"><span class="num">4</span>#2 Disney, Spotify, YouTube</a>
+  <a href="#others"><span class="num">5</span>Other players / evolution</a>
+  <a href="#econ"><span class="num">6</span>Unit economics</a>
+  <a href="#playing"><span class="num">7</span>How it is playing out</a>
+  <a href="#pattern"><span class="num">8</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">9</span>Glossary</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Entertainment / Leisure</h1>
+  <p class="lede">The aesthetic and leisure need: stimulation, escape, and rest. Everything here competes for the same finite resource - your attention.</p>
+  <p class="meta">Need note 9 of 13 &middot; See <a href="human_needs_from_first_principles.html">The needs framework</a> &middot; #1 Netflix / TikTok &middot; #2 Disney / Spotify / YouTube</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>The scarce resource is TIME/ATTENTION, not money.</strong> A person has roughly 4-5 hours of leisure a day, and every form of entertainment competes for the same finite hours. This makes the category structurally zero-sum.</li>
+    <li><strong>Discovery is the battleground.</strong> Content is abundant; attention is scarce. Whoever decides "what you watch next" (recommendation algorithm) captures the value, not necessarily whoever made the content.</li>
+    <li><strong>Two monetization models split the board:</strong> subscription (SVOD - Netflix, Spotify, Disney+) where you rent access, and advertising (AVOD - TikTok, YouTube, ad-tier streaming) where your attention is the product sold.</li>
+    <li><strong>Three durable moats:</strong> content-as-flywheel (Netflix spends ~$17B/yr on content to feed retention), IP-as-moat (Disney reuses franchises across parks, film, and merchandise), and algorithm-as-moat (TikTok's feed is the strongest attention engine ever built).</li>
+    <li><strong>Gaming is the largest category by revenue (~$185B+),</strong> bigger than film and music combined, yet it is the least discussed in the "streaming wars" framing.</li>
+    <li><strong>Short-form is eating long-form.</strong> TikTok-style infinite feeds have compressed attention spans and forced Netflix, YouTube, and Instagram to copy the format.</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>The need as an axiom</h2>
+  <p>The need for entertainment is <strong>aesthetic and leisure-driven</strong>: humans seek stimulation when bored, escape when stressed, and rest when tired. It is not a luxury layered on top of survival - it is ancient and universal. Cave paintings (~40,000 years old), oral storytelling, dice games (~5,000 years old), and music predate writing itself. The <em>form</em> churns constantly; the <em>drive</em> never moves.</p>
+  <div class="box key"><span class="lbl">The axiom</span><p>People will always trade time for stimulation, escape, and rest. A caveman around a fire listening to a story and a person scrolling TikTok on a couch are running the identical program - filling leisure hours with engaging content.</p></div>
+  <p>What makes this need economically special is its <strong>hard constraint: finite attention</strong>. You cannot eat two dinners at once, but you also cannot watch two shows at once. There are only ~24 hours in a day, ~8 for sleep, ~8-9 for work/commute, leaving roughly <strong>4-5 hours of contestable leisure time</strong>. Every entertainment company on Earth is fighting over that same fixed pie. Netflix's CEO famously said their biggest competitor is not another streamer - it is <em>sleep</em>.</p>
+  <ul>
+    <li><strong>Stimulation:</strong> the boredom-killer (short-form video, games, social feeds).</li>
+    <li><strong>Escape:</strong> immersion in another world (films, series, novels, open-world games).</li>
+    <li><strong>Rest:</strong> low-effort background comfort (comfort re-watches, ambient music, podcasts).</li>
+  </ul>
+
+  <h2 id="flow"><span class="n">2</span>The demand flow</h2>
+  <p>Entertainment travels a specific pipeline. Note where the money is captured:</p>
+<pre>NEED -&gt; Boredom/Trigger -&gt; Discovery (what to watch) -&gt; Consumption -&gt; Monetization (ad OR subscription) -&gt; Retention/Habit</pre>
+  <ul>
+    <li><strong>Trigger:</strong> boredom, a commute, downtime, stress. The moment leisure time opens up.</li>
+    <li><strong>Discovery:</strong> the battleground. With more content than any human could watch in 1,000 lifetimes, the scarce act is <em>choosing</em>. This is why the recommendation algorithm - not the catalog - is the crown jewel.</li>
+    <li><strong>Consumption:</strong> the actual watching/playing/listening. Measured in engagement (time spent, sessions, completion rate).</li>
+    <li><strong>Monetization:</strong> either you pay a subscription (SVOD), or an advertiser pays for your attention (AVOD). Increasingly, both at once (ad-supported subscription tiers).</li>
+    <li><strong>Retention/Habit:</strong> the goal is a daily habit. Churn is the enemy of subscription; a stale feed is the enemy of ad-supported.</li>
+  </ul>
+  <div class="box"><span class="lbl">Why discovery wins</span><p>In scarcity of content, distribution won (cable owned the pipe). In abundance of content, <strong>discovery wins</strong> (the algorithm owns the attention). TikTok proved you do not even need to own the content - if you own the feed that decides what plays next, you own the hours.</p></div>
+
+  <h2 id="one"><span class="n">3</span>#1 Netflix and TikTok (two ways to own attention)</h2>
+  <p>There are two co-#1s because they win the same need through opposite models: <strong>paid intentional long-form</strong> vs <strong>free algorithmic short-form</strong>.</p>
+
+  <h3>Netflix - subscription SVOD, content + recommendation, global scale</h3>
+  <ul>
+    <li><strong>Model:</strong> pure SVOD. ~$0 ads historically (now adding an ad tier). You pay ~$8-23/month for all-you-can-watch access.</li>
+    <li><strong>Scale:</strong> ~300M+ paid memberships across ~190 countries; revenue ~$39B/yr; operating margin now ~27%+ after years of cash-burn to build the catalog.</li>
+    <li><strong>The flywheel:</strong> spend ~$17B/yr on content -&gt; more subscribers -&gt; more revenue -&gt; more content budget -&gt; better recommendation data -&gt; higher retention. Scale funds content no rival can match.</li>
+    <li><strong>The moat:</strong> owning original content (so it cannot be pulled by a licensor) plus a recommendation engine tuned on hundreds of millions of viewers. The catalog is the flywheel; the algorithm keeps you from cancelling.</li>
+  </ul>
+
+  <h3>TikTok - short-form, algorithmic, ad-supported, infinite feed</h3>
+  <ul>
+    <li><strong>Model:</strong> free, AVOD. Owned by ByteDance; revenue ~$16B+ (US) and rising fast; global ad revenue estimated $30B+.</li>
+    <li><strong>The weapon:</strong> the <strong>For You</strong> algorithm - the most effective attention engine ever built. It learns your taste in minutes from watch-time signals and serves an infinite, personalized feed. Average user spends ~55-95 minutes/day.</li>
+    <li><strong>Why it is the biggest attention thief:</strong> it does not commission content (creators supply it for free), it does not require a subscription, and its unit of content is ~15-60 seconds - so it maximizes the number of dopamine hits per hour.</li>
+    <li><strong>The moat:</strong> algorithm-as-moat. The content is commoditized (user-generated), the value is entirely in the feed that decides what to show next.</li>
+  </ul>
+  <div class="box key"><span class="lbl">Two answers to one question</span><p>"What do I watch in my free time?" Netflix answers with a deep, curated, paid library and a recommendation shelf. TikTok answers with an infinite, free, addictive feed of free content. Netflix rents you a catalog; TikTok rents you to advertisers.</p></div>
+
+  <h2 id="two"><span class="n">4</span>#2 Disney, Spotify, and YouTube</h2>
+
+  <h3>Disney - the IP / franchise flywheel</h3>
+  <ul>
+    <li><strong>Model:</strong> own durable intellectual property (Marvel, Star Wars, Pixar, princesses) and monetize it across <em>every</em> surface - box office, Disney+, theme parks, cruises, toys, licensing.</li>
+    <li><strong>Scale:</strong> revenue ~$91B/yr; Parks & Experiences alone ~$34B and the profit engine; Disney+ ~150M+ subscribers.</li>
+    <li><strong>The flywheel:</strong> a hit film -&gt; a theme-park ride -&gt; merchandise -&gt; a streaming series -&gt; a sequel. One character (e.g. Elsa, Iron Man) is monetized for decades across mediums. The IP is a compounding asset, not a one-time content cost.</li>
+    <li><strong>The moat:</strong> IP-as-moat. You cannot algorithm your way to Mickey Mouse. Beloved franchises are the most durable moat in entertainment because affection compounds across generations.</li>
+  </ul>
+
+  <h3>Spotify - audio aggregation, thin label-dependent margins</h3>
+  <ul>
+    <li><strong>Model:</strong> aggregate essentially all recorded music (~100M+ tracks) into one subscription (~$12/month) plus a free ad-supported tier. ~675M users, ~265M paying.</li>
+    <li><strong>The margin problem:</strong> Spotify does not own the music. It pays roughly <strong>~70% of revenue to rights-holders</strong> (labels, publishers). It is an aggregator paying rent to its own suppliers, leaving gross margin ~28-30% and thin profit for years.</li>
+    <li><strong>The fix:</strong> push into content it <em>does</em> own economics on - podcasts and audiobooks - where it can strike better terms and even sell ads. Ownership of the discovery layer (playlists, algorithmic radio) is its real power.</li>
+    <li><strong>The moat:</strong> aggregation + discovery, but weakened by supplier power (the three major labels control most music and can dictate terms).</li>
+  </ul>
+
+  <h3>YouTube - user-generated video at planetary scale</h3>
+  <ul>
+    <li><strong>Model:</strong> UGC video, primarily AVOD (plus YouTube Premium subscription). Owned by Google/Alphabet; ad revenue ~$36B/yr, and with Premium/music it is a ~$50B business.</li>
+    <li><strong>The mechanism:</strong> creators supply the content for free (in exchange for a ~55% ad revenue share), YouTube supplies distribution, hosting, and the recommendation engine. ~2.5B monthly users; more watch-time on TVs now than mobile.</li>
+    <li><strong>The moat:</strong> the two-sided network - the largest library of creators and the largest audience - plus Google-scale recommendation. Spans short-form (Shorts) and long-form, so it fights TikTok and Netflix simultaneously.</li>
+  </ul>
+
+  <h2 id="others"><span class="n">5</span>Other players and how the category is evolving</h2>
+  <ul>
+    <li><strong>Gaming - the quiet giant (~$185B+).</strong> Larger than global film box office and recorded music combined. Console/PC (Sony, Microsoft/Xbox, Nintendo), mobile (the biggest slice), and platforms like <strong>Roblox</strong> and <strong>Fortnite</strong> that are less "games" than persistent social-entertainment worlds where teens spend hours daily. Gaming also has the best margins in entertainment.</li>
+    <li><strong>Podcasts:</strong> audio's fastest-growing format; a battleground between Spotify, YouTube (video podcasts), and Apple. Cheap to produce, sticky, ad-friendly.</li>
+    <li><strong>The streaming wars and bundling:</strong> after a decade of every studio launching its own app (Disney+, Max, Peacock, Paramount+, Apple TV+), the market fragmented and consumers rebelled at paying for 6 subscriptions. The correction is <strong>re-bundling</strong> (combined offers, ad-supported tiers, password-sharing crackdowns) - effectively re-inventing the cable bundle they disrupted.</li>
+    <li><strong>Attention as zero-sum:</strong> the entire board is fighting over the same 4-5 leisure hours. When TikTok grows, someone else's hours shrink. This is the defining structural fact of the category.</li>
+  </ul>
+  <div class="box trap"><span class="lbl">The re-bundling irony</span><p>Streaming unbundled cable to give consumers choice and lower prices. A decade later, subscription fatigue and ad tiers are re-assembling something that looks a lot like... the cable bundle. The need (easy access to lots of content for one predictable price) was constant; the mechanism did a full loop.</p></div>
+
+  <h2 id="econ"><span class="n">6</span>Unit economics</h2>
+  <p>Two revenue models, wildly different cost structures:</p>
+  <table>
+    <thead><tr><th>Model</th><th>How it earns</th><th>Key economics</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SVOD (subscription)</strong></td><td>Recurring fee for access (Netflix, Disney+, Spotify)</td><td>Predictable revenue; enemy is churn. Huge upfront content cost, amortized over years. Profit comes only at scale.</td></tr>
+      <tr><td><strong>AVOD (ad-supported)</strong></td><td>Sell viewer attention to advertisers (TikTok, YouTube, ad tiers)</td><td>Revenue scales with engagement (time on platform). No paywall friction; larger reach, lower revenue per user.</td></tr>
+      <tr><td><strong>IP / franchise</strong></td><td>Monetize owned characters across many surfaces (Disney)</td><td>Content cost is a compounding asset, reused for decades. Highest lifetime value per property.</td></tr>
+      <tr><td><strong>Gaming</strong></td><td>Game sales + in-game purchases + subscriptions</td><td>Highest margins in entertainment; digital distribution and microtransactions carry ~60-90% gross margin on hit titles.</td></tr>
+    </tbody>
+  </table>
+  <h3>Content amortization (the SVOD math)</h3>
+  <p>A show costing ~$100M is not expensed at once. Its cost is spread (amortized) over the years it is expected to drive viewing and retention - often front-loaded to the first year or two. This is why Netflix could report profits while spending ~$17B/yr: the cash goes out now, the expense is recognized gradually. Scale is decisive - the same $17B spread over 300M subscribers is ~$57/subscriber/yr; spread over 30M it would sink you.</p>
+  <h3>Spotify's ~70% problem</h3>
+  <p>Spotify's gross margin is capped near ~28-30% because roughly <strong>70 cents of every dollar</strong> flows to labels and publishers. It aggregates demand but does not own supply, so its own suppliers extract most of the value. Contrast Netflix, which owns its originals outright and keeps the upside.</p>
+  <div class="box good"><span class="lbl">Ad-tier convergence</span><p>The two models are merging. Netflix, Disney+, Max, and Prime Video all launched ad-supported tiers; SVOD is picking up AVOD revenue. Ad tiers often earn <em>more</em> per user (subscription fee + ad revenue) than ad-free tiers - a quiet reason the whole industry pushed users toward ads.</p></div>
+
+  <h2 id="playing"><span class="n">7</span>How it is playing out</h2>
+  <ul>
+    <li><strong>Streaming consolidation and bundling:</strong> too many apps, subscription fatigue -&gt; mergers, joint bundles, and ad tiers. The pendulum swings back toward aggregation.</li>
+    <li><strong>Ad tiers everywhere:</strong> once-sacred "no ads" premium services now all sell ads because ad-supported users are more profitable and expand the addressable market.</li>
+    <li><strong>Short-form eating long-form:</strong> TikTok forced YouTube (Shorts), Instagram (Reels), and even Netflix to experiment with vertical short-form. Attention is fragmenting into smaller units.</li>
+    <li><strong>Gaming dominance:</strong> the largest category keeps growing, absorbing more leisure hours - especially among younger users for whom Fortnite/Roblox are social hangouts, not just games.</li>
+    <li><strong>IP as the durable moat:</strong> in a world where content is infinite and algorithms are copyable, <em>beloved franchises</em> remain the one thing you cannot replicate. Disney, Nintendo, and franchise holders keep pricing power.</li>
+  </ul>
+
+  <h2 id="pattern"><span class="n">8</span>The pattern it exemplifies</h2>
+  <p>Entertainment is the purest example of <strong>competing for finite attention</strong>. Unlike groceries (bounded by stomachs and budgets), the ceiling here is time itself, and everyone shares one clock. That produces three distinct, durable moats - and the smart way to read any entertainment company is to ask which one it is betting on:</p>
+  <table>
+    <thead><tr><th>Moat</th><th>Bet</th><th>Exemplar</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Content-as-flywheel</strong></td><td>Outspend rivals on content until scale funds an unmatchable catalog</td><td>Netflix</td></tr>
+      <tr><td><strong>IP-as-moat</strong></td><td>Own beloved characters and reuse them across every surface for decades</td><td>Disney, Nintendo</td></tr>
+      <tr><td><strong>Algorithm-as-moat</strong></td><td>Own the feed that decides what plays next; let others supply the content</td><td>TikTok, YouTube</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The takeaway</span><p>Content is abundant, attention is scarce. So value migrates from making content to <strong>controlling discovery</strong> - unless you own IP so beloved it becomes its own discovery. Watch which moat a company holds, and you can predict whether it has pricing power or is just renting an audience.</p></div>
+
+  <h2 id="glossary"><span class="n">9</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SVOD</strong></td><td>Subscription Video On Demand - pay a recurring fee for all-you-can-watch access (Netflix, Disney+).</td></tr>
+      <tr><td><strong>AVOD</strong></td><td>Advertising Video On Demand - free to watch, funded by ads; your attention is the product sold (TikTok, YouTube).</td></tr>
+      <tr><td><strong>Attention economy</strong></td><td>The idea that human attention is the truly scarce resource; all content competes for the same finite hours.</td></tr>
+      <tr><td><strong>IP flywheel</strong></td><td>Reusing owned intellectual property (characters, franchises) across film, streaming, parks, and merchandise so each hit compounds.</td></tr>
+      <tr><td><strong>Content amortization</strong></td><td>Spreading the cost of expensive content over the years it is expected to drive viewing, rather than expensing it all at once.</td></tr>
+      <tr><td><strong>UGC</strong></td><td>User-Generated Content - content created for free by users/creators rather than commissioned by the platform (YouTube, TikTok).</td></tr>
+      <tr><td><strong>Engagement</strong></td><td>Measures of consumption - time spent, sessions per day, completion rate. The core KPI of ad-supported entertainment.</td></tr>
+      <tr><td><strong>Churn</strong></td><td>The rate at which subscribers cancel. The primary enemy of any subscription (SVOD) business.</td></tr>
+      <tr><td><strong>Recommendation algorithm</strong></td><td>The system that decides "what you watch next" - the crown jewel when content is abundant and attention is scarce.</td></tr>
+      <tr><td><strong>Zero-sum attention</strong></td><td>Because leisure hours are fixed (~4-5/day), one platform's gain in watch-time is another's loss.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Human Needs &middot; Need 9 of 13: Entertainment / Leisure. Content is abundant, attention is scarce - discovery is the battleground. <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Need: Prepared Food - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="human_needs_from_first_principles.html" style="color:#0053e2;text-decoration:none">Human Needs</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Need: Prepared Food / Convenience Eating</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Need: Prepared food</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>The need as an axiom</a>
+  <a href="#flow"><span class="num">2</span>The demand flow</a>
+  <a href="#doordash"><span class="num">3</span>#1 DoorDash - how it wins</a>
+  <a href="#ubereats"><span class="num">4</span>#2 Uber Eats - the different angle</a>
+  <a href="#others"><span class="num">5</span>Other players / evolution</a>
+  <a href="#econ"><span class="num">6</span>Unit economics</a>
+  <a href="#playing"><span class="num">7</span>How it is playing out</a>
+  <a href="#pattern"><span class="num">8</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">9</span>Glossary</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Need: Prepared Food / Convenience Eating</h1>
+  <p class="lede">The physiological need to eat, fused with the meta-need to not spend time cooking - and the three-sided local marketplace that now delivers it hot to the door.</p>
+  <p class="meta">Need note 02 &middot; #1 DoorDash vs #2 Uber Eats &middot; Part of <a href="human_needs_from_first_principles.html">The needs framework</a> &middot; Captured 2026-07-11</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>The axiom is "feed me now, without me cooking."</strong> Physiological hunger is ancient; the durable modern twist is convenience - trading money for time, effort, and cleanup.</li>
+    <li><strong>The mechanism is a three-sided local marketplace</strong>: consumer, restaurant, and courier - stitched together by an app that owns discovery, trust (ETA + ratings), and last-mile logistics.</li>
+    <li><strong>DoorDash won the US (~60-65% share) by counter-positioning into the suburbs</strong> that Grubhub and Uber Eats ignored, then compounding a local density flywheel plus DashPass subscriptions and a fast-growing ads business.</li>
+    <li><strong>Uber Eats plays a different angle</strong>: it borrows the Uber rider network, driver supply, and one super-app across mobility and food, and it is genuinely global where DoorDash is US-centric.</li>
+    <li><strong>The economics are brutal</strong>: contribution margin per order is only a few dollars; take rate looks like 15-30% but courier pay eats most of it. Profit only appears at density, plus ads and subscription revenue.</li>
+    <li><strong>It is playing out as consolidation + an ads/retail pivot</strong>: advertising is now the real margin engine, grocery and convenience delivery are the growth frontier, and gig-labor rules plus autonomous delivery are the wildcards.</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>The need as an axiom</h2>
+  <p>Eating is <strong>Maslow tier one</strong> - non-negotiable, several times a day, forever. That part is not interesting; it is a constant. What makes <em>prepared food</em> a distinct, durable need is the <strong>convenience meta-need</strong> layered on top of raw sustenance.</p>
+  <p>Cooking is not just buying ingredients (that is need 01, groceries). Cooking is a chain of chores: plan, shop, prep, cook, and clean. Prepared food lets a person <strong>pay to delete that entire chain.</strong> The customer is not really buying calories - they are buying back <strong>time and effort</strong>.</p>
+  <div class="box key"><span class="lbl">The axiom, stated precisely</span><p>"Feed me something good, right now, with as little of my own time and effort as possible - and I will pay a premium for that convenience." The hunger is physiological; the willingness to overpay is the convenience meta-need. Both are permanent.</p></div>
+  <p>Why is "someone else cooks and delivers it" so durable rather than a fad? <strong>Time-scarcity is structural.</strong> Dual-income households, longer commutes, remote/hybrid work that keeps people at their desks through lunch, and the cultural normalization of outsourcing chores all push the same direction. As income rises, people reliably trade money for time - and the last-mile of food is one of the most-repeated chores there is. A person who buys convenience once, three times a week, is a habit machine.</p>
+  <div class="box"><span class="lbl">Three layers of the same need</span>
+    <p><strong>Dine-in / takeout:</strong> the restaurant handles cook + serve; you handle transport. Oldest form.</p>
+    <p><strong>Delivery (classic):</strong> the restaurant cooks and drives - pizza, Chinese takeout. Works only for cuisines with fat margins and their own drivers.</p>
+    <p><strong>Aggregated delivery (today):</strong> a platform unbundles the driver from the restaurant, so <em>any</em> restaurant can deliver via a shared courier pool. This is the innovation that created DoorDash and Uber Eats.</p>
+  </div>
+
+  <h2 id="flow"><span class="n">2</span>The demand flow</h2>
+  <p>Prepared-food delivery runs the standard demand pipeline, but with a twist: it is a <strong>three-sided marketplace</strong>, so the platform must satisfy consumer, restaurant, and courier at the same time or the whole thing stalls.</p>
+<pre>NEED (hunger) -&gt; Craving/Trigger -&gt; Discovery (app) -&gt; Trust (ratings + ETA)
+   -&gt; Decision (order) -&gt; Fulfillment (last-mile logistics) -&gt; Payment -&gt; Retention (subscription)</pre>
+  <ul>
+    <li><strong>Trigger / craving:</strong> "It is 7pm, I am hungry, I do not want to cook." Often emotional and impulsive - which is why the app must be fast and the choices frictionless.</li>
+    <li><strong>Discovery:</strong> the app is the storefront. It owns the moment of intent. Restaurants that are not on it are effectively invisible to a hungry, lazy user. This is the aggregator's power.</li>
+    <li><strong>Trust:</strong> star ratings, photos, review counts, and - critically - the <strong>estimated delivery time (ETA)</strong>. In food, trust is mostly "will it arrive hot and on time," so accurate ETAs are a core trust primitive.</li>
+    <li><strong>Decision:</strong> menu, price, fees, and ETA combine. Fees (delivery + service) are the friction; subscriptions exist to erase that friction and lock the decision in.</li>
+    <li><strong>Fulfillment:</strong> the hard part. Dispatch a nearby courier, route them to the restaurant, time it against the kitchen's prep, then to the door - all in ~30-45 minutes for a low-value, perishable item. This is a real-time logistics problem, not e-commerce.</li>
+    <li><strong>Payment:</strong> stored card, one tap. The platform takes its cut, pays the courier, and remits the rest to the restaurant.</li>
+    <li><strong>Retention:</strong> subscription (DashPass / Uber One) that waives delivery fees, plus habit and saved addresses/cards. Retention is where thin-margin orders finally add up.</li>
+  </ul>
+  <div class="box"><span class="lbl">The three sides, and who is hardest to keep</span>
+    <p><strong>Consumers</strong> want low fees, fast delivery, and selection.</p>
+    <p><strong>Restaurants</strong> want incremental orders without a punishing commission.</p>
+    <p><strong>Couriers</strong> want steady, well-paying, flexible work.</p>
+    <p>The platform must balance all three; squeeze any one too hard and it defects to a competitor (multi-homing). Density is what makes all three sides happier at once.</p>
+  </div>
+
+  <h2 id="doordash"><span class="n">3</span>#1 DoorDash - how it wins</h2>
+  <p>DoorDash is the US market leader with roughly <strong>60-65% share</strong> of food-delivery sales. It did not win by being first (Grubhub was older) or by having the biggest brand (Uber). It won by <strong>counter-positioning</strong> and then grinding out a density advantage.</p>
+  <h3>Suburban-first counter-positioning</h3>
+  <p>Grubhub and early Uber Eats chased <strong>dense urban cores</strong> - Manhattan, San Francisco - where restaurants are packed and walk/bike delivery is easy. DoorDash deliberately went to <strong>suburbs and secondary cities</strong> first: lower-density areas where you need a car, where big chains (Chipotle, Cheesecake Factory, Wingstop) dominate, and where there was almost no competition. Those markets turned out to be huge, less contested, and stickier - suburban households order repeatedly and have fewer alternatives.</p>
+  <h3>The local density flywheel</h3>
+  <p>Delivery economics are <strong>local, not national</strong>. Being huge nationally is worthless in a given zip code; what matters is density <em>within</em> each neighborhood.</p>
+<pre>more restaurants in a zip -&gt; more consumer selection -&gt; more orders
+   -&gt; more courier earnings/hour -&gt; more couriers -&gt; faster/cheaper delivery
+   -&gt; happier consumers -&gt; more orders ... (repeat, per zip code)</pre>
+  <p>Once DoorDash led a local market, its deliveries were faster and cheaper (couriers batch more orders per hour), which is nearly impossible for a sub-scale rival to match there. This is why the market tends toward a local winner-take-most, not a national tie.</p>
+  <h3>Logistics and routing</h3>
+  <p>The core competency is dispatch: predicting kitchen prep times, assigning the right courier, <strong>batching multiple orders</strong> on one route, and timing pickup so food is not sitting cold. Small efficiency gains here directly widen the thin per-order margin - it is an optimization business dressed up as a food app.</p>
+  <h3>DashPass (subscription)</h3>
+  <p><strong>DashPass</strong> (about $10/month) waives delivery fees on eligible orders. Subscribers order far more often and are far more loyal. Tens of millions of members convert low-frequency, fee-sensitive users into high-frequency, locked-in ones - and predictable subscription revenue smooths the thin transactional margins.</p>
+  <h3>Sponsored listings and ads</h3>
+  <p>The newest and most important layer: restaurants (and CPG brands) <strong>pay to appear higher</strong> in the app or to run promotions. Ads are near-pure margin - no incremental courier cost - so this is DoorDash's real path to durable profit. It monetizes the demand it already aggregated, exactly like Amazon's retail-media playbook.</p>
+  <div class="box good"><span class="lbl">Why DoorDash is #1</span><p>Counter-position into ignored suburbs -&gt; win local density -&gt; compound a logistics/routing edge -&gt; lock users with DashPass -&gt; monetize aggregated demand with ads. Each layer reinforces the others. The moat is local density, not a national brand.</p></div>
+
+  <h2 id="ubereats"><span class="n">4</span>#2 Uber Eats - the different angle</h2>
+  <p>Uber Eats is a strong #2 in the US (~20-25% share) and is arguably #1 globally. Its whole thesis is different: it does not need food delivery to stand alone, because it is <strong>bolted onto Uber's mobility empire.</strong></p>
+  <ul>
+    <li><strong>Shared driver supply:</strong> the same drivers who ferry riders can deliver food, especially filling the gaps between rides. This blends supply across two demand streams, so the courier network is more utilized and cheaper to sustain than a food-only pool.</li>
+    <li><strong>The existing rider network:</strong> hundreds of millions of people already have the Uber app, a saved card, and the habit of opening it. Cross-selling Eats to a rider costs almost nothing versus acquiring a cold user.</li>
+    <li><strong>One super-app:</strong> rides, food, groceries, packages, and <strong>Uber One</strong> (the membership that spans mobility and delivery). A single subscription that discounts both your commute and your dinner is stickier than a food-only pass.</li>
+    <li><strong>Global footprint:</strong> Uber operates in scores of countries, so Uber Eats launched into markets DoorDash never entered. DoorDash answered by <em>buying</em> global reach (Wolt in Europe); Uber built it natively off the rides business.</li>
+  </ul>
+  <div class="box"><span class="lbl">The strategic contrast</span><p>DoorDash is a <strong>focused, US-first, density-obsessed food specialist</strong> that later added ads and subscription. Uber Eats is a <strong>generalist super-app play</strong> that treats food as one product line riding shared drivers, shared users, and a global network. Focus vs leverage - two valid ways to serve the same axiom.</p></div>
+
+  <h2 id="others"><span class="n">5</span>Other notable players / evolution</h2>
+  <table>
+    <thead><tr><th>Player / trend</th><th>What it is and where it is going</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Grubhub (decline)</strong></td><td>The original US leader (Seamless + Grubhub). Stayed urban and merchant-friendly but was out-executed on suburbs and logistics. Slid from #1 to a distant #3; bought by Just Eat Takeaway (2021) for ~$7.3B, then sold to Wonder (2025) for ~$650M - a stark markdown showing how fast local-density advantage compounds against a laggard.</td></tr>
+      <tr><td><strong>Instacart (grocery delivery)</strong></td><td>Adjacent marketplace for groceries rather than restaurants. Different cadence (weekly big basket vs impulse meal) but the same three-sided last-mile model - and its true profit engine is also <strong>ads</strong> (CPG brands paying for placement). A cautionary/confirming parallel: retail media, not delivery fees, is where the money is.</td></tr>
+      <tr><td><strong>Ghost / cloud kitchens</strong></td><td>Delivery-only kitchens with no dining room, often several virtual brands from one address. Built to exploit aggregated app demand with lower rent. Boomed during the pandemic, then cooled as quality/oversupply issues surfaced - but the concept persists inside the platforms.</td></tr>
+      <tr><td><strong>Restaurants' own apps</strong></td><td>Chains like Domino's, Chick-fil-A, and Starbucks push their own apps to avoid commissions and <em>own the customer relationship</em>. Works for big brands with pull; small independents cannot generate their own demand and stay dependent on the aggregators.</td></tr>
+      <tr><td><strong>Multi-homing</strong></td><td>Both consumers and restaurants use several apps at once - diners price/ETA shop, restaurants list everywhere. This caps any single platform's pricing power and is a structural drag on margins. Subscriptions (DashPass, Uber One) are partly a weapon to reduce consumer multi-homing.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="econ"><span class="n">6</span>Unit economics</h2>
+  <p>This need is served by a famously <strong>thin-margin</strong> business. Understanding why explains every strategic move above.</p>
+  <p>Take a rough $30 order. The platform's <strong>take rate</strong> - the total it collects from restaurant commission plus consumer fees - might be 25-30% of order value, call it ~$8-9. But the biggest cost, <strong>courier pay</strong>, comes straight out of that. After paying the driver, plus payment processing, support, refunds, and insurance, the <strong>contribution margin</strong> per order is often just a <strong>couple of dollars - or negative in a weak market.</strong></p>
+  <div class="box trap"><span class="lbl">Why "15-30% commission" is misleading</span><p>The restaurant commission (often 15-30% of the food bill) is <em>not</em> platform profit. Most of it is spent moving the food - paying the courier for a real, physical, ~30-minute car trip. The platform is a low-margin logistics business, not a software business, on the core transaction. That is why raw delivery was unprofitable for a decade.</p></div>
+  <h3>The path to profit</h3>
+  <ul>
+    <li><strong>Density:</strong> more orders per courier-hour (batching) lowers the delivery cost per order. This is the single biggest lever and it is purely local.</li>
+    <li><strong>Subscription:</strong> DashPass / Uber One provide predictable, high-margin recurring revenue and drive frequency, spreading fixed costs over more orders.</li>
+    <li><strong>Ads / retail media:</strong> sponsored listings carry ~90%+ margin because there is no incremental courier cost. As the ads mix grows, blended margins climb fast. This is the profit engine.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The profit formula</span><p>Thin transactional margin (fix with density) + high-margin subscription (fix retention) + high-margin ads (the real money) = a business that finally works. DoorDash turned its first consistent GAAP profits in 2024, roughly a decade after founding - and only because the ads and subscription layers matured.</p></div>
+
+  <h2 id="playing"><span class="n">7</span>How it is playing out</h2>
+  <ul>
+    <li><strong>Consolidation:</strong> the market is settling into a local duopoly (DoorDash + Uber Eats in the US) with Grubhub marginalized. Delivery's density economics naturally punish #3 and #4, so weak players get bought or shrink.</li>
+    <li><strong>Ads as the margin engine:</strong> both leaders are aggressively building retail-media businesses. Expect food delivery to look more like an advertising company bolted onto a logistics network - the Amazon/Instagram playbook applied to dinner.</li>
+    <li><strong>Grocery and retail expansion:</strong> the same courier network can deliver groceries, convenience-store items, alcohol, and pharmacy orders. Platforms are chasing this to raise order frequency and basket size and to defend against Instacart and Amazon.</li>
+    <li><strong>Autonomous delivery (someday):</strong> courier pay is the dominant cost, so sidewalk robots and drones are an obvious long-term margin lever. Real but slow - regulation, edge cases, and unit costs keep it niche for now.</li>
+    <li><strong>Gig-labor regulation:</strong> the whole model depends on couriers being flexible contractors, not employees. Minimum-pay laws (NYC, Seattle) and reclassification fights (California Prop 22 and its global echoes) directly threaten the cost structure - the single biggest external risk.</li>
+  </ul>
+  <div class="box"><span class="lbl">What to watch</span><p>Ads revenue mix (is it climbing?), subscription penetration, courier-cost regulation, and grocery order frequency. Those four dials, not headline order counts, decide whether this need gets served profitably.</p></div>
+
+  <h2 id="pattern"><span class="n">8</span>The pattern it exemplifies</h2>
+  <p>Prepared-food delivery is the cleanest live example of two recurring patterns on the board:</p>
+  <div class="box good"><span class="lbl">Pattern 1: three-sided LOCAL marketplace won on density</span><p>Unlike a global marketplace (eBay, Amazon), delivery scale does not transfer across geographies - it must be re-won zip code by zip code. The winner is whoever compounds local density fastest, because density simultaneously improves selection (consumers), order volume (restaurants), and earnings-per-hour (couriers). National share is a sum of local wins, not a substitute for them.</p></div>
+  <div class="box good"><span class="lbl">Pattern 2: ads layered on aggregated demand</span><p>Once a platform owns the moment of intent (a hungry user opening the app), it can sell that attention back to suppliers. The low-margin transaction is the <em>bait</em> that aggregates demand; the high-margin ad business is the <em>catch</em>. This is the identical structure behind Amazon retail media, Instacart ads, and Google/Instagram - see needs 08 and 12.</p></div>
+  <p>Combine them: <strong>win a local logistics marketplace on density, then monetize the aggregated demand with advertising.</strong> That two-step is the whole business, and it recurs anywhere a platform sits between fragmented supply and habitual local demand.</p>
+
+  <h2 id="glossary"><span class="n">9</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Three-sided marketplace</strong></td><td>A platform serving three interdependent groups at once - here consumer, restaurant, and courier. All three must be satisfied simultaneously or the market unravels.</td></tr>
+      <tr><td><strong>Density</strong></td><td>The concentration of orders, restaurants, and couriers within a small local area. The core moat in delivery: high density means faster, cheaper service that sub-scale rivals cannot match locally.</td></tr>
+      <tr><td><strong>Multi-homing</strong></td><td>Users or suppliers using several competing platforms at once (diners comparing apps; restaurants listing everywhere). It caps any one platform's pricing power.</td></tr>
+      <tr><td><strong>Contribution margin</strong></td><td>Revenue from an order minus the direct variable costs of fulfilling it (mainly courier pay, processing, support). In delivery it is often just a couple of dollars per order.</td></tr>
+      <tr><td><strong>Last-mile</strong></td><td>The final delivery leg from restaurant to the customer's door - the hardest, most expensive part of the logistics chain.</td></tr>
+      <tr><td><strong>Take rate</strong></td><td>The share of order value the platform collects (restaurant commission plus consumer fees), typically ~15-30%. Note: most of it is spent on the courier, so it is not profit.</td></tr>
+      <tr><td><strong>Ghost kitchen</strong></td><td>A delivery-only kitchen with no dine-in space, often running multiple virtual brands from one location to exploit app demand at lower rent. Also called a cloud or dark kitchen.</td></tr>
+      <tr><td><strong>DashPass</strong></td><td>DoorDash's ~$10/month subscription that waives delivery fees on eligible orders, driving order frequency and loyalty. Uber's equivalent is Uber One.</td></tr>
+      <tr><td><strong>Retail media / sponsored listings</strong></td><td>Ads where restaurants or brands pay to rank higher or run promotions in the app. Near-pure margin (no courier cost) and the platform's real profit engine.</td></tr>
+      <tr><td><strong>Aggregator</strong></td><td>The platform that owns the demand/discovery relationship (the hungry user opening the app) and thereby commoditizes the supply beneath it (restaurants, couriers).</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Need 02: Prepared food (DoorDash vs Uber Eats) &middot; captured 2026-07-11 &middot; <a href="human_needs_from_first_principles.html">The needs framework</a> &middot; <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

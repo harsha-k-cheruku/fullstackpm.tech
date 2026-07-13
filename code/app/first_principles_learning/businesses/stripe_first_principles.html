@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Stripe from First Principles - Payment Rails, APIs, and Embedded Finance</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:800px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-6" style="color:#0053e2;text-decoration:none">The demand economy</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="business_first_principles_framework.html" style="color:#0053e2;text-decoration:none">Businesses</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Stripe from First Principles</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Businesses: Stripe</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#axiom"><span class="num">1</span>Founding bet / core axiom</a>
+  <a href="#creation"><span class="num">2</span>Value creation</a>
+  <a href="#capture"><span class="num">3</span>Value capture</a>
+  <a href="#flywheel"><span class="num">4</span>The flywheel</a>
+  <a href="#moat"><span class="num">5</span>The moat</a>
+  <a href="#aggregation"><span class="num">6</span>Aggregated / commoditized</a>
+  <a href="#unit"><span class="num">7</span>Unit economics shape</a>
+  <a href="#failure"><span class="num">8</span>Failure modes</a>
+  <a href="#pattern"><span class="num">9</span>The pattern it exemplifies</a>
+  <a href="#glossary"><span class="num">10</span>Glossary</a>
+  <a href="../index.html" style="margin-top:18px;color:var(--blue);font-weight:700">Back to home</a>
+</nav>
+<main>
+  <h1>Stripe from First Principles</h1>
+  <p class="lede">A software layer bolted on top of the card networks: turn weeks of payment plumbing into seven lines of code, own the developer, then sell the whole business a suite of finance.</p>
+  <p class="meta">Topic folder: first-principles-tutor/businesses &middot; Applies the shared 9-point lens &middot; <a href="business_first_principles_framework.html">The shared lens</a></p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li>Stripe does not own the payment rails - it owns the <strong>software layer on top of them</strong>. Visa and Mastercard are the rails; Stripe is the clean API that hides their mess from developers.</li>
+    <li>The <strong>core axiom</strong>: moving money online was absurdly hard for developers (banks, gateways, processors, compliance, fraud), so whoever abstracts it behind a few lines of clean API captures the internet's new commerce. The stated mission: <strong>increase the GDP of the internet</strong>.</li>
+    <li><strong>Value capture</strong> is a take rate on payment volume - a blended ~<strong>2.9% + 30c</strong> per transaction - but most of that is passed through to card networks as interchange. The real long-run margin is the <strong>expanding finance suite</strong>: Billing, Connect, Capital, Issuing, Tax, Treasury.</li>
+    <li>The <strong>flywheel</strong>: developers love the product -&gt; it becomes the default choice -&gt; more businesses -&gt; more payment volume -&gt; more data + more products -&gt; higher switching costs -&gt; more businesses.</li>
+    <li>The <strong>moat</strong> is developer experience + integration switching costs + a widening product suite + reliability/trust, plus a network of platforms via Connect. It is a software moat, not a rails moat.</li>
+    <li>Approximate scale (framed loosely): well over <strong>$1T in annual total payment volume</strong> and a private valuation historically in the <strong>$65B-$95B+</strong> range. Numbers move; the shape is what matters.</li>
+  </ul>
+
+  <h2 id="axiom"><span class="n">1</span>Founding bet / core axiom</h2>
+  <p>The Collison brothers noticed something absurd: it was 2010, you could spin up a web app in an afternoon, but <strong>accepting a single payment took weeks</strong>. You needed a merchant account from a bank, a payment gateway, a processor relationship, PCI compliance, fraud tooling, and a stack of contracts and paperwork - all before you could charge one customer one dollar. The plumbing beneath online money was a tangle of banks, card networks, acquirers, and legacy middleware that no developer wanted to touch.</p>
+  <div class="box key"><span class="lbl">The core axiom</span><p>If moving money online is the hardest part of building an internet business, then <strong>whoever abstracts that pain behind a clean, developer-first API owns the on-ramp to internet commerce</strong>. Make the interface a few lines of code, and every new software business becomes your customer by default. Developer experience is not a feature here - it is the entire strategy.</p></div>
+  <p>The second belief was directional and enormous: <strong>the GDP of the internet is still tiny relative to where it is going</strong>, and the bottleneck is payment infrastructure. If you remove the bottleneck, you do not just grab share of today's online payments - you help create tomorrow's, and you ride the growth of every business you enable. Stripe bet on the pie growing, not just on winning a fixed slice.</p>
+  <p>Concretely, the founding move was radical simplicity: sign up, drop in an API key, and take a live payment in minutes - no bank meeting, no separate gateway, no merchant-account odyssey. Stripe absorbed the underwriting, compliance, and network relationships so the developer never had to see them.</p>
+
+  <h2 id="creation"><span class="n">2</span>Value creation</h2>
+  <p>Stripe collapsed a multi-week, multi-vendor integration project into an afternoon. That is the whole value proposition in one sentence, but it fans out into several distinct kinds of abundance.</p>
+  <table>
+    <thead><tr><th>What it made abundant / cheap</th><th>What it used to cost</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Accepting money online</strong></td><td>Weeks of bank + gateway + processor + PCI integration; now a few lines of API and minutes.</td></tr>
+      <tr><td><strong>Global reach</strong></td><td>Accepting cards, wallets, and local payment methods across dozens of countries and currencies used to mean a separate integration per market; now largely one API.</td></tr>
+      <tr><td><strong>Compliance + fraud</strong></td><td>PCI scope, tokenization, and machine-learning fraud defense (Radar) come built in, instead of being a specialist project.</td></tr>
+      <tr><td><strong>Embedding finance</strong></td><td>Any software platform can now offer payments, payouts, cards, loans, and tax handling to its own users without becoming a bank.</td></tr>
+    </tbody>
+  </table>
+  <p>The deeper act of creation is that Stripe turned <strong>payments from a project into a primitive</strong>. Before Stripe, "how will we take money?" was an architectural decision with a team and a timeline. After Stripe, it is an import statement. Lowering that barrier did not just serve existing merchants - it made whole categories of software business (SaaS, marketplaces, creator tools, on-demand platforms) economically feasible to start.</p>
+  <div class="box"><span class="lbl">The abstraction, concretely</span><p>Under one <code>Charge</code> call sits an entire supply chain: the merchant's account, the acquiring bank, the card network (Visa/Mastercard), the issuing bank, fraud scoring, currency conversion, and settlement. Stripe presents all of that as a single, well-documented object. The documentation itself is a product - clear, copy-pasteable, and famously loved by engineers.</p></div>
+
+  <h2 id="capture"><span class="n">3</span>Value capture</h2>
+  <p>The headline number is deceptively simple and the reality underneath is where the business lives.</p>
+  <table>
+    <thead><tr><th>Layer</th><th>How it captures</th><th>Margin shape</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Core payments</strong></td><td>Blended ~2.9% + 30c per successful card charge (varies by method, geography, volume).</td><td>Thin net margin - most of the 2.9% is passed through to the card networks as interchange + scheme fees.</td></tr>
+      <tr><td><strong>Billing</strong></td><td>Recurring/subscription management; a fee on top of processing for the billing engine.</td><td>Higher - it is software on top of the payment.</td></tr>
+      <tr><td><strong>Connect</strong></td><td>Platform/marketplace payments: fees for splitting money among many sellers and handling their payouts + onboarding.</td><td>High and very sticky - the platform is deeply wired in.</td></tr>
+      <tr><td><strong>Capital</strong></td><td>Cash advances / lending to businesses on the platform, repaid from future volume.</td><td>Financial-product margin (spread + fee), using Stripe's data edge on the borrower.</td></tr>
+      <tr><td><strong>Issuing</strong></td><td>Lets customers create and issue their own physical/virtual cards; Stripe earns on interchange it now receives.</td><td>Attractive - Stripe moves to the receiving side of interchange.</td></tr>
+      <tr><td><strong>Tax / Treasury / Radar</strong></td><td>Sales-tax automation, banking-as-a-service accounts, and fraud protection sold as add-ons.</td><td>Software / SaaS-like margin layered on the volume.</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The take-rate illusion</span><p>People see "2.9% + 30c" and assume Stripe keeps 2.9% of the internet. It does not. A large chunk - often ~1.5% to 2%+ depending on the card - is <strong>interchange paid to the issuing bank</strong>, set by Visa/Mastercard, plus scheme fees to the networks themselves. Stripe's <strong>net take rate on core payments is a fraction of the gross</strong>. The gross number is huge because the volume is huge; the durable profit increasingly comes from the higher-margin suite stacked on top.</p></div>
+  <p>The strategic direction of value capture is clear: <strong>use cheap-to-thin core payments to acquire and lock in the business relationship, then monetize with higher-margin embedded-finance products</strong>. Payments is the wedge; Billing, Connect, Capital, Issuing, Tax, and Treasury are where the margin compounds. This is the same "thin core, fat layers" shape Amazon uses, translated into finance.</p>
+
+  <h2 id="flywheel"><span class="n">4</span>The flywheel</h2>
+  <p>Stripe's loop is unusual because it is powered by <strong>developer affection</strong>, which converts into distribution more cheaply than a sales force ever could.</p>
+  <p><code>developers love it -&gt; it becomes the default choice -&gt; more businesses adopt -&gt; more payment volume -&gt; more data + more products -&gt; stickier -&gt; more businesses</code></p>
+  <ol>
+    <li><strong>Developers love the API + docs</strong>, so they reach for Stripe first when building anything that touches money.</li>
+    <li>That developer default makes Stripe <strong>the obvious choice</strong> as those developers start companies and pick payment infrastructure.</li>
+    <li>More businesses on the platform means <strong>more total payment volume</strong> flowing through Stripe.</li>
+    <li>More volume yields <strong>more data</strong> (fraud signals, credit risk, benchmarks) and funds <strong>more products</strong> in the suite.</li>
+    <li>Each added product (Billing, Connect, Capital, Tax) <strong>deepens integration and switching costs</strong>, making Stripe harder to leave and pulling in still more businesses.</li>
+  </ol>
+  <div class="box good"><span class="lbl">The developer-love -&gt; default-choice loop</span><p>The subtle engine is bottom-up adoption. A single engineer chooses Stripe for a side project because it is pleasant to use. That engineer joins or founds a company and brings Stripe with them. Multiply across a generation of developers and Stripe becomes the <strong>default primitive for online money</strong> without ever winning a top-down procurement battle. Winning the developer is winning the future buyer before there is a budget.</p></div>
+  <p>A second reinforcing loop runs through <strong>Connect</strong>: every platform that adopts Stripe to pay out its own sellers effectively resells Stripe to thousands of sub-merchants at once. One integration brings a whole marketplace's worth of volume - a distribution multiplier the rails themselves cannot easily replicate.</p>
+
+  <h2 id="moat"><span class="n">5</span>The moat</h2>
+  <ul>
+    <li><strong>Developer experience</strong> - the docs, SDKs, dashboards, and reliability create genuine preference. DX is hard to copy because it is a thousand small decisions, sustained for years.</li>
+    <li><strong>Integration switching costs</strong> - once payments, subscriptions, payouts, and reconciliation are wired through Stripe's objects and webhooks, ripping it out is a high-risk engineering project with no upside. You do not casually re-plumb your money.</li>
+    <li><strong>Expanding product suite</strong> - each additional product (Billing, Connect, Capital, Issuing, Tax, Treasury) is another root the customer grows into Stripe. The suite is a widening moat, not just a revenue line.</li>
+    <li><strong>Reliability + trust</strong> - money must never be lost or double-charged. A multi-year track record of uptime and correct settlement is itself a barrier; nobody switches their payment stack to save a few basis points if it risks downtime.</li>
+    <li><strong>Network of platforms (Connect)</strong> - being embedded inside marketplaces and SaaS platforms gives Stripe a distribution web that compounds with every platform added.</li>
+  </ul>
+  <div class="box trap"><span class="lbl">The moat it does NOT have</span><p>Stripe does <strong>not own the rails</strong>. It rides on top of Visa and Mastercard, which own the actual card-network settlement infrastructure and set interchange. Stripe's moat is the <strong>software and relationship layer</strong> - owning the developer and the business - not the underlying transport. That is a strong moat, but it is a different moat than the networks': Stripe owns the last mile of experience; Visa owns the road.</p></div>
+
+  <h2 id="aggregation"><span class="n">6</span>What it aggregated / commoditized</h2>
+  <p>In the language of Aggregation Theory (see <a href="business_first_principles_framework.html">the shared lens</a>): Stripe <strong>aggregates the demand of online merchants and developers for payments</strong>. It owns the relationship with the software business that needs to take money - the place developers go first when they need money to move.</p>
+  <p>What it commoditizes is the <strong>messy plumbing beneath</strong>: banks, acquirers, gateways, processors, and the per-country payment-method zoo. Stripe abstracts all of them behind one interface, so the individual bank or gateway becomes an interchangeable back-end detail the merchant never chooses or even sees. The plumbing is fungible; the developer relationship is scarce, and Stripe owns it.</p>
+  <div class="box key"><span class="lbl">The careful exception</span><p>There is one layer Stripe pointedly does <strong>not</strong> commoditize: the card networks. Visa and Mastercard sit upstream of the plumbing Stripe abstracts, and Stripe still pays them interchange and scheme fees on nearly every transaction. Stripe aggregated the merchants and commoditized the banks - but it did so <strong>as a tenant on the networks' rails</strong>, not as their replacement.</p></div>
+
+  <h2 id="unit"><span class="n">7</span>Unit economics shape</h2>
+  <ul>
+    <li><strong>Volume x small spread = large absolute revenue</strong> - a tiny net take rate on more than $1T of annual volume adds up to enormous gross revenue. The model is built on scale, not on per-transaction margin.</li>
+    <li><strong>Gross margin is lower than pure SaaS</strong> - because Stripe must pay interchange + scheme fees to the card networks on core payments, a big fraction of every 2.9% is a genuine cost of goods, not profit. Stripe is not an 80%-gross-margin software company on payments alone.</li>
+    <li><strong>Net revenue is the real number</strong> - the meaningful figure is <strong>net revenue after interchange and network fees</strong>, which is a fraction of gross payment fees. Analysts watch net take rate, not the headline 2.9%.</li>
+    <li><strong>Embedded-finance products carry higher margin</strong> - Billing, Tax, Radar, and platform (Connect) fees are software layered on volume with little or no pass-through, so they lift blended margins as their mix grows.</li>
+    <li><strong>Data compounds into new margin</strong> - the volume flowing through Stripe feeds fraud models (Radar) and credit underwriting (Capital), letting Stripe sell risk-priced products competitors cannot match without the same data.</li>
+  </ul>
+  <div class="box key"><span class="lbl">The mental model</span><p>Think of core payments as a low-margin, high-volume utility that acquires and locks in the business, with interchange as an unavoidable toll paid to Visa/Mastercard on the way through. Bolted onto that utility are higher-margin software products (Billing, Connect, Tax) and financial products (Capital, Issuing, Treasury). The payments layer is the moat and the customer-acquisition engine; the suite is where durable profit is harvested.</p></div>
+
+  <h2 id="failure"><span class="n">8</span>Failure modes / vulnerabilities</h2>
+  <ul>
+    <li><strong>Dependence on rails it does not own</strong> - Stripe pays interchange and scheme fees to Visa/Mastercard on nearly every transaction. It is structurally a tenant; the landlords set the rent and could squeeze the layer above them.</li>
+    <li><strong>Enterprise competition (Adyen)</strong> - Adyen competes hard for large enterprises with a single-platform, often lower-blended-cost model. At the high end, sophisticated buyers optimize on price and can out-negotiate Stripe's simplicity premium.</li>
+    <li><strong>Broad competition (PayPal/Braintree, big tech, banks)</strong> - Braintree, PayPal, Block, Adyen, and cloud/big-tech payment offerings all attack pieces of the stack. Payments is a crowded, well-funded arena.</li>
+    <li><strong>Interchange + regulation</strong> - regulatory caps on interchange (as in the EU) or new rules on fees, data, and lending can compress economics or reshape which layer captures the spread.</li>
+    <li><strong>Stablecoins / new rails</strong> - stablecoin and account-to-account rails could partly <strong>bypass the card networks</strong>. That is a double-edged sword: it threatens card-based economics but is also an opportunity Stripe is actively courting (it has moved into stablecoin infrastructure) to avoid being disintermediated.</li>
+    <li><strong>Private-company / valuation pressure</strong> - as a long-private company with a valuation that swung from roughly $95B down toward $50B and back up, Stripe faces employee-liquidity, funding, and expectation pressures that a public company manages differently.</li>
+  </ul>
+
+  <h2 id="pattern"><span class="n">9</span>The pattern it exemplifies</h2>
+  <p>Stripe is the canonical case of <strong>software wrapping the rails to own the customer relationship</strong>. It did not build a new payment network; it built the <strong>integration layer</strong> on top of the existing one and made that layer so good that owning it became more valuable than owning the pipes for a huge class of customers - the SMBs and developers the networks never served directly.</p>
+  <div class="box key"><span class="lbl">Owning the rails vs owning the developer</span><p>This is the crux. <strong>Visa/Mastercard own the rails</strong>: the settlement network, the four-party model, the interchange economics. Their moat is a colossal two-sided network of banks and cardholders - almost impossible to rebuild. <strong>Stripe owns the developer and the business</strong>: the API, the docs, the suite, the relationship with whoever is building software that needs money. Two completely different moats can coexist on the same transaction - one taxes the network, the other taxes the integration. You do not have to own the rails to build a great business; you can own the last mile of experience that sits on them.</p></div>
+  <div class="box good"><span class="lbl">The transferable lesson</span><p>Find an essential capability that is <strong>technically miserable to integrate</strong> (payments, identity, telephony, tax, shipping), wrap it in a developer-first API that is a joy to use, win the developer bottom-up, and then expand into an adjacent product suite that raises switching costs. The integration layer is the moat; the suite is the margin. This is the Stripe/Twilio/Plaid pattern - and it works precisely because owning the <em>experience</em> of a commodity can be more durable than owning the commodity.</p></div>
+
+  <h2 id="glossary"><span class="n">10</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Payment rails</strong></td><td>The underlying networks that actually move money - card networks (Visa/Mastercard), ACH, wire, real-time payment systems. Stripe rides on these; it does not own them.</td></tr>
+      <tr><td><strong>Interchange</strong></td><td>The fee paid to the cardholder's issuing bank on each card transaction, set by the card networks. It is the largest chunk of the ~2.9% and a pass-through cost for Stripe.</td></tr>
+      <tr><td><strong>Scheme fees</strong></td><td>Fees paid to the card networks (Visa/Mastercard) themselves for using their rails, on top of interchange.</td></tr>
+      <tr><td><strong>API-first</strong></td><td>Designing the product so its primary interface is a clean, documented API for developers rather than a manual or a sales process.</td></tr>
+      <tr><td><strong>Developer experience (DX)</strong></td><td>The quality of docs, SDKs, error messages, and dashboards that make building on a platform pleasant. Stripe's core moat.</td></tr>
+      <tr><td><strong>Embedded finance</strong></td><td>Letting non-finance software offer financial services (payments, cards, loans, accounts) to its users - Stripe's Connect, Capital, Issuing, Treasury.</td></tr>
+      <tr><td><strong>Take rate</strong></td><td>The percentage of transaction value a processor keeps. Note gross (headline 2.9%) vs net (after interchange + scheme fees) - the net is far smaller.</td></tr>
+      <tr><td><strong>PSP / payment processor</strong></td><td>A payment service provider that handles the technical + banking steps of accepting a payment on a merchant's behalf. Stripe is a PSP that also became a platform.</td></tr>
+      <tr><td><strong>Four-party model</strong></td><td>The card structure: cardholder, issuing bank, merchant, and acquiring bank, coordinated by the network. Interchange flows between these parties.</td></tr>
+      <tr><td><strong>Connect / platform payments</strong></td><td>Stripe's product for marketplaces and platforms to onboard sub-merchants, split payments, and handle payouts - a key sticky, high-margin layer.</td></tr>
+      <tr><td><strong>Net take rate</strong></td><td>Stripe's revenue after paying interchange and network fees, as a share of volume - the number that reflects actual economics.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Businesses: Stripe &middot; applies the shared 9-point lens &middot; <a href="business_first_principles_framework.html">The shared lens</a> &middot; <a href="../index.html">Back to home</a></footer>
+</main>
+</div>
+</body>
+</html>

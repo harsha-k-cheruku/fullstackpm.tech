@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<title>Systems Thinking & Feedback Loops - Study Notes</title>
+<style>
+  :root{--ink:#1a1b1d;--body:#2e2f32;--muted:#6b7280;--line:#e5e7eb;--bg:#ffffff;--soft:#f7f8fa;
+    --blue:#0053e2;--blue-light:#e9f0fe;--spark:#ffc220;--spark-dark:#8a4b12;--spark-light:#fff8e5;--green:#2a8703;--green-light:#ecf7e8;--red:#c62828;--red-light:#fdeceb;}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--body);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{display:flex;max-width:1200px;margin:0 auto;gap:32px;padding:0 24px}
+  nav.toc{position:sticky;top:0;align-self:flex-start;height:100vh;overflow:auto;width:290px;flex-shrink:0;padding:28px 12px 40px 0;border-right:1px solid var(--line)}
+  nav.toc .brand{font-size:13px;font-weight:800;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  nav.toc .subbrand{font-size:12px;color:var(--muted);margin-bottom:20px}
+  nav.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13.5px;padding:5px 10px;border-radius:7px;margin-bottom:2px}
+  nav.toc a:hover{background:var(--soft);color:var(--ink)} nav.toc a .num{color:var(--blue);font-weight:700;margin-right:7px}
+  main{flex:1;min-width:0;padding:34px 0 90px;max-width:820px}
+  h1{font-size:34px;line-height:1.15;color:var(--ink);margin:0 0 6px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
+  .meta{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px}
+  h2{font-size:24px;color:var(--ink);margin:46px 0 12px;padding-top:12px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;background:var(--blue);color:#fff;border-radius:8px;font-size:15px;font-weight:800}
+  h3{font-size:18.5px;color:var(--ink);margin:28px 0 8px}
+  p{margin:12px 0} ul,ol{margin:12px 0;padding-left:24px} li{margin:7px 0} strong{color:var(--ink)}
+  code{font-family:"SF Mono",Menlo,Consolas,monospace;background:var(--soft);border:1px solid var(--line);padding:1px 6px;border-radius:5px;font-size:14px;color:#b02a37}
+  pre{background:#0f1b33;color:#dbe6ff;border-radius:10px;padding:16px 18px;overflow:auto;font-family:"SF Mono",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;margin:18px 0}
+  .box{border-radius:10px;padding:14px 18px;margin:20px 0;border-left:4px solid var(--blue);background:var(--blue-light)}
+  .box .lbl{display:block;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:800;color:var(--blue);margin-bottom:5px}
+  .box.key{border-left-color:var(--spark);background:var(--spark-light)} .box.key .lbl{color:var(--spark-dark)}
+  .box.trap{border-left-color:var(--red);background:var(--red-light)} .box.trap .lbl{color:var(--red)}
+  .box.good{border-left-color:var(--green);background:var(--green-light)} .box.good .lbl{color:var(--green)}
+  .box p{margin:6px 0}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:var(--soft);color:var(--ink);font-weight:700;border-bottom:2px solid var(--line)}
+  tbody tr:hover td{background:var(--soft)}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  @media (max-width:820px){nav.toc{display:none}.wrap{padding:0 16px}}
+</style>
+</head>
+<body>
+<nav class="crumbs" data-crumb="1" aria-label="Breadcrumb" style="font:600 13px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;border-bottom:1px solid #e5e7eb;border-left:4px solid #ffc220;padding:9px 22px;color:#6b7280"><a href="../index.html" style="color:#0053e2;text-decoration:none">Home</a><span style="margin:0 7px;color:#c9ced6">/</span><a href="../index.html#sec-3" style="color:#0053e2;text-decoration:none">Dynamics &amp; forces</a><span style="margin:0 7px;color:#c9ced6">/</span><span style="color:#1a1b1d">Systems Thinking &amp; Feedback Loops</span></nav>
+<div class="wrap">
+<nav class="toc">
+  <div class="brand">First Principles</div>
+  <div class="subbrand">Systems Thinking</div>
+  <a href="#tldr"><span class="num">0</span>TL;DR</a>
+  <a href="#system"><span class="num">1</span>What a system is</a>
+  <a href="#stocks"><span class="num">2</span>Stocks &amp; flows</a>
+  <a href="#loops"><span class="num">3</span>Feedback loops</a>
+  <a href="#delays"><span class="num">4</span>Delays</a>
+  <a href="#nonlinear"><span class="num">5</span>Nonlinearity &amp; tipping points</a>
+  <a href="#orders"><span class="num">6</span>Second/third-order effects</a>
+  <a href="#leverage"><span class="num">7</span>Leverage points</a>
+  <a href="#resist"><span class="num">8</span>Why systems resist change</a>
+  <a href="#edges"><span class="num">9</span>Edge &amp; breaking cases</a>
+  <a href="#use"><span class="num">10</span>How to use it</a>
+  <a href="#glossary"><span class="num">11</span>Glossary</a>
+  <a href="../index.html" style="margin-top:14px;color:var(--blue);font-weight:700">&larr; Back to home</a>
+</nav>
+<main>
+  <h1>Systems Thinking &amp; Feedback Loops</h1>
+  <p class="lede">Scattered across this collection are asides about "second-order effects" and "and then what?" This note turns those instincts into a discipline: how to see the structure of interconnected parts, and why that structure - not the parts - decides what happens.</p>
+  <p class="meta">Topic folder: first-principles-tutor/dynamics &middot; Captured 2026-07-12 &middot; The structural lens under every dynamic model in the collection</p>
+
+  <h2 id="tldr"><span class="n">0</span>TL;DR</h2>
+  <ul>
+    <li><strong>A system is relationships, not parts:</strong> the behavior comes from how the parts are wired together, not from any part alone. <strong>Structure drives behavior</strong> - change the wiring and you change the outcome.</li>
+    <li><strong>Stocks and flows:</strong> stocks are accumulations (water in a bathtub); flows are rates (the taps and drains). Stocks create delay and inertia, and human intuition is terrible at reasoning about them.</li>
+    <li><strong>Feedback loops:</strong> <em>reinforcing</em> loops amplify (exponential growth, flywheels, network effects, vicious and virtuous cycles); <em>balancing</em> loops seek a goal and resist change (thermostats, limits). Every S-curve is a reinforcing loop running into a balancing one.</li>
+    <li><strong>Delays cause overshoot and oscillation:</strong> when the feedback arrives late, you keep acting on stale information - hence the scalding shower and the bullwhip effect in supply chains.</li>
+    <li><strong>Nonlinearity and tipping points:</strong> small causes can produce huge effects once a threshold is crossed. Systems do not move in proportion to the push.</li>
+    <li><strong>Always ask "and then what?"</strong> Second- and third-order effects, unintended consequences, the cobra effect, Jevons paradox, and Goodhart's law all live one step past the obvious.</li>
+    <li><strong>Leverage is high up:</strong> the biggest changes come from shifting goals and paradigms, not from tweaking parameters. And systems <em>resist</em> change - expect policy resistance and homeostasis.</li>
+  </ul>
+
+  <h2 id="system"><span class="n">1</span>What a system is</h2>
+  <p>A <strong>system</strong> is a set of parts whose <em>relationships</em> produce behavior that none of the parts could produce alone. A pile of car components is not a car; wire them together in a specific way and you get motion. The magic is in the connections, not the pieces.</p>
+  <div class="box key"><span class="lbl">Structure drives behavior</span><p>This is the founding claim of the whole discipline: <strong>the structure of a system - its stocks, flows, loops, and delays - determines its behavior far more than any individual actor within it.</strong> When a system misbehaves, the instinct is to blame a bad part (a lazy employee, a foolish leader, a rogue trader). Usually the part is interchangeable and the <em>structure</em> is the culprit: put a different person in the same wiring and you get the same result. Fix the structure, not the scapegoat.</p></div>
+  <p>This is why systems thinking is the sibling of emergence. In <a href="../foundations/networks_and_emergence.html">Networks &amp; Emergence</a>, complex global behavior arises from simple local rules and the pattern of connections. Systems thinking is the applied version: it gives you the vocabulary (stocks, flows, loops, delays) to <em>read</em> that structure and predict how it will behave over time. Emergence tells you the whole is more than the sum of its parts; systems thinking tells you <em>how</em> the parts are summed.</p>
+  <p>The core mental shift is from <strong>events</strong> to <strong>structure</strong>. A news story reports events ("stock dropped today"). A systems thinker asks what pattern of behavior produced it over time, and what structure produces that pattern. Events are the surface; structure is the engine.</p>
+
+  <h2 id="stocks"><span class="n">2</span>Stocks &amp; flows</h2>
+  <p>The atoms of any system are <strong>stocks</strong> and <strong>flows</strong>. Get these two straight and half of systems thinking falls into place.</p>
+  <table>
+    <thead><tr><th>&nbsp;</th><th>Stock</th><th>Flow</th></tr></thead>
+    <tbody>
+      <tr><td><strong>What it is</strong></td><td>An accumulation - a quantity that exists at a moment</td><td>A rate - a quantity per unit of time</td></tr>
+      <tr><td><strong>Measured in</strong></td><td>A level (liters, dollars, people)</td><td>A rate (liters/min, dollars/month, births/year)</td></tr>
+      <tr><td><strong>Bathtub</strong></td><td>The water in the tub</td><td>The tap (inflow) and the drain (outflow)</td></tr>
+      <tr><td><strong>Examples</strong></td><td>Savings, population, CO2 in the air, trust, inventory</td><td>Income, births minus deaths, emissions, deposits</td></tr>
+    </tbody>
+  </table>
+  <p>The bathtub is the canonical image. The <strong>stock</strong> is the water level; the <strong>flows</strong> are the tap filling it and the drain emptying it. The level rises whenever inflow exceeds outflow, falls when outflow exceeds inflow, and holds steady when they balance - regardless of how big either flow is.</p>
+  <div class="box key"><span class="lbl">Stocks create delay and inertia</span><p>Because a stock is an accumulation, it can only change through its flows over time - it has <strong>memory and momentum</strong>. You cannot empty a full tub instantly however wide the drain; you cannot refill a depleted aquifer, or rebuild trust, or restock a warehouse in a day. Stocks buffer the system against sudden change, which is why big systems have <strong>inertia</strong>: emissions can fall while atmospheric CO2 (the stock) still rises, because the inflow, though shrinking, still exceeds the outflow.</p></div>
+  <div class="box trap"><span class="lbl">Intuition fails on stocks</span><p>Humans are shockingly bad at reasoning about stocks and flows. In famous experiments, even trained graduate students confuse a falling <em>inflow</em> with a falling <em>stock</em> - assuming that if emissions stop <em>growing</em>, the CO2 level will stop rising. It will not: as long as inflow exceeds outflow, the stock keeps climbing. To <em>stabilize</em> a stock you must equalize the flows; to <em>reduce</em> it you must push outflow above inflow. This single confusion underlies a huge share of bad reasoning about debt, climate, hiring, and inventory.</p></div>
+
+  <h2 id="loops"><span class="n">3</span>Feedback loops</h2>
+  <p>A <strong>feedback loop</strong> exists whenever a stock feeds back to influence its own flows. This is where systems come alive - and where all the interesting behavior comes from. There are exactly two kinds.</p>
+
+  <h3>Reinforcing loops (amplifying)</h3>
+  <p>A <strong>reinforcing loop</strong> feeds on itself: more leads to more (or less leads to less). It is the engine of <em>exponential</em> growth and collapse. The same structure is called a <strong>vicious cycle</strong> when it runs down and a <strong>virtuous cycle</strong> when it runs up - the wiring is identical, only the direction differs.</p>
+  <pre>REINFORCING LOOP (the flywheel)
+
+  more customers ------------------------------.
+       ^                                        |
+       |                                        v
+  better product &lt;---- more revenue &lt;---- more data
+       (each turn makes the next turn easier - output feeds input)</pre>
+  <p>This is the <strong>flywheel</strong>: each turn makes the next turn easier. It is also the structure behind <strong>network effects</strong> - each new user makes the product more valuable, which attracts more users. Compound interest, viral spread, arms races, and rich-get-richer dynamics are all reinforcing loops. Left unchecked they explode (or crash) - which never actually happens, because a balancing loop always eventually catches them.</p>
+
+  <h3>Balancing loops (goal-seeking)</h3>
+  <p>A <strong>balancing loop</strong> resists change and seeks a goal. It compares the current state to a target and acts to close the gap - the classic <strong>thermostat</strong>: too cold, turn on heat; at target, turn off. Balancing loops are the source of stability, homeostasis, and every real-world <strong>limit</strong> (finite resources, market saturation, carrying capacity).</p>
+  <pre>BALANCING LOOP (the thermostat)
+
+  gap = target - current
+       |
+       v
+  corrective action ----&gt; current rises ----&gt; gap shrinks ----&gt; action eases
+       (seeks a goal; damps deviation; the source of all limits)</pre>
+
+  <div class="box key"><span class="lbl">Every S-curve is a race between the two</span><p>The most important pattern in all of dynamics is what happens when a <strong>reinforcing loop meets a balancing loop</strong>. Growth starts exponential (reinforcing loop dominates), then bends over and saturates as a limit kicks in (balancing loop takes over). That is the <strong>S-curve</strong> - and it is everywhere: bacteria in a jar, product adoption, technology diffusion. See <a href="../dynamics/tech_revolutions_and_scurves.html">Tech Revolutions &amp; S-Curves</a> for the full treatment; here the point is structural - <strong>an S-curve is literally the signature of a reinforcing loop handing off to a balancing one.</strong></p></div>
+
+  <h2 id="delays"><span class="n">4</span>Delays</h2>
+  <p>Feedback is rarely instant. A <strong>delay</strong> is a lag between an action and its visible effect, or between a change in a stock and the system's response. Delays are the single most common cause of <em>oscillation</em> and <em>overshoot</em>.</p>
+  <h3>The shower that scalds</h3>
+  <p>Turn the hot tap; nothing happens (delay in the pipes); so you turn it further; suddenly it is scalding, so you crank it cold; a delay again, then freezing. You oscillate around the comfortable temperature you wanted, overshooting on both sides - not because you are foolish, but because you are <strong>acting on stale information</strong>. The longer the delay, the wilder the swings.</p>
+  <div class="box trap"><span class="lbl">The bullwhip effect</span><p>Supply chains show the same structure at scale. A small bump in retail demand travels up the chain - retailer to distributor to factory - and at each link people over-order to cover the delay and the uncertainty. By the time the signal reaches the factory, the swing is enormous: the <strong>bullwhip effect</strong>. The cause is not stupidity but <strong>delayed feedback in a multi-stage system</strong>: each actor responds to a lagged, amplified version of the real demand. The fix is faster, shared information (shorter delay), not better forecasting of the noise.</p></div>
+  <p>The general lesson: <strong>in a system with long delays, aggressive responses cause instability.</strong> The intuitive move (push harder because nothing is happening yet) is exactly wrong. When feedback is slow, act gently and wait - or shorten the delay.</p>
+
+  <h2 id="nonlinear"><span class="n">5</span>Nonlinearity &amp; tipping points</h2>
+  <p>In a <strong>linear</strong> system, output is proportional to input: double the cause, double the effect. Real systems are usually <strong>nonlinear</strong> - the relationship between cause and effect bends, jumps, or reverses. A small push can do nothing for a long time, then produce a sudden, disproportionate change.</p>
+  <p>A <strong>tipping point</strong> is a threshold at which the system flips into a qualitatively different state - and often cannot flip back. One more grain tips the sand pile; one more degree and the ice sheet is committed to melt; one more defector and the norm collapses. Below the threshold, the push seems wasted; at the threshold, the whole system reorganizes.</p>
+  <div class="box key"><span class="lbl">Why proportional intuition fails</span><p>Because of loops and thresholds, <strong>effect size is not proportional to cause size.</strong> The same intervention can do nothing at one moment and trigger a cascade at another, depending on how close the system sits to a threshold and which loop currently dominates. This is why "we tried that and it didn't work" is weak evidence - the system may simply not have been near its tipping point. Nonlinearity is also the deep reason complex systems are hard to predict (Section 9): tiny differences in starting conditions can be amplified by reinforcing loops into wildly divergent outcomes.</p></div>
+
+  <h2 id="orders"><span class="n">6</span>Second/third-order effects</h2>
+  <p>This is the practical heart of the discipline: the asides about "second-order effects" scattered through this collection, gathered into one habit. <strong>Every action ripples through a system, and the ripples matter more than the splash.</strong></p>
+  <p>First-order thinking stops at the immediate, intended effect. Systems thinking asks <strong>"and then what?"</strong> - and then keeps asking. The first-order effect is what you meant to do; the second- and third-order effects are what the <em>system</em> does in response, and they routinely swamp or reverse your intention.</p>
+  <div class="box trap"><span class="lbl">Unintended consequences: the cobra effect</span><p>Colonial Delhi had too many cobras, so the government paid a bounty for dead cobras. First-order: fewer cobras. Second-order: people <em>bred</em> cobras to collect bounties. Third-order: when the scheme was scrapped, breeders released their now-worthless snakes - <strong>more cobras than before.</strong> The <strong>cobra effect</strong> is the archetype of an intervention that produces the opposite of its goal because it ignored how the system would respond to the new incentive.</p></div>
+  <div class="box trap"><span class="lbl">Jevons paradox: efficiency raises total use</span><p>When something becomes more <em>efficient</em>, first-order intuition says total consumption falls. Often the opposite happens. When steam engines got more coal-efficient, coal use <strong>rose</strong> - cheaper power made countless new uses viable, and the expanded demand outran the per-unit savings. This is the <strong>Jevons paradox</strong>, and it is a direct consequence of a reinforcing loop: efficiency lowers cost, lower cost raises demand, higher demand raises total use. It sits right on top of the energy story in <a href="../foundations/energy_and_thermodynamics.html">Energy &amp; Thermodynamics</a> - efficiency alone does not conserve a resource; it can accelerate its depletion.</p></div>
+  <div class="box trap"><span class="lbl">Goodhart's law: the measure becomes the target</span><p>"When a measure becomes a target, it ceases to be a good measure." Optimize the proxy and the system will find ways to satisfy the proxy while abandoning the goal it was meant to represent - teachers teaching to the test, models gaming their reward. This is a second-order effect of measurement itself, and it recurs constantly in AI alignment (cross-ref <a href="../ai/">the AI notes</a>): a system pushed hard on a metric will exploit the gap between the metric and what you actually wanted.</p></div>
+  <p>The common thread: <strong>you can never do just one thing.</strong> Every intervention enters a web of loops, and the web pushes back. The discipline is to trace the ripples <em>before</em> you act, not to be surprised by them after.</p>
+
+  <h2 id="leverage"><span class="n">7</span>Leverage points</h2>
+  <p>Donella Meadows, the great systems thinker, asked: where do you push a system to change it? Her answer overturns intuition. She ranked <strong>leverage points</strong> from weakest to strongest, and the places we <em>instinctively</em> reach for are near the bottom.</p>
+  <table>
+    <thead><tr><th>Leverage (low to high)</th><th>Example</th><th>Power</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Parameters</strong> - numbers, subsidies, tax rates</td><td>Tweak the interest rate, adjust a budget</td><td>Weakest - the system barely notices</td></tr>
+      <tr><td><strong>Buffers &amp; stocks</strong> - sizes of accumulations</td><td>Bigger reserves, larger inventory</td><td>Modest</td></tr>
+      <tr><td><strong>Feedback loops</strong> - strength of loops, adding balancing loops</td><td>Add a regulator, speed up a signal</td><td>Substantial</td></tr>
+      <tr><td><strong>Information flows</strong> - who knows what, when</td><td>Give people the missing feedback</td><td>Strong - and often cheap</td></tr>
+      <tr><td><strong>Rules</strong> - incentives, constraints, structure</td><td>Change what is rewarded or forbidden</td><td>Strong</td></tr>
+      <tr><td><strong>Goals</strong> - what the system is <em>for</em></td><td>Shift from "grow GDP" to "grow wellbeing"</td><td>Very strong</td></tr>
+      <tr><td><strong>Paradigms</strong> - the shared mindset beneath the goals</td><td>Rethink what the whole system is about</td><td>Strongest</td></tr>
+    </tbody>
+  </table>
+  <div class="box key"><span class="lbl">The best leverage is high up</span><p>Almost everyone spends their energy at the <strong>bottom</strong> - fiddling with parameters (a tax rate here, a target there) because those are visible, quantifiable, and safe. But parameters rarely change a system's <em>behavior</em>; the structure absorbs them. The real leverage is <strong>high up</strong>: change the <em>goals</em> a system pursues or the <em>paradigm</em> underneath, and everything below reorganizes automatically. High leverage is powerful precisely because it is hard - it requires changing minds, not dials.</p></div>
+  <p>Meadows' warning cuts both ways: high leverage points are also the easiest to push in the <em>wrong</em> direction, and systems fiercely defend their paradigms. Which is exactly why systems resist change.</p>
+
+  <h2 id="resist"><span class="n">8</span>Why systems resist change</h2>
+  <p>If you have ever watched an obvious, well-designed reform accomplish nothing, you have met <strong>policy resistance</strong>. Complex systems tend to defeat interventions and snap back to their prior behavior. This is not bad luck - it is structure doing its job.</p>
+  <div class="box key"><span class="lbl">Homeostasis and policy resistance</span><p><strong>Homeostasis</strong> is a system's tendency to maintain its state through balancing loops - the same mechanism that keeps your body at 37 C keeps organizations, markets, and societies stubbornly stable. <strong>Policy resistance</strong> arises when different actors are pulling the same stock toward different goals: push it your way and their balancing loops push back harder, so the system stays put while everyone burns energy. Every crackdown that just moves the problem, every reform that gets quietly reversed, is policy resistance at work.</p></div>
+  <p>The systems-thinking response is not to push harder (that feeds the resistance) but to <strong>find the shared goal or realign the loops</strong> - to make the change something the system's own feedback <em>supports</em> rather than fights. Work with the structure, not against it. A change that the balancing loops defend is permanent; a change they oppose is temporary no matter how much force you apply.</p>
+
+  <h2 id="edges"><span class="n">9</span>Edge &amp; breaking cases</h2>
+  <p>The failure modes are mostly ways we forget that we are inside a web, not standing over a machine.</p>
+  <ul>
+    <li><strong>You cannot do just one thing</strong> - every action has side effects because everything is connected through loops. There is no isolated intervention; there is only the intervention plus everything the system does in response. Plan for the ripples, or the ripples will plan for you.</li>
+    <li><strong>Local vs global optimum</strong> - optimizing one part of a system often <em>degrades</em> the whole. A department that maximizes its own metric can starve the organization; a muscle that overtrains injures the body. The best whole rarely comes from the best parts - it comes from the best <em>relationships</em> between parts.</li>
+    <li><strong>Reflexivity - the map changes the territory</strong> - in systems full of thinking agents, beliefs about the system alter the system. George Soros' reflexivity: expectations of a rising market cause buying, which raises the market, which confirms the expectation - the observation feeds back into the observed. This makes prediction self-undermining: a forecast that is acted on changes the thing it forecast.</li>
+    <li><strong>Prediction is hard in complex systems</strong> - with nonlinearity, delays, and coupled loops, small unknowns get amplified into large surprises. Precise long-range prediction of a complex adaptive system is often impossible in principle, not just in practice. The move (as in the risk note) is to build for resilience and adaptation, not to chase a perfect forecast.</li>
+  </ul>
+
+  <h2 id="use"><span class="n">10</span>How to use it</h2>
+  <p>A practical procedure for looking at any messy situation - a business, a policy, a personal habit - as a system.</p>
+  <div class="box good"><span class="lbl">The systems-thinking workflow</span>
+    <p><strong>1. Map the structure first.</strong> Before proposing anything, draw it: what are the <em>stocks</em> (accumulations), the <em>flows</em> (rates), the <em>loops</em> (reinforcing and balancing), and the <em>delays</em>? Most confusion dissolves the moment the wiring is visible.</p>
+    <p><strong>2. Ask "and then what?" three times.</strong> For any action, trace the first-order effect, then the second, then the third. Watch for loops that reverse your intention (cobra effect, Jevons, Goodhart). If you stop at first-order, the system will surprise you.</p>
+    <p><strong>3. Find the real leverage.</strong> Resist the urge to tweak parameters. Look higher - information flows, rules, goals, paradigms. Ask "what is this system actually optimizing for?" and whether <em>that</em> is what needs to change.</p>
+    <p><strong>4. Expect resistance and mind the delays.</strong> Assume balancing loops will fight you (policy resistance, homeostasis) and that feedback will arrive late. Align the change with the system's own goals where you can, and act gently when delays are long.</p>
+  </div>
+  <p>Run these in order. Mapping (step 1) is the gate - you cannot reason about a system you have not drawn. Everything else is about respecting what the map reveals: the ripples, the leverage, and the system's stubborn will to stay as it is.</p>
+
+  <h2 id="glossary"><span class="n">11</span>Glossary</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>System</strong></td><td>A set of parts whose relationships produce behavior none of the parts could produce alone; structure drives behavior.</td></tr>
+      <tr><td><strong>Stock</strong></td><td>An accumulation that exists at a moment (water in a tub, savings, CO2, trust); changes only through its flows, so it has memory and inertia.</td></tr>
+      <tr><td><strong>Flow</strong></td><td>A rate that fills or drains a stock (the tap and the drain); measured per unit of time.</td></tr>
+      <tr><td><strong>Feedback loop</strong></td><td>A structure in which a stock feeds back to influence its own flows; the source of a system's dynamic behavior.</td></tr>
+      <tr><td><strong>Reinforcing loop</strong></td><td>A loop that amplifies itself - more leads to more; the engine of exponential growth, flywheels, network effects, and vicious/virtuous cycles.</td></tr>
+      <tr><td><strong>Balancing loop</strong></td><td>A goal-seeking loop that resists change and closes the gap to a target (thermostat); the source of stability and limits.</td></tr>
+      <tr><td><strong>Delay</strong></td><td>A lag between action and effect; long delays cause overshoot and oscillation (scalding shower, bullwhip effect).</td></tr>
+      <tr><td><strong>Nonlinearity</strong></td><td>When effect is not proportional to cause; small pushes can produce disproportionate or reversed results.</td></tr>
+      <tr><td><strong>Tipping point</strong></td><td>A threshold at which a system flips into a qualitatively different (often irreversible) state.</td></tr>
+      <tr><td><strong>Second-order effect</strong></td><td>The consequence of a consequence - what the system does in response to your action; found by asking "and then what?"</td></tr>
+      <tr><td><strong>Unintended consequence</strong></td><td>An outcome not aimed at, often opposite to the goal, because the intervention ignored the system's response (cobra effect).</td></tr>
+      <tr><td><strong>Jevons paradox</strong></td><td>Greater efficiency in using a resource can raise its total consumption, because lower cost expands demand.</td></tr>
+      <tr><td><strong>Goodhart's law</strong></td><td>When a measure becomes a target, it stops being a good measure; systems game the proxy at the expense of the goal.</td></tr>
+      <tr><td><strong>Leverage point</strong></td><td>A place to intervene in a system (Meadows); best leverage is high up - goals and paradigms - not tweaking parameters.</td></tr>
+      <tr><td><strong>Policy resistance</strong></td><td>A system's tendency to defeat interventions and snap back, as competing balancing loops push against the change.</td></tr>
+      <tr><td><strong>Homeostasis</strong></td><td>A system's tendency to maintain its state through balancing loops; the root of stability and of resistance to change.</td></tr>
+      <tr><td><strong>Reflexivity</strong></td><td>When beliefs about a system change the system (Soros); the map alters the territory, making prediction self-undermining.</td></tr>
+    </tbody>
+  </table>
+  <footer>First-Principles Study Notes &middot; Systems Thinking &amp; Feedback Loops &middot; captured 2026-07-12. The structural operating system: see the wiring, trace the ripples, push high up, expect resistance.</footer>
+</main>
+</div>
+</body>
+</html>
