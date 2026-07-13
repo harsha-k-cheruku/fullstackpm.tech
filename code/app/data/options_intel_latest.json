@@ -1,15 +1,15 @@
 {
-  "written_at": "2026-07-13T19:59:28.757084+00:00",
-  "body": "MORNING INTEL \u2014 2026-07-13 (snapshot 2026-07-13_8)\nRegime data: VIX 17.32 | HY OAS 269 | Breadth 63.6%\nAMZN: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nNVDA: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nSPY: TRADE | BULLISH conf 53.333333333333336% | Range 729.52\u2013769.44 | put_credit_spread x1\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
+  "written_at": "2026-07-13T20:02:45.187273+00:00",
+  "body": "MORNING INTEL \u2014 2026-07-13 (snapshot 2026-07-13_9)\nRegime data: VIX 17.28 | HY OAS 269 | Breadth 63.6%\nAMZN: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nNVDA: NO_TRADE \u2014 IV Rank below minimum or missing (G2_iv_rank: observed None threshold >= 25.0)\nSPY: TRADE | BULLISH conf 53.333333333333336% | Range 729.12\u2013769.04 | put_credit_spread x1\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
   "structured": {
     "date": "2026-07-13",
-    "snapshot_id": "2026-07-13_8",
+    "snapshot_id": "2026-07-13_9",
     "warmup_days_remaining": 0,
-    "takeaway": "The current regime reflects elevated uncertainty with VIX at 17.32, showing near-term volatility above the 9-day average but still below the 3-month forward, indicating a mildly cautious market stance amid geopolitical tensions. SPY at $749.48 is pressured by escalating U.S.-Iran conflicts, dragging Nasdaq leaders lower and signaling near-term downside risk, while NVDA at $204.18 and AMZN at $247.21 present asymmetric opportunities; NVDA benefits from a generational tech transfer narrative with strong positive sentiment and high IV (45.68%), and AMZN\u2019s 46.21% IV and decade-low price suggest a deep value play if geopolitical risks ease. The key catalyst to watch is this week\u2019s inflation data and the Fed\u2019s response, as a hot print could trigger another rate hike, compounding pressure on growth stocks and financials ahead of major bank earnings next week. The primary risk is a sustained geopolitical escalation that could spike volatility and widen credit spreads (HY OAS at 269 bps), undermining risk appetite and pushing the market into a defensive posture. Trade signal gates remain fully active, favoring selective, volatility-aware positioning.",
+    "takeaway": "The current regime shows elevated volatility with VIX at 17.28, a steep contango between 9-day (15.23) and 3-month (19.73) implied volatility, and credit spreads remaining wide at 269 bps, signaling persistent risk aversion amid rising US Treasury yields (2Y at 4.16%, 10Y at 4.54%) and a firm dollar (DXY 101.28). SPY at $749.08 is pressured by escalating U.S.-Iran tensions dragging Nasdaq leaders lower, setting a cautious near-term tone. NVDA at $203.53, with near 50% IV and positive sentiment, stands out as a clear bullish play, benefiting from the \"generational transfer\" narrative that favors semiconductor leaders over legacy tech, while AMZN at $247.31 is also a compelling long given its decade-low valuation and positive sentiment, suggesting a value-driven bounce is imminent. The key catalyst to watch is the upcoming inflation data and Fed commentary, especially after Waller\u2019s hawkish hint, as a hotter print could trigger renewed rate hike fears, exacerbating downside risk for growth stocks. The primary risk is geopolitical escalation with Iran, which has already pressured the Nasdaq and could derail the fragile risk-on environment ahead of major bank earnings next week. Trade signal gates remain fully active, endorsing a nimble approach focused on selective longs in NVDA and AMZN while managing broad market exposure cautiously.",
     "regime": {
-      "vix": 17.32,
-      "vix9d": 15.26,
-      "vix3m": 19.76,
+      "vix": 17.28,
+      "vix9d": 15.23,
+      "vix3m": 19.73,
       "term_structure": "contango",
       "hy_oas_bps": 269.0,
       "breadth_pct": 63.64,
@@ -20,9 +20,9 @@
     "tickers": {
       "SPY": {
         "ticker": "SPY",
-        "spot": 749.48,
-        "iv_30d_pct": 25.78,
-        "iv_rank": 70.9315200543436,
+        "spot": 749.08,
+        "iv_30d_pct": 25.46,
+        "iv_rank": 69.66582914268015,
         "sentiment_score": -1,
         "sentiment_driver": "Nasdaq leading stocks lower as U.S.-Iran tensions escalate",
         "gate_passed": true,
@@ -30,16 +30,16 @@
         "gate_failure_detail": null,
         "bias": "BULLISH",
         "confidence_pct": 53.333333333333336,
-        "range_low": 729.52,
-        "range_high": 769.44,
+        "range_low": 729.12,
+        "range_high": 769.04,
         "strategy": "put_credit_spread",
         "contracts": 1,
         "conviction": 3
       },
       "NVDA": {
         "ticker": "NVDA",
-        "spot": 204.18,
-        "iv_30d_pct": 45.68,
+        "spot": 203.5284,
+        "iv_30d_pct": 49.99,
         "iv_rank": null,
         "sentiment_score": 1,
         "sentiment_driver": "NVIDIA and Micron the Winners in generational transfer",
@@ -56,8 +56,8 @@
       },
       "AMZN": {
         "ticker": "AMZN",
-        "spot": 247.21,
-        "iv_30d_pct": 46.21,
+        "spot": 247.31,
+        "iv_30d_pct": 46.12,
         "iv_rank": null,
         "sentiment_score": 1,
         "sentiment_driver": "Amazon stock hasn't been this cheap in over a decade",
@@ -161,9 +161,9 @@
     ],
     "looking_ahead": {
       "narratives": {
-        "this_week": "Bank earnings dominate this week with JPM, BAC, WFC, and GS reporting starting July 14, followed by MS on July 15. Investors will focus on loan growth, credit quality, and trading revenue amid a VIX at 17.32 signaling moderate risk appetite. Strong results could lift financials and provide a positive tailwind for SPY, while weakness may pressure the broader market given financials\u2019 large index weighting.",
-        "next_week": "Next week features a tech and industrial heavy slate with GOOGL, TSLA, HON, and RTX reporting around July 22-23. GOOGL\u2019s ad revenue and AI investments will be key for Communication Services and growth sentiment, impacting NVDA given its AI exposure. Industrial earnings will offer insight into manufacturing demand and supply chain dynamics, which could influence cyclical sectors within SPY and consumer discretionary names like AMZN.",
-        "next_month": "The following month sees a packed calendar with mega-cap tech earnings from MSFT, META, AAPL, and AMZN clustered around July 29-30, alongside the FOMC meeting and July PCE data. Market reaction to earnings and Fed guidance will be critical for growth stocks and overall risk sentiment, directly affecting SPY and tech bellwethers NVDA and AMZN. Inflation data will further shape rate expectations, influencing equity multiples and sector rotation into utilities and energy."
+        "this_week": "Bank earnings dominate this week with JPM, WFC, GS, BAC, and MS reporting between July 14-15. Investors will focus on credit quality, trading revenue, and capital return plans amid a VIX at 17.28 in contango and HY OAS at 269 bps, signaling moderate risk appetite. Strong results could buoy financials and provide a tailwind for SPY, while any signs of credit stress may pressure broader equities and weigh on cyclical names like NVDA.",
+        "next_week": "Next week features key tech and industrial earnings with GOOGL, TSLA, and RTX among the highlights on July 22-23. GOOGL\u2019s ad revenue outlook and TSLA\u2019s production guidance will be critical for Communication Services and Consumer Discretionary sectors, respectively, influencing momentum in AMZN and NVDA. Industrial earnings will offer insight into capex trends and supply chain normalization, which could support cyclical rotation in SPY if results exceed expectations.",
+        "next_month": "Looking further ahead, the FOMC meeting on July 30 is the dominant event, coinciding with heavyweight tech earnings from MSFT, META, and AAPL. Market participants will parse Fed messaging for clues on rate policy amid steady breadth at 63.6%, which will set the tone for risk assets. The combination of monetary policy clarity and tech earnings should drive directional cues for growth-oriented names like NVDA and AMZN, with potential spillover effects across the broader equity market."
       },
       "this_week": [
         {
@@ -193,34 +193,6 @@
               "Microsoft",
               "Salesforce",
               "Broadridge"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-14",
-          "days_until": 1,
-          "ticker": "BAC",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500"
-            ],
-            "sector_etf": [
-              "XLF"
-            ],
-            "sector": "Financials",
-            "industry": "Banking",
-            "consumers": [
-              "Retail clients",
-              "SMBs",
-              "Institutions"
-            ],
-            "vendors": [
-              "Fiserv",
-              "FIS",
-              "NCR Atleos"
             ]
           }
         },
@@ -283,9 +255,9 @@
         },
         {
           "event_type": "earnings",
-          "event_date": "2026-07-15",
-          "days_until": 2,
-          "ticker": "MS",
+          "event_date": "2026-07-14",
+          "days_until": 1,
+          "ticker": "BAC",
           "prediction_markets": [],
           "scenarios": null,
           "metadata": {
@@ -296,16 +268,16 @@
               "XLF"
             ],
             "sector": "Financials",
-            "industry": "Investment Banking / Wealth",
+            "industry": "Banking",
             "consumers": [
-              "HNW clients",
-              "Institutions",
-              "Corporations"
+              "Retail clients",
+              "SMBs",
+              "Institutions"
             ],
             "vendors": [
-              "Bloomberg",
-              "SS&C",
-              "Broadridge"
+              "Fiserv",
+              "FIS",
+              "NCR Atleos"
             ]
           }
         },
@@ -335,6 +307,34 @@
               "Thermo Fisher",
               "Danaher",
               "Wuxi Biologics"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-15",
+          "days_until": 2,
+          "ticker": "MS",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500"
+            ],
+            "sector_etf": [
+              "XLF"
+            ],
+            "sector": "Financials",
+            "industry": "Investment Banking / Wealth",
+            "consumers": [
+              "HNW clients",
+              "Institutions",
+              "Corporations"
+            ],
+            "vendors": [
+              "Bloomberg",
+              "SS&C",
+              "Broadridge"
             ]
           }
         },
@@ -486,34 +486,6 @@
           "event_type": "earnings",
           "event_date": "2026-07-22",
           "days_until": 9,
-          "ticker": "T",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLC"
-            ],
-            "sector": "Communication Services",
-            "industry": "Telecom",
-            "consumers": [
-              "Retail subscribers",
-              "Enterprise"
-            ],
-            "vendors": [
-              "Ericsson",
-              "Nokia",
-              "Samsung Networks"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-22",
-          "days_until": 9,
           "ticker": "TSLA",
           "prediction_markets": [],
           "scenarios": null,
@@ -544,6 +516,34 @@
           "event_type": "earnings",
           "event_date": "2026-07-22",
           "days_until": 9,
+          "ticker": "T",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLC"
+            ],
+            "sector": "Communication Services",
+            "industry": "Telecom",
+            "consumers": [
+              "Retail subscribers",
+              "Enterprise"
+            ],
+            "vendors": [
+              "Ericsson",
+              "Nokia",
+              "Samsung Networks"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-22",
+          "days_until": 9,
           "ticker": "CCI",
           "prediction_markets": [],
           "scenarios": null,
@@ -564,34 +564,6 @@
             "vendors": [
               "Steel suppliers",
               "Tower construction firms"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-23",
-          "days_until": 10,
-          "ticker": "HON",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLI"
-            ],
-            "sector": "Industrials",
-            "industry": "Diversified Industrials",
-            "consumers": [
-              "Aerospace OEMs",
-              "Refineries",
-              "Building operators"
-            ],
-            "vendors": [
-              "Steel suppliers",
-              "Electronic component makers"
             ]
           }
         },
@@ -628,26 +600,27 @@
           "event_type": "earnings",
           "event_date": "2026-07-23",
           "days_until": 10,
-          "ticker": "NEM",
+          "ticker": "HON",
           "prediction_markets": [],
           "scenarios": null,
           "metadata": {
             "indices": [
-              "SP500"
+              "SP500",
+              "DJI"
             ],
             "sector_etf": [
-              "XLB"
+              "XLI"
             ],
-            "sector": "Materials",
-            "industry": "Gold Mining",
+            "sector": "Industrials",
+            "industry": "Diversified Industrials",
             "consumers": [
-              "Jewelry makers",
-              "Central banks",
-              "ETF (GLD)"
+              "Aerospace OEMs",
+              "Refineries",
+              "Building operators"
             ],
             "vendors": [
-              "Mining equipment makers",
-              "Energy utilities"
+              "Steel suppliers",
+              "Electronic component makers"
             ]
           }
         },
@@ -671,6 +644,33 @@
               "Auto makers",
               "Power grid builders",
               "Electronics makers"
+            ],
+            "vendors": [
+              "Mining equipment makers",
+              "Energy utilities"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-23",
+          "days_until": 10,
+          "ticker": "NEM",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500"
+            ],
+            "sector_etf": [
+              "XLB"
+            ],
+            "sector": "Materials",
+            "industry": "Gold Mining",
+            "consumers": [
+              "Jewelry makers",
+              "Central banks",
+              "ETF (GLD)"
             ],
             "vendors": [
               "Mining equipment makers",
@@ -797,6 +797,34 @@
           "event_type": "earnings",
           "event_date": "2026-07-28",
           "days_until": 15,
+          "ticker": "SHW",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLB"
+            ],
+            "sector": "Materials",
+            "industry": "Paints & Coatings",
+            "consumers": [
+              "Homebuilders",
+              "Contractors",
+              "Industrial clients"
+            ],
+            "vendors": [
+              "TiO2 suppliers",
+              "Chemical distributors"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-28",
+          "days_until": 15,
           "ticker": "KO",
           "prediction_markets": [],
           "scenarios": null,
@@ -845,34 +873,6 @@
             "vendors": [
               "Steel suppliers",
               "Equipment vendors"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-28",
-          "days_until": 15,
-          "ticker": "SHW",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLB"
-            ],
-            "sector": "Materials",
-            "industry": "Paints & Coatings",
-            "consumers": [
-              "Homebuilders",
-              "Contractors",
-              "Industrial clients"
-            ],
-            "vendors": [
-              "TiO2 suppliers",
-              "Chemical distributors"
             ]
           }
         },
@@ -1253,35 +1253,6 @@
           "event_type": "earnings",
           "event_date": "2026-07-31",
           "days_until": 18,
-          "ticker": "CVX",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500",
-              "DJI"
-            ],
-            "sector_etf": [
-              "XLE"
-            ],
-            "sector": "Energy",
-            "industry": "Integrated Oil & Gas",
-            "consumers": [
-              "Refiners",
-              "Petrochemical companies",
-              "Consumers"
-            ],
-            "vendors": [
-              "SLB",
-              "Baker Hughes",
-              "Halliburton"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-31",
-          "days_until": 18,
           "ticker": "XOM",
           "prediction_markets": [],
           "scenarios": null,
@@ -1305,6 +1276,35 @@
               "Baker Hughes",
               "Halliburton",
               "BHGE"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-31",
+          "days_until": 18,
+          "ticker": "CVX",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLE"
+            ],
+            "sector": "Energy",
+            "industry": "Integrated Oil & Gas",
+            "consumers": [
+              "Refiners",
+              "Petrochemical companies",
+              "Consumers"
+            ],
+            "vendors": [
+              "SLB",
+              "Baker Hughes",
+              "Halliburton"
             ]
           }
         },
@@ -1367,34 +1367,6 @@
           "event_type": "earnings",
           "event_date": "2026-08-04",
           "days_until": 22,
-          "ticker": "BKNG",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500",
-              "NDX"
-            ],
-            "sector_etf": [
-              "XLY"
-            ],
-            "sector": "Consumer Discretionary",
-            "industry": "Online Travel",
-            "consumers": [
-              "Travelers",
-              "Hotels",
-              "Airlines"
-            ],
-            "vendors": [
-              "AMZN AWS",
-              "Alphabet advertising"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-08-04",
-          "days_until": 22,
           "ticker": "MCD",
           "prediction_markets": [],
           "scenarios": null,
@@ -1417,6 +1389,34 @@
               "Lamb Weston",
               "Coca-Cola",
               "Martin-Brower"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-08-04",
+          "days_until": 22,
+          "ticker": "BKNG",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500",
+              "NDX"
+            ],
+            "sector_etf": [
+              "XLY"
+            ],
+            "sector": "Consumer Discretionary",
+            "industry": "Online Travel",
+            "consumers": [
+              "Travelers",
+              "Hotels",
+              "Airlines"
+            ],
+            "vendors": [
+              "AMZN AWS",
+              "Alphabet advertising"
             ]
           }
         },
@@ -1730,10 +1730,10 @@
         "open": 752.47,
         "high": 753.91,
         "low": 748.03,
-        "close": 749.17,
+        "close": 749.08,
         "prev_close": 754.95,
-        "volume": 38536014,
-        "change_pct": -0.77
+        "volume": 39255891,
+        "change_pct": -0.78
       },
       {
         "symbol": "NVDA",
@@ -1742,10 +1742,10 @@
         "open": 208.54,
         "high": 210.57,
         "low": 203.35,
-        "close": 203.75,
+        "close": 203.53,
         "prev_close": 210.96,
-        "volume": 95513100,
-        "change_pct": -3.42
+        "volume": 113202886,
+        "change_pct": -3.52
       },
       {
         "symbol": "AMZN",
@@ -1754,10 +1754,10 @@
         "open": 244.26,
         "high": 249.65,
         "low": 244.23,
-        "close": 247.18,
+        "close": 247.31,
         "prev_close": 245.34,
-        "volume": 27293519,
-        "change_pct": 0.75
+        "volume": 32534353,
+        "change_pct": 0.8
       },
       {
         "symbol": "QQQ",
@@ -1766,10 +1766,10 @@
         "open": 717.72,
         "high": 718.74,
         "low": 710.1,
-        "close": 712.19,
+        "close": 711.74,
         "prev_close": 725.51,
-        "volume": 33560319,
-        "change_pct": -1.84
+        "volume": 34615202,
+        "change_pct": -1.9
       },
       {
         "symbol": "RSP",
@@ -1778,9 +1778,9 @@
         "open": 214.48,
         "high": 215.5,
         "low": 213.8,
-        "close": 214.17,
+        "close": 214.18,
         "prev_close": 214.3,
-        "volume": 6576285,
+        "volume": 6636158,
         "change_pct": -0.06
       },
       {
@@ -1790,10 +1790,10 @@
         "open": 564.66,
         "high": 566.65,
         "low": 550.26,
-        "close": 553.57,
+        "close": 553.61,
         "prev_close": 581.34,
-        "volume": 7748971,
-        "change_pct": -4.78
+        "volume": 8050958,
+        "change_pct": -4.77
       },
       {
         "symbol": "XLK",
@@ -1802,10 +1802,10 @@
         "open": 183.1,
         "high": 183.88,
         "low": 180.54,
-        "close": 181.4,
+        "close": 181.26,
         "prev_close": 185.78,
-        "volume": 8126753,
-        "change_pct": -2.36
+        "volume": 8291718,
+        "change_pct": -2.43
       },
       {
         "symbol": "XLY",
@@ -1814,10 +1814,10 @@
         "open": 117.2,
         "high": 117.52,
         "low": 115.62,
-        "close": 116.0,
+        "close": 116.01,
         "prev_close": 117.24,
-        "volume": 5676531,
-        "change_pct": -1.06
+        "volume": 5781028,
+        "change_pct": -1.05
       },
       {
         "symbol": "XLC",
@@ -1826,10 +1826,10 @@
         "open": 111.78,
         "high": 112.75,
         "low": 111.47,
-        "close": 111.57,
+        "close": 111.59,
         "prev_close": 111.64,
-        "volume": 5589163,
-        "change_pct": -0.06
+        "volume": 5664794,
+        "change_pct": -0.04
       },
       {
         "symbol": "XLF",
@@ -1838,10 +1838,10 @@
         "open": 55.98,
         "high": 56.16,
         "low": 55.6,
-        "close": 56.04,
+        "close": 56.05,
         "prev_close": 55.71,
-        "volume": 31610788,
-        "change_pct": 0.59
+        "volume": 32234492,
+        "change_pct": 0.61
       },
       {
         "symbol": "XLV",
@@ -1850,10 +1850,10 @@
         "open": 160.97,
         "high": 162.24,
         "low": 160.33,
-        "close": 161.46,
+        "close": 161.38,
         "prev_close": 160.84,
-        "volume": 6399277,
-        "change_pct": 0.39
+        "volume": 6544867,
+        "change_pct": 0.34
       },
       {
         "symbol": "XLI",
@@ -1862,10 +1862,10 @@
         "open": 181.52,
         "high": 182.18,
         "low": 179.81,
-        "close": 180.33,
+        "close": 180.36,
         "prev_close": 181.92,
-        "volume": 5162852,
-        "change_pct": -0.87
+        "volume": 5242413,
+        "change_pct": -0.86
       },
       {
         "symbol": "XLE",
@@ -1874,10 +1874,10 @@
         "open": 55.86,
         "high": 56.97,
         "low": 55.86,
-        "close": 56.74,
+        "close": 56.75,
         "prev_close": 55.08,
-        "volume": 39517200,
-        "change_pct": 3.01
+        "volume": 40985410,
+        "change_pct": 3.03
       },
       {
         "symbol": "XLB",
@@ -1886,10 +1886,10 @@
         "open": 50.97,
         "high": 51.35,
         "low": 50.35,
-        "close": 50.57,
+        "close": 50.58,
         "prev_close": 50.89,
-        "volume": 8585275,
-        "change_pct": -0.63
+        "volume": 8775226,
+        "change_pct": -0.61
       },
       {
         "symbol": "XLP",
@@ -1898,10 +1898,10 @@
         "open": 84.55,
         "high": 85.54,
         "low": 84.38,
-        "close": 84.6,
+        "close": 84.58,
         "prev_close": 84.12,
-        "volume": 7581440,
-        "change_pct": 0.57
+        "volume": 7763817,
+        "change_pct": 0.55
       },
       {
         "symbol": "XLRE",
@@ -1910,10 +1910,10 @@
         "open": 44.61,
         "high": 44.96,
         "low": 44.5,
-        "close": 44.67,
+        "close": 44.69,
         "prev_close": 44.45,
-        "volume": 4103702,
-        "change_pct": 0.49
+        "volume": 4145186,
+        "change_pct": 0.54
       },
       {
         "symbol": "XLU",
@@ -1922,10 +1922,10 @@
         "open": 45.45,
         "high": 45.88,
         "low": 45.43,
-        "close": 45.69,
+        "close": 45.7,
         "prev_close": 45.41,
-        "volume": 14180562,
-        "change_pct": 0.62
+        "volume": 14478601,
+        "change_pct": 0.64
       },
       {
         "symbol": "TLT",
@@ -1934,10 +1934,10 @@
         "open": 84.18,
         "high": 84.28,
         "low": 83.93,
-        "close": 84.0,
+        "close": 83.97,
         "prev_close": 84.47,
-        "volume": 14669591,
-        "change_pct": -0.56
+        "volume": 17211133,
+        "change_pct": -0.59
       },
       {
         "symbol": "IEF",
@@ -1948,7 +1948,7 @@
         "low": 93.26,
         "close": 93.29,
         "prev_close": 93.63,
-        "volume": 4519410,
+        "volume": 5148376,
         "change_pct": -0.36
       },
       {
@@ -1958,10 +1958,10 @@
         "open": 79.67,
         "high": 79.69,
         "low": 79.46,
-        "close": 79.54,
+        "close": 79.52,
         "prev_close": 79.71,
-        "volume": 27141901,
-        "change_pct": -0.21
+        "volume": 28034871,
+        "change_pct": -0.24
       },
       {
         "symbol": "UUP",
@@ -1970,10 +1970,10 @@
         "open": 28.38,
         "high": 28.5,
         "low": 28.37,
-        "close": 28.5,
+        "close": 28.49,
         "prev_close": 28.39,
-        "volume": 2684419,
-        "change_pct": 0.39
+        "volume": 2798557,
+        "change_pct": 0.35
       },
       {
         "symbol": "GLD",
@@ -1982,10 +1982,10 @@
         "open": 372.77,
         "high": 372.89,
         "low": 365.77,
-        "close": 367.11,
+        "close": 367.2,
         "prev_close": 377.01,
-        "volume": 6428615,
-        "change_pct": -2.63
+        "volume": 6534188,
+        "change_pct": -2.6
       },
       {
         "symbol": "SLV",
@@ -1994,10 +1994,10 @@
         "open": 52.95,
         "high": 53.0,
         "low": 51.78,
-        "close": 52.17,
+        "close": 52.16,
         "prev_close": 53.95,
-        "volume": 16332360,
-        "change_pct": -3.3
+        "volume": 16601532,
+        "change_pct": -3.32
       },
       {
         "symbol": "VIX",
@@ -2006,10 +2006,10 @@
         "open": 16.32,
         "high": 17.41,
         "low": 16.03,
-        "close": 17.27,
+        "close": 17.3,
         "prev_close": 15.03,
         "volume": null,
-        "change_pct": 14.9
+        "change_pct": 15.1
       }
     ]
   }
