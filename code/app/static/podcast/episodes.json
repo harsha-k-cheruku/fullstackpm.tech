@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-13",
+      "slug": "daily-brief-2026-07-13",
+      "episode_number": 52,
+      "title": "Daily Brief \u2014 July 13, 2026",
+      "date": "2026-07-13",
+      "published_at": "2026-07-13T14:04:19",
+      "duration_seconds": 812,
+      "duration_human": "13:32",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-13.mp3",
+      "audio_length_bytes": 6491760,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Understanding Directional Views on SPY with Moving Averages",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: This solo builder runs 24/7 local AI on his own hardware | Alex Finn",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 753.82,
+        "pct_change": -0.15,
+        "iv_rank": 0.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-13</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Market Pulse: SpaceX IPO Sparks Bank Optimism Amid Geopolitical Turmoil</li>\n<li><strong>SPY learning:</strong> Understanding Directional Views on SPY with Moving Averages</li>\n<li><strong>Market brief:</strong> SPY Market Brief for July 13, 2026</li>\n<li><strong>PM/analytics:</strong> This solo builder runs 24/7 local AI on his own hardware | Alex Finn</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, big banks are gearing up to report impressive Q2 revenues, bolstered by the SpaceX IPO and increased volatility from the Iran conflict. This surge signals a potentially lucrative period for Wall Street, highlighting the intertwining of tech innovation and traditional finance. In Europe, Volkswagen&rsquo;s CEO has confirmed plans to cut 50,000 jobs despite the supervisory board rejecting factory closures. This move reflects ongoing pressures in the automotive sector, which could have implications for supply chains and labor markets across the continent. In Asia, China is ramping up its efforts to establish safety benchmarks for artificial intelligence as regulatory scrutiny intensifies globally. This initiative could reshape tech investments and collaborations, particularly impacting companies involved in AI development and deployment.</p>\n<p>Imagine you&rsquo;re at a carnival with your friends, and you&rsquo;re trying to decide which ride to go on next. There&rsquo;s a Ferris wheel that goes really high, and then there&rsquo;s a merry-go-round that&rsquo;s nice and steady. Now, think about how you might choose between them. If you notice the Ferris wheel has been going up more often than the merry-go-round, you might decide to hop on that one. Why? Because you want the thrill of the ride that\u2019s been taking you higher. You\u2019re using your past experiences to make a choice about what might happen next, based on how the rides have performed so far. This is a bit like how you can use information from past prices to get a feel for what the stock market might do next.</p>\n<p>Now, let\u2019s connect that to something a bit more serious, like SPY options. Just like you\u2019re watching the rides at the carnival, traders look at the SPY price, which today is around 753.82. They use something called moving averages to see where the price has been and where it might go. A moving average takes a series of past prices and averages them out over time, smoothing out the bumps. So, if the average price of SPY has been moving up over the last few days, traders might think the trend is upward and decide to buy call options, betting the price will rise even more. For example, if the 20-day moving average is at 750 and the current price is 753.82, that might signal an upward trend, suggesting it&rsquo;s a good time to consider bullish strategies.</p>\n<p>Knowing how to interpret these moving averages can change the way you approach trading SPY options. For instance, today with SPY priced at 753.82 and the IV rank being at 0.0, it suggests that implied volatility is low, meaning options are relatively cheap. When you see that the ATM strike price at 754 has a delta of 0.83, it indicates a high probability of being in-the-money if the price continues to rise. The natural question here is: &ldquo;Why does implied volatility matter?&rdquo; Here\u2019s how to think about it: low IV means that options are less expensive, and if you believe the SPY is likely to move up, it could be a great opportunity to sell premium on calls using defined-risk spreads. You can structure your trades to profit from that upward movement while managing your risk effectively. So, as you analyze the trends using moving averages alongside the current SPY data, you\u2019ll find yourself making more informed decisions, all while keeping an eye on the bigger picture of market movements.</p>\n<p>Today, SPY closed at 753.82, down 0.15% from its opening price of 752.47. The trading volume was robust at nearly 4.7 million shares, but the slight decline isn&rsquo;t particularly alarming when you consider the context of the week. SPY has been on a bit of a rollercoaster, reaching a high of 754.95 just yesterday. This recent dip could be seen as a natural pullback after a few days of gains, especially considering that the index is still hovering near its week high of 760.4. So, while today\u2019s move is negative, it\u2019s not a significant break from the overall trend we\u2019ve seen this week.</p>\n<p>When we break down the sector performance, Energy (XLE) was the standout today, rising 2.12%, which contributed significantly to SPY&rsquo;s overall performance. On the flip side, Technology (XLK) lagged, falling 1.69%. This divergence is telling; the strength in Energy likely reflects ongoing concerns about supply constraints and geopolitical tensions, particularly with the Iran war volatility impacting oil prices. Meanwhile, the weakness in Technology could be attributed to profit-taking after a strong run-up in the sector, as investors reassess valuations in light of rising interest rates and economic uncertainty.</p>\n<p>The macro backdrop is also important to consider. The latest CPI data shows a year-over-year increase of 4.27%, up from 3.95%, which is raising eyebrows among traders. This uptick in inflation could lead to a more hawkish stance from the Fed, especially with the next meeting coming up at the end of the month. With the Fed funds rate currently at 3.63%, the market is keenly watching for any signs of tightening that could further impact sectors like Technology, which are sensitive to interest rate hikes. The VIX is also reflecting this uncertainty, sitting at 16.2, indicating that traders are pricing in some volatility ahead.</p>\n<p>As for implied volatility, the current IV rank is at 0.0, which suggests that options are relatively cheap right now. This low IV rank could be appealing for those looking to sell premium, especially if you believe that the market is due for a bounce back or stabilization. With the ATM strike at 754.0 and the top calls showing significant open interest, there\u2019s a clear indication that traders are positioning themselves for potential movement in the coming weeks.</p>\n<p>In terms of price levels to watch, immediate support is around 751.92, which is the low of the day, while resistance is at 754.95, the recent high. A break below support could signal further downside, while a move above resistance might reignite bullish sentiment. Keep an eye on these levels as they will be crucial for the next trading sessions.</p>\n<p>Looking ahead, we have some important economic data releases coming up that could influence market sentiment. Tomorrow, we\u2019ll see the CPI inflation release, which is expected to be a high-impact event, followed by retail sales data. Both of these reports could provide further insight into consumer behavior and inflation trends, so they\u2019re definitely worth monitoring. The market will likely react to these figures, especially given the current inflationary pressures.</p>\n<p>For options traders considering their positions this week, the takeaway is clear: with implied volatility low and significant economic data on the horizon, it might be a good time to consider selling premium, particularly if you anticipate that the market will stabilize or rebound after tomorrow\u2019s reports.</p>\n<p>Here\u2019s the thing: we\u2019re entering a phase where local AI setups are not just a novelty but a game changer for product managers looking to streamline their processes and increase efficiency. Alex Finn\u2019s approach with his five-computer local AI setup illustrates this brilliantly. He\u2019s essentially created a system that operates 24/7, enabling him to ship features while he sleeps. This isn\u2019t just about tech for tech\u2019s sake; it\u2019s about operational leverage. What that means in practice is that you can automate critical build-and-review loops, allowing you to focus on strategic decisions rather than getting bogged down in day-to-day operational grind.</p>\n<p>Think about it this way: imagine you\u2019re in a high-stakes trading environment where every second counts. You\u2019re managing multiple strategies on SPY, and the market moves fast. With a local AI system, you can automate the analysis of IV rank across your options strategies, optimizing your entries and exits in real-time. Instead of manually crunching numbers or waiting for reports, you have an intelligent system that continuously learns from market data, providing you insights that can help you adjust your strategies on the fly. This is akin to having a dedicated analyst who never sleeps, always ready to provide that critical information at a moment\u2019s notice.</p>\n<p>The move here is to consider how you might implement a similar setup within your own trading or product management processes. Identify repetitive tasks that could be automated. Perhaps it\u2019s tracking the performance of various defined-risk spreads or analyzing the impact of changing volatility on your positions. These are areas where AI can take over, giving you the space to make higher-level decisions.</p>\n<p>So, here\u2019s a specific action you can take this week: start by mapping out the repetitive tasks in your trading workflow that consume too much of your time. Then, explore how you could implement a local AI solution or even simple scripts to automate these tasks. It\u2019s a step towards not only optimizing your efficiency but also enhancing your strategic decision-making capabilities in the fast-paced world of options trading.</p>"
+    },
+    {
       "id": "2026-07-10",
       "slug": "daily-brief-2026-07-10",
       "episode_number": 51,
