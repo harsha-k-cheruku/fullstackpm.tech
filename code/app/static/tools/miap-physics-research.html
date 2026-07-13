@@ -8,39 +8,42 @@
     :root {
       --ink: #111827;
       --muted: #5b6475;
-      --paper: #fffdf8;
-      --panel: #ffffff;
-      --line: #e8dcc7;
+      --paper: #fefdf9;
+      --line: #e5d9c4;
       --gold: #f4b942;
-      --blue: #214e8a;
-      --cyan: #0e9aa7;
-      --green: #12805c;
-      --red: #b42318;
-      --purple: #5b35a5;
-      --shadow: 0 16px 40px rgba(17, 24, 39, 0.10);
+      --gold-light: #fff5d8;
+      --blue: #1d4580;
+      --blue-light: #eef4ff;
+      --cyan: #0d8f9c;
+      --cyan-light: #e8f9fa;
+      --green: #0f7347;
+      --green-light: #edfdf5;
+      --red: #b02010;
+      --red-light: #fff4f1;
+      --purple: #5229a3;
+      --purple-light: #f3eeff;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      background: #e9edf5;
+      background: #dde3ef;
       color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.35;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.4;
     }
 
     .page {
-      width: 1180px;
-      min-height: 1668px;
-      margin: 28px auto;
-      padding: 42px;
+      width: 1200px;
+      margin: 32px auto;
+      padding: 48px 48px 40px;
       background:
-        radial-gradient(circle at top right, rgba(244,185,66,0.22), transparent 340px),
-        radial-gradient(circle at bottom left, rgba(14,154,167,0.16), transparent 420px),
+        radial-gradient(ellipse at 85% 2%, rgba(244,185,66,0.18) 0%, transparent 42%),
+        radial-gradient(ellipse at 8% 92%, rgba(13,143,156,0.13) 0%, transparent 46%),
         var(--paper);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
+      border-radius: 32px;
+      box-shadow: 0 16px 48px rgba(17,24,39,0.13), 0 0 0 1px rgba(29,69,128,0.06);
       position: relative;
       overflow: hidden;
     }
@@ -48,18 +51,20 @@
     .page::before {
       content: "";
       position: absolute;
-      inset: 18px;
-      border: 2px solid rgba(33, 78, 138, 0.12);
-      border-radius: 22px;
+      inset: 20px;
+      border: 1.5px solid rgba(29,69,128,0.1);
+      border-radius: 24px;
       pointer-events: none;
+      z-index: 0;
     }
 
+    /* ── Header ── */
     header {
       display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 24px;
+      grid-template-columns: 1fr 292px;
+      gap: 28px;
       align-items: start;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       position: relative;
       z-index: 1;
     }
@@ -67,443 +72,573 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
+      gap: 8px;
+      padding: 6px 14px;
       border-radius: 999px;
-      background: #fff5d8;
+      background: var(--gold-light);
       color: #7a4d00;
       font-weight: 800;
-      font-size: 15px;
-      letter-spacing: .03em;
+      font-size: 12.5px;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      border: 1px solid #f2d28d;
-      margin-bottom: 12px;
+      border: 1px solid #f0cc7a;
+      margin-bottom: 14px;
     }
 
     h1 {
       margin: 0;
-      font-size: 58px;
-      line-height: 0.96;
-      letter-spacing: -0.055em;
+      font-size: 50px;
+      line-height: 1.0;
+      letter-spacing: -0.05em;
       color: var(--blue);
+      font-weight: 900;
     }
 
     .subtitle {
-      margin: 16px 0 0;
-      max-width: 780px;
+      margin: 13px 0 0;
+      max-width: 740px;
       color: var(--muted);
-      font-size: 22px;
-      font-weight: 520;
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.5;
     }
 
     .verdict {
-      background: var(--blue);
+      background: linear-gradient(148deg, #1a3f7a 0%, #1e4d8c 55%, #2460a0 100%);
       color: white;
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: 0 12px 28px rgba(33, 78, 138, 0.25);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 14px 36px rgba(29,69,128,0.30);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .verdict .label {
-      font-size: 13px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      color: #cde6ff;
+      letter-spacing: .14em;
+      color: #a8d4ff;
       font-weight: 800;
+      margin-bottom: 4px;
     }
 
     .grade {
-      font-size: 54px;
+      font-size: 64px;
       line-height: 1;
       font-weight: 950;
-      margin: 8px 0;
-      color: var(--gold);
+      margin: 6px 0 10px;
+      background: linear-gradient(135deg, #f4b942 0%, #ffd966 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .verdict p {
-      margin: 0;
-      font-size: 16px;
-      color: #eef7ff;
-      font-weight: 600;
+    .verdict-detail { margin: 0; font-size: 14.5px; color: #d4eeff; line-height: 1.55; }
+    .verdict-detail b { color: #fff; }
+
+    .verdict-pill {
+      display: inline-block;
+      margin-top: 12px;
+      background: rgba(255,255,255,0.11);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 11.5px;
+      color: #c8e8ff;
+      font-weight: 700;
+      letter-spacing: .03em;
     }
 
+    /* ── Layout ── */
     .grid {
       display: grid;
-      grid-template-columns: 1.18fr .82fr;
-      gap: 22px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
       position: relative;
       z-index: 1;
     }
 
+    /* ── Sections ── */
     .section {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.90);
       border: 1px solid var(--line);
       border-radius: 22px;
-      padding: 22px;
-      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.055);
-      margin-bottom: 22px;
+      padding: 22px 24px;
+      box-shadow: 0 2px 8px rgba(17,24,39,0.055);
+      margin-bottom: 18px;
     }
 
+    .section:last-child { margin-bottom: 0; }
+
     h2 {
-      margin: 0 0 14px;
-      font-size: 24px;
-      letter-spacing: -0.025em;
+      margin: 0 0 15px;
+      font-size: 21px;
+      letter-spacing: -0.02em;
       color: var(--ink);
       display: flex;
       align-items: center;
       gap: 10px;
+      font-weight: 800;
     }
 
     .icon {
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       display: inline-grid;
       place-items: center;
       border-radius: 10px;
-      background: #eef6ff;
-      color: var(--blue);
-      font-size: 20px;
+      font-size: 17px;
       flex: 0 0 auto;
     }
 
+    .icon.blue   { background: var(--blue-light);   color: var(--blue); }
+    .icon.green  { background: var(--green-light);  color: var(--green); }
+    .icon.gold   { background: var(--gold-light);   color: #7a4d00; }
+    .icon.purple { background: var(--purple-light); color: var(--purple); }
+    .icon.cyan   { background: var(--cyan-light);   color: var(--cyan); }
+    .icon.red    { background: var(--red-light);    color: var(--red); }
+
+    /* ── Takeaway ── */
     .takeaway {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
     }
 
     .tile {
-      padding: 17px;
+      padding: 17px 18px;
       border-radius: 18px;
-      border: 1px solid #eadfcf;
-      background: #fffaf0;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 8px rgba(17,24,39,0.055);
     }
 
-    .tile strong {
-      display: block;
-      font-size: 17px;
-      margin-bottom: 7px;
+    .tile-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
       color: var(--blue);
+      margin-bottom: 6px;
     }
 
-    .tile span {
-      color: var(--muted);
-      font-size: 14.5px;
-      font-weight: 560;
-    }
+    .tile span { color: var(--muted); font-size: 13.5px; font-weight: 500; line-height: 1.5; display: block; }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
+    /* ── Pills ── */
+    .pill-row { display: flex; flex-wrap: wrap; gap: 7px; }
 
     .pill {
-      padding: 8px 12px;
+      padding: 5px 11px;
       border-radius: 999px;
-      background: #eef8f7;
-      border: 1px solid #cce9e7;
-      color: #08606b;
-      font-size: 14px;
-      font-weight: 760;
+      background: var(--cyan-light);
+      border: 1px solid #b0dce0;
+      color: #086870;
+      font-size: 12.5px;
+      font-weight: 700;
     }
 
-    .pros-cons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    /* ── Callout ── */
+    .callout {
+      border-left: 5px solid var(--gold);
+      background: linear-gradient(to right, #fff9e6, #fffdf4);
+      padding: 13px 16px;
+      border-radius: 0 14px 14px 0;
+      color: #3d2c00;
+      font-size: 15.5px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
 
-    ul {
-      margin: 0;
-      padding-left: 19px;
-    }
+    /* ── Pros/Cons ── */
+    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
-    li {
-      margin: 8px 0;
-      color: var(--muted);
-      font-size: 16px;
-      font-weight: 530;
-    }
+    .pros { background: var(--green-light); border: 1px solid #b6e8d4; border-radius: 14px; padding: 13px 14px; }
+    .cons { background: var(--red-light);   border: 1px solid #f5c4bb; border-radius: 14px; padding: 13px 14px; }
 
+    ul { margin: 0; padding-left: 17px; }
+
+    li { margin: 7px 0; color: var(--muted); font-size: 14px; font-weight: 500; line-height: 1.45; }
     li strong { color: var(--ink); }
 
-    .mini-title {
-      font-size: 16px;
-      font-weight: 900;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
+    .mini-title { font-size: 11.5px; font-weight: 900; margin-bottom: 9px; text-transform: uppercase; letter-spacing: .08em; }
     .pros .mini-title { color: var(--green); }
     .cons .mini-title { color: var(--red); }
 
-    .faculty-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 11px;
-    }
+    /* ── Faculty ── */
+    .faculty-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
 
     .faculty {
       border: 1px solid #e6dfd2;
-      background: #ffffff;
-      border-radius: 15px;
-      padding: 12px;
+      background: #fff;
+      border-radius: 13px;
+      padding: 11px 13px;
+      border-left: 3px solid var(--blue);
     }
 
-    .faculty b {
-      display: block;
-      color: var(--ink);
-      font-size: 14.8px;
-      margin-bottom: 4px;
-    }
+    .faculty b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 700; margin-bottom: 3px; }
+    .faculty span { display: block; color: var(--muted); font-size: 12px; font-weight: 500; line-height: 1.45; }
 
-    .faculty span {
-      display: block;
-      color: var(--muted);
-      font-size: 13.2px;
-      font-weight: 560;
-    }
-
-    .metric {
-      display: grid;
-      grid-template-columns: 46px 1fr;
-      gap: 10px;
-      align-items: center;
-      margin: 12px 0;
-    }
+    /* ── Scorecard ── */
+    .metric { display: grid; grid-template-columns: 50px 1fr; gap: 12px; align-items: center; margin: 11px 0; }
 
     .score {
-      width: 46px;
-      height: 46px;
+      width: 50px; height: 50px;
       border-radius: 14px;
       display: grid;
       place-items: center;
       font-weight: 950;
-      color: white;
-      background: var(--blue);
+      font-size: 16px;
+      flex: 0 0 auto;
     }
 
-    .score.good { background: var(--green); }
-    .score.mid { background: var(--gold); color: #372400; }
-    .score.risk { background: var(--red); }
+    .score.s-green  { background: linear-gradient(135deg,#0f7347,#1a9a5e); color: #fff; box-shadow: 0 4px 12px rgba(15,115,71,0.28); }
+    .score.s-gold   { background: linear-gradient(135deg,#c88a00,#f4b942); color: #2a1800; box-shadow: 0 4px 12px rgba(200,138,0,0.28); }
+    .score.s-red    { background: linear-gradient(135deg,#b02010,#d63020); color: #fff; box-shadow: 0 4px 12px rgba(176,32,16,0.28); }
 
-    .metric b {
-      display: block;
-      font-size: 15.7px;
-    }
+    .metric b { display: block; font-size: 14.5px; font-weight: 700; margin-bottom: 2px; }
+    .metric span { color: var(--muted); font-size: 12.5px; font-weight: 500; }
 
-    .metric span {
-      color: var(--muted);
-      font-size: 13.7px;
-      font-weight: 560;
-    }
+    /* ── Fit ── */
+    .fit-box { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
 
-    .fit-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
+    .fit { border-radius: 15px; padding: 14px; border: 1px solid var(--line); }
+    .fit.good { background: var(--green-light); border-color: #b6e8d4; }
+    .fit.bad  { background: var(--red-light);   border-color: #f5c4bb; }
 
-    .fit {
-      border-radius: 18px;
-      padding: 16px;
-      border: 1px solid #e7dccb;
-    }
+    .fit h3 { margin: 0 0 6px; font-size: 14.5px; font-weight: 800; }
+    .fit.good h3 { color: var(--green); }
+    .fit.bad h3  { color: var(--red); }
+    .fit p { margin: 0; font-size: 13px; color: var(--muted); font-weight: 500; line-height: 1.5; }
 
-    .fit.good { background: #f0fff7; }
-    .fit.bad { background: #fff4f2; }
-
-    .fit h3 {
-      margin: 0 0 7px;
-      font-size: 17px;
-    }
-
-    .fit p {
-      margin: 0;
-      font-size: 14.8px;
-      color: var(--muted);
-      font-weight: 560;
-    }
-
-    .framework {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-    }
+    /* ── Framework steps ── */
+    .framework { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; }
 
     .step {
-      min-height: 108px;
-      border-radius: 16px;
-      padding: 12px 9px;
-      background: #f7f9fc;
-      border: 1px solid #e2e8f0;
+      min-height: 96px;
+      border-radius: 14px;
+      padding: 11px 8px;
+      background: var(--purple-light);
+      border: 1px solid #d0bcf5;
       text-align: center;
     }
 
     .step .num {
-      width: 27px;
-      height: 27px;
-      margin: 0 auto 8px;
+      width: 25px; height: 25px;
+      margin: 0 auto 7px;
       border-radius: 999px;
       display: grid;
       place-items: center;
       background: var(--purple);
       color: white;
       font-weight: 900;
+      font-size: 12px;
+    }
+
+    .step b { display: block; font-size: 11.5px; line-height: 1.2; margin-bottom: 4px; color: var(--ink); font-weight: 700; }
+    .step span { color: var(--muted); font-size: 10px; font-weight: 600; line-height: 1.25; display: block; }
+
+    .question-list li { font-size: 13.5px; margin: 6px 0; }
+
+    /* ── Professor Benchmarks ── */
+    .bench-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 5px;
+    }
+
+    .bench-table th {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 2px 12px 7px;
+      text-align: left;
+    }
+
+    .bench-row td {
+      padding: 9px 12px;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    .bench-row td:first-child { border-radius: 11px 0 0 11px; }
+    .bench-row td:last-child  { border-radius: 0 11px 11px 0; }
+
+    .bench-row.t1 td { background: #fff8ec; border-top: 1px solid #f0cc7a; border-bottom: 1px solid #f0cc7a; }
+    .bench-row.t2 td { background: #f0f7ff; border-top: 1px solid #b8d5f5; border-bottom: 1px solid #b8d5f5; }
+    .bench-row.t3 td { background: #f2faf6; border-top: 1px solid #aadec6; border-bottom: 1px solid #aadec6; }
+    .bench-row.t4 td { background: #f9f6ff; border-top: 1px solid #cfc0f2; border-bottom: 1px solid #cfc0f2; }
+    .bench-row.t5 td { background: #f7f8f9; border-top: 1px solid #dde2e8; border-bottom: 1px solid #dde2e8; }
+
+    .tier-badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .bg-gold   { background: #fff3c4; color: #7a4d00; border: 1px solid #f4c842; }
+    .bg-blue   { background: #dbeafe; color: #1e3a6e; border: 1px solid #93c5fd; }
+    .bg-green  { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+    .bg-purple { background: #ede9fe; color: #4c1d95; border: 1px solid #c4b5fd; }
+    .bg-gray   { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+
+    .n-strong { font-weight: 800; color: var(--ink); }
+    .n-mid    { font-weight: 700; color: var(--blue); }
+    .n-soft   { font-weight: 600; color: var(--muted); }
+    .small-note { font-size: 12px; color: var(--muted); }
+
+    .miap-note {
+      margin-top: 12px;
+      background: #fffbf0;
+      border: 1px solid #f4d07a;
+      border-radius: 14px;
+      padding: 12px 14px;
+    }
+
+    .miap-note-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #92400e;
+      margin-bottom: 8px;
+    }
+
+    .frow {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      margin: 5px 0;
       font-size: 13px;
     }
 
-    .step b {
-      display: block;
-      font-size: 12.7px;
-      line-height: 1.15;
+    .frow b { color: var(--ink); font-weight: 700; min-width: 175px; }
+    .frow .stats { color: var(--muted); font-weight: 500; font-size: 12.5px; }
+
+    .vtag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+      white-space: nowrap;
+    }
+
+    .vtag.mid {
+      background: #ede9fe;
+      color: #4c1d95;
+      border-color: #c4b5fd;
+    }
+
+    /* ── Math Roadmap ── */
+    .math-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 11px;
+      margin-bottom: 12px;
+    }
+
+    .math-card { border-radius: 16px; padding: 14px 15px; border: 1px solid var(--line); }
+    .math-card.y1 { background: #fefce8; border-color: #fde68a; }
+    .math-card.y2 { background: #eff6ff; border-color: #bfdbfe; }
+    .math-card.y3 { background: #f5f3ff; border-color: #ddd6fe; }
+    .math-card.y4 { background: #f0fdf4; border-color: #bbf7d0; }
+
+    .math-year {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
       margin-bottom: 5px;
     }
 
-    .step span {
-      color: var(--muted);
-      font-size: 11.4px;
-      font-weight: 600;
-      line-height: 1.2;
-      display: block;
+    .math-card.y1 .math-year { color: #92400e; }
+    .math-card.y2 .math-year { color: #1e40af; }
+    .math-card.y3 .math-year { color: #5b21b6; }
+    .math-card.y4 .math-year { color: #065f46; }
+
+    .math-card h4 { margin: 0 0 8px; font-size: 14px; font-weight: 800; color: var(--ink); }
+
+    .math-topics { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+
+    .math-topic {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 7px;
+      border: 1px solid;
     }
 
-    .question-list li {
-      font-size: 14.8px;
-      margin: 7px 0;
+    .math-card.y1 .math-topic { background: #fef9c3; border-color: #fde68a; color: #78350f; }
+    .math-card.y2 .math-topic { background: #dbeafe; border-color: #93c5fd; color: #1e3a6e; }
+    .math-card.y3 .math-topic { background: #ede9fe; border-color: #c4b5fd; color: #4c1d95; }
+    .math-card.y4 .math-topic { background: #dcfce7; border-color: #86efac; color: #14532d; }
+
+    .math-why { font-size: 12px; color: var(--muted); font-weight: 500; line-height: 1.45; }
+    .math-why strong { color: var(--ink); }
+
+    .math-warning {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin-top: 12px;
+      padding: 13px 15px;
+      background: #fff8ec;
+      border: 1px solid #f4cc7a;
+      border-radius: 13px;
     }
 
+    .math-warning-icon { font-size: 22px; flex: 0 0 auto; margin-top: 1px; }
+    .math-warning-text { font-size: 13px; font-weight: 600; color: #3d2c00; line-height: 1.55; }
+    .math-warning-text strong { color: var(--red); }
+
+    /* ── Footer ── */
     .footer {
-      margin-top: 2px;
+      margin-top: 18px;
       display: grid;
-      grid-template-columns: 1fr 290px;
+      grid-template-columns: 1fr auto;
       gap: 18px;
       align-items: center;
-      color: var(--muted);
-      font-size: 13.5px;
-      font-weight: 560;
+      position: relative;
+      z-index: 1;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
     }
+
+    .footer-text { color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.6; }
+    .footer-text b { color: var(--ink); }
+    .footer-tiny { font-size: 11px; color: #9ca3af; margin-top: 4px; line-height: 1.5; }
 
     .url {
-      justify-self: end;
-      background: #111827;
+      background: var(--ink);
       color: #fff;
-      padding: 12px 16px;
+      padding: 12px 18px;
       border-radius: 999px;
-      font-weight: 900;
+      font-weight: 800;
+      font-size: 13px;
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
-
-    .callout {
-      border-left: 6px solid var(--gold);
-      background: #fff7df;
-      padding: 15px 17px;
-      border-radius: 16px;
-      color: #45320a;
-      font-size: 17px;
-      font-weight: 760;
-    }
-
-    .tiny { font-size: 12.4px; color: #6b7280; }
 
     @media print {
       body { background: white; }
-      .page {
-        width: 100%;
-        min-height: auto;
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-        padding: 28px;
-      }
-      @page { size: A4 portrait; margin: 8mm; }
+      .page { width: 100%; margin: 0; border-radius: 0; box-shadow: none; padding: 24px; }
+      @page { size: A4 portrait; margin: 6mm; }
     }
   </style>
 </head>
 <body>
   <main class="page">
+
+    <!-- ── Header ── -->
     <header>
       <div>
-        <div class="eyebrow">MIAP / Manipal • B.Sc. Physics Honours</div>
-        <h1>Research-heavy Physics degree, not a placement conveyor belt.</h1>
-        <p class="subtitle">A first-principles assessment of MIAP’s B.Sc. Physics Honours: faculty credibility, research network, student-fit, risks, and career upside.</p>
+        <div class="eyebrow">⚛ MIAP / Manipal · B.Sc. Physics Honours · July 2026</div>
+        <h1>Research-heavy Physics.<br>Not a placement conveyor belt.</h1>
+        <p class="subtitle">A first-principles assessment of MIAP's B.Sc. Physics Honours — faculty credibility, research network, math demands, student fit, and career upside.</p>
       </div>
       <aside class="verdict">
-        <div class="label">Overall verdict</div>
+        <div class="label">Overall Verdict</div>
         <div class="grade">B+</div>
-        <p><b>A- upside</b> for motivated research students. <br><b>C+ reality</b> for direct-placement seekers.</p>
+        <p class="verdict-detail"><b>A− upside</b> for motivated research students who get into labs early.<br><b>C+ reality</b> for passive students seeking direct placement.</p>
+        <span class="verdict-pill">Evidence: MAHE Pure + Scopus profiles · July 2026</span>
       </aside>
     </header>
 
-    <section class="section">
-      <h2><span class="icon"></span>Key Takeaways</h2>
-      <div class="takeaway">
-        <div class="tile"><strong>Best for</strong><span>Students targeting MS/PhD, photonics, nanoscience, sensors, instrumentation, biomedical optics, or applied research.</span></div>
-        <div class="tile"><strong>Main strength</strong><span>Credible applied-physics faculty network with visible research output, citations, and international exposure.</span></div>
-        <div class="tile"><strong>Main caveat</strong><span>Public evidence for B.Sc. student outcomes, placements, and international admits is limited. Ask for data.</span></div>
+    <!-- ── Key Takeaways ── -->
+    <div class="takeaway">
+      <div class="tile">
+        <div class="tile-label">Best for</div>
+        <span>Students targeting MS/PhD, photonics, nanoscience, sensors, instrumentation, or biomedical optics. Math-comfortable, experiment-curious applicants open to higher studies.</span>
       </div>
-    </section>
+      <div class="tile">
+        <div class="tile-label">Strongest signal</div>
+        <span>Credible applied-physics faculty with real publications, citations, h-index data, and international lab exposure across Germany, Belgium, Denmark, and USA.</span>
+      </div>
+      <div class="tile">
+        <div class="tile-label">Key caveat</div>
+        <span>Public evidence for B.Sc. student outcomes, placements, and MS/PhD admits is thin. Faculty research is real; whether it converts to student opportunities must be verified.</span>
+      </div>
+    </div>
 
+    <!-- ── Two-column grid ── -->
     <div class="grid">
+
+      <!-- LEFT column -->
       <div>
+
         <section class="section">
-          <h2><span class="icon"></span>Research Identity</h2>
-          <p class="callout">This is strongest as an <b>applied experimental physics</b> ecosystem — less “pure theory temple,” more lasers, sensors, materials, spectroscopy, and biomedical applications.</p>
-          <br>
+          <h2><span class="icon blue">🔬</span>Research Identity</h2>
+          <p class="callout">Applied experimental physics — not a pure-theory temple. Strongest in <b>lasers, spectroscopy, optical diagnostics, sensors, nanomaterials, and biomedical applications</b>.</p>
           <div class="pill-row">
             <span class="pill">Photonics</span>
             <span class="pill">Biophotonics</span>
             <span class="pill">Laser Spectroscopy</span>
+            <span class="pill">LIBS / LIF</span>
+            <span class="pill">Raman Spectroscopy</span>
+            <span class="pill">Optical Tweezers</span>
             <span class="pill">Nanoscience</span>
             <span class="pill">Optical Biosensors</span>
             <span class="pill">Plasmonics</span>
             <span class="pill">2D Materials</span>
-            <span class="pill">Raman Spectroscopy</span>
             <span class="pill">Optofluidics</span>
+            <span class="pill">Nonlinear Optics</span>
+            <span class="pill">Soft Matter</span>
             <span class="pill">Biomedical Instrumentation</span>
           </div>
         </section>
 
         <section class="section">
-          <h2><span class="icon"></span>Faculty / Network Signals</h2>
+          <h2><span class="icon blue">👥</span>Faculty / Network Signals</h2>
           <div class="faculty-grid">
-            <div class="faculty"><b>Sajan Daniel George</b><span>Photonics / biophotonics. Pure: ~194 outputs, ~3235 citations, h-index ~30. Germany/Belgium exposure.</span></div>
-            <div class="faculty"><b>Unnikrishnan V K</b><span>LIBS/LIF, laser instrumentation. Pure: ~90 outputs, ~1896 citations, h-index ~25.</span></div>
-            <div class="faculty"><b>Abdul Ajees A. Salam</b><span>Crystallography / structural biology. Pure: ~81 outputs, ~1295 citations, h-index ~20. USA research positions.</span></div>
-            <div class="faculty"><b>Aseefhali Bankapur</b><span>Raman spectroscopy / optical tweezers. Pure: ~45 outputs, ~746 citations, h-index ~15.</span></div>
-            <div class="faculty"><b>Vivek Semwal</b><span>Optical biosensors / plasmonics. IIT Delhi PhD; DTU Denmark postdoc. Pure: ~29 outputs, ~627 citations.</span></div>
-            <div class="faculty"><b>Rajashekhar Pujar</b><span>2D/carbon materials, flexible electronics, sensors, batteries. Early-career materials/device profile.</span></div>
+            <div class="faculty"><b>Sajan Daniel George</b><span>Photonics / biophotonics / optofluidics. ~194 outputs, ~3,235 citations, h-index ~30. TU Darmstadt, Leibniz Hannover, KU Leuven.</span></div>
+            <div class="faculty"><b>Unnikrishnan V K</b><span>LIBS / LIF, laser instrumentation, microplastics. ~90 outputs, ~1,896 citations, h-index ~25. External: IIT Madras.</span></div>
+            <div class="faculty"><b>Abdul Ajees Abdul Salam</b><span>Crystallography / structural biology. ~81 outputs, ~1,295 citations, h-index ~20. Univ. of Alabama, Wayne State, Florida Intl.</span></div>
+            <div class="faculty"><b>Aseefhali Bankapur</b><span>Raman tweezers / optical tweezers. ~45 outputs, ~746 citations, h-index ~15. DST/SERB grant signals.</span></div>
+            <div class="faculty"><b>Vivek Semwal</b><span>Optical biosensors / fiber sensing. ~29 outputs, ~627 citations, h-index ~12. IIT Delhi PhD; TU Denmark postdoc.</span></div>
+            <div class="faculty"><b>Rajashekhar Pujar</b><span>2D materials / flexible electronics / batteries. ~10 outputs, ~151 citations, h-index ~6. Early career; ANRF-PMECRG grant.</span></div>
+            <div class="faculty"><b>Sreekanth Perumbilavil</b><span>Nonlinear optics, random lasers, light-matter interaction. PhD from Tampere University, Finland. International PhD = strong signal.</span></div>
+            <div class="faculty"><b>Pragnya Satapathy</b><span>Liquid crystals / soft matter / 3D-printed LC fibers. PhD from Centre for Nano &amp; Soft Matter Sciences, Bengaluru.</span></div>
           </div>
         </section>
 
         <section class="section">
-          <h2><span class="icon"></span>Pros & Cons</h2>
+          <h2><span class="icon green">⚖️</span>Pros &amp; Risks</h2>
           <div class="pros-cons">
             <div class="pros">
-              <div class="mini-title">Pros</div>
+              <div class="mini-title">✓ Pros</div>
               <ul>
-                <li><strong>Real research base:</strong> visible publications, citations, funded-lab signals.</li>
-                <li><strong>Modern applied areas:</strong> optics, sensors, nanotech, biomedical diagnostics.</li>
-                <li><strong>4-year Honours:</strong> better aligned with MS/PhD pathways, including abroad.</li>
-                <li><strong>Interdisciplinary campus:</strong> engineering + health-sciences adjacency.</li>
+                <li><strong>Real research base:</strong> publications, citations, funded-lab signals.</li>
+                <li><strong>Modern applied themes:</strong> optics, sensors, nanotech, biomedical.</li>
+                <li><strong>4-year Honours structure:</strong> better for MS/PhD applications abroad.</li>
+                <li><strong>Interdisciplinary campus:</strong> engineering + health sciences at MAHE.</li>
+                <li><strong>International faculty networks:</strong> Germany, Belgium, Denmark, USA.</li>
               </ul>
             </div>
             <div class="cons">
-              <div class="mini-title">Risks</div>
+              <div class="mini-title">⚠ Risks</div>
               <ul>
-                <li><strong>Outcome opacity:</strong> weak public data on B.Sc. placements/alumni/admits.</li>
-                <li><strong>Needs self-drive:</strong> passive students may graduate with low employability.</li>
-                <li><strong>Not placement-first:</strong> serious R&D often needs MS/PhD.</li>
-                <li><strong>Lab access unproven:</strong> must confirm UG access to research groups.</li>
+                <li><strong>Outcome opacity:</strong> weak public data on placements, alumni, admits.</li>
+                <li><strong>Needs self-drive:</strong> passive students graduate with low employability.</li>
+                <li><strong>Not placement-first:</strong> serious R&amp;D roles usually need MS/PhD.</li>
+                <li><strong>Lab access unproven:</strong> verify if B.Sc. students get real lab time.</li>
+                <li><strong>Math-heavy:</strong> students weak in calculus will struggle from Year 1.</li>
               </ul>
             </div>
           </div>
         </section>
 
         <section class="section">
-          <h2><span class="icon"></span>First-Principles Evaluation</h2>
+          <h2><span class="icon purple">🧭</span>First-Principles Evaluation</h2>
           <div class="framework">
             <div class="step"><div class="num">1</div><b>Input Quality</b><span>Batch strength, math readiness, motivation</span></div>
             <div class="step"><div class="num">2</div><b>Faculty Capital</b><span>Publications, grants, mentorship depth</span></div>
@@ -513,76 +648,222 @@
             <div class="step"><div class="num">6</div><b>Outcomes</b><span>MS/PhD admits, placements, alumni proof</span></div>
           </div>
         </section>
-      </div>
 
-      <aside>
+        <!-- ── Professor Benchmarks ── -->
         <section class="section">
-          <h2><span class="icon"></span>Scorecard</h2>
-          <div class="metric"><div class="score good">A-</div><div><b>Faculty credibility</b><span>Strongest signal; several credible applied researchers.</span></div></div>
-          <div class="metric"><div class="score good">A-</div><div><b>Research relevance</b><span>Photonics/nano/sensors are modern and employable with right skills.</span></div></div>
-          <div class="metric"><div class="score good">B+</div><div><b>International exposure</b><span>Germany, Belgium, Denmark, USA links via faculty careers.</span></div></div>
-          <div class="metric"><div class="score mid">B?</div><div><b>UG research access</b><span>Promising, but verify if B.Sc. students join labs meaningfully.</span></div></div>
-          <div class="metric"><div class="score risk">C</div><div><b>Student outcome visibility</b><span>Public alumni/placement/admit evidence is thin.</span></div></div>
-          <div class="metric"><div class="score mid">C+</div><div><b>Direct job readiness</b><span>Depends heavily on coding, lab, electronics, internships.</span></div></div>
+          <h2><span class="icon gold">📊</span>What Do Good Professors Actually Look Like?</h2>
+          <p style="font-size:13px;color:var(--muted);margin:0 0 13px;font-weight:500;line-height:1.5;">Applied physics / photonics field norms (Scopus). Numbers vary by subfield — these are career-level benchmarks, not cutoffs.</p>
+
+          <table class="bench-table">
+            <thead>
+              <tr>
+                <th style="width:30%">Level</th>
+                <th>h-index</th>
+                <th>Papers</th>
+                <th>Citations</th>
+                <th>Context</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bench-row t1">
+                <td><span class="tier-badge bg-gold">★ World-class</span></td>
+                <td class="n-strong">60 – 100+</td>
+                <td class="n-strong">500 – 1,500+</td>
+                <td class="n-strong">30k – 100k+</td>
+                <td class="small-note">Nobel laureates, top MIT / Caltech / Stanford chairs</td>
+              </tr>
+              <tr class="bench-row t2">
+                <td><span class="tier-badge bg-blue">Premier R1 / IISc</span></td>
+                <td class="n-mid">35 – 60</td>
+                <td class="n-mid">200 – 500</td>
+                <td class="n-mid">10k – 30k</td>
+                <td class="small-note">Top IIT full professors, IISc faculty, international R1 associate profs</td>
+              </tr>
+              <tr class="bench-row t3">
+                <td><span class="tier-badge bg-green">Strong Senior (IIT/NIT)</span></td>
+                <td>20 – 35</td>
+                <td>100 – 250</td>
+                <td>3k – 10k</td>
+                <td class="small-note">Solid IIT/NIT professors; mid-tier intl. assistant/associate profs</td>
+              </tr>
+              <tr class="bench-row t4">
+                <td><span class="tier-badge bg-purple">Productive Mid-Career</span></td>
+                <td>10 – 20</td>
+                <td>50 – 120</td>
+                <td>1k – 4k</td>
+                <td class="small-note">Active faculty at good private/state universities</td>
+              </tr>
+              <tr class="bench-row t5">
+                <td><span class="tier-badge bg-gray">Early Career</span></td>
+                <td>5 – 12</td>
+                <td>15 – 50</td>
+                <td>300 – 1.5k</td>
+                <td class="small-note">New assistant professors, recent postdocs</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="miap-note">
+            <div class="miap-note-title">Where MIAP faculty land</div>
+            <div class="frow"><b>Sajan Daniel George</b><span class="stats">h≈30 · 194 papers · 3,235 citations</span><span class="vtag">Strong Senior (IIT/NIT peer)</span></div>
+            <div class="frow"><b>Unnikrishnan V K</b><span class="stats">h≈25 · 90 papers · 1,896 citations</span><span class="vtag">Strong Senior</span></div>
+            <div class="frow"><b>Abdul Ajees Abdul Salam</b><span class="stats">h≈20 · 81 papers · 1,295 citations</span><span class="vtag">Strong Senior</span></div>
+            <div class="frow"><b>Aseefhali Bankapur</b><span class="stats">h≈15 · 45 papers · 746 citations</span><span class="vtag mid">Productive Mid-Career</span></div>
+            <div class="frow"><b>Vivek Semwal</b><span class="stats">h≈12 · 29 papers · 627 citations</span><span class="vtag mid">Productive Mid-Career</span></div>
+            <p style="margin:8px 0 0;font-size:12.5px;color:var(--muted);font-weight:500;line-height:1.5;"><b style="color:var(--ink);">Interpretation:</b> The three senior faculty sit at IIT/NIT peer level — not world-class, but genuinely credible applied researchers who can write strong letters, provide real mentorship, and open doors. This is meaningfully above the departmental average at most Indian private universities.</p>
+          </div>
+        </section>
+
+        <!-- ── Math Roadmap ── -->
+        <section class="section">
+          <h2><span class="icon blue">∫</span>Math You'll Need to Master</h2>
+          <p style="font-size:13px;color:var(--muted);margin:0 0 13px;font-weight:500;line-height:1.5;">Physics is arguably the most math-intensive of the three classical sciences. Math is not background — it <em>is</em> the language of physics. Year-by-year what you'll encounter:</p>
+
+          <div class="math-grid">
+            <div class="math-card y1">
+              <div class="math-year">Year 1 — Foundation</div>
+              <h4>Calculus, Vectors &amp; Linear Algebra</h4>
+              <div class="math-topics">
+                <span class="math-topic">Differentiation &amp; integration</span>
+                <span class="math-topic">Taylor &amp; Maclaurin series</span>
+                <span class="math-topic">Vector algebra</span>
+                <span class="math-topic">Complex numbers</span>
+                <span class="math-topic">Matrices &amp; determinants</span>
+                <span class="math-topic">Probability &amp; statistics</span>
+              </div>
+              <div class="math-why"><strong>Why it matters:</strong> Every mechanics, optics, and circuit problem is calculus. No calculus = no physics equations, just memorized formulas with no meaning.</div>
+            </div>
+
+            <div class="math-card y2">
+              <div class="math-year">Year 2 — Core</div>
+              <h4>Multi-variable Calculus &amp; ODEs</h4>
+              <div class="math-topics">
+                <span class="math-topic">Partial derivatives</span>
+                <span class="math-topic">Multiple integrals</span>
+                <span class="math-topic">Ordinary differential equations</span>
+                <span class="math-topic">Eigenvalues &amp; eigenvectors</span>
+                <span class="math-topic">Gradient / divergence / curl</span>
+                <span class="math-topic">Error propagation</span>
+              </div>
+              <div class="math-why"><strong>Why it matters:</strong> Quantum mechanics, electromagnetism, and thermodynamics are all systems of differential equations. Eigenvectors are the foundation of quantum states.</div>
+            </div>
+
+            <div class="math-card y3">
+              <div class="math-year">Year 3 — Advanced</div>
+              <h4>PDEs, Fourier &amp; Complex Analysis</h4>
+              <div class="math-topics">
+                <span class="math-topic">Partial differential equations</span>
+                <span class="math-topic">Wave &amp; heat equations</span>
+                <span class="math-topic">Fourier series &amp; transforms</span>
+                <span class="math-topic">Complex analysis</span>
+                <span class="math-topic">Contour integration</span>
+                <span class="math-topic">Numerical methods</span>
+              </div>
+              <div class="math-why"><strong>Why it matters:</strong> Spectroscopy, signal processing, wave optics, and lasers run on Fourier transforms. PDEs describe how light and quantum wavefunctions evolve in space and time.</div>
+            </div>
+
+            <div class="math-card y4">
+              <div class="math-year">Year 4 &amp; Research</div>
+              <h4>Operators, Tensors &amp; Computational Math</h4>
+              <div class="math-topics">
+                <span class="math-topic">Hilbert spaces &amp; operators</span>
+                <span class="math-topic">Group theory (basics)</span>
+                <span class="math-topic">Tensor analysis</span>
+                <span class="math-topic">Statistical distributions</span>
+                <span class="math-topic">Python / NumPy / SciPy</span>
+                <span class="math-topic">Curve fitting &amp; simulation</span>
+              </div>
+              <div class="math-why"><strong>Why it matters:</strong> Quantum mechanics is operator algebra on Hilbert spaces. Research data analysis runs on Python. These are non-negotiable for any research pathway.</div>
+            </div>
+          </div>
+
+          <div class="math-warning">
+            <div class="math-warning-icon">⚠️</div>
+            <div class="math-warning-text">
+              <strong>Honest warning:</strong> Students who struggled with Class 12 calculus will find Year 1–2 genuinely hard. This program is designed for students who are <em>math-comfortable</em>, not math-tolerant. If calculus or differential equations cause anxiety now, fix that before joining — or reconsider the fit.
+            </div>
+          </div>
+        </section>
+
+      </div><!-- end left column -->
+
+      <!-- RIGHT sidebar -->
+      <aside>
+
+        <section class="section">
+          <h2><span class="icon green">🏆</span>Scorecard</h2>
+          <div class="metric"><div class="score s-green">A−</div><div><b>Faculty credibility</b><span>Strongest signal. Three senior faculty at IIT/NIT-peer level.</span></div></div>
+          <div class="metric"><div class="score s-green">A−</div><div><b>Research relevance</b><span>Photonics/nano/sensors are modern, fundable, and employable.</span></div></div>
+          <div class="metric"><div class="score s-green">B+</div><div><b>International exposure</b><span>Germany, Belgium, Denmark, USA via faculty careers.</span></div></div>
+          <div class="metric"><div class="score s-gold">B?</div><div><b>UG research access</b><span>Promising; must verify if B.Sc. students actually get lab time.</span></div></div>
+          <div class="metric"><div class="score s-red">C</div><div><b>Student outcome visibility</b><span>Placement / alumni / admit data is not publicly available.</span></div></div>
+          <div class="metric"><div class="score s-gold">C+</div><div><b>Direct job readiness</b><span>Depends heavily on coding, labs, and internships self-built by the student.</span></div></div>
         </section>
 
         <section class="section">
-          <h2><span class="icon"></span>Best-Fit vs Poor-Fit</h2>
+          <h2><span class="icon cyan">🎯</span>Best-Fit vs Poor-Fit</h2>
           <div class="fit-box">
             <div class="fit good">
-              <h3>Good Fit</h3>
-              <p>Curious, math-comfortable student who likes experiments, research, optics/materials/sensors, and is open to MS/PhD.</p>
+              <h3>✓ Good Fit</h3>
+              <p>Math-comfortable, experiment-curious student who likes optics, materials, or sensors — and is genuinely open to MS/PhD or research-adjacent careers.</p>
             </div>
             <div class="fit bad">
-              <h3>Bad Fit</h3>
-              <p>Student seeking guaranteed placement, dislikes math/labs, or treats Physics as a backup because engineering did not happen.</p>
+              <h3>✗ Poor Fit</h3>
+              <p>Student seeking guaranteed placement, dislikes math or labs, or chose Physics because engineering didn't happen and expects it to be easier.</p>
             </div>
           </div>
         </section>
 
         <section class="section">
-          <h2><span class="icon"></span>Career Paths</h2>
+          <h2><span class="icon blue">🚀</span>Career Paths</h2>
           <ul>
-            <li>MS/PhD in Physics, Photonics, Materials, Nanotech, Biomedical Engineering.</li>
+            <li>MS/PhD in Physics, Photonics, Nanoscience, Biomedical Engineering — India or abroad.</li>
             <li>Research assistant / lab technologist / scientific instrumentation roles.</li>
-            <li>Optics, lasers, sensors, microscopy, spectroscopy, biomedical devices.</li>
-            <li>Data science / scientific computing — if Python + stats are built deliberately.</li>
-            <li>Government labs/exams: DRDO, ISRO, BARC, CSIR, DAE-style routes after further prep.</li>
+            <li>Optics, lasers, sensors, spectroscopy, biomedical devices industry.</li>
+            <li>Data science / scientific computing — if Python + stats built deliberately.</li>
+            <li>Government labs after further prep: DRDO, ISRO, BARC, CSIR, DAE routes.</li>
+            <li>IIT JAM → JEST → GATE → CSIR-NET/JRF for higher studies &amp; govt roles.</li>
           </ul>
         </section>
 
         <section class="section">
-          <h2><span class="icon"></span>Ask Before Joining</h2>
+          <h2><span class="icon red">❓</span>Ask Before Joining</h2>
           <ul class="question-list">
-            <li>Where did recent B.Sc. Physics Honours students go?</li>
-            <li>Any MS/PhD admits in India or abroad?</li>
-            <li>Can B.Sc. students join labs from year 1/2?</li>
-            <li>How many UG students publish or present posters?</li>
-            <li>Which companies/labs host internships?</li>
-            <li>Are B.Sc. students eligible for central/MIT placements?</li>
-            <li>What coding, electronics, and instrumentation training is mandatory?</li>
+            <li>Where did recent B.Sc. Physics Honours graduates go?</li>
+            <li>Any MS/PhD admits at IIT / IISc / IISER or abroad?</li>
+            <li>Can B.Sc. students join faculty labs from Year 1 or 2?</li>
+            <li>How many UG students publish or present research posters?</li>
+            <li>Which companies or labs host student internships?</li>
+            <li>Are B.Sc. students eligible for central/MIT placement?</li>
+            <li>Is Python / instrumentation training mandatory or elective?</li>
           </ul>
         </section>
 
         <section class="section">
-          <h2><span class="icon"></span>Applicant Test</h2>
+          <h2><span class="icon purple">✅</span>Applicant Self-Check</h2>
           <ul>
-            <li>Can explain diffraction, resonance, lasers, and error bars simply.</li>
+            <li>Can explain diffraction, resonance, and lasers without memorizing.</li>
             <li>Comfortable with calculus, vectors, graphs, and basic programming.</li>
-            <li>Can summarize a Raman spectroscopy or photonics article in 48 hours.</li>
-            <li>Enjoys messy experiments and debugging, not just memorizing notes.</li>
+            <li>Can summarize a Raman spectroscopy paper in 48 hours.</li>
+            <li>Enjoys debugging messy experiments, not just clean lecture notes.</li>
+            <li>Willing to learn Python, NumPy, and data analysis from scratch.</li>
           </ul>
         </section>
-      </aside>
-    </div>
 
+      </aside>
+    </div><!-- end grid -->
+
+    <!-- ── Footer ── -->
     <div class="footer">
       <div>
-        <b>One-line assessment:</b> MIAP Physics Honours is a strong <b>research platform</b> for proactive students, not a passive degree-to-job pipeline. Validate student outcomes and lab access before committing.
-        <div class="tiny">Evidence basis: MIAP program/faculty pages, MAHE research/event pages, and MAHE Pure/Scopus-linked researcher profiles reviewed July 2026.</div>
+        <div class="footer-text">
+          <b>One-line assessment:</b> MIAP Physics Honours is a credible <b>research platform for proactive students</b> — faculty are real, themes are modern, math demand is high. Not a passive degree-to-job pipeline. Validate student outcomes and lab access before committing.
+        </div>
+        <div class="footer-tiny">Evidence basis: MIAP program page, MAHE research/event pages, and MAHE Pure/Scopus-linked researcher profiles reviewed July 2026. Professor benchmarks reflect applied physics/photonics field norms; numbers vary by subfield and publication era.</div>
       </div>
       <div class="url">fullstackpm.tech/miap-physics-research</div>
     </div>
+
   </main>
 </body>
 </html>
