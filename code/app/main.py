@@ -78,6 +78,19 @@ app.mount(
     name="first_principles_learning",
 )
 
+
+# Keep the unlaunched First-Principles Learning site out of search indexes.
+# X-Robots-Tag is honored by Google/Bing for every response under the path,
+# so all 63 pages are covered without editing each HTML file. Remove this
+# middleware when the site is ready to be discoverable.
+@app.middleware("http")
+async def noindex_first_principles(request: Request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith("/first-principles-learning"):
+        response.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return response
+
+
 # Include routers
 app.include_router(pages.router)
 app.include_router(pm_multiverse.router)
