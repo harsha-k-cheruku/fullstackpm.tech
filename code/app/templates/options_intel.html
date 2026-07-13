@@ -222,7 +222,7 @@
   <section class="mb-10">
     <div class="section-rule">
       <span class="label">Today's Headlines</span>
-      <span class="meta source-meta">{{ latest.news | length }} articles via Marketaux</span>
+      <span class="meta source-meta">{{ latest.news | length }} articles</span>
     </div>
 
     <div>
@@ -236,7 +236,13 @@
           {% endif %}
         </div>
         <div>
+          {% if item.url %}
+          <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer"
+             class="text-sm leading-snug mb-0.5 block hover:underline"
+             style="color: var(--color-text-primary);">{{ item.title }}</a>
+          {% else %}
           <p class="text-sm leading-snug mb-0.5" style="color: var(--color-text-primary);">{{ item.title }}</p>
+          {% endif %}
           <p class="source-meta">{{ item.source }}</p>
         </div>
       </div>
