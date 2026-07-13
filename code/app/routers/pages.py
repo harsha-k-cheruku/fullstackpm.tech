@@ -96,6 +96,12 @@ async def borrower_generation_js(request: Request) -> Response:
     )
 
 
+@router.get("/miap-physics-research.html", response_class=HTMLResponse)
+async def miap_physics_research(request: Request) -> FileResponse:
+    """MIAP B.Sc. Physics Honours research & career assessment poster."""
+    return FileResponse(str(settings.static_dir / "tools" / "miap-physics-research.html"))
+
+
 @router.get("/tools/lifecycle-simulator", response_class=HTMLResponse)
 async def lifecycle_simulator(request: Request) -> HTMLResponse:
     """Lifecycle simulator for Upstart capital marketplace (5-tab interactive tool)."""
