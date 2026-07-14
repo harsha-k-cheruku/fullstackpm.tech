@@ -81,6 +81,86 @@ async def latest_notification(
     return row.to_dict()
 
 
+@router.get("/api/options-intel/status", tags=["options-intel"])
+async def status(
+    db: Session = Depends(get_db),
+    _: None = Depends(require_options_intel_token),
+):
+    """Diagnostic: report what each data source has and which is being served."""
+    report: dict = {"file": None, "db": None, "serving": None}
+
+    # File source
+    entry = _load_latest_json()
+    if entry:
+        structured = entry.get("structured", {})
+        tickers = structured.get("tickers", {})
+        report["file"] = {
+            "written_at": entry.get("written_at"),
+            "date": structured.get("date"),
+            "snapshot_id": structured.get("snapshot_id"),
+            "has_market_overview": bool(structured.get("market_overview")),
+            "market_overview_count": len(structured.get("market_overview") or []),
+            "has_looking_ahead": bool(structured.get("looking_ahead")),
+            "tickers": {
+                t: {
+                    "iv_30d": tickers.get(t, {}).get("iv_30d_pct"),
+                    "iv_rank": tickers.get(t, {}).get("iv_rank"),
+                    "gate_passed": tickers.get(t, {}).get("gate_passed"),
+                    "contracts": tickers.get(t, {}).get("contracts"),
+                }
+                for t in ("SPY", "NVDA", "AMZN")
+            },
+        }
+
+    # DB source
+    row = db.query(OptionsIntelNotification).order_by(OptionsIntelNotification.created_at.desc()).first()
+    if row:
+        try:
+            payload = json.loads(row.payload_text)
+            structured = payload.get("structured", {})
+            tickers = structured.get("tickers", {})
+            report["db"] = {
+                "created_at": row.created_at.isoformat() if row.created_at else None,
+                "date": structured.get("date"),
+                "snapshot_id": structured.get("snapshot_id"),
+                "has_market_overview": bool(structured.get("market_overview")),
+                "market_overview_count": len(structured.get("market_overview") or []),
+                "has_looking_ahead": bool(structured.get("looking_ahead")),
+                "tickers": {
+                    t: {
+                        "iv_30d": tickers.get(t, {}).get("iv_30d_pct"),
+                        "iv_rank": tickers.get(t, {}).get("iv_rank"),
+                        "gate_passed": tickers.get(t, {}).get("gate_passed"),
+                        "contracts": tickers.get(t, {}).get("contracts"),
+                    }
+                    for t in ("SPY", "NVDA", "AMZN")
+                },
+            }
+        except Exception as exc:
+            report["db"] = {"error": str(exc)}
+
+    # Which is being served
+    file_ts = _parse_ts(report["file"].get("written_at") if report["file"] else None)
+    db_ts = _parse_ts(report["db"].get("created_at") if report["db"] else None)
+    if file_ts and db_ts:
+        report["serving"] = "file" if file_ts >= db_ts else "db"
+    elif report["file"]:
+        report["serving"] = "file"
+    elif report["db"]:
+        report["serving"] = "db"
+    else:
+        report["serving"] = "none"
+
+    report["stale_file"] = (
+        report["serving"] == "db"
+        and report["file"] is not None
+        and report["db"] is not None
+        and report["db"].get("date") != report["file"].get("date")
+    )
+
+    return report
+
+
 # ── Dashboard page ────────────────────────────────────────────────────────────
 
 def _load_latest_json() -> dict | None:
@@ -110,39 +190,58 @@ def _load_outcome_json() -> dict | None:
 @router.get("/options-intel", response_class=HTMLResponse)
 async def options_intel_dashboard(request: Request, db: Session = Depends(get_db)):
     """Public dashboard showing the latest morning brief and run history."""
-    latest = None
     history: list[dict] = []
 
-    # Primary: git-committed latest.json (persists across Render deploys)
+    # Parse the git-committed latest.json
+    file_latest: dict | None = None
+    file_ts: datetime | None = None
     entry = _load_latest_json()
     if entry:
         payload_text = json.dumps({"body": entry.get("body", ""), "structured": entry.get("structured")})
         try:
-            created_at = datetime.fromisoformat(entry.get("written_at", ""))
+            file_ts = datetime.fromisoformat(entry.get("written_at", ""))
         except Exception:
-            created_at = None
-        latest = _parse_brief(payload_text, created_at)
-        history = [_brief_summary(latest)]
+            file_ts = None
+        file_latest = _parse_brief(payload_text, file_ts)
 
-    # Fallback / history supplement: SQLite rows
+    # Load SQLite rows (always — used for history and freshness comparison)
     rows = (
         db.query(OptionsIntelNotification)
         .order_by(OptionsIntelNotification.created_at.desc())
         .limit(30)
         .all()
     )
-    if not latest and rows:
-        row = rows[0]
-        latest = _parse_brief(row.payload_text, row.created_at)
+    db_latest: dict | None = None
+    db_ts: datetime | None = None
+    if rows:
+        db_ts = rows[0].created_at
+        db_latest = _parse_brief(rows[0].payload_text, db_ts)
 
+    # Pick the NEWER source as latest
+    if file_latest and db_latest:
+        ft = file_ts.replace(tzinfo=None) if file_ts and file_ts.tzinfo else file_ts
+        dt = db_ts.replace(tzinfo=None) if db_ts and db_ts.tzinfo else db_ts
+        latest = file_latest if (ft and dt and ft >= dt) else db_latest
+    else:
+        latest = file_latest or db_latest
+
+    # Build history: start with whichever was newer, merge the other source
+    if latest:
+        history = [_brief_summary(latest)]
+    seen_dates = {h.get("date") for h in history}
+
+    # Supplement history from DB
     db_summaries = [_brief_summary(_parse_brief(r.payload_text, r.created_at)) for r in rows]
-    if db_summaries:
-        # Merge: JSON latest + DB history (deduplicate by date)
-        seen_dates = {h.get("date") for h in history}
-        for s in db_summaries:
-            if s.get("date") not in seen_dates:
-                history.append(s)
-                seen_dates.add(s.get("date"))
+    for s in db_summaries:
+        if s.get("date") not in seen_dates:
+            history.append(s)
+            seen_dates.add(s.get("date"))
+
+    # Also include file entry in history if not already present
+    if file_latest:
+        fs = _brief_summary(file_latest)
+        if fs.get("date") not in seen_dates:
+            history.insert(0, fs)
 
     # Load today's EOD outcome if available
     outcome = _load_outcome_json()
@@ -290,6 +389,16 @@ def _brief_summary(parsed: dict[str, Any]) -> dict[str, Any]:
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
+
+def _parse_ts(ts_str: str | None) -> datetime | None:
+    if not ts_str:
+        return None
+    try:
+        dt = datetime.fromisoformat(ts_str)
+        return dt.replace(tzinfo=None) if dt.tzinfo else dt
+    except Exception:
+        return None
+
 
 def _normalize_payload(body: bytes, content_type: str) -> str:
     text = body.decode("utf-8", errors="replace")
