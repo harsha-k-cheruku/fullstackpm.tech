@@ -21,6 +21,7 @@ templates = Jinja2Templates(directory=str(settings.templates_dir))
 
 MAX_PAYLOAD_BYTES = 256_000
 LATEST_JSON = settings.data_dir / "options_intel_latest.json"
+OUTCOME_JSON = settings.data_dir / "options_intel_outcome.json"
 
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
@@ -94,6 +95,18 @@ def _load_latest_json() -> dict | None:
     return None
 
 
+def _load_outcome_json() -> dict | None:
+    """Read today's EOD outcome if available."""
+    try:
+        if OUTCOME_JSON.exists():
+            data = json.loads(OUTCOME_JSON.read_text())
+            if isinstance(data, dict):
+                return data
+    except Exception:
+        pass
+    return None
+
+
 @router.get("/options-intel", response_class=HTMLResponse)
 async def options_intel_dashboard(request: Request, db: Session = Depends(get_db)):
     """Public dashboard showing the latest morning brief and run history."""
@@ -131,6 +144,12 @@ async def options_intel_dashboard(request: Request, db: Session = Depends(get_db
                 history.append(s)
                 seen_dates.add(s.get("date"))
 
+    # Load today's EOD outcome if available
+    outcome = _load_outcome_json()
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    if outcome and outcome.get("date") != today_str:
+        outcome = None  # stale — don't show yesterday's outcome
+
     return templates.TemplateResponse(
         "options_intel.html",
         {
@@ -142,6 +161,7 @@ async def options_intel_dashboard(request: Request, db: Session = Depends(get_db
             "current_page": "/options-intel",
             "latest": latest,
             "history": history,
+            "outcome": outcome,
         },
     )
 

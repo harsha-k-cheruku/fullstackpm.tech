@@ -345,6 +345,152 @@
     </div>
   </section>
 
+  {# ── End-of-Day Retrospective ─────────────────────────────────────────────── #}
+  {% if outcome and outcome.outcomes %}
+  <section class="mb-10">
+    <div class="section-rule">
+      <span class="label">End of Day</span>
+      <span class="meta source-meta">how did the forecasts play out?</span>
+    </div>
+
+    {# Summary line #}
+    {% if outcome.summary %}
+    <p class="text-sm mb-5 font-mono" style="color: var(--color-text-secondary);">{{ outcome.summary }}</p>
+    {% endif %}
+
+    <div class="space-y-4">
+      {% for ticker, o in outcome.outcomes.items() %}
+      {% set rng = o.range if o.range is defined else {} %}
+      {% set bias_ev = o.bias_eval if o.bias_eval is defined else {} %}
+      {% set trade_ev = o.trade_eval if o.trade_eval is defined else none %}
+
+      <div class="rounded-lg border p-4" style="border-color: var(--color-border); background: var(--color-bg-secondary);">
+
+        {# Ticker header #}
+        <div class="flex flex-wrap items-center gap-3 mb-3">
+          <span class="font-mono font-bold text-sm" style="color: var(--color-text-primary);">{{ ticker }}</span>
+          {% if o.morning_spot %}
+          <span class="text-xs font-mono" style="color: var(--color-text-tertiary);">open {{ o.morning_spot }}</span>
+          <span style="color: var(--color-text-tertiary);">→</span>
+          {% endif %}
+          {% if o.close %}
+          <span class="text-xs font-mono font-semibold" style="color: var(--color-text-primary);">close {{ o.close }}</span>
+          {% if bias_ev and bias_ev.move_pct is defined %}
+            {% if bias_ev.move_pct > 0 %}
+            <span class="text-xs font-mono" style="color: var(--color-success-600);">+{{ bias_ev.move_pct }}%</span>
+            {% elif bias_ev.move_pct < 0 %}
+            <span class="text-xs font-mono" style="color: var(--color-danger-600);">{{ bias_ev.move_pct }}%</span>
+            {% else %}
+            <span class="text-xs font-mono" style="color: var(--color-text-tertiary);">0%</span>
+            {% endif %}
+          {% endif %}
+          {% endif %}
+          {% if o.bias %}
+          <span class="cat-chip {% if o.bias == 'BULLISH' %}strategy{% elif o.bias == 'BEARISH' %}eng{% else %}pm{% endif %}"
+                style="font-size:10px;">{{ o.bias }}</span>
+          {% endif %}
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+
+          {# Range column #}
+          <div class="rounded-md p-3" style="background: var(--color-bg-primary); border: 1px solid var(--color-border);">
+            <p class="font-mono text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--color-text-tertiary);">Range Forecast</p>
+            {% if rng %}
+              {% if rng.in_range %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-success-600); font-size: 15px;">✓</span>
+                <span class="text-sm font-semibold" style="color: var(--color-success-600);">Within range</span>
+              </div>
+              {% else %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-danger-600); font-size: 15px;">✗</span>
+                <span class="text-sm font-semibold" style="color: var(--color-danger-600);">
+                  Missed {{ rng.miss.side if rng.miss else '' }}
+                  {% if rng.miss %}by ${{ rng.miss.by }}{% endif %}
+                </span>
+              </div>
+              {% endif %}
+              {% if o.range_low is defined and o.range_high is defined %}
+              <p class="text-xs font-mono" style="color: var(--color-text-tertiary);">[{{ o.range_low }} – {{ o.range_high }}]</p>
+              {% endif %}
+            {% else %}
+              <p class="text-xs" style="color: var(--color-text-tertiary);">No range forecast (gate failed)</p>
+            {% endif %}
+          </div>
+
+          {# Bias column #}
+          <div class="rounded-md p-3" style="background: var(--color-bg-primary); border: 1px solid var(--color-border);">
+            <p class="font-mono text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--color-text-tertiary);">Bias Call</p>
+            {% if bias_ev %}
+              {% if bias_ev.correct %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-success-600); font-size: 15px;">✓</span>
+                <span class="text-sm font-semibold" style="color: var(--color-success-600);">Correct</span>
+              </div>
+              {% else %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-danger-600); font-size: 15px;">✗</span>
+                <span class="text-sm font-semibold" style="color: var(--color-danger-600);">Wrong</span>
+              </div>
+              {% endif %}
+              <p class="text-xs font-mono" style="color: var(--color-text-tertiary);">
+                called {{ o.bias }} · actual {{ bias_ev.actual_direction }}
+              </p>
+            {% else %}
+              <p class="text-xs" style="color: var(--color-text-tertiary);">No bias (gate failed)</p>
+            {% endif %}
+          </div>
+
+          {# Trade column #}
+          <div class="rounded-md p-3" style="background: var(--color-bg-primary); border: 1px solid var(--color-border);">
+            <p class="font-mono text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--color-text-tertiary);">Trade Status</p>
+            {% if trade_ev %}
+              {% set zone = trade_ev.zone %}
+              {% if zone == 'profit' %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-success-600); font-size: 15px;">✓</span>
+                <span class="text-sm font-semibold" style="color: var(--color-success-600);">On track for profit</span>
+              </div>
+              {% elif zone == 'borderline' %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-warning-600); font-size: 15px;">~</span>
+                <span class="text-sm font-semibold" style="color: var(--color-warning-600);">Borderline</span>
+              </div>
+              {% elif zone == 'at_risk' %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-warning-600); font-size: 15px;">⚠</span>
+                <span class="text-sm font-semibold" style="color: var(--color-warning-600);">At risk</span>
+              </div>
+              {% elif zone == 'max_loss' %}
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color: var(--color-danger-600); font-size: 15px;">✗</span>
+                <span class="text-sm font-semibold" style="color: var(--color-danger-600);">Max loss territory</span>
+              </div>
+              {% endif %}
+              {% if trade_ev.note %}
+              <p class="text-xs leading-relaxed" style="color: var(--color-text-tertiary);">{{ trade_ev.note }}</p>
+              {% endif %}
+            {% elif o.contracts == 0 %}
+              <p class="text-xs" style="color: var(--color-text-tertiary);">No trade entered today</p>
+            {% else %}
+              <p class="text-xs" style="color: var(--color-text-tertiary);">No real spread selected (legs: null)</p>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if outcome.recorded_at %}
+    <p class="text-xs mt-3" style="color: var(--color-text-tertiary);">
+      Recorded {{ outcome.recorded_at[:16].replace('T', ' ') }} UTC · Paper trading only, not financial advice.
+    </p>
+    {% endif %}
+  </section>
+  {% endif %}
+
   {# ── Looking Ahead ────────────────────────────────────────────────────────── #}
   {% if latest.looking_ahead %}
   {% set windows = [
