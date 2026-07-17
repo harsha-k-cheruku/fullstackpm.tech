@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-17",
+      "slug": "daily-brief-2026-07-17",
+      "episode_number": 56,
+      "title": "Daily Brief \u2014 July 17, 2026",
+      "date": "2026-07-17",
+      "published_at": "2026-07-17T14:05:49",
+      "duration_seconds": 792,
+      "duration_human": "13:12",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-17.mp3",
+      "audio_length_bytes": 6334398,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 1,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "The trend is your friend: reading SPY on multiple timeframes"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Building a Directional View on SPY",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: The Pulse: Grok\u2019s CLI caught uploading all your local files to the cloud",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 745.01,
+        "pct_change": -0.76,
+        "iv_rank": 96.08
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "trend",
+        "friend",
+        "reading",
+        "multiple",
+        "timeframes",
+        "pulse"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-17</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Tensions and Economic Shifts: What You Need to Know</li>\n<li><strong>SPY learning:</strong> Building a Directional View on SPY</li>\n<li><strong>Market brief:</strong> SPY Market Brief for July 17, 2026</li>\n<li><strong>PM/analytics:</strong> The Pulse: Grok\u2019s CLI caught uploading all your local files to the cloud</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, the Dallas Fed President has called for &lsquo;modestly&rsquo; higher interest rates, suggesting that recent inflation data isn&rsquo;t convincing enough for a pause in policy tightening. This stance could signal a more aggressive Fed, impacting borrowing costs across sectors. Over in Europe, smoke from Canadian wildfires continues to blanket parts of the US, affecting air quality for over 100 million Americans. This environmental issue could have ripple effects on public health and labor productivity, potentially influencing economic output. In Asia, China has threatened retaliation following new US visa regulations that target students and journalists. This geopolitical tension could complicate trade relations and impact capital flows between the two largest economies. In India, the market is buzzing with excitement over a massive $31 billion bid for the largest IPO of the year, indicating strong institutional interest. Such capital movements can affect global investor sentiment and allocation strategies. From the Middle East, satellite images show damage at Iran&rsquo;s Bushehr nuclear power plant, raising concerns over regional stability. Any escalation in military tensions could impact oil prices and geopolitical risk premiums. In the Asia Pacific region, there are no significant market-relevant stories today, signaling a quieter day for major economic movements.</p>\n<p>Imagine you&rsquo;re at a big fair, and there are children everywhere trying to grab the best balloons. Some balloons are tied to the ground, while others float up high. If you want the biggest balloon, you might have to wait a little while for it to come down or choose a different one that\u2019s a bit lower but still colorful. In this scenario, you\u2019re making a decision based on how easy it is to grab the balloon you want, depending on where it is compared to all the other balloons. That\u2019s kind of like how traders think about options\u2014they want to grab the best opportunity in a crowded space, and sometimes that means waiting for the right conditions to align, just like waiting for the perfect balloon to float down within reach.</p>\n<p>Now, when we think about trading in the stock market, especially with something like SPY, it\u2019s similar to that balloon scenario. Instead of balloons, we have stocks, and the price of SPY can be thought of as how high or low those balloons are floating. If SPY is currently at $745.01 and has been bouncing around a bit, it\u2019s like watching those balloons rise and fall. Traders constantly assess where the price is, just like deciding whether to go for that high balloon or one that\u2019s easier to reach. They make decisions based on this movement and the overall trend, which is crucial if they want to grab the best opportunities before they float away.</p>\n<p>The natural question here is: how does this relate to making money with options? Here&rsquo;s how to think about it: when SPY is at $745.01 and the implied volatility (IV) rank is sitting at a high 96.08, it means options are relatively expensive right now. This could lead you to consider selling premium, particularly if you believe that the balloons\u2014meaning the price of SPY\u2014might not move as much in the near future. By selling options, you\u2019re betting that the price won\u2019t balloon up or down too dramatically, allowing you to collect that premium while waiting for the balloons to settle down into a more manageable range.</p>\n<p>So, given today&rsquo;s data, if you were thinking about selling a defined-risk spread, you&rsquo;d want to look at the ATM strike of $745.00 and the volume of options at nearby strikes. With the current SPY price and the high IV, a trader might consider implementing a bearish spread if they expect SPY to continue its downward trend after hitting a recent high. Since SPY has dropped about 0.76% today and has shown some volatility in the past week, a trader could place a put spread at $743 and $744, which would allow them to profit if SPY remains below that range as it drifts lower. The key takeaway is that by understanding the trend and the current market conditions, you can structure your trades to take advantage of how SPY is behaving while managing your risk effectively.</p>\n<p>Today, SPY closed at 745.01, down 0.76% from the previous day. It opened at 742.08 and reached a high of 745.11 before retreating. This decline is significant in the context of the week, especially considering that SPY had been on a bit of a rollercoaster ride, peaking at 754.81 just two days ago. The market seems to be reacting to a mix of macroeconomic signals and sector-specific movements, which we\u2019ll dive into shortly. With a trading volume of nearly 9.6 million shares, today\u2019s activity reflects a cautious sentiment among investors, particularly as we approach key economic indicators and earnings reports in the coming days.</p>\n<p>Looking at sector performance, Energy (XLE) led the charge today, rising 1.53%. This was largely driven by a rebound in crude oil prices, which have been volatile lately but showed signs of stabilization. Consumer Staples (XLP) also performed well, up 1.38%, as investors sought safety in defensive stocks amidst broader market uncertainty. On the flip side, Technology (XLK) was the biggest laggard, down 2.02%. This decline can be attributed to ongoing concerns about rising interest rates and their potential impact on growth stocks, which are often more sensitive to changes in the cost of capital. Communication Services (XLC) also struggled, dropping 1.26%, as the sector continues to face headwinds from regulatory scrutiny and shifting consumer preferences.</p>\n<p>The strength in the Energy sector likely reflects a combination of geopolitical tensions and supply-demand dynamics that have been favorable for oil prices. Meanwhile, the weakness in Technology may be exacerbated by comments from Dallas Fed President Logan, who indicated that while inflation data has improved, it\u2019s not enough to deter the Fed from considering higher interest rates. This has put pressure on tech stocks, which tend to thrive in lower interest rate environments. The market is clearly weighing these macroeconomic signals as it positions itself for the next moves.</p>\n<p>Currently, the implied volatility (IV) rank stands at 96.08, which is quite high. This suggests that options are relatively expensive right now, making it a potentially favorable environment for selling premium. For traders looking to sell options, this high IV rank indicates that you might capture a decent amount of premium, especially if you\u2019re considering defined-risk spreads. However, keep in mind that high IV can also mean that the market is anticipating significant moves, so it\u2019s essential to be cautious and strategic in your approach.</p>\n<p>As for key price levels, immediate support for SPY appears to be around 740, while resistance is likely at the 750 mark. These levels are critical to watch as they could dictate the short-term direction of the index. If SPY breaks below 740, it could trigger further selling pressure, while a move above 750 might signal a potential recovery.</p>\n<p>Looking ahead, we have some important events that could move the market. The Freddie Mac Mortgage Rate Update is scheduled to release this afternoon, which could provide insights into the housing market and consumer sentiment. Additionally, we have the Fed Meeting coming up on July 29, which is expected to be a significant event as the market anticipates potential changes in monetary policy. Investors will be keenly watching these developments, particularly in light of the recent comments from Fed officials.</p>\n<p>In summary, for options traders considering a position this week, the high IV rank suggests that selling premium could be advantageous, especially if you can structure your trades around the key support and resistance levels we discussed. Stay alert to the upcoming economic data and Fed commentary, as these could provide the catalysts for the next significant move in SPY.</p>\n<p>Here\u2019s the thing: as you\u2019re navigating the complexities of product management, it\u2019s vital to stay on top of not just what your team is building, but also how those tools are affecting your workflow and trust with users. A recent incident involving Grok&rsquo;s CLI exposed a significant flaw in user trust\u2014essentially, the tool was uploading all local files to the cloud without user consent. What that means in practice is that if your product doesn&rsquo;t prioritize user privacy, you risk not only alienating your users but also facing backlash that could jeopardize your entire project. </p>\n<p>Now, how does this connect to your role as a senior PM? It\u2019s about prioritization and stakeholder trade-offs. In your existing projects, you likely have a roadmap filled with features and fixes, but how often do you stop to assess the potential risk each feature poses to user trust? For example, think about how often you communicate with your engineering team to ensure they understand the importance of user-centric design and data privacy. If you\u2019re not having those conversations early, you might find yourself in a situation where a product launch turns into a public relations nightmare. </p>\n<p>The move here is to create a checklist for your team that emphasizes user privacy and data security right alongside feature development. This could be as simple as integrating a privacy impact assessment into your sprint planning. By doing so, you not only safeguard your users but also align your team\u2019s output with the overall trustworthiness of your product. </p>\n<p>This week, take a moment to assess your current projects and identify one feature that could pose a risk to user trust. Have a conversation with your engineering team about this. Ask them to analyze how they can enhance user consent and data transparency for that feature. This proactive step can not only enhance your product&rsquo;s reputation but also position you as a PM who leads with foresight.</p>"
+    },
+    {
       "id": "2026-07-16",
       "slug": "daily-brief-2026-07-16",
       "episode_number": 55,
