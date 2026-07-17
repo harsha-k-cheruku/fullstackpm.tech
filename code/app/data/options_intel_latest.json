@@ -1,65 +1,122 @@
 {
-  "written_at": "2026-07-17T20:01:16.893535+00:00",
-  "body": "MORNING INTEL \u2014 2026-07-17 (snapshot 2026-07-17_5)\nRegime data: VIX 18.56 | HY OAS 271 | Breadth 54.5%\nAMZN: TRADE | NEUTRAL conf 41.666666666666664% | Range 230.71\u2013264.19 | iron_condor x1\nNVDA: TRADE | NEUTRAL conf 41.666666666666664% | Range 186.45\u2013219.55 | iron_condor x1\nSPY: TRADE | NEUTRAL conf 41.666666666666664% | Range 724.94\u2013762.38 | iron_condor x0\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
+  "written_at": "2026-07-17T20:17:46.636698+00:00",
+  "body": "MORNING INTEL \u2014 2026-07-17 (snapshot 2026-07-17_6)\nRegime data: VIX 18.75 | HY OAS 271 | Breadth 54.5%\nAMZN: TRADE | NEUTRAL conf 41.666666666666664% | Range 230.49\u2013263.97 | iron_condor x0\nNVDA: TRADE | NEUTRAL conf 41.666666666666664% | Range 186.26\u2013219.36 | iron_condor x1\nSPY: TRADE | NEUTRAL conf 41.666666666666664% | Range 724.57\u2013762.01 | iron_condor x0\nPortfolio risk after fills: pending Artha confirmation\nDiscipline: 30d system PnL $0 | override PnL $0\nData quality: all sources OK",
   "structured": {
     "date": "2026-07-17",
-    "snapshot_id": "2026-07-17_5",
+    "snapshot_id": "2026-07-17_6",
     "warmup_days_remaining": 0,
-    "takeaway": "The current regime shows elevated volatility with the VIX at 18.56, a steep contango between the 9-day (16.64) and 3-month (20.41) levels, and credit stress lingering as HY OAS remains wide at 271 bps. SPY is under clear pressure at $743.66, with implied volatility at a moderate 18.56% and negative sentiment (-2), reflecting the Dow\u2019s 400-point drop and broad market weakness. NVDA at $203.00, despite neutral sentiment, faces heightened uncertainty with IV spiking to 41.07% amid the new DeepSeek shock post-MoonShot AI\u2019s Kimi K3 release, signaling potential for sharp directional moves. AMZN at $247.45, also neutral in sentiment but with elevated IV at 44.22%, is caught in a broader tech selloff where 18 major tech stocks have dropped over 30% this month, underscoring sector-wide risk. The key near-term catalyst to watch is the upcoming earnings tranche starting next week (GOOGL, T, TSLA), which could either stabilize or exacerbate the current tech rout; any disappointing guidance will likely deepen selling pressure. A growing risk is the combination of rising mortgage rates hitting 2026 highs and geopolitical uncertainty from Trump\u2019s speech on U.S. elections, both of which could further sap risk appetite. The system is fully active and signaling caution with a bearish tilt until clearer directional confirmation emerges.",
+    "takeaway": "The current regime reflects elevated volatility with the VIX at 18.75, a steepening term structure (9D 16.80 vs. 3M 20.59), and a still-elevated HY OAS at 271 bps, signaling persistent risk aversion amid a 54.5% breadth reading that suggests fragile market internals. SPY at $743.29 is under pressure, weighed down by a deepening chip selloff that dragged the market lower last week, while NVDA\u2019s $202.81 price and 41.06% IV are being hammered by a fresh DeepSeek shock after MoonShot AI\u2019s Kimi K3 release, signaling heightened uncertainty in semiconductor innovation narratives. AMZN\u2019s $247.23 and 44.45% IV reflect broad tech weakness, with 18 major tech stocks down over 30% this month, underscoring systemic sector stress rather than isolated weakness. The near-term catalyst to watch is the upcoming earnings tranche starting next week, particularly GOOGL, TSLA, and AMZN, which could either stabilize or exacerbate tech\u2019s selloff depending on guidance and macro commentary; any disappointment will likely accelerate the current risk-off regime. A key risk building is the rising mortgage rates hitting 2026 highs, which could further pressure consumer spending and housing-related sectors, compounding downside risks in the broader market. Trade signal gates remain fully active, favoring cautious positioning with a bias toward downside protection.",
     "regime": {
-      "vix": 18.56,
-      "vix9d": 16.64,
-      "vix3m": 20.41,
+      "vix": 18.75,
+      "vix9d": 16.8,
+      "vix3m": 20.59,
       "term_structure": "contango",
       "hy_oas_bps": 271.0,
       "breadth_pct": 54.55,
-      "us2y": 4.13,
-      "us10y": 4.55,
-      "dxy": 100.75
+      "us2y": 4.16,
+      "us10y": 4.57,
+      "dxy": 100.72
     },
     "tickers": {
       "SPY": {
         "ticker": "SPY",
         "name": "SPDR S&P 500 ETF",
-        "spot": 743.66,
-        "iv_30d_pct": 18.56,
-        "iv_rank": 56.039934053153054,
+        "spot": 743.29,
+        "iv_30d_pct": 18.75,
+        "iv_rank": 56.61362035191567,
         "sentiment_score": -2,
-        "sentiment_driver": "Dow down 400 points as U.S. stocks wind down",
+        "sentiment_driver": "U.S. stocks finish week lower as chip selloff deepens",
         "gate_passed": true,
         "gate_failure": null,
         "gate_failure_detail": null,
         "bias": "NEUTRAL",
         "confidence_pct": 41.666666666666664,
-        "range_low": 724.94,
-        "range_high": 762.38,
+        "range_low": 724.57,
+        "range_high": 762.01,
         "strategy": "iron_condor",
         "contracts": 0,
         "conviction": 2,
-        "trade_spec": null
+        "trade_spec": null,
+        "put_call_ratio": 1.263,
+        "total_options_volume": 11353717,
+        "call_volume": 5017031,
+        "put_volume": 6336686,
+        "iv_skew": 10.11,
+        "unusual_strikes": [
+          {
+            "strike": 744.0,
+            "type": "put",
+            "volume": 704766,
+            "open_interest": 11761,
+            "vol_oi_ratio": 59.92,
+            "iv": 6.5,
+            "expiry": "2026-07-17",
+            "itm": true
+          },
+          {
+            "strike": 743.0,
+            "type": "put",
+            "volume": 690887,
+            "open_interest": 15744,
+            "vol_oi_ratio": 43.88,
+            "iv": 4.4,
+            "expiry": "2026-07-17",
+            "itm": false
+          },
+          {
+            "strike": 745.0,
+            "type": "put",
+            "volume": 626211,
+            "open_interest": 28266,
+            "vol_oi_ratio": 22.15,
+            "iv": 9.0,
+            "expiry": "2026-07-17",
+            "itm": true
+          },
+          {
+            "strike": 747.0,
+            "type": "call",
+            "volume": 617937,
+            "open_interest": 8846,
+            "vol_oi_ratio": 69.85,
+            "iv": 4.5,
+            "expiry": "2026-07-17",
+            "itm": false
+          },
+          {
+            "strike": 745.0,
+            "type": "call",
+            "volume": 586490,
+            "open_interest": 23769,
+            "vol_oi_ratio": 24.67,
+            "iv": 2.6,
+            "expiry": "2026-07-17",
+            "itm": false
+          }
+        ]
       },
       "NVDA": {
         "ticker": "NVDA",
         "name": "NVIDIA Corp",
-        "spot": 203.0,
-        "iv_30d_pct": 41.07,
-        "iv_rank": 77.78848265210107,
+        "spot": 202.81,
+        "iv_30d_pct": 41.06,
+        "iv_rank": 77.77114150878877,
         "sentiment_score": 0,
-        "sentiment_driver": "Markets experience new DeepSeek shock after MoonShot AI",
+        "sentiment_driver": "Markets experience new DeepSeek shock after MoonShot AI releases Kimi K3",
         "gate_passed": true,
         "gate_failure": null,
         "gate_failure_detail": null,
         "bias": "NEUTRAL",
         "confidence_pct": 41.666666666666664,
-        "range_low": 186.45,
-        "range_high": 219.55,
+        "range_low": 186.26,
+        "range_high": 219.36,
         "strategy": "iron_condor",
         "contracts": 1,
         "conviction": 3,
         "trade_spec": {
           "schema_version": "1.0",
-          "decision_id": "2026-07-17_5_NVDA",
-          "generated_utc": "2026-07-17T20:00:00.994310Z",
+          "decision_id": "2026-07-17_6_NVDA",
+          "generated_utc": "2026-07-17T20:16:42.546014Z",
           "ticker": "NVDA",
           "action": "OPEN",
           "strategy": "iron_condor",
@@ -69,9 +126,9 @@
           "contracts": 1,
           "expiry_policy": "nearest_weekly_dte_5_to_9",
           "range_forecast": {
-            "low": 186.45,
-            "high": 219.55,
-            "implied_move": 1.1,
+            "low": 186.26,
+            "high": 219.36,
+            "implied_move": 0.87,
             "atr_leg": 16.55
           },
           "legs": null,
@@ -89,63 +146,151 @@
             "max_slippage_pct_of_credit": 10,
             "reject_if_credit_below_ratio": true
           }
-        }
+        },
+        "put_call_ratio": 0.513,
+        "total_options_volume": 3381259,
+        "call_volume": 2234162,
+        "put_volume": 1147097,
+        "iv_skew": 9.46,
+        "unusual_strikes": [
+          {
+            "strike": 205.0,
+            "type": "call",
+            "volume": 483116,
+            "open_interest": 28366,
+            "vol_oi_ratio": 17.03,
+            "iv": 10.4,
+            "expiry": "2026-07-17",
+            "itm": false
+          },
+          {
+            "strike": 207.5,
+            "type": "call",
+            "volume": 333503,
+            "open_interest": 29755,
+            "vol_oi_ratio": 11.21,
+            "iv": 19.5,
+            "expiry": "2026-07-17",
+            "itm": false
+          },
+          {
+            "strike": 202.5,
+            "type": "put",
+            "volume": 274382,
+            "open_interest": 19286,
+            "vol_oi_ratio": 14.23,
+            "iv": 6.8,
+            "expiry": "2026-07-17",
+            "itm": false
+          },
+          {
+            "strike": 210.0,
+            "type": "call",
+            "volume": 238615,
+            "open_interest": 106987,
+            "vol_oi_ratio": 2.23,
+            "iv": 28.1,
+            "expiry": "2026-07-17",
+            "itm": false
+          },
+          {
+            "strike": 200.0,
+            "type": "put",
+            "volume": 212486,
+            "open_interest": 51702,
+            "vol_oi_ratio": 4.11,
+            "iv": 12.9,
+            "expiry": "2026-07-17",
+            "itm": false
+          }
+        ]
       },
       "AMZN": {
         "ticker": "AMZN",
         "name": "Amazon.com Inc",
-        "spot": 247.45,
-        "iv_30d_pct": 44.22,
-        "iv_rank": 91.74032706355392,
-        "sentiment_score": 0,
+        "spot": 247.23,
+        "iv_30d_pct": 44.45,
+        "iv_rank": 92.21519551019054,
+        "sentiment_score": -2,
         "sentiment_driver": "These 18 tech stocks have fallen at least 30% this month",
         "gate_passed": true,
         "gate_failure": null,
         "gate_failure_detail": null,
         "bias": "NEUTRAL",
         "confidence_pct": 41.666666666666664,
-        "range_low": 230.71,
-        "range_high": 264.19,
+        "range_low": 230.49,
+        "range_high": 263.97,
         "strategy": "iron_condor",
-        "contracts": 1,
-        "conviction": 3,
-        "trade_spec": {
-          "schema_version": "1.0",
-          "decision_id": "2026-07-17_5_AMZN",
-          "generated_utc": "2026-07-17T20:00:01.159774Z",
-          "ticker": "AMZN",
-          "action": "OPEN",
-          "strategy": "iron_condor",
-          "bias": "NEUTRAL",
-          "confidence_pct": 41.666666666666664,
-          "conviction": 3,
-          "contracts": 1,
-          "expiry_policy": "nearest_weekly_dte_5_to_9",
-          "range_forecast": {
-            "low": 230.71,
-            "high": 264.19,
-            "implied_move": 0.87,
-            "atr_leg": 16.74
+        "contracts": 0,
+        "conviction": 2,
+        "trade_spec": null,
+        "put_call_ratio": 0.456,
+        "total_options_volume": 472663,
+        "call_volume": 324640,
+        "put_volume": 148023,
+        "iv_skew": 5.1,
+        "unusual_strikes": [
+          {
+            "strike": 250.0,
+            "type": "call",
+            "volume": 84330,
+            "open_interest": 32055,
+            "vol_oi_ratio": 2.63,
+            "iv": 10.4,
+            "expiry": "2026-07-17",
+            "itm": false
           },
-          "legs": null,
-          "risk_limits": {
-            "max_loss_usd_total": 270.0,
-            "min_credit_to_width_ratio": 0.1,
-            "no_real_spread_found": true
+          {
+            "strike": 247.5,
+            "type": "call",
+            "volume": 37739,
+            "open_interest": 11060,
+            "vol_oi_ratio": 3.41,
+            "iv": 10.7,
+            "expiry": "2026-07-17",
+            "itm": false
           },
-          "exit_policy": {
-            "profit_target_pct": 50.0,
-            "pre_close_evaluation": true,
-            "gamma_gate": true
+          {
+            "strike": 245.0,
+            "type": "put",
+            "volume": 34653,
+            "open_interest": 13161,
+            "vol_oi_ratio": 2.63,
+            "iv": 8.6,
+            "expiry": "2026-07-17",
+            "itm": false
           },
-          "abort_conditions": {
-            "max_slippage_pct_of_credit": 10,
-            "reject_if_credit_below_ratio": true
+          {
+            "strike": 247.5,
+            "type": "put",
+            "volume": 32688,
+            "open_interest": 3751,
+            "vol_oi_ratio": 8.71,
+            "iv": 2.0,
+            "expiry": "2026-07-17",
+            "itm": true
+          },
+          {
+            "strike": 252.5,
+            "type": "call",
+            "volume": 26097,
+            "open_interest": 10258,
+            "vol_oi_ratio": 2.54,
+            "iv": 18.0,
+            "expiry": "2026-07-17",
+            "itm": false
           }
-        }
+        ]
       }
     },
     "news": [
+      {
+        "ticker": null,
+        "title": "U.S. stocks finish week lower as chip selloff deepens \u2014 live coverage continues",
+        "source": "MarketWatch",
+        "url": "https://www.marketwatch.com/bulletins/redirect/go?g=b5bea793-1cbb-4816-8970-a9685954449e&mod=mw_rss_bulletins",
+        "published_utc": "2026-07-17T20:03:36+00:00"
+      },
       {
         "ticker": null,
         "title": "Dow down 400 points as U.S. stocks wind down a losing week \u2014 live updates",
@@ -204,13 +349,6 @@
       },
       {
         "ticker": null,
-        "title": "The U.S. stock market is looking like a rubber band ready to snap",
-        "source": "MarketWatch",
-        "url": "https://www.marketwatch.com/bulletins/redirect/go?g=2af4b8dd-1b06-4437-b47f-783ab5390ec5&mod=mw_rss_bulletins",
-        "published_utc": "2026-07-16T23:59:15+00:00"
-      },
-      {
-        "ticker": null,
         "title": "World Cup gave bars and restaurants a needed boost as consumers flash warning signs, Fed says",
         "source": "CNBC Markets",
         "url": "https://www.cnbc.com/2026/07/15/world-cup-economy-spending-alcohol-hotels-fed.html",
@@ -219,9 +357,9 @@
     ],
     "looking_ahead": {
       "narratives": {
-        "this_week": "This week\u2019s dominant theme is mega-cap earnings with Alphabet (GOOGL), AT&T (T), and Tesla (TSLA) reporting, alongside key industrials like Raytheon Technologies (RTX) and Honeywell (HON). Investors will focus on communication services for signs of ad spend resilience and consumer discretionary for demand trends amid mixed macro signals. Positive beats from GOOGL or TSLA could provide a near-term boost to SPY, while industrials results will offer clues on manufacturing momentum, indirectly influencing cyclical exposure including semiconductor names like NVDA.",
-        "next_week": "Next week centers on the Federal Reserve\u2019s policy decision and heavyweight tech earnings from Microsoft (MSFT), Meta (META), and Apple (AAPL). The 95% probability of a Fed hold at 3.50% supports a constructive risk backdrop, but the core PCE inflation print on July 30 carries downside risk if it surprises to the upside, potentially pressuring growth stocks. Strong MSFT and AAPL results could reinforce tech leadership in SPY and underpin semiconductor demand, benefiting NVDA, while consumer staples like KO and PG will be watched for defensive signals amid inflation uncertainty.",
-        "next_month": "Looking further ahead, the third window is marked by mixed sector earnings and critical macro releases including the August NFP and CPI data. Industrial bellwethers Caterpillar (CAT) and energy names like EOG and COP will provide insight into economic activity and commodity price trends. The subdued odds for strong NFP and elevated inflation expectations suggest caution for cyclical sectors and growth equities such as AMZN and NVDA, which may face headwinds if macro data disappoints or inflation remains sticky."
+        "this_week": "This week\u2019s dominant theme is the heavy slate of communication services and industrials earnings, with Alphabet (GOOGL), AT&T (T), Tesla (TSLA), Honeywell (HON), and Raytheon Technologies (RTX) reporting. Investors should focus on GOOGL and TSLA for signals on consumer discretionary and tech demand resilience, while HON and RTX will provide insight into industrials\u2019 capital spending outlook amid mixed macro signals. Given the current VIX contango and elevated HY spreads, strong results could support risk-on sentiment benefiting SPY and tech-related names like NVDA and AMZN, though neutral consensus tempers expectations.",
+        "next_week": "Next week centers on technology and consumer staples earnings ahead of the FOMC meeting, with Microsoft (MSFT), Meta (META), Coca-Cola (KO), and Apple (AAPL) in focus alongside the Fed\u2019s likely hold at 3.50%. MSFT and AAPL results will be critical for gauging enterprise and consumer tech demand, influencing NVDA and AMZN positioning, while KO and PG will test defensive sector resilience amid inflation concerns. The PCE inflation data on July 30, with a 56% chance of a core increase above 0.3%, adds a bearish tilt to bonds and could pressure equities if inflation surprises to the upside.",
+        "next_month": "Looking further ahead, the August 4\u201313 window is dominated by a broad mix of consumer discretionary, energy, and technology earnings, including Booking Holdings (BKNG), McDonald\u2019s (MCD), Caterpillar (CAT), AMD, and Applied Materials (AMAT). AMD\u2019s shipment outlook and NVIDIA\u2019s AI market share remain key watchpoints for semiconductor sector leadership and tech\u2019s growth trajectory, with bearish probabilities flagged. Macro releases like the August 7 NFP and August 12 CPI, both skewed bearish, could weigh on risk assets broadly, suggesting cautious positioning in SPY and selective exposure to AMZN and NVDA ahead of these data points."
       },
       "this_week": [
         {
@@ -231,19 +369,19 @@
           "ticker": "GOOGL",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
+            "prediction_market_summary": "No direct market prediction available",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Strong ad revenue and AI growth beat expectations",
-              "implication": "SPY rises modestly, NVDA gains on AI synergy, AMZN stable"
+              "trigger": "Strong revenue and AI growth beat expectations",
+              "implication": "SPY up moderately, NVDA up on AI synergy, AMZN neutral"
             },
             "base": {
-              "trigger": "In-line earnings with cautious guidance",
-              "implication": "Minimal impact on SPY, NVDA, and AMZN"
+              "trigger": "In-line earnings with steady ad and cloud growth",
+              "implication": "SPY flat to slightly up, NVDA and AMZN unaffected"
             },
             "bear": {
-              "trigger": "Weak ad sales or AI investment concerns",
-              "implication": "SPY dips, NVDA pressured on AI demand fears, AMZN unaffected"
+              "trigger": "Disappointing ad revenue or margin compression",
+              "implication": "SPY down modestly, NVDA down on AI concerns, AMZN neutral"
             }
           },
           "metadata": {
@@ -303,19 +441,19 @@
           "ticker": "TSLA",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
+            "prediction_market_summary": "No direct market prediction available",
             "chip": "NEUTRAL",
             "bull": {
               "trigger": "Better-than-expected vehicle deliveries and margin expansion",
-              "implication": "SPY lifts, NVDA benefits from EV AI demand, AMZN neutral"
+              "implication": "SPY up, NVDA up on EV AI demand, AMZN neutral"
             },
             "base": {
-              "trigger": "In-line deliveries and steady margins",
-              "implication": "Limited movement in SPY, NVDA, AMZN"
+              "trigger": "In-line deliveries and margins",
+              "implication": "SPY flat, NVDA and AMZN little impact"
             },
             "bear": {
-              "trigger": "Production issues or margin compression",
-              "implication": "SPY falls, NVDA pressured on reduced EV AI spend, AMZN unaffected"
+              "trigger": "Missed deliveries or rising costs",
+              "implication": "SPY down, NVDA down on reduced AI demand, AMZN neutral"
             }
           },
           "metadata": {
@@ -372,6 +510,34 @@
           "event_type": "earnings",
           "event_date": "2026-07-23",
           "days_until": 6,
+          "ticker": "HON",
+          "prediction_markets": [],
+          "scenarios": null,
+          "metadata": {
+            "indices": [
+              "SP500",
+              "DJI"
+            ],
+            "sector_etf": [
+              "XLI"
+            ],
+            "sector": "Industrials",
+            "industry": "Diversified Industrials",
+            "consumers": [
+              "Aerospace OEMs",
+              "Refineries",
+              "Building operators"
+            ],
+            "vendors": [
+              "Steel suppliers",
+              "Electronic component makers"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-23",
+          "days_until": 6,
           "ticker": "RTX",
           "prediction_markets": [],
           "scenarios": null,
@@ -401,27 +567,26 @@
           "event_type": "earnings",
           "event_date": "2026-07-23",
           "days_until": 6,
-          "ticker": "HON",
+          "ticker": "NEM",
           "prediction_markets": [],
           "scenarios": null,
           "metadata": {
             "indices": [
-              "SP500",
-              "DJI"
+              "SP500"
             ],
             "sector_etf": [
-              "XLI"
+              "XLB"
             ],
-            "sector": "Industrials",
-            "industry": "Diversified Industrials",
+            "sector": "Materials",
+            "industry": "Gold Mining",
             "consumers": [
-              "Aerospace OEMs",
-              "Refineries",
-              "Building operators"
+              "Jewelry makers",
+              "Central banks",
+              "ETF (GLD)"
             ],
             "vendors": [
-              "Steel suppliers",
-              "Electronic component makers"
+              "Mining equipment makers",
+              "Energy utilities"
             ]
           }
         },
@@ -445,33 +610,6 @@
               "Auto makers",
               "Power grid builders",
               "Electronics makers"
-            ],
-            "vendors": [
-              "Mining equipment makers",
-              "Energy utilities"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-23",
-          "days_until": 6,
-          "ticker": "NEM",
-          "prediction_markets": [],
-          "scenarios": null,
-          "metadata": {
-            "indices": [
-              "SP500"
-            ],
-            "sector_etf": [
-              "XLB"
-            ],
-            "sector": "Materials",
-            "industry": "Gold Mining",
-            "consumers": [
-              "Jewelry makers",
-              "Central banks",
-              "ETF (GLD)"
             ],
             "vendors": [
               "Mining equipment makers",
@@ -704,18 +842,18 @@
           ],
           "scenarios": {
             "prediction_market_summary": "95% chance Fed holds at 3.50%, 1% chance cut to \u22643.25%",
-            "chip": "BULL",
+            "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Fed signals patience or dovish tilt despite hold",
-              "implication": "SPY rallies, NVDA and AMZN gain on lower rate fears"
+              "trigger": "Fed signals potential future cuts or dovish tone",
+              "implication": "SPY up, NVDA up on growth optimism, AMZN up on consumer spending hopes"
             },
             "base": {
-              "trigger": "Fed holds rates at 3.50% with neutral guidance",
-              "implication": "SPY steady, NVDA and AMZN trade sideways"
+              "trigger": "Fed holds rates steady with neutral guidance",
+              "implication": "SPY flat, NVDA and AMZN stable"
             },
             "bear": {
-              "trigger": "Fed signals hawkish stance or rate hike risk",
-              "implication": "SPY declines, NVDA and AMZN selloff on growth concerns"
+              "trigger": "Fed signals hawkish stance or prolonged tightening",
+              "implication": "SPY down, NVDA down on growth concerns, AMZN down on consumer caution"
             }
           },
           "metadata": {}
@@ -724,67 +862,22 @@
           "event_type": "earnings",
           "event_date": "2026-07-29",
           "days_until": 12,
-          "ticker": "META",
-          "prediction_markets": [],
-          "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
-            "chip": "NEUTRAL",
-            "bull": {
-              "trigger": "Strong ad revenue and metaverse growth beats",
-              "implication": "SPY up, NVDA benefits from AI/metaverse demand, AMZN neutral"
-            },
-            "base": {
-              "trigger": "In-line earnings with cautious outlook",
-              "implication": "Minimal impact on SPY, NVDA, AMZN"
-            },
-            "bear": {
-              "trigger": "Ad revenue miss or increased costs",
-              "implication": "SPY down, NVDA pressured on AI demand fears, AMZN unaffected"
-            }
-          },
-          "metadata": {
-            "indices": [
-              "SP500",
-              "NDX"
-            ],
-            "sector_etf": [
-              "XLC"
-            ],
-            "sector": "Communication Services",
-            "industry": "Social Media / AI",
-            "consumers": [
-              "Advertisers",
-              "Developers",
-              "VR consumers"
-            ],
-            "vendors": [
-              "NVDA",
-              "AMZN AWS",
-              "Ericsson",
-              "Nokia"
-            ]
-          }
-        },
-        {
-          "event_type": "earnings",
-          "event_date": "2026-07-29",
-          "days_until": 12,
           "ticker": "MSFT",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
+            "prediction_market_summary": "No direct market prediction available",
             "chip": "BULL",
             "bull": {
-              "trigger": "Cloud and AI revenue beats expectations",
-              "implication": "SPY rises, NVDA gains on AI synergy, AMZN stable"
+              "trigger": "Strong cloud and AI revenue beats",
+              "implication": "SPY up, NVDA up on AI ecosystem strength, AMZN up on cloud competition"
             },
             "base": {
-              "trigger": "In-line earnings with steady guidance",
-              "implication": "Limited impact on SPY, NVDA, AMZN"
+              "trigger": "In-line earnings with steady cloud growth",
+              "implication": "SPY flat to slightly up, NVDA and AMZN neutral"
             },
             "bear": {
-              "trigger": "Cloud growth slowdown or margin pressure",
-              "implication": "SPY dips, NVDA pressured on AI demand concerns, AMZN unaffected"
+              "trigger": "Cloud slowdown or margin pressure",
+              "implication": "SPY down, NVDA down on AI demand fears, AMZN neutral"
             }
           },
           "metadata": {
@@ -809,6 +902,51 @@
               "AMD",
               "Intel",
               "Accenture"
+            ]
+          }
+        },
+        {
+          "event_type": "earnings",
+          "event_date": "2026-07-29",
+          "days_until": 12,
+          "ticker": "META",
+          "prediction_markets": [],
+          "scenarios": {
+            "prediction_market_summary": "No direct market prediction available",
+            "chip": "BEAR",
+            "bull": {
+              "trigger": "Better-than-expected ad revenue and cost control",
+              "implication": "SPY up, NVDA up on AI ad tech synergy, AMZN neutral"
+            },
+            "base": {
+              "trigger": "In-line earnings with modest growth",
+              "implication": "SPY flat, NVDA and AMZN little impact"
+            },
+            "bear": {
+              "trigger": "Ad revenue miss or rising expenses",
+              "implication": "SPY down, NVDA down on AI ad slowdown, AMZN neutral"
+            }
+          },
+          "metadata": {
+            "indices": [
+              "SP500",
+              "NDX"
+            ],
+            "sector_etf": [
+              "XLC"
+            ],
+            "sector": "Communication Services",
+            "industry": "Social Media / AI",
+            "consumers": [
+              "Advertisers",
+              "Developers",
+              "VR consumers"
+            ],
+            "vendors": [
+              "NVDA",
+              "AMZN AWS",
+              "Ericsson",
+              "Nokia"
             ]
           }
         },
@@ -924,19 +1062,19 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "56% chance core PCE increase >0.3%, 57% chance >0.2%",
+            "prediction_market_summary": "56% chance core PCE increase above 0.3%",
             "chip": "BEAR",
             "bull": {
               "trigger": "Core PCE below 0.2%, signaling easing inflation",
-              "implication": "SPY rallies, NVDA and AMZN gain on dovish Fed expectations"
+              "implication": "SPY up, NVDA up on growth optimism, AMZN up on consumer spending"
             },
             "base": {
-              "trigger": "Core PCE around 0.2-0.3%, steady inflation",
-              "implication": "SPY steady, NVDA and AMZN trade sideways"
+              "trigger": "Core PCE around 0.3%, steady inflation",
+              "implication": "SPY flat, NVDA and AMZN stable"
             },
             "bear": {
-              "trigger": "Core PCE above 0.3%, indicating persistent inflation",
-              "implication": "SPY falls, NVDA and AMZN pressured on hawkish Fed fears"
+              "trigger": "Core PCE above 0.4%, indicating persistent inflation",
+              "implication": "SPY down, NVDA down on growth concerns, AMZN down on consumer caution"
             }
           },
           "metadata": {}
@@ -948,19 +1086,19 @@
           "ticker": "AMZN",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
-            "chip": "NEUTRAL",
+            "prediction_market_summary": "No direct market prediction available",
+            "chip": "BULL",
             "bull": {
-              "trigger": "Strong AWS growth and retail margin expansion",
-              "implication": "SPY up, AMZN rallies, NVDA neutral"
+              "trigger": "Strong e-commerce and AWS growth beats",
+              "implication": "SPY up, NVDA up on cloud AI demand, AMZN up sharply"
             },
             "base": {
-              "trigger": "In-line earnings with cautious guidance",
-              "implication": "Minimal impact on SPY, AMZN, NVDA"
+              "trigger": "In-line earnings with steady growth",
+              "implication": "SPY flat to slightly up, NVDA and AMZN neutral"
             },
             "bear": {
-              "trigger": "AWS slowdown or retail margin pressure",
-              "implication": "SPY down, AMZN declines, NVDA unaffected"
+              "trigger": "Missed revenue or margin pressure",
+              "implication": "SPY down, NVDA down on cloud concerns, AMZN down"
             }
           },
           "metadata": {
@@ -994,19 +1132,19 @@
           "ticker": "AAPL",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
+            "prediction_market_summary": "No direct market prediction available",
             "chip": "BULL",
             "bull": {
               "trigger": "Strong iPhone sales and services growth",
-              "implication": "SPY rises, NVDA benefits from AI chip demand, AMZN stable"
+              "implication": "SPY up, NVDA up on AI chip demand, AMZN neutral"
             },
             "base": {
-              "trigger": "In-line earnings with steady guidance",
-              "implication": "Limited impact on SPY, NVDA, AMZN"
+              "trigger": "In-line earnings with stable margins",
+              "implication": "SPY flat, NVDA and AMZN little impact"
             },
             "bear": {
-              "trigger": "iPhone sales miss or supply chain issues",
-              "implication": "SPY dips, NVDA pressured on chip demand concerns, AMZN unaffected"
+              "trigger": "Weak product demand or margin compression",
+              "implication": "SPY down, NVDA down on chip demand concerns, AMZN neutral"
             }
           },
           "metadata": {
@@ -1147,19 +1285,19 @@
           "ticker": "XOM",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
+            "prediction_market_summary": "No direct market prediction available",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Higher oil prices and strong refining margins",
+              "trigger": "Higher oil prices and strong earnings beat",
               "implication": "SPY up modestly, NVDA neutral, AMZN neutral"
             },
             "base": {
               "trigger": "In-line earnings with stable oil prices",
-              "implication": "Minimal impact on SPY, NVDA, AMZN"
+              "implication": "SPY flat, NVDA and AMZN unaffected"
             },
             "bear": {
-              "trigger": "Oil price drop or margin compression",
-              "implication": "SPY down slightly, NVDA and AMZN unaffected"
+              "trigger": "Lower oil prices or earnings miss",
+              "implication": "SPY down slightly, NVDA and AMZN neutral"
             }
           },
           "metadata": {
@@ -1192,19 +1330,19 @@
           "ticker": "CVX",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
+            "prediction_market_summary": "No direct market prediction available",
             "chip": "NEUTRAL",
             "bull": {
-              "trigger": "Strong upstream earnings and cash flow",
-              "implication": "SPY modestly higher, NVDA and AMZN neutral"
+              "trigger": "Strong earnings beat on refining and production",
+              "implication": "SPY up modestly, NVDA neutral, AMZN neutral"
             },
             "base": {
-              "trigger": "In-line earnings with steady outlook",
-              "implication": "No significant impact on SPY, NVDA, AMZN"
+              "trigger": "In-line earnings with steady oil prices",
+              "implication": "SPY flat, NVDA and AMZN stable"
             },
             "bear": {
-              "trigger": "Downstream weakness or capex concerns",
-              "implication": "SPY slightly lower, NVDA and AMZN unaffected"
+              "trigger": "Earnings miss or lower oil prices",
+              "implication": "SPY down slightly, NVDA and AMZN neutral"
             }
           },
           "metadata": {
@@ -1475,19 +1613,19 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "46% chance AMD MI300+ series ships \u2265$10B in 2026; 70% chance NVIDIA >80% AI accelerator share in H2 2026",
+            "prediction_market_summary": "46% chance AMD MI300+ series ships \u2265$10B in 2026; 70% chance NVIDIA >80% AI accelerator share",
             "chip": "BEAR",
             "bull": {
-              "trigger": "AMD beats with strong MI300+ sales and narrows AI gap",
-              "implication": "SPY up, NVDA pressured but AMZN stable"
+              "trigger": "AMD beats with strong MI300+ sales",
+              "implication": "SPY up, NVDA down on competitive pressure, AMZN neutral"
             },
             "base": {
-              "trigger": "In-line earnings with modest MI300+ sales",
-              "implication": "SPY steady, NVDA and AMZN unchanged"
+              "trigger": "Modest AMD sales, NVIDIA maintains dominant AI share",
+              "implication": "SPY flat, NVDA stable, AMZN neutral"
             },
             "bear": {
-              "trigger": "Weak MI300+ sales and NVIDIA dominance confirmed",
-              "implication": "SPY down, NVDA gains market share but cautious, AMZN unaffected"
+              "trigger": "AMD misses sales targets, NVIDIA dominance confirmed",
+              "implication": "SPY down, NVDA up, AMZN neutral"
             }
           },
           "metadata": {
@@ -1552,19 +1690,19 @@
           "ticker": "LLY",
           "prediction_markets": [],
           "scenarios": {
-            "prediction_market_summary": "No specific market odds available",
+            "prediction_market_summary": "No direct market prediction available",
             "chip": "NEUTRAL",
             "bull": {
               "trigger": "Strong drug sales and pipeline progress",
-              "implication": "SPY modestly higher, NVDA and AMZN neutral"
+              "implication": "SPY up modestly, NVDA and AMZN neutral"
             },
             "base": {
               "trigger": "In-line earnings with steady guidance",
-              "implication": "No impact on SPY, NVDA, AMZN"
+              "implication": "SPY flat, NVDA and AMZN unaffected"
             },
             "bear": {
-              "trigger": "Regulatory setbacks or sales misses",
-              "implication": "SPY down slightly, NVDA and AMZN unaffected"
+              "trigger": "Regulatory setbacks or earnings miss",
+              "implication": "SPY down modestly, NVDA and AMZN neutral"
             }
           },
           "metadata": {
@@ -1646,16 +1784,16 @@
             "prediction_market_summary": "25% chance July NFP \u2265150k; 37% chance August NFP \u2265150k",
             "chip": "BEAR",
             "bull": {
-              "trigger": "NFP surprise above 150k, signaling strong labor market",
-              "implication": "SPY down on Fed hawkish fears, NVDA and AMZN fall"
+              "trigger": "NFP beats with strong job growth >150k",
+              "implication": "SPY up, NVDA up on growth optimism, AMZN up on consumer strength"
             },
             "base": {
-              "trigger": "NFP below 150k, steady labor market",
-              "implication": "SPY stable, NVDA and AMZN steady"
+              "trigger": "Modest job growth below 150k",
+              "implication": "SPY flat, NVDA and AMZN stable"
             },
             "bear": {
-              "trigger": "NFP well below expectations, signaling slowdown",
-              "implication": "SPY up on Fed easing hopes, NVDA and AMZN rally"
+              "trigger": "Job losses or weak payrolls",
+              "implication": "SPY down, NVDA down on growth fears, AMZN down on consumer weakness"
             }
           },
           "metadata": {}
@@ -1686,19 +1824,19 @@
             }
           ],
           "scenarios": {
-            "prediction_market_summary": "54% chance inflation above 3.3% YoY, 42% above 3.4%",
+            "prediction_market_summary": "54% chance CPI YoY above 3.3%, 42% above 3.4%",
             "chip": "BEAR",
             "bull": {
-              "trigger": "CPI below 3.3% YoY, showing inflation easing",
-              "implication": "SPY rallies, NVDA and AMZN gain on dovish Fed bets"
+              "trigger": "CPI below 3.2% YoY, signaling easing inflation",
+              "implication": "SPY up, NVDA up on growth optimism, AMZN up on consumer spending"
             },
             "base": {
-              "trigger": "CPI around 3.3-3.4%, steady inflation",
-              "implication": "SPY steady, NVDA and AMZN trade sideways"
+              "trigger": "CPI around 3.3% YoY, steady inflation",
+              "implication": "SPY flat, NVDA and AMZN stable"
             },
             "bear": {
-              "trigger": "CPI above 3.4%, indicating persistent inflation",
-              "implication": "SPY falls, NVDA and AMZN pressured on hawkish Fed fears"
+              "trigger": "CPI above 3.5% YoY, persistent inflation concerns",
+              "implication": "SPY down, NVDA down on growth concerns, AMZN down on consumer caution"
             }
           },
           "metadata": {}
@@ -1737,22 +1875,22 @@
     },
     "ticker_horizons": {
       "SPY": {
-        "5d": "With no direct SPY-specific earnings in the next 5 days, the focus remains on broad market sentiment amid a recent 400-point Dow drop. The 30-day IV at 18.6% and an IV rank of 56 suggests moderately elevated premiums, reflecting cautious positioning. The directional bias is neutral, but a key risk is a sharp reversal if macro data or earnings from major tech names surprise positively.",
-        "1w": "The 7-day window includes multiple major earnings (GOOGL, TSLA, T on July 22) that will heavily influence SPY's trajectory. Current IV at 18.6% should see a modest uptick into these events, providing opportunities for event-driven premium capture. The bias remains neutral with a slight bearish tilt given recent market weakness, but strong beats could trigger a relief rally, posing risk to short volatility plays.",
-        "2w": "The 2-week horizon encompasses the July 29 FOMC meeting and a slew of tech earnings including META, MSFT, and AMZN on July 29-30. SPY's IV at 18.6% is likely to stay elevated or rise slightly as traders price in Fed policy clarity and earnings outcomes. The medium-term trend is uncertain; a hawkish Fed or disappointing earnings could push SPY toward the lower range forecast near 725, while dovish signals may support a rebound.",
-        "4w": "Over the next month, SPY faces a dense calendar with earnings from mega caps like AAPL, AMZN, and MSFT, plus critical macro prints including CPI on August 12 and NFP on August 7. The current IV environment (18.6%) will likely remain elevated with persistent event premium. The longer-term regime hinges on Fed guidance and inflation data; sustained hawkishness could keep volatility elevated and pressure SPY below 725, while easing inflation risks might restore a bullish regime."
+        "5d": "With no direct SPY-specific earnings in the next 5 days, the focus is on broader market sentiment amid chip sector weakness driving a -2 sentiment score. The 30-day IV at 18.8% and IV rank near 57 suggest moderately elevated premium, pricing in some near-term uncertainty. The bias is neutral with a range of 724.57\u2013762.01, but downside risks remain if chip selloff contagion deepens, while strength in defensive sectors could cap losses.",
+        "1w": "The 1-week horizon remains dominated by broad market catalysts, including multiple earnings from tech and industrials (GOOGL, TSLA, HON) through July 23-24, which could drive market volatility. SPY\u2019s 30D IV at 18.8% is elevated but not extreme, implying options are fairly priced for moderate swings. Neutral bias holds with downside risk from tech weakness balanced by potential defensive sector support; key risk is a broader tech-led selloff exacerbating market breadth below 55%.",
+        "2w": "Over 2 weeks, the FOMC meeting on July 29 and a slew of heavyweight earnings (MSFT, META, AMZN, AAPL) increase event-driven volatility potential. SPY\u2019s IV at 18.8% with a mid-50s IV rank suggests options premiums are moderately rich, reflecting this event risk. The neutral bias and wide range forecast (724.57\u2013762.01) imply balanced directional views, but a dovish FOMC or strong earnings could push SPY higher, while hawkish surprises or earnings misses remain key downside risks.",
+        "4w": "Looking out 4 weeks, the macro regime with VIX contango and HY OAS at 271 bps signals cautious risk appetite amid mixed economic signals. The cluster of earnings through early August and August 7 NFP and August 12 CPI reports will be critical for setting market direction. SPY\u2019s IV environment suggests options are priced for moderate volatility; the neutral bias reflects uncertainty, with regime risk skewed toward volatility spikes if inflation surprises or economic data disappoints."
       },
       "NVDA": {
-        "5d": "No NVDA-specific earnings or catalysts in the next 5 days, but the stock trades with a high 30-day IV of 41.1% and an IV rank near 78, reflecting elevated event risk and recent volatility shocks. Expect gradual IV decay absent new news, with a neutral bias given the recent DeepSeek AI market shock. The key risk is renewed sector rotation or a tech selloff that could push NVDA toward the lower end of its $186-$220 range.",
-        "1w": "Still no direct NVDA events in the 7-day window, but broader tech earnings on July 22 could indirectly impact sentiment. The elevated IV environment (41.1%) suggests options remain expensive, favoring premium sellers if no new shocks emerge. Directionally neutral, NVDA faces risk from disappointing AI sector updates or broader market weakness that could drive a retest of $186 support.",
-        "2w": "NVDA remains without direct earnings but will be influenced by the July 29 FOMC and tech earnings cluster including MSFT and META. High IV (41.1%) may persist or rise slightly as macro and sector catalysts unfold. The medium-term trend is uncertain; hawkish Fed or weak tech earnings could pressure NVDA below $190, while positive AI momentum and easing volatility could support a move toward $220.",
-        "4w": "Over the next month, NVDA's options market will be shaped by macro events like CPI and NFP, plus earnings from peers such as AMD on August 4. The currently elevated IV near 41% suggests sustained premium for event risk. The longer-term regime depends on AI sector fundamentals and Fed policy; a hawkish Fed or tech selloff could keep NVDA volatile and capped near $186, while strong AI demand and easing macro risks could fuel a breakout above $220."
+        "5d": "NVDA\u2019s most important near-term catalyst is the July 22 earnings release, with 30D IV at 41.1% and a high IV rank near 78 signaling expensive options premiums ahead of the report. The neutral bias reflects balanced expectations amid recent market shocks from AI sector volatility. Directionally, the range 186.26\u2013219.36 implies a roughly \u00b18% move priced in; key risk is an earnings miss or cautious guidance that could trigger sharp downside given elevated IV.",
+        "1w": "Through the 1-week window, NVDA remains focused on post-earnings volatility and reaction to broader tech earnings (GOOGL, TSLA) around July 22-23. The elevated IV environment (41.1%) will likely see rapid premium decay if results align with expectations. Neutral bias persists, with the main risk being extended volatility if AI sector sentiment shifts further or if macro concerns weigh on tech stocks.",
+        "2w": "In the 2-week horizon, NVDA\u2019s options will be influenced by broader tech earnings and the July 29 FOMC, which could impact growth tech multiples. IV is elevated but expected to decline post-earnings, offering potential for premium compression trades. The neutral bias suggests no clear directional edge; downside risk stems from macro tightening fears, while upside could come from sustained AI-driven demand momentum.",
+        "4w": "Over 4 weeks, NVDA faces a regime of cautious macro risk with multiple earnings and economic data points ahead. Elevated IV (41.1%) and high IV rank imply options remain expensive, but premium decay will accelerate absent fresh catalysts. The neutral stance reflects uncertainty about sustained AI enthusiasm versus macro headwinds; a volatility regime shift could occur if inflation or Fed signals surprise markets."
       },
       "AMZN": {
-        "5d": "AMZN earnings on July 30 are the key catalyst within the 5-day window, driving elevated implied volatility at 44.2% and an IV rank above 91, signaling rich premium priced for event risk. Options traders should expect a volatility spike into earnings with rapid decay post-event. The bias is neutral ahead of earnings, with downside risk if the recent tech selloff trend continues, but upside remains if AMZN surprises positively.",
-        "1w": "The 7-day horizon includes AMZN earnings on July 30, keeping IV elevated near 44% as traders position for event-driven moves. The high IV rank suggests expensive options, favoring strategic premium sales post-earnings. Directionally neutral, the main risk is a negative earnings surprise that could extend the recent tech weakness and push AMZN toward the lower range near $230.",
-        "2w": "AMZN earnings on July 30 anchor the 2-week window, alongside key macro events like the July 29 FOMC and PCE data on July 30. The IV environment remains elevated around 44%, reflecting sustained event premium. The medium-term trend is balanced; hawkish Fed or weak consumer data could weigh on AMZN shares, while strong earnings and dovish Fed commentary could support a rebound toward $264.",
-        "4w": "In the 4-week outlook, AMZN earnings on July 30 are the primary catalyst, with subsequent macro prints including CPI on August 12 influencing broader sentiment. The elevated IV near 44% suggests continued premium for event risk and macro uncertainty. The longer-term regime depends on inflation trajectory and consumer spending; persistent inflation pressures could cap AMZN near $230, while easing inflation and robust earnings growth could drive a sustained rally above $260."
+        "5d": "AMZN\u2019s key near-term event is its July 30 earnings, currently 8 days out, so in the 5-day window no direct catalyst is present but anticipation builds. The 30D IV at 44.5% and very high IV rank above 92 indicate options are richly priced, reflecting elevated uncertainty. Neutral bias with a range of 230.49\u2013263.97 suggests balanced expectations; downside risk is a continuation of tech sector weakness, while upside depends on strong earnings execution.",
+        "1w": "Within 1 week, AMZN remains in pre-earnings premium buildup mode with IV elevated at 44.5%. The neutral bias reflects mixed sentiment amid broad tech selloff (-2 score) and high premium pricing. The main risk is a disappointing earnings print that could trigger a sharp IV spike and price drop; conversely, a strong beat could compress IV rapidly and lift shares.",
+        "2w": "The 2-week window includes AMZN\u2019s July 30 earnings and key economic data (PCE July 30), making it a high-volatility period. IV remains elevated, pricing in potential large moves around earnings and macro releases. Neutral bias holds as the market weighs tech sector headwinds against potential earnings surprises; risk is heightened volatility and directional swings post-earnings.",
+        "4w": "Over 4 weeks, AMZN\u2019s options environment will be shaped by earnings reaction and subsequent macro events including CPI on August 12. The very high IV rank suggests options are expensive, but premium decay will accelerate after earnings. The neutral stance reflects uncertainty about whether AMZN can sustain growth momentum amid tech sector weakness and macro pressures; a regime shift toward higher volatility remains possible if inflation surprises."
       }
     },
     "market_overview": [
@@ -1763,16 +1901,16 @@
         "open": 742.08,
         "high": 747.29,
         "low": 740.8,
-        "close": 743.15,
+        "close": 743.29,
         "prev_close": 750.72,
-        "volume": 52962020,
-        "change_pct": -1.01
+        "volume": 61343126,
+        "change_pct": -0.99
       },
       {
         "symbol": "NVDA",
         "name": "Nvidia",
         "category": "watchlist",
-        "open": 202.4,
+        "open": 202.64,
         "high": 206.65,
         "low": 197.97,
         "close": 202.81,
@@ -1784,7 +1922,7 @@
         "symbol": "AMZN",
         "name": "Amazon",
         "category": "watchlist",
-        "open": 244.7,
+        "open": 244.46,
         "high": 250.24,
         "low": 243.59,
         "close": 247.23,
@@ -1796,7 +1934,7 @@
         "symbol": "QQQ",
         "name": "Nasdaq 100",
         "category": "broad",
-        "open": 691.63,
+        "open": 691.65,
         "high": 702.3,
         "low": 686.76,
         "close": 695.33,
@@ -1820,7 +1958,7 @@
         "symbol": "SOXX",
         "name": "Semiconductors",
         "category": "broad",
-        "open": 508.79,
+        "open": 508.55,
         "high": 533.18,
         "low": 498.54,
         "close": 521.81,
@@ -1847,10 +1985,10 @@
         "open": 115.91,
         "high": 116.87,
         "low": 115.32,
-        "close": 115.41,
+        "close": 115.44,
         "prev_close": 117.34,
         "volume": 9408225,
-        "change_pct": -1.64
+        "change_pct": -1.62
       },
       {
         "symbol": "XLC",
@@ -1871,10 +2009,10 @@
         "open": 56.43,
         "high": 56.94,
         "low": 56.12,
-        "close": 56.24,
+        "close": 56.26,
         "prev_close": 56.75,
-        "volume": 40091679,
-        "change_pct": -0.9
+        "volume": 41883043,
+        "change_pct": -0.86
       },
       {
         "symbol": "XLV",
@@ -1895,10 +2033,10 @@
         "open": 178.26,
         "high": 181.46,
         "low": 177.6,
-        "close": 179.45,
+        "close": 179.41,
         "prev_close": 180.15,
         "volume": 6636124,
-        "change_pct": -0.39
+        "change_pct": -0.41
       },
       {
         "symbol": "XLE",
@@ -1919,10 +2057,10 @@
         "open": 50.8,
         "high": 51.44,
         "low": 50.38,
-        "close": 50.51,
+        "close": 50.53,
         "prev_close": 50.89,
         "volume": 8124328,
-        "change_pct": -0.75
+        "change_pct": -0.71
       },
       {
         "symbol": "XLP",
@@ -1931,10 +2069,10 @@
         "open": 86.79,
         "high": 87.42,
         "low": 84.75,
-        "close": 85.2,
+        "close": 85.19,
         "prev_close": 85.81,
         "volume": 15432862,
-        "change_pct": -0.71
+        "change_pct": -0.72
       },
       {
         "symbol": "XLRE",
@@ -1943,10 +2081,10 @@
         "open": 45.68,
         "high": 45.94,
         "low": 45.22,
-        "close": 45.43,
+        "close": 45.42,
         "prev_close": 45.46,
         "volume": 3789167,
-        "change_pct": -0.07
+        "change_pct": -0.09
       },
       {
         "symbol": "XLU",
@@ -2015,10 +2153,10 @@
         "open": 364.11,
         "high": 369.21,
         "low": 363.6,
-        "close": 368.4,
+        "close": 368.41,
         "prev_close": 364.96,
         "volume": 5694266,
-        "change_pct": 0.94
+        "change_pct": 0.95
       },
       {
         "symbol": "SLV",
@@ -2039,13 +2177,13 @@
         "open": 18.01,
         "high": 19.5,
         "low": 17.68,
-        "close": 18.5,
+        "close": 18.77,
         "prev_close": 16.73,
         "volume": null,
-        "change_pct": 10.58
+        "change_pct": 12.19
       }
     ],
-    "market_overview_narrative": "Equities are broadly lower with communication services leading the declines at -1.78%, followed by consumer discretionary down 1.64%, while energy bucks the trend, rising 1.16%, signaling sector rotation into defensives and commodity plays. Treasury yields remain elevated with the 2-year at 4.13% and the 10-year at 4.55%, while high yield spreads widen slightly to 271 bps, reflecting cautious credit sentiment amid persistent rate pressure. Gold is up 0.94% to $368.40, silver gains 0.77%, and the US Dollar Index ETF (UUP) is flat at -0.04%, indicating a mild safe-haven bid in precious metals without a significant dollar move. The VIX surged 10.58% to 18.50, suggesting rising volatility and increased demand for options protection, favoring buyers over sellers in the near term. Overall, the cross-asset landscape points to a risk-off environment with selective sector rotation, cautious credit markets, and heightened volatility signaling investor uncertainty and reduced risk appetite today.",
+    "market_overview_narrative": "Equities are broadly lower with communication services leading the declines at -1.78%, followed by consumer discretionary down 1.62%, while energy bucks the trend, rising 1.16%, signaling a defensive rotation into commodity-linked sectors. Treasury yields remain elevated with the 2-year at 4.16% and the 10-year at 4.57%, while high yield spreads tighten slightly to 271 bps, suggesting cautious credit conditions but no immediate distress. Gold is up 0.95% to $368.41 and silver 0.77%, reflecting safe-haven demand, while the US Dollar Index ETF (UUP) is flat at -0.04%, indicating limited dollar-driven market moves. The VIX surged 12.19% to 18.77, signaling increased volatility and a shift favoring options buyers over sellers amid rising uncertainty. Overall, the cross-asset landscape points to a risk-off environment with investors rotating into defensive sectors and safe havens amid elevated volatility and sustained high yields.",
     "universe_overview": [
       {
         "symbol": "NVDA",
@@ -2054,7 +2192,7 @@
           "SPY",
           "XLK"
         ],
-        "open": 202.4,
+        "open": 202.64,
         "high": 206.65,
         "low": 197.97,
         "close": 202.81,
@@ -2074,7 +2212,7 @@
         "low": 329.0,
         "close": 333.74,
         "prev_close": 333.26,
-        "volume": 59193471,
+        "volume": 63196563,
         "change_pct": 0.14
       },
       {
@@ -2099,7 +2237,7 @@
           "SPY",
           "XLY"
         ],
-        "open": 244.7,
+        "open": 244.46,
         "high": 250.24,
         "low": 243.59,
         "close": 247.23,
@@ -2114,12 +2252,12 @@
           "SPY",
           "XLC"
         ],
-        "open": 345.99,
+        "open": 346.0,
         "high": 348.52,
         "low": 341.36,
         "close": 346.77,
         "prev_close": 354.46,
-        "volume": 27583518,
+        "volume": 29277564,
         "change_pct": -2.17
       },
       {
@@ -2134,7 +2272,7 @@
         "low": 357.8,
         "close": 370.83,
         "prev_close": 374.45,
-        "volume": 21332833,
+        "volume": 22814332,
         "change_pct": -0.97
       },
       {
@@ -2149,7 +2287,7 @@
         "low": 804.0,
         "close": 848.95,
         "prev_close": 853.2,
-        "volume": 61014451,
+        "volume": 62514670,
         "change_pct": -0.5
       },
       {
@@ -2192,10 +2330,10 @@
         "open": 1159.44,
         "high": 1187.95,
         "low": 1154.33,
-        "close": 1178.58,
+        "close": 1179.09,
         "prev_close": 1169.17,
         "volume": 2163075,
-        "change_pct": 0.8
+        "change_pct": 0.85
       },
       {
         "symbol": "JPM",
@@ -2207,10 +2345,10 @@
         "open": 339.03,
         "high": 346.12,
         "low": 335.05,
-        "close": 341.2,
+        "close": 341.1,
         "prev_close": 343.15,
         "volume": 7079222,
-        "change_pct": -0.57
+        "change_pct": -0.6
       },
       {
         "symbol": "BRK-B",
@@ -2222,7 +2360,7 @@
         "open": 495.51,
         "high": 502.97,
         "low": 490.5,
-        "close": 490.89,
+        "close": 490.91,
         "prev_close": 493.12,
         "volume": 4588978,
         "change_pct": -0.45
@@ -2237,10 +2375,10 @@
         "open": 426.72,
         "high": 437.47,
         "low": 425.1,
-        "close": 426.17,
+        "close": 426.09,
         "prev_close": 423.38,
         "volume": 7940262,
-        "change_pct": 0.66
+        "change_pct": 0.64
       },
       {
         "symbol": "ORCL",
@@ -2263,7 +2401,7 @@
         "etf_memberships": [
           "SPY"
         ],
-        "open": 116.79,
+        "open": 116.96,
         "high": 118.09,
         "low": 113.6,
         "close": 114.24,
@@ -2277,7 +2415,7 @@
         "etf_memberships": [
           "XLC"
         ],
-        "open": 235.45,
+        "open": 235.64,
         "high": 239.24,
         "low": 232.5,
         "close": 236.68,
@@ -2291,12 +2429,12 @@
         "etf_memberships": [
           "XLC"
         ],
-        "open": 65.54,
+        "open": 65.48,
         "high": 69.49,
         "low": 65.1,
         "close": 68.95,
         "prev_close": 74.35,
-        "volume": 140964153,
+        "volume": 141231076,
         "change_pct": -7.26
       },
       {
@@ -2305,7 +2443,7 @@
         "etf_memberships": [
           "XLC"
         ],
-        "open": 24.3,
+        "open": 24.34,
         "high": 24.67,
         "low": 23.66,
         "close": 23.79,
@@ -2333,12 +2471,12 @@
         "etf_memberships": [
           "XLC"
         ],
-        "open": 209.15,
+        "open": 209.19,
         "high": 209.18,
         "low": 208.8,
         "close": 208.9,
         "prev_close": 207.84,
-        "volume": 3805109,
+        "volume": 3883017,
         "change_pct": 0.51
       },
       {
@@ -2350,10 +2488,10 @@
         "open": 99.0,
         "high": 99.79,
         "low": 97.05,
-        "close": 97.67,
+        "close": 97.66,
         "prev_close": 99.71,
         "volume": 8586557,
-        "change_pct": -2.05
+        "change_pct": -2.06
       },
       {
         "symbol": "TMUS",
@@ -2403,7 +2541,7 @@
         "etf_memberships": [
           "XLC"
         ],
-        "open": 133.32,
+        "open": 133.55,
         "high": 136.94,
         "low": 131.22,
         "close": 131.37,
@@ -2420,10 +2558,10 @@
         "open": 84.1,
         "high": 85.13,
         "low": 81.47,
-        "close": 81.75,
+        "close": 81.73,
         "prev_close": 84.17,
         "volume": 2570515,
-        "change_pct": -2.88
+        "change_pct": -2.9
       },
       {
         "symbol": "LYV",
@@ -2434,10 +2572,10 @@
         "open": 177.79,
         "high": 181.23,
         "low": 178.29,
-        "close": 180.19,
+        "close": 180.22,
         "prev_close": 179.85,
         "volume": 927468,
-        "change_pct": 0.19
+        "change_pct": 0.21
       },
       {
         "symbol": "FOXA",
@@ -2462,7 +2600,7 @@
         "open": 363.57,
         "high": 364.63,
         "low": 357.0,
-        "close": 358.58,
+        "close": 358.56,
         "prev_close": 365.14,
         "volume": 5558687,
         "change_pct": -1.8
@@ -2476,10 +2614,10 @@
         "open": 550.5,
         "high": 551.72,
         "low": 540.23,
-        "close": 543.57,
+        "close": 543.6,
         "prev_close": 551.54,
         "volume": 2397735,
-        "change_pct": -1.45
+        "change_pct": -1.44
       },
       {
         "symbol": "BAC",
@@ -2490,10 +2628,10 @@
         "open": 61.25,
         "high": 62.12,
         "low": 60.66,
-        "close": 61.28,
+        "close": 61.27,
         "prev_close": 61.49,
         "volume": 36445367,
-        "change_pct": -0.34
+        "change_pct": -0.36
       },
       {
         "symbol": "GS",
@@ -2504,10 +2642,10 @@
         "open": 1071.64,
         "high": 1085.93,
         "low": 1047.15,
-        "close": 1066.13,
+        "close": 1065.22,
         "prev_close": 1095.46,
         "volume": 1713438,
-        "change_pct": -2.68
+        "change_pct": -2.76
       },
       {
         "symbol": "WFC",
@@ -2518,10 +2656,10 @@
         "open": 87.74,
         "high": 89.79,
         "low": 86.54,
-        "close": 87.53,
+        "close": 87.52,
         "prev_close": 88.07,
-        "volume": 17970243,
-        "change_pct": -0.61
+        "volume": 22740075,
+        "change_pct": -0.62
       },
       {
         "symbol": "MS",
@@ -2532,10 +2670,10 @@
         "open": 214.4,
         "high": 218.38,
         "low": 207.4,
-        "close": 215.48,
+        "close": 215.42,
         "prev_close": 218.37,
         "volume": 6727757,
-        "change_pct": -1.32
+        "change_pct": -1.35
       },
       {
         "symbol": "C",
@@ -2546,10 +2684,10 @@
         "open": 129.44,
         "high": 131.24,
         "low": 127.08,
-        "close": 129.37,
+        "close": 129.32,
         "prev_close": 131.71,
         "volume": 12392084,
-        "change_pct": -1.78
+        "change_pct": -1.81
       },
       {
         "symbol": "AXP",
@@ -2560,10 +2698,10 @@
         "open": 356.58,
         "high": 358.76,
         "low": 351.83,
-        "close": 355.33,
+        "close": 355.35,
         "prev_close": 361.57,
         "volume": 1529731,
-        "change_pct": -1.73
+        "change_pct": -1.72
       },
       {
         "symbol": "SPGI",
@@ -2574,7 +2712,7 @@
         "open": 456.25,
         "high": 462.02,
         "low": 448.48,
-        "close": 450.85,
+        "close": 450.84,
         "prev_close": 457.38,
         "volume": 1459393,
         "change_pct": -1.43
@@ -2588,10 +2726,10 @@
         "open": 1068.29,
         "high": 1099.41,
         "low": 1067.91,
-        "close": 1073.21,
+        "close": 1072.2,
         "prev_close": 1087.05,
         "volume": 627306,
-        "change_pct": -1.27
+        "change_pct": -1.37
       },
       {
         "symbol": "PGR",
@@ -2602,10 +2740,10 @@
         "open": 208.99,
         "high": 211.9,
         "low": 206.94,
-        "close": 207.97,
+        "close": 207.95,
         "prev_close": 205.8,
-        "volume": 3036564,
-        "change_pct": 1.05
+        "volume": 3797813,
+        "change_pct": 1.04
       },
       {
         "symbol": "SCHW",
@@ -2616,10 +2754,10 @@
         "open": 102.32,
         "high": 102.8,
         "low": 100.81,
-        "close": 101.6,
+        "close": 101.56,
         "prev_close": 102.8,
         "volume": 6055750,
-        "change_pct": -1.17
+        "change_pct": -1.21
       },
       {
         "symbol": "ICE",
@@ -2630,10 +2768,10 @@
         "open": 142.5,
         "high": 144.54,
         "low": 139.11,
-        "close": 139.63,
+        "close": 139.65,
         "prev_close": 141.76,
         "volume": 2582706,
-        "change_pct": -1.5
+        "change_pct": -1.49
       },
       {
         "symbol": "AMD",
@@ -2641,7 +2779,7 @@
         "etf_memberships": [
           "XLK"
         ],
-        "open": 477.25,
+        "open": 476.88,
         "high": 505.88,
         "low": 460.21,
         "close": 495.76,
@@ -2655,7 +2793,7 @@
         "etf_memberships": [
           "XLK"
         ],
-        "open": 92.07,
+        "open": 92.14,
         "high": 98.05,
         "low": 89.59,
         "close": 95.04,
@@ -2688,7 +2826,7 @@
         "low": 298.65,
         "close": 313.3,
         "prev_close": 320.96,
-        "volume": 12204684,
+        "volume": 12781956,
         "change_pct": -2.39
       },
       {
@@ -2697,7 +2835,7 @@
         "etf_memberships": [
           "XLK"
         ],
-        "open": 109.05,
+        "open": 109.15,
         "high": 113.23,
         "low": 108.91,
         "close": 111.94,
@@ -2714,10 +2852,10 @@
         "open": 171.5,
         "high": 175.43,
         "low": 169.75,
-        "close": 170.86,
+        "close": 170.77,
         "prev_close": 172.68,
         "volume": 7913287,
-        "change_pct": -1.05
+        "change_pct": -1.11
       },
       {
         "symbol": "INTU",
@@ -2725,7 +2863,7 @@
         "etf_memberships": [
           "XLK"
         ],
-        "open": 294.94,
+        "open": 295.1,
         "high": 302.07,
         "low": 290.01,
         "close": 291.09,
@@ -2770,10 +2908,10 @@
         "open": 252.59,
         "high": 255.66,
         "low": 251.96,
-        "close": 253.03,
+        "close": 253.04,
         "prev_close": 249.97,
         "volume": 7516376,
-        "change_pct": 1.22
+        "change_pct": 1.23
       },
       {
         "symbol": "ABBV",
@@ -2782,12 +2920,12 @@
           "XLV"
         ],
         "open": 257.0,
-        "high": 260.84,
+        "high": 260.96,
         "low": 254.29,
-        "close": 254.59,
+        "close": 254.49,
         "prev_close": 254.39,
-        "volume": 5218606,
-        "change_pct": 0.08
+        "volume": 6542652,
+        "change_pct": 0.04
       },
       {
         "symbol": "MRK",
@@ -2826,10 +2964,10 @@
         "open": 539.09,
         "high": 542.02,
         "low": 531.62,
-        "close": 532.55,
+        "close": 532.48,
         "prev_close": 543.19,
         "volume": 1137808,
-        "change_pct": -1.96
+        "change_pct": -1.97
       },
       {
         "symbol": "ABT",
@@ -2884,7 +3022,7 @@
         "low": 106.61,
         "close": 107.47,
         "prev_close": 106.5,
-        "volume": 5225998,
+        "volume": 6605752,
         "change_pct": 0.91
       },
       {
@@ -2896,10 +3034,10 @@
         "open": 83.52,
         "high": 84.69,
         "low": 82.71,
-        "close": 83.18,
+        "close": 83.2,
         "prev_close": 83.56,
         "volume": 6281480,
-        "change_pct": -0.45
+        "change_pct": -0.43
       },
       {
         "symbol": "SYK",
@@ -2910,9 +3048,9 @@
         "open": 328.9,
         "high": 329.26,
         "low": 318.08,
-        "close": 319.88,
+        "close": 319.87,
         "prev_close": 331.2,
-        "volume": 1975037,
+        "volume": 2434351,
         "change_pct": -3.42
       },
       {
@@ -2924,10 +3062,10 @@
         "open": 203.45,
         "high": 206.59,
         "low": 202.14,
-        "close": 203.71,
+        "close": 203.83,
         "prev_close": 205.01,
         "volume": 3904947,
-        "change_pct": -0.63
+        "change_pct": -0.58
       },
       {
         "symbol": "REGN",
@@ -2952,7 +3090,7 @@
         "open": 348.93,
         "high": 353.98,
         "low": 338.09,
-        "close": 338.86,
+        "close": 338.87,
         "prev_close": 348.02,
         "volume": 3422938,
         "change_pct": -2.63
@@ -2966,10 +3104,10 @@
         "open": 275.0,
         "high": 276.36,
         "low": 267.19,
-        "close": 267.7,
+        "close": 267.71,
         "prev_close": 273.46,
-        "volume": 3001505,
-        "change_pct": -2.11
+        "volume": 3561352,
+        "change_pct": -2.1
       },
       {
         "symbol": "TJX",
@@ -2980,7 +3118,7 @@
         "open": 155.0,
         "high": 158.12,
         "low": 153.87,
-        "close": 154.38,
+        "close": 154.39,
         "prev_close": 154.79,
         "volume": 3559850,
         "change_pct": -0.26
@@ -2991,7 +3129,7 @@
         "etf_memberships": [
           "XLY"
         ],
-        "open": 182.62,
+        "open": 183.23,
         "high": 184.35,
         "low": 178.76,
         "close": 181.68,
@@ -3007,11 +3145,11 @@
         ],
         "open": 217.95,
         "high": 220.49,
-        "low": 208.43,
-        "close": 208.71,
+        "low": 208.42,
+        "close": 208.73,
         "prev_close": 216.16,
-        "volume": 2869356,
-        "change_pct": -3.45
+        "volume": 3360890,
+        "change_pct": -3.44
       },
       {
         "symbol": "SBUX",
@@ -3050,10 +3188,10 @@
         "open": 286.41,
         "high": 292.74,
         "low": 285.13,
-        "close": 287.06,
+        "close": 286.96,
         "prev_close": 293.95,
         "volume": 1921102,
-        "change_pct": -2.34
+        "change_pct": -2.38
       },
       {
         "symbol": "NKE",
@@ -3075,7 +3213,7 @@
         "etf_memberships": [
           "XLY"
         ],
-        "open": 87.18,
+        "open": 87.14,
         "high": 88.08,
         "low": 85.28,
         "close": 86.05,
@@ -3106,10 +3244,10 @@
         "open": 77.14,
         "high": 77.94,
         "low": 75.99,
-        "close": 76.06,
+        "close": 76.07,
         "prev_close": 77.72,
         "volume": 4501357,
-        "change_pct": -2.14
+        "change_pct": -2.12
       },
       {
         "symbol": "F",
