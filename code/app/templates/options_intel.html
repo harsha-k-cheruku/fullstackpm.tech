@@ -345,6 +345,55 @@
     </div>
   </section>
 
+  {# ── Ticker Horizons ──────────────────────────────────────────────────────── #}
+  {% if latest.ticker_horizons %}
+  <section class="mb-10">
+    <div class="section-rule">
+      <span class="label">Ticker Outlook</span>
+      <span class="meta source-meta">5d · 1w · 2w · 4w forward view</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {% for ticker, windows in latest.ticker_horizons.items() %}
+      {% set t_data = latest.tickers | selectattr('ticker', 'eq', ticker) | first | default(none) %}
+      <div class="ticker-card">
+        <div class="flex items-center justify-between mb-3">
+          <span class="font-mono font-bold text-base" style="color: var(--color-text-primary);">{{ ticker }}</span>
+          {% if t_data and t_data.bias %}
+            {% if t_data.bias == 'bullish' %}
+              <span class="cat-chip eng" style="font-size:10px;">{{ t_data.bias | upper }}</span>
+            {% elif t_data.bias == 'bearish' %}
+              <span class="cat-chip" style="font-size:10px; background:var(--color-danger-100);color:var(--color-danger-900);">{{ t_data.bias | upper }}</span>
+            {% else %}
+              <span class="cat-chip strat" style="font-size:10px;">{{ t_data.bias | upper }}</span>
+            {% endif %}
+          {% endif %}
+        </div>
+        {% if t_data and t_data.spot %}
+        <p class="font-mono text-xs mb-3" style="color: var(--color-text-tertiary);">
+          ${{ "%.2f"|format(t_data.spot) }}
+          {% if t_data.range_low and t_data.range_high %}
+            · range ${{ "%.0f"|format(t_data.range_low) }}–${{ "%.0f"|format(t_data.range_high) }}
+          {% endif %}
+        </p>
+        {% endif %}
+        <div class="space-y-3">
+          {% for key, label in [('5d','5 Days'), ('1w','1 Week'), ('2w','2 Weeks'), ('4w','4 Weeks')] %}
+          {% set text = windows.get(key, '') if windows is mapping else '' %}
+          {% if text %}
+          <div>
+            <p class="font-mono text-xs font-semibold mb-1" style="color: var(--color-accent);">{{ label }}</p>
+            <p class="text-xs leading-relaxed" style="color: var(--color-text-secondary);">{{ text }}</p>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   {# ── End-of-Day Retrospective ─────────────────────────────────────────────── #}
   {% if outcome and outcome.outcomes %}
   <section class="mb-10">
@@ -756,6 +805,14 @@
       <span class="label">Market Overview</span>
       <span class="meta source-meta">prev-session OHLCV · {{ latest.date or 'latest' }}</span>
     </div>
+
+    {% if latest.market_overview_narrative %}
+    <div class="rounded-lg border-l-4 px-5 py-4 mb-6"
+         style="border-color: var(--color-accent); background: var(--color-accent-light);">
+      <p class="kicker mb-2" style="color: var(--color-accent);">Cross-Asset Read</p>
+      <p class="text-sm leading-relaxed" style="color: var(--color-text-primary);">{{ latest.market_overview_narrative }}</p>
+    </div>
+    {% endif %}
 
     {% set category_labels = {
       'watchlist':   'Tracked Tickers',
