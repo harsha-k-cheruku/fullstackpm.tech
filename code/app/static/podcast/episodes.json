@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-20",
+      "slug": "daily-brief-2026-07-20",
+      "episode_number": 57,
+      "title": "Daily Brief \u2014 July 20, 2026",
+      "date": "2026-07-20",
+      "published_at": "2026-07-20T14:04:01",
+      "duration_seconds": 794,
+      "duration_human": "13:14",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-20.mp3",
+      "audio_length_bytes": 6351534,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Understanding SPY Options Through Everyday Analogies",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: Netflix CPTO on AI and the future of product and tech roles | Elizabeth Stone",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 745.64,
+        "pct_change": 0.32,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-20</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Trade and Economic Tensions Rise Amidst Unfolding Crises</li>\n<li><strong>SPY learning:</strong> Understanding SPY Options Through Everyday Analogies</li>\n<li><strong>Market brief:</strong> SPY Market Brief for July 20, 2026</li>\n<li><strong>PM/analytics:</strong> Netflix CPTO on AI and the future of product and tech roles | Elizabeth Stone</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, Coinbase is facing a potential decline in trading volume for the third straight quarter, raising concerns among investors about the cryptocurrency market&rsquo;s resiliency. This could have ripple effects on investor sentiment and liquidity across tech stocks. Europe has seen a clash between Chinese and Philippine maritime forces at the Second Thomas Shoal, escalating tensions in the South China Sea. Such geopolitical disputes can impact shipping routes and regional stability, which are crucial for trade. In Asia, China&rsquo;s car market is headed for its worst year since 2021, with a staggering 20% drop in sales. This decline signals weakening consumer demand, which could affect global supply chains and manufacturers relying on Chinese consumers.</p>\n<p>Imagine you and your friends are at a pizza party. You see a big, delicious pizza in the middle of the table, and you know that everyone wants a slice. Before anyone even gets to the pizza, you make a deal with your friend: you\u2019ll give them a slice of pizza if they can bring you a soda in the next five minutes. You tell them, &lsquo;If the pizza is still there when you get back, I\u2019ll give you a slice. If not, you can keep your soda.&rsquo; This way, you\u2019ve made a promise about the pizza without actually having to give it away until you see if your friend can fulfill their end of the deal. You\u2019re betting that the pizza will still be there, just like you\u2019re betting on your friend\u2019s ability to bring back the soda quickly. This is a bit like how options work \u2014 you\u2019re making a deal based on expectations about something in the future, like pizza being available or the price of a stock moving in a certain direction.</p>\n<p>Now, think about that pizza deal again, but let\u2019s add some numbers to it. Let\u2019s say the pizza is worth $10, and the soda is worth $1. If your friend brings you the soda, you\u2019ll give them a slice worth $10, but if they don\u2019t make it back in time, you keep your pizza slice and your soda. In the world of SPY options, when you buy an option, you\u2019re making a similar kind of deal, where you pay a small amount (like the $1 soda) for the chance to control something much bigger (the $10 pizza). For instance, if SPY is currently priced at $745.64 and you think it\u2019s going to rise, you might buy a call option to benefit from that potential increase. Today, the implied volatility is around 18.12%, which can affect how much you\u2019d pay for your option, just like how the time left for your friend to bring back that soda can change how valuable your pizza slice is in that scenario.</p>\n<p>Understanding this concept changes how you approach trading in a significant way. Given that the current implied volatility rank is at 100%, it suggests that options are priced quite high relative to their historical averages. This means that premiums for options on SPY are elevated, which is crucial information for making decisions on defined-risk spreads. If you\u2019re considering selling premium, you want to look for opportunities where you can sell calls or puts with a strike price that takes advantage of this elevated volatility. For example, if you&rsquo;re looking at the 746 strike call options with a delta of 0.53 and high open interest, you might consider selling a call spread above that level to capitalize on potential decay as the option nears expiry on August 14th. This aligns with your strategy as the high IV rank indicates a strong likelihood of price movements, and you can potentially benefit from the time decay effect, collecting premium while minimizing risk in your defined-risk spread. Think of it like knowing your friend is likely to take longer than usual to bring back the soda, giving you the upper hand in your pizza deal, allowing you to make a more informed trade based on what you know about the market\u2019s current conditions.</p>\n<p>Today, SPY closed at 745.64, up 0.32% from yesterday&rsquo;s close. The trading volume was robust at over 5.5 million shares, which is a solid indicator of market participation. While the gain might seem modest, it\u2019s significant when you consider the volatility we&rsquo;ve seen this week. Just a few days ago, SPY dipped below 744, and today&rsquo;s slight recovery suggests a potential stabilization after a rough patch. This week has been characterized by a lot of back-and-forth, and today\u2019s movement could indicate a shift in sentiment, at least for the short term.</p>\n<p>Looking at sector performance, Technology (XLK) led the charge today, rising 2.1%, which accounted for a substantial portion of SPY&rsquo;s gains. This strength in tech is likely a reflection of ongoing investor confidence in the sector, particularly as we see continued advancements in AI and cloud computing. On the flip side, Consumer Discretionary (XLY) lagged behind, dropping 0.47%. This divergence highlights a growing concern among consumers, especially as recent data suggests a dip in consumer sentiment. When consumers are feeling less optimistic, discretionary spending tends to take a hit, which is likely weighing on this sector.</p>\n<p>The tech rally today can also be linked to broader macroeconomic trends. With the CPI showing a year-over-year decrease to 3.73%, down from 4.27%, it seems that inflationary pressures may be easing. This could give the Fed some room to maneuver, potentially keeping interest rates steady in the near term. Lower inflation often translates to a more favorable environment for growth stocks, particularly in tech, which is why we might be seeing this sector outperforming others.</p>\n<p>As for implied volatility, we\u2019re currently sitting at an IV rank of 100%. This is noteworthy because it indicates that options are relatively expensive compared to their historical norms. For traders considering selling premium, this could be an opportune moment, especially if you believe that volatility will contract in the near future. However, it\u2019s essential to weigh this against the potential for continued market swings, particularly with the upcoming Fed meeting on the horizon.</p>\n<p>In terms of key price levels, immediate support for SPY appears to be around 744, while resistance is hovering near 748. These levels are crucial for traders to watch, as a break below support could signal further downside, while a push above resistance might open the door for a more significant rally. Given the current price action, it\u2019s clear that traders are closely monitoring these thresholds.</p>\n<p>Looking ahead, we have some important events on the calendar that could impact market dynamics. The Freddie Mac Mortgage Rate Update releases this afternoon, which could provide insights into the housing market and consumer borrowing trends. Additionally, we\u2019re just nine days away from the next Fed meeting, where any hints regarding future monetary policy could stir the pot. Given the current economic backdrop, the market will be keenly focused on any signals from the Fed regarding interest rates and inflation management.</p>\n<p>For options traders, the practical takeaway this week is to consider the high IV rank when planning your strategies. Selling premium could be advantageous, but be mindful of the upcoming events that could inject volatility into the market. With the current market sentiment showing signs of stabilization, it might be worth exploring defined-risk spreads that can capitalize on the potential for range-bound trading in the near term.</p>\n<p>Here&rsquo;s the thing: as we step into an era increasingly defined by AI, the challenge of prioritizing product features isn\u2019t just about what seems shiny or new. Elizabeth Stone, CPTO of Netflix, emphasizes a shift towards systems thinking. This isn\u2019t just a buzzword; it implies a structured approach to interdependencies within your product ecosystem. This means that as you build and measure, you\u2019re also considering how each feature impacts the broader user experience and engagement metrics. </p>\n<p>What that means in practice is that instead of viewing features in isolation, you should be analyzing how they interact and influence each other. Think of it like trading options: every position you take on SPY isn\u2019t just a standalone bet; it\u2019s part of a larger strategy where volatility, time decay, and correlations matter. If you\u2019re selling premium on SPY, you\u2019re not just looking at the implied volatility of a single option but how that relates to the overall market landscape. That\u2019s systems thinking in action.</p>\n<p>Take Netflix, for example. They don\u2019t just roll out a new feature because it\u2019s trendy. They consider how that feature enhances or detracts from the overall user experience\u2014like how a new content recommendation algorithm might interact with user engagement metrics, or how it might affect churn rates. This holistic view allows them to prioritize features that add the most value, not just in isolation but as part of a larger narrative. </p>\n<p>The move here is to start applying this systems thinking to your own product roadmap. Begin with rigorous metrics that link individual features to broader company goals. For instance, if you&rsquo;re considering a new trading strategy or an option to sell premium, analyze how it affects your overall risk exposure and return profile. It\u2019s about understanding that every decision reverberates through your portfolio.</p>\n<p>This week, take a moment to audit your current projects or trading strategies through this lens. Ask yourself: how does each feature or trade influence the others? Look for dependencies that might not be immediately obvious but could significantly impact your overall success. By doing this, you\u2019ll not only improve your decision-making but also enhance your ability to communicate the value of your initiatives to stakeholders.</p>"
+    },
+    {
       "id": "2026-07-17",
       "slug": "daily-brief-2026-07-17",
       "episode_number": 56,
