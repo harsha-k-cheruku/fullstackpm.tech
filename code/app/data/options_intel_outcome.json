@@ -1,0 +1,80 @@
+{
+  "date": "2026-07-22",
+  "recorded_at": "2026-07-22T22:21:38.932605+00:00",
+  "outcomes": {
+    "SPY": {
+      "ticker": "SPY",
+      "morning_spot": 748.9682,
+      "close": 747.41,
+      "bias": "BULLISH",
+      "gate_passed": true,
+      "contracts": 1,
+      "strategy": "put_credit_spread",
+      "range_low": 731.58,
+      "range_high": 766.36,
+      "range": {
+        "in_range": true,
+        "pct_position": 0.455,
+        "miss": null
+      },
+      "bias_eval": {
+        "correct": false,
+        "actual_direction": "BEARISH",
+        "move": -1.56,
+        "move_pct": -0.21
+      },
+      "trade_eval": {
+        "zone": "profit",
+        "note": "Close 747.41 above short put 732.00 \u2014 spread OTM, on track for full credit.",
+        "short_strike": 732.0,
+        "long_strike": 729.0,
+        "credit": 0.32
+      }
+    },
+    "NVDA": {
+      "ticker": "NVDA",
+      "morning_spot": 207.4323,
+      "close": 212.06,
+      "bias": "BULLISH",
+      "gate_passed": true,
+      "contracts": 2,
+      "strategy": "put_credit_spread",
+      "range_low": 192.16,
+      "range_high": 222.7,
+      "range": {
+        "in_range": true,
+        "pct_position": 0.652,
+        "miss": null
+      },
+      "bias_eval": {
+        "correct": true,
+        "actual_direction": "BULLISH",
+        "move": 4.63,
+        "move_pct": 2.23
+      }
+    },
+    "AMZN": {
+      "ticker": "AMZN",
+      "morning_spot": 246.675,
+      "close": 244.85,
+      "bias": "NEUTRAL",
+      "gate_passed": true,
+      "contracts": 1,
+      "strategy": "iron_condor",
+      "range_low": 231.34,
+      "range_high": 262.02,
+      "range": {
+        "in_range": true,
+        "pct_position": 0.44,
+        "miss": null
+      },
+      "bias_eval": {
+        "correct": true,
+        "actual_direction": "BEARISH",
+        "move": -1.83,
+        "move_pct": -0.74
+      }
+    }
+  },
+  "summary": "Range: 3/3 within forecast \u00b7 Bias: 2/3 correct \u00b7 Trades: 1/1 on track for profit"
+}
