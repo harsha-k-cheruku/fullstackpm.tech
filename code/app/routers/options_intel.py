@@ -213,9 +213,11 @@ async def options_intel_dashboard(request: Request, db: Session = Depends(get_db
     )
     db_latest: dict | None = None
     db_ts: datetime | None = None
-    if rows:
-        db_ts = rows[0].created_at
-        db_latest = _parse_brief(rows[0].payload_text, db_ts)
+    # Only use morning brief rows as the "latest" source; outcome_brief rows have no snapshot data
+    brief_rows = [r for r in rows if r.event_type not in ("outcome_brief",)]
+    if brief_rows:
+        db_ts = brief_rows[0].created_at
+        db_latest = _parse_brief(brief_rows[0].payload_text, db_ts)
 
     # Pick the NEWER source as latest
     if file_latest and db_latest:
