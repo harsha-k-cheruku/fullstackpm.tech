@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-24",
+      "slug": "daily-brief-2026-07-24",
+      "episode_number": 61,
+      "title": "Daily Brief \u2014 July 24, 2026",
+      "date": "2026-07-24",
+      "published_at": "2026-07-24T14:51:14",
+      "duration_seconds": 754,
+      "duration_human": "12:34",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-24.mp3",
+      "audio_length_bytes": 6027198,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 1,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "The trend is your friend: reading SPY on multiple timeframes"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Building a Directional View on SPY",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: Building AI for Women's Health: How Hertility Combined Bayesian Diagnosis and Scan Automation",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 738.39,
+        "pct_change": 0.03,
+        "iv_rank": 77.61
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "trend",
+        "friend",
+        "reading",
+        "multiple",
+        "timeframes",
+        "building"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-24</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Global Market Pulse: Energy Prices and Geopolitical Tensions Rise</li>\n<li><strong>SPY learning:</strong> Building a Directional View on SPY</li>\n<li><strong>Market brief:</strong> SPY Market Brief - July 24, 2026</li>\n<li><strong>PM/analytics:</strong> Building AI for Women&rsquo;s Health: How Hertility Combined Bayesian Diagnosis and Scan Automation</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, investors are bracing for a potential Federal Reserve interest rate hike as oil prices soar, with indicators suggesting a rate adjustment could happen as early as September. The market&rsquo;s response to these rising oil prices signals heightened volatility ahead for equities, particularly those sensitive to energy costs. In Europe, wildfires are causing evacuations in France and Spain, disrupting local economies and raising concerns about agricultural impacts. This environmental crisis underlines vulnerabilities in the region&rsquo;s supply chains, particularly in food production and distribution. In Asia, smaller airlines in India and Malaysia are pushing forward with expansion plans despite escalating fuel costs linked to the ongoing conflict in the Middle East. This situation highlights the resilience of these carriers but also underscores the broader implications for air travel costs and supply chains in the region.</p>\n<p>Imagine you\u2019re at a pizza place, and you see a big pizza with a lot of different toppings. Each topping represents a different flavor that people might love. Now, let\u2019s say the pizza is really popular today, and everyone is talking about it. The shop owner decides to charge a little extra for a slice because he knows it\u2019ll sell out fast. But if nobody is interested in that pizza, he lowers the price because then, he needs to attract customers. So, the price of the slice changes based on how many people want it. This is how demand affects price, and in this case, it\u2019s all about the popularity of that pizza, just like how the price of options can change based on how much people want them. </p>\n<p>Now, let\u2019s relate that to something a bit more complex, like trading options on SPY, which is an ETF that tracks the S&amp;P 500. The idea of demand and supply applies here too. When we look at SPY options, we\u2019re considering the price of options contracts, similar to slices of pizza. If SPY is currently priced at $738.39, and it has a high implied volatility rank of 77.61, it means that traders expect big price swings in the near future, just like how everyone expects that pizza to be in high demand. If the market thinks SPY could go up or down a lot, the cost of those options (or slices) increases because more people want to buy them, similar to how the pizza shop owner raises the price when everyone wants a slice. </p>\n<p>So, when looking at a trade today, you might ask, how does the implied volatility affect my strategy? Knowing that the IV rank is high indicates that options are more expensive right now. If I\u2019m thinking about selling premium on SPY using a defined-risk spread, this could be a good time. For example, let&rsquo;s say I want to sell a call spread at the $740 strike, where the volume is high, and I see the current IV at 17.02. This means that the market is pricing in that SPY might not go above that level, and I could benefit from the time decay as those options lose value. Conversely, if SPY&rsquo;s price is moving sideways, and I see the IV rank is so high, I might be cautious because while I\u2019m selling premium, I also want to ensure I\u2019m not caught off guard by sudden price moves. </p>\n<p>The natural question here is: what if the price moves against me? Here\u2019s how to think about it: if SPY moves above my short strike, I could face losses, but because I\u2019m using a defined-risk spread, my maximum loss is capped at the difference between my strikes minus the premium I\u2019ve collected. So, knowing the current price, IV, and market conditions helps me make a more informed decision about my risk and reward. This systematic approach of balancing risk through defined spreads while taking advantage of the current market dynamics can lead to more consistent trading outcomes. It\u2019s all about reading the signals the market gives us, just like figuring out how much to charge for that pizza based on how many people are lining up to buy it.</p>\n<p>Today, SPY closed at 738.39, just a slight uptick of 0.03% from yesterday&rsquo;s close. The trading volume was around 4.59 million shares, which is relatively average for this time of year. If we look at the week in context, SPY has been on a bit of a rollercoaster, starting the week at 742.09 and dipping down to a low of 738.18 yesterday. So, today\u2019s move, while small, is significant in that it halted a two-day slide and could indicate a potential stabilization point. However, we\u2019re still well below the week\u2019s high of 760.4, which looms large as a resistance level. </p>\n<p>Diving into sector performance, Real Estate (XLRE) led the way today with a solid gain of 2.21%, contributing significantly to SPY&rsquo;s overall performance. Communication Services (XLC) also showed strength, rising by 1%. On the flip side, Technology (XLK) was the laggard, falling 1.17%, which is a notable shift given its previous dominance in the market. The weakness in tech could be attributed to rising concerns over inflation and interest rates, especially with oil prices surging past $100 per barrel, which has investors on edge about potential Fed rate hikes. </p>\n<p>The news surrounding oil prices is particularly relevant. With the geopolitical tensions escalating, particularly in the U.S.-Iran conflict, the market is reacting to the potential for sustained high energy costs. This has a ripple effect on inflation expectations, which in turn influences the Fed&rsquo;s monetary policy. The rising odds of a rate hike in September are making investors cautious, particularly in interest-sensitive sectors like technology. As tech stocks often rely on low borrowing costs to fuel growth, any hint of tightening monetary policy can lead to a sell-off. </p>\n<p>Currently, the implied volatility (IV) rank stands at 77.61, which is quite elevated. This suggests that options are relatively expensive right now, making it a potentially favorable environment for selling premium, particularly if you\u2019re looking to implement defined-risk spreads. With the VIX at 18.68, it indicates that the market is pricing in some uncertainty, but not panic. For those considering selling premium, this high IV rank could provide a good opportunity, especially if you believe that the market will stabilize or move sideways in the near term. </p>\n<p>As for key price levels to watch, immediate support is around the 737 level, while resistance is looming at the 740 mark. If SPY can break above 740, it might signal a shift in momentum, but if it falls below 737, we could see further downside pressure. Keeping an eye on these levels will be crucial for any trading decisions in the coming days. </p>\n<p>Looking ahead, we have some significant events on the calendar that could impact market sentiment. The GDP release is scheduled for four days from now, and given the current economic climate, this could be a market mover. Additionally, the Fed meeting is just five days away, and with the current chatter around interest rates, traders will be keenly focused on any hints from the Fed regarding future policy changes. </p>\n<p>In summary, for options traders considering a position this week, the elevated IV rank suggests that selling premium could be a viable strategy, especially if you\u2019re looking at defined-risk spreads. Keep a close watch on the upcoming economic data and key price levels, as they will likely influence market direction in the near term.</p>\n<p>Here&rsquo;s the thing: when you&rsquo;re tackling a complex problem like building AI for women&rsquo;s health, it\u2019s crucial to frame your approach in a way that allows you to prioritize effectively. Think about it\u2014many product managers get caught up in features, but what&rsquo;s often more critical is understanding the intersection of user needs and technical feasibility. In the case of Hertility, they utilized a Bayesian approach to diagnostics, which not only improved the accuracy of their AI but also provided a framework for making decisions under uncertainty. So, what that means in practice for you as a PM is that you can apply this model to your own decision-making processes, especially when evaluating options in your SPY trading strategies. For instance, when you&rsquo;re looking at implied volatility or assessing the risk of a defined-risk spread, consider how Bayesian thinking might help you weigh potential outcomes. Instead of just looking at historical data, you might estimate the probability of various market conditions and adjust your strategies accordingly. The move here is to embrace that uncertainty as part of your toolkit rather than something to avoid. To make this actionable, take a moment this week to apply a Bayesian lens to one of your current trading strategies. Map out the different scenarios you could face, assign probabilities to each based on your market insights, and see how that perspective shifts your approach to risk and reward. This could lead to refining your strategies and potentially increasing your win rate. Remember, it&rsquo;s about being systematic in your decision-making, especially in the unpredictable world of options trading.</p>"
+    },
+    {
       "id": "2026-07-23",
       "slug": "daily-brief-2026-07-23",
       "episode_number": 60,
