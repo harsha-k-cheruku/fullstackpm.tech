@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-07-29",
+      "slug": "daily-brief-2026-07-29",
+      "episode_number": 64,
+      "title": "Daily Brief \u2014 July 29, 2026",
+      "date": "2026-07-29",
+      "published_at": "2026-07-29T14:05:46",
+      "duration_seconds": 753,
+      "duration_human": "12:33",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-07-29.mp3",
+      "audio_length_bytes": 6020302,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 4,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Adjusting your strategy to your bias"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Building a Directional View on SPY",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: How to Build Frontier-Lab Quality Evals with Daniel McKinnon, ex-PM at Meta, Google",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 737.81,
+        "pct_change": -0.17,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "adjusting",
+        "strategy",
+        "bias",
+        "frontier-lab",
+        "quality",
+        "evals"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-07-29</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> Geopolitical Tensions and Economic Pressures Shape Global Markets</li>\n<li><strong>SPY learning:</strong> Building a Directional View on SPY</li>\n<li><strong>Market brief:</strong> SPY Market Brief for July 29, 2026</li>\n<li><strong>PM/analytics:</strong> How to Build Frontier-Lab Quality Evals with Daniel McKinnon, ex-PM at Meta, Google</li>\n</ul>\n<h2>Summary</h2>\n<p>In the Americas, Visa announced plans to cut 7% of its workforce, about 2,600 jobs, as part of an efficiency push driven by advancements in AI. This could signal a broader trend in the financial sector, potentially impacting consumer spending and payment processing industries. Over in Europe, the U.S. and Saudi Arabia have launched joint strikes against Iran-backed militias in Iraq, following attacks targeting U.S. bases and Saudi infrastructure. This escalation in geopolitical tensions could put pressure on oil prices and regional stability, affecting energy markets. In Asia, Hong Kong is grappling with a surge in WhatsApp hijackings, leading to significant financial losses. This rise in cyber fraud raises concerns about digital security, which could influence investment in technology and security sectors across the region.</p>\n<p>Imagine you and your friend are at a pizza place, and there are only a few slices left. You want to make sure you get one of those slices before they run out, so you decide to put a quarter down on the counter. This quarter is like a promise that you\u2019ll pay for the slice later if it\u2019s still available. If your friend takes the last slice before you can pay, you lose your quarter, but if you get there in time, you can enjoy the pizza! In this scenario, the pizza is what you really want, and the quarter is your bet that the slice will still be there when you get to the counter. This is a simple way to think about making a choice that involves waiting for the right moment and possibly losing something if it doesn\u2019t work out. </p>\n<p>Now, let\u2019s connect this to a real-world scenario involving SPY options. In the options market, when you buy a call option, it\u2019s like putting down that quarter on the chance that you\u2019ll be able to buy a stock (like SPY) at a specific price (the strike price) before a certain date (the expiration date). For example, today SPY is trading at about $737.81, and you might be looking at a call option with a strike price of $738. If the price goes up and you can buy it for $738 while it\u2019s worth much more, you\u2019ve made a good trade. But if the price doesn\u2019t reach that level, you could lose the premium you paid for that option, similar to losing your quarter if you didn\u2019t get the pizza slice in time. </p>\n<p>Now, what does this mean for how you look at trades? Today, SPY has a high implied volatility rank of 100%, which indicates that traders expect significant price movement in the coming weeks. This is important for you as a trader because high implied volatility often means that options are more expensive. If you\u2019re considering a strategy like selling premium, you\u2019ll want to look for opportunities where the implied volatility is high, as that can lead to better premium collection. For instance, with the current SPY price at $737.81 and the ATM strike at $738, you might look at selling a call spread around this area, knowing that the high IV presents a favorable environment for collecting premium. The natural question here is: how can high IV impact my strategy? Here\u2019s how to think about it: when IV is high, the market expects bigger price swings, so if you are selling options, you might collect more premium than usual. This can lead to a higher probability of profit if you\u2019re selling options that are out of the money. In today\u2019s market, that could mean looking at options that expire on August 28, 2026, and considering strikes like $740, which has significant open interest. By adjusting your strategy based on these market conditions, you can build a more informed approach to your trades, maximizing your potential returns while managing risk effectively.</p>\n<p>Today, SPY closed at 737.81, down 0.17% from the previous day. It opened at 739.97 and reached a high of 740.39 before sliding down to its closing price. This move, while modest, is significant in the context of the week, especially considering that SPY has been fluctuating around the 738 mark for the past few days. The overall trend this week has shown some volatility, but today\u2019s slight dip indicates a cautious sentiment among traders as they await more substantial market signals.</p>\n<p>In terms of sector performance, Consumer Staples (XLP) and Healthcare (XLV) were the clear leaders today, rising 2.61% and 2.44%, respectively. These sectors accounted for a significant portion of SPY&rsquo;s overall performance, suggesting that investors are seeking safety in more stable, defensive stocks amid the current market uncertainty. On the flip side, Technology (XLK) lagged behind, dropping 2.44%, which is particularly noteworthy given its historical role as a market leader. This divergence highlights a shift in investor sentiment, as they seem to be rotating out of growth stocks and into more defensive positions.</p>\n<p>The strength in Consumer Staples and Healthcare likely reflects a broader trend of risk aversion. With inflationary pressures still looming, and the Fed meeting releasing today, investors are likely positioning themselves defensively. The recent decline in consumer sentiment, now at 44.8, also suggests that households are feeling the pinch, which could be driving demand for staples and healthcare products. Conversely, the drop in Technology stocks could be attributed to concerns over rising interest rates and their impact on growth valuations, especially with the Fed&rsquo;s current stance on monetary policy.</p>\n<p>Currently, the implied volatility (IV) rank sits at a striking 100%, indicating that options are relatively expensive right now. This high IV rank can be a double-edged sword for traders considering selling premium. On one hand, it suggests that the market is pricing in significant movement, which could lead to lucrative opportunities for selling options. On the other hand, it also means that any sudden shifts in market sentiment could lead to quick losses if you&rsquo;re on the wrong side of a trade. For those looking to sell premium, this could be an opportune moment, but caution is warranted given the current market dynamics.</p>\n<p>As for key price levels to watch, immediate support is around 736, which aligns with today\u2019s low, while resistance is evident at the 740 level. A break below 736 could signal further weakness, while a move above 740 might indicate a potential reversal or at least a short-term rally. Keeping an eye on these levels will be crucial for anyone looking to make tactical decisions in the options market.</p>\n<p>Looking ahead, there are a couple of important events that could influence market direction. The Fed meeting is releasing today, and given the current economic backdrop, any hints regarding future interest rate adjustments could lead to significant market reactions. Additionally, tomorrow we have the Freddie Mac Mortgage Rate Update, which could further impact sentiment in the housing market. Following that, the University of Michigan Consumer Sentiment report is set to release in two days, which will be another key indicator to gauge consumer confidence moving forward.</p>\n<p>For options traders considering a position this week, the takeaway is clear: with IV at 100%, there\u2019s potential for profitable premium selling, but be prepared for volatility as the market digests upcoming economic data and Fed commentary. Keep those price levels in mind and stay nimble as the market unfolds.</p>\n<p>Here&rsquo;s the thing: when you&rsquo;re building a product, especially at the level of complexity we see in AI and tech today, the traditional evaluation processes might not cut it anymore. Daniel McKinnon, a former PM at Meta and Google, emphasized the importance of creating evaluations that not only assess the output but also the underlying processes that drive product success. What that means in practice is that you need to shift your focus from merely validating what the product can do to understanding how it arrived there. This is crucial when you\u2019re trying to optimize for performance in a dynamic market like options trading, where the environment can shift quickly based on multiple factors, such as volatility and market sentiment.</p>\n<p>Imagine you\u2019re a chef in a busy restaurant. Instead of just tasting the final dish, you\u2019d also want to understand how each ingredient contributes to the flavor. Similarly, in product evaluations, you should be looking at how each feature and decision contributes to the overall user experience and product performance. When you prioritize evaluations that delve into these aspects, you create a framework for continuous improvement that can adapt to new challenges\u2014like shifts in SPY options pricing or changes in implied volatility.</p>\n<p>For traders, this translates to regularly reassessing not just the profitability of your trades, but also the strategies behind them. Are your premium selling tactics still effective in the current market? Are you measuring the right things to reflect your strategy\u2019s success? This kind of reflective practice, similar to McKinnon&rsquo;s approach to evals, allows you to pivot quickly and refine your methods based on real-world feedback rather than sticking to outdated metrics.</p>\n<p>So, what\u2019s the move here? This week, take a moment to review your evaluation criteria for your options trading strategies. Are you looking at just the outcomes, or are you also analyzing the decision-making process that led there? Set aside some time to dissect a recent trade, focusing not only on what worked but also what didn\u2019t and why. By doing this, you&rsquo;re not just trading; you&rsquo;re building a systematic approach to trading that can evolve with the market.</p>"
+    },
+    {
       "id": "2026-07-28",
       "slug": "daily-brief-2026-07-28",
       "episode_number": 63,
