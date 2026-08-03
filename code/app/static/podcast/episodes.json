@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-03",
+      "slug": "daily-brief-2026-08-03",
+      "episode_number": 67,
+      "title": "Daily Brief \u2014 August 03, 2026",
+      "date": "2026-08-03",
+      "published_at": "2026-08-03T14:02:49",
+      "duration_seconds": 466,
+      "duration_human": "07:46",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-03.mp3",
+      "audio_length_bytes": 3727587,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Product Talk (Teresa Torres): Ch. 9: Identifying Hidden Assumptions",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 753.45,
+        "pct_change": 0.86,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-03</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-03</li>\n<li><strong>PM/analytics:</strong> From Product Talk (Teresa Torres): Ch. 9: Identifying Hidden Assumptions</li>\n</ul>\n<h2>Summary</h2>\n<p>Livemint: Bhaiyyaji Joshi steps down as Ram Temple Trust&rsquo;s patron, health cited as reason: Report. Senior RSS leader Bhaiyyaji Joshi has stepped down from his role as Palak (patron) of the Shri Ram Janmabhoomi Teerth Kshetra Trust, with health cited as the official reason. His exit has triggered speculation over changes within the Ram Temple Trust. South China Morning Post: Will Philippines\u2019 push for seabed rights derail South China Sea code talks?. The Philippines\u2019 latest push for seabed rights in the South China Sea could complicate its efforts as this year\u2019s Asean chair to build regional consensus, analysts say, adding another layer of complexity to already slow-moving talks on a code of conduct for the disputed waterway. On July 28, Manila Livemint: Parliamentary panel takes tough stance on removal of Modi\u2019s video from Facebook, seek accountability from Meta officials. Meta officials apologized, stating that the PM&rsquo;s video was briefly removed due to an error South China Morning Post: Woman missing for 11 days found alive on hillside near Hong Kong cemetery. Hong Kong authorities have found a 60-year-old woman on a hillside near a cemetery nearly two weeks after she went missing, despite the search being hampered by a typhoon and days of heavy rain. Police said on Monday that Ngan Lai\u2011ching left her home at Kwong Ming Court in Tseung Kwan O on the morni Economic Times: Toddler vomits bees after terrifying swarm attack. The Guardian: South-eastern Europe faces heatwave energy crunch as Romania detonates Danube rock to increase water flow \u2013 Europe live. Explosives used to move a large rock and let more water flow to cool nuclear power plant More must be done \u2060to strengthen the European Union\u2019s borders at critical points, \u2060European Commission president \u2060Ursula \u200bvon der Leyen told Spanish prime minister Pedro S\u00e1nchez \u2060in a letter. In the carefully-ca</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 753.45, with current implied volatility around 12.69 and the near-the-money strike near 753.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 753.45 after moving 0.86 percent on the session. Implied volatility sits around 12.69 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Non-Farm Payrolls (Jobs Report). The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Product Talk (Teresa Torres). The core idea is Ch. 9: Identifying Hidden Assumptions. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-07-31",
       "slug": "daily-brief-2026-07-31",
       "episode_number": 66,
