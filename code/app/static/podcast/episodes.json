@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-05",
+      "slug": "daily-brief-2026-08-05",
+      "episode_number": 69,
+      "title": "Daily Brief \u2014 August 05, 2026",
+      "date": "2026-08-05",
+      "published_at": "2026-08-05T14:03:48",
+      "duration_seconds": 466,
+      "duration_human": "07:46",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-05.mp3",
+      "audio_length_bytes": 3724452,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Product Talk (Teresa Torres): The Call to Adventure",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 776.37,
+        "pct_change": 0.65,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-05</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-05</li>\n<li><strong>PM/analytics:</strong> From Product Talk (Teresa Torres): The Call to Adventure</li>\n</ul>\n<h2>Summary</h2>\n<p>BBC World: Armed man arrested near Trump&rsquo;s golf course ahead of president&rsquo;s visit. The arrest happened shortly before President Trump was due to host a fundraising dinner at the coastal golf course in California. Livemint: RBI plans to roll out polymer banknotes by FY28. Pilot underway to test durability and security under Indian conditions. South China Morning Post: China jails retired defence tech overseer for 10 years in US$6.3m corruption case. A former senior Chinese defence official has been sentenced to 10 years in prison for accepting over 43 million yuan (US$6.3 million) in bribes, as China\u2019s anti-corruption drive continues it sweep through the military sector. Zhang Jianhua, former deputy head of China\u2019s State Administration of Scien The Guardian: Middle East crisis live: Israel resumes Lebanon strikes as US-Iran Hormuz stand-off continues. IDF had issued warning to inhabitants of southern Lebanese village to flee homes before striking Here are some of the latest images from Lebanon on the newswires: The IDF has issued a brief update saying it has begun \u201ctargeted strikes\u201d in southern Lebanon , which it said were in response to Hezbolla The Guardian: Germany investigates drone carrying \u2018explosive device\u2019 near Ukrainian plane at busy cargo airport \u2013 Europe live. German state prosecutors including units working on extremism and terrorism prevention take over investigation into Leipzig incident For what it\u2019s worth, DHL Group CEO Tobias Meyer said the German logistics firm was studying \u200bthe overnight incident which also involved an object clashing with one of South China Morning Post: Food Expo vendors hoping for tasty profits with caviar sake gelato, other new products. Some vendors at Hong Kong\u2019s coming Food Expo have said they expect brisker sales and higher foot traffic compared with last year, citing better weather, discounts and creative products such as caviar sake gelato. The five-day expo is among five trade fairs that will open next Thursday, with more tha</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 776.37, with current implied volatility around 15.54 and the near-the-money strike near 776.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 776.37 after moving 0.65 percent on the session. Implied volatility sits around 15.54 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Non-Farm Payrolls (Jobs Report). The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Product Talk (Teresa Torres). The core idea is The Call to Adventure. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-04",
       "slug": "daily-brief-2026-08-04",
       "episode_number": 68,
