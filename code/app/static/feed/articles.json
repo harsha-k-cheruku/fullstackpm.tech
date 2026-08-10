@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-09T17:41:47.261482+00:00",
+  "generated_at": "2026-08-10T15:11:40.229321+00:00",
   "articles": [
     {
       "id": "2bfaefd33578768d",
@@ -1696,6 +1696,28 @@
       "is_dismissed": false
     },
     {
+      "id": "1f5a9af4ef30a09f",
+      "url": "https://www.wired.com/story/the-ai-slop-backlash-is-actually-having-an-impact/",
+      "title": "The AI Slop Backlash Is Actually Having an Impact",
+      "display_title": "AI Slop Backlash Is Having an Impact",
+      "excerpt": "Platforms are finally recognizing that people don’t want to consume AI slop. A growing number of sites and apps now have tools and policies to flag, label, and ban AI-generated content.",
+      "source_name": "Wired (AI)",
+      "source_category": "ai",
+      "source_type": "ai_research",
+      "published_at": "2026-08-10T11:30:00+00:00",
+      "fetched_at": "2026-08-10T15:00:38.003813+00:00",
+      "ai_score": 7,
+      "ai_score_reason": "tension(+2)",
+      "key_insight": null,
+      "ai_summary": null,
+      "first_principle": null,
+      "ai_insight": null,
+      "ai_article_analysis": null,
+      "ai_processed_at": "2026-08-10T15:01:05.632004+00:00",
+      "is_editors_pick": false,
+      "is_dismissed": false
+    },
+    {
       "id": "3665c040aecae48a",
       "url": "https://www.lennysnewsletter.com/p/how-top-pms-increase-their-leverage",
       "title": "How top PMs increase their leverage with AI",
@@ -2088,28 +2110,6 @@
       "ai_insight": "Consider adopting a flexible architecture like ScreenAI's to enhance your product's adaptability to diverse visual inputs, which could significantly improve user experience. Ignoring this approach may lead to rigid designs that fail to meet user needs, ultimately diminishing engagement and satisfaction.",
       "ai_article_analysis": null,
       "ai_processed_at": "2026-07-06T15:20:41.421152+00:00",
-      "is_editors_pick": false,
-      "is_dismissed": false
-    },
-    {
-      "id": "9f650cfc114d055b",
-      "url": "https://www.microsoft.com/en-us/research/blog/memora-a-harmonic-memory-representation-balancing-abstraction-and-specificity/",
-      "title": "Memora: A Harmonic Memory Representation Balancing Abstraction and Specificity",
-      "display_title": "Memora: A Harmonic Memory Representation Balancing Abstraction and Specificity",
-      "excerpt": "AI agents can't remember past conversations. They must constantly reload or retrieve context, which grows less efficient as tasks get longer and more complex. Memora solves this with a scalable memory system separating what’s stored from how it's retrieved. The post Memora: A Harmonic Memory Representation Balancing Abstraction and Specificity appe…",
-      "source_name": "Microsoft Research",
-      "source_category": "ai",
-      "source_type": "ai_research",
-      "published_at": "2026-06-29T21:14:22+00:00",
-      "fetched_at": "2026-07-06T15:14:01.376465+00:00",
-      "ai_score": 6,
-      "ai_score_reason": "framework(+1)",
-      "key_insight": null,
-      "ai_summary": null,
-      "first_principle": null,
-      "ai_insight": "Neglecting to adopt a memory system like Memora could lead to inefficient AI interactions that frustrate users and diminish productivity over time. PMs should prioritize integrating scalable memory solutions to enhance the effectiveness of AI agents in managing complex, long-term tasks.",
-      "ai_article_analysis": null,
-      "ai_processed_at": "2026-07-06T15:20:47.399620+00:00",
       "is_editors_pick": false,
       "is_dismissed": false
     },
