@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-12",
+      "slug": "daily-brief-2026-08-12",
+      "episode_number": 74,
+      "title": "Daily Brief \u2014 August 12, 2026",
+      "date": "2026-08-12",
+      "published_at": "2026-08-12T14:03:44",
+      "duration_seconds": 451,
+      "duration_human": "07:31",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-12.mp3",
+      "audio_length_bytes": 3604080,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Aakash Gupta \u2014 Product Growth: Graphs for PMs.",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 772.44,
+        "pct_change": 0.24,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-12</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-12</li>\n<li><strong>PM/analytics:</strong> From Aakash Gupta \u2014 Product Growth: Graphs for PMs.</li>\n</ul>\n<h2>Summary</h2>\n<p>BBC World: At least 44 die as ferry sinks in Zimbabwe&rsquo;s Lake Kariba. The vessel is said to have overturned after being hit by strong waves. The Guardian: Europe solar eclipse live: millions flock to viewing spots in Spain, UK and Iceland. Eclipse to be witnessed by tens of millions across western Europe as enthusiasts gather along path of totality Nordic correspondent In Iceland, people have flocked by air, land and sea to watch the total solar eclipse \u2013 the country\u2019s first in 72 years. Continue reading&hellip; The Guardian: UK heatwave live: Burnham considers ban on disposable barbecues to prevent wildfires. Prime minister suggests possible measure as he prepares to chair emergency Cobra meeting in response to extreme heat Here\u2019s today\u2019s latest Met Office forecast for UK cities: Aberdeen 22C Belfast 24C Birmingham 32C Cardiff 33C Glasgow 25C Liverpool 32C London 32C Newcastle 29C Plymouth 31C Sheffield South China Morning Post: Hong Kong college finance chief, wife and contractor held over HK$41m theft. The finance director of a private college in Hong Kong has been remanded in custody on suspicion of embezzling HK$41 million (US$5.2 million) over three years, with his wife and an engineering contractor also denied bail for allegedly handling the illicit proceeds. Ray Yip Kam-chun, 49, appeared in Livemint: Public capital must catalyse private investment, not substitute it, says FM Sitharaman. The Centre has used VGF, HAM, InvITs and other measures to reduce risks and improve infrastructure investment prospects Economic Times: India picks PTAs over FTAs in trade policy shift.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 772.44, with current implied volatility around 14.32 and the near-the-money strike near 772.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 772.44 after moving 0.24 percent on the session. Implied volatility sits around 14.32 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is CPI Inflation Release, Freddie Mac Mortgage Rate Update. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Aakash Gupta \u2014 Product Growth. The core idea is Graphs for PMs.. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-11",
       "slug": "daily-brief-2026-08-11",
       "episode_number": 73,
