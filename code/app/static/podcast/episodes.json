@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-13",
+      "slug": "daily-brief-2026-08-13",
+      "episode_number": 75,
+      "title": "Daily Brief \u2014 August 13, 2026",
+      "date": "2026-08-13",
+      "published_at": "2026-08-13T14:04:01",
+      "duration_seconds": 486,
+      "duration_human": "08:06",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-13.mp3",
+      "audio_length_bytes": 3880978,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Aakash Gupta \u2014 Product Growth: Graphs for PMs.",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 777.55,
+        "pct_change": 0.66,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-13</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-13</li>\n<li><strong>PM/analytics:</strong> From Aakash Gupta \u2014 Product Growth: Graphs for PMs.</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: 1 dead, several wounded in Rotterdam port explosion. A blast at a storage facility for petroleum products at the Netherlands\u2019 Rotterdam port killed one person and wounded several others on \u200cThursday, officials said, adding that the cause was unknown. A spokesperson for major energy commodities trading company Gunvor said an \u201cincident\u201d occurred during The Guardian: Lottery ticket sold at Illinois gas station wins $1bn Powerball jackpot. Prize was eighth largest in Powerball history and followed three months without a top prize winner A Powerball ticket sold at a gas station in western Illinois was the sole winner of the $1bn jackpot, ending a three-month drought without a top-prize victor. The ticket that won the jackpot on Wednesd The Guardian: Questions over Karoline Leavitt\u2019s replacement as she steps down as White House press secretary \u2013 US politics live. Leavitt\u2019s departure three months before midterms raises questions over who will communicate Trump\u2019s messages as his approval rating falls to record low, says YouGov polling Sign up for the Breaking News US email The Department of Homeland Security (DHS) spent $464m on 10 used airplanes, but has seld The Guardian: Europe heatwave live: Temperatures of 40C expected in Spain; rare warning for \u2018extreme heat\u2019 expanded across England. A former UK government scientific adviser warned amid the \u2018shattering\u2019 heat that worse is still to come Met Office has just offered an update on temperatures across the UK, with several stations already reporting temperatures above 30C \u2013 and it\u2019s not even 11am. It\u2019s 30.4C in Wych Cross, 30.3C in Cha Economic Times: Trump vaccine plan faces costly hurdles in US. Livemint: In a first, govt plans turning citizen grievances into a source of policy reforms. The government will for the first time systematically mine citizen grievances and suggestions from platforms like CPGRAMS and the PMO portal to identify recurring gaps and convert them into policy reforms.&nbsp;</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 777.55, with current implied volatility around 12.03 and the near-the-money strike near 778.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 777.55 after moving 0.66 percent on the session. Implied volatility sits around 12.03 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Fed Meeting. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Aakash Gupta \u2014 Product Growth. The core idea is Graphs for PMs.. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-12",
       "slug": "daily-brief-2026-08-12",
       "episode_number": 74,
