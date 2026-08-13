@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-12T15:12:51.036569+00:00",
+  "generated_at": "2026-08-13T17:10:43.428939+00:00",
   "articles": [
     {
       "id": "2bfaefd33578768d",
@@ -596,6 +596,28 @@
       "is_dismissed": false
     },
     {
+      "id": "80289671873347c2",
+      "url": "https://medium.com/airbnb-engineering/flexible-authentication-reimagining-authentication-for-millions-of-users-at-airbnb-3a8a4c917137?source=rss----53c7c27702d5---4",
+      "title": "Flexible Authentication: Reimagining authentication for millions of users at Airbnb",
+      "display_title": "Flexible Authentication: Reimagining Authentication for Airbnb Users",
+      "excerpt": "Rebuilding login and signup surfaced product insights, not just technical challenges. Here’s how we designed Flexible Authentication at the intersection of product intuition and technical architecture. By : Jose Santos , Mike Barry For Airbnb, logins at irregular intervals are normal. A guest books a trip in January and may not open the app again u…",
+      "source_name": "Airbnb Engineering",
+      "source_category": "engineering",
+      "source_type": "engineering",
+      "published_at": "2026-08-12T17:01:04+00:00",
+      "fetched_at": "2026-08-13T15:05:04.506874+00:00",
+      "ai_score": 9,
+      "ai_score_reason": "practitioner(+2) | case-study(+1) | eng-primary(+1)",
+      "key_insight": null,
+      "ai_summary": null,
+      "first_principle": null,
+      "ai_insight": null,
+      "ai_article_analysis": null,
+      "ai_processed_at": "2026-08-13T17:01:43.370201+00:00",
+      "is_editors_pick": false,
+      "is_dismissed": false
+    },
+    {
       "id": "d68af779b2d48755",
       "url": "https://www.microsoft.com/en-us/research/blog/talos-scaling-rare-disease-diagnosis-with-automated-iterative-genomic-reanalysis/",
       "title": "Talos: Scaling rare disease diagnosis with automated, iterative genomic reanalysis",
@@ -680,28 +702,6 @@
       "ai_insight": null,
       "ai_article_analysis": "THE PRODUCT PROBLEM\n\nDropbox's Dash chat agent needed to deliver high-quality, goal-oriented responses to users asking questions based on company knowledge aggregated from various sources like documents and meetings. Users were experiencing incomplete or irrelevant answers, which undermined the chat agent's utility and user satisfaction. In a competitive landscape where AI-driven assistance is becoming the norm, ensuring the chat agent could effectively interpret, contextualize, and respond to user queries was crucial for maintaining Dropbox's competitive edge and user trust.\n\nTHE DECISION\n\nThe decision to implement DSPy for optimizing the AI evaluation process involved a significant tradeoff between investing in advanced evaluation methodologies and the potential risk of overcomplicating the system. By focusing on developing a robust evaluation framework that could judge the entire interaction trajectory rather than just the final response, Dropbox aligned PM, engineering, and operations teams around a shared goal: improving agent performance without increasing resource consumption. The alignment was challenging due to the complexity of integrating human judgment with machine learning models, but ultimately, it allowed for a scalable feedback loop that enhanced the chat agent's effectiveness.\n\nTHE LESSON\n\nThis initiative highlights the importance of a deep integration between PM and engineering teams when optimizing AI systems. Unlike typical PM advice that focuses on feature delivery, this case shows that the real value lies in refining the underlying evaluation mechanisms. By leveraging DSPy to calibrate AI judges with human inputs, PMs can ensure that the AI's learning process aligns more closely with user expectations. This approach reveals that successful AI product management requires not just feature iteration, but also a commitment to improving the evaluative core that drives product quality.",
       "ai_processed_at": "2026-07-06T15:26:07.020387+00:00",
-      "is_editors_pick": false,
-      "is_dismissed": false
-    },
-    {
-      "id": "672d8f54829a28d9",
-      "url": "https://dropbox.tech/culture/beyond-code-generation-rethinking-engineering-productivity-in-the-age-of-ai-agents",
-      "title": "Beyond code generation: rethinking engineering productivity in the age of AI agents",
-      "display_title": "Beyond code generation: Rethinking engineering productivity with AI agents",
-      "excerpt": "How Dropbox is moving from AI tools that assist engineers to agentic systems that can execute scoped tasks, and how we’re building platforms to support those workflows.",
-      "source_name": "Dropbox Tech",
-      "source_category": "engineering",
-      "source_type": "engineering",
-      "published_at": "2026-05-28T18:00:00+00:00",
-      "fetched_at": "2026-07-06T15:13:35.630393+00:00",
-      "ai_score": 8,
-      "ai_score_reason": "tension(+2) | eng-primary(+1)",
-      "key_insight": null,
-      "ai_summary": "When engineering productivity tools accelerate output, PMs typically focus solely on increasing developer efficiency — but this shows that without concurrent investment in review and validation systems, the overall product quality and delivery speed may suffer. This highlights the critical need for PMs to consider the entire software development lifecycle and ensure that enhancements in one area do not create bottlenecks in another.",
-      "first_principle": null,
-      "ai_insight": null,
-      "ai_article_analysis": "THE PRODUCT PROBLEM\n\nWhile AI tools have enhanced coding speed, Dropbox found that this acceleration merely shifted bottlenecks to other stages of the software development lifecycle. The business needed a way to not only speed up code generation but also manage the increased volume of code through review, validation, and deployment processes. Users were experiencing delays and inefficiencies in these subsequent stages, which threatened to offset the gains made in coding speed. Competitively, there was pressure to ensure that increased throughput translated into tangible customer value, rather than just more code.\n\nTHE DECISION\n\nDropbox decided to transition from AI tools that merely assist engineers to agentic systems capable of executing scoped tasks autonomously. This shift meant that while engineers retained control over strategic decisions, the execution of repetitive tasks could be delegated to AI agents. Aligning this decision required collaboration across PM, engineering, and operations teams to ensure that the broader engineering systems could handle the increased output. This alignment was challenging because it required a cultural shift in how engineers interacted with AI tools, moving from a supportive role to a more autonomous one. In hindsight, while this decision has increased throughput, it also highlighted the need for robust systems to manage the downstream effects of increased code production.\n\nTHE LESSON\n\nThis evolution at Dropbox reveals that PM/engineering collaboration must extend beyond tool adoption to include systemic workflow changes. PMs should recognize that accelerating one part of the development process can create new challenges elsewhere, necessitating a holistic approach to productivity. This experience underscores the importance of not just adopting new technologies, but also ensuring that the surrounding systems and workflows are equipped to handle the changes they bring. It’s a reminder that true productivity gains come from enabling the entire lifecycle, not just individual stages.",
-      "ai_processed_at": "2026-07-06T15:26:14.958565+00:00",
       "is_editors_pick": false,
       "is_dismissed": false
     },
