@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-14",
+      "slug": "daily-brief-2026-08-14",
+      "episode_number": 76,
+      "title": "Daily Brief \u2014 August 14, 2026",
+      "date": "2026-08-14",
+      "published_at": "2026-08-14T14:11:24",
+      "duration_seconds": 470,
+      "duration_human": "07:50",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-14.mp3",
+      "audio_length_bytes": 3756008,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Aakash Gupta \u2014 Product Growth: Graphs for PMs.",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 778.68,
+        "pct_change": 0.1,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-14</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-14</li>\n<li><strong>PM/analytics:</strong> From Aakash Gupta \u2014 Product Growth: Graphs for PMs.</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: Toxic gas leak kills 8 at Bangladesh ship-breaking yard. At least eight workers have died following a toxic gas leak at a ship-breaking yard in the southeastern Bangladeshi district of Chattogram, officials said on Friday. The incident occurred at the Ferdaus Steel Shipbreaking Yard in Sitakund subdistrict, an area that hosts many ship-breaking yards wher Livemint: Ajay Devgn, mother to earn \u20b916 lakh/month from Juhu bungalow - Here&rsquo;s how. Actor Ajy Devgn and his mother Veena Devgn have leased their 7,803 sq ft Juhu Bungalow for five years, with rent starting at \u20b916 lakh a month and rising annually.&nbsp; South China Morning Post: China, Brazil to launch 24/7 disaster early warning satellite for South America. After almost four decades of international cooperation in space affairs, Brazil and China have unveiled details of a new project to launch a powerful meteorological and environmental satellite. It will be capable of monitoring the whole of South America, according to the space sciences department at The Guardian: Luigi Mangione to appear in court amid reports of plea deal over healthcare CEO\u2019s killing \u2013 live. Earlier this week prosecutors and Luigi Mangione\u2019s lawyers filed a joint letter requesting the hearing at 11am on Friday in Manhattan federal court Luigi Mangione is accused of traveling to New York City to ambush Brian Thompson and then shooting him outside a Manhattan hotel on 4 December 2024, as Livemint: \u2018Main bahot chhota artist hoon\u2019: Mithun Chakraborty reacts to not getting KIFF invite. Mithun Chakraborty expressed disappointment over not being invited to the Kolkata International Film Festival.&nbsp; The Guardian: Burnham\u2019s new flex: what wearing suit braces says about PM. Mod fashion, nod to 80s excess or symbol of tradition? Andy Burnham\u2019s button-on braces transcend class divisions The sartorial evolution of Andy Burnham reached another milestone this week when the prime minister appeared at a photocall in Derbyshire wearing a pair of braces under his suit. Navy, sl</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 778.68, with current implied volatility around 12.97 and the near-the-money strike near 779.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 778.68 after moving 0.1 percent on the session. Implied volatility sits around 12.97 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Fed Meeting. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Aakash Gupta \u2014 Product Growth. The core idea is Graphs for PMs.. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-13",
       "slug": "daily-brief-2026-08-13",
       "episode_number": 75,
