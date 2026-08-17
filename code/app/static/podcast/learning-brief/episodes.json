@@ -1,6 +1,47 @@
 {
   "episodes": [
     {
+      "id": "2026-08-17",
+      "slug": "learning-brief-2026-08-17",
+      "title": "Learning Brief \u2014 August 17, 2026",
+      "date": "2026-08-17",
+      "published_at": "2026-08-17T21:50:11",
+      "duration_seconds": 132,
+      "duration_human": "02:12",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/learning-brief/audio/2026-08-17.mp3",
+      "audio_length_bytes": 1052230,
+      "segments": {
+        "ai_news": {
+          "title": "AI & Tech Developments",
+          "points": [
+            "Hugging Face Blog: Same Cluster, 33 Points More Utilization: What Changed Was the Order.",
+            "MIT Technology Review \u2014 AI: What Flock\u2019s defenders are missing. This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Flock, the police-tech giant known for its network of some 120,000 automatic license plate readers around the US, announced some changes to its platform last Thur",
+            "ZDNet \u2014 AI: Business adoption of AI agents tripled this year - as measurable ROI emerges. Industries are finding the strategies that work best for their business needs, according to Salesforce's latest Agentic Enterprise Index.",
+            "VentureBeat \u2014 AI: One AI module faked 86% of a pipeline's accuracy gains by feeding another the answers. A retrieval-augmented generation (RAG) system is built to answer strictly from the documents it retrieves. But when engineers optimize these AI pipelines end-to-end, the reader module can learn a shortcut: instead of relying on retrieved evidence, it starts answering from its own internal memory \u2014 w",
+            "ZDNet \u2014 AI: AI-enriched Linux 7.2 delivers cache-aware scheduling - here's everything new. The latest kernel also brings filesystem and I/O improvements and substantial new support across AMD, Intel, Apple, Nvidia, USB4, and laptop hardware.",
+            "ZDNet \u2014 AI: You can turn an old Android into a Raspberry Pi alternative - but know this first. With AI-driven RAM shortages pushing Raspberry Pi prices sky high, here's how to repurpose your old handset into a portable powerhouse for your projects."
+          ],
+          "product_implications": [],
+          "word_count": 257
+        },
+        "pm_news": {
+          "title": "From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM news comes from Lenny's Newsletter. The story is \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.",
+          "word_count": 58
+        },
+        "pm_learning": {
+          "title": "From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM learning comes from Lenny's Newsletter. The core idea is \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.",
+          "mental_model": "Make the next experiment small enough to learn quickly.",
+          "word_count": 96
+        }
+      },
+      "shownotes": "# Learning Brief \u2014 2026-08-17\n\n## What we covered\n- **AI news:** AI & Tech Developments\n- **PM news:** From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers\n- **PM learning:** From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers\n\n## Mental model\n\nMake the next experiment small enough to learn quickly.\n\n## Summary\n\nHugging Face Blog: Same Cluster, 33 Points More Utilization: What Changed Was the Order. MIT Technology Review \u2014 AI: What Flock\u2019s defenders are missing. This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Flock, the police-tech giant known for its network of some 120,000 automatic license plate readers around the US, announced some changes to its platform last Thur ZDNet \u2014 AI: Business adoption of AI agents tripled this year - as measurable ROI emerges. Industries are finding the strategies that work best for their business needs, according to Salesforce's latest Agentic Enterprise Index. VentureBeat \u2014 AI: One AI module faked 86% of a pipeline's accuracy gains by feeding another the answers. A retrieval-augmented generation (RAG) system is built to answer strictly from the documents it retrieves. But when engineers optimize these AI pipelines end-to-end, the reader module can learn a shortcut: instead of relying on retrieved evidence, it starts answering from its own internal memory \u2014 w ZDNet \u2014 AI: AI-enriched Linux 7.2 delivers cache-aware scheduling - here's everything new. The latest kernel also brings filesystem and I/O improvements and substantial new support across AMD, Intel, Apple, Nvidia, USB4, and laptop hardware. ZDNet \u2014 AI: You can turn an old Android into a Raspberry Pi alternative - but know this first. With AI-driven RAM shortages pushing Raspberry Pi prices sky high, here's how to repurpose your old handset into a portable powerhouse for your projects.\n\nToday's PM news comes from Lenny's Newsletter. The story is \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.\n\nToday's PM learning comes from Lenny's Newsletter. The core idea is \ud83c\udf99\ufe0f How I AI: How a solo founder used Codex and ChatGPT to launch a fashion brand without engineers. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-08-14",
       "slug": "learning-brief-2026-08-14",
       "title": "Learning Brief \u2014 August 14, 2026",
