@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-19",
+      "slug": "daily-brief-2026-08-19",
+      "episode_number": 79,
+      "title": "Daily Brief \u2014 August 19, 2026",
+      "date": "2026-08-19",
+      "published_at": "2026-08-19T14:08:33",
+      "duration_seconds": 492,
+      "duration_human": "08:12",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-19.mp3",
+      "audio_length_bytes": 3936148,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Pawel Huryn \u2014 The Product Compass: AI Prototyping in 2026: Lovable vs. Google AI Studio vs. Claude Design vs. Claude Code",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 769.87,
+        "pct_change": 0.31,
+        "iv_rank": 86.99
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-19</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-19</li>\n<li><strong>PM/analytics:</strong> From Pawel Huryn \u2014 The Product Compass: AI Prototyping in 2026: Lovable vs. Google AI Studio vs. Claude Design vs. Claude Code</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: Money and \u2018a lot of noise\u2019: how the US\u2019 critical-minerals industry is vying with China\u2019s. Patriot Critical Minerals of the US plans to dig into a long-abandoned mining site in the sparsely populated state of Nevada to extract tungsten, an important raw material with industrial uses ranging from aerospace gear to common cutting tools. The company, with only that single asset, is applying The Guardian: Calls for urgent law change as UK\u2019s largest water reuse system cannot be switched on. Recycling system in Cambridgeshire that could save thousands of litres a day is deemed not in line with rules The largest water reuse system in the UK, which could save thousands of litres of water a day for people living in one of the driest regions of the country, is not allowed to be switched on South China Morning Post: China\u2019s J-36 fighter jet designers report danger of military AI hallucinations. Large language models are expert in intelligence work, able to quickly mine key data and analyse weapons performance \u2013 tasks that once took analysts huge amounts of time and effort. But engineers at China\u2019s AVIC Chengdu Aircraft Research and Design Institute, developer of the People\u2019s Liberation Arm The Guardian: Firefighters sound alarm as US faces critical staffing shortage: \u2018We don\u2019t have enough people\u2019. Firefighters describe being pushed to limit by a brutal wildfire season, with key leadership roles going unfilled The US has faced a critical shortage of firefighters at the US Forest Service (USFS) this summer as thousands of fires erupted across the country. Despite officials\u2019 claims that the fire The Guardian: Government rough sleeping funding may not \u2018be enough\u2019 to tackle problem, says Burnham \u2013 UK politics live. PM pledges to get rough sleepers off streets for Christmas but issues \u2018rallying call\u2019 for community and voluntary organisations to help with plan Andy Burnham has admitted government funding \u201cmay not fully be enough\u201d to achieve his aim of offering a place to stay to every rough sleeper by Christmas, Livemint: West Bengal teen&rsquo;s desperate search for relief kept him in ponds, then Anant Ambani stepped in. A young boy from West Bengal&rsquo;s Murshidabad, who had been living in a pond due to a debilitating medical condition, has been airlifted to Mumbai for specialised medical evaluation and treatment following intervention by Anant Ambani.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 769.87, with current implied volatility around 13.02 and the near-the-money strike near 770.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 769.87 after moving 0.31 percent on the session. Implied volatility sits around 13.02 with IV rank near 86.99, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Fed Meeting. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Pawel Huryn \u2014 The Product Compass. The core idea is AI Prototyping in 2026: Lovable vs. Google AI Studio vs. Claude Design vs. Claude Code. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-18",
       "slug": "daily-brief-2026-08-18",
       "episode_number": 78,
