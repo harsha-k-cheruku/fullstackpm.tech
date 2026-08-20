@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-20",
+      "slug": "daily-brief-2026-08-20",
+      "episode_number": 80,
+      "title": "Daily Brief \u2014 August 20, 2026",
+      "date": "2026-08-20",
+      "published_at": "2026-08-20T14:12:44",
+      "duration_seconds": 497,
+      "duration_human": "08:17",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-20.mp3",
+      "audio_length_bytes": 3971675,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Pawel Huryn \u2014 The Product Compass: AI Prototyping in 2026: Lovable vs. Google AI Studio vs. Claude Design vs. Claude Code",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 766.53,
+        "pct_change": -0.33,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-20</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-20</li>\n<li><strong>PM/analytics:</strong> From Pawel Huryn \u2014 The Product Compass: AI Prototyping in 2026: Lovable vs. Google AI Studio vs. Claude Design vs. Claude Code</li>\n</ul>\n<h2>Summary</h2>\n<p>Livemint: BNP&rsquo;s Mirza Fakhrul Islam Alamgir elected Bangladesh President in first contested poll in 35 years. Mirza Fakhrul Islam Alamgir was elected Bangladesh&rsquo;s President after defeating Oli Ahmed 255-88 in the country&rsquo;s first contested presidential poll since 1991. The BNP leader will take oath on Friday as the 23rd President. Livemint: Ladakh to get J&amp;K High Court bench: Amit Shah says move will improve access to justice in remote areas. Union Home Minister Amit Shah said the government is fully committed to the all-round development of Ladakh and to ensuring constitutional safeguards. The Guardian: Racism and sexism have become normalised in Britain, says equalities minister. Exclusive: Bridget Phillipson says politicians have helped fuel hatred and that police of not taking violence against women and girls seriously enough Racism and sexism have become normalised in Britain, the equalities minister has said, as she warned that young men were being sucked into violent mi South China Morning Post: Chinese stem cell therapy reverses heart failure in 90% of patients in landmark trial. A hospital in east China has used reprogrammed stem cells to treat severe heart failure, with 90 per cent of patients showing significant recovery in heart function after the novel therapy. On Wednesday, Nanjing Drum Tower Hospital, affiliated with Nanjing University, released the long-term follow-u South China Morning Post: China urges US to drop sweeping drone tariffs, warns of global supply chain fallout. Beijing has urged Washington to scrap planned tariffs of up to 100 per cent on imported drones, warning the measures unfairly target Chinese products and threaten global supply chains. The tariffs are not set to take effect until September 3, but Chinese drone shipments to the United States are alre BBC World: At least 15 killed in Kyiv as Ukraine grapples with air defence shortages. Blocks of flats and warehouses were targeted in the &ldquo;massive attack&rdquo; on Thursday, Ukrainian officials say.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 766.53, with current implied volatility around 14.12 and the near-the-money strike near 767.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 766.53 after moving -0.33 percent on the session. Implied volatility sits around 14.12 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Fed Meeting. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Pawel Huryn \u2014 The Product Compass. The core idea is AI Prototyping in 2026: Lovable vs. Google AI Studio vs. Claude Design vs. Claude Code. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-19",
       "slug": "daily-brief-2026-08-19",
       "episode_number": 79,
