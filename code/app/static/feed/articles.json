@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T16:36:13.793107+00:00",
+  "generated_at": "2026-08-20T17:30:42.929016+00:00",
   "articles": [
     {
       "id": "2bfaefd33578768d",
@@ -640,6 +640,28 @@
       "is_dismissed": false
     },
     {
+      "id": "c432647fa75aedd0",
+      "url": "https://medium.com/airbnb-engineering/how-we-knew-covid-was-over-and-what-our-models-had-to-unlearn-c606b9bdb0ab?source=rss----53c7c27702d5---4",
+      "title": "How we knew COVID was over (and what our models had to unlearn)",
+      "display_title": "How We Knew COVID Was Over和什么我们的模型必须重新学习",
+      "excerpt": "When we retrain, when we rebuild, and when we leave a model alone. By: Harrison Katz A forecast that carries weight The Forecasting Data Science team at Airbnb produces many of the forecasts the rest of the company plans around: demand, bookings, cancellations, and a range of finer cuts by market and segment, refreshed continuously across thousands…",
+      "source_name": "Airbnb Engineering",
+      "source_category": "engineering",
+      "source_type": "engineering",
+      "published_at": "2026-08-19T17:01:03+00:00",
+      "fetched_at": "2026-08-20T15:08:23.799918+00:00",
+      "ai_score": 9,
+      "ai_score_reason": "practitioner(+2) | case-study(+1) | eng-primary(+1)",
+      "key_insight": null,
+      "ai_summary": null,
+      "first_principle": null,
+      "ai_insight": null,
+      "ai_article_analysis": null,
+      "ai_processed_at": "2026-08-20T15:34:20.044781+00:00",
+      "is_editors_pick": false,
+      "is_dismissed": false
+    },
+    {
       "id": "d68af779b2d48755",
       "url": "https://www.microsoft.com/en-us/research/blog/talos-scaling-rare-disease-diagnosis-with-automated-iterative-genomic-reanalysis/",
       "title": "Talos: Scaling rare disease diagnosis with automated, iterative genomic reanalysis",
@@ -680,28 +702,6 @@
       "ai_insight": "Investing in self-improving robotics could drastically reduce the need for human oversight in AI product development, enabling faster iterations and more complex task handling. Ignoring this trend may lead to falling behind competitors who leverage automation to enhance efficiency and innovation in their AI-native offerings.",
       "ai_article_analysis": "The introduction of ENPIRE by NVIDIA marks a significant shift in the realm of robotics, moving from a manual, human-intensive process to one that is more autonomous and self-improving. Previously, robotic systems required substantial human intervention for task evaluation and resetting the environment after each trial. With ENPIRE, these processes are automated, allowing robots to engage in a continuous loop of experimentation, learning, and policy refinement without constant human oversight. This shift transforms real-world robot learning into a more efficient and scalable process, potentially accelerating advancements in robotic capabilities.\n\nThe development primarily impacts the robotics product category, specifically in environments where dexterous manipulation and repetitive tasks are prevalent. Industries such as manufacturing, logistics, and warehousing, where robots are used for sorting, assembling, and packaging, stand to benefit significantly. By reducing the need for human intervention, ENPIRE enables these sectors to deploy robots that can adapt and improve autonomously, leading to increased productivity and reduced operational costs.\n\nHowever, the enthusiasm surrounding ENPIRE may overlook some critical constraints. While the system shows promise in automating simple tasks, its effectiveness in handling more complex, nuanced tasks is limited by current evaluation and reset capabilities. The complexity of tasks that ENPIRE can address is inherently tied to our ability to automate these processes. As such, the system's applicability is currently confined to environments where tasks can be easily defined and measured without intricate human judgment.\n\nGiven these developments, product managers in robotics should consider integrating ENPIRE-like frameworks into their product roadmaps, focusing on environments where task complexity aligns with current automation capabilities. They should also invest in developing more sophisticated evaluation and reset mechanisms to expand the range of tasks that autonomous systems can handle. This strategic focus will ensure that their products remain competitive as the landscape of robotic automation evolves.",
       "ai_processed_at": "2026-07-05T19:01:34.702897+00:00",
-      "is_editors_pick": false,
-      "is_dismissed": false
-    },
-    {
-      "id": "6f72d56bf161b67c",
-      "url": "https://netflixtechblog.com/toward-more-controllable-ai-video-editing-an-early-research-exploration-at-netflix-eb8160ed60a2?source=rss----2615bd06b42e---4",
-      "title": "Toward More Controllable AI Video Editing: An Early Research Exploration at Netflix",
-      "display_title": "Toward More Controllable AI Video Editing: Early Research at Netflix",
-      "excerpt": "By Zhuoning Yuan , Ta-Ying Cheng , Benjamin Klein , Bahareh Azarnoush Introduction At Netflix, we build technology to help storytellers bring their creative visions to life and to help members discover the stories they love. To connect stories with diverse audiences around the world, we produce promotional assets, including trailers, teasers, and s…",
-      "source_name": "Netflix Tech Blog",
-      "source_category": "engineering",
-      "source_type": "engineering",
-      "published_at": "2026-06-23T00:31:01+00:00",
-      "fetched_at": "2026-07-06T15:13:32.661488+00:00",
-      "ai_score": 8,
-      "ai_score_reason": "case-study(+1) | research(+1) | eng-primary(+1)",
-      "key_insight": null,
-      "ai_summary": "When new technology promises to simplify complex workflows, PMs typically prioritize efficiency gains — but this shows that overlooking the preservation of creative integrity can lead to unintended consequences that undermine the product's value. The balance between automation and artistic control is crucial; failing to recognize this tradeoff may result in tools that frustrate rather than empower users.",
-      "first_principle": null,
-      "ai_insight": null,
-      "ai_article_analysis": "THE PRODUCT PROBLEM\n\nThe challenge was in enabling content creators to efficiently produce high-quality promotional assets from raw footage without compromising their creative vision. Current video editing tools were cumbersome, requiring extensive manual effort to maintain the integrity of the original footage while making necessary edits. This inefficiency hindered Netflix's ability to quickly generate engaging promotional content, potentially affecting viewer engagement and competitive positioning in a market where timely and visually appealing content is crucial. The business needed a solution that empowered artists with precise control over edits, ensuring that creative intent was preserved while reducing the time and effort required for complex editing tasks.\n\nTHE DECISION\n\nThe decision to explore generative AI for video editing involved balancing the promise of automation against the risk of losing creative control. The team had to align across product management, engineering, and creative operations to ensure that any AI solution would enhance rather than hinder artistic expression. This meant prioritizing precision and control in AI development, even if it meant slower progress toward full automation. The alignment was challenging because it required reconciling differing priorities: engineers focused on technological feasibility, while PMs and creatives emphasized user empowerment and creative integrity. In hindsight, the decision to prioritize control over speed was crucial, as it maintained trust with creative teams and ensured the technology served its intended purpose.\n\nTHE LESSON\n\nThis exploration highlights the importance of involving end-user perspectives early and throughout the development of AI-driven tools. PMs must ensure that engineering teams understand the nuanced needs of creative professionals, which often means prioritizing user control over technological novelty. The collaboration between PMs and engineers should focus on how technology can enhance user capabilities without dictating outcomes. This case underscores that successful PM/eng collaboration is not just about delivering new features but about delivering them in a way that respects and enhances the user's workflow and creative process.",
-      "ai_processed_at": "2026-07-06T15:26:00.239071+00:00",
       "is_editors_pick": false,
       "is_dismissed": false
     },
