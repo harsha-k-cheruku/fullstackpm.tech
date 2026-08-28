@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-28",
+      "slug": "daily-brief-2026-08-28",
+      "episode_number": 86,
+      "title": "Daily Brief \u2014 August 28, 2026",
+      "date": "2026-08-28",
+      "published_at": "2026-08-28T14:19:51",
+      "duration_seconds": 440,
+      "duration_human": "07:20",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-28.mp3",
+      "audio_length_bytes": 3515263,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Aakash Gupta \u2014 Product Growth: How to Become an AI PM (without AI PM experience)",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 771.91,
+        "pct_change": 0.11,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-28</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-28</li>\n<li><strong>PM/analytics:</strong> From Aakash Gupta \u2014 Product Growth: How to Become an AI PM (without AI PM experience)</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: The \u2018Asian water tower\u2019 is starting to wobble, computer simulations show. \u201cAsia\u2019s water tower\u201d is heading towards a more unpredictable and unstable future, according to a new study measuring the Tibetan Plateau\u2019s stability. The study, published on August 21 in Nature Communications, examined the entropy of the region to gauge how much chaos or disorder was building up in Economic Times: Gnani.ai launches Artha sovereign AI stack. BBC World: Oslo mayor cancels own wedding after death of Norway&rsquo;s king. Anne Lindboe, the mayor of Norway&rsquo;s capital, had planned to marry her fiance on Friday. South China Morning Post: Hong Kong authorities to get tough on careless dog owners during special operations. Hong Kong authorities will take enforcement action against dog owners who fail to keep their pets under control during special operations taking place on Sunday and the following weekend in response to a spate of canine attacks. The Agriculture, Fisheries and Conservation Department (AFCD) also said Economic Times: Maharashtra FDA cancels licence of Cipla&rsquo;s Pune unit. The Guardian: Trump to allow ranchers and farmers to process their own food amid beef import backlash \u2013 US politics live. President has faced anger in his own party for suspending tariffs on foreign beef to lower grocery prices Sign up for the US Breaking News email A reminder that we are covering the latest out of Jackson Hole, Wyoming, where Kevin Warsh \u2013 the new chair of the Federal Reserve \u2013 will deliver his first</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 771.91, with current implied volatility around 12.13 and the near-the-money strike near 772.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 771.91 after moving 0.11 percent on the session. Implied volatility sits around 12.13 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is University of Michigan Consumer Sentiment, Freddie Mac Mortgage Rate Update. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Aakash Gupta \u2014 Product Growth. The core idea is How to Become an AI PM (without AI PM experience). What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-27",
       "slug": "daily-brief-2026-08-27",
       "episode_number": 85,
