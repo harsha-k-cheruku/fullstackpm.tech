@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-08-31",
+      "slug": "daily-brief-2026-08-31",
+      "episode_number": 87,
+      "title": "Daily Brief \u2014 August 31, 2026",
+      "date": "2026-08-31",
+      "published_at": "2026-08-31T16:41:07",
+      "duration_seconds": 460,
+      "duration_human": "07:40",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-08-31.mp3",
+      "audio_length_bytes": 3675551,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Lenny's Newsletter: How I turned Claude into a self-improving PM assistant | Daniel Blum (PM, Melio)",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 766.15,
+        "pct_change": -0.42,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-08-31</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-08-31</li>\n<li><strong>PM/analytics:</strong> From Lenny&rsquo;s Newsletter: How I turned Claude into a self-improving PM assistant | Daniel Blum (PM, Melio)</li>\n</ul>\n<h2>Summary</h2>\n<p>Livemint: Queen Camilla puts differences with Prince Harry aside as King Charles seeks closer family ties: Royal experts. Queen Camilla is expected to support King Charles as Prince Harry seeks to rebuild ties with the royal family following years of estrangement and public criticism.&nbsp; BBC World: US and Iran trade strikes for first time in weeks. The attack on Larak Island in the Strait of Hormuz - the first known US strike since late July - has killed two people and injured two others. The Guardian: Iranian president says he still wants diplomatic end to war after US strikes on Hormuz \u2013 Middle East crisis live. US targets Iran\u2019s Larak Island in first exchange of fire in more than a month as Masoud Pezeshkian says America \u2018has not fulfilled its commitments\u2019 First US military attacks on Iran in a month prompt retaliation Coinciding with this week\u2019s G20 meeting , the EU has issued a statement saying it will w The Guardian: House Democrat to launch challenge to Trump\u2019s \u2018Lake America\u2019 order \u2013 US politics live. Debbie Dingell plans to introduce her \u2018Hands Off Our Great Lakes Act\u2019 today following president\u2019s latest escalation in US-Canada trade war Sign up for US Breaking News emails Chris Hippensteel We\u2019re watching today as Scott Bessent , the US Treasury Secretary, and Kevin Warsh , the chair of the Feder South China Morning Post: Spain PM blames Russia, Israel for Ceuta migrant crisis\u2019 disinformation. Spanish Prime Minister Pedro Sanchez said on Monday there were signs Russia and Israel had spread the disinformation over Spain\u2019s migration policy that triggered last month\u2019s rush of migrants into Ceuta, but no evidence of Moroccan involvement. Over 72,000 migrants irregularly crossed \u200cfrom Morocco Livemint: Labor Day 2026: Date, history, origins, significance. Is it a federal holiday? Are schools closed?. Labor Day is an annual US holiday celebrating the social and economic achievements of American workers. It emerged from the labour movement of the late 19th century, when workers and labour activists pushed for better working conditions and greater recognition of the contribution of working people.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 766.15, with current implied volatility around 12.04 and the near-the-money strike near 766.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 766.15 after moving -0.42 percent on the session. Implied volatility sits around 12.04 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Fed Meeting. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Lenny&rsquo;s Newsletter. The core idea is How I turned Claude into a self-improving PM assistant | Daniel Blum (PM, Melio). What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-08-28",
       "slug": "daily-brief-2026-08-28",
       "episode_number": 86,
