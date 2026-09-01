@@ -1,6 +1,47 @@
 {
   "episodes": [
     {
+      "id": "2026-09-01",
+      "slug": "learning-brief-2026-09-01",
+      "title": "Learning Brief \u2014 September 01, 2026",
+      "date": "2026-09-01",
+      "published_at": "2026-09-01T20:56:19",
+      "duration_seconds": 252,
+      "duration_human": "04:12",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/learning-brief/audio/2026-09-01.mp3",
+      "audio_length_bytes": 2010819,
+      "segments": {
+        "ai_news": {
+          "title": "AI & Tech Developments",
+          "points": [
+            "TechCrunch \u2014 AI: Anthropic\u2019s new Fable release is cheaper, less restrictive. Fable 5.1 includes changes meant to reduce token cost and false-positive restrictions from the model's safeguards.",
+            "VentureBeat \u2014 AI: Frontier models can recover up to 65% of facts they can't directly recall \u2014 just by thinking longer. When large language models (LLMs) hallucinate, developers typically assume the model lacks the required facts. Engineering teams diagnose the error as missing knowledge. The standard response is to increase model size, expand training data, or build complex retrieval architectures. A new study by re",
+            "The Verge \u2014 AI: The rise of AI \u2018civilizations\u2019 and the fall of corporate responsibility. Depending on who you ask, developer platform Hugging Face was recently attacked by OpenAI - after it lost control of its own AI tools - or by a succession of AI \"civilizations.\" Welcome to the linguistic battlefield of AI safety, where word choices can shift responsibility for a massive cybersecurit",
+            "VentureBeat \u2014 AI: Closing an Azure OpenAI assistant's retrieval gap didn't take a new identity platform. It took one filter and a narrower assistant.. Egiziago Cioffi is the IT and Enterprise Architect and CEO of SynSphere Italia, a Microsoft partner based in Milan. He built an agent himself. He wrote the indexing job, configured the Azure OpenAI retrieval pipeline, connected it to SharePoint, and watched it pass every evaluation his team ran. His",
+            "VentureBeat \u2014 AI: Anthropic's Claude Fable 5.1 and Mythos 5.1 arrive with a 75% cost reduction for Fable cache reads. It's only the first day of September 2026, but the month and fall season are already off to the races in AI land, as Anthropic has just released its latest and most powerful large language models yet \u2014 Claude Fable 5.1 and Claude Mythos 5.1 . The two names refer to the same underlying model. Fable 5",
+            "The Verge \u2014 AI: Apple accuses OpenAI of destroying evidence. Apple is pushing for \"expedited discovery\" in its legal battle against OpenAI over concerns the company is actively destroying evidence, as reported earlier by Bloomberg. In a filing on Monday, Apple alleges OpenAI only just handed over a MacBook used by a former employee at the center of the lawsui"
+          ],
+          "product_implications": [],
+          "word_count": 369
+        },
+        "pm_news": {
+          "title": "From Lenny's Newsletter: How to turn your AI into a world-class designer",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM news comes from Lenny's Newsletter. The story is How to turn your AI into a world-class designer. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.",
+          "word_count": 50
+        },
+        "pm_learning": {
+          "title": "From Lenny's Newsletter: How to turn your AI into a world-class designer",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM learning comes from Lenny's Newsletter. The core idea is How to turn your AI into a world-class designer. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.",
+          "mental_model": "Make the next experiment small enough to learn quickly.",
+          "word_count": 88
+        }
+      },
+      "shownotes": "# Learning Brief \u2014 2026-09-01\n\n## What we covered\n- **AI news:** AI & Tech Developments\n- **PM news:** From Lenny's Newsletter: How to turn your AI into a world-class designer\n- **PM learning:** From Lenny's Newsletter: How to turn your AI into a world-class designer\n\n## Mental model\n\nMake the next experiment small enough to learn quickly.\n\n## Summary\n\nTechCrunch \u2014 AI: Anthropic\u2019s new Fable release is cheaper, less restrictive. Fable 5.1 includes changes meant to reduce token cost and false-positive restrictions from the model's safeguards. VentureBeat \u2014 AI: Frontier models can recover up to 65% of facts they can't directly recall \u2014 just by thinking longer. When large language models (LLMs) hallucinate, developers typically assume the model lacks the required facts. Engineering teams diagnose the error as missing knowledge. The standard response is to increase model size, expand training data, or build complex retrieval architectures. A new study by re The Verge \u2014 AI: The rise of AI \u2018civilizations\u2019 and the fall of corporate responsibility. Depending on who you ask, developer platform Hugging Face was recently attacked by OpenAI - after it lost control of its own AI tools - or by a succession of AI \"civilizations.\" Welcome to the linguistic battlefield of AI safety, where word choices can shift responsibility for a massive cybersecurit VentureBeat \u2014 AI: Closing an Azure OpenAI assistant's retrieval gap didn't take a new identity platform. It took one filter and a narrower assistant.. Egiziago Cioffi is the IT and Enterprise Architect and CEO of SynSphere Italia, a Microsoft partner based in Milan. He built an agent himself. He wrote the indexing job, configured the Azure OpenAI retrieval pipeline, connected it to SharePoint, and watched it pass every evaluation his team ran. His VentureBeat \u2014 AI: Anthropic's Claude Fable 5.1 and Mythos 5.1 arrive with a 75% cost reduction for Fable cache reads. It's only the first day of September 2026, but the month and fall season are already off to the races in AI land, as Anthropic has just released its latest and most powerful large language models yet \u2014 Claude Fable 5.1 and Claude Mythos 5.1 . The two names refer to the same underlying model. Fable 5 The Verge \u2014 AI: Apple accuses OpenAI of destroying evidence. Apple is pushing for \"expedited discovery\" in its legal battle against OpenAI over concerns the company is actively destroying evidence, as reported earlier by Bloomberg. In a filing on Monday, Apple alleges OpenAI only just handed over a MacBook used by a former employee at the center of the lawsui\n\nToday's PM news comes from Lenny's Newsletter. The story is How to turn your AI into a world-class designer. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.\n\nToday's PM learning comes from Lenny's Newsletter. The core idea is How to turn your AI into a world-class designer. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-08-31",
       "slug": "learning-brief-2026-08-31",
       "title": "Learning Brief \u2014 August 31, 2026",
