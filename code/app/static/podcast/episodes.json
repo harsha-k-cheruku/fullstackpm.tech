@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-02",
+      "slug": "daily-brief-2026-09-02",
+      "episode_number": 89,
+      "title": "Daily Brief \u2014 September 02, 2026",
+      "date": "2026-09-02",
+      "published_at": "2026-09-02T14:23:33",
+      "duration_seconds": 467,
+      "duration_human": "07:47",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-02.mp3",
+      "audio_length_bytes": 3732184,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Product Talk (Teresa Torres): Get My Eval Test Harness and Run Your First Experiment",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 763.85,
+        "pct_change": 0.27,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-02</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-02</li>\n<li><strong>PM/analytics:</strong> From Product Talk (Teresa Torres): Get My Eval Test Harness and Run Your First Experiment</li>\n</ul>\n<h2>Summary</h2>\n<p>The Guardian: Russia increasingly reckless, says Nato\u2019s Rutte as Germany blames Moscow for Leipzig drone incident \u2013 Europe live. Nato\u2019s Mark Rutte\u2019s comments come as EU ministers meet to consider their response to drone attack last month German police have opened a investigation into yesterday\u2019s attempt to disrupt the operation of a power substation near Brandenburg. In a statement , Brandenburg police said they were leading The Guardian: Hakeem Jeffries vows \u2018serious response\u2019 after two House Democrats vote with Republicans \u2013 US politics live. House minority leader says decision by two Democrats to advance resolution condemning socialism \u2018represents significant breach of trust\u2019 Sign up for the US Breaking News email With many Americans facing soaring prices on essentials ranging from housing to healthcare to food, some Democrats think tha The Guardian: Andy Burnham pressed on borrowing costs and spending at first PMQs \u2013 UK politics live. Burnham faced questions from Kemi Badenoch and other MPs amid speculation over budget In the news release to mark the first anniversary of his election as the Green party\u2019s leader, Zack Polanski highlighted what he described as 10 achievements during his first year in charge. For the record, this is Al Jazeera: Tiger Woods pleads guilty to reckless driving in Florida car crash. Golfer&rsquo;s driving licence will be suspended for five years under the terms of a plea agreement that dropped DUI charges. South China Morning Post: US Chevron to expand Venezuela oil operations with US$7 billion plan. Oil giant Chevron confirmed that it would expand its operations in Venezuela, just days after President Donald Trump announced an ambitious deal to develop the nation\u2019s oil reserves and give the Pentagon a stake in the profits. Chevron, the only US oil company that has a major presence in the countr Al Jazeera: EU or Eurasia: Why Putin sparred with Armenia\u2019s PM. Relations between Russia and Armenia have reached historic lows as Yerevan pivots toward the West.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 763.85, with current implied volatility around 11.58 and the near-the-money strike near 764.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 763.85 after moving 0.27 percent on the session. Implied volatility sits around 11.58 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Non-Farm Payrolls (Jobs Report). The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Product Talk (Teresa Torres). The core idea is Get My Eval Test Harness and Run Your First Experiment. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-01",
       "slug": "daily-brief-2026-09-01",
       "episode_number": 88,
