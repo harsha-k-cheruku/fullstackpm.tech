@@ -1,6 +1,47 @@
 {
   "episodes": [
     {
+      "id": "2026-09-02",
+      "slug": "learning-brief-2026-09-02",
+      "title": "Learning Brief \u2014 September 02, 2026",
+      "date": "2026-09-02",
+      "published_at": "2026-09-02T20:56:54",
+      "duration_seconds": 210,
+      "duration_human": "03:30",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/learning-brief/audio/2026-09-02.mp3",
+      "audio_length_bytes": 1674362,
+      "segments": {
+        "ai_news": {
+          "title": "AI & Tech Developments",
+          "points": [
+            "TechCrunch \u2014 AI: OpenAI\u2019s new reasoning technique alarms AI safety experts. OpenAI\u2019s new Astra model will use \u201crecurrent depth,\u201d a technique that allows the model to operate outside of the sequential thinking that characterizes most reasoning models.",
+            "The Verge \u2014 AI: Google says its new Gemini 3.8 Flash model \u2018works harder\u2019 but might cost more. Google launched Gemini 3.8 Flash, arriving just a few weeks after its predecessor. The company claims the new model \"works harder\" than Gemini 3.7 Flash by performing more reasoning steps on complex tasks and \"calling tools iteratively.\" It has the same introductory pricing as 3.7 Flash, $0.75 per m",
+            "The Verge \u2014 AI: Amazon\u2019s AI assistant can now spot fake emails from the company. Amazon is trying to combat impersonation scams with a new feature that allows you to use its AI assistant to determine whether an email, text message, or phone call actually came from the company. With the update, you can ask Alexa for Shopping about a message you received, and it will use AI to com",
+            "VentureBeat \u2014 AI: Stolen Claude session cookies can reach corporate Gmail through grants no IT admin can revoke. Infostealers replayed stolen Claude session cookies into paid accounts without ever touching the login page two-factor authentication guards. The accounts Anthropic flagged were card-billed, self-serve accounts, which is the population no corporate identity provider governs, and no admin console can",
+            "TechCrunch \u2014 AI: Pangram\u2019s Max Spero on why AI detection is harder than \u2018Real or Fake\u2019. The internet has a trust problem, and it\u2019s not just because social media feeds are filling up with AI slop. AI-generated text and images are now making their way into job applications, product reviews, and even insurance claims, leaving platforms and users alike scrambling to figure out what\u2019s real.",
+            "TechCrunch \u2014 AI: We\u2019re \u2018dangerously close\u2019 to dead internet theory, says Pangram\u2019s CEO. The internet has a trust problem, and it\u2019s not just because social media feeds are filling up with AI slop. AI-generated text and images are now making their way into job applications, product reviews, and even insurance claims, leaving platforms and users alike scrambling to figure out what\u2019s real."
+          ],
+          "product_implications": [],
+          "word_count": 373
+        },
+        "pm_news": {
+          "title": "From Product Talk (Teresa Torres): Get My Eval Test Harness and Run Your First Experiment",
+          "source": "Product Talk (Teresa Torres)",
+          "content": "Today's PM news comes from Product Talk (Teresa Torres). The story is Get My Eval Test Harness and Run Your First Experiment. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.",
+          "word_count": 51
+        },
+        "pm_learning": {
+          "title": "From Product Talk (Teresa Torres): Get My Eval Test Harness and Run Your First Experiment",
+          "source": "Product Talk (Teresa Torres)",
+          "content": "Today's PM learning comes from Product Talk (Teresa Torres). The core idea is Get My Eval Test Harness and Run Your First Experiment. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.",
+          "mental_model": "Make the next experiment small enough to learn quickly.",
+          "word_count": 89
+        }
+      },
+      "shownotes": "# Learning Brief \u2014 2026-09-02\n\n## What we covered\n- **AI news:** AI & Tech Developments\n- **PM news:** From Product Talk (Teresa Torres): Get My Eval Test Harness and Run Your First Experiment\n- **PM learning:** From Product Talk (Teresa Torres): Get My Eval Test Harness and Run Your First Experiment\n\n## Mental model\n\nMake the next experiment small enough to learn quickly.\n\n## Summary\n\nTechCrunch \u2014 AI: OpenAI\u2019s new reasoning technique alarms AI safety experts. OpenAI\u2019s new Astra model will use \u201crecurrent depth,\u201d a technique that allows the model to operate outside of the sequential thinking that characterizes most reasoning models. The Verge \u2014 AI: Google says its new Gemini 3.8 Flash model \u2018works harder\u2019 but might cost more. Google launched Gemini 3.8 Flash, arriving just a few weeks after its predecessor. The company claims the new model \"works harder\" than Gemini 3.7 Flash by performing more reasoning steps on complex tasks and \"calling tools iteratively.\" It has the same introductory pricing as 3.7 Flash, $0.75 per m The Verge \u2014 AI: Amazon\u2019s AI assistant can now spot fake emails from the company. Amazon is trying to combat impersonation scams with a new feature that allows you to use its AI assistant to determine whether an email, text message, or phone call actually came from the company. With the update, you can ask Alexa for Shopping about a message you received, and it will use AI to com VentureBeat \u2014 AI: Stolen Claude session cookies can reach corporate Gmail through grants no IT admin can revoke. Infostealers replayed stolen Claude session cookies into paid accounts without ever touching the login page two-factor authentication guards. The accounts Anthropic flagged were card-billed, self-serve accounts, which is the population no corporate identity provider governs, and no admin console can TechCrunch \u2014 AI: Pangram\u2019s Max Spero on why AI detection is harder than \u2018Real or Fake\u2019. The internet has a trust problem, and it\u2019s not just because social media feeds are filling up with AI slop. AI-generated text and images are now making their way into job applications, product reviews, and even insurance claims, leaving platforms and users alike scrambling to figure out what\u2019s real. TechCrunch \u2014 AI: We\u2019re \u2018dangerously close\u2019 to dead internet theory, says Pangram\u2019s CEO. The internet has a trust problem, and it\u2019s not just because social media feeds are filling up with AI slop. AI-generated text and images are now making their way into job applications, product reviews, and even insurance claims, leaving platforms and users alike scrambling to figure out what\u2019s real.\n\nToday's PM news comes from Product Talk (Teresa Torres). The story is Get My Eval Test Harness and Run Your First Experiment. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.\n\nToday's PM learning comes from Product Talk (Teresa Torres). The core idea is Get My Eval Test Harness and Run Your First Experiment. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-09-01",
       "slug": "learning-brief-2026-09-01",
       "title": "Learning Brief \u2014 September 01, 2026",
