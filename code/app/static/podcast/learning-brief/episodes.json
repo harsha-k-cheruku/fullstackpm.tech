@@ -1,6 +1,47 @@
 {
   "episodes": [
     {
+      "id": "2026-09-04",
+      "slug": "learning-brief-2026-09-04",
+      "title": "Learning Brief \u2014 September 04, 2026",
+      "date": "2026-09-04",
+      "published_at": "2026-09-04T20:52:45",
+      "duration_seconds": 170,
+      "duration_human": "02:50",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/learning-brief/audio/2026-09-04.mp3",
+      "audio_length_bytes": 1355041,
+      "segments": {
+        "ai_news": {
+          "title": "AI & Tech Developments",
+          "points": [
+            "MIT Technology Review \u2014 AI: Architecting memory and storage in the AI era. The era of AI inference has arrived. Imagine a healthcare system analyzing millions of data points in real time to accelerate life-saving medical research, or an intelligent assistant instantly resolving thousands of complex customer needs at once. These real-world breakthroughs rely on advanced inf",
+            "The Verge \u2014 AI: Roland is getting into generative AI music with Melody Flip. It's not quite the \"push button; get song\" of Suno, but Roland's new Melody Flip tool marks the company's foray into generative AI music. Available as a plug-in for your digital audio workstation (DAW), Melody Flip offers around 250 \"Palettes,\" which are essentially themed collections of musical ide",
+            "Ars Technica \u2014 Technology Lab: \u201cTrust, not features, is the real deficit\u201d: VMware tries to appease SMBs. Broadcom admits it put \u201ctoo big a focus on VCF.\u201d",
+            "Ars Technica \u2014 Technology Lab: Once popular for attacking AI, ASCII smuggling is embraced by spammers. A once-overlooked block of unicode that's invisible to humans is gaining ever wider use.",
+            "TechCrunch \u2014 AI: What will Apple\u2019s John Ternus era look like?. It\u2019s officially the Ternus era at Apple. Tim Cook stepped down as CEO this week, handing the company to former hardware chief John Ternus, whose first memo promised a \u201chuge launch next week\u201d \u2014 timing that puts Apple\u2019s next iPhone event on his desk before he\u2019s even settled in. Cook isn\u2019t going far, t",
+            "TechCrunch \u2014 AI: Another swarm of OpenAI agents reached the open internet without the frontier lab\u2019s knowledge. It's the latest failure of OpenAI's internal monitoring and security systems."
+          ],
+          "product_implications": [],
+          "word_count": 278
+        },
+        "pm_news": {
+          "title": "From Lenny's Newsletter: GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM news comes from Lenny's Newsletter. The story is GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.",
+          "word_count": 52
+        },
+        "pm_learning": {
+          "title": "From Lenny's Newsletter: GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM learning comes from Lenny's Newsletter. The core idea is GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.",
+          "mental_model": "Make the next experiment small enough to learn quickly.",
+          "word_count": 90
+        }
+      },
+      "shownotes": "# Learning Brief \u2014 2026-09-04\n\n## What we covered\n- **AI news:** AI & Tech Developments\n- **PM news:** From Lenny's Newsletter: GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built\n- **PM learning:** From Lenny's Newsletter: GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built\n\n## Mental model\n\nMake the next experiment small enough to learn quickly.\n\n## Summary\n\nMIT Technology Review \u2014 AI: Architecting memory and storage in the AI era. The era of AI inference has arrived. Imagine a healthcare system analyzing millions of data points in real time to accelerate life-saving medical research, or an intelligent assistant instantly resolving thousands of complex customer needs at once. These real-world breakthroughs rely on advanced inf The Verge \u2014 AI: Roland is getting into generative AI music with Melody Flip. It's not quite the \"push button; get song\" of Suno, but Roland's new Melody Flip tool marks the company's foray into generative AI music. Available as a plug-in for your digital audio workstation (DAW), Melody Flip offers around 250 \"Palettes,\" which are essentially themed collections of musical ide Ars Technica \u2014 Technology Lab: \u201cTrust, not features, is the real deficit\u201d: VMware tries to appease SMBs. Broadcom admits it put \u201ctoo big a focus on VCF.\u201d Ars Technica \u2014 Technology Lab: Once popular for attacking AI, ASCII smuggling is embraced by spammers. A once-overlooked block of unicode that's invisible to humans is gaining ever wider use. TechCrunch \u2014 AI: What will Apple\u2019s John Ternus era look like?. It\u2019s officially the Ternus era at Apple. Tim Cook stepped down as CEO this week, handing the company to former hardware chief John Ternus, whose first memo promised a \u201chuge launch next week\u201d \u2014 timing that puts Apple\u2019s next iPhone event on his desk before he\u2019s even settled in. Cook isn\u2019t going far, t TechCrunch \u2014 AI: Another swarm of OpenAI agents reached the open internet without the frontier lab\u2019s knowledge. It's the latest failure of OpenAI's internal monitoring and security systems.\n\nToday's PM news comes from Lenny's Newsletter. The story is GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.\n\nToday's PM learning comes from Lenny's Newsletter. The core idea is GPT-6 Astra is a banger - here\u2019s everything I\u2019ve built. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-09-03",
       "slug": "learning-brief-2026-09-03",
       "title": "Learning Brief \u2014 September 03, 2026",
