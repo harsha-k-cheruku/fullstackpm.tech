@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-07",
+      "slug": "daily-brief-2026-09-07",
+      "episode_number": 92,
+      "title": "Daily Brief \u2014 September 07, 2026",
+      "date": "2026-09-07",
+      "published_at": "2026-09-07T14:52:35",
+      "duration_seconds": 483,
+      "duration_human": "08:03",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-07.mp3",
+      "audio_length_bytes": 3860289,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Pawel Huryn \u2014 The Product Compass: Product Engineering for PMs, Part 2: Build a SaaS App Without Coding",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 770.19,
+        "pct_change": -0.39,
+        "iv_rank": 99.22
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-07</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-07</li>\n<li><strong>PM/analytics:</strong> From Pawel Huryn \u2014 The Product Compass: Product Engineering for PMs, Part 2: Build a SaaS App Without Coding</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: PLA Rocket Force highlights \u2018major danger signal\u2019 from Japan in nuclear terror study. Chinese cities must brace for a potential nuclear attack, a new study has warned, singling out Japan for \u201csending a major danger signal\u201d to the world. The report, from a People\u2019s Liberation Army medical team, said the likelihood of a large-scale global nuclear war was relatively low. \u201cHowever, the p The Guardian: Camden Green councillor says he will fight Polanski to run in Starmer\u2019s seat \u2013 UK politics live. Hamza Chowdhury says he will challenge party leader and has received nominations from other Green councillors Healey says Andy Burnham set out in his statement to MPs last week what he thought had gone wrong The fundamentals of our economy [were] hollowed out through a series of past policy decision South China Morning Post: Rare drone film of suspected dumping spurs Chinese agencies into investigation. Authorities in central China have joined forces in an effort to investigate suspected industrial dumping on the Yangtze River following the release of rare drone footage of the activity. The environment bureau in the Hubei city of Wuhan said on Monday that it had launched the inquiry in association The Guardian: Merz says \u2018shock\u2019 AfD victory in key German state \u2018is an election result we cannot simply move past\u2019 \u2013 Europe live. German chancellor says vote for far-right party \u2018will have repercussions\u2019 across the country Far-right AfD wins key German state election but falls just short of majority AfD\u2019s Chrupalla continues in this vein, saying the German public wants to see a change in direction, and specifically saying the Livemint: West Bengal bypolls: ECI announces October 6 polling for Nandigram, Rejinagar. The ECI announced the schedule for the two bypolls on Monday. The Guardian: Jaguar Land Rover confirms plan to cut 4,000 jobs over two years. Decision by carmaker, which is battling Trump tariffs and fallout from cyber-attack, labelled a \u2018body blow for workers\u2019 Business live \u2013 latest updates Jaguar Land Rover has announced thousands of job cuts in a \u201cbody blow for workers\u201d as it grapples with tough trading conditions, Donald Trump\u2019s tarif</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 770.19, with current implied volatility around 11.88 and the near-the-money strike near 770.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 770.19 after moving -0.39 percent on the session. Implied volatility sits around 11.88 with IV rank near 99.22, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Retail Sales, CPI Inflation Release. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Pawel Huryn \u2014 The Product Compass. The core idea is Product Engineering for PMs, Part 2: Build a SaaS App Without Coding. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-04",
       "slug": "daily-brief-2026-09-04",
       "episode_number": 91,
