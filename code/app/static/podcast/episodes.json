@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-11",
+      "slug": "daily-brief-2026-09-11",
+      "episode_number": 96,
+      "title": "Daily Brief \u2014 September 11, 2026",
+      "date": "2026-09-11",
+      "published_at": "2026-09-11T14:26:39",
+      "duration_seconds": 492,
+      "duration_human": "08:12",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-11.mp3",
+      "audio_length_bytes": 3934058,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Aakash Gupta \u2014 Product Growth: 5 Years of Product Growth.",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 765.34,
+        "pct_change": 0.99,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-11</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-11</li>\n<li><strong>PM/analytics:</strong> From Aakash Gupta \u2014 Product Growth: 5 Years of Product Growth.</li>\n</ul>\n<h2>Summary</h2>\n<p>The Guardian: 9/11 families gather at World Trade Center and Pentagon to remember victims on 25th anniversary \u2013 US politics live. Victims of those killed in September 11 attacks honored at memorials across the US On 11 September, 25 years ago, Osama bin Laden drove with a small number of al-Qaida retainers and aides to a remote location in eastern Afghanistan. His convoy of SUVs was accompanied by a minivan converted into a ma The Guardian: MPs vote against assisted dying bill after tense debate \u2013 UK politics live. The bill would have allowed terminally ill adults with less than six months to live to end their lives, after the approval of a panel of experts While the debate continues, we have a comment from Sam Royston, executive director of research and policy at Marie Curie . He said the government must addr South China Morning Post: US consumer prices pick up in August, bolstering chances of interest rate increase. US consumer prices accelerated in August as the cost of petrol rebounded after two straight monthly declines, bolstering financial market expectations that the Federal Reserve could raise interest rates next week. The Consumer Price Index (CPI) increased 0.4 per cent last month after edging up 0.1 p South China Morning Post: Study reveals link between Tibetan Plateau heat and record rain in California. Abnormally high temperatures across the Tibetan Plateau in early winter can trigger catastrophic rainstorms in California, according to a new study revealing a previously unidentified climate connection. In the winters of 2016-2017 and 2022-2023, record-breaking rain swept across the US state and su South China Morning Post: Chinese investors snap up government bonds amid global market jitters over US Treasuries. While US Treasuries remain at the centre of a global bond sell-off despite efforts by US Treasury Secretary Scott Bessent to calm the market, investors in China are rushing to buy domestic government debt. After China\u2019s Ministry of Finance issued a fresh batch of savings bonds worth up to 55 billion Livemint: \u2018Black line along the crease, motherboard issue&rsquo;: Google faces \u20b91.1 lakh penalty over faulty foldable phone in Kerala. Google has reportedly 30 days to comply with the order by a district consumer commission in &nbsp;Kasaragod. Failing to do so, the penalty amount will attract interest until full payment is made.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 765.34, with current implied volatility around 12.89 and the near-the-money strike near 765.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 765.34 after moving 0.99 percent on the session. Implied volatility sits around 12.89 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Fed Meeting, Freddie Mac Mortgage Rate Update. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Aakash Gupta \u2014 Product Growth. The core idea is 5 Years of Product Growth.. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-10",
       "slug": "daily-brief-2026-09-10",
       "episode_number": 95,
