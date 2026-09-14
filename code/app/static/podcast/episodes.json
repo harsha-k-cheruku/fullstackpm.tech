@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-14",
+      "slug": "daily-brief-2026-09-14",
+      "episode_number": 97,
+      "title": "Daily Brief \u2014 September 14, 2026",
+      "date": "2026-09-14",
+      "published_at": "2026-09-14T14:37:19",
+      "duration_seconds": 438,
+      "duration_human": "07:18",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-14.mp3",
+      "audio_length_bytes": 3497500,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Lenny's Newsletter: How Grok Bot designers use AI agents to build personal sites and product prototypes | John Bai & Peng Zheng",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 760.46,
+        "pct_change": -0.5,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-14</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-14</li>\n<li><strong>PM/analytics:</strong> From Lenny&rsquo;s Newsletter: How Grok Bot designers use AI agents to build personal sites and product prototypes | John Bai &amp; Peng Zheng</li>\n</ul>\n<h2>Summary</h2>\n<p>The Guardian: Swedish centre-left opposition widens lead to three seats with 95% of votes counted \u2013 Europe live. The parliament isn\u2019t set to meet until late September to elect a new speaker, and then prime minister Jennifer Rankin in Brussels and Charlotte Higgins and Amy Hawkins in Kyiv Catching up with other news from across Europe, the head of Nato has said a Russian drone attack on a train close to Ukraine The Guardian: OpenAI urges UK lawmakers to rein in technology amid growing safety fears. Warning follows series of safety incidents, with parliamentary committee saying threats include public face-scanning and deepfakes UK politics live \u2013 latest updates OpenAI has urged British lawmakers to capitalise on renewed fears over AI safety and impose legislation reining in the technology. The The Guardian: Russian strike on passenger train will not deter Ukraine\u2019s backers, Nato chief says. Mark Rutte says attack that narrowly missed Boris Johnson and David Petraeus shows Vladimir Putin\u2019s desperation Europe live \u2013 latest updates The head of Nato has said a Russian drone attack on a train close to Ukraine\u2019s border with Poland would not deter Kyiv\u2019s western backers. Mark Rutte said the s Livemint: Kharif sowing gap narrows, but key crops lag. Overall kharif acreage is nearly on par with last year, but rice, maize, oilseeds, sugarcane and cotton continue to trail Livemint: Partition in UK? Scotland, Wales and Northern Ireland push for exit from United Kingdom, \u2018Europe is our common home\u2019. Leaders from Scotland, Wales, and Northern Ireland met to promote joint independence efforts. They seek a fairer economy, collaboration on renewable energy, and stronger ties with the EU. Livemint: Pakistan sets \u20b97 million bounty on Masood Azhar ahead of FATF review: Terrorist linked to Pathankot, Pulwama attacks. The announcement comes weeks ahead of the Financial Action Task Force&rsquo;s (FATF) plenary meeting scheduled for October, as the Islamic nation seeks to avoid being placed back on the FATF grey list.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 760.46, with current implied volatility around 13.44 and the near-the-money strike near 760.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 760.46 after moving -0.5 percent on the session. Implied volatility sits around 13.44 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Fed Meeting, Freddie Mac Mortgage Rate Update. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Lenny&rsquo;s Newsletter. The core idea is How Grok Bot designers use AI agents to build personal sites and product prototypes | John Bai &amp; Peng Zheng. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-11",
       "slug": "daily-brief-2026-09-11",
       "episode_number": 96,
