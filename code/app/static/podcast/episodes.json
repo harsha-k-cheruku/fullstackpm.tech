@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-16",
+      "slug": "daily-brief-2026-09-16",
+      "episode_number": 99,
+      "title": "Daily Brief \u2014 September 16, 2026",
+      "date": "2026-09-16",
+      "published_at": "2026-09-16T14:03:59",
+      "duration_seconds": 467,
+      "duration_human": "07:47",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-16.mp3",
+      "audio_length_bytes": 3733438,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Product Talk (Teresa Torres): 4 New Evals and 16 Experiment Variants to Fix 1 Customer Complaint",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 760.19,
+        "pct_change": 0.37,
+        "iv_rank": 90.29
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-16</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-16</li>\n<li><strong>PM/analytics:</strong> From Product Talk (Teresa Torres): 4 New Evals and 16 Experiment Variants to Fix 1 Customer Complaint</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: Hong Kong targets film tourism boom and higher-level tennis tournaments. Hong Kong will introduce themed tourism routes showcasing the city\u2019s most recognisable filming locations and explore upgrading Victoria Park\u2019s Centre Court to host higher-level tennis tournaments, as authorities seek to significantly increase the sector\u2019s economic contribution under the city\u2019s first BBC World: US limits visas for South African officials over alleged anti-white discrimination. Secretary of State Marco Rubio says South Africa has not addressed US concerns over racial inequality. South China Morning Post: First building in Hong Kong\u2019s university town project to be ready in months. The first building in the 1,000-hectare (2,472-acre) university town project in the Northern Metropolis will be completed by the end of this year, Hong Kong\u2019s leader has said, revealing that the flagship tower is called Loop Academy One. Announcing Hong Kong\u2019s first five-year plan on Wednesday, Chie Livemint: Centre reconstitutes CBFC: Preity Zinta, Suniel Shetty, Pankaj Tripathi among 18 members | Full list here. The appointments are effective immediately and will remain valid for three years, until further notice. South China Morning Post: Iranian and Saudi panellists spar at Xiangshan Forum over Middle East attacks. A plenary session at a Beijing security conference turned into a heated exchange on Wednesday, when a senior Iranian defence official and a Saudi think tank chief traded accusations over the conflict in the Middle East. In the city where just a few years ago Iran and Saudi Arabia signed a peace deal The Guardian: European Union invites Canada to become first ever \u2018associate member\u2019. Commission president says EU must \u2018urgently reimagine our partnerships\u2019 as she makes unprecedented offer Europe live \u2013 latest updates Canada has been invited to become the first \u201cassociate member\u201d of the EU by the European Commission president, Ursula von der Leyen. In an unprecedented offer, von de</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 760.19, with current implied volatility around 13.11 and the near-the-money strike near 760.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 760.19 after moving 0.37 percent on the session. Implied volatility sits around 13.11 with IV rank near 90.29, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Fed Meeting, Freddie Mac Mortgage Rate Update. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Product Talk (Teresa Torres). The core idea is 4 New Evals and 16 Experiment Variants to Fix 1 Customer Complaint. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-15",
       "slug": "daily-brief-2026-09-15",
       "episode_number": 98,
