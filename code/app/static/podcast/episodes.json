@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-17",
+      "slug": "daily-brief-2026-09-17",
+      "episode_number": 100,
+      "title": "Daily Brief \u2014 September 17, 2026",
+      "date": "2026-09-17",
+      "published_at": "2026-09-17T14:04:01",
+      "duration_seconds": 489,
+      "duration_human": "08:09",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-17.mp3",
+      "audio_length_bytes": 3910444,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Product Talk (Teresa Torres): Creating Aha! Builder: Concept to Code, No Engineers Required",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 761.09,
+        "pct_change": 0.93,
+        "iv_rank": 67.08
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-17</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-17</li>\n<li><strong>PM/analytics:</strong> From Product Talk (Teresa Torres): Creating Aha! Builder: Concept to Code, No Engineers Required</li>\n</ul>\n<h2>Summary</h2>\n<p>Livemint: UN experts flag two US strikes in Iran over possible war crimes: Which ones?. The experts said the findings were reached despite difficulties caused by the ongoing conflict, displacement and an internet shutdown in Iran, as well as limited cooperation from both governments. Livemint: Amid govt&rsquo;s proposal for CCTVs at medical stores, 64% of consumers say chemists rarely ask for prescription: Survey. India has proposed amending the Drugs Rules, 1945 as per a gazette notification on 8 September. It aims to curb the unauthorised sale of prescription drugs. The Guardian: \u2018Songwriting instead of doomscrolling\u2019: project inspires Port Talbot to tune into its heritage. Community groups and schools work with Wales\u2019s folk arts organisation to set stories of the area\u2019s people to music Growing up in Wales, Liz Puleston-Jones was familiar with the country\u2019s rich heritage of storytelling and traditional music, but none of it ever seemed to have much of a connection to h BBC World: Ninth woman&rsquo;s body found as South African police investigate string of deaths. South Africa police have cautioned against assuming that all the killings are linked but many women are afraid. The Guardian: \u2018So many loopholes\u2019: Democratic House leader Jeffries flags concerns over Russia sanctions bill \u2013 US politics live. Jeffries said the legislation had \u200bso many loopholes that sanctions harming Russia might not be applied Sign up for the US Breaking News email A group of Democratic senators is demanding information from the Trump administration about what\u2019s being done with massive oil revenues funneled to the US fr South China Morning Post: Sweden\u2019s PM Kristersson resigns after left-wing wins slim majority in election. Sweden\u2019s conservative Prime Minister Ulf Kristersson announced his resignation on Thursday after the left-wing opposition won a slim majority in parliament in the country\u2019s general election. \u201cIt is now the speaker of parliament who will lead the next steps on the path towards forming a new governmen</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 761.09, with current implied volatility around 13.05 and the near-the-money strike near 761.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 761.09 after moving 0.93 percent on the session. Implied volatility sits around 13.05 with IV rank near 67.08, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Fed Meeting. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Product Talk (Teresa Torres). The core idea is Creating Aha! Builder: Concept to Code, No Engineers Required. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-16",
       "slug": "daily-brief-2026-09-16",
       "episode_number": 99,
