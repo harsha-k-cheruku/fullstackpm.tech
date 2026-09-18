@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-18",
+      "slug": "daily-brief-2026-09-18",
+      "episode_number": 101,
+      "title": "Daily Brief \u2014 September 18, 2026",
+      "date": "2026-09-18",
+      "published_at": "2026-09-18T14:55:13",
+      "duration_seconds": 464,
+      "duration_human": "07:44",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-18.mp3",
+      "audio_length_bytes": 3711077,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Product Talk (Teresa Torres): Creating Aha! Builder: Concept to Code, No Engineers Required",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 759.29,
+        "pct_change": -0.43,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-18</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-18</li>\n<li><strong>PM/analytics:</strong> From Product Talk (Teresa Torres): Creating Aha! Builder: Concept to Code, No Engineers Required</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: Are the doors to German universities closing for China\u2019s STEM researchers?. Chinese AI researcher \u201cJoy\u201d waited more than seven months to hear that his visa application for Germany had been rejected. The 30-year-old had been offered a postdoctoral position at a German technical university but the rejection letter said there was an Ausweisungsinteresse, or public interest in South China Morning Post: Saudi oil pipeline closure puts Asia\u2019s economic resilience to the test. Asian economies heavily dependent on imported energy are facing an even sharper squeeze after the shutdown of Saudi Arabia\u2019s East-West pipeline removed a key escape route from the disruption in the Strait of Hormuz, deepening an energy shock that has already pushed crude oil above US$100 a barrel. A The Guardian: Early voting begins in midterms as campaign shifts focus to cost of living and Iran war \u2013 US politics live. Campaigning or control of Congress is expected to ramp up as some states open early voting Sign up for the US Breaking News email Alexandria Ocasio-Cortez, the progressive standard-bearer and potential 2028 presidential hopeful, is planning to campaign for Democrats across New York state ahead of th The Guardian: Crypto millionaires would gain \u00a3500m over five years from Reform policy, Labour analysis suggests \u2013 UK politics live. Reform UK has proposed cutting capital gains tax on crypto investments to 10% Miche\u00e1l Martin , the taoiseach (Irish PM), thanked Andy Burnham for his stance on Israel as the two men met at No 10 North today. Support for the Palestinian cause is particularly strong in Ireland because of its historica Al Jazeera: Ronaldo keeps Portugal place for Nations League as Jesus names first squad. Ex-Manchester United and Real Madrid forward Cristiano Ronaldo named in Portugal squad to face \u2060Norway and Denmark. Economic Times: iPhone 18 sales begin amid frenzy.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 759.29, with current implied volatility around 15.04 and the near-the-money strike near 759.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 759.29 after moving -0.43 percent on the session. Implied volatility sits around 15.04 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, University of Michigan Consumer Sentiment. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Product Talk (Teresa Torres). The core idea is Creating Aha! Builder: Concept to Code, No Engineers Required. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-17",
       "slug": "daily-brief-2026-09-17",
       "episode_number": 100,
