@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-23",
+      "slug": "daily-brief-2026-09-23",
+      "episode_number": 104,
+      "title": "Daily Brief \u2014 September 23, 2026",
+      "date": "2026-09-23",
+      "published_at": "2026-09-23T14:24:00",
+      "duration_seconds": 476,
+      "duration_human": "07:56",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-23.mp3",
+      "audio_length_bytes": 3804491,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Shreyas Doshi: 12 new videos on career management. Super-candid and direct.",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 770.26,
+        "pct_change": -0.42,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-23</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-23</li>\n<li><strong>PM/analytics:</strong> From Shreyas Doshi: 12 new videos on career management. Super-candid and direct.</li>\n</ul>\n<h2>Summary</h2>\n<p>South China Morning Post: Hong Kong to welcome 1.29 million mainland Chinese visitors for National Day break. Hong Kong is expected to welcome about 1.29 million mainland Chinese travellers over the National Day \u201cgolden week\u201d break, with city authorities planning to step up crowd management and tighten supervision of tour agencies and retail outlets. Chief Secretary Eric Chan Kwok-ki, Hong Kong\u2019s No 2 offic BBC World: Eleven killed in mass shooting at house in South Africa. One of those killed is believed to be a pregnant woman, police said. Livemint: Bittu Tabahi&rsquo;s river clean-up campaign reaches Delhi-NCR, removes 585 kg waste from Yamuna and 2,435 kg from Gurgaon. Sharing a video on Instagram, he said that he, along with other volunteers, cleaned the river for three days, and on the first day, removed roughly 585 kg of waste from the riverbank. South China Morning Post: US Air Force to shut down research centre focusing on Chinese military. The US Air Force is shutting down a major research centre dedicated to open-source analysis of the Chinese military\u2019s air, space, cyber and missile capabilities. The China Aerospace Studies Institute (CASI) said in a statement on Tuesday that Air University, the US Air Force institution under which The Guardian: Iran\u2019s president Pezeshkian to address UN general assembly before Zelenskyy takes the stage - live. Second day of UN general assembly under way in New York with speeches by the presidents of Ukraine and Iran to come These latest attacks come just hours before Volodymyr Zelenskyy\u2019s address to the UN general assembly, so he is likely to reflect on them during his UN speech later. So far, we have had The Guardian: US justice department defends Trump banning journalists from White House ahead of court hearing \u2013 live. Trump\u2019s DoJ says White House access is \u2018a privilege, not a right\u2019; CNN, Politico and MS Now to present case in court after president banned outlets from White House grounds Sign up for US Breaking News emails Donald Trump has a habit of discomfiting delegates to the United Nations general assembly.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 770.26, with current implied volatility around 13.9 and the near-the-money strike near 770.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 770.26 after moving -0.42 percent on the session. Implied volatility sits around 13.9 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, University of Michigan Consumer Sentiment. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Shreyas Doshi. The core idea is 12 new videos on career management. Super-candid and direct.. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-22",
       "slug": "daily-brief-2026-09-22",
       "episode_number": 103,
