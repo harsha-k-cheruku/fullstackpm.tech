@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-09-30",
+      "slug": "daily-brief-2026-09-30",
+      "episode_number": 109,
+      "title": "Daily Brief \u2014 September 30, 2026",
+      "date": "2026-09-30",
+      "published_at": "2026-09-30T14:08:36",
+      "duration_seconds": 487,
+      "duration_human": "08:07",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-09-30.mp3",
+      "audio_length_bytes": 3895188,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Lenny's Newsletter: Jev: 8 real use cases for the fastest, cheapest model I\u2019ve ever used | John Lindquist",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 769.07,
+        "pct_change": 0.64,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-09-30</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-09-30</li>\n<li><strong>PM/analytics:</strong> From Lenny&rsquo;s Newsletter: Jev: 8 real use cases for the fastest, cheapest model I\u2019ve ever used | John Lindquist</li>\n</ul>\n<h2>Summary</h2>\n<p>The Guardian: Trump administration withdraws US from Greco anti-corruption monitoring body. \u2018The era of writing blank checks to international bureaucracies is over,\u2019 state department spokesperson says Donald Trump \u2019s administration has withdrawn the United States from the Council of Europe\u2019s anti-corruption monitoring body, arguing that paying to belong to the multilateral group no longer The Guardian: Netanyahu says pilot arrested in Saudi Arabia after stabbing another pilot on Israel-bound flight \u2013 latest updates. Israeli PM issues video statement on FlyDubai incident where a Tel Aviv-bound plane was forced to make an emergency landing Full report: Pilot on Israel-bound plane stabbed co-pilot and tried to crash aircraft, passenger says Netanyahu said one of the FlyDubai pilots stabbed his fellow pilot and int The Guardian: Europe \u2018faces window of vulnerability until 2030,\u2019 Dutch chief of defence warns - Europe live. Chief of defence of the Dutch armed forces, Gen Onno Eichelsheim, says Europe urgently needs to learn lessons from Ukraine Meanwhile, Ukraine\u2019s total war costs will reach $155bn this year and \u2060the government is \u200bstruggling to close a $27bn funding gap to ensure it can still conduct combat operations Livemint: US EB-5 fees jump: What it means for Indians seeking Green Cards through investment. The fee increase comes at a significant time for Indian applicants. Demand for EB-5 visas has grown, and India has already faced limits on the number of EB-5 unreserved visas available during the current fiscal year. South China Morning Post: Xi projects confidence in National Day speech, with rallying call for economic growth. Chinese President Xi Jinping projected a message of confidence about the country\u2019s ability to overcome challenges during his annual National Day address, issuing a rallying call for robust economic growth and more certainty amid geopolitical complications. Xi\u2019s address, delivered at a state receptio Economic Times: US economy picks up pace in Q2, grows 2.2%. The US economy grew at a 2.2% annual pace in the second quarter as consumer spending and business investment remained strong, marking an upgrade from the government\u2019s earlier estimate of 1.5%, the Commerce Department said on Wednesday. The economy expanded 2.5% in the January-March quarter, the Asso</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 769.07, with current implied volatility around 13.45 and the near-the-money strike near 769.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 769.07 after moving 0.64 percent on the session. Implied volatility sits around 13.45 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Fed Meeting. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Lenny&rsquo;s Newsletter. The core idea is Jev: 8 real use cases for the fastest, cheapest model I\u2019ve ever used | John Lindquist. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-09-29",
       "slug": "daily-brief-2026-09-29",
       "episode_number": 108,
