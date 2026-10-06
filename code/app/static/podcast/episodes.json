@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-10-06",
+      "slug": "daily-brief-2026-10-06",
+      "episode_number": 111,
+      "title": "Daily Brief \u2014 October 06, 2026",
+      "date": "2026-10-06",
+      "published_at": "2026-10-06T14:26:42",
+      "duration_seconds": 503,
+      "duration_human": "08:23",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-10-06.mp3",
+      "audio_length_bytes": 4024338,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Product Talk (Teresa Torres): Recorded Conversations - All Things Product Podcast with Teresa Torres & Petra Wille",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 779.91,
+        "pct_change": 0.66,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-10-06</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-10-06</li>\n<li><strong>PM/analytics:</strong> From Product Talk (Teresa Torres): Recorded Conversations - All Things Product Podcast with Teresa Torres &amp; Petra Wille</li>\n</ul>\n<h2>Summary</h2>\n<p>Livemint: US, China discuss visits to nuclear sites as fears grow that a new arms race could be taking shape. The US and China are discussing reciprocal visits to nuclear facilities, a tentative confidence building step as Washington worries about Beijing&rsquo;s expanding arsenal and the collapse of established arms-control limits between the major powers. South China Morning Post: Rising electricity needs put Southeast Asia\u2019s energy security at risk: report. Risks to Southeast Asia\u2019s energy supplies are multiplying faster than nations are coming up with solutions to meet rapidly rising demand for electricity, according to an International Energy Agency report released on Tuesday. Southeast Asia has a seemingly insatiable appetite for energy, but the reg South China Morning Post: Chinese team creates \u2018lifelike\u2019 hydrogel that changes shape for smart devices. Chinese researchers have developed a \u201clifelike\u201d shape-changing hydrogel they say could provide a platform for next-generation developments, such as flexible tissue engineering scaffolds, brain-computer interfaces and humanlike robots. Inspired by living organisms, the team created a light-triggered The Guardian: Norwegian princess M\u00e4rtha Louise and husband sue ex-friends for \u2018betrayal of trust\u2019. M\u00e4rtha Louise and Durek Verrett launch defamation lawsuit in Los Angeles, claiming \u2018coordinated series of devastating public attacks\u2019 The Norwegian princess M\u00e4rtha Louise and her husband, the American businessman Durek Verrett, are suing several former members of their inner circle for defamation ov Livemint: \u2018Deranged and dangerous\u2019, \u2018He gave terrorists targets\u2019: Trump\u2019s Iran \u2018take out LA, San Diego\u2019 remark sparks outrage. The contrasting reactions have largely centred on whether Trump was literally suggesting that an Iranian attack on Los Angeles or San Diego was an acceptable sacrifice, or whether he was describing a hypothetical consequence of Iran acquiring nuclear weapons. The Guardian: Badenoch suggests Tories would not reverse Labour\u2019s pensions triple lock legislation \u2013 UK politics live. In his party conference speech last week, Andy Burnham said he wanted to change the triple lock uprating mechanism from 2030 Asked if she will propose tax cuts in her speech tomorrow, Badenoch tells McCann that she will have to wait until her speech tomorrow at 11.15am. (This is getting confusing. O</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 779.91, with current implied volatility around 13.82 and the near-the-money strike near 780.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 779.91 after moving 0.66 percent on the session. Implied volatility sits around 13.82 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Retail Sales. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Product Talk (Teresa Torres). The core idea is Recorded Conversations - All Things Product Podcast with Teresa Torres &amp; Petra Wille. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-10-05",
       "slug": "daily-brief-2026-10-05",
       "episode_number": 110,
