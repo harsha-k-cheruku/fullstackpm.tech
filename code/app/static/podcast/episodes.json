@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-10-07",
+      "slug": "daily-brief-2026-10-07",
+      "episode_number": 112,
+      "title": "Daily Brief \u2014 October 07, 2026",
+      "date": "2026-10-07",
+      "published_at": "2026-10-07T14:02:08",
+      "duration_seconds": 459,
+      "duration_human": "07:39",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-10-07.mp3",
+      "audio_length_bytes": 3672207,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Ravi Mehta \u2014 Ravi on Product: Product Definition.",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 774.66,
+        "pct_change": -0.57,
+        "iv_rank": 100.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-10-07</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-10-07</li>\n<li><strong>PM/analytics:</strong> From Ravi Mehta \u2014 Ravi on Product: Product Definition.</li>\n</ul>\n<h2>Summary</h2>\n<p>The Guardian: Mayor of Turkish opposition stronghold Izmir defects to Erdo\u011fan\u2019s party. Cemil Tugay joins ruling AKP after vowing he would never switch sides in coup for Turkish president The mayor of Izmir, Turkey\u2019s third city and an opposition stronghold, has defected to the ruling AKP in a move hailed by Recep Tayyip Erdo\u011fan, the Turkish president. Turkey\u2019s opposition is battling an The Guardian: Minister denies police brutality as student protests continue across France \u2013 Europe live. Nearly 460 schools are affected by continuing protests today, just over a half of those that joined the \u2018day of mobilisation\u2019 yesterday We are getting reports of a knife attack at a vocational school in Ostro\u0142\u0119ka, Poland, which left at least seven people injured, including two seriously, as reported The Guardian: Tropical Storm Isaias near Mexico is forecast to become a hurricane. Isaias, which succeeded Tropical Depression Nine, would be the first hurricane of the belated Atlantic season Tropical Storm Isaias formed early on Wednesday in the warm waters off eastern Mexico and forecasters said it was expected to strengthen into the first hurricane of the belated Atlantic seas Livemint: India, UK agree to explore cross-border equity, bond listings through GIFT IFSC. The agreement was part of the joint statement adopted after the fourth UK-India Financial Markets Dialogue, held in London on 29 September. Al Jazeera: South Korea signals military exemption cuts for athletes after Asian Games. South Korea signals cuts to military exemptions for gold medallists after backlash over athletes&rsquo; Asian Games comments. Livemint: Isaias landfall forecast: Tropical storm heads for US Gulf Coast; Florida declares emergency. AccuWeather Hurricane Experts said Isaias is likely to become the first hurricane of the 2026 Atlantic season, potentially making it the latest first hurricane to form in the Atlantic basin in more than 100 years.</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 774.66, with current implied volatility around 14.84 and the near-the-money strike near 775.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 774.66 after moving -0.57 percent on the session. Implied volatility sits around 14.84 with IV rank near 100.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Freddie Mac Mortgage Rate Update, Retail Sales. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Ravi Mehta \u2014 Ravi on Product. The core idea is Product Definition.. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-10-06",
       "slug": "daily-brief-2026-10-06",
       "episode_number": 111,
