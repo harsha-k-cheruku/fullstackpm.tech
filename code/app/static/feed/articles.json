@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T15:11:53.817340+00:00",
+  "generated_at": "2026-10-09T15:37:21.809443+00:00",
   "articles": [
     {
       "id": "2bfaefd33578768d",
@@ -420,6 +420,28 @@
       "is_dismissed": false
     },
     {
+      "id": "2624c5312479dd5c",
+      "url": "https://stackoverflow.blog/2026/10/08/part-5-operating-an-llm-system-observability-cost-routing-and-the-platform-underneath/",
+      "title": "Part 5: Operating an LLM system: observability, cost, routing, and the platform underneath",
+      "display_title": "Part 5: Operating an LLM System: Observability, Cost, Routing, Platform Underneath",
+      "excerpt": "Your service can be 100% up and still quietly approving the wrong things, burning its budget, or failing over into untested quality. Level 5 is the infrastructure that lets you see your decisions, bound your spend, route and fail over between models, kill bad behavior in seconds — and the platform that makes all of it possible.",
+      "source_name": "Stack Overflow Blog",
+      "source_category": "engineering",
+      "source_type": "engineering",
+      "published_at": "2026-10-08T20:08:53+00:00",
+      "fetched_at": "2026-10-09T15:09:09.389266+00:00",
+      "ai_score": 10,
+      "ai_score_reason": "quantified(+2) | tension(+2) | framework(+1) | eng-primary(+1)",
+      "key_insight": null,
+      "ai_summary": null,
+      "first_principle": null,
+      "ai_insight": null,
+      "ai_article_analysis": null,
+      "ai_processed_at": "2026-10-09T15:32:12.180830+00:00",
+      "is_editors_pick": false,
+      "is_dismissed": false
+    },
+    {
       "id": "8105184611e3739c",
       "url": "https://medium.com/airbnb-engineering/when-history-fails-you-borrow-from-geography-915a72b91b5c?source=rss----53c7c27702d5---4",
       "title": "When history fails you, borrow from geography",
@@ -636,28 +658,6 @@
       "ai_insight": null,
       "ai_article_analysis": "THE PRODUCT PROBLEM\n\nIn the realm of assistive technology, the challenge was to create a non-invasive method for individuals with brain lesions to communicate effectively, without the need for surgical interventions. Existing non-invasive solutions were plagued by low accuracy, rendering them impractical for real-world use. The competitive landscape was dominated by invasive techniques that, while accurate, were not scalable due to the inherent risks and costs of surgery. Meta needed a breakthrough to bridge this gap, providing a viable alternative that could be adopted widely and improve the quality of life for millions.\n\nTHE DECISION\n\nThe pivotal decision was to prioritize data scaling over architectural innovation, aligning PM, engineering, and research teams around a shared vision of leveraging massive datasets to enhance model performance. This decision required a commitment to open collaboration, as evidenced by the release of both the model and training data to the public. The alignment was challenging, as it involved balancing the need for rapid improvements with the long-term goal of fostering community-driven advancements. In hindsight, this tradeoff proved advantageous, as the significant performance gains were achieved primarily through increased data volume, validating the decision to focus on data rather than immediate architectural changes.\n\nTHE LESSON\n\nThis case underscores the critical importance of data in driving product innovation, a nuance often overlooked in PM/engineering collaboration. While PMs may traditionally focus on feature sets and user interfaces, this project highlights how data accessibility and volume can be the real catalysts for breakthrough performance. The collaboration between Meta and the wider research community illustrates the power of open-source initiatives in accelerating progress. PMs should consider how fostering open ecosystems and prioritizing data scalability can unlock new levels of product capability, even when technological breakthroughs seem out of reach.",
       "ai_processed_at": "2026-07-14T15:06:47.102765+00:00",
-      "is_editors_pick": false,
-      "is_dismissed": false
-    },
-    {
-      "id": "285e62b9eb1fd78e",
-      "url": "https://slack.engineering/shipyard-how-we-built-slacks-next-generation-ec2-platform/",
-      "title": "Shipyard: How We Built Slack’s Next-Generation EC2 Platform",
-      "display_title": "Shipyard builds Slack's next-gen EC2 platform",
-      "excerpt": "Over the past few years, we’ve been on a journey to modernise how we run Amazon Elastic Compute Cloud (EC2) instances at Slack. In our first post, Advancing Our Chef Infrastructure, we shared how we moved from a single Chef stack to a resilient, multi-stack setup with versioned cookbook deployments and safer promotion workflows. This…",
-      "source_name": "Slack Engineering",
-      "source_category": "engineering",
-      "source_type": "engineering",
-      "published_at": "2026-07-14T16:10:08+00:00",
-      "fetched_at": "2026-07-15T15:00:18.244556+00:00",
-      "ai_score": 9,
-      "ai_score_reason": "practitioner(+2) | case-study(+1) | eng-primary(+1)",
-      "key_insight": null,
-      "ai_summary": "When teams prioritize immediate operational stability, PMs typically overlook the long-term scalability of their infrastructure — but this shows that relying on legacy systems can stifle innovation and adaptability. The shift toward treating infrastructure as deployable artifacts rather than mutable instances highlights the necessity for PMs to embrace modern deployment practices to future-proof their products.",
-      "first_principle": null,
-      "ai_insight": null,
-      "ai_article_analysis": "THE PRODUCT PROBLEM\n\nSlack's existing EC2 infrastructure model was becoming increasingly unsustainable, as the continuous updates to long-lived instances led to infrastructure drift and complicated service-level deployments. This complexity was compounded by the need for coordination across multiple layers, which hindered the agility and reliability of operations. The competitive landscape demanded a more modern approach to deployment, akin to what containers offered for certain workloads, but not all could transition smoothly. The business needed a solution that would enable Slack to maintain operational excellence while adopting modern deployment practices like immutability and automated safety, ensuring both scalability and stability.\n\nTHE DECISION\n\nThe decision to develop Shipyard was a strategic move to shift from a mutable infrastructure model to one where EC2 instances are treated as deployable artifacts. This transition required alignment across product management, engineering, and operations, as it fundamentally changed how infrastructure was managed and deployed. The tradeoff involved moving away from a familiar configuration management system to a new paradigm that emphasized build pipelines and automated safety. While this decision introduced initial complexity and required a cultural shift, it ultimately provided greater control and predictability over infrastructure updates. In hindsight, the decision was crucial for future-proofing Slack's infrastructure capabilities.\n\nTHE LESSON\n\nThis journey underscores the importance of PM and engineering collaboration in driving transformative infrastructure changes. It reveals that successful product evolution often involves rethinking foundational assumptions and being willing to embrace new paradigms, even if it means departing from established practices. The development of Shipyard highlights that PMs must not only facilitate alignment across teams but also champion the vision for long-term scalability and reliability. This case illustrates that the most impactful product decisions often require a willingness to challenge the status quo and invest in foundational shifts that align with future business needs.",
-      "ai_processed_at": "2026-07-15T15:03:27.330469+00:00",
       "is_editors_pick": false,
       "is_dismissed": false
     },
