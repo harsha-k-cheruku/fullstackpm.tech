@@ -1,6 +1,61 @@
 {
   "episodes": [
     {
+      "id": "2026-10-09",
+      "slug": "daily-brief-2026-10-09",
+      "episode_number": 114,
+      "title": "Daily Brief \u2014 October 09, 2026",
+      "date": "2026-10-09",
+      "published_at": "2026-10-09T14:02:46",
+      "duration_seconds": 485,
+      "duration_human": "08:05",
+      "audio_file": "episode.mp3",
+      "audio_url": "https://www.fullstackpm.tech/podcast/audio/2026-10-09.mp3",
+      "audio_length_bytes": 3875753,
+      "shownotes_file": "shownotes.md",
+      "curriculum": {
+        "week": 8,
+        "day": 2,
+        "topic": "Building a Directional View on SPY",
+        "lesson": "Using moving averages to confirm trend direction"
+      },
+      "segments": [
+        {
+          "name": "Global News Brief",
+          "duration_minutes": 5
+        },
+        {
+          "name": "SPY Learning: Using moving averages to confirm trend direction",
+          "duration_minutes": 8
+        },
+        {
+          "name": "Daily Market Brief",
+          "duration_minutes": 10
+        },
+        {
+          "name": "PM Concept: From Aakash Gupta \u2014 Product Growth: The Roadmap to Becoming a Product Builder, with Ankit Shukla",
+          "duration_minutes": 7
+        }
+      ],
+      "spy_stats": {
+        "close": 776.03,
+        "pct_change": 0.27,
+        "iv_rank": 0.0
+      },
+      "tags": [
+        "SPY",
+        "options",
+        "using",
+        "moving",
+        "averages",
+        "confirm",
+        "trend",
+        "direction"
+      ],
+      "status": "complete",
+      "shownotes_html": "<h1>Daily Brief \u2014 2026-10-09</h1>\n<h2>What we covered</h2>\n<ul>\n<li><strong>World news:</strong> World &amp; Market Brief</li>\n<li><strong>SPY learning:</strong> Using moving averages to confirm trend direction</li>\n<li><strong>Market brief:</strong> SPY Daily Brief \u2014 2026-10-09</li>\n<li><strong>PM/analytics:</strong> From Aakash Gupta \u2014 Product Growth: The Roadmap to Becoming a Product Builder, with Ankit Shukla</li>\n</ul>\n<h2>Summary</h2>\n<p>BBC World: Three Saudi nationals killed in Houthi attacks on Riyadh airport. The missile attacks come amid an escalation in fighting between the Iran-backed group and Saudi Arabia, which backs Yemen&rsquo;s government. The Guardian: Green MP Si\u00e2n Berry says opponents of Zionism motion were \u2018persuaded\u2019 not to fight it because of byelection \u2013 UK politics live. The MP says that passing the motion has done \u2018genuine damage; to the party\u2019s reputation Report: Labour wins Holborn and St Pancras byelection Analysis: defeat will disappoint Greens \u2013 but there may also be relief Activists in Camden have suggested the Greens\u2019 decision to back the anti-Zionism motion The Guardian: Democratic Senate candidate responds to anti-trans attacks pushed by Republicans. Dr Annie Andrews voices opposition to \u2018biological men &hellip; in women\u2019s sports\u2019 in response to Republican attacks Dr Annie Andrews , a Democratic Senate candidate in South Carolina, has responded to persistent efforts by Republicans to make trans athletes in women\u2019s sports a wedge issue in the race. In Livemint: Dhruv Rathee&rsquo;s visa status, citizenship to be scrutinised? Why Ex-Bengaluru Police chief Bhaskar Rao seeks verification. Former Bengaluru Police Commissioner Bhaskar Rao asked the Union Home Ministry to verify YouTuber Dhruv Rathee\u2019s citizenship, immigration status and visa compliance after Rathee attended an anti-SIR protest in Bengaluru on October 8.&nbsp; South China Morning Post: Developer of One Stanley pledges 6-year warranty and checks amid steel bar probe. The developer of One Stanley has offered flat owners a six-year structural warranty and free independent property inspections amid an investigation into suspected steel reinforcement deficiencies at the seaside luxury residential development in southern Hong Kong. K Wise, a subsidiary of One Stanley South China Morning Post: Travel agencies tout Huanggang Port tours, but security chief urges later visits. Hong Kong travel agencies are offering tours featuring \u201cfive-minute clearance\u201d at the revamped Huanggang Port when it opens on Monday, but the security chief has urged those who do not need to use the crossing immediately to delay their visits. Three days before the port\u2019s official opening, the Sout</p>\n<p>Today&rsquo;s lesson is Using moving averages to confirm trend direction. SPY most recently closed at 776.03, with current implied volatility around 13.81 and the near-the-money strike near 776.0. That gives us a concrete anchor instead of pretending options theory lives in a vacuum. When you think about this concept, ask how a small move in SPY would change the option&rsquo;s behavior, and how that risk profile shifts as time and volatility change. The point is not memorizing jargon. The point is understanding what kind of position becomes more fragile or more forgiving when the market moves.</p>\n<p>SPY closed at 776.03 after moving 0.27 percent on the session. Implied volatility sits around 13.81 with IV rank near 0.0, which matters because premium sellers generally prefer richer volatility while buyers care more about the potential for a larger move. On the macro side, the next major event on deck is Retail Sales, CPI Inflation Release. The practical takeaway is to watch whether price momentum continues and whether implied volatility starts expanding ahead of the next catalyst.</p>\n<p>The standout PM read today comes from Aakash Gupta \u2014 Product Growth. The core idea is The Roadmap to Becoming a Product Builder, with Ankit Shukla. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritization dressed up in nicer prose.</p>"
+    },
+    {
       "id": "2026-10-08",
       "slug": "daily-brief-2026-10-08",
       "episode_number": 113,
