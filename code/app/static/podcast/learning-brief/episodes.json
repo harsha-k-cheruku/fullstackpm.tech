@@ -1,6 +1,47 @@
 {
   "episodes": [
     {
+      "id": "2026-10-15",
+      "slug": "learning-brief-2026-10-15",
+      "title": "Learning Brief \u2014 October 15, 2026",
+      "date": "2026-10-15",
+      "published_at": "2026-10-15T20:58:13",
+      "duration_seconds": 192,
+      "duration_human": "03:12",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/learning-brief/audio/2026-10-15.mp3",
+      "audio_length_bytes": 1535391,
+      "segments": {
+        "ai_news": {
+          "title": "AI & Tech Developments",
+          "points": [
+            "Hugging Face Blog: Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint.",
+            "TechCrunch \u2014 AI: Meta launches an open-weight AI model that runs on Macs. Meta and Apple have teamed up for the launch of the social media giant's newest model, Muse Spark Open, which will run locally on Apple silicon.",
+            "The Verge \u2014 AI: Bluesky\u2019s AI tool now lets you make games and apps to share on social. Bluesky's Attie AI tool, which initially launched earlier this year as a way to use AI to build your own feeds, now lets you make \"small\" social apps like games, polls, and dashboards that you can then share with others as their own websites. In an interview at TechCrunch Disrupt, Bluesky CEO Toni S",
+            "TechCrunch \u2014 AI: Amazon devices chief Panos Panay sees a future where AI devices replace the need to use apps. Speaking at TechCrunch Disrupt, Amazon devices chief Panos Panay described a future where ambient AI devices work in the background, anticipating users' needs instead of waiting for commands.",
+            "TechCrunch \u2014 AI: Anthropic is letting METR researchers look under the hood with employee-level access. METR will publish its own assessments of Anthropic\u2019s risks, incidents, and practices, and the frontier AI model maker has given up the right to block them.",
+            "TechCrunch \u2014 AI: Bluesky expands its AI-powered Attie app to let anyone build websites, games, and more. Bluesky is bringing \u201csocial vibe coding\u201d to its experimental Attie platform, allowing users to create interactive experiences like games, quizzes, and websites that can tap into the social network's audience."
+          ],
+          "product_implications": [],
+          "word_count": 264
+        },
+        "pm_news": {
+          "title": "From Product Talk (Teresa Torres): Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis",
+          "source": "Product Talk (Teresa Torres)",
+          "content": "Today's PM news comes from Product Talk (Teresa Torres). The story is Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.",
+          "word_count": 60
+        },
+        "pm_learning": {
+          "title": "From Product Talk (Teresa Torres): Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis",
+          "source": "Product Talk (Teresa Torres)",
+          "content": "Today's PM learning comes from Product Talk (Teresa Torres). The core idea is Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.",
+          "mental_model": "Make the next experiment small enough to learn quickly.",
+          "word_count": 98
+        }
+      },
+      "shownotes": "# Learning Brief \u2014 2026-10-15\n\n## What we covered\n- **AI news:** AI & Tech Developments\n- **PM news:** From Product Talk (Teresa Torres): Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis\n- **PM learning:** From Product Talk (Teresa Torres): Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis\n\n## Mental model\n\nMake the next experiment small enough to learn quickly.\n\n## Summary\n\nHugging Face Blog: Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint. TechCrunch \u2014 AI: Meta launches an open-weight AI model that runs on Macs. Meta and Apple have teamed up for the launch of the social media giant's newest model, Muse Spark Open, which will run locally on Apple silicon. The Verge \u2014 AI: Bluesky\u2019s AI tool now lets you make games and apps to share on social. Bluesky's Attie AI tool, which initially launched earlier this year as a way to use AI to build your own feeds, now lets you make \"small\" social apps like games, polls, and dashboards that you can then share with others as their own websites. In an interview at TechCrunch Disrupt, Bluesky CEO Toni S TechCrunch \u2014 AI: Amazon devices chief Panos Panay sees a future where AI devices replace the need to use apps. Speaking at TechCrunch Disrupt, Amazon devices chief Panos Panay described a future where ambient AI devices work in the background, anticipating users' needs instead of waiting for commands. TechCrunch \u2014 AI: Anthropic is letting METR researchers look under the hood with employee-level access. METR will publish its own assessments of Anthropic\u2019s risks, incidents, and practices, and the frontier AI model maker has given up the right to block them. TechCrunch \u2014 AI: Bluesky expands its AI-powered Attie app to let anyone build websites, games, and more. Bluesky is bringing \u201csocial vibe coding\u201d to its experimental Attie platform, allowing users to create interactive experiences like games, quizzes, and websites that can tap into the social network's audience.\n\nToday's PM news comes from Product Talk (Teresa Torres). The story is Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.\n\nToday's PM learning comes from Product Talk (Teresa Torres). The core idea is Building an AI Voice Agent for 360 Degree Feedback: How Your360 AI Uses State Machines, Evals, and Layered Synthesis. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-10-14",
       "slug": "learning-brief-2026-10-14",
       "title": "Learning Brief \u2014 October 14, 2026",
