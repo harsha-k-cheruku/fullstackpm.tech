@@ -1,6 +1,47 @@
 {
   "episodes": [
     {
+      "id": "2026-10-19",
+      "slug": "learning-brief-2026-10-19",
+      "title": "Learning Brief \u2014 October 19, 2026",
+      "date": "2026-10-19",
+      "published_at": "2026-10-19T20:38:25",
+      "duration_seconds": 2,
+      "duration_human": "00:02",
+      "audio_url": "https://www.fullstackpm.tech/static/podcast/learning-brief/audio/2026-10-19.mp3",
+      "audio_length_bytes": 15482,
+      "segments": {
+        "ai_news": {
+          "title": "AI & Tech Developments",
+          "points": [
+            "TechCrunch \u2014 AI: Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool. Amazon wants to break Nvidia\u2019s hold on PyTorch, the free toolkit used to build most AI apps, so that more developers run their apps on alternative chips like its own.",
+            "Ars Technica \u2014 Technology Lab: Recently fixed Plex Media vulnerabilities are being exploited to install malware. A researcher says attacks chaining 4 vulnerabilities is hacking unpatched boxes.",
+            "TechCrunch \u2014 AI: Hackers hit AI coding tool OpenCode, running up charges on users\u2019 AI accounts. OpenCode is an open-source AI coding agent that's become a popular alternative to Claude Code and Cursor. But hackers got into part of its online platform and stole some users\u2019 API keys, and the AI tools it turned to for help kept refusing to look at the malicious code.",
+            "TechCrunch \u2014 AI: Tolan snags $30M for its AI companion that helps users navigate life. AI companion app Tolan has raised another $30 million after attracting more than 250,000 active users.",
+            "TechCrunch \u2014 AI: Replika\u2019s founder built the AI assistant she pitched at Disrupt 12 years ago. Eugenia Kuyda's newest startup Wabi is positioned to take advantage of an idea she had more than a decade ago. Wabi offers a personal AI assistant with a twist, free and downloadable to anyone today.",
+            "TechCrunch \u2014 AI: Tenstorrent hits $6.2B valuation to scale open-weight AI chips. After drawing acquisition interest earlier this year, the Nvidia challenger raised $1.5 billion to remain independent."
+          ],
+          "product_implications": [],
+          "word_count": 252
+        },
+        "pm_news": {
+          "title": "From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM news comes from Lenny's Newsletter. The story is \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.",
+          "word_count": 54
+        },
+        "pm_learning": {
+          "title": "From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI",
+          "source": "Lenny's Newsletter",
+          "content": "Today's PM learning comes from Lenny's Newsletter. The core idea is \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.",
+          "mental_model": "Make the next experiment small enough to learn quickly.",
+          "word_count": 92
+        }
+      },
+      "shownotes": "# Learning Brief \u2014 2026-10-19\n\n## What we covered\n- **AI news:** AI & Tech Developments\n- **PM news:** From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI\n- **PM learning:** From Lenny's Newsletter: \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI\n\n## Mental model\n\nMake the next experiment small enough to learn quickly.\n\n## Summary\n\nTechCrunch \u2014 AI: Amazon is taking its biggest shot at Nvidia yet with new TorchNeuron dev tool. Amazon wants to break Nvidia\u2019s hold on PyTorch, the free toolkit used to build most AI apps, so that more developers run their apps on alternative chips like its own. Ars Technica \u2014 Technology Lab: Recently fixed Plex Media vulnerabilities are being exploited to install malware. A researcher says attacks chaining 4 vulnerabilities is hacking unpatched boxes. TechCrunch \u2014 AI: Hackers hit AI coding tool OpenCode, running up charges on users\u2019 AI accounts. OpenCode is an open-source AI coding agent that's become a popular alternative to Claude Code and Cursor. But hackers got into part of its online platform and stole some users\u2019 API keys, and the AI tools it turned to for help kept refusing to look at the malicious code. TechCrunch \u2014 AI: Tolan snags $30M for its AI companion that helps users navigate life. AI companion app Tolan has raised another $30 million after attracting more than 250,000 active users. TechCrunch \u2014 AI: Replika\u2019s founder built the AI assistant she pitched at Disrupt 12 years ago. Eugenia Kuyda's newest startup Wabi is positioned to take advantage of an idea she had more than a decade ago. Wabi offers a personal AI assistant with a twist, free and downloadable to anyone today. TechCrunch \u2014 AI: Tenstorrent hits $6.2B valuation to scale open-weight AI chips. After drawing acquisition interest earlier this year, the Nvidia challenger raised $1.5 billion to remain independent.\n\nToday's PM news comes from Lenny's Newsletter. The story is \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI. For a senior PM, the key takeaway is to watch how product decisions and strategy plays out in practice \u2014 not just the headline, but the reasoning behind it.\n\nToday's PM learning comes from Lenny's Newsletter. The core idea is \ud83c\udf99\ufe0f How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI. What matters for a senior PM is translating the idea into a repeatable habit: define the user problem clearly, pick a metric that actually reflects value, identify the riskiest assumption, and make the next experiment small enough to learn quickly. Good PM content is rarely magic. It is usually disciplined prioritisation dressed up in nicer prose.\n",
+      "status": "complete"
+    },
+    {
       "id": "2026-10-16",
       "slug": "learning-brief-2026-10-16",
       "title": "Learning Brief \u2014 October 16, 2026",
