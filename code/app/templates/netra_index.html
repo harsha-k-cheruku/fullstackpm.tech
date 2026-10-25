@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Netra — Company Intelligence{% endblock %}
+{% block content %}
+<div class="container" style="max-width:860px;margin:0 auto;padding:48px 24px 80px">
+
+  <div style="margin-bottom:40px">
+    <h1 style="font-size:1.8rem;font-weight:700;margin-bottom:8px">Netra</h1>
+    <p style="color:var(--color-text-secondary);font-size:1rem;max-width:600px">
+      Analyst-quality intelligence reports on S&amp;P 500 companies — built from SEC 10-K filings,
+      live market data, and news synthesis. Updated as new filings drop.
+    </p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px">
+    {% for t in tickers %}
+    <a href="/netra/{{ t.ticker }}" style="
+      display:block;
+      background:var(--color-bg-secondary,#1a1d27);
+      border:1px solid var(--color-border,#2e3250);
+      border-radius:10px;
+      padding:20px 22px;
+      text-decoration:none;
+      transition:border-color .15s,transform .15s;
+    " onmouseover="this.style.borderColor='var(--color-accent,#6c8fff)';this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.borderColor='var(--color-border,#2e3250)';this.style.transform='none'">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+        <span style="font-size:1.1rem;font-weight:700;color:var(--color-text-primary,#e2e8f0)">{{ t.ticker }}</span>
+        <span style="font-size:.75rem;font-weight:600;background:var(--color-accent-muted,#1e2a4a);color:var(--color-accent,#6c8fff);padding:2px 8px;border-radius:12px">{{ t.report_count }} report{{ 's' if t.report_count != 1 }}</span>
+      </div>
+      <div style="font-size:.9rem;color:var(--color-text-secondary,#8892aa);margin-bottom:10px">{{ t.name }}</div>
+      <div style="font-size:.78rem;color:var(--color-text-muted,#5a6380)">Updated {{ t.latest_date }}</div>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% if not tickers %}
+  <p style="color:var(--color-text-secondary,#8892aa)">No reports available yet.</p>
+  {% endif %}
+
+</div>
+{% endblock %}
