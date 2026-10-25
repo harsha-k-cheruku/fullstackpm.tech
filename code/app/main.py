@@ -16,7 +16,7 @@ from app.models.narada_override import NaradaOverride  # noqa: F401 — ensures 
 from app.models.josaa_scenario import JosaaScenario  # noqa: F401 — ensures table is created by init_db
 from app.models.feed_article import FeedArticle  # noqa: F401 — ensures table is created by init_db
 from app.models.options_intel import OptionsIntelNotification  # noqa: F401 — ensures table is created by init_db
-from app.routers import auth, backstory, blog, comments, daily_brief, feed, interview_coach, josaa_tool, learning_brief, likes, marketplace, narada_admin, netra, newsletter, options_intel, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
+from app.routers import artha, auth, backstory, blog, comments, daily_brief, feed, interview_coach, josaa_tool, learning_brief, likes, marketplace, narada_admin, netra, newsletter, options_intel, pages, pm_multiverse, pm_prep, podcast, projects, resources, sde_prep, seo
 from app.services.content import ContentService
 from app.services.feed_service import feed_service
 from app.services.reading_service import ReadingService
@@ -113,6 +113,7 @@ app.include_router(sde_prep.router)
 app.include_router(pm_prep.router)
 app.include_router(narada_admin.router)
 app.include_router(netra.router)
+app.include_router(artha.router)
 app.include_router(auth.router)
 app.include_router(seo.router)
 
