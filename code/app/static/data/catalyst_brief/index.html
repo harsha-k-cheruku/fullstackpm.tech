@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forward Catalyst Brief — Oct 24, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: #0d0d0d; color: #e0e0e0; padding: 32px 24px; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  h1 { font-size: 1.55rem; color: #e94560; margin-bottom: 4px; }
+  h2 { font-size: 1.05rem; color: #e0e0e0; margin: 32px 0 12px; border-bottom: 1px solid #1e1e1e; padding-bottom: 8px; }
+  h3 { font-size: 0.9rem; color: #aaa; margin: 20px 0 8px; font-weight: 600; }
+  .subtitle { color: #444; font-size: 0.8rem; margin-bottom: 36px; }
+  .disclaimer { font-size: 0.72rem; color: #333; margin-top: 6px; }
+
+  .card { background: #141414; border: 1px solid #232323; border-radius: 10px;
+          padding: 20px 24px; margin-bottom: 18px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 12px 0 20px; }
+  th { background: #1a1a1a; color: #666; font-size: 0.65rem; text-transform: uppercase;
+       letter-spacing: 0.08em; padding: 8px 10px; text-align: left; border-bottom: 1px solid #232323; }
+  td { padding: 9px 10px; border-bottom: 1px solid #1a1a1a; vertical-align: top; line-height: 1.4; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #161616; }
+
+  .imp-critical { color: #e94560; font-weight: 700; font-size: 0.72rem; }
+  .imp-high     { color: #f97316; font-weight: 600; font-size: 0.72rem; }
+  .imp-medium   { color: #facc15; font-size: 0.72rem; }
+  .imp-low      { color: #555; font-size: 0.72rem; }
+
+  .date-col { color: #888; white-space: nowrap; }
+  .catalyst-col { color: #e0e0e0; font-weight: 500; }
+  .expect-col { color: #999; }
+  .prior-col { color: #555; }
+  .asset-col { color: #6abeff; font-size: 0.72rem; }
+  .tx-col { color: #777; font-size: 0.72rem; }
+
+  .snapshot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  .snap-box { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px; text-align: center; }
+  .snap-val { font-size: 1.15rem; font-weight: 700; color: #e0e0e0; }
+  .snap-chg-down { font-size: 0.75rem; color: #f87171; }
+  .snap-chg-up { font-size: 0.75rem; color: #4ade80; }
+  .snap-label { font-size: 0.62rem; color: #444; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
+
+  .dte-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+  .dte-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 14px 16px; }
+  .dte-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .dte-label { font-size: 0.85rem; font-weight: 700; color: #e0e0e0; }
+  .dte-date { font-size: 0.68rem; color: #555; }
+  .dte-regime { font-size: 0.75rem; color: #facc15; margin-bottom: 6px; font-weight: 600; }
+  .dte-body { font-size: 0.75rem; color: #888; line-height: 1.5; }
+  .dte-confirm { font-size: 0.7rem; color: #4ade80; margin-top: 6px; }
+  .dte-invalidate { font-size: 0.7rem; color: #f87171; margin-top: 3px; }
+
+  .regime-box { background: #1a1a1a; border-left: 3px solid #e94560; border-radius: 6px;
+                padding: 14px 16px; margin-bottom: 12px; }
+  .regime-rank { font-size: 0.65rem; color: #e94560; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .regime-title { font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .regime-body { font-size: 0.78rem; color: #888; line-height: 1.5; }
+
+  .narrative p { font-size: 0.83rem; color: #aaa; margin-bottom: 14px; line-height: 1.65; }
+  .narrative strong { color: #e0e0e0; }
+
+  .tag { display: inline-block; font-size: 0.6rem; font-weight: 700; padding: 1px 7px;
+         border-radius: 10px; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px; }
+  .tag-fomc  { background: #2a0a1a; color: #e94560; }
+  .tag-macro { background: #0a1a2a; color: #6abeff; }
+  .tag-earn  { background: #0a2a1a; color: #4ade80; }
+  .tag-geo   { background: #2a2a0a; color: #facc15; }
+  .tag-energy { background: #2a1a0a; color: #f97316; }
+
+  .section-note { font-size: 0.72rem; color: #333; margin-top: 8px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Forward Catalyst Brief</h1>
+  <p class="subtitle">SPY · QQQ · AMZN · NVDA · Broader U.S. Market &nbsp;·&nbsp; Generated Sat Oct 24, 2026 &nbsp;·&nbsp; Data as of Fri Oct 23 close</p>
+  <p class="disclaimer">Fact-based synthesis. Consensus expectations clearly labeled. Judgment clearly labeled. No options recommendations.</p>
+
+  <!-- MARKET SNAPSHOT -->
+  <h2>Market Context — Friday Oct 23 Close</h2>
+  <div class="snapshot-grid">
+    <div class="snap-box"><div class="snap-val">$761.11</div><div class="snap-label">SPY</div></div>
+    <div class="snap-box"><div class="snap-val">$704.40</div><div class="snap-label">QQQ</div></div>
+    <div class="snap-box"><div class="snap-val">$248.00</div><div class="snap-label">AMZN</div></div>
+    <div class="snap-box"><div class="snap-val">$210.96</div><div class="snap-label">NVDA</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:6px;">
+    <div class="snap-box"><div class="snap-val" style="font-size:1rem;">19.5</div><div class="snap-label">VIX</div></div>
+    <div class="snap-box"><div class="snap-val" style="font-size:1rem;">5.00%</div><div class="snap-label">10Y Yield</div></div>
+    <div class="snap-box"><div class="snap-val" style="font-size:1rem;">4.69%</div><div class="snap-label">2Y Yield</div></div>
+    <div class="snap-box"><div class="snap-val" style="font-size:1rem;">101.81</div><div class="snap-label">DXY</div></div>
+    <div class="snap-box"><div class="snap-val" style="font-size:1rem;">$103.22</div><div class="snap-label">WTI Crude</div></div>
+  </div>
+  <p class="section-note">Delayed quotes (~15 min). Prices are as of Friday Oct 23 close. Weekend: no intraday data available. News narrative referenced "$117 oil" — Brent est. ~$107–108; verify Monday open.</p>
+
+  <!-- CATALYST CALENDAR TABLE -->
+  <h2>Catalyst Calendar — Next 5 Trading Sessions (Oct 27–31)</h2>
+  <div class="card" style="padding:0;overflow:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Catalyst</th>
+        <th>Consensus / Expectation</th>
+        <th>Prior</th>
+        <th>Importance</th>
+        <th>Underlyings</th>
+        <th>Transmission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="date-col">Mon Oct 27</td>
+        <td class="catalyst-col"><span class="tag tag-fomc">FOMC</span>Pre-FOMC quiet period; pre-positioning session</td>
+        <td class="expect-col">Reduced risk appetite; dealers hedging ahead of event</td>
+        <td class="prior-col">—</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">SPY, QQQ, TLT, VIX</td>
+        <td class="tx-col">Expect vol bid, range compression ahead of Tue decision</td>
+      </tr>
+      <tr>
+        <td class="date-col">Mon Oct 27</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>3M / 6M T-Bill auction (~11:30 AM ET)</td>
+        <td class="expect-col">Strong demand expected; bills bid near Fed funds</td>
+        <td class="prior-col">—</td>
+        <td><span class="imp-low">LOW</span></td>
+        <td class="asset-col">SHY, BIL</td>
+        <td class="tx-col">Minor; watched for overseas demand signal</td>
+      </tr>
+      <tr>
+        <td class="date-col">Tue Oct 28</td>
+        <td class="catalyst-col"><span class="tag tag-fomc">FOMC</span>FOMC Rate Decision (~2:00 PM ET)</td>
+        <td class="expect-col"><strong style="color:#e0e0e0;">Hold</strong> — consensus strong for no change. Fed funds ~4.75–5.00%. Market watching for Dec cut language.</td>
+        <td class="prior-col">Hold</td>
+        <td><span class="imp-critical">CRITICAL</span></td>
+        <td class="asset-col">ALL — SPY, QQQ, TLT, DXY, Gold, VIX</td>
+        <td class="tx-col">Statement language on "sufficiently restrictive" and cut path drives immediate bond + equity reaction. A surprise cut = SPY rip + TLT rip + DXY drop. Surprise hike = rare but catastrophic selloff.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Tue Oct 28</td>
+        <td class="catalyst-col"><span class="tag tag-fomc">FOMC</span>Powell Press Conference (~2:30 PM ET)</td>
+        <td class="expect-col">Neutral-to-hawkish tone; data dependency language. Energy/oil inflation may warrant cautious framing.</td>
+        <td class="prior-col">Hawkish hold</td>
+        <td><span class="imp-critical">CRITICAL</span></td>
+        <td class="asset-col">SPY, QQQ, TLT, DXY</td>
+        <td class="tx-col">Press conference often re-prices what the statement set. Watch for any acknowledgment of oil price pass-through to core inflation. First 10 min = volatile; often reversal 20–30 min in.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Wed Oct 29</td>
+        <td class="catalyst-col"><span class="tag tag-earn">EARNINGS</span>AMZN Q3 2026 Earnings (~4:30 PM ET)</td>
+        <td class="expect-col"><strong style="color:#e0e0e0;">Fact:</strong> AMZN reports after close. <strong>Judgment:</strong> AWS growth reacceleration and ad revenue strength expected. AI capex guidance closely watched. Consensus: high expectations already priced at $248.</td>
+        <td class="prior-col">AWS ~+20% YoY</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">AMZN, QQQ, MSFT, GOOGL, AI-linked equities</td>
+        <td class="tx-col">Miss on AWS growth = QQQ sympathy selloff + cloud multiple compression. Beat + raised guidance = risk-on catalyst for tech sector. After-hours reaction sets next-day tone for entire QQQ complex.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Thu Oct 30</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>GDP Q3 Advance Estimate (8:30 AM ET)</td>
+        <td class="expect-col">Consensus ~+2.5% annualized (SAAR). Strong consumer spending expected to support print. <strong>Judgment:</strong> elevated oil prices may weigh on discretionary.</td>
+        <td class="prior-col">Q2: +2.8%</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">SPY, DXY, TLT, XLY, XLF</td>
+        <td class="tx-col">Strong GDP (>3%) + high inflation = stagflationary read, bearish for long bonds, mixed for equities. Weak GDP (<2%) = cut accelerator narrative, bonds rally. Base case in-line = muted reaction after FOMC.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Thu Oct 30</td>
+        <td class="catalyst-col"><span class="tag tag-earn">EARNINGS</span>AMZN post-earnings session open</td>
+        <td class="expect-col">After-hours AMZN reaction translates to regular session. Full reaction completes in first 2 hours.</td>
+        <td class="prior-col">—</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">AMZN, QQQ, NVDA sympathy</td>
+        <td class="tx-col">AI infrastructure capex guidance from AMZN directly signals NVDA demand. Positive AMZN → NVDA sympathy lift likely.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Fri Oct 31</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>PCE Price Index — September (8:30 AM ET)</td>
+        <td class="expect-col"><strong>Judgment:</strong> Core PCE expected ~2.6–2.7% YoY. Energy component elevated from oil prices may push headline PCE higher. Prior: Core 2.7%.</td>
+        <td class="prior-col">Core 2.7%, Headline 2.5%</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">TLT, SPY, DXY, Gold</td>
+        <td class="tx-col">Fed's preferred inflation gauge. Hot print = kills Dec cut narrative, bearish bonds, mixed SPY. Cool print = Dec cut pricing jumps, bonds rally, dollar softens, SPY bid.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Fri Oct 31</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>Personal Spending / Personal Income — September</td>
+        <td class="expect-col">Spending: modest real decline expected if inflation-adjusted. Income: steady.</td>
+        <td class="prior-col">Spending +0.2%</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">XLY, XLP, SPY</td>
+        <td class="tx-col">Consumer health checkpoint. Weak spending = demand destruction from high oil; bearish XLY.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="section-note">FACT: FOMC dates, AMZN earnings date, GDP/PCE schedule from official sources. CONSENSUS/JUDGMENT clearly labeled per column. Event timing approximate.</p>
+
+  <!-- 20-TRADING-DAY CALENDAR -->
+  <h2>Catalyst Calendar — Next 20 Trading Sessions (Nov 3–Nov 21)</h2>
+  <div class="card" style="padding:0;overflow:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Catalyst</th>
+        <th>Consensus / Expectation</th>
+        <th>Importance</th>
+        <th>Underlyings</th>
+        <th>Transmission</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="date-col">Mon Nov 3</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>ISM Manufacturing PMI</td>
+        <td class="expect-col">Consensus ~49–51 (contraction/expansion border). Energy-input costs elevated.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">XLI, XLB, SPY</td>
+        <td class="tx-col">Below 50 confirms manufacturing weakness; above 50 surprises on upside.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Tue Nov 4</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>JOLTS Job Openings (Sep)</td>
+        <td class="expect-col">Judgment: gradual softening trend expected. Prior ~7.4M.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">SPY, DXY, XLF</td>
+        <td class="tx-col">Big upside surprise → labor market hot → Fed hawkish. Downside miss → cuts priced faster → bonds rally.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Tue Nov 4</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>2-Year Treasury Note Auction</td>
+        <td class="expect-col">Demand closely watched at 4.69% yield. Overseas buyers critical.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">SHY, TLT, IEF, DXY</td>
+        <td class="tx-col">Weak auction (high tail) → yields spike → equities sell. Strong auction → yields stabilize → mild relief.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Wed Nov 5</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>ADP Employment (Oct)</td>
+        <td class="expect-col">NFP preview. Consensus ~+150–170K private jobs.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">SPY, DXY</td>
+        <td class="tx-col">Limited direct impact; sets narrative ahead of Thursday NFP.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Wed Nov 5</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>ISM Services PMI (Oct)</td>
+        <td class="expect-col">Consensus ~53–55 (expansion). Services the key growth engine.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">XLC, XLF, XLV, SPY</td>
+        <td class="tx-col">Services strength = economy resilient = Fed stays higher. Weakness = stagflation concern.</td>
+      </tr>
+      <tr>
+        <td class="date-col"><strong>Thu Nov 6</strong></td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span><strong>Non-Farm Payrolls — October (8:30 AM ET)</strong></td>
+        <td class="expect-col"><strong>Judgment:</strong> Consensus ~+175K. Unemployment rate ~4.0–4.2%. Wage growth 3.8–4.0% YoY key for inflation.</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">ALL underlyings</td>
+        <td class="tx-col">Binary mover. Blowout NFP (+250K+) = kills any Dec cut, bonds sell hard, dollar surges, tech pressure. Weak NFP (<100K) = recession fear + cut acceleration, bonds rip, tech split reaction.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Mon Nov 10</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span><strong>CPI — October (8:30 AM ET)</strong></td>
+        <td class="expect-col"><strong>Judgment:</strong> Core CPI ~3.2–3.5% YoY. Energy component elevated from WTI $103+ will push headline higher. Prior core: ~3.2%.</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">TLT, SPY, DXY, Gold, TIPS</td>
+        <td class="tx-col">Hot CPI locks in higher-for-longer through year-end. Cool CPI (<3%) = December cut becomes live, major risk-on. Energy pass-through is the key variable — WTI at $103 makes hot print likely.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Tue Nov 11</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>Veterans Day — Bond Market Closed</td>
+        <td class="expect-col">Equity markets open; thin participation; bond-related moves muted.</td>
+        <td><span class="imp-low">LOW</span></td>
+        <td class="asset-col">TLT (closed), equities open</td>
+        <td class="tx-col">Post-CPI day with illiquid rates — potential for exaggerated equity moves. Watch VIX.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Wed Nov 12</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>10-Year Note Auction</td>
+        <td class="expect-col">Demand test at 5.00% yield. Key signal for bond market confidence in Fed path.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">TLT, IEF, SPY</td>
+        <td class="tx-col">Weak demand (high tail) at 5.00% → yields push above 5% → equity multiple compression. Strong demand → yield ceiling confirmed → risk assets breathe.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Thu Nov 13</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>PPI — October (8:30 AM ET)</td>
+        <td class="expect-col"><strong>Judgment:</strong> +2.3–2.5% YoY. Energy input costs elevated. Producer margins squeezed = future earnings risk.</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">XLI, XLB, XLE, SPY, TLT</td>
+        <td class="tx-col">Hot PPI → CPI lag indicator of more inflation to come. Confirms higher-for-longer. Bearish bonds; mixed-to-bearish growth equities.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Thu Nov 13</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>30-Year Bond Auction</td>
+        <td class="expect-col">Critical long-end demand test. Foreign buyers (Japan, China) key.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">TLT, UBT, long-duration equities</td>
+        <td class="tx-col">Poor demand → "bond vigilante" narrative accelerates; severe long-end yield spike risk. Strong demand → stabilizes.</td>
+      </tr>
+      <tr>
+        <td class="date-col"><strong>Mon Nov 17</strong></td>
+        <td class="catalyst-col"><span class="tag tag-earn">EARNINGS</span><strong>NVDA Q3 FY2027 Earnings (after close)</strong></td>
+        <td class="expect-col"><strong>Judgment:</strong> Blackwell GPU ramp progress, data center revenue trajectory, and FY2027 guidance are the three make-or-break variables. Any supply constraint language = major negative. High expectations at $210.96.</td>
+        <td><span class="imp-critical">CRITICAL</span></td>
+        <td class="asset-col">NVDA, AMD, SMCI, ANET, AI ETFs, QQQ, SPY</td>
+        <td class="tx-col">Single most important earnings event of the quarter for equity markets. NVDA guides above = Nasdaq melt-up, AI theme re-rated, semiconductor leadership confirmed. Miss or weak guidance = sector-wide de-rating, QQQ -3 to -5% possible.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Fri Nov 21</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>November Monthly Options Expiration (OpEx)</td>
+        <td class="expect-col">Major options expiry. Dealer hedging flows amplify moves. Vol crush or expansion post-expiry.</td>
+        <td><span class="imp-medium">MEDIUM</span></td>
+        <td class="asset-col">ALL — SPY, QQQ, NVDA, AMZN</td>
+        <td class="tx-col">Post-NVDA earnings week. OpEx mechanic can trap/squeeze positions. Watch for IV crush opportunity or re-pricing of December vol.</td>
+      </tr>
+      <tr>
+        <td class="date-col">Tue Nov 25</td>
+        <td class="catalyst-col"><span class="tag tag-macro">MACRO</span>PCE Price Index — October (8:30 AM ET)</td>
+        <td class="expect-col"><strong>Judgment:</strong> Most critical pre-December FOMC input. Core PCE ~2.6–2.8% YoY. Energy and services components watched closely.</td>
+        <td><span class="imp-high">HIGH</span></td>
+        <td class="asset-col">TLT, SPY, DXY, Gold</td>
+        <td class="tx-col">Final major data point before December 9-10 FOMC. Hot PCE locks in hold through year-end. Cool print opens Dec cut door, broad risk-on rally expected.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- NARRATIVE -->
+  <h2>Catalyst Sequence Narrative</h2>
+  <div class="card narrative">
+    <h3>Yields, Oil, and the Dollar</h3>
+    <p>
+      The U.S. 10-year yield at <strong>5.00%</strong> represents a significant psychological and technical threshold. With WTI crude at <strong>$103.22</strong> and news narratives referencing elevated oil prices as a headline market drag, the path of inflation through the FOMC cycle is the dominant macro narrative. The 2Y–10Y spread of <strong>+31 bps</strong> (2Y at 4.69% vs 10Y at 5.00%) shows a slightly steepened curve at the short end — unusual in a tightening cycle, suggesting the bond market is beginning to price some eventual easing while the long end stays anchored by energy inflation and fiscal supply.
+    </p>
+    <p>
+      The <strong>DXY at 101.81</strong> is elevated but not extreme. A hawkish FOMC hold on Oct 28 with language emphasizing the oil/inflation concern would be dollar-positive (DXY push toward 103–104), pressuring EM assets, gold, and oil-importing economies. Conversely, any dovish pivot language would deflate the dollar quickly, supporting commodities and non-U.S. equities.
+    </p>
+
+    <h3>Semiconductors and AI Leadership (NVDA)</h3>
+    <p>
+      <strong>NVDA at $210.96</strong> is in a consolidation phase ahead of two catalysts: AMZN earnings (Oct 29, which signals hyperscaler AI capex) and NVDA's own earnings on <strong>Nov 17</strong>. The Benzinga narrative of "AI Bubble Fears" colliding with strong earnings reflects the market's schizophrenic relationship with AI spending — simultaneously demanding evidence of ROI while bidding AI infrastructure stocks on every positive signal.
+      <strong>Judgment:</strong> If AMZN's AWS capex guidance is maintained or raised, NVDA should see sympathy buying in the Oct 29–30 window. The Nov 17 earnings report is the quarter's most binary event for the entire Nasdaq leadership complex.
+    </p>
+
+    <h3>Sector Rotation</h3>
+    <p>
+      With VIX at <strong>19.5</strong> (elevated but not fear territory), the market is in a state of cautious risk-on — defensives holding ground while growth/tech faces FOMC and earnings binary events. Post-FOMC clarity (expected Oct 28–29) typically drives a sector rotation decision:
+      <strong>Hawkish hold → XLF, XLE, XLP outperform; XLK, XLRE underperform.</strong>
+      <strong>Dovish surprise → XLK, XLRE, XLY outperform; XLE, XLP give back premium.</strong>
+      Energy (XLE) has structural tailwinds from WTI $103+ but faces demand destruction risk if growth slows.
+    </p>
+  </div>
+
+  <!-- DTE OUTLOOK -->
+  <h2>Market Outlook by DTE — As of Oct 24, 2026</h2>
+  <div class="dte-grid">
+    <div class="dte-card">
+      <div class="dte-header">
+        <span class="dte-label">1 DTE</span>
+        <span class="dte-date">Mon Oct 27</span>
+      </div>
+      <div class="dte-regime">Pre-FOMC Compression</div>
+      <div class="dte-body">Range-bound, vol suppressed. Dealers hedging for Wednesday. Expect SPY to drift ±0.5% from Friday close as participants avoid large directional bets ahead of FOMC Tuesday. Low-conviction session.</div>
+      <div class="dte-confirm">✓ Confirms: SPY flat to -0.3%, VIX stays 19–21</div>
+      <div class="dte-invalidate">✗ Invalidates: SPY breaks Friday range by >1.5% on surprise news</div>
+    </div>
+
+    <div class="dte-card">
+      <div class="dte-header">
+        <span class="dte-label">5 DTE</span>
+        <span class="dte-date">Wed Oct 29</span>
+      </div>
+      <div class="dte-regime">Maximum Catalyst Density</div>
+      <div class="dte-body">FOMC (Tue) + AMZN earnings (Wed close) = highest event risk of the month. Directional character determined by FOMC tone. If FOMC holds with dovish language, market could be up 1–2% by Wednesday before AMZN resets it again.</div>
+      <div class="dte-confirm">✓ Confirms: SPY +1.5% on FOMC dovish hold + AMZN beat</div>
+      <div class="dte-invalidate">✗ Invalidates: FOMC hawkish surprise + AMZN miss = SPY -3%+ scenario</div>
+    </div>
+
+    <div class="dte-card">
+      <div class="dte-header">
+        <span class="dte-label">7 DTE</span>
+        <span class="dte-date">Fri Oct 31</span>
+      </div>
+      <div class="dte-regime">PCE + Post-FOMC/Earnings Digest</div>
+      <div class="dte-body">PCE on Friday caps or extends the FOMC-earnings reaction. If FOMC was dovish and AMZN beat, a hot PCE reverses gains. If FOMC was hawkish, PCE becomes confirmatory data. Halloween liquidity may amplify moves.</div>
+      <div class="dte-confirm">✓ Confirms: PCE in-line (~2.6%), market holds FOMC move</div>
+      <div class="dte-invalidate">✗ Invalidates: PCE >2.9% core reverses week's rally hard</div>
+    </div>
+
+    <div class="dte-card">
+      <div class="dte-header">
+        <span class="dte-label">14 DTE</span>
+        <span class="dte-date">Fri Nov 7</span>
+      </div>
+      <div class="dte-regime">Post-NFP Trend Establishment</div>
+      <div class="dte-body">NFP on Thursday Nov 6 sets the regime for November. Strong jobs = higher-for-longer dominates, bond market under pressure. Weak jobs = cut narrative accelerates. The Friday post-NFP session tends to be trend-setting for the following week.</div>
+      <div class="dte-confirm">✓ Confirms: Goldilocks NFP 150–200K, unemployment stable, SPY holds FOMC move</div>
+      <div class="dte-invalidate">✗ Invalidates: NFP >300K or <75K triggers re-rating of entire rate path</div>
+    </div>
+
+    <div class="dte-card">
+      <div class="dte-header">
+        <span class="dte-label">21 DTE</span>
+        <span class="dte-date">Fri Nov 14</span>
+      </div>
+      <div class="dte-regime">Inflation Print Week — CPI/PPI</div>
+      <div class="dte-body">CPI (Nov 10) + PPI (Nov 13) define whether energy price pass-through has materialized. With WTI at $103, headline CPI risk is to the upside. A hot CPI/PPI double-print could be the catalyst that pushes 10Y yields above 5.25% and SPY sub-$740.</div>
+      <div class="dte-confirm">✓ Confirms: CPI &lt;3.2% core, PPI benign, 10Y stays &lt;5.1%</div>
+      <div class="dte-invalidate">✗ Invalidates: Core CPI >3.5% + hot PPI = regime shift to stagflation pricing</div>
+    </div>
+
+    <div class="dte-card">
+      <div class="dte-header">
+        <span class="dte-label">28 DTE</span>
+        <span class="dte-date">Fri Nov 21</span>
+      </div>
+      <div class="dte-regime">NVDA Earnings Setup + November OpEx</div>
+      <div class="dte-body">NVDA reports Nov 17 after close. November OpEx on Nov 21 follows immediately. This creates a double-catalyst window where Blackwell GPU ramp guidance determines whether QQQ's AI leadership narrative is re-affirmed or questioned. High vol expected into and through this window.</div>
+      <div class="dte-confirm">✓ Confirms: NVDA guides above consensus, AI capex narrative intact, QQQ makes new highs</div>
+      <div class="dte-invalidate">✗ Invalidates: NVDA misses or guides cautiously on supply/demand, AI-spend narrative breaks</div>
+    </div>
+  </div>
+
+  <!-- REGIME CATALYSTS -->
+  <h2>Top 5 Regime-Change Catalysts</h2>
+
+  <div class="regime-box">
+    <div class="regime-rank">#1 — CRITICAL</div>
+    <div class="regime-title">FOMC Rate Decision + Powell Press Conference (Oct 28)</div>
+    <div class="regime-body">
+      The single most powerful near-term regime-change event. With 10Y at 5.00% and VIX at 19.5, the market is in a "high-uncertainty, not-yet-panicking" state. A surprise dovish pivot (even just more explicit December cut guidance) would compress vol, ignite a broad rally, and unlock a relief trade in rate-sensitive sectors. A hawkish surprise (talk of further hikes or explicit concern about oil-driven inflation) could break the current range and send SPY toward the $740–745 support zone. <em>Confidence that this is #1: HIGH — no other catalyst has equivalent simultaneous impact across all asset classes this week.</em>
+    </div>
+  </div>
+
+  <div class="regime-box" style="border-left-color:#f97316;">
+    <div class="regime-rank" style="color:#f97316;">#2 — HIGH</div>
+    <div class="regime-title">NVDA Earnings — Blackwell GPU Ramp Guidance (Nov 17)</div>
+    <div class="regime-body">
+      The most consequential single-stock event of the quarter for Nasdaq leadership. At $210.96, NVDA carries immense index weight in QQQ and SPY. A strong beat with raised guidance on Blackwell shipment volumes would validate the AI capital expenditure cycle for the full year and re-rate every AI-adjacent equity. A miss or cautious guidance on supply constraints would be the most disruptive possible event for the AI/semiconductor theme. <em>Timeline: 24 calendar days away.</em>
+    </div>
+  </div>
+
+  <div class="regime-box" style="border-left-color:#facc15;">
+    <div class="regime-rank" style="color:#facc15;">#3 — HIGH</div>
+    <div class="regime-title">CPI Print — October Data (Nov 10)</div>
+    <div class="regime-body">
+      With WTI crude at $103.22 and energy as a direct CPI input, the October CPI print (released Nov 10) carries elevated risk of a hot headline number. Core CPI above 3.5% would effectively eliminate any December FOMC cut probability, potentially pushing SPY toward a 5–7% correction as rate-sensitive sectors (XLK, XLRE, XLF at long-duration) re-price. This is the inflation regime test. <em>Key watch: Energy component weight in CPI basket (~7–8%).</em>
+    </div>
+  </div>
+
+  <div class="regime-box" style="border-left-color:#4ade80;">
+    <div class="regime-rank" style="color:#4ade80;">#4 — HIGH</div>
+    <div class="regime-title">AMZN Earnings — AWS and AI Capex Guidance (Oct 29)</div>
+    <div class="regime-body">
+      AMZN's cloud and AI infrastructure capex guidance is a direct leading indicator for NVDA demand. A beat on AWS growth combined with maintained or increased AI capex guidance (hyperscaler spending cycle intact) would be a near-term positive catalyst for the entire AI supply chain. A miss or capex moderation signal would create an AI-spend concern narrative that front-runs the NVDA Nov 17 event. <em>At $248, AMZN is priced for continued AWS reacceleration — the bar is high.</em>
+    </div>
+  </div>
+
+  <div class="regime-box" style="border-left-color:#6abeff;">
+    <div class="regime-rank" style="color:#6abeff;">#5 — MEDIUM-HIGH</div>
+    <div class="regime-title">Oil Price Trajectory — Geopolitical and Supply Shock Risk</div>
+    <div class="regime-body">
+      News narrative: "S&P 500 and Nasdaq 100 Slip as Strong Earnings Collide With AI Bubble Fears and $117 Oil" — the oil price reference in market headlines suggests energy is already a primary driver of risk sentiment. WTI at $103.22 is already at levels that historically create demand-destruction concern. If oil prices spike further toward $110–115+ on supply disruption, the FOMC-rates-inflation feedback loop could turn vicious: higher oil → higher inflation → Fed stays tight longer → growth slows → equities de-rate. This is the tail risk that could invalidate the base case of a managed soft landing.
+    </div>
+  </div>
+
+  <p class="section-note">Report generated: Sat Oct 24, 2026. Data sourced from market closes Fri Oct 23. Event dates from official calendars. Expectations labeled FACT/CONSENSUS/JUDGMENT throughout. This is not financial advice and does not include trading recommendations.</p>
+
+</div>
+</body>
+</html>

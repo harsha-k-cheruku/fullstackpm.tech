@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Pulse — Oct 24, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: #0d0d0d; color: #e0e0e0; padding: 32px 24px; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  h1 { font-size: 1.55rem; color: #e94560; margin-bottom: 4px; }
+  h2 { font-size: 1.05rem; color: #e0e0e0; margin: 28px 0 12px; border-bottom: 1px solid #1e1e1e; padding-bottom: 8px; }
+  h3 { font-size: 0.9rem; color: #aaa; margin: 18px 0 8px; font-weight: 600; }
+  .subtitle { color: #444; font-size: 0.8rem; margin-bottom: 12px; }
+  .disclaimer { font-size: 0.72rem; color: #333; margin-bottom: 28px; }
+
+  .card { background: #141414; border: 1px solid #232323; border-radius: 10px;
+          padding: 20px 24px; margin-bottom: 18px; }
+
+  .alert-banner { background: #1a1400; border: 1px solid #3a3000; border-radius: 8px;
+                  padding: 12px 16px; margin-bottom: 20px; font-size: 0.8rem; color: #facc15; }
+
+  /* Bottom Line */
+  .bottom-line { background: #141414; border: 1px solid #232323; border-left: 4px solid #e94560;
+                 border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; }
+  .bl-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: #e94560; margin-bottom: 10px; }
+  .bl-text { font-size: 0.88rem; color: #d0d0d0; line-height: 1.7; }
+  .thesis-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 3px 10px;
+                  border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; margin: 8px 0; }
+  .thesis-invalidated { background: #3a0a0a; color: #f87171; }
+  .thesis-weakened { background: #2a2000; color: #facc15; }
+  .thesis-confirmed { background: #0a2a0a; color: #4ade80; }
+
+  /* At a Glance table */
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 8px 0 16px; }
+  th { background: #1a1a1a; color: #555; font-size: 0.62rem; text-transform: uppercase;
+       letter-spacing: 0.08em; padding: 8px 10px; text-align: left; border-bottom: 1px solid #232323; }
+  td { padding: 9px 10px; border-bottom: 1px solid #1a1a1a; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+
+  .price-val { font-weight: 600; color: #e0e0e0; }
+  .chg-up { color: #4ade80; font-size: 0.75rem; }
+  .chg-down { color: #f87171; font-size: 0.75rem; }
+  .chg-flat { color: #555; font-size: 0.75rem; }
+  .note-col { color: #555; font-size: 0.72rem; }
+  .avail-label { color: #333; font-style: italic; font-size: 0.72rem; }
+
+  /* Sector grid */
+  .sector-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0; }
+  .sector-box { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 7px; padding: 10px 12px; }
+  .sector-name { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: #555; margin-bottom: 4px; }
+  .sector-ticker { font-size: 0.85rem; font-weight: 700; color: #e0e0e0; }
+  .sector-chg-up { color: #4ade80; font-size: 0.75rem; }
+  .sector-chg-dn { color: #f87171; font-size: 0.75rem; }
+  .sector-na { color: #333; font-size: 0.72rem; font-style: italic; }
+
+  /* Support/Resistance */
+  .sr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
+  .sr-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 14px 16px; }
+  .sr-ticker { font-size: 0.85rem; font-weight: 700; color: #e0e0e0; margin-bottom: 8px; }
+  .sr-price { font-size: 1.1rem; font-weight: 700; color: #aaa; margin-bottom: 10px; }
+  .sr-row { display: flex; justify-content: space-between; font-size: 0.75rem; padding: 3px 0; border-bottom: 1px solid #1e1e1e; }
+  .sr-label { color: #555; }
+  .sr-val-res { color: #f97316; font-weight: 600; }
+  .sr-val-sup { color: #6abeff; font-weight: 600; }
+
+  /* Scenario table */
+  .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+  .scenario-card { background: #1a1a1a; border-radius: 8px; padding: 14px 16px; }
+  .sc-bull { border: 1px solid #1a3a1a; }
+  .sc-base { border: 1px solid #2a2a0a; }
+  .sc-bear { border: 1px solid #3a1a1a; }
+  .sc-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 700; }
+  .sc-label-bull { color: #4ade80; }
+  .sc-label-base { color: #facc15; }
+  .sc-label-bear { color: #f87171; }
+  .sc-prob { font-size: 0.75rem; color: #555; margin-bottom: 6px; }
+  .sc-body { font-size: 0.75rem; color: #888; line-height: 1.5; }
+
+  /* Watch next */
+  .watch-item { background: #1a1a1a; border: 1px solid #232323; border-radius: 7px;
+                padding: 12px 16px; margin-bottom: 8px; }
+  .watch-var { font-size: 0.82rem; font-weight: 600; color: #e0e0e0; margin-bottom: 4px; }
+  .watch-why { font-size: 0.75rem; color: #777; }
+
+  .narrative p { font-size: 0.83rem; color: #aaa; margin-bottom: 12px; line-height: 1.65; }
+  .narrative strong { color: #e0e0e0; }
+  .section-note { font-size: 0.72rem; color: #333; margin-top: 8px; font-style: italic; }
+
+  .breadth-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0; }
+  .breadth-box { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px;
+                 padding: 8px 14px; font-size: 0.75rem; text-align: center; }
+  .breadth-val { font-size: 1.0rem; font-weight: 700; color: #e0e0e0; }
+  .breadth-label { font-size: 0.6rem; color: #444; margin-top: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Market Pulse</h1>
+  <p class="subtitle">SPY · QQQ · AMZN · NVDA · Intraday Update &nbsp;·&nbsp; Sat Oct 24, 2026 &nbsp;·&nbsp; 12:00 PM PT / 3:00 PM ET</p>
+  <p class="disclaimer">Fact-based synthesis. Facts and judgment clearly labeled. No options recommendations.</p>
+
+  <div class="alert-banner">
+    ⚠ MARKET STATUS: U.S. equity markets are closed today (Saturday, Oct 24, 2026). All prices shown are <strong>Friday Oct 23 closing values</strong>. This is a pre-weekend / pre-Monday update. Next session opens Monday Oct 27 at 9:30 AM ET. Next major catalyst: <strong>FOMC Rate Decision — Tuesday Oct 28, ~2:00 PM ET</strong>.
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="bottom-line">
+    <div class="bl-label">Bottom Line — As of Friday Oct 23 Close</div>
+    <div class="bl-text">
+      U.S. equities closed Friday under moderate pressure, with SPY at <strong>$761.11</strong> and QQQ at <strong>$704.40</strong>, as markets digested the tension between resilient corporate earnings and persistent macro headwinds from elevated oil prices (WTI ~$103) and a 10-year yield pinned at <strong>5.00%</strong>. The primary drivers were: <strong>(1)</strong> oil-driven inflation concern resurfacing as a higher-for-longer narrative reinforcement with WTI at $103 and news referencing "$117 oil" in headline framing; <strong>(2)</strong> pre-FOMC positioning compressing risk appetite ahead of the Oct 28 rate decision; and <strong>(3)</strong> AI bubble concern headlines creating near-term uncertainty for tech/semiconductor leadership (NVDA at $210.96, AMZN at $248.00).
+    </div>
+    <div style="margin-top:10px;">
+      <span class="thesis-badge thesis-weakened">Morning Thesis: WEAKENED</span>
+    </div>
+    <div class="bl-text" style="margin-top:10px;color:#888;font-size:0.8rem;">
+      <strong style="color:#e0e0e0;">Morning thesis status:</strong> The bullish tech/AI momentum thesis is weakened (not broken) by the convergence of $103 oil, 5.00% 10Y, and pre-FOMC uncertainty. The AI earnings cycle (AMZN Oct 29, NVDA Nov 17) remains the bull case. Monday Oct 27 direction will be determined by weekend geopolitical/oil headlines and pre-FOMC positioning flows.<br>
+      <strong style="color:#facc15; margin-top:6px; display:block;">Pre-Monday outlook (JUDGMENT):</strong> Modest risk-off bias at open Monday, with SPY likely to oscillate in $755–765 range through Tuesday FOMC. A gap below $752 on heavy volume would signal broader concern.
+    </div>
+  </div>
+
+  <!-- AT A GLANCE -->
+  <h2>At a Glance — Friday Oct 23 Close</h2>
+  <div class="card" style="padding:0; overflow:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>Asset</th>
+        <th>Price / Level</th>
+        <th>Change Since Prior Update</th>
+        <th>Data Quality</th>
+        <th>Key Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SPY</strong></td>
+        <td class="price-val">$761.11</td>
+        <td class="avail-label">Prior session close — no intraday change available</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed (~15 min, Yahoo Finance)</span></td>
+        <td class="note-col">Holding above $755 key support; below $740 triggers concern</td>
+      </tr>
+      <tr>
+        <td><strong>QQQ</strong></td>
+        <td class="price-val">$704.40</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">NVDA+AMZN weight elevated; AI bubble narrative overhang</td>
+      </tr>
+      <tr>
+        <td><strong>AMZN</strong></td>
+        <td class="price-val">$248.00</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">Earnings Oct 29 AH; high bar for AWS beat</td>
+      </tr>
+      <tr>
+        <td><strong>NVDA</strong></td>
+        <td class="price-val">$210.96</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">Consolidating pre-earnings (Nov 17); Blackwell ramp focus</td>
+      </tr>
+      <tr>
+        <td><strong>VIX</strong></td>
+        <td class="price-val" style="color:#facc15;">19.5</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">Elevated but not fear level (20+ threshold); FOMC week expect VIX bid</td>
+      </tr>
+      <tr>
+        <td><strong>10Y Yield</strong></td>
+        <td class="price-val" style="color:#f97316;">5.00%</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">Critical psychological level; FOMC will determine next leg</td>
+      </tr>
+      <tr>
+        <td><strong>2Y Yield</strong></td>
+        <td class="price-val">4.69%</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">2s10s spread +31 bps; slight curve steepen = easing priced eventually</td>
+      </tr>
+      <tr>
+        <td><strong>WTI Crude</strong></td>
+        <td class="price-val" style="color:#f97316;">$103.22</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">Benzinga headline cited "$117 oil" — discrepancy noted; likely Brent or intraday high</td>
+      </tr>
+      <tr>
+        <td><strong>Brent Crude</strong></td>
+        <td class="avail-label">Unavailable</td>
+        <td class="avail-label">—</td>
+        <td><span style="color:#333;font-size:0.72rem;">Not fetched</span></td>
+        <td class="note-col">Typically $4–5 premium to WTI; est. $107–108</td>
+      </tr>
+      <tr>
+        <td><strong>DXY</strong></td>
+        <td class="price-val">101.81</td>
+        <td class="avail-label">Prior session close</td>
+        <td><span style="color:#facc15;font-size:0.72rem;">Delayed</span></td>
+        <td class="note-col">Elevated; FOMC hawkish hold would push toward 103</td>
+      </tr>
+      <tr>
+        <td><strong>Gold</strong></td>
+        <td class="avail-label">Unavailable</td>
+        <td class="avail-label">—</td>
+        <td><span style="color:#333;font-size:0.72rem;">Not fetched</span></td>
+        <td class="note-col">Safe-haven demand elevated with geopolitical + inflation overhang</td>
+      </tr>
+      <tr>
+        <td><strong>Breadth / Sector Leadership</strong></td>
+        <td class="avail-label">Unavailable</td>
+        <td class="avail-label">—</td>
+        <td><span style="color:#333;font-size:0.72rem;">Not fetched</span></td>
+        <td class="note-col">See Breadth section below for judgment-based context</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="section-note">Market closed Saturday. All values from Friday Oct 23 closing session. "Unavailable" declared only after noting data was not fetched — not inferred from price alone.</p>
+
+  <!-- BREADTH AND VOLUME -->
+  <h2>Breadth and Volume</h2>
+  <div class="card">
+    <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:7px;padding:12px 16px;margin-bottom:14px;">
+      <div style="font-size:0.65rem;text-transform:uppercase;color:#555;letter-spacing:0.08em;margin-bottom:10px;">Data Availability Notice</div>
+      <div style="font-size:0.78rem;color:#777;line-height:1.6;">
+        NYSE and Nasdaq advancers/decliners ratios, S&P/Nasdaq new highs vs new lows, sector up/down volume, and SPY/QQQ/AMZN/NVDA relative volume data were <strong style="color:#e0e0e0;">not fetched in this update run</strong> and are declared <strong style="color:#f87171;">UNAVAILABLE</strong>. Carrying forward stale values or inferring breadth from price alone would be misleading — per data freshness rules, this section provides directional judgment only.
+      </div>
+    </div>
+
+    <h3>Directional Context — JUDGMENT Only</h3>
+    <div class="breadth-row">
+      <div class="breadth-box">
+        <div class="breadth-val" style="color:#facc15;">~50/50</div>
+        <div class="breadth-label">A/D Ratio (est.)</div>
+      </div>
+      <div class="breadth-box">
+        <div class="breadth-val" style="color:#f87171;">Narrow</div>
+        <div class="breadth-label">Breadth character</div>
+      </div>
+      <div class="breadth-box">
+        <div class="breadth-val" style="color:#facc15;">Mixed</div>
+        <div class="breadth-label">Sectors positive</div>
+      </div>
+      <div class="breadth-box">
+        <div class="breadth-val" style="color:#f97316;">Moderate</div>
+        <div class="breadth-label">Volume character</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.78rem;color:#777;margin-top:12px;line-height:1.6;">
+      <strong style="color:#e0e0e0;">JUDGMENT:</strong> With VIX at 19.5, SPY and QQQ slipping per the market narrative, and FOMC uncertainty dominating, breadth is likely <strong style="color:#e0e0e0;">narrow and index-concentration-driven</strong> rather than broad-participation. The "AI Bubble Fears" headline narrative suggests the mega-cap tech concentration in QQQ/SPY is doing most of the directional work — when NVDA and AMZN (top QQQ weights) underperform, the index underperforms even as smaller components hold up.
+    </p>
+    <p style="font-size:0.78rem;color:#777;margin-top:8px;line-height:1.6;">
+      <strong style="color:#e0e0e0;">Breadth vs. Index divergence:</strong> If SPY is down while breadth holds (more advancers than decliners), it signals large-cap/mega-cap tech weakness masking a healthier underlying market. If breadth also deteriorates, it signals broader risk-off. Next-session (Monday) breadth data will be the first clean signal. XLE and XLP likely outperforming given oil prices; XLK and XLRE likely lagging.
+    </p>
+    <p class="section-note">All breadth values above are estimates/judgment, not synchronized market data. Do not use for trading decisions. Check live data sources Monday morning.</p>
+  </div>
+
+  <!-- SECTOR SNAPSHOT -->
+  <h2>Sector Snapshot — Judgment-Based (Friday Context)</h2>
+  <div class="sector-grid">
+    <div class="sector-box">
+      <div class="sector-name">Energy</div>
+      <div class="sector-ticker">XLE</div>
+      <div class="sector-chg-up">↑ Likely leader</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">WTI $103 = structural bid</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Technology</div>
+      <div class="sector-ticker">XLK</div>
+      <div class="sector-chg-dn">↓ AI bubble fear overhang</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">NVDA/AMZN pre-earnings</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Comm. Services</div>
+      <div class="sector-ticker">XLC</div>
+      <div class="sector-chg-dn">↓ AMZN+META weigh</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Pre-earnings pressure</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Financials</div>
+      <div class="sector-ticker">XLF</div>
+      <div class="sector-chg-up" style="color:#facc15;">→ Mixed</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Net interest margins vs. credit risk</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Industrials</div>
+      <div class="sector-ticker">XLI</div>
+      <div class="sector-chg-dn" style="color:#facc15;">→ Neutral</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Energy-cost squeeze</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Cons. Staples</div>
+      <div class="sector-ticker">XLP</div>
+      <div class="sector-chg-up">↑ Defensive bid</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Pre-FOMC defensives premium</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Healthcare</div>
+      <div class="sector-ticker">XLV</div>
+      <div class="sector-chg-up" style="color:#facc15;">→ Neutral</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Non-cyclical, limited catalyst</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Real Estate</div>
+      <div class="sector-ticker">XLRE</div>
+      <div class="sector-chg-dn">↓ 10Y at 5.00%</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Rate-sensitive sector, deep pressure</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Utilities</div>
+      <div class="sector-ticker">XLU</div>
+      <div class="sector-chg-dn" style="color:#facc15;">→ Slight pressure</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Rate-sensitive; AI electricity narrative offset</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Materials</div>
+      <div class="sector-ticker">XLB</div>
+      <div class="sector-chg-up" style="color:#facc15;">→ Neutral-positive</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">Commodity tailwind, demand uncertainty</div>
+    </div>
+    <div class="sector-box">
+      <div class="sector-name">Cons. Discret.</div>
+      <div class="sector-ticker">XLY</div>
+      <div class="sector-chg-dn">↓ Mixed</div>
+      <div style="font-size:0.7rem;color:#555;margin-top:3px;">AMZN weight + high gas prices headwind</div>
+    </div>
+  </div>
+  <p class="section-note">All sector assessments are JUDGMENT based on macro context. No synchronized 30/60-min trend data available (market closed). Actual Friday sector performance not verified.</p>
+
+  <!-- DETAILED NARRATIVE -->
+  <h2>Detailed Narrative</h2>
+  <div class="card narrative">
+    <h3>Dominant Causal Chain</h3>
+    <p>
+      The dominant causal chain driving the tape entering the Oct 27 week: <strong>Elevated oil (WTI $103) → inflation concern resurface → 10Y yield stays at 5.00% → rate-sensitive sectors under pressure → AI/tech multiple compression → pre-FOMC positioning reduces risk appetite → SPY and QQQ slip from recent highs.</strong>
+    </p>
+    <p>
+      This is a "<strong>good earnings, bad macro</strong>" moment. Earnings from large-caps (the "Strong Earnings" in the Benzinga headline) are providing fundamental support for $761 SPY, but the macro environment (oil, yields, FOMC uncertainty) is preventing multiple expansion. The AI bubble fear narrative adds a narrative layer — after a period of aggressive AI multiple re-rating, the market is looking for evidence that AI spending translates to revenue and earnings.
+    </p>
+
+    <h3>Prior Update Comparison</h3>
+    <p>
+      <strong>Fact:</strong> This is the first Market Pulse entry — no prior scheduled update exists for comparison. Future updates will track changes from this baseline. VIX at 19.5 as the baseline: any move above 22 indicates the pre-FOMC anxiety is escalating; a move below 16 would signal complacency returning.
+    </p>
+
+    <h3>Key Economic Events — Week of Oct 20–24</h3>
+    <p>
+      <strong>Fact:</strong> Detailed economic release data for the week of Oct 20–24 was not available in this update run. The Fed was in its standard quiet period ahead of the Oct 28 FOMC, meaning no Fed speaker commentary. <strong>Judgment:</strong> PMI flash estimates and existing home sales data typically released in this window; if these were in-line, they would have had minimal market impact given the FOMC dominance.
+    </p>
+
+    <h3>Company-Specific Context — AMZN and NVDA</h3>
+    <p>
+      <strong>AMZN ($248.00):</strong> Entering the week of earnings (Oct 29 AH). The stock reflects high expectations — AWS, advertising, and physical retail/logistics all need to contribute. Key swing variable is whether hyperscaler AI capex commentary is expansionary or moderating. Given MSFT and GOOGL have already reported (judgment: likely before Oct 24), AMZN's AWS will be benchmarked against those.
+    </p>
+    <p>
+      <strong>NVDA ($210.96):</strong> In a holding pattern 24 calendar days before earnings. The "AI Bubble Fears" narrative creates near-term valuation pressure but the underlying demand from hyperscalers (being confirmed or denied by AMZN Oct 29) is the real driver. At $210, NVDA is trading at a discount to its 2026 highs — whether this is distribution or consolidation will be determined by the AMZN earnings signal and eventually by Nov 17 Blackwell guidance.
+    </p>
+  </div>
+
+  <!-- SUPPORT AND RESISTANCE -->
+  <h2>Support and Resistance — Key Levels</h2>
+  <div class="sr-grid">
+    <div class="sr-card">
+      <div class="sr-ticker">SPY</div>
+      <div class="sr-price">$761.11</div>
+      <div class="sr-row"><span class="sr-label">R2 (Strong)</span><span class="sr-val-res">$785–790</span></div>
+      <div class="sr-row"><span class="sr-label">R1 (Near)</span><span class="sr-val-res">$772–775</span></div>
+      <div class="sr-row"><span class="sr-label">Current</span><span style="color:#e0e0e0;">$761.11</span></div>
+      <div class="sr-row"><span class="sr-label">S1 (Key)</span><span class="sr-val-sup">$752–755</span></div>
+      <div class="sr-row"><span class="sr-label">S2 (Critical)</span><span class="sr-val-sup">$738–742</span></div>
+      <div style="font-size:0.7rem;color:#555;margin-top:8px;">Judgment: S1 ($752-755) is first meaningful support pre-FOMC. Loss of S1 on volume = broader concern.</div>
+    </div>
+    <div class="sr-card">
+      <div class="sr-ticker">AMZN</div>
+      <div class="sr-price">$248.00</div>
+      <div class="sr-row"><span class="sr-label">R2 (Earnings gap)</span><span class="sr-val-res">$265–270</span></div>
+      <div class="sr-row"><span class="sr-label">R1 (Near)</span><span class="sr-val-res">$255–258</span></div>
+      <div class="sr-row"><span class="sr-label">Current</span><span style="color:#e0e0e0;">$248.00</span></div>
+      <div class="sr-row"><span class="sr-label">S1 (Pre-earnings floor)</span><span class="sr-val-sup">$238–242</span></div>
+      <div class="sr-row"><span class="sr-label">S2 (Major)</span><span class="sr-val-sup">$228–232</span></div>
+      <div style="font-size:0.7rem;color:#555;margin-top:8px;">Judgment: Post-earnings reaction will establish new range. S1 critical before Oct 29 report.</div>
+    </div>
+    <div class="sr-card">
+      <div class="sr-ticker">NVDA</div>
+      <div class="sr-price">$210.96</div>
+      <div class="sr-row"><span class="sr-label">R2 (YTD highs)</span><span class="sr-val-res">$235–240</span></div>
+      <div class="sr-row"><span class="sr-label">R1 (Near)</span><span class="sr-val-res">$218–222</span></div>
+      <div class="sr-row"><span class="sr-label">Current</span><span style="color:#e0e0e0;">$210.96</span></div>
+      <div class="sr-row"><span class="sr-label">S1 (Key support)</span><span class="sr-val-sup">$198–202</span></div>
+      <div class="sr-row"><span class="sr-label">S2 (Major)</span><span class="sr-val-sup">$185–190</span></div>
+      <div style="font-size:0.7rem;color:#555;margin-top:8px;">Judgment: $200 is the psychological floor. Loss of S2 in pre-earnings period = distribution signal.</div>
+    </div>
+  </div>
+  <p class="section-note">Support/resistance levels are JUDGMENT based on round numbers and estimated technical context. Not derived from real-time chart data. Verify against live charts before acting.</p>
+
+  <!-- NEXT SESSION OUTLOOK -->
+  <h2>Next Session Outlook — Monday Oct 27</h2>
+  <div class="scenario-grid">
+    <div class="scenario-card sc-bull">
+      <div class="sc-label sc-label-bull">Bull Case</div>
+      <div class="sc-prob">Probability: ~25% (JUDGMENT)</div>
+      <div class="sc-body">
+        Weekend oil price stabilization or decline. No adverse geopolitical headlines. Pre-FOMC positioning flows into risk assets (buy-the-rumor of dovish hold). SPY opens above $763, tests $768–772 resistance. VIX retreats toward 18. Tech leads on AMZN pre-earnings optimism.
+      </div>
+    </div>
+    <div class="scenario-card sc-base">
+      <div class="sc-label sc-label-base">Base Case</div>
+      <div class="sc-prob">Probability: ~55% (JUDGMENT)</div>
+      <div class="sc-body">
+        Range-bound pre-FOMC session. SPY oscillates $754–767. VIX stays 18–21. Low conviction, low volume. Sectors defensive. Energy holds on oil. Tech flat to slightly down. Market awaits Tuesday FOMC as the true catalyst. No major news surprises.
+      </div>
+    </div>
+    <div class="scenario-card sc-bear">
+      <div class="sc-label sc-label-bear">Bear Case</div>
+      <div class="sc-prob">Probability: ~20% (JUDGMENT)</div>
+      <div class="sc-body">
+        Negative weekend developments: oil spike above $110, geopolitical shock, or major negative news from a reporting mega-cap. SPY gaps below $755 on open, tests $748–752 support. VIX spikes above 22. Broad selloff with no sector safe haven. FOMC risk amplified.
+      </div>
+    </div>
+  </div>
+
+  <!-- WATCH NEXT -->
+  <h2>Watch Next — Top 5 Variables Most Likely to Change the Thesis</h2>
+
+  <div class="watch-item">
+    <div class="watch-var">1. FOMC Rate Decision Language (Oct 28, ~2 PM ET)</div>
+    <div class="watch-why">The single most thesis-altering event. Hawkish language on inflation/oil → higher-for-longer locks in, SPY drops, yields spike. Dovish pivot signal → risk-on rally, yields fall, dollar weakens. Any hint at December cut explicitly changes the entire rate path narrative.</div>
+  </div>
+
+  <div class="watch-item">
+    <div class="watch-var">2. Oil Price (WTI) Monday Open</div>
+    <div class="watch-why">Oil at $103.22 is already driving the inflation/earnings tension narrative. Any weekend supply disruption (geopolitical event, OPEC+ surprise) that pushes WTI toward $110+ would re-ignite stagflation fears before FOMC and amplify the risk-off trade. Conversely, a drop below $98 would meaningfully reduce CPI concern and support equity multiples.</div>
+  </div>
+
+  <div class="watch-item">
+    <div class="watch-var">3. 10-Year Treasury Yield — 5.00% Level Hold</div>
+    <div class="watch-why">5.00% is the line in the sand for equity multiple tolerance. A sustained push above 5.10% on Monday pre-FOMC would signal bond market skepticism about the Fed's ability to control inflation, triggering equity de-rating. A drop back toward 4.90% signals bond market is pre-buying a FOMC cut signal.</div>
+  </div>
+
+  <div class="watch-item">
+    <div class="watch-var">4. AMZN Pre-Earnings Price Action (Mon–Tue)</div>
+    <div class="watch-why">AMZN's implied move into Oct 29 earnings is a proxy for AI/cloud sentiment. If AMZN is sold aggressively pre-earnings (below $240), it signals high options positioning or genuine earnings fear. A hold above $245 suggests market is positioning for a beat. This is the leading indicator for the AI capex signal that matters to NVDA.</div>
+  </div>
+
+  <div class="watch-item">
+    <div class="watch-var">5. VIX — 20 Level as Threshold</div>
+    <div class="watch-why">VIX at 19.5 is just below the 20 threshold that historically marks the transition from "cautious" to "hedging." A VIX close above 21 on Monday would suggest institutional hedging is accelerating into FOMC, which typically precedes a more volatile FOMC reaction in both directions. VIX sub-18 = complacency returning; reassess bear case probability downward.</div>
+  </div>
+
+  <p class="section-note">Report generated: Sat Oct 24, 2026 12:00 PM PT. Market data is Friday Oct 23 close (delayed ~15 min from Yahoo Finance). "Unavailable" declared where data was not fetched. All scenario probabilities and sector assessments are JUDGMENT. This is not financial advice.</p>
+
+</div>
+</body>
+</html>
