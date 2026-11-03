@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T23:02:12.569353+00:00",
+  "generated_at": "2026-11-03T18:03:13.655950+00:00",
   "articles": [
     {
       "id": "2bfaefd33578768d",
@@ -552,6 +552,28 @@
       "is_dismissed": false
     },
     {
+      "id": "3017d51cc49fa391",
+      "url": "https://blog.cloudflare.com/dns-targeted-zone-builds/",
+      "title": "How we halved DNS build delay and cut memory use by 85%",
+      "display_title": "How we halved DNS build delay and cut memory use by 85%",
+      "excerpt": "Zone setting changes used to rebuild entire DNS zones, even ones with tens of millions of records. Here is how we built a planner that picks the smallest safe build, cutting full builds by 40%, peak memory by 85%, and halving build delay.",
+      "source_name": "Cloudflare Blog",
+      "source_category": "engineering",
+      "source_type": "engineering",
+      "published_at": "2026-11-02T14:00:00+00:00",
+      "fetched_at": "2026-11-03T16:01:48.461417+00:00",
+      "ai_score": 10,
+      "ai_score_reason": "practitioner(+2) | quantified(+2) | eng-primary(+1)",
+      "key_insight": null,
+      "ai_summary": null,
+      "first_principle": null,
+      "ai_insight": null,
+      "ai_article_analysis": null,
+      "ai_processed_at": "2026-11-03T17:58:10.429178+00:00",
+      "is_editors_pick": false,
+      "is_dismissed": false
+    },
+    {
       "id": "8105184611e3739c",
       "url": "https://medium.com/airbnb-engineering/when-history-fails-you-borrow-from-geography-915a72b91b5c?source=rss----53c7c27702d5---4",
       "title": "When history fails you, borrow from geography",
@@ -636,28 +658,6 @@
       "ai_insight": null,
       "ai_article_analysis": "THE PRODUCT PROBLEM\n\nIn the competitive landscape of real-time communication, delivering superior video quality with minimal bandwidth usage is crucial. Users, particularly in emerging markets, often face network constraints that degrade video quality, leading to poor user experiences and potential churn. The business needed a solution that could maintain high video quality even at low bitrates, ensuring that users on slower networks could still enjoy seamless video calls. The existing codec, H.264/AVC, was failing to meet these demands, especially under bandwidth constraints, making it imperative to adopt a more efficient codec like AV1 to stay competitive and enhance user satisfaction.\n\nTHE DECISION\n\nSwitching to the AV1 codec involved a significant tradeoff between the potential for improved video quality and the increased complexity of encoding. This decision required alignment across multiple teams, including product management, engineering, and operations, to ensure that the transition would not disrupt existing services. The complexity of AV1 meant that it could not be immediately rolled out to all devices, necessitating a phased approach starting with high-end devices. This decision was challenging because it required balancing the immediate benefits of improved video quality against the potential risk of excluding users with less capable devices. In hindsight, the phased rollout proved effective, allowing for iterative improvements and broader device support over time.\n\nTHE LESSON\n\nThis experience underscores the importance of close collaboration between product managers and engineers when adopting new technologies. The transition to AV1 was not just a technical upgrade; it required a deep understanding of user needs, market conditions, and technical constraints. PMs must work closely with engineers to navigate these complexities, ensuring that product decisions are informed by both technical feasibility and user impact. The success of the AV1 rollout at Meta highlights that effective PM/eng collaboration can drive innovation and deliver significant user benefits, even in the face of technical challenges. This is a nuanced insight that goes beyond typical PM advice, emphasizing the need for strategic alignment and iterative execution in technology adoption.",
       "ai_processed_at": "2026-07-06T15:25:43.202302+00:00",
-      "is_editors_pick": false,
-      "is_dismissed": false
-    },
-    {
-      "id": "6a03e88ee314ef7f",
-      "url": "http://highscalability.com/blog/2023/7/16/lessons-learned-running-presto-at-meta-scale.html",
-      "title": "Lessons Learned Running Presto at Meta Scale",
-      "display_title": "Lessons Learned Running Presto at Meta Scale",
-      "excerpt": "Presto is a free, open source SQL query engine. We’ve been using it at Meta for the past ten years, and learned a lot while doing so. Running anything at scale - tools, processes, services - takes problem solving to overcome unexpected challenges. Here are four things we learned while scaling up Presto to Meta scale, and some advice if you’re inter…",
-      "source_name": "High Scalability",
-      "source_category": "engineering",
-      "source_type": "engineering",
-      "published_at": "2023-07-16T16:42:21+00:00",
-      "fetched_at": "2026-07-06T15:13:40.672410+00:00",
-      "ai_score": 9,
-      "ai_score_reason": "practitioner(+2) | case-study(+1) | eng-primary(+1)",
-      "key_insight": null,
-      "ai_summary": "When scaling a product rapidly, PMs typically prioritize feature delivery — but this shows that operational reliability and deployment automation are equally critical to maintaining user satisfaction. Overlooking the balance between feature rollout and infrastructure stability can lead to degraded performance and frustrated users, ultimately undermining the product's success.",
-      "first_principle": null,
-      "ai_insight": null,
-      "ai_article_analysis": "THE PRODUCT PROBLEM\n\nEnsuring seamless and reliable query processing at Meta's scale was becoming increasingly difficult as the demand for Presto, an SQL query engine, grew. The business needed to maintain high availability and performance for interactive query use cases, where users expect immediate results, while also accommodating automated batch processes. The challenge was to deploy new Presto versions across numerous global clusters without disrupting user experience. Failure to address this could lead to user dissatisfaction and potential competitive disadvantages, as real-time data insights are crucial for decision-making in a fast-paced environment.\n\nTHE DECISION\n\nThe decision to automate the deployment and management of Presto clusters involved a significant tradeoff between availability and deployment speed. By using a load balancer system, the Gateway, they ensured that no new queries were sent to clusters during updates, but this required careful orchestration to avoid taking down too many clusters at once, which would affect availability. Aligning PM, engineering, and operations was crucial, as the process had to ensure both technical feasibility and user satisfaction. In hindsight, while the automation streamlined operations, it required continuous monitoring and adjustments to maintain balance, highlighting the complexity of scaling infrastructure.\n\nTHE LESSON\n\nThis experience underscores the importance of dynamic collaboration between PMs and engineers when scaling infrastructure at large organizations. It reveals that while automation can solve many operational challenges, it also introduces new layers of complexity that require ongoing cross-functional alignment. PMs must remain agile, ready to pivot strategies as technological and user needs evolve, and understand that the balance between speed and reliability is a moving target. This case illustrates that successful scaling is not just about technical solutions but also about strategic decision-making and stakeholder alignment.",
-      "ai_processed_at": "2026-07-06T15:25:51.088741+00:00",
       "is_editors_pick": false,
       "is_dismissed": false
     },
