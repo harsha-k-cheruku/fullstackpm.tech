@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T18:03:13.655950+00:00",
+  "generated_at": "2026-11-04T16:33:37.562669+00:00",
   "articles": [
     {
       "id": "2bfaefd33578768d",
@@ -574,6 +574,28 @@
       "is_dismissed": false
     },
     {
+      "id": "f661e725c663a1b5",
+      "url": "https://medium.com/pinterest-engineering/scaling-model-evaluation-at-pinterest-with-ray-part-4-4a96cd12cc11?source=rss----4c5a5f6279b6---4",
+      "title": "Scaling Model Evaluation at Pinterest with Ray (Part 4)",
+      "display_title": "Scaling Model Evaluation at Pinterest with Ray Part 4",
+      "excerpt": "Vishnu Arun | Tech Lead, Feature Importance Platform; Anderson Lam | Sr Software Engineer; Andrew Qiu | Machine Learning Engineer I; Helena Xu | Data Scientist I; Tianyou Wang | Data Scientist II Introduction In our multi-part blog series, we have discussed why we chose Ray as a last mile data processing framework, how we integrated Ray into our ex…",
+      "source_name": "Pinterest Engineering",
+      "source_category": "engineering",
+      "source_type": "engineering",
+      "published_at": "2026-11-04T16:01:04+00:00",
+      "fetched_at": "2026-11-04T16:07:03.888608+00:00",
+      "ai_score": 10,
+      "ai_score_reason": "practitioner(+2) | case-study(+1) | framework(+1) | eng-primary(+1)",
+      "key_insight": null,
+      "ai_summary": null,
+      "first_principle": null,
+      "ai_insight": null,
+      "ai_article_analysis": null,
+      "ai_processed_at": "2026-11-04T16:28:38.235204+00:00",
+      "is_editors_pick": false,
+      "is_dismissed": false
+    },
+    {
       "id": "8105184611e3739c",
       "url": "https://medium.com/airbnb-engineering/when-history-fails-you-borrow-from-geography-915a72b91b5c?source=rss----53c7c27702d5---4",
       "title": "When history fails you, borrow from geography",
@@ -636,28 +658,6 @@
       "ai_insight": null,
       "ai_article_analysis": "THE PRODUCT PROBLEM\n\nMigrating thousands of dataset consumers to new dataset versions was a daunting task that threatened to consume significant engineering resources. The business needed to deprecate heavily-used datasets to introduce new features, but the sheer volume of direct and indirect data pipelines—around 1,800—posed a substantial operational challenge. Users faced potential disruptions, and the company risked falling behind competitors if the new features were delayed. The pressing need was to streamline this migration process to maintain agility and innovation without overwhelming the engineering teams.\n\nTHE DECISION\n\nThe decision to leverage Honk, alongside Backstage and Fleet Management platforms, was a strategic tradeoff aimed at automating the migration process to save time and resources. By prioritizing automation, the team gained efficiency, reducing the manual workload by an estimated 10 engineering weeks. However, this required significant alignment across PM, engineering, and operations to ensure that the automated processes would not introduce errors or require extensive rework. The challenge lay in coordinating these teams to trust and adopt the new tools, especially given the complexity of working across different pipeline frameworks. In hindsight, while the decision was resource-intensive upfront, it proved to be the right call, as it allowed for a smoother transition and set a precedent for future migrations.\n\nTHE LESSON\n\nThis case highlights the importance of context engineering in PM/engineering collaboration when deploying autonomous coding agents. While PMs often focus on the broader strategic goals, this experience underscores the necessity of understanding the technical nuances that can make or break automation efforts. The iterative process of refining context for Honk revealed that successful automation requires a deep dive into the specifics of existing frameworks and a willingness to adapt strategies as new challenges arise. This is a lesson in the value of flexibility and detailed technical engagement for PMs, which is rarely covered in traditional PM advice but is crucial for driving innovation in complex technical environments.",
       "ai_processed_at": "2026-07-06T15:25:34.733025+00:00",
-      "is_editors_pick": false,
-      "is_dismissed": false
-    },
-    {
-      "id": "22eb165c6a48e717",
-      "url": "https://engineering.fb.com/2026/06/22/video-engineering/adopting-av1-for-real-time-communication-rtc-meta/",
-      "title": "Adopting AV1 for Real-Time Communication (RTC) at Scale",
-      "display_title": "Adopting AV1 for Real-Time Communication at Scale",
-      "excerpt": "Adopting AV1 for real-time communication at Meta has been a multi-year effort spanning codec selection, device eligibility, rate control, and error resilience. We’re sharing the technical and operational challenges while deploying AV1 and expanding coverage, and how we addressed them for real-time communication. We’re presenting several technologie…",
-      "source_name": "Meta Engineering",
-      "source_category": "engineering",
-      "source_type": "engineering",
-      "published_at": "2026-06-22T16:00:08+00:00",
-      "fetched_at": "2026-07-06T15:13:39.742658+00:00",
-      "ai_score": 9,
-      "ai_score_reason": "practitioner(+2) | case-study(+1) | eng-primary(+1)",
-      "key_insight": null,
-      "ai_summary": "When PMs prioritize bandwidth efficiency, they typically overlook the nuanced impact of codec choice on user experience — but this shows that selecting the right codec can significantly enhance video quality, especially in low-bandwidth scenarios. Additionally, the focus on advanced encoding techniques reveals that optimizing for specific content types, like screen sharing, is often neglected in favor of broader performance metrics.",
-      "first_principle": null,
-      "ai_insight": null,
-      "ai_article_analysis": "THE PRODUCT PROBLEM\n\nIn the competitive landscape of real-time communication, delivering superior video quality with minimal bandwidth usage is crucial. Users, particularly in emerging markets, often face network constraints that degrade video quality, leading to poor user experiences and potential churn. The business needed a solution that could maintain high video quality even at low bitrates, ensuring that users on slower networks could still enjoy seamless video calls. The existing codec, H.264/AVC, was failing to meet these demands, especially under bandwidth constraints, making it imperative to adopt a more efficient codec like AV1 to stay competitive and enhance user satisfaction.\n\nTHE DECISION\n\nSwitching to the AV1 codec involved a significant tradeoff between the potential for improved video quality and the increased complexity of encoding. This decision required alignment across multiple teams, including product management, engineering, and operations, to ensure that the transition would not disrupt existing services. The complexity of AV1 meant that it could not be immediately rolled out to all devices, necessitating a phased approach starting with high-end devices. This decision was challenging because it required balancing the immediate benefits of improved video quality against the potential risk of excluding users with less capable devices. In hindsight, the phased rollout proved effective, allowing for iterative improvements and broader device support over time.\n\nTHE LESSON\n\nThis experience underscores the importance of close collaboration between product managers and engineers when adopting new technologies. The transition to AV1 was not just a technical upgrade; it required a deep understanding of user needs, market conditions, and technical constraints. PMs must work closely with engineers to navigate these complexities, ensuring that product decisions are informed by both technical feasibility and user impact. The success of the AV1 rollout at Meta highlights that effective PM/eng collaboration can drive innovation and deliver significant user benefits, even in the face of technical challenges. This is a nuanced insight that goes beyond typical PM advice, emphasizing the need for strategic alignment and iterative execution in technology adoption.",
-      "ai_processed_at": "2026-07-06T15:25:43.202302+00:00",
       "is_editors_pick": false,
       "is_dismissed": false
     },
