@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T20:28:14.460917+00:00",
+  "generated_at": "2026-11-24T21:58:23.734819+00:00",
   "articles": [
     {
       "id": "2bfaefd33578768d",
@@ -596,6 +596,28 @@
       "is_dismissed": false
     },
     {
+      "id": "9eae58f6815a48a7",
+      "url": "https://www.infoq.com/news/2026/11/qcon-sf-openai-lessons/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global",
+      "title": "QCon San Francisco 2026: Lessons from Building a $100M Product in Six Weeks at OpenAI",
+      "display_title": "QCon San Francisco 2026: Lessons from Building a $100M Product at OpenAI",
+      "excerpt": "At QCon San Francisco 2026, OpenAI's Brian Yang described building the ChatGPT ads product with Codex agents and no human-written code. He outlined layered testing, sandboxes, and batched pull request reviews, and noted failure modes such as code \"slop\" and unsafe agent actions. He advised gradual adoption and framed engineers as managers of agents…",
+      "source_name": "InfoQ",
+      "source_category": "engineering",
+      "source_type": "engineering",
+      "published_at": "2026-11-24T06:32:00+00:00",
+      "fetched_at": "2026-11-24T16:00:28.043631+00:00",
+      "ai_score": 10,
+      "ai_score_reason": "quantified(+2) | tension(+2) | eng-primary(+1)",
+      "key_insight": null,
+      "ai_summary": null,
+      "first_principle": null,
+      "ai_insight": null,
+      "ai_article_analysis": null,
+      "ai_processed_at": "2026-11-24T20:39:30.240662+00:00",
+      "is_editors_pick": false,
+      "is_dismissed": false
+    },
+    {
       "id": "8105184611e3739c",
       "url": "https://medium.com/airbnb-engineering/when-history-fails-you-borrow-from-geography-915a72b91b5c?source=rss----53c7c27702d5---4",
       "title": "When history fails you, borrow from geography",
@@ -636,28 +658,6 @@
       "ai_insight": null,
       "ai_article_analysis": "THE PRODUCT PROBLEM\n\nSpotify's engineering teams were facing a significant challenge: the rapid growth of their production codebase was outpacing the growth in the number of engineers. This imbalance resulted in developers spending excessive time on maintenance tasks, such as upgrading dependencies and patching vulnerabilities, rather than on innovative feature development. The traditional manual approach to these tasks was inefficient and a major source of frustration. The business needed a solution that would streamline maintenance, enhance productivity, and allow engineers to focus on creating value through new features, all while staying competitive in the fast-paced technology landscape.\n\nTHE DECISION\n\nTo address these challenges, Spotify made a strategic decision to invest in automation and AI-driven solutions. This included the development of Fleet Management and its evolution into the Honk coding agent. By automating routine maintenance tasks and leveraging AI for complex code modifications, Spotify aimed to free up developer time and reduce frustration. This decision required alignment across product management, engineering, and operations teams to ensure seamless integration and adoption. The tradeoff involved the initial investment in developing these tools and the potential risk of relying on AI for critical code changes. However, the dramatic increase in productivity and adoption rates validated the decision, demonstrating that the benefits outweighed the risks.\n\nTHE LESSON\n\nThis case highlights the transformative potential of PM and engineering collaboration when addressing systemic productivity challenges. The success of Spotify's approach underscores the importance of proactively identifying bottlenecks and being open to innovative solutions, even if they require a significant shift from traditional methods. It reveals that when PMs and engineers align on a shared vision for productivity and innovation, they can drive substantial change. This example also shows that embracing AI and automation can redefine team dynamics and unlock new levels of efficiency, a lesson that traditional PM advice often overlooks.",
       "ai_processed_at": "2026-07-06T15:25:23.731063+00:00",
-      "is_editors_pick": false,
-      "is_dismissed": false
-    },
-    {
-      "id": "3fcadcdff52ca87c",
-      "url": "https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4/",
-      "title": "Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations (Honk, Part 4)",
-      "display_title": "Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations Part 4",
-      "excerpt": "How we used Honk, Backstage, and Fleet Management to ease the pain of migrating thousands of datasets. The post Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations (Honk, Part 4) appeared first on Spotify Engineering .",
-      "source_name": "Spotify Engineering",
-      "source_category": "engineering",
-      "source_type": "engineering",
-      "published_at": "2026-04-22T19:39:08+00:00",
-      "fetched_at": "2026-07-06T15:13:34.462380+00:00",
-      "ai_score": 9,
-      "ai_score_reason": "practitioner(+2) | research(+1) | eng-primary(+1)",
-      "key_insight": null,
-      "ai_summary": "When automation tools are introduced to streamline complex processes, PMs typically focus on immediate efficiency gains — but this shows that understanding the underlying context and dependencies is crucial for successful implementation. Neglecting to consider how different systems interact can lead to oversights that undermine the benefits of automation, resulting in more work in the long run.",
-      "first_principle": null,
-      "ai_insight": null,
-      "ai_article_analysis": "THE PRODUCT PROBLEM\n\nMigrating thousands of dataset consumers to new dataset versions was a daunting task that threatened to consume significant engineering resources. The business needed to deprecate heavily-used datasets to introduce new features, but the sheer volume of direct and indirect data pipelines—around 1,800—posed a substantial operational challenge. Users faced potential disruptions, and the company risked falling behind competitors if the new features were delayed. The pressing need was to streamline this migration process to maintain agility and innovation without overwhelming the engineering teams.\n\nTHE DECISION\n\nThe decision to leverage Honk, alongside Backstage and Fleet Management platforms, was a strategic tradeoff aimed at automating the migration process to save time and resources. By prioritizing automation, the team gained efficiency, reducing the manual workload by an estimated 10 engineering weeks. However, this required significant alignment across PM, engineering, and operations to ensure that the automated processes would not introduce errors or require extensive rework. The challenge lay in coordinating these teams to trust and adopt the new tools, especially given the complexity of working across different pipeline frameworks. In hindsight, while the decision was resource-intensive upfront, it proved to be the right call, as it allowed for a smoother transition and set a precedent for future migrations.\n\nTHE LESSON\n\nThis case highlights the importance of context engineering in PM/engineering collaboration when deploying autonomous coding agents. While PMs often focus on the broader strategic goals, this experience underscores the necessity of understanding the technical nuances that can make or break automation efforts. The iterative process of refining context for Honk revealed that successful automation requires a deep dive into the specifics of existing frameworks and a willingness to adapt strategies as new challenges arise. This is a lesson in the value of flexibility and detailed technical engagement for PMs, which is rarely covered in traditional PM advice but is crucial for driving innovation in complex technical environments.",
-      "ai_processed_at": "2026-07-06T15:25:34.733025+00:00",
       "is_editors_pick": false,
       "is_dismissed": false
     },
